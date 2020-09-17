@@ -52,6 +52,8 @@ public class PlayerControl : MonoBehaviour
         Movement = Movement * moveSpeed * Time.deltaTime;
         GetComponent<Rigidbody>().MovePosition(transform.position + Movement);
     }
+
+    [System.Obsolete]
     void Update()
     {
         #region 數字鍵一到五
@@ -137,9 +139,10 @@ public class PlayerControl : MonoBehaviour
             stamina = staminaLimit;
             uIBarControl.SetStamina(stamina);
         }
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.N))//傳送到指定地點 &場景重置
         {
             transform.position = new Vector3(-6.31f, 0, 6.08f);
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
 

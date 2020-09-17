@@ -91,7 +91,7 @@ public class GetHitEffect : MonoBehaviour
                 attackBuff = true;
             }
         }
-        if (other.CompareTag("Equipment")/* && 背包所剩欄位<背包最大欄位*/)
+        if (other.CompareTag("Item")/* && 背包所剩欄位<背包最大欄位*/)
         {
             other.GetComponent<ItemPickup>().PickUp();
         }

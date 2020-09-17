@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject[] toolall = new GameObject[6];//每個欄位都要塞東西 不然會報錯不給你用
     public GameObject BackPackUI;
     public Transform playerRotation;
+    public EquipmentManager equipmentManager;
     //有關耐力
     float stamina;
     float staminaLimit = 100;
@@ -98,9 +99,15 @@ public class PlayerControl : MonoBehaviour
         {
             playerOptions.SetMonsterHealthActive();
         }
+        //開關背包介面
         if (Input.GetKeyDown(KeyCode.B))
         {
             BackPackUI.SetActive(!BackPackUI.activeSelf);
+        }
+        //卸下所有裝備欄裡的裝備
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            equipmentManager.UnequipAll();
         }
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space))

@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
     //新增一個方法將List的東西刪除
     public void RemoveItem(ItemScriptableObject RemoveItem)
     {
-        //將物品移除但不管按哪個格子的移除都是移除第一個
+        //將物品移除但不管按哪個格子的移除都是移除第一個同樣的物品
         Items.Remove(RemoveItem);
         //同步呼叫存在onItemChangedCallBack裡的方法
         onItemChangedCallBack.Invoke();

@@ -17,4 +17,8 @@ public class ItemScriptableObject : ScriptableObject
     {
         Debug.Log("使用 " + name+ " 中");
     }
+    public void RemoveFromInventory()
+    {
+        Inventory.instance.RemoveItem(this);
+    }
 }

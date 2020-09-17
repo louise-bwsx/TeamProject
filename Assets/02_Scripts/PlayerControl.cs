@@ -87,6 +87,7 @@ public class PlayerControl : MonoBehaviour
         }
         if (EventSystem.current.IsPointerOverGameObject())
         {
+            //隔著UI點到金礦還是會出現Debug.log
             return;
         }
         //開關玩家血條

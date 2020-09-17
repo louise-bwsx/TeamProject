@@ -31,9 +31,12 @@ public class EquipmentManager : MonoBehaviour
     {
         int slotIndex = (int)equipmentScriptable.equipmentSlot;
         Equipment oldItem = null;
+        //如果該欄位已經裝備物品
         if (currentEquipment[slotIndex] != null)
-        {
+        {   
+            //該欄位的物品存進oldItem
             oldItem = currentEquipment[slotIndex];
+            //在把oldItem加回去
             inventory.AddNewItem(oldItem);
         }
         //onEquipmentChaged.Invoke(equipmentScriptable, oldItem);

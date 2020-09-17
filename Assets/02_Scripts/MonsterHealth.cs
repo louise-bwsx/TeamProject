@@ -38,7 +38,7 @@ public class MonsterHealth : MonoBehaviour
             Damage *= buffValue;
         }
         Hp -= Damage;
-        Debug.Log(Damage);
+        //Debug.Log("造成傷害: "+Damage);
         HealthBarOnGame.SetHealth(Hp);
         if (Hp <= 0)
         {

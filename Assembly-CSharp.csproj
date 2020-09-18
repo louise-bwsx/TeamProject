@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C1F87F89-4DF9-F44D-BB09-6A0B76F9F0FD}</ProjectGuid>
+    <ProjectGuid>{F58CC1D2-D992-7F40-1854-16A3344A8685}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -66,6 +66,7 @@
     <Compile Include="Assets\02_Scripts\ArrowComponet.cs" />
     <Compile Include="Assets\02_Scripts\Billboard.cs" />
     <Compile Include="Assets\02_Scripts\BulletControl.cs" />
+    <Compile Include="Assets\02_Scripts\Equipment.cs" />
     <Compile Include="Assets\02_Scripts\EquipmentManager.cs" />
     <Compile Include="Assets\02_Scripts\GetHitEffect.cs" />
     <Compile Include="Assets\02_Scripts\HealthBarOnGame.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets\02_Scripts\LookAtCursor.cs" />
     <Compile Include="Assets\02_Scripts\MonsterHealth.cs" />
     <Compile Include="Assets\02_Scripts\MonsterSpwan.cs" />
-    <Compile Include="Assets\02_Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\02_Scripts\PlayerControl.cs" />
     <Compile Include="Assets\02_Scripts\PlayerFaceDirection.cs" />
     <Compile Include="Assets\02_Scripts\PlayerOptions.cs" />
@@ -86,7 +86,6 @@
     <Compile Include="Assets\02_Scripts\TranMove.cs" />
     <Compile Include="Assets\02_Scripts\UIBarControl.cs" />
     <Compile Include="Assets\02_Scripts\UIText.cs" />
-    <Compile Include="Assets\02_Scripts\equipment.cs" />
     <Compile Include="Assets\Teleportation Pad\CustomTeleporter.cs" />
     <None Include="Assets\Teleportation Pad\README.txt" />
     <Reference Include="UnityEngine">
@@ -618,31 +617,31 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/SKY/Documents/0917/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/Github 合作專案V2/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

@@ -3,9 +3,10 @@
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemParent;
+    public GameObject BackpackUI;
     Inventory inventory;
     InventorySlot[] inventorySlots;
-    void Start()
+    void Awake()
     {
         inventory = Inventory.instance;
         //將UpdateUI新增到同步呼叫的方法裡
@@ -13,9 +14,10 @@ public class InventoryUI : MonoBehaviour
         //取得所有塞InventorySlot的子物件
         inventorySlots = GetComponentsInChildren<InventorySlot>();
     }
-    void Update()
+    void Start()
     {
-
+        //預設遊戲開啟時關閉 如果遊戲還沒開始時物件是關閉的會讀不到InventorySlot[]
+        BackpackUI.SetActive(false);
     }
     void UpdateUI()
     {

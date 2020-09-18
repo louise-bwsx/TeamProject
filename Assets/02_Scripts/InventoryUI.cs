@@ -15,15 +15,12 @@ public class InventoryUI : MonoBehaviour
     }
     void Update()
     {
-        //Debug.Log(inventorySlots.Length);//這數字是gameObject InventorySlot
-        //Debug.Log(inventory.Items.Count);//這數字是 每裝進背包一件物品加一  
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Object.DontDestroyOnLoad(gameObject);
-        }
+
     }
     void UpdateUI()
     {
+        //Debug.Log(inventorySlots.Length);//這數字是gameObject InventorySlot
+        //Debug.Log(inventory.Items.Count);//這數字是 每裝進背包一件物品加一  
         //最大值為 有塞InventorySlot子物件 的數量
         for (int i = 0; i < inventorySlots.Length; i++)
         {

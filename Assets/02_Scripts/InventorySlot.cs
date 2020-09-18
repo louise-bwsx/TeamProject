@@ -15,7 +15,6 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = newItem.icon;
         icon.enabled = true;
         RemoveButton.interactable = true;
-
     }
     public void EmtyItem()
     {

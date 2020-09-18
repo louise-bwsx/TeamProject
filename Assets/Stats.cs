@@ -4,11 +4,12 @@ using UnityEngine;
 [System.Serializable]
 public class Stats : MonoBehaviour
 {
-    int baseValue;
+    float baseValue;
 
     List<float> modifiers = new List<float>();
     public int GetValue()
     {
+        Debug.Log(1);
         float FinalValue = baseValue;
         modifiers.ForEach(x => FinalValue += x);
         return (int)FinalValue;

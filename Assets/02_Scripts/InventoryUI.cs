@@ -16,7 +16,11 @@ public class InventoryUI : MonoBehaviour
     void Update()
     {
         //Debug.Log(inventorySlots.Length);//這數字是gameObject InventorySlot
-        //Debug.Log(inventory.Items.Count);//這數字是 每裝進背包一件物品加一    
+        //Debug.Log(inventory.Items.Count);//這數字是 每裝進背包一件物品加一  
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Object.DontDestroyOnLoad(gameObject);
+        }
     }
     void UpdateUI()
     {

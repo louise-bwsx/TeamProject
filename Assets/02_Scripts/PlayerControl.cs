@@ -145,7 +145,6 @@ public class PlayerControl : MonoBehaviour
             Application.LoadLevel(Application.loadedLevel);
         }
     }
-
     void Toolchandge(int toolnum)//只能取自己身上的gameobject 不能取prefab
     {
         if (toolall[toolnum].activeSelf == false)

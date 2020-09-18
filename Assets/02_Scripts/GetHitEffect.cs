@@ -54,6 +54,11 @@ public class GetHitEffect : MonoBehaviour
             pickGold++;
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            collision.gameObject.GetComponent<ItemPickup>().PickUp();
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -91,9 +96,9 @@ public class GetHitEffect : MonoBehaviour
                 attackBuff = true;
             }
         }
-        if (other.CompareTag("Item")/* && 背包所剩欄位<背包最大欄位*/)
-        {
-            other.GetComponent<ItemPickup>().PickUp();
-        }
+        //if (other.CompareTag("Item"))
+        //{
+        //    other.GetComponent<ItemPickup>().PickUp();
+        //}
     }
 }

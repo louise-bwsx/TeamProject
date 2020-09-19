@@ -6,7 +6,8 @@ public class PlayerControl : MonoBehaviour
 {
     PlayerOptions playerOptions;
     GetHitEffect getHitEffect;
-    public UIBarControl uIBarControl;
+    public UIBarControl uIBarControl;//刪掉了懶得復原
+    public HealthBarOnGame healthbarongame;
     public Animator PlayerCube;
     public GameObject[] toolall = new GameObject[6];//每個欄位都要塞東西 不然會報錯不給你用
     public GameObject BackPackUI;
@@ -111,6 +112,27 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             equipmentManager.UnequipAll();
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            equipmentManager.UnequipAll();
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("存檔中");
+            SaveSystem.SavePlayer(getHitEffect, transform);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("回復存檔");
+            PlayerData data = SaveSystem.LoadPlayer();
+            getHitEffect.playerHealth = data.Playerhealth;
+            Vector3 SavePosition;
+            SavePosition.x = data.position[0];
+            SavePosition.y = data.position[1];
+            SavePosition.z = data.position[2];
+            transform.position = SavePosition;
+            healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
         }
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space))

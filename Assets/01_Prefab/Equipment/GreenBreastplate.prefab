@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2615747903059723645
+--- !u!1 &2324838579994538586
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1481646940880501393}
-  - component: {fileID: 2683710680160497554}
-  - component: {fileID: 6986947013275126967}
-  - component: {fileID: 1220549825598992874}
-  - component: {fileID: 6171869108155712631}
-  - component: {fileID: 1759975133}
+  - component: {fileID: 2324838579994538587}
+  - component: {fileID: 2324838579994538564}
+  - component: {fileID: 2324838579994538567}
+  - component: {fileID: 2324838579994538566}
+  - component: {fileID: 2324838579994538585}
+  - component: {fileID: 2324838579994538584}
   m_Layer: 0
   m_Name: GreenBreastplate
   m_TagString: Item
@@ -21,35 +21,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1481646940880501393
+--- !u!4 &2324838579994538587
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615747903059723645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.74}
-  m_LocalScale: {x: 0.23195, y: 0.23195, z: 0.23195}
+  m_GameObject: {fileID: 2324838579994538586}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3899999, y: 0.104, z: 2.5108697}
+  m_LocalScale: {x: 0.3159855, y: 0.3159855, z: 0.3159855}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2683710680160497554
+--- !u!33 &2324838579994538564
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615747903059723645}
+  m_GameObject: {fileID: 2324838579994538586}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6986947013275126967
+--- !u!23 &2324838579994538567
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615747903059723645}
+  m_GameObject: {fileID: 2324838579994538586}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -82,26 +82,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1220549825598992874
+--- !u!65 &2324838579994538566
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615747903059723645}
+  m_GameObject: {fileID: 2324838579994538586}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6171869108155712631
+--- !u!54 &2324838579994538585
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615747903059723645}
+  m_GameObject: {fileID: 2324838579994538586}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -111,17 +111,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1759975133
+--- !u!114 &2324838579994538584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2615747903059723645}
+  m_GameObject: {fileID: 2324838579994538586}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9ce370ce7a8a2146abcd55a3d3ce158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScriptableObject: {fileID: 11400000, guid: 77fd21af17b38fc4ca265c3112ff4f61,
+  itemScriptableObject: {fileID: 11400000, guid: 2ad0c7c6b17770b43a0f1e0abe5815a2,
     type: 2}

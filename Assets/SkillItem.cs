@@ -25,7 +25,6 @@ public class SkillItem : MonoBehaviour
         {
             IsStartTimer = true;
             Skill.Skill();
-
         }
         if (IsStartTimer)
         {

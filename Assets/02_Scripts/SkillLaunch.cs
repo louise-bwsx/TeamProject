@@ -20,11 +20,9 @@ public class SkillLaunch : MonoBehaviour
     }
     public void Skill()
     {
-
         GameObject BulletObj_ = Instantiate(SkillObject);
         if (BulletObj_ != null)
         {
-
             BulletObj_.transform.position = SkillPos.position;
             BulletObj_.transform.rotation = SkillPos.rotation;
             Rigidbody BulletObjRigidbody_ = BulletObj_.GetComponent<Rigidbody>();

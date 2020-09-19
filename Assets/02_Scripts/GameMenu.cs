@@ -17,8 +17,10 @@ public class GameMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Time.timeScale = 0f;
             EscButton();
         }
+
     }
     public void EscButton()
     {
@@ -34,11 +36,13 @@ public class GameMenu : MonoBehaviour
         else
         {
             anyWindow[0].SetActive(false);
+            Time.timeScale = 1f;
         }
     }
     public void GameContinue()
     {
         anyWindow[0].SetActive(false);
+        Time.timeScale = 1f;
     }
     public void QuitGame()
     {

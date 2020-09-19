@@ -87,6 +87,10 @@ public class PlayerControl : MonoBehaviour
                 Attack();
                 attackTime = Time.time + 1f / attackSpeed;//另外一種計時方式
             }
+            if (Input.GetMouseButtonDown(1))
+            {
+                PlayerCube.SetTrigger("SwordAttackSpike");
+            }
         }
         if (EventSystem.current.IsPointerOverGameObject())
         {
@@ -117,6 +121,7 @@ public class PlayerControl : MonoBehaviour
         {
             equipmentManager.UnequipAll();
         }
+        #region 存檔功能
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("存檔中");
@@ -134,6 +139,7 @@ public class PlayerControl : MonoBehaviour
             transform.position = SavePosition;
             healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
         }
+        #endregion
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space))
         {

@@ -36,7 +36,6 @@ public class SkillTest : MonoBehaviour
             {
                 rb.AddExplosionForce(force, transform.position, radius);
             }
-
         }
         Destroy(gameObject);
     }

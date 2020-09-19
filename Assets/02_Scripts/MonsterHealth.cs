@@ -54,6 +54,10 @@ public class MonsterHealth : MonoBehaviour
             GetHit(10);
             other.gameObject.tag = "Broken";
         }
+        if (other.CompareTag("Sword"))
+        {
+            GetHit(15);
+        }
     }
     void MonsterDead()
     {

@@ -79,19 +79,16 @@ public class PlayerControl : MonoBehaviour
             Toolchandge(5);
         }
         #endregion
-        //攻速
+        #region 攻速
         if (Time.time >= attackTime)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
                 Attack();
                 attackTime = Time.time + 1f / attackSpeed;//另外一種計時方式
             }
-            if (Input.GetMouseButtonDown(1))
-            {
-                PlayerCube.SetTrigger("SwordAttackSpike");
-            }
         }
+#endregion
         if (EventSystem.current.IsPointerOverGameObject())
         {
             //隔著UI點到金礦還是會出現Debug.log
@@ -190,7 +187,7 @@ public class PlayerControl : MonoBehaviour
     }
     public void Attack()
     {
-        if (toolall[4] == true)
+        if (Input.GetMouseButtonDown(0) && toolall[4] == true)
         {
             PlayerCube.SetTrigger("SwordAttack");
             //他只會抓這個方法啟動瞬間的範圍
@@ -200,6 +197,10 @@ public class PlayerControl : MonoBehaviour
                 Debug.Log(enemy.name);
                 enemy.GetComponent<MonsterHealth>().GetHit(attackDamage);
             }
+        }
+        if (Input.GetMouseButtonDown(1) && toolall[4] == true)
+        {
+            PlayerCube.SetTrigger("SwordAttackSpike");
         }
     }
     void OnDrawGizmosSelected()

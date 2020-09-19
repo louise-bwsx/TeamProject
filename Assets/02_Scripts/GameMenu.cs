@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameMenu : MonoBehaviour
 {
     public GameObject[] anyWindow = new GameObject[3];
+    void Start()
+    {
+        foreach (GameObject window in anyWindow)
+        {
+            window.SetActive(false);
+        }
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -22,7 +29,6 @@ public class GameMenu : MonoBehaviour
             {
                 window.SetActive(false);
             }
-
             anyWindow[0].SetActive(true);
         }
         else

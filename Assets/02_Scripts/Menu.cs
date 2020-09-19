@@ -6,6 +6,16 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     public GameObject[] anyWindow = new GameObject[3];
+
+    void Start()
+    {
+        //一開始先把所有視窗打開讓參數讀的到遊戲開始時自動關閉
+        foreach (GameObject window in anyWindow)
+        {
+            window.SetActive(false);
+        }
+        anyWindow[0].SetActive(true);
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

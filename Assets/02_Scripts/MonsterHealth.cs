@@ -58,6 +58,10 @@ public class MonsterHealth : MonoBehaviour
         {
             GetHit(15);
         }
+        if (other.CompareTag("Skill"))
+        {
+            GetHit(0);
+        }
     }
     void MonsterDead()
     {

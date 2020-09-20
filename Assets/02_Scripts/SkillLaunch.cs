@@ -18,7 +18,7 @@ public class SkillLaunch : MonoBehaviour
     {
         
     }
-    public void Skill()
+    public void AirAttack()
     {
         GameObject BulletObj_ = Instantiate(SkillObject);
         if (BulletObj_ != null)

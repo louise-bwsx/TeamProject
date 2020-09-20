@@ -62,6 +62,10 @@ public class MonsterHealth : MonoBehaviour
         {
             GetHit(0);
         }
+        if (other.CompareTag("AirAttack"))
+        {
+            GetHit(10);
+        }
     }
     void MonsterDead()
     {

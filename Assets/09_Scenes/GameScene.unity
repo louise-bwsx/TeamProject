@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monstervalue: 0
-  monster: {fileID: 2365402075775347503}
+  monster: {fileID: 2987458652652834701, guid: 574d3bd3b6d011b4797ef1479be7f51f, type: 3}
   spwanmonster: {fileID: 205671117}
 --- !u!64 &205671119
 MeshCollider:
@@ -13282,7 +13282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -705.4, y: 336.4}
+  m_AnchoredPosition: {x: -705.4004, y: 336.4004}
   m_SizeDelta: {x: 336.1411, y: 443.51868}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1621316521
@@ -15880,6 +15880,7 @@ MonoBehaviour:
   - {fileID: 1594790956}
   - {fileID: 637819629}
   - {fileID: 319904482}
+  - {fileID: 1617842221}
 --- !u!82 &2136891377
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17002,12 +17003,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4e83be56c2c5c45af3965cda14055e, type: 3}
---- !u!1 &2365402075775347503 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2987458652652834701, guid: 574d3bd3b6d011b4797ef1479be7f51f,
-    type: 3}
-  m_PrefabInstance: {fileID: 695257998050043042}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2365402076047330739 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2987458652387961105, guid: 574d3bd3b6d011b4797ef1479be7f51f,

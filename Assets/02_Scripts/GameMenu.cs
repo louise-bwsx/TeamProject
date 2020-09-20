@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
-    public GameObject[] anyWindow = new GameObject[3];
+    public GameObject[] anyWindow = new GameObject[4];
     void Start()
     {
         foreach (GameObject window in anyWindow)
@@ -17,24 +17,30 @@ public class GameMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0f;
             EscButton();
         }
 
     }
     public void EscButton()
     {
-        if (!anyWindow[0].activeSelf)
+        if (anyWindow[3].activeSelf)
         {
-            //for所有的視窗SetActive(false)
+            anyWindow[3].SetActive(false);
+        }
+        else if (!anyWindow[0].activeSelf)//如果主選單是關閉的
+        {
+            //for迴圈關閉所有視窗
             foreach (GameObject window in anyWindow)
             {
                 window.SetActive(false);
             }
+            //再把主選單打開
             anyWindow[0].SetActive(true);
+            Time.timeScale = 0f;
         }
         else
-        {
+        {   
+            //主選單是開著的就把它關掉
             anyWindow[0].SetActive(false);
             Time.timeScale = 1f;
         }

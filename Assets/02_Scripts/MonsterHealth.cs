@@ -21,9 +21,8 @@ public class MonsterHealth : MonoBehaviour
     public GameObject SkillBookGold;
     public GameObject SkillBookBlue;
     public ItemSTO itemRate;
-    public PlayerControl playerControl;
     float buffValue = 3;
-    public GetHitEffect getHitEffect;
+    //public GetHitEffect getHitEffect;
     //public Text text;
 
     void Start()
@@ -33,10 +32,11 @@ public class MonsterHealth : MonoBehaviour
     }
     public void GetHit(float Damage)
     {
-        if (getHitEffect.attackBuff)
-        {
-            Damage *= buffValue;
-        }
+        //有問題
+        //if (getHitEffect.attackBuff)
+        //{
+        //    Damage *= buffValue;
+        //}
         Hp -= Damage;
         //Debug.Log("造成傷害: "+Damage);
         HealthBarOnGame.SetHealth(Hp);

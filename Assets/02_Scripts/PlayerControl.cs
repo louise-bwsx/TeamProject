@@ -195,7 +195,7 @@ public class PlayerControl : MonoBehaviour
             foreach (Collider enemy in hitEnemy)
             {
                 Debug.Log(enemy.name);
-                enemy.GetComponent<MonsterHealth>().GetHit(attackDamage);
+                enemy.GetComponent<MonsterHealth>()?.GetHit(attackDamage);
             }
         }
         if (Input.GetMouseButtonDown(1) && toolall[4] == true)

@@ -21,7 +21,7 @@ public class MonsterHealth : MonoBehaviour
     public GameObject SkillBookGold;
     public GameObject SkillBookBlue;
     public ItemSTO itemRate;
-    float buffValue = 3;
+    //float buffValue = 3;
     //public GetHitEffect getHitEffect;
     //public Text text;
 

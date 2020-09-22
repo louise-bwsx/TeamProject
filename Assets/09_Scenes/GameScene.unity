@@ -469,9 +469,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45880583}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -12726,11 +12726,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestCube
-      objectReference: {fileID: 0}
-    - target: {fileID: 1659545733753723699, guid: 39c4fce9f81f88543a7e0efad13df704,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8071395378005696821, guid: 39c4fce9f81f88543a7e0efad13df704,
         type: 3}

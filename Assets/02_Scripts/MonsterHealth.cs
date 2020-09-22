@@ -60,7 +60,7 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("Skill"))
         {
-            GetHit(10);
+            GetHit(0);
         }
         if (other.CompareTag("AirAttack"))
         {

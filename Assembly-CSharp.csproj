@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E4278C64-A15A-6A1F-178D-4D1497F7F57B}</ProjectGuid>
+    <ProjectGuid>{34B85095-073B-C76C-3953-564D2AA68E83}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\02_Scripts\AirAttack.cs" />
     <Compile Include="Assets\02_Scripts\ArrowComponet.cs" />
     <Compile Include="Assets\02_Scripts\Billboard.cs" />
     <Compile Include="Assets\02_Scripts\BulletControl.cs" />
@@ -88,9 +87,17 @@
     <Compile Include="Assets\02_Scripts\PlayerOptions.cs" />
     <Compile Include="Assets\02_Scripts\PlayerSound.cs" />
     <Compile Include="Assets\02_Scripts\SaveSystem.cs" />
-    <Compile Include="Assets\02_Scripts\SkillF6Launch.cs" />
-    <Compile Include="Assets\02_Scripts\SkillLaunch.cs" />
-    <Compile Include="Assets\02_Scripts\SkillTest.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\AirAttack.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\FireMagic.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\SkillF5Launch.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\SkillF6Launch.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\SkillF8Launch.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\SkillItem.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\SkillItem1.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\SkillItem2.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\SkillItem3.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\Skillitem4.cs" />
+    <Compile Include="Assets\02_Scripts\Skill\SoilWall.cs" />
     <Compile Include="Assets\02_Scripts\SoundSettings.cs" />
     <Compile Include="Assets\02_Scripts\StoneDestroy.cs" />
     <Compile Include="Assets\02_Scripts\TranMove.cs" />
@@ -100,11 +107,6 @@
     <Compile Include="Assets\NotDoneYet\CharacterStats.cs" />
     <Compile Include="Assets\NotDoneYet\PlayerStats.cs" />
     <Compile Include="Assets\NotDoneYet\Stats.cs" />
-    <Compile Include="Assets\SkillItem.cs" />
-    <Compile Include="Assets\SkillItem1.cs" />
-    <Compile Include="Assets\SkillItem2.cs" />
-    <Compile Include="Assets\SkillItem3.cs" />
-    <Compile Include="Assets\Skillitem4.cs" />
     <Compile Include="Assets\Teleportation Pad\CustomTeleporter.cs" />
     <None Include="Assets\Teleportation Pad\README.txt" />
     <Reference Include="UnityEngine">
@@ -636,31 +638,31 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/SKY/Documents/TEST09221929/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/SKY/Documents/TEST09232020/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

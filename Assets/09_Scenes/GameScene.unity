@@ -4952,7 +4952,7 @@ PrefabInstance:
     - target: {fileID: 8829505349809715513, guid: 7314d80ecce62f64682b77c25391b5ca,
         type: 3}
       propertyPath: m_Name
-      value: TestCube
+      value: SoilWall
       objectReference: {fileID: 0}
     - target: {fileID: 8829505349809715513, guid: 7314d80ecce62f64682b77c25391b5ca,
         type: 3}
@@ -8271,6 +8271,7 @@ GameObject:
   - component: {fileID: 1595748072}
   - component: {fileID: 1595748075}
   - component: {fileID: 1595748076}
+  - component: {fileID: 1595748077}
   m_Layer: 0
   m_Name: Playercube
   m_TagString: Player
@@ -8408,6 +8409,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillObject: {fileID: 4616344345140612486, guid: fb26b4bcfa79f934bb08bfcfa65df40e,
+    type: 3}
+  SkillPos: {fileID: 576802481}
+  SkillForce: 200
+--- !u!114 &1595748077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595748069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07df622129e32a45a55a8f87a2d0f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillObject: {fileID: 6998448547650020761, guid: be7fd81f5cc591545bfca6b3c3057413,
     type: 3}
   SkillPos: {fileID: 576802481}
   SkillForce: 200
@@ -14093,6 +14110,80 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &8414443393475078033
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.84519243
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998448547650020761, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_Name
+      value: FirMagic
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998448547650020761, guid: be7fd81f5cc591545bfca6b3c3057413,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be7fd81f5cc591545bfca6b3c3057413, type: 3}
 --- !u!1 &8503411232036267216
 GameObject:
   m_ObjectHideFlags: 0
@@ -14679,6 +14770,7 @@ MonoBehaviour:
   Timer: 0
   FilledImage: {fileID: 0}
   IsStartTimer: 0
+  Skill: {fileID: 1595748077}
 --- !u!1 &8761432779777514953
 GameObject:
   m_ObjectHideFlags: 0

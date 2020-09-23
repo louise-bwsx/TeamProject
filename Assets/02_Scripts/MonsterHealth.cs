@@ -66,6 +66,11 @@ public class MonsterHealth : MonoBehaviour
         {
             GetHit(10);
         }
+        if (other.CompareTag("FirMagic"))
+        {
+            GetHit(10);
+        }
+    
     }
     void MonsterDead()
     {

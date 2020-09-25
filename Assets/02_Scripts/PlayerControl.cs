@@ -79,20 +79,14 @@ public class PlayerControl : MonoBehaviour
             Toolchandge(5);
         }
         #endregion
-        #region 攻速
+        //攻速
         if (Time.time >= attackTime)
         {
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) && !PlayerCube.GetBool("IsAttack"))
             {
                 Attack();
                 attackTime = Time.time + 1f / attackSpeed;//另外一種計時方式
             }
-        }
-#endregion
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            //隔著UI點到金礦還是會出現Debug.log
-            return;
         }
         //開關玩家血條
         if (Input.GetKeyDown(KeyCode.P))
@@ -129,6 +123,7 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("回復存檔");
             PlayerData data = SaveSystem.LoadPlayer();
             getHitEffect.playerHealth = data.Playerhealth;
+            uIBarControl.SetHealth(data.Playerhealth);
             Vector3 SavePosition;
             SavePosition.x = data.position[0];
             SavePosition.y = data.position[1];
@@ -137,6 +132,12 @@ public class PlayerControl : MonoBehaviour
             healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
         }
         #endregion
+
+        //好像沒有任何作用
+        //if (EventSystem.current.IsPointerOverGameObject())
+        //{
+        //    return;
+        //}
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space))
         {

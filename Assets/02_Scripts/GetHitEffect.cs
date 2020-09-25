@@ -54,15 +54,11 @@ public class GetHitEffect : MonoBehaviour
             pickGold++;
             Destroy(collision.gameObject);
         }
-
-        if (collision.gameObject.CompareTag("Item"))
+        else if (collision.gameObject.CompareTag("Item"))
         {
             collision.gameObject.GetComponent<ItemPickup>().PickUp();
         }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Monster") && getHitInvincibleTime <= 0f)
+        else if (collision.gameObject.CompareTag("Monster") && getHitInvincibleTime <= 0f)
         {
             //當玩家非無敵狀態
             if (!playerControl.rollInvincible)
@@ -96,6 +92,9 @@ public class GetHitEffect : MonoBehaviour
                 attackBuff = true;
             }
         }
+    }
+    private void OnTriggerStay(Collider other)
+    {
         //if (other.CompareTag("Item"))
         //{
         //    other.GetComponent<ItemPickup>().PickUp();

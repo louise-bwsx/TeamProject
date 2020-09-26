@@ -9,7 +9,7 @@ public class SkillItem3 : MonoBehaviour
     public float Timer = 0;//技能CD時間初始值
     public Image FilledImage;
     public bool IsStartTimer;//是否開始計算時間
-    public SkillF8Launch Skill;
+    public SkillF8Launch F8Skill;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class SkillItem3 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F8))
         {
             IsStartTimer = true;
-            Skill.Skill();
+            F8Skill.shoot();
         }
         if (IsStartTimer)
         {

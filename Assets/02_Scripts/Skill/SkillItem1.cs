@@ -22,7 +22,7 @@ public class SkillItem1 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F6))
         {
             IsStartTimer = true;
-            F6Skill.AirAttack();
+            F6Skill.shoot();
         }
         if (IsStartTimer)
         {

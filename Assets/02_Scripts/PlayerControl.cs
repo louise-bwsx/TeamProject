@@ -154,6 +154,8 @@ public class PlayerControl : MonoBehaviour
             cantMove = false;
             rollTime = 0;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<Collider>().isTrigger = false;
+            GetComponent<Rigidbody>().useGravity = true;
         }
         if (stamina < staminaLimit)
         {
@@ -223,6 +225,8 @@ public class PlayerControl : MonoBehaviour
             //限制翻滾時不能轉向
             cantMove = true;
             GetComponent<Rigidbody>().velocity = playerRotation.forward * rollDistence;
+            GetComponent<Collider>().isTrigger = true;
+            GetComponent<Rigidbody>().useGravity = false;
         }
         //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
     }

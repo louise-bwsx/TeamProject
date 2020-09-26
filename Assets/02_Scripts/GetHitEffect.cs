@@ -58,7 +58,10 @@ public class GetHitEffect : MonoBehaviour
         {
             collision.gameObject.GetComponent<ItemPickup>().PickUp();
         }
-        else if (collision.gameObject.CompareTag("Monster") && getHitInvincibleTime <= 0f)
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Monster") && getHitInvincibleTime <= 0f)
         {
             //當玩家非無敵狀態
             if (!playerControl.rollInvincible)

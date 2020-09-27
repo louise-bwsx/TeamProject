@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FireMagic : MonoBehaviour
 {
-    private float delay = 3f;
-    private float radius = 5f;
-    private float force = 700f;
+    public float delay = 3f;
+    public float radius = 5f;
+    public float force = 700f;
    public float DestroyTime = 3F;
     float countdown;
     bool hasExplode = false;

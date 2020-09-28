@@ -12,7 +12,6 @@ public class PlayerControl : MonoBehaviour
     public Animator PlayerCube;
     public GameObject[] toolall = new GameObject[6];//每個欄位都要塞東西 不然會報錯不給你用
     public GameObject BackPackUI;
-    public GameObject timeStopUI;
     public Transform playerRotation;
     public EquipmentManager equipmentManager;
     //有關耐力
@@ -82,7 +81,8 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
         //攻速&普攻按鍵
-        if (Time.time >= attackTime && !timeStopUI.activeSelf)
+        if (Time.time >= attackTime && 
+            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[1].activeSelf&& !gameMenu.anyWindow[2].activeSelf)
         {
             if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) && !PlayerCube.GetBool("IsAttack"))
             {

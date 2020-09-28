@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 8829505349809715516}
   - component: {fileID: 8829505349809715519}
   - component: {fileID: 8829505349809715518}
+  - component: {fileID: 3880752952663937173}
   m_Layer: 0
-  m_Name: TestCube
+  m_Name: SoilWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,3 +128,19 @@ MonoBehaviour:
   radius: 5
   force: 700
   DestroyTime: 3
+--- !u!208 &3880752952663937173
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829505349809715513}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

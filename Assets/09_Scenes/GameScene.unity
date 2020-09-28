@@ -531,11 +531,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.3, y: 0.38, z: 0.36}
+  m_Extents: {x: 0.545, y: 0.53, z: 0.01}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.12, z: 0.1}
+  m_Center: {x: 0, y: 0.03, z: 0}
   m_TimeToStationary: 0.5
 --- !u!224 &49399095 stripped
 RectTransform:
@@ -12839,6 +12839,11 @@ PrefabInstance:
     - target: {fileID: 1006492979816188844, guid: 97396899dfc0665429a2097130a35873,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006492980571273872, guid: 97396899dfc0665429a2097130a35873,
+        type: 3}
+      propertyPath: m_StoppingDistance
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

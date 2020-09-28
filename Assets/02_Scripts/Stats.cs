@@ -5,14 +5,16 @@ using UnityEngine;
 public class Stats : MonoBehaviour
 {
     float baseValue;
-
+    float finalValue;
     List<float> modifiers = new List<float>();
     public int GetValue()
     {
-        Debug.Log(1);
-        float FinalValue = baseValue;
-        modifiers.ForEach(x => FinalValue += x);
-        return (int)FinalValue;
+        if (baseValue != 0)
+        { 
+            finalValue = baseValue;
+        }
+        modifiers.ForEach(x => finalValue += x);
+        return (int)finalValue;
     }
     public void AddModifiers(float modifier)
     {

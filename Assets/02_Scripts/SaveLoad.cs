@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveLoad : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class SaveLoad : MonoBehaviour
     float playerPosZ;
 
     string playerName;
+
+    public string sceneName;
+
+    private void Start()
+    {
+    }
 
     private void Update()
     {
@@ -22,10 +29,10 @@ public class SaveLoad : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            playerName = player.GetComponent<PlayerStatus>().playerName;
-            playerPosX = player.GetComponent<PlayerStatus>().playerPosX;
-            playerPosY = player.GetComponent<PlayerStatus>().playerPosY;
-            playerPosZ = player.GetComponent<PlayerStatus>().playerPosZ;
+            playerName = gameObject.GetComponent<GameObject>().name;
+            playerPosX = gameObject.GetComponent<Transform>().transform.position.x;
+            playerPosY = gameObject.GetComponent<Transform>().transform.position.y;
+            playerPosZ = gameObject.GetComponent<Transform>().transform.position.z;
             //playerPos = player.GetComponent<Transform>().position;
             PlayerPrefs.SetString("playerName", playerName);
             PlayerPrefs.SetFloat("playerPosX", playerPosX);

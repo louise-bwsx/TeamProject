@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerFaceDirection : MonoBehaviour
 {
     public PlayerControl playerControl;
+    public Transform target;
+    float distence;
     void Update()
     {
-
         if (Input.GetAxis("Horizontal") >= 0.1f && playerControl.cantMove == false)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * 90);
@@ -16,7 +17,7 @@ public class PlayerFaceDirection : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(Vector3.up * 135);
         }
-        else if (Input.GetAxis("Vertical") <= -0.1f && playerControl.cantMove == false)
+        if (Input.GetAxis("Vertical") <= -0.1f && playerControl.cantMove == false)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * 180);
         }
@@ -24,7 +25,7 @@ public class PlayerFaceDirection : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(Vector3.up * -135);
         }
-        else if (Input.GetAxis("Horizontal") <= -0.1f && playerControl.cantMove == false)
+        if (Input.GetAxis("Horizontal") <= -0.1f && playerControl.cantMove == false)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * -90);
         }
@@ -32,7 +33,7 @@ public class PlayerFaceDirection : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(Vector3.up * -45);
         }
-        else if (Input.GetAxis("Vertical") >= 0.1f && playerControl.cantMove == false)
+        if (Input.GetAxis("Vertical") >= 0.1f && playerControl.cantMove == false)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * 0);
         }

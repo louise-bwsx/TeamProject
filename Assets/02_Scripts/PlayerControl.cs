@@ -6,11 +6,13 @@ public class PlayerControl : MonoBehaviour
 {
     PlayerOptions playerOptions;
     GetHitEffect getHitEffect;
-    public UIBarControl uIBarControl;//刪掉了懶得復原
+    public UIBarControl uIBarControl;
+    public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
     public Animator PlayerCube;
     public GameObject[] toolall = new GameObject[6];//每個欄位都要塞東西 不然會報錯不給你用
     public GameObject BackPackUI;
+    public GameObject timeStopUI;
     public Transform playerRotation;
     public EquipmentManager equipmentManager;
     //有關耐力
@@ -79,8 +81,8 @@ public class PlayerControl : MonoBehaviour
             Toolchandge(5);
         }
         #endregion
-        //攻速
-        if (Time.time >= attackTime)
+        //攻速&普攻按鍵
+        if (Time.time >= attackTime && !timeStopUI.activeSelf)
         {
             if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) && !PlayerCube.GetBool("IsAttack"))
             {
@@ -99,7 +101,7 @@ public class PlayerControl : MonoBehaviour
             playerOptions.SetMonsterHealthActive();
         }
         //開關背包介面
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && !gameMenu.anyWindow[0].activeSelf)
         {
             BackPackUI.SetActive(!BackPackUI.activeSelf);
         }
@@ -130,10 +132,10 @@ public class PlayerControl : MonoBehaviour
         #endregion
 
         //好像沒有任何作用
-        //if (EventSystem.current.IsPointerOverGameObject())
-        //{
-        //    return;
-        //}
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
 
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space))

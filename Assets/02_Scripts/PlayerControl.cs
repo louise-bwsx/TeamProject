@@ -108,10 +108,6 @@ public class PlayerControl : MonoBehaviour
         {
             equipmentManager.UnequipAll();
         }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            equipmentManager.UnequipAll();
-        }
         #region 存檔功能
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -138,6 +134,7 @@ public class PlayerControl : MonoBehaviour
         //{
         //    return;
         //}
+
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space))
         {

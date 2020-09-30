@@ -25,10 +25,12 @@ public class GameMenu : MonoBehaviour
     {
         if (anyWindow[3].activeSelf)
         {
+            //當背包是開的 把他關起來
             anyWindow[3].SetActive(false);
         }
-        else if (!anyWindow[0].activeSelf)//如果主選單是關閉的
+        else if (!anyWindow[0].activeSelf)
         {
+            //如果主選單是關閉的
             //for迴圈關閉所有視窗
             foreach (GameObject window in anyWindow)
             {

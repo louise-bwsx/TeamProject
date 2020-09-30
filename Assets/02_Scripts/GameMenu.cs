@@ -49,7 +49,6 @@ public class GameMenu : MonoBehaviour
     }
     public void GameContinue()
     {
-        anyWindow[0].SetActive(false);
         Time.timeScale = 1f;
     }
     public void QuitGame()

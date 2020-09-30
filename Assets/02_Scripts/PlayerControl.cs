@@ -11,7 +11,8 @@ public class PlayerControl : MonoBehaviour
     public HealthBarOnGame healthbarongame;
     public Animator PlayerCube;
     public GameObject[] toolall = new GameObject[6];//每個欄位都要塞東西 不然會報錯不給你用
-    public GameObject BackPackUI;
+    public GameObject backPackUI;
+    public GameObject skillUI;
     public Transform playerRotation;
     public EquipmentManager equipmentManager;
     //有關耐力
@@ -103,7 +104,11 @@ public class PlayerControl : MonoBehaviour
         //開關背包介面
         if (Input.GetKeyDown(KeyCode.B) && !gameMenu.anyWindow[0].activeSelf)
         {
-            BackPackUI.SetActive(!BackPackUI.activeSelf);
+            backPackUI.SetActive(!backPackUI.activeSelf);
+        }
+        if (Input.GetKeyDown(KeyCode.K) && !gameMenu.anyWindow[0].activeSelf)
+        {
+            skillUI.SetActive(!skillUI.activeSelf);
         }
         //卸下所有裝備欄裡的裝備
         if (Input.GetKeyDown(KeyCode.U))

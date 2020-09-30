@@ -19,7 +19,6 @@ public class GameMenu : MonoBehaviour
         {
             EscButton();
         }
-
     }
     public void EscButton()
     {

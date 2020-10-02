@@ -60,9 +60,17 @@ public class GetHitEffect : MonoBehaviour
             collision.gameObject.GetComponent<ItemPickup>().PickUp();
         }
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.CompareTag("Monster") && getHitInvincibleTime <= 0f)
+        if (other.CompareTag("Item"))
+        {
+            other.GetComponent<ItemPickup>().PickUp();
+        }
+        if (other.CompareTag("Block") || other.CompareTag("Wall"))
+        {
+            gameObject.GetComponent<Collider>().isTrigger = false;
+        }
+        if (other.gameObject.CompareTag("MonsterAttack") && getHitInvincibleTime <= 0f)
         {
             //當玩家非無敵狀態
             if (!playerControl.rollInvincible)
@@ -95,17 +103,6 @@ public class GetHitEffect : MonoBehaviour
                 Debug.Log("攻擊力*3");
                 attackBuff = true;
             }
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Item"))
-        {
-            other.GetComponent<ItemPickup>().PickUp();
-        }
-        if (other.CompareTag("Block") || other.CompareTag("Wall"))
-        {
-            gameObject.GetComponent<Collider>().isTrigger = false;
         }
     }
     public void Die()

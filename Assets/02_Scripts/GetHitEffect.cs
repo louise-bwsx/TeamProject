@@ -12,6 +12,7 @@ public class GetHitEffect : MonoBehaviour
     public HealthBarOnGame healthbarongame;
     public UIBarControl uIBarControl;
     PlayerControl playerControl;
+    public GameMenu gameMenu;
     public GameObject changeColor;
     public Transform playerRotation;
     int bounceForce = 10000;
@@ -84,7 +85,7 @@ public class GetHitEffect : MonoBehaviour
                 //玩家血量歸零時遊戲暫停
                 if (playerHealth <= 0)
                 {
-                    Time.timeScale = 0;
+                    Die();
                 }
             }
             //當玩家無敵狀態
@@ -106,5 +107,10 @@ public class GetHitEffect : MonoBehaviour
         {
             gameObject.GetComponent<Collider>().isTrigger = false;
         }
+    }
+    public void Die()
+    {
+        gameMenu.anyWindow[6].SetActive(true);
+        Time.timeScale = 0;
     }
 }

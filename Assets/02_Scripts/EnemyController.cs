@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     //public float attackRaduis = 5;//遠攻距離
     public float attackRaduis = 1;
     public GameObject attackCylinder;
+    public Transform MonsterTexure;
     public float attackCD;
     public float attackRate = 1;
 
@@ -33,8 +34,8 @@ public class EnemyController : MonoBehaviour
             {
                 //攻擊目標
                 //面對目標 這裡要改z軸面對攝影機
-                FaceTarget();
             }
+            FaceTarget();
         }
         if (attackDistence <= attackRaduis && attackCD>attackRate)
         {
@@ -45,9 +46,11 @@ public class EnemyController : MonoBehaviour
     }
     void FaceTarget()
     {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation,lookRotation,Time.deltaTime *5f);
+        //Vector3 direction = (target.position - transform.position).normalized;
+        //Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        //transform.rotation = Quaternion.Slerp(transform.rotation,lookRotation,Time.deltaTime *5f);
+        
+        //transform.rotation = Quaternion.Euler(Vector3.zero);
     }
     void MonsterAttack()
     {

@@ -141,7 +141,6 @@ public class PlayerControl : MonoBehaviour
         {
             return;
         }
-
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space))
         {

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameMenu : MonoBehaviour
 {
     public GameObject[] anyWindow = new GameObject[4];
+    public GetHitEffect getHitEffect;
     void Start()
     {
         foreach (GameObject window in anyWindow)
@@ -43,11 +44,15 @@ public class GameMenu : MonoBehaviour
         {   
             //主選單是開著的就把它關掉
             anyWindow[0].SetActive(false);
-            Time.timeScale = 1f;
+            if (getHitEffect.playerHealth > 0)
+            { 
+                Time.timeScale = 1f;
+            }
         }
     }
     public void GameContinue()
     {
+        //綁在button上
         Time.timeScale = 1f;
     }
     public void QuitGame()

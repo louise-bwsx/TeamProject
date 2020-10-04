@@ -10,6 +10,7 @@ public class MeleeEnemyController : MonoBehaviour
     public float attackRaduis = 1;//近戰距離
     public GameObject attackCube;
     public Transform monsterAttackRotation;
+    public Transform monsterPlane;
     public Animator animator;
     public float attackCD;
     public float attackRate = 1;
@@ -44,6 +45,10 @@ public class MeleeEnemyController : MonoBehaviour
                 //怪物收刀避免碰撞
                 attackCube.SetActive(animator.GetBool("IsAttack"));
             }
+        }
+        else if (distence >= lookRaduis)
+        {
+            agent.SetDestination(monsterPlane.position);
         }
         attackCD += Time.deltaTime;
     }

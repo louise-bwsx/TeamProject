@@ -11,6 +11,7 @@ public class LongRangeEnemyController : MonoBehaviour
     public GameObject arrow;
     //public Transform monsterShootingRotation;
     public Transform shootingposition;
+    public Transform monsterPlane;
     public float attackCD;
     public float attackRate = 2;
     public float force = 1500;
@@ -42,6 +43,10 @@ public class LongRangeEnemyController : MonoBehaviour
             {
                 MonsterAttack();
             }
+        }
+        else if (distence >= lookRaduis)
+        {
+            agent.SetDestination(monsterPlane.position);
         }
         attackCD += Time.deltaTime;
     }

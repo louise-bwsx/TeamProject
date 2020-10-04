@@ -1111,7 +1111,7 @@ Transform:
   - {fileID: 3756948}
   - {fileID: 1286178016}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &45880585
 MonoBehaviour:
@@ -2686,7 +2686,7 @@ GameObject:
   - component: {fileID: 205671119}
   - component: {fileID: 205671118}
   m_Layer: 8
-  m_Name: Plane (1)
+  m_Name: MonsterPlane
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7426,7 +7426,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &598070705
 MeshCollider:
@@ -7497,11 +7497,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598070704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.43, y: 0, z: -6.6}
+  m_LocalPosition: {x: -26.1, y: 0, z: -6.6}
   m_LocalScale: {x: 3.888446, y: 3.888446, z: 59.20727}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &606306264 stripped
 Transform:
@@ -8098,7 +8098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &676535805
 Transform:
   m_ObjectHideFlags: 0
@@ -10435,7 +10435,7 @@ Transform:
   - {fileID: 1833937533}
   - {fileID: 1329670543}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &909343664
 GameObject:
@@ -10837,7 +10837,7 @@ PrefabInstance:
     - target: {fileID: 8829505349809715491, guid: 7314d80ecce62f64682b77c25391b5ca,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8829505349809715491, guid: 7314d80ecce62f64682b77c25391b5ca,
         type: 3}
@@ -20460,7 +20460,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816543885}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -20509,10 +20509,10 @@ Transform:
   m_GameObject: {fileID: 1816543885}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 7.4, y: -0.06, z: -0}
-  m_LocalScale: {x: 31.799, y: 31.799, z: 31.799}
+  m_LocalScale: {x: 146.95273, y: 146.95273, z: 146.95273}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1819627837
 GameObject:
@@ -22108,7 +22108,7 @@ Transform:
   - {fileID: 1049937571}
   - {fileID: 1876214776}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1967446359
 GameObject:
@@ -25013,7 +25013,7 @@ PrefabInstance:
     - target: {fileID: 2987458652652834698, guid: 574d3bd3b6d011b4797ef1479be7f51f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.36
+      value: 19.66
       objectReference: {fileID: 0}
     - target: {fileID: 2987458652652834698, guid: 574d3bd3b6d011b4797ef1479be7f51f,
         type: 3}
@@ -25048,7 +25048,7 @@ PrefabInstance:
     - target: {fileID: 2987458652652834698, guid: 574d3bd3b6d011b4797ef1479be7f51f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2987458652652834698, guid: 574d3bd3b6d011b4797ef1479be7f51f,
         type: 3}
@@ -25346,6 +25346,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4355537638835828792, guid: 88b0899d706df7d44b067bf4f36a2bbd,
+        type: 3}
+      propertyPath: monsterPlane
+      value: 
+      objectReference: {fileID: 205671122}
     - target: {fileID: 4355537638835828793, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
       propertyPath: m_Name
@@ -25359,7 +25364,7 @@ PrefabInstance:
     - target: {fileID: 4355537638835828796, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.44
+      value: 15.36
       objectReference: {fileID: 0}
     - target: {fileID: 4355537638835828796, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
@@ -25410,6 +25415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355537638835828799, guid: 88b0899d706df7d44b067bf4f36a2bbd,
+        type: 3}
+      propertyPath: m_Speed
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88b0899d706df7d44b067bf4f36a2bbd, type: 3}
@@ -25731,7 +25741,7 @@ PrefabInstance:
     - target: {fileID: 1432081543611194481, guid: fb26b4bcfa79f934bb08bfcfa65df40e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1432081543611194481, guid: fb26b4bcfa79f934bb08bfcfa65df40e,
         type: 3}
@@ -26585,10 +26595,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5477791637045825153, guid: e2d7a399edb08dc498bc328af15ccfb3,
+        type: 3}
+      propertyPath: m_Speed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5477791637045825154, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.44
+      value: 9.15
       objectReference: {fileID: 0}
     - target: {fileID: 5477791637045825154, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
@@ -26645,6 +26660,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterLongRange
       objectReference: {fileID: 0}
+    - target: {fileID: 5477791637045825160, guid: e2d7a399edb08dc498bc328af15ccfb3,
+        type: 3}
+      propertyPath: monsterPlane
+      value: 
+      objectReference: {fileID: 205671122}
     - target: {fileID: 5477791638040581690, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -26761,7 +26781,7 @@ PrefabInstance:
     - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
         type: 3}

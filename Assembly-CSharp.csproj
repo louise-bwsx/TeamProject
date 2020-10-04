@@ -64,10 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\02_Scripts\ArrowComponet.cs" />
+    <Compile Include="Assets\02_Scripts\AttackFinish.cs" />
     <Compile Include="Assets\02_Scripts\Billboard.cs" />
     <Compile Include="Assets\02_Scripts\BulletControl.cs" />
     <Compile Include="Assets\02_Scripts\CharacterStats.cs" />
-    <Compile Include="Assets\02_Scripts\EnemyController.cs" />
     <Compile Include="Assets\02_Scripts\EnemyStats.cs" />
     <Compile Include="Assets\02_Scripts\Equipment.cs" />
     <Compile Include="Assets\02_Scripts\EquipmentManager.cs" />
@@ -80,7 +80,9 @@
     <Compile Include="Assets\02_Scripts\ItemPickup.cs" />
     <Compile Include="Assets\02_Scripts\ItemSTO.cs" />
     <Compile Include="Assets\02_Scripts\ItemScriptableObject.cs" />
+    <Compile Include="Assets\02_Scripts\LongRangeEnemyController.cs" />
     <Compile Include="Assets\02_Scripts\LookAtCursor.cs" />
+    <Compile Include="Assets\02_Scripts\MeleeEnemyController.cs" />
     <Compile Include="Assets\02_Scripts\Menu.cs" />
     <Compile Include="Assets\02_Scripts\MiniMap.cs" />
     <Compile Include="Assets\02_Scripts\MonsterHealth.cs" />

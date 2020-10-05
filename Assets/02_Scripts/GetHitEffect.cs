@@ -15,6 +15,7 @@ public class GetHitEffect : MonoBehaviour
     public GameMenu gameMenu;
     public GameObject changeColor;
     public Transform playerRotation;
+    public SpriteRenderer spriteRenderer;
     int bounceForce = 10000;
     public bool getHit;
     public bool attackBuff;
@@ -33,18 +34,18 @@ public class GetHitEffect : MonoBehaviour
         if (getHitInvincibleTime > 0f)
         {
             getHitInvincibleTime -= Time.deltaTime;
-            changeColor.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-            if (getHitInvincibleTime <= 0.6f)
+            spriteRenderer.color = Color.red;
+        }
+        else if (getHitInvincibleTime <= 0.6f)
+        {
+            //關閉被打中狀態
+            getHit = false;
+            //解除移動限制
+            playerControl.cantMove = false;
+            if (getHitInvincibleTime < 0f)
             {
-                //關閉被打中狀態
-                getHit = false;
-                //解除移動限制
-                playerControl.cantMove = false;
-                if (getHitInvincibleTime < 0f)
-                {
-                    getHitInvincibleTime = 0f;
-                    changeColor.gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-                }
+                getHitInvincibleTime = 0f;
+                spriteRenderer.color = Color.white;
             }
         }
     }

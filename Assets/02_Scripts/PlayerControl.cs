@@ -216,6 +216,9 @@ public class PlayerControl : MonoBehaviour
     }
     void Roll()
     {
+        Debug.Log(getHitEffect.getHit);
+        Debug.Log(rollTime);
+
         if (getHitEffect.getHit == false && rollTime <= 0 && stamina >= staminaRoll)
         {
             //歸零動量

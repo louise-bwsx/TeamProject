@@ -13,6 +13,7 @@ public class GameMenu : MonoBehaviour
         {
             window.SetActive(false);
         }
+        Debug.Log(2);
     }
     void Update()
     {

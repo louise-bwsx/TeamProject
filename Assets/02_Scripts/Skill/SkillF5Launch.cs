@@ -11,6 +11,17 @@ public class SkillF5Launch : MonoBehaviour
     public float fireRate = 1f;//射擊間隔
     public ParticleSystem muzzleVFX;//放置粒子物件
     public int distence = 5;
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
     public void shoot()//射擊方法
     {
         if (Time.time >= lastFireTime + fireRate)//目前時間>=最後射擊時間+間隔時間

@@ -13,7 +13,6 @@ public class GameMenu : MonoBehaviour
         {
             window.SetActive(false);
         }
-        Debug.Log(2);
     }
     void Update()
     {
@@ -54,7 +53,11 @@ public class GameMenu : MonoBehaviour
     public void GameContinue()
     {
         //綁在button上
-        Time.timeScale = 1f;
+        if (getHitEffect.playerHealth > 0)
+        { 
+            Time.timeScale = 1f;
+        }
+
     }
     public void QuitGame()
     {

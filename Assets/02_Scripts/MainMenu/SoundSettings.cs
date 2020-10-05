@@ -14,9 +14,9 @@ public class SoundSettings : MonoBehaviour
     {
         //如果不這樣寫的話即使一開始聲音最大聲也可能預設值不同而聽不見
         BGM.volume = BGMSlider.value;
-        CenterData.GetInstance().BGMVol = BGM.volume;
+        BGM.volume = CenterData.GetInstance().BGMVol;
         SFX.volume = SFXSlider.value;
-        CenterData.GetInstance().SFXVol = SFX.volume;
+        SFX.volume = CenterData.GetInstance().SFXVol;
         Debug.Log(3);
     }
     public void BGMSoundSetting()

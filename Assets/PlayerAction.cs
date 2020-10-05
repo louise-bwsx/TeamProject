@@ -6,6 +6,7 @@ public class PlayerAction: MonoBehaviour
 {
     Animator animator;
     public UIBarControl uIBarControl;
+    bool isAttack = true;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -27,5 +28,10 @@ public class PlayerAction: MonoBehaviour
     {
         //播動畫
         animator.SetTrigger("Roll");
+        //音效
+    }
+    public void Attack()
+    { 
+        animator.SetTrigger("Attack");
     }
 }

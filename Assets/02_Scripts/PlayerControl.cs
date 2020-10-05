@@ -9,11 +9,9 @@ public class PlayerControl : MonoBehaviour
     public UIBarControl uIBarControl;
     public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
-    public Animator PlayerCube;
-    public GameObject[] toolall = new GameObject[6];//每個欄位都要塞東西 不然會報錯不給你用
     public GameObject backPackUI;
     public GameObject skillUI;
-    public Transform playerRotation;
+    public Transform playerSprite;
     public EquipmentManager equipmentManager;
     //有關耐力
     float stamina;
@@ -59,33 +57,11 @@ public class PlayerControl : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
-        #region 數字鍵一到五
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Toolchandge(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Toolchandge(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Toolchandge(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Toolchandge(4);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Toolchandge(5);
-        }
-        #endregion
         //攻速&普攻按鍵
         if (Time.time >= attackTime && 
             !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[1].activeSelf&& !gameMenu.anyWindow[2].activeSelf)
         {
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) && !PlayerCube.GetBool("IsAttack"))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)/* && !PlayerCube.GetBool("IsAttack")*/)
             {
                 Attack();
                 attackTime = Time.time + 1f / attackSpeed;//另外一種計時方式
@@ -176,26 +152,11 @@ public class PlayerControl : MonoBehaviour
             Application.LoadLevel(Application.loadedLevel);
         }
     }
-    void Toolchandge(int toolnum)//只能取自己身上的gameobject 不能取prefab
-    {
-        if (toolall[toolnum].activeSelf == false)
-        {
-            for (int i = 0; i < toolall.Length; i++)
-            {
-                toolall[i].SetActive(false);
-            }
-            toolall[toolnum].SetActive(true);
-        }
-        else
-        {
-            toolall[toolnum].SetActive(false);
-        }
-    }
     public void Attack()
     {
-        if (Input.GetMouseButtonDown(0) && toolall[4] == true)
+        if (Input.GetMouseButtonDown(0))
         {
-            PlayerCube.SetTrigger("SwordAttack");
+            playerAction.Attack();
             //他只會抓這個方法啟動瞬間的範圍
             Collider[] hitEnemy = Physics.OverlapSphere(AttackPoint.position, attackRange, EnemyLayer);
             foreach (Collider enemy in hitEnemy)
@@ -204,9 +165,10 @@ public class PlayerControl : MonoBehaviour
                 enemy.GetComponent<MonsterHealth>()?.GetHit(attackDamage);
             }
         }
-        if (Input.GetMouseButtonDown(1) && toolall[4] == true)
+        if (Input.GetMouseButtonDown(1))
         {
-            PlayerCube.SetTrigger("SwordAttackSpike");
+            //突次攻擊 看之後
+            //playerAction.Attack();
         }
     }
     void OnDrawGizmosSelected()
@@ -225,7 +187,7 @@ public class PlayerControl : MonoBehaviour
         rollInvincible = true;
         //限制翻滾時不能轉向
         cantMove = true;
-        GetComponent<Rigidbody>().velocity = playerRotation.right * rollDistence;
+        GetComponent<Rigidbody>().velocity = playerSprite.right * rollDistence;
         GetComponent<Collider>().isTrigger = true;
         GetComponent<Rigidbody>().useGravity = false;
         //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度

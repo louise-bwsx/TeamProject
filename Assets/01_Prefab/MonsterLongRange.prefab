@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2639929077261022266}
-  - component: {fileID: 2639929077261022267}
   m_Layer: 0
   m_Name: Shootposition
   m_TagString: Untagged
@@ -31,21 +30,6 @@ Transform:
   m_Father: {fileID: 2639929077437421175}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2639929077261022267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2639929077261022261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08adeea2549ff5540a5ddb9bee38cbfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootingposition: {fileID: 2639929077261022266}
-  arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
-  force: 0
 --- !u!1 &2639929077437421174
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +253,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5477791637045825159}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.44, y: 0, z: -3.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -302,7 +286,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.1
-  m_Speed: 2
+  m_Speed: 1.5
   m_Acceleration: 20000
   avoidancePriority: 50
   m_AngularSpeed: 1200
@@ -359,6 +343,7 @@ MonoBehaviour:
   bow: {fileID: 2639929077437421175}
   arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
   shootingposition: {fileID: 2639929077261022266}
+  monsterPlane: {fileID: 0}
   attackCD: 0
   attackRate: 2
   force: 1500
@@ -863,7 +848,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7944422823078056259}
-  - component: {fileID: 7944422823078056256}
   m_Layer: 9
   m_Name: MonsterRotationCenter
   m_TagString: MonsterAttack
@@ -886,25 +870,6 @@ Transform:
   m_Father: {fileID: 7944422823135693920}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7944422823078056256
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7944422823078056258}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a653c76173cf6dc488ff7ad0e229dc4d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7944422823135693923
 GameObject:
   m_ObjectHideFlags: 0

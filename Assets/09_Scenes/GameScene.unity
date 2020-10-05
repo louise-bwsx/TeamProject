@@ -17917,6 +17917,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 1
   muzzleVFX: {fileID: 1686944820}
+  distence: 5
 --- !u!114 &1595748075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20230,6 +20231,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 1
   muzzleVFX: {fileID: 1686944820}
+  distence: 5
 --- !u!114 &1795627681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22513,6 +22515,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 1
   muzzleVFX: {fileID: 1686944820}
+  distence: 10
 --- !u!114 &2006384582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26595,11 +26598,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5477791637045825153, guid: e2d7a399edb08dc498bc328af15ccfb3,
-        type: 3}
-      propertyPath: m_Speed
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5477791637045825154, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26675,8 +26673,7 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7944422823078056256, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
 --- !u!114 &8244489146040463849
 MonoBehaviour:

@@ -10,17 +10,7 @@ public class SkillF5Launch : MonoBehaviour
     public float lastFireTime;//最後射擊時間
     public float fireRate = 1f;//射擊間隔
     public ParticleSystem muzzleVFX;//放置粒子物件
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int distence = 5;
     public void shoot()//射擊方法
     {
         if (Time.time >= lastFireTime + fireRate)//目前時間>=最後射擊時間+間隔時間
@@ -38,7 +28,7 @@ public class SkillF5Launch : MonoBehaviour
         GameObject BulletObj_ = Instantiate(SkillObject);
         if (BulletObj_ != null)
         {
-            BulletObj_.transform.position = SkillPos.position;
+            BulletObj_.transform.position = SkillPos.position + SkillPos.forward;
             BulletObj_.transform.rotation = SkillPos.rotation;
             Rigidbody BulletObjRigidbody_ = BulletObj_.GetComponent<Rigidbody>();
             if (BulletObjRigidbody_ != null)

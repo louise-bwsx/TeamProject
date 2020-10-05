@@ -5,19 +5,17 @@ using UnityEngine;
 public class PlayerFaceDirection : MonoBehaviour
 {
     public PlayerControl playerControl;
-    public SpriteRenderer spriteRenderer;
-    bool isRight = true;
     void Update()
     {
         if (playerControl.cantMove == false)
         { 
             if (Input.GetAxis("Horizontal") >= 0.1f)
             {
-                spriteRenderer.flipX = isRight;
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             if (Input.GetAxis("Horizontal") <= -0.1f)
             {
-                spriteRenderer.flipX = !isRight;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
     }

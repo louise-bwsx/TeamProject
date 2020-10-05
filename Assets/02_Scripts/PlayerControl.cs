@@ -225,7 +225,7 @@ public class PlayerControl : MonoBehaviour
         rollInvincible = true;
         //限制翻滾時不能轉向
         cantMove = true;
-        GetComponent<Rigidbody>().velocity = playerRotation.forward * rollDistence;
+        GetComponent<Rigidbody>().velocity = playerRotation.right * rollDistence;
         GetComponent<Collider>().isTrigger = true;
         GetComponent<Rigidbody>().useGravity = false;
         //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度

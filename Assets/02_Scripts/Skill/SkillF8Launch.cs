@@ -28,10 +28,10 @@ public class SkillF8Launch : MonoBehaviour
 
             FirOneShoot();//單發射擊
         }
-        else
-        {
-            FailedShoot();//射擊延遲時間
-        }
+        //else
+        //{
+        //    FailedShoot();//射擊延遲時間
+        //}
     }
     public void Skill()
     {
@@ -62,11 +62,11 @@ public class SkillF8Launch : MonoBehaviour
 
         //呼叫射線
     }
-    public void FailedShoot()//射擊延遲時間
-    {
-        lastFireTime = Time.time + 0.5f;//現在時間
+    //public void FailedShoot()//射擊延遲時間
+    //{
+    //    lastFireTime = Time.time + 0.5f;//現在時間
 
-    }
+    //}
     public void ShowShootVFX()
     {
         if (muzzleVFX)

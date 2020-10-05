@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 45880586}
-  target: {fileID: 1525325141585674524}
+  spriteRenderer: {fileID: 1757237623}
 --- !u!1 &8213809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1157,7 @@ MonoBehaviour:
   rollDistence: 10
   rollInvincible: 0
   cantMove: 0
+  rollTime: 0
   rollTimeLimit: 0.4
   AttackPoint: {fileID: 1525325141585674524}
   attackRange: 0.67
@@ -19726,6 +19727,7 @@ GameObject:
   - component: {fileID: 1757237621}
   - component: {fileID: 1757237623}
   - component: {fileID: 1757237622}
+  - component: {fileID: 1757237624}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -19816,6 +19818,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1757237624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757237620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b1b368dbd2eda4394d50a184c3e8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIBarControl: {fileID: 2136891374}
 --- !u!1 &1758357442
 GameObject:
   m_ObjectHideFlags: 0

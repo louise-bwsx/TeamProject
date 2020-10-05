@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     PlayerOptions playerOptions;
-    GetHitEffect getHitEffect;
+    PlayerAction playerAction;
     public UIBarControl uIBarControl;
     public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
     float ad;
     Vector3 Movement;
     //有關翻滾
-    float rollTime = 0f;//被存入的時間
+    public float rollTime = 0f;//被存入的時間
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
     //有關攻擊
     public Transform AttackPoint;
@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina(staminaLimit);
         playerOptions = GetComponent<PlayerOptions>();
-        getHitEffect = GetComponent<GetHitEffect>();
+        playerAction = GetComponentInChildren<PlayerAction>();
     }
     private void FixedUpdate()//好用的東東
     {
@@ -119,13 +119,13 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("存檔中");
-            SaveSystem.SavePlayer(getHitEffect, transform);
+            //SaveSystem.SavePlayer(getHitEffect, transform);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("回復存檔");
             PlayerData data = SaveSystem.LoadPlayer();
-            getHitEffect.playerHealth = data.Playerhealth;
+            //getHitEffect.playerHealth = data.Playerhealth;
             uIBarControl.SetHealth(data.Playerhealth);
             Vector3 SavePosition;
             SavePosition.x = data.position[0];
@@ -215,27 +215,20 @@ public class PlayerControl : MonoBehaviour
         Gizmos.DrawWireSphere(AttackPoint.position, attackRange);
     }
     void Roll()
-    {
-        Debug.Log(getHitEffect.getHit);
-        Debug.Log(rollTime);
-
-        if (getHitEffect.getHit == false && rollTime <= 0 && stamina >= staminaRoll)
-        {
-            //歸零動量
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-            //耐力條 -= 損失耐力
-            stamina -= staminaRoll;
-            uIBarControl.SetStamina(stamina);
-            //開啟無敵狀態
-            rollInvincible = true;
-            //限制翻滾時不能轉向
-            cantMove = true;
-            GetComponent<Rigidbody>().velocity = playerRotation.forward * rollDistence;
-            GetComponent<Collider>().isTrigger = true;
-            GetComponent<Rigidbody>().useGravity = false;
-        }
+    {//歸零動量
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //耐力條 -= 損失耐力
+        stamina -= staminaRoll;
+        uIBarControl.SetStamina(stamina);
+        playerAction.Roll();
+        //開啟無敵狀態
+        rollInvincible = true;
+        //限制翻滾時不能轉向
+        cantMove = true;
+        GetComponent<Rigidbody>().velocity = playerRotation.forward * rollDistence;
+        GetComponent<Collider>().isTrigger = true;
+        GetComponent<Rigidbody>().useGravity = false;
         //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
     }
-
     //testall += test1失敗
 }

@@ -10,12 +10,15 @@ public class AirAttack : MonoBehaviour
     public float DestroyTime = 3F;
     float countdown;
     bool hasExplode = false;
+    public AudioSource GunAudio;//音樂放置
+    public AudioClip AirAttackSFX;//音效
     // Start is called before the first frame update
     void Start()
     {
         countdown -= Time.deltaTime;
         if (countdown <= 0f && !hasExplode)
         {
+            GunAudio.PlayOneShot(AirAttackSFX);
             Explode();
             hasExplode = true;
         }

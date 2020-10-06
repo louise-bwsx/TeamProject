@@ -10,6 +10,8 @@ public class PlayerAction: MonoBehaviour
     float attackRate;
     public float backToIdle = 0.5f;
     public GameObject sword;
+    public Transform spwan;
+    GameObject attackingSword;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -29,7 +31,6 @@ public class PlayerAction: MonoBehaviour
         if (attackRate > backToIdle)
         {
             animator.SetBool("IsAttack", !isAttack);
-            sword.SetActive(!isAttack);
         }
         attackRate += Time.deltaTime;
     }
@@ -49,7 +50,8 @@ public class PlayerAction: MonoBehaviour
     public void SpikeAttack()
     {
         animator.SetTrigger("Attack_Spike");
-        sword.SetActive(isAttack);
-        attackRate = 0;
+        GameObject attackingSword = Instantiate(sword, spwan.position, spwan.rotation);
+        //attackRate = 0;
+        Destroy(attackingSword,0.3f);
     }
 }

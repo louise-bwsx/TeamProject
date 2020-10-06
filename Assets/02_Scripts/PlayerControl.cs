@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     public HealthBarOnGame healthbarongame;
     public GameObject backPackUI;
     public GameObject skillUI;
-    public Transform rollDirection;
+    public Transform playerRotation;
     public EquipmentManager equipmentManager;
     //有關耐力
     float stamina;
@@ -136,6 +136,7 @@ public class PlayerControl : MonoBehaviour
             GetComponent<Collider>().isTrigger = false;
             GetComponent<Rigidbody>().useGravity = true;
         }
+
         if (stamina < staminaLimit)
         {
             stamina += Time.deltaTime * 10;
@@ -146,6 +147,7 @@ public class PlayerControl : MonoBehaviour
             stamina = staminaLimit;
             uIBarControl.SetStamina(stamina);
         }
+
         if (Input.GetKeyDown(KeyCode.N))//傳送到指定地點 &場景重置
         {
             transform.position = new Vector3(-6.31f, 0, 6.08f);
@@ -176,20 +178,24 @@ public class PlayerControl : MonoBehaviour
         Gizmos.DrawWireSphere(AttackPoint.position, attackRange);
     }
     void Roll()
-    {//歸零動量
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        //耐力條 -= 損失耐力
-        stamina -= staminaRoll;
-        uIBarControl.SetStamina(stamina);
-        playerAction.Roll();
-        //開啟無敵狀態
-        rollInvincible = true;
-        //限制翻滾時不能轉向
-        cantMove = true;
-        GetComponent<Rigidbody>().velocity = -rollDirection.forward * rollDistence;
-        GetComponent<Collider>().isTrigger = true;
-        GetComponent<Rigidbody>().useGravity = false;
-        //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
+    {
+        if (stamina > staminaRoll)
+        { 
+            //歸零動量
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //耐力條 -= 損失耐力
+            stamina -= staminaRoll;
+            uIBarControl.SetStamina(stamina);
+            playerAction.Roll();
+            //開啟無敵狀態
+            rollInvincible = true;
+            //限制翻滾時不能轉向
+            cantMove = true;
+            GetComponent<Rigidbody>().velocity = -playerRotation.forward * rollDistence;
+            GetComponent<Collider>().isTrigger = true;
+            GetComponent<Rigidbody>().useGravity = false;
+            //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
+        }
     }
     //testall += test1失敗
 }

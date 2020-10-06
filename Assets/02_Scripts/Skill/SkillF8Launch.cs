@@ -38,7 +38,7 @@ public class SkillF8Launch : MonoBehaviour
         GameObject BulletObj_ = Instantiate(SkillObject);
         if (BulletObj_ != null)
         {
-            BulletObj_.transform.position = SkillPos.position;
+            BulletObj_.transform.position = SkillPos.position+ SkillPos.up+ SkillPos.forward;
             BulletObj_.transform.rotation = SkillPos.rotation;
             Rigidbody BulletObjRigidbody_ = BulletObj_.GetComponent<Rigidbody>();
             if (BulletObjRigidbody_ != null)

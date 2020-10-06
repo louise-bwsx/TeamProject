@@ -37,7 +37,7 @@ public class SkillF5Launch : MonoBehaviour
     }
     public void Skill()
     {
-        GameObject BulletObj = Instantiate(SkillObject, lookAtCursor.playertomouse, transform.rotation);
+        GameObject BulletObj = Instantiate(SkillObject, transform.position+transform.forward, transform.rotation);
 
         Rigidbody BulletObjRigidbody_ = BulletObj.GetComponent<Rigidbody>();
         if (BulletObjRigidbody_ != null)

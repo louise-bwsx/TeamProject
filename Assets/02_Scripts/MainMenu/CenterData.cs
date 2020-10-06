@@ -15,9 +15,8 @@ public class CenterData : MonoBehaviour
     }
     public float BGMVol;
     public float SFXVol;
-
     private CenterData()
-    { 
-    
+    {
+
     }
 }

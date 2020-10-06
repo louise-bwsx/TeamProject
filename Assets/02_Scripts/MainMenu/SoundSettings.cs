@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SoundSettings : MonoBehaviour
 {
@@ -9,15 +10,21 @@ public class SoundSettings : MonoBehaviour
     public AudioSource SFX;
     public Slider BGMSlider;
     public Slider SFXSlider;
+    public GameObject gamemanager;
 
     void Awake()
     {
+        if (gamemanager != null)//條件改成在menu才設定
+        {
+            BGMSlider.value = CenterData.GetInstance().BGMVol;
+            SFXSlider.value = CenterData.GetInstance().SFXVol;
+        }
         //如果不這樣寫的話即使一開始聲音最大聲也可能預設值不同而聽不見
         BGM.volume = BGMSlider.value;
         BGM.volume = CenterData.GetInstance().BGMVol;
         SFX.volume = SFXSlider.value;
         SFX.volume = CenterData.GetInstance().SFXVol;
-        Debug.Log(3);
+        
     }
     public void BGMSoundSetting()
     {

@@ -39,8 +39,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2639929077437421175}
-  - component: {fileID: 7835601313456426353}
-  - component: {fileID: 2639929077437421173}
   m_Layer: 0
   m_Name: MonsterBow
   m_TagString: Untagged
@@ -64,35 +62,6 @@ Transform:
   m_Father: {fileID: 7944422823078056259}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7835601313456426353
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2639929077437421174}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.2140395, y: 0.23021889, z: 1.2852744}
-  m_Center: {x: 0.013143837, y: 0.009766459, z: 0.1426372}
---- !u!54 &2639929077437421173
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2639929077437421174}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &5477791636672222593
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,11 +240,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5477791637045825159}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.10137725}
-  m_Center: {x: 0, y: 0.53, z: 0.0041188}
+  m_Size: {x: 1, y: 1, z: 0.597579}
+  m_Center: {x: 0, y: 0.53, z: 0.0069761276}
 --- !u!195 &5477791637045825153
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -785,13 +754,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7944422821597224892}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5477791637045825154}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!33 &7944422821597224883
 MeshFilter:
   m_ObjectHideFlags: 0

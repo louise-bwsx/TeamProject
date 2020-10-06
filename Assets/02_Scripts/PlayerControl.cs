@@ -29,11 +29,11 @@ public class PlayerControl : MonoBehaviour
     public float rollTime = 0f;//被存入的時間
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
     //有關攻擊
-    public Transform AttackPoint;
     public float attackRange = 0.4f;
     public float attackSpeed = 2;
     public int attackDamage = 20;
     float attackTime = 0;
+    public Transform AttackPoint;
     public LayerMask EnemyLayer;
 
     void Start()
@@ -156,7 +156,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            playerAction.Attack();
+            playerAction.NormalAttack();
             //他只會抓這個方法啟動瞬間的範圍
             Collider[] hitEnemy = Physics.OverlapSphere(AttackPoint.position, attackRange, EnemyLayer);
             foreach (Collider enemy in hitEnemy)
@@ -165,10 +165,9 @@ public class PlayerControl : MonoBehaviour
                 enemy.GetComponent<MonsterHealth>()?.GetHit(attackDamage);
             }
         }
-        if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1))
         {
-            //突次攻擊 看之後
-            //playerAction.Attack();
+            playerAction.SpikeAttack();
         }
     }
     void OnDrawGizmosSelected()

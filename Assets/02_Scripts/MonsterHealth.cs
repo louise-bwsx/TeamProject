@@ -47,13 +47,14 @@ public class MonsterHealth : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Arrow"))
-        {
-            //打出的傷害數值 失敗
-            //text = Instantiate(text, new Vector3(x, 0.7f, z), transform.rotation);
-            GetHit(10);
-            other.gameObject.tag = "Broken";
-        }
+        //暫時用不到
+        //if (other.CompareTag("Arrow"))
+        //{
+        //    //打出的傷害數值 失敗
+        //    //text = Instantiate(text, new Vector3(x, 0.7f, z), transform.rotation);
+        //    GetHit(10);
+        //    other.gameObject.tag = "Broken";
+        //}
         if (other.CompareTag("Sword"))
         {
             GetHit(15);

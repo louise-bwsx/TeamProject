@@ -11,6 +11,7 @@ public class SkillF5Launch : MonoBehaviour
     public float fireRate = 1f;//射擊間隔
     public ParticleSystem muzzleVFX;//放置粒子物件
     public int distence = 5;
+    public LookAtCursor lookAtCursor;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,17 +37,24 @@ public class SkillF5Launch : MonoBehaviour
     }
     public void Skill()
     {
-        GameObject BulletObj_ = Instantiate(SkillObject);
-        if (BulletObj_ != null)
+        GameObject BulletObj = Instantiate(SkillObject, lookAtCursor.playertomouse, transform.rotation);
+
+        Rigidbody BulletObjRigidbody_ = BulletObj.GetComponent<Rigidbody>();
+        if (BulletObjRigidbody_ != null)
         {
-            BulletObj_.transform.position = SkillPos.position + SkillPos.forward;
-            BulletObj_.transform.rotation = SkillPos.rotation;
-            Rigidbody BulletObjRigidbody_ = BulletObj_.GetComponent<Rigidbody>();
-            if (BulletObjRigidbody_ != null)
-            {
-                BulletObjRigidbody_.AddForce(BulletObj_.transform.forward * SkillForce);
-            }
+            BulletObjRigidbody_.AddForce(BulletObj.transform.forward * SkillForce);
         }
+        //GameObject BulletObj_ = Instantiate(SkillObject);
+        //if (BulletObj_ != null)
+        //{
+        //    BulletObj_.transform.position = SkillPos.position + SkillPos.forward;
+        //    BulletObj_.transform.rotation = SkillPos.rotation;
+        //    Rigidbody BulletObjRigidbody_ = BulletObj_.GetComponent<Rigidbody>();
+        //    if (BulletObjRigidbody_ != null)
+        //    {
+        //        BulletObjRigidbody_.AddForce(BulletObj_.transform.forward * SkillForce);
+        //    }
+        //}
     }
     public void FirOneShoot()//單發射擊
     {

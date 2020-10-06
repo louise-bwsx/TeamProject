@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     public HealthBarOnGame healthbarongame;
     public GameObject backPackUI;
     public GameObject skillUI;
-    public Transform playerSprite;
+    public Transform rollDirection;
     public EquipmentManager equipmentManager;
     //有關耐力
     float stamina;
@@ -186,7 +186,7 @@ public class PlayerControl : MonoBehaviour
         rollInvincible = true;
         //限制翻滾時不能轉向
         cantMove = true;
-        GetComponent<Rigidbody>().velocity = playerSprite.right * rollDistence;
+        GetComponent<Rigidbody>().velocity = -rollDirection.forward * rollDistence;
         GetComponent<Collider>().isTrigger = true;
         GetComponent<Rigidbody>().useGravity = false;
         //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度

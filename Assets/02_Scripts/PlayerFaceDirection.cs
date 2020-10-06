@@ -13,7 +13,7 @@ public class PlayerFaceDirection : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
-            if (Input.GetAxis("Horizontal") <= -0.1f)
+            else if (Input.GetAxis("Horizontal") <= -0.1f)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }

@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9473da9e8546f4595a8bb31a24f6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playertomouse: {x: 0, y: 0, z: 0}
+  rotationangle: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &3756950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1125,6 +1127,7 @@ Transform:
   - {fileID: 3756948}
   - {fileID: 1286178016}
   - {fileID: 1757237621}
+  - {fileID: 1111690395}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1159,7 +1162,7 @@ MonoBehaviour:
   healthbarongame: {fileID: 501881193}
   backPackUI: {fileID: 1617842221}
   skillUI: {fileID: 1654793699}
-  playerSprite: {fileID: 1757237621}
+  rollDirection: {fileID: 1111690395}
   equipmentManager: {fileID: 905599409}
   moveSpeed: 5
   rollDistence: 30
@@ -12186,6 +12189,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108777087}
   m_CullTransparentMesh: 0
+--- !u!1 &1111690394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111690395}
+  - component: {fileID: 1111690396}
+  m_Layer: 0
+  m_Name: RollDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1111690395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111690394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 45880584}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111690396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111690394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7956598f379989e489ee5f44471ddd18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControl: {fileID: 45880586}
 --- !u!1 &1117318660
 GameObject:
   m_ObjectHideFlags: 0
@@ -17858,6 +17905,7 @@ MonoBehaviour:
   fireRate: 1
   muzzleVFX: {fileID: 1686944820}
   distence: 5
+  lookAtCursor: {fileID: 3756949}
 --- !u!114 &1595748076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20289,6 +20337,7 @@ MonoBehaviour:
   fireRate: 1
   muzzleVFX: {fileID: 1686944820}
   distence: 5
+  lookAtCursor: {fileID: 0}
 --- !u!114 &1795627681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20497,7 +20546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1816543886
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22480,6 +22529,7 @@ MonoBehaviour:
   fireRate: 1
   muzzleVFX: {fileID: 1686944820}
   distence: 10
+  lookAtCursor: {fileID: 0}
 --- !u!114 &2006384582
 MonoBehaviour:
   m_ObjectHideFlags: 0

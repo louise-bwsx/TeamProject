@@ -7,6 +7,8 @@ public class LookAtCursor : MonoBehaviour
 {
     int floor;
     Rigidbody RD;
+    public Vector3 playertomouse;
+    public Quaternion rotationangle;
     void Start()
     {
         floor = LayerMask.GetMask("Floor");
@@ -21,9 +23,9 @@ public class LookAtCursor : MonoBehaviour
         RaycastHit floorcross;
         if (Physics.Raycast(cameraray, out floorcross, cameraraylength, floor))
         {
-            Vector3 playertomouse = floorcross.point - transform.position;
+            playertomouse = floorcross.point - transform.position;
             playertomouse.y = 0;
-            Quaternion rotationangle = Quaternion.LookRotation(playertomouse);
+            rotationangle = Quaternion.LookRotation(playertomouse);
             RD.MoveRotation(rotationangle);
         }
         Cursor.visible = true;

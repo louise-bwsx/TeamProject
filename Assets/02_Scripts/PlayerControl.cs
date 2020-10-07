@@ -19,20 +19,20 @@ public class PlayerControl : MonoBehaviour
     float staminaRoll = 10;
     //有關移動
     public int moveSpeed = 5;//移動速度
-    public int rollDistence = 10;//翻滾移動距離
-    public bool rollInvincible = false;//無敵狀態
+    public int rollForce;//翻滾移動的強度
+    public bool isInvincible = false;//無敵狀態
     public bool cantMove = false;//移動限制
     float ws;
     float ad;
     Vector3 Movement;
     //有關翻滾
-    public float rollTime = 0f;//被存入的時間
+    float rollTime = 0f;//被存入的時間
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
     //有關攻擊
     public float attackRange = 0.4f;
     public float attackSpeed = 2;
     public int attackDamage = 20;
-    float attackTime = 0;
+    float attackTime;
     public Transform AttackPoint;
     public LayerMask EnemyLayer;
 
@@ -131,14 +131,14 @@ public class PlayerControl : MonoBehaviour
             Roll();
             GunAudio.PlayOneShot(TurnOverSFX);
         }
-        if (rollInvincible)
+        if (isInvincible)
         {
             rollTime += Time.deltaTime;
         }
         //無敵時間超過上限取消無敵狀態
         if (rollTime > rollTimeLimit)
         {
-            rollInvincible = false;
+            isInvincible = false;
             cantMove = false;
             rollTime = 0;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -199,10 +199,11 @@ public class PlayerControl : MonoBehaviour
             uIBarControl.SetStamina(stamina);
             playerAction.Roll();
             //開啟無敵狀態
-            rollInvincible = true;
+            isInvincible = true;
             //限制翻滾時不能轉向
             cantMove = true;
-            GetComponent<Rigidbody>().velocity = -playerRotation.forward * rollDistence;
+            GetComponent<Rigidbody>().AddForce(-playerRotation.forward * rollForce);
+            //GetComponent<Rigidbody>().velocity = -playerRotation.forward * rollDistence;
             GetComponent<Collider>().isTrigger = true;
             GetComponent<Rigidbody>().useGravity = false;
             //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度

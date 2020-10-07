@@ -11,7 +11,6 @@ public class PlayerAction: MonoBehaviour
     public float backToIdle = 0.5f;
     public GameObject sword;
     public Transform spwan;
-    GameObject attackingSword;
     void Start()
     {
         animator = GetComponent<Animator>();

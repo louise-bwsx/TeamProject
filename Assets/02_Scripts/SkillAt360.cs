@@ -26,7 +26,5 @@ public class SkillAt360 : MonoBehaviour
             Quaternion rotationangle = Quaternion.LookRotation(playertomouse);
             RD.MoveRotation(rotationangle);
         }
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
     }
 }

@@ -74,7 +74,7 @@ public class GetHitEffect : MonoBehaviour
         if (other.gameObject.CompareTag("MonsterAttack") && getHitInvincibleTime <= 0f)
         {
             //當玩家非無敵狀態
-            if (!playerControl.rollInvincible)
+            if (!playerControl.isInvincible)
             {
                 Debug.Log("danger");
                 //隨機怪物傷害
@@ -98,7 +98,7 @@ public class GetHitEffect : MonoBehaviour
                 }
             }
             //當玩家無敵狀態
-            else if (playerControl.rollInvincible)
+            else if (playerControl.isInvincible)
             {
                 //尚未實作
                 Debug.Log("攻擊力*3");

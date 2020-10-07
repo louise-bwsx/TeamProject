@@ -36,11 +36,7 @@ public class PlayerControl : MonoBehaviour
     public Transform AttackPoint;
     public LayerMask EnemyLayer;
 
-    public AudioSource GunAudio;//音樂放置
-    //public AudioClip walkSFX;//走路音效
-    public AudioClip TurnOverSFX;//翻滾音效
-    public AudioClip SpikeSFX;//突刺音效
-    public AudioClip SwingSFX;//揮擊音效
+
 
     void Start()
     {
@@ -57,6 +53,7 @@ public class PlayerControl : MonoBehaviour
         ad = Input.GetAxis("Horizontal");
         //GunAudio.PlayOneShot(walkSFX);
         Movement.Set(ad, 0f, ws);
+
         //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
         Movement = Movement * moveSpeed * Time.deltaTime;
         GetComponent<Rigidbody>().MovePosition(transform.position + Movement);
@@ -129,7 +126,7 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Roll();
-            GunAudio.PlayOneShot(TurnOverSFX);
+            
         }
         if (isInvincible)
         {
@@ -167,7 +164,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GunAudio.PlayOneShot(SpikeSFX);
+           
             playerAction.NormalAttack();
             //他只會抓這個方法啟動瞬間的範圍
             Collider[] hitEnemy = Physics.OverlapSphere(AttackPoint.position, attackRange, EnemyLayer);
@@ -179,7 +176,7 @@ public class PlayerControl : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            GunAudio.PlayOneShot(SwingSFX);
+          
             playerAction.SpikeAttack();
         }
     }

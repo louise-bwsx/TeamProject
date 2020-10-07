@@ -10,7 +10,9 @@ public class SkillControl : MonoBehaviour
 
     public SkillF5Launch F5Skill;
     public SkillF6Launch F6Skill;
+    public SkillF7Launch F7Skill;
     public SkillF8Launch F8Skill;
+    public SkillF9Launch F9Skill;
 
     public int CurIdx = 0;
     // Start is called before the first frame update
@@ -45,9 +47,18 @@ public class SkillControl : MonoBehaviour
             {
                 F6Skill.shoot();
             }
+            if (CurIdx == 2)
+            {
+                F7Skill.shoot();
+            }
+
             if (CurIdx == 3)
             {
                 F8Skill.shoot();
+            }
+            if (CurIdx == 4)
+            {
+                F9Skill.shoot();
             }
         }
     }

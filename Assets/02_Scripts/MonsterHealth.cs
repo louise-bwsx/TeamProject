@@ -71,7 +71,15 @@ public class MonsterHealth : MonoBehaviour
         {
             GetHit(10);
         }
-    
+        if (other.CompareTag("tornado"))
+        {
+            GetHit(15);
+        }
+        if (other.CompareTag("Poison"))
+        {
+            GetHit(15);
+        }
+
     }
     void MonsterDead()
     {

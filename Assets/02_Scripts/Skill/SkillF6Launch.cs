@@ -13,13 +13,13 @@ public class SkillF6Launch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void shoot()//射擊方法
     {
@@ -38,7 +38,7 @@ public class SkillF6Launch : MonoBehaviour
         GameObject BulletObj_ = Instantiate(SkillObject);
         if (BulletObj_ != null)
         {
-            BulletObj_.transform.position = SkillPos.position;
+            BulletObj_.transform.position = SkillPos.position + SkillPos.up + SkillPos.forward;
             BulletObj_.transform.rotation = SkillPos.rotation;
             Rigidbody BulletObjRigidbody_ = BulletObj_.GetComponent<Rigidbody>();
             if (BulletObjRigidbody_ != null)

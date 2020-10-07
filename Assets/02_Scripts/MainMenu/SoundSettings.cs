@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class SoundSettings : MonoBehaviour
 {
-    public AudioSource source = null;
     public AudioSource BGM;
     public AudioSource SFX;
     public Slider BGMSlider;

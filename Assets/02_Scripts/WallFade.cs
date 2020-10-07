@@ -20,9 +20,5 @@ public class WallFade : MonoBehaviour
             //可以 但不知道怎麼調透明度
             floorcross.transform.GetComponent<MeshRenderer>().material.color = Color.clear;
         }
-        else
-        {
-            floorcross.transform.GetComponent<MeshRenderer>().material.color = Color.clear;
-        }
     }
 }

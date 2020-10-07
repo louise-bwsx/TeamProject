@@ -34,7 +34,7 @@ public class SkillControl : MonoBehaviour
             if (CurIdx < list.Length - 1) CurIdx++;
             SetPos();
         }
-        //滑鼠左鍵的效果
+        //滑鼠中鍵的效果
         if (Input.GetMouseButtonDown(2))
         {
             Button b = list[CurIdx];

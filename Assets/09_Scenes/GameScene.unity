@@ -1128,6 +1128,7 @@ Transform:
   - {fileID: 3756948}
   - {fileID: 1286178016}
   - {fileID: 1757237621}
+  - {fileID: 1913125793}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5126,28 +5127,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &389569578 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4355537638835828793, guid: 88b0899d706df7d44b067bf4f36a2bbd,
-    type: 3}
-  m_PrefabInstance: {fileID: 2176573875714611940}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &389569584
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389569578}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &403159243
 GameObject:
   m_ObjectHideFlags: 0
@@ -7596,28 +7575,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1534609279}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &616738694 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5477791637045825159, guid: e2d7a399edb08dc498bc328af15ccfb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 8103378840779553408}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &616738700
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616738694}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &620900545
 GameObject:
   m_ObjectHideFlags: 0
@@ -11047,7 +11004,7 @@ MonoBehaviour:
   Timer: 0
   FilledImage: {fileID: 0}
   IsStartTimer: 0
-  F6Skill: {fileID: 1595748076}
+  F6Skill: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -18000,13 +17957,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillObject: {fileID: 8829505349809715513, guid: 7314d80ecce62f64682b77c25391b5ca,
     type: 3}
-  SkillPos: {fileID: 576802481}
-  SkillForce: 200
+  spawnPosition: {fileID: 1913125793}
   lastFireTime: 0
   fireRate: 1
   muzzleVFX: {fileID: 1686944820}
-  distence: 5
-  lookAtCursor: {fileID: 3756949}
 --- !u!114 &1595748076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20427,20 +20381,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795627675}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b76ff880ff70a48458ab1546adfb73e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SkillObject: {fileID: 8829505349809715513, guid: 7314d80ecce62f64682b77c25391b5ca,
     type: 3}
-  SkillPos: {fileID: 1795627676}
-  SkillForce: 200
+  spawnPosition: {fileID: 1913125793}
   lastFireTime: 0
   fireRate: 0
   muzzleVFX: {fileID: 1686944820}
-  distence: 5
-  lookAtCursor: {fileID: 0}
 --- !u!114 &1795627681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21928,6 +21879,50 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1913125792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913125793}
+  - component: {fileID: 1913125794}
+  m_Layer: 0
+  m_Name: F5SkillPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913125793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913125792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 45880584}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1913125794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913125792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4004d158343f4a488cd41f8b09cfce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 45880584}
 --- !u!1001 &1917985165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22626,13 +22621,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillObject: {fileID: 8829505349809715513, guid: 7314d80ecce62f64682b77c25391b5ca,
     type: 3}
-  SkillPos: {fileID: 576802481}
-  SkillForce: 200
+  spawnPosition: {fileID: 0}
   lastFireTime: 0
   fireRate: 1
   muzzleVFX: {fileID: 1686944820}
-  distence: 10
-  lookAtCursor: {fileID: 0}
 --- !u!114 &2006384582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24953,7 +24945,7 @@ MonoBehaviour:
   Timer: 0
   FilledImage: {fileID: 0}
   IsStartTimer: 0
-  F5Skill: {fileID: 1595748072}
+  F5Skill: {fileID: 0}
 --- !u!114 &315193737040982069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26534,11 +26526,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterLongRange
       objectReference: {fileID: 0}
-    - target: {fileID: 5477791637045825159, guid: e2d7a399edb08dc498bc328af15ccfb3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5477791637045825160, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
       propertyPath: monsterPlane
@@ -27239,7 +27226,7 @@ MonoBehaviour:
   Timer: 0
   FilledImage: {fileID: 0}
   IsStartTimer: 0
-  F8Skill: {fileID: 1595748077}
+  F8Skill: {fileID: 0}
 --- !u!1 &8761432779777514953
 GameObject:
   m_ObjectHideFlags: 0

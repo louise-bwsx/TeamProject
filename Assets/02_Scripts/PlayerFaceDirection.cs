@@ -12,7 +12,6 @@ public class PlayerFaceDirection : MonoBehaviour
         { 
             if (lookAtCursor.rotationangle.y > 0)
             {
-                Debug.Log(1);
                 transform.rotation = Quaternion.Euler(-30, 180, 0);
             }
             else

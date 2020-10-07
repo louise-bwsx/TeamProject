@@ -5,18 +5,20 @@ using UnityEngine;
 public class PlayerFaceDirection : MonoBehaviour
 {
     public PlayerControl playerControl;
+    public LookAtCursor lookAtCursor;
     void Update()
     {
         if (playerControl.cantMove == false)
         { 
-            if (Input.GetAxis("Horizontal") >= 0.1f)
+            if (lookAtCursor.rotationangle.y > 0)
             {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+                Debug.Log(1);
+                transform.rotation = Quaternion.Euler(-30, 180, 0);
             }
-            else if (Input.GetAxis("Horizontal") <= -0.1f)
+            else
             {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
+                transform.rotation = Quaternion.Euler(30, 0, 0);
+            }        
         }
     }
 }

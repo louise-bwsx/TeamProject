@@ -25,7 +25,6 @@ public class SkillControl : MonoBehaviour
         float move = Input.GetAxis("Mouse ScrollWheel");
         if (move > 0.0f)
         {
-
             if (CurIdx > 0) CurIdx--;
             SetPos();
         }

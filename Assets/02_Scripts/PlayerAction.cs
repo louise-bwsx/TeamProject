@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAction: MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
     public UIBarControl uIBarControl;
     bool isAttack = true;
     float attackRate;
@@ -45,13 +45,14 @@ public class PlayerAction: MonoBehaviour
         //音效
         //特效
         animator.SetTrigger("Attack");
+        //不讓他造成連按抖動
         attackRate = 0;
     }
     public void SpikeAttack()
     {
         animator.SetTrigger("Attack_Spike");
         GameObject attackingSword = Instantiate(sword, spwan.position, spwan.rotation);
-        //attackRate = 0;
+        attackRate = 0;
         Destroy(attackingSword,0.3f);
     }
 }

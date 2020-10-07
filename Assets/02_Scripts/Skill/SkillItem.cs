@@ -14,7 +14,6 @@ public class SkillItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         FilledImage = transform.Find("FilledSkillOne").GetComponent<Image>();
     }
 

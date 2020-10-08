@@ -74,6 +74,7 @@ public class LongRangeEnemyController : MonoBehaviour
         //射出
         shootingArrow.GetComponent<Rigidbody>().AddForce(bow.forward * force);
         monsterHealth.animator.SetBool("IsAttack", false);
+        Destroy(shootingArrow, 5f);
     }
     private void OnDrawGizmos()
     {

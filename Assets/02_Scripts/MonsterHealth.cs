@@ -41,7 +41,6 @@ public class MonsterHealth : MonoBehaviour
         { 
             if (animator.GetBool("IsDead"))
             {
-                Debug.Log(1);
                 Destroy(gameObject);
             }
         }

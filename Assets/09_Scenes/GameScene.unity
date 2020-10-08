@@ -10845,7 +10845,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 0
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1237076505}
   m_FillRect: {fileID: 1710700135}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -21291,7 +21291,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   healthFill: {fileID: 1710700136}
-  staminaSlider: {fileID: 0}
+  staminaSlider: {fileID: 580402011}
   staminaGradient:
     serializedVersion: 2
     key0: {r: 0, g: 1, b: 0.16862746, a: 1}
@@ -21321,7 +21321,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  staminaFill: {fileID: 0}
+  staminaFill: {fileID: 255945854}
   getHitEffect: {fileID: 45880589}
 --- !u!114 &2136891375
 MonoBehaviour:
@@ -23454,6 +23454,11 @@ PrefabInstance:
       propertyPath: monsterPlane
       value: 
       objectReference: {fileID: 205671122}
+    - target: {fileID: 5477791637045825164, guid: e2d7a399edb08dc498bc328af15ccfb3,
+        type: 3}
+      propertyPath: maxHp
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 5477791638040581690, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
       propertyPath: m_AnchorMax.x

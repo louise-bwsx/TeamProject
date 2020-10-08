@@ -88,6 +88,7 @@
     <Compile Include="Assets\02_Scripts\MeleeEnemyController.cs" />
     <Compile Include="Assets\02_Scripts\MiniMap.cs" />
     <Compile Include="Assets\02_Scripts\MonsterHealth.cs" />
+    <Compile Include="Assets\02_Scripts\MonsterSpriteFlip.cs" />
     <Compile Include="Assets\02_Scripts\MonsterSpwan.cs" />
     <Compile Include="Assets\02_Scripts\PlayerAction.cs" />
     <Compile Include="Assets\02_Scripts\PlayerControl.cs" />
@@ -123,8 +124,10 @@
     <Compile Include="Assets\02_Scripts\TranMove.cs" />
     <Compile Include="Assets\02_Scripts\UIBarControl.cs" />
     <Compile Include="Assets\02_Scripts\WallFade.cs" />
-    <Compile Include="Assets\05_Animation\CustomizeAnimation\Animation\AttackSpikeState.cs" />
-    <Compile Include="Assets\05_Animation\CustomizeAnimation\Animation\AttackState.cs" />
+    <Compile Include="Assets\05_Animation\CustomizeAnimation\CharacterAnimation\AttackSpikeState.cs" />
+    <Compile Include="Assets\05_Animation\CustomizeAnimation\CharacterAnimation\AttackState.cs" />
+    <Compile Include="Assets\MonsterAttackState.cs" />
+    <Compile Include="Assets\MonsterState.cs" />
     <Compile Include="Assets\Teleportation Pad\CustomTeleporter.cs" />
     <None Include="Assets\Teleportation Pad\README.txt" />
     <Reference Include="UnityEngine">

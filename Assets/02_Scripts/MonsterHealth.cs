@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class MonsterHealth : MonoBehaviour
 {
@@ -21,24 +22,33 @@ public class MonsterHealth : MonoBehaviour
     public GameObject SkillBookGold;
     public GameObject SkillBookBlue;
     public ItemSTO itemRate;
-    //float buffValue = 3;
-    //public GetHitEffect getHitEffect;
-    //public Text text;
+    public Animator animator;
+    NavMeshAgent navMeshAgent;
+    LongRangeEnemyController longRangeEnemyController;
+    public GameObject healthBar;
+
 
     void Start()
     {
         Hp = maxHp;
         HealthBarOnGame.SetMaxHealth(maxHp);
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        longRangeEnemyController = GetComponent<LongRangeEnemyController>();
+    }
+    void Update()
+    {
+        if (animator != null)
+        { 
+            if (animator.GetBool("IsDead"))
+            {
+                Debug.Log(1);
+                Destroy(gameObject);
+            }
+        }
     }
     public void GetHit(float Damage)
     {
-        //有問題
-        //if (getHitEffect.attackBuff)
-        //{
-        //    Damage *= buffValue;
-        //}
         Hp -= Damage;
-        //Debug.Log("造成傷害: "+Damage);
         HealthBarOnGame.SetHealth(Hp);
         if (Hp <= 0)
         {
@@ -79,10 +89,14 @@ public class MonsterHealth : MonoBehaviour
         {
             GetHit(15);
         }
-
     }
     void MonsterDead()
     {
+        animator.SetBool("Dead",true);
+        longRangeEnemyController.enabled = false;
+        navMeshAgent.enabled = false;
+        healthBar.SetActive(false);
+
         Vector3 itemLocation = this.transform.position;//獲得當前怪物的地點
         int rewardItems = Random.Range(numHeldItemMin, numHeldItemMax);//隨機裝備產生值
         for (int i = 0; i < rewardItems; i++)
@@ -102,6 +116,5 @@ public class MonsterHealth : MonoBehaviour
                 }
             }
         }
-        Destroy(gameObject);
     }
 }

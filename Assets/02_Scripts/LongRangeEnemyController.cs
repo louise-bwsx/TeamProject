@@ -15,12 +15,14 @@ public class LongRangeEnemyController : MonoBehaviour
     public float attackCD;
     public float attackRate = 2;
     public float force = 1500;
+    MonsterHealth monsterHealth;
 
     Transform target;
     NavMeshAgent agent;
 
     void Start()
     {
+        monsterHealth = GetComponent<MonsterHealth>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -39,15 +41,24 @@ public class LongRangeEnemyController : MonoBehaviour
             //弓面對Target
             WeaponFaceTarget();
             //如果攻擊距離小於攻擊範圍 且 CD時間到
-            if (attackDistence <= attackRaduis && attackCD > attackRate)
+            if (attackDistence <= attackRaduis)
             {
-                MonsterAttack();
+                if (attackCD > attackRate)
+                {
+                    attackCD = 0;
+                    monsterHealth.animator.SetTrigger("Attack");
+                }
             }
+                if (monsterHealth.animator.GetBool("IsAttack"))
+                {
+                    MonsterAttack();
+                }
         }
         else if (distence >= lookRaduis)
         {
             agent.SetDestination(monsterPlane.position);
         }
+
         attackCD += Time.deltaTime;
     }
     void WeaponFaceTarget()
@@ -62,7 +73,7 @@ public class LongRangeEnemyController : MonoBehaviour
         GameObject shootingArrow = Instantiate(arrow, shootingposition.position, bow.rotation);
         //射出
         shootingArrow.GetComponent<Rigidbody>().AddForce(bow.forward * force);
-        attackCD = 0;
+        monsterHealth.animator.SetBool("IsAttack", false);
     }
     private void OnDrawGizmos()
     {

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5319569651660430517}
   - component: {fileID: 985972908091550884}
   - component: {fileID: 1061591067915779237}
+  - component: {fileID: 1995655681548159994}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: AirAttack
@@ -91,8 +92,8 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281075568003997482}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
+  m_IsTrigger: 0
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.00001
   m_Center: {x: 0, y: 0, z: 0}
@@ -150,7 +151,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.53821754
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -226,3 +227,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &1995655681548159994
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281075568003997482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.6207352
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.31036758, z: 0}

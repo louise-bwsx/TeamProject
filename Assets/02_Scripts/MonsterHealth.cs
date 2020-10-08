@@ -28,12 +28,16 @@ public class MonsterHealth : MonoBehaviour
     public GameObject healthBar;
 
     public AudioSource GunAudio;//音樂放置
+
+    public AudioClip SwordHitSFX;//突擊受擊音效
     public AudioClip PoisonHitSFX;//毒受擊音效
-    public AudioClip FireMagicHitSFX;//火受擊音效
+    public AudioClip FirMagicHitSFX;//火受擊音效
     public AudioClip tornadoHitSFX;//風受擊音效
     public AudioClip AirAttackHitSFX;//水受擊音效
-   
-    
+    public AudioClip FiretornadoHitSFX;//龍捲風受擊音效
+
+
+
 
 
 
@@ -73,8 +77,10 @@ public class MonsterHealth : MonoBehaviour
         //    GetHit(10);
         //    other.gameObject.tag = "Broken";
         //}
+     
         if (other.CompareTag("Sword"))
         {
+            GunAudio.PlayOneShot(SwordHitSFX);
             GetHit(15);
         }
         if (other.CompareTag("Skill"))
@@ -83,19 +89,28 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("AirAttack"))
         {
+            GunAudio.PlayOneShot(AirAttackHitSFX);
             GetHit(10);
         }
         if (other.CompareTag("FirMagic"))
         {
+            GunAudio.PlayOneShot(FirMagicHitSFX);
             GetHit(10);
         }
         if (other.CompareTag("tornado"))
         {
+            GunAudio.PlayOneShot(tornadoHitSFX);
             GetHit(15);
         }
         if (other.CompareTag("Poison"))
         {
+            GunAudio.PlayOneShot(PoisonHitSFX);
             GetHit(15);
+        }
+        if (other.CompareTag("Firetornado"))
+        {
+            GunAudio.PlayOneShot(FiretornadoHitSFX);
+            GetHit(30);
         }
     }
     void MonsterDead()

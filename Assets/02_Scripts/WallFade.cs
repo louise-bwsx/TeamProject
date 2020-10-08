@@ -18,7 +18,7 @@ public class WallFade : MonoBehaviour
         if (Physics.Raycast(cameraray, out floorcross, cameraraylength, wall))
         {
             //可以 但不知道怎麼調透明度
-            floorcross.transform.GetComponent<MeshRenderer>().material.color = Color.clear;
+            floorcross.transform.GetComponent<MeshRenderer>().material.color = Color.black * 0.5f;
         }
     }
 }

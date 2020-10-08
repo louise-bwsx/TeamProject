@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{75C45AA9-859C-6A94-281E-9483AFA05494}</ProjectGuid>
+    <ProjectGuid>{CF8D1591-D435-4ECA-23B8-9AB93972C3C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -68,6 +68,7 @@
     <Compile Include="Assets\02_Scripts\BulletControl.cs" />
     <Compile Include="Assets\02_Scripts\CharacterStats.cs" />
     <Compile Include="Assets\02_Scripts\EnemyStats.cs" />
+    <Compile Include="Assets\02_Scripts\Equipment.cs" />
     <Compile Include="Assets\02_Scripts\EquipmentManager.cs" />
     <Compile Include="Assets\02_Scripts\GameMenu.cs" />
     <Compile Include="Assets\02_Scripts\GetHitEffect.cs" />
@@ -122,7 +123,6 @@
     <Compile Include="Assets\02_Scripts\TranMove.cs" />
     <Compile Include="Assets\02_Scripts\UIBarControl.cs" />
     <Compile Include="Assets\02_Scripts\WallFade.cs" />
-    <Compile Include="Assets\02_Scripts\equipment.cs" />
     <Compile Include="Assets\05_Animation\CustomizeAnimation\Animation\AttackSpikeState.cs" />
     <Compile Include="Assets\05_Animation\CustomizeAnimation\Animation\AttackState.cs" />
     <Compile Include="Assets\Teleportation Pad\CustomTeleporter.cs" />
@@ -656,31 +656,31 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/SKY/Documents/TEST10072029/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/User/Desktop/SourceTree/TeamProject/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

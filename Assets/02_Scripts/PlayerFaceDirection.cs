@@ -8,7 +8,7 @@ public class PlayerFaceDirection : MonoBehaviour
     public LookAtCursor lookAtCursor;
     void Update()
     {
-        if (playerControl.cantMove == false)
+        if (playerControl.cantMove == false && Time.timeScale != 0)
         { 
             if (lookAtCursor.rotationangle.y > 0)
             {

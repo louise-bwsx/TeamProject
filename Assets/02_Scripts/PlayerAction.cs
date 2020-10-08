@@ -27,6 +27,7 @@ public class PlayerAction: MonoBehaviour
     {
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
+            //GunAudio.PlayOneShot(walkSFX);
             animator.SetBool("Walk", true);
         }
         else

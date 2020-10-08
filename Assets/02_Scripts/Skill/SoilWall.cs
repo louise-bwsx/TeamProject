@@ -43,4 +43,5 @@ public class SoilWall : MonoBehaviour
         //}
         Destroy(gameObject, DestroyTime);
     }
+
 }

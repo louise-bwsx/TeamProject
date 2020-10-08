@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9999992, y: 2.234514, z: 1}
+  m_Center: {x: 0, y: -0.61725676, z: 0}
 --- !u!54 &4644124924792791240
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   DestroyTime: 0.8
   GunAudio: {fileID: 209101486852984104}
   FireMagicSFX: {fileID: 8300000, guid: 3dd2434f4a935b24aa4549923fb64cc9, type: 3}
+  mesh: {fileID: 0}
 --- !u!82 &209101486852984104
 AudioSource:
   m_ObjectHideFlags: 0

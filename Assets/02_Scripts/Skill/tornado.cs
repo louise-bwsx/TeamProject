@@ -54,6 +54,8 @@ public class tornado : MonoBehaviour
         {
             explosion();
             expSFX();
+            Destroy(gameObject,0.3f);
+       
         }
     }
     public void explosion()

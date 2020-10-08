@@ -12,6 +12,7 @@ public class FireMagic : MonoBehaviour
     bool hasExplode = false;
     public AudioSource GunAudio;//音樂放置
     public AudioClip FireMagicSFX;//音效
+    public GameObject mesh;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,4 +35,13 @@ public class FireMagic : MonoBehaviour
 
         Destroy(gameObject, DestroyTime);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Poison")|| other.CompareTag("tornado")|| other.CompareTag("Skill")||other.CompareTag("Monster")|| other.CompareTag("Wall"))
+        {
+
+            Destroy(gameObject);
+        }
+    }
+
 }

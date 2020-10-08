@@ -18,6 +18,8 @@ public class Poisoning : MonoBehaviour
     public AudioClip SoilWallSFX;//毒音效
     public AudioClip explosionSFX;//爆炸音效
 
+    public GameObject mesh;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class Poisoning : MonoBehaviour
             GunAudio.PlayOneShot(SoilWallSFX);
             Explode();
             hasExplode = true;
+    
         }
     }
 
@@ -53,19 +56,26 @@ public class Poisoning : MonoBehaviour
     {
         if (other.CompareTag("FirMagic"))
         {
+           
+            GunAudio.PlayOneShot(explosionSFX);
             explosion();
-            expSFX();
+           
+            Destroy(gameObject, 0.3f);
         }
+     
+
+
     }
     public void explosion()
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
   
     }
-    public void expSFX()
-    {
-        GunAudio.PlayOneShot(explosionSFX);
-    }
+    //public void expSFX()
+    //{
+    //    GunAudio.PlayOneShot(explosionSFX);
+    //}
+
 
 
 

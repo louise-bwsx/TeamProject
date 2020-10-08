@@ -89,4 +89,6 @@ public class LongRangeEnemyController : MonoBehaviour
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, attackRaduis);
     }
+
+
 }

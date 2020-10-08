@@ -43,4 +43,12 @@ public class AirAttack : MonoBehaviour
         }
         Destroy(gameObject, DestroyTime);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Monster")|| other.CompareTag("Wall")|| other.CompareTag("Skill"))
+        {
+
+            Destroy(gameObject);
+        }
+    }
 }

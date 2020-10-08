@@ -34,6 +34,9 @@ public class LongRangeEnemyController : MonoBehaviour
         float attackDistence = Vector3.Distance(target.position, transform.position);
         if (distence <= lookRaduis)
         {
+            agent.enabled = true;
+            //變身怪物動畫播放
+            monsterHealth.animator.SetBool("IsDetect", true);
             //向著target走
             agent.SetDestination(target.position);
             //面對攝影機
@@ -54,9 +57,11 @@ public class LongRangeEnemyController : MonoBehaviour
                     MonsterAttack();
                 }
         }
-        else if (distence >= lookRaduis)
+        else if (distence >= lookRaduis/* && monsterPlane!=null*/)
         {
-            agent.SetDestination(monsterPlane.position);
+            //取消往重生點跑
+            agent.enabled = false;
+            monsterHealth.animator.SetBool("IsDetect", false);
         }
 
         attackCD += Time.deltaTime;

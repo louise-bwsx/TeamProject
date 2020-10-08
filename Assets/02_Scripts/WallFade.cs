@@ -20,7 +20,7 @@ public class WallFade : MonoBehaviour
             alphaTransform = wallrCross.transform;
             alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.5f;
         }
-        else
+        else if(alphaTransform!=null)
         {
             alphaTransform.transform.GetComponent<MeshRenderer>().material.color = Color.black;
         }

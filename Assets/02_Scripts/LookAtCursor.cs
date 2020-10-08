@@ -28,7 +28,7 @@ public class LookAtCursor : MonoBehaviour
             rotationangle = Quaternion.LookRotation(playertomouse);
             RD.MoveRotation(rotationangle);
         }
-        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 }

@@ -6,6 +6,7 @@ public class WallFade : MonoBehaviour
 {
     int wall;
     Transform alphaTransform;
+    Transform player;
     void Start()
     {
         wall = LayerMask.GetMask("Wall");
@@ -13,6 +14,7 @@ public class WallFade : MonoBehaviour
     void Update()
     {
         float cameraraylength = 100;
+        //Ray cameraray = Camera.main.ScreenPointToRay(player.position);
         Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit wallrCross;
         if (Physics.Raycast(cameraray, out wallrCross, cameraraylength,wall))

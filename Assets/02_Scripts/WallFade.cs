@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallFade : MonoBehaviour
 {
     int wall;
-    Vector3 playertomouse;
+    Transform alphaTransform;
     void Start()
     {
         wall = LayerMask.GetMask("Wall");
@@ -14,11 +14,15 @@ public class WallFade : MonoBehaviour
     {
         float cameraraylength = 100;
         Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit floorcross;
-        if (Physics.Raycast(cameraray, out floorcross, cameraraylength, wall))
+        RaycastHit wallrCross;
+        if (Physics.Raycast(cameraray, out wallrCross, cameraraylength,wall))
         {
-            //可以 但不知道怎麼調透明度
-            floorcross.transform.GetComponent<MeshRenderer>().material.color = Color.black * 0.5f;
+            alphaTransform = wallrCross.transform;
+            alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.5f;
+        }
+        else
+        {
+            alphaTransform.transform.GetComponent<MeshRenderer>().material.color = Color.black;
         }
     }
 }

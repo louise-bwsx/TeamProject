@@ -50,8 +50,9 @@ public class PlayerAction: MonoBehaviour
     {
         //音效
         GunAudio.PlayOneShot(SwingSFX);
-        //特效
+        //動畫
         animator.SetTrigger("Attack");
+        //特效
         //不讓他造成連按抖動
         attackRate = 0;
     }

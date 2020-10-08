@@ -30,8 +30,8 @@ public class PlayerControl : MonoBehaviour
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
     //有關攻擊
     public float attackRange = 0.4f;
-    public float attackSpeed = 2;
-    public int attackDamage = 20;
+    public float attackSpeed;//同動畫時間
+    public int attackDamage = 2;
     float attackTime;
     public Transform AttackPoint;
     public LayerMask EnemyLayer;
@@ -63,13 +63,14 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         //攻速&普攻按鍵
-        if (Time.time >= attackTime && 
+        attackTime += Time.deltaTime;
+        if (attackTime >= attackSpeed && 
             !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[1].activeSelf&& !gameMenu.anyWindow[2].activeSelf)
         {
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)/* && !PlayerCube.GetBool("IsAttack")*/)
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
                 Attack();
-                attackTime = Time.time + 1f / attackSpeed;//另外一種計時方式
+                attackTime = 0;//另外一種計時方式
             }
         }
         //開關玩家血條
@@ -165,21 +166,16 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             playerAction.NormalAttack();
-            Debug.Log(playerAction.animator.GetBool("IsAttack"));
             //他只會抓這個方法啟動瞬間的範圍
-            if (playerAction.animator.GetBool("Attack"))
-            { 
-                Collider[] hitEnemy = Physics.OverlapSphere(AttackPoint.position, attackRange, EnemyLayer);
-                foreach (Collider enemy in hitEnemy)
-                {
-                    Debug.Log(enemy.name);
-                    enemy.GetComponent<MonsterHealth>()?.GetHit(attackDamage);
-                }
+            Collider[] hitEnemy = Physics.OverlapSphere(AttackPoint.position, attackRange, EnemyLayer);
+            foreach (Collider enemy in hitEnemy)
+            {
+                Debug.Log(enemy.name);
+                enemy.GetComponent<MonsterHealth>()?.GetHit(attackDamage);
             }
         }
         else if (Input.GetMouseButtonDown(1))
         {
-          
             playerAction.SpikeAttack();
         }
     }

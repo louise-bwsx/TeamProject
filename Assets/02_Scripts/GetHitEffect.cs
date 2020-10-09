@@ -16,7 +16,7 @@ public class GetHitEffect : MonoBehaviour
     public GameObject changeColor;
     public Transform playerRotation;
     public SpriteRenderer spriteRenderer;
-    int bounceForce = 10000;
+    public int bounceForce = 10000;
     public bool getHit;
     public bool attackBuff;
 
@@ -90,7 +90,7 @@ public class GetHitEffect : MonoBehaviour
                 playerControl.cantMove = true;
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
                 //並且朝反方向彈跳一下
-                gameObject.GetComponent<Rigidbody>().AddForce(-playerRotation.forward * bounceForce * Time.deltaTime);
+                gameObject.GetComponent<Rigidbody>().AddForce(-playerRotation.forward * bounceForce);
                 //玩家血量歸零時遊戲暫停
                 if (playerHealth <= 0)
                 {

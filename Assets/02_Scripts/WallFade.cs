@@ -27,7 +27,7 @@ public class WallFade : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position,direction ,out wallrCross,cameraraylength,wall))
         {
             alphaTransform = wallrCross.transform;
-            alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.5f;
+            alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.4f;
         }
         else if (alphaTransform != null && Physics.Raycast(Camera.main.transform.position, direction, out wallrCross,cameraraylength,playerLayer))
         {

@@ -8,7 +8,7 @@ public class MonsterHealth : MonoBehaviour
 {
     public float Hp =0;
     public float maxHp = 50;
-    public HealthBarOnGame HealthBarOnGame;
+    HealthBarOnGame healthBarOnGame;
     public int numHeldItemMin = 1;//裝備生成最小數
     public int numHeldItemMax = 3;//裝備生成最大數
     //public GameObject gold;//黃裝
@@ -26,7 +26,7 @@ public class MonsterHealth : MonoBehaviour
     protected NavMeshAgent navMeshAgent;
     public GameObject healthBar;
 
-    public AudioSource GunAudio;//音樂放置
+    AudioSource GunAudio;//音樂放置
     public AudioClip SwordHitSFX;//突擊受擊音效
     public AudioClip PoisonHitSFX;//毒受擊音效
     public AudioClip FirMagicHitSFX;//火受擊音效
@@ -35,9 +35,12 @@ public class MonsterHealth : MonoBehaviour
     public AudioClip FiretornadoHitSFX;//龍捲風受擊音效
     void Start()
     {
-        Hp = maxHp;
-        HealthBarOnGame.SetMaxHealth(maxHp);
+        healthBarOnGame = GetComponentInChildren<HealthBarOnGame>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        GunAudio = GetComponent<AudioSource>();
+        Hp = maxHp;
+        healthBarOnGame.SetMaxHealth(maxHp);
+
     }
     void Update()
     {
@@ -52,7 +55,7 @@ public class MonsterHealth : MonoBehaviour
     public void GetHit(float Damage)
     {
         Hp -= Damage;
-        HealthBarOnGame.SetHealth(Hp);
+        healthBarOnGame.SetHealth(Hp);
         if (Hp <= 0)
         {
             MonsterDead();

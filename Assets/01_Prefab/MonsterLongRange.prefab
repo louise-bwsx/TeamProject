@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 616738700}
   - component: {fileID: 9150224076756799219}
   - component: {fileID: 5477791637045825160}
-  - component: {fileID: 5477791637045825164}
+  - component: {fileID: 5349164275163258497}
   m_Layer: 9
   m_Name: MonsterLongRange
   m_TagString: Monster
@@ -402,7 +402,7 @@ MonoBehaviour:
   attackCD: 0
   attackRate: 2
   force: 1500
---- !u!114 &5477791637045825164
+--- !u!114 &5349164275163258497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,23 +411,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5477791637045825159}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30b1bbc0fca710749b13a71497f9ee55, type: 3}
+  m_Script: {fileID: 11500000, guid: b39c05011c769d44c8028ab785e910e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 0
   maxHp: 50
-  HealthBarOnGame: {fileID: 5477791636672222595}
   numHeldItemMin: 1
   numHeldItemMax: 3
   itemRate: {fileID: 11400000, guid: 7fd4b91e5e7081c44bd581e411e300e6, type: 2}
   animator: {fileID: 1946896890}
   healthBar: {fileID: 5477791638001741212}
-  GunAudio: {fileID: 9150224076756799219}
   SwordHitSFX: {fileID: 8300000, guid: 377a02e3a1f91124db0ee8f2278fe40b, type: 3}
   PoisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
   FirMagicHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}
   tornadoHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
-  AirAttackHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
+  AirAttackHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}
   FiretornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
 --- !u!1 &5477791637274516207
 GameObject:

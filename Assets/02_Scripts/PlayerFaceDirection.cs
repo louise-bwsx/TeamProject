@@ -12,11 +12,11 @@ public class PlayerFaceDirection : MonoBehaviour
         { 
             if (lookAtCursor.rotationangle.y > 0)
             {
-                transform.rotation = Quaternion.Euler(-30, 180, 0);
+                transform.rotation = Quaternion.Euler(30, 270, 0);
             }
             else
             {
-                transform.rotation = Quaternion.Euler(30, 0, 0);
+                transform.rotation = Quaternion.Euler(-30, 90, 0);
             }        
         }
     }

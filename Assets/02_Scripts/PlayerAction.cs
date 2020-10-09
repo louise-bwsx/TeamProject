@@ -17,12 +17,6 @@ public class PlayerAction: MonoBehaviour
     public AudioClip TurnOverSFX;//翻滾音效
     public AudioClip SpikeSFX;//突刺音效
     public AudioClip SwingSFX;//揮擊音效
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)

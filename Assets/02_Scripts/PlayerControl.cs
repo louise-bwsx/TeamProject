@@ -48,11 +48,11 @@ public class PlayerControl : MonoBehaviour
     }
     private void FixedUpdate()//好用的東東
     {
-        ws = Input.GetAxis("Vertical");
+        ws = Input.GetAxis("Vertical");//世界軸
         //GunAudio.PlayOneShot(walkSFX);
         ad = Input.GetAxis("Horizontal");
         //GunAudio.PlayOneShot(walkSFX);
-        Movement.Set(ad, 0f, ws);
+        Movement.Set(-ws, 0f, ad);
 
         //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
         Movement = Movement * moveSpeed * Time.deltaTime;

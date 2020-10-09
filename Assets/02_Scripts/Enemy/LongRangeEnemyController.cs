@@ -3,35 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class LongRangeEnemyController : MonoBehaviour
+public class LongRangeEnemyController : EnemyController
 {
-    public float lookRaduis = 10;
-    public float attackRaduis = 5;//遠攻距離
     public Transform bow;
     public GameObject arrow;
-    //public Transform monsterShootingRotation;
     public Transform shootingposition;
     public Transform monsterPlane;
-    public float attackCD;
-    public float attackRate = 2;
     public float force = 1500;
     MonsterHealth monsterHealth;
-
-    Transform target;
-    NavMeshAgent agent;
-
     void Start()
     {
         monsterHealth = GetComponent<MonsterHealth>();
-        target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        target = PlayerManager.instance.player.transform;
     }
-
-    // Update is called once per frame
     void Update()
     {
         float distence = Vector3.Distance(target.position, transform.position);
-        float attackDistence = Vector3.Distance(target.position, transform.position);
         if (distence <= lookRaduis)
         {
             agent.enabled = true;
@@ -44,18 +32,18 @@ public class LongRangeEnemyController : MonoBehaviour
             //弓面對Target
             WeaponFaceTarget();
             //如果攻擊距離小於攻擊範圍 且 CD時間到
-            if (attackDistence <= attackRaduis)
+            if (distence <= attackRaduis)
             {
                 if (attackCD > attackRate)
                 {
                     attackCD = 0;
                     monsterHealth.animator.SetTrigger("Attack");
                 }
-            }
                 if (monsterHealth.animator.GetBool("IsAttack"))
                 {
                     MonsterAttack();
                 }
+            }
         }
         else if (distence >= lookRaduis)
         {
@@ -81,14 +69,4 @@ public class LongRangeEnemyController : MonoBehaviour
         monsterHealth.animator.SetBool("IsAttack", false);
         Destroy(shootingArrow, 5f);
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRaduis);
-
-        Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, attackRaduis);
-    }
-
-
 }

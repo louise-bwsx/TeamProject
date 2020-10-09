@@ -25,6 +25,7 @@ public class MonsterHealthMelee : MonsterHealth
     }
     public override void MonsterDead()
     {
+        //避免怪物死亡後還繼續追著玩家
         meleeEnemyController.enabled = false;
         base.MonsterDead();
     }

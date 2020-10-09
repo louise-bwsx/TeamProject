@@ -33,6 +33,7 @@ public class MonsterHealth : MonoBehaviour
     public AudioClip tornadoHitSFX;//風受擊音效
     public AudioClip AirAttackHitSFX;//水受擊音效
     public AudioClip FiretornadoHitSFX;//龍捲風受擊音效
+
     void Update()
     {
         if (animator != null)

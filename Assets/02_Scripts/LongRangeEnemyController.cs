@@ -57,7 +57,7 @@ public class LongRangeEnemyController : MonoBehaviour
                     MonsterAttack();
                 }
         }
-        else if (distence >= lookRaduis/* && monsterPlane!=null*/)
+        else if (distence >= lookRaduis)
         {
             //取消往重生點跑
             agent.enabled = false;

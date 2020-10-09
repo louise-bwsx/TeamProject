@@ -416,11 +416,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 0
   maxHp: 50
+  healthBarOnGame: {fileID: 5477791636672222595}
   numHeldItemMin: 1
   numHeldItemMax: 3
   itemRate: {fileID: 11400000, guid: 7fd4b91e5e7081c44bd581e411e300e6, type: 2}
   animator: {fileID: 1946896890}
+  navMeshAgent: {fileID: 5477791637045825153}
   healthBar: {fileID: 5477791638001741212}
+  GunAudio: {fileID: 9150224076756799219}
   SwordHitSFX: {fileID: 8300000, guid: 377a02e3a1f91124db0ee8f2278fe40b, type: 3}
   PoisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
   FirMagicHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}

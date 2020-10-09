@@ -19,6 +19,8 @@ public class MonsterHealthMelee : MonsterHealth
     MeleeEnemyController meleeEnemyController;
     void Start()
     {
+        Hp = maxHp;
+        healthBarOnGame.SetMaxHealth(maxHp);
         meleeEnemyController = GetComponent<MeleeEnemyController>();
     }
     public override void MonsterDead()

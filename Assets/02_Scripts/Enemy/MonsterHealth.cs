@@ -6,9 +6,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MonsterHealth : MonoBehaviour
 {
-    public float Hp =0;
+    public float Hp = 0;
     public float maxHp = 50;
-    HealthBarOnGame healthBarOnGame;
+    public HealthBarOnGame healthBarOnGame;
     public int numHeldItemMin = 1;//裝備生成最小數
     public int numHeldItemMax = 3;//裝備生成最大數
     //public GameObject gold;//黃裝
@@ -23,25 +23,16 @@ public class MonsterHealth : MonoBehaviour
     //public GameObject SkillBookBlue;
     public ItemSTO itemRate;
     public Animator animator;
-    protected NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
     public GameObject healthBar;
 
-    AudioSource GunAudio;//音樂放置
+    public AudioSource GunAudio;//音樂放置
     public AudioClip SwordHitSFX;//突擊受擊音效
     public AudioClip PoisonHitSFX;//毒受擊音效
     public AudioClip FirMagicHitSFX;//火受擊音效
     public AudioClip tornadoHitSFX;//風受擊音效
     public AudioClip AirAttackHitSFX;//水受擊音效
     public AudioClip FiretornadoHitSFX;//龍捲風受擊音效
-    void Start()
-    {
-        healthBarOnGame = GetComponentInChildren<HealthBarOnGame>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        GunAudio = GetComponent<AudioSource>();
-        Hp = maxHp;
-        healthBarOnGame.SetMaxHealth(maxHp);
-
-    }
     void Update()
     {
         if (animator != null)

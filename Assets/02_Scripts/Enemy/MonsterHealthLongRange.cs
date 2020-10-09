@@ -20,6 +20,8 @@ public class MonsterHealthLongRange : MonsterHealth
 
     void Start()
     {
+        Hp = maxHp;
+        healthBarOnGame.SetMaxHealth(maxHp);
         longRangeEnemyController = GetComponent<LongRangeEnemyController>();
     }
     public override void MonsterDead()

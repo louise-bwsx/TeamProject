@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-
+[RequireComponent(typeof(NavMeshAgent))]
 public class MonsterHealth : MonoBehaviour
 {
     public float Hp =0;
@@ -23,30 +23,21 @@ public class MonsterHealth : MonoBehaviour
     //public GameObject SkillBookBlue;
     public ItemSTO itemRate;
     public Animator animator;
-    NavMeshAgent navMeshAgent;
-    LongRangeEnemyController longRangeEnemyController;
+    protected NavMeshAgent navMeshAgent;
     public GameObject healthBar;
 
     public AudioSource GunAudio;//音樂放置
-
     public AudioClip SwordHitSFX;//突擊受擊音效
     public AudioClip PoisonHitSFX;//毒受擊音效
     public AudioClip FirMagicHitSFX;//火受擊音效
     public AudioClip tornadoHitSFX;//風受擊音效
     public AudioClip AirAttackHitSFX;//水受擊音效
     public AudioClip FiretornadoHitSFX;//龍捲風受擊音效
-
-
-
-
-
-
     void Start()
     {
         Hp = maxHp;
         HealthBarOnGame.SetMaxHealth(maxHp);
         navMeshAgent = GetComponent<NavMeshAgent>();
-        longRangeEnemyController = GetComponent<LongRangeEnemyController>();
     }
     void Update()
     {
@@ -67,7 +58,7 @@ public class MonsterHealth : MonoBehaviour
             MonsterDead();
         }
     }
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         //暫時用不到
         //if (other.CompareTag("Arrow"))
@@ -77,7 +68,6 @@ public class MonsterHealth : MonoBehaviour
         //    GetHit(10);
         //    other.gameObject.tag = "Broken";
         //}
-     
         if (other.CompareTag("Sword"))
         {
             GunAudio.PlayOneShot(SwordHitSFX);
@@ -113,11 +103,10 @@ public class MonsterHealth : MonoBehaviour
             GetHit(30);
         }
     }
-    void MonsterDead()
+    public virtual void MonsterDead()
     {
-        animator.SetBool("Dead",true);
-        longRangeEnemyController.enabled = false;
         navMeshAgent.enabled = false;
+        animator.SetBool("Dead",true);
         healthBar.SetActive(false);
 
         Vector3 itemLocation = this.transform.position;//獲得當前怪物的地點

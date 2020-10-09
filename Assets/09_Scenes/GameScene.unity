@@ -8060,17 +8060,22 @@ PrefabInstance:
     - target: {fileID: 5477791637045825159, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
       propertyPath: m_Name
-      value: MonsterLongRange (15)
+      value: TestLongRange (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477791637045825159, guid: e2d7a399edb08dc498bc328af15ccfb3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5477791638040581690, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5477791638040581690, guid: e2d7a399edb08dc498bc328af15ccfb3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
@@ -11936,6 +11941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 7295794027215989176}
   boss: {fileID: 5477791637203891591}
+  isDoorClose: 0
 --- !u!23 &1253541043
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21963,12 +21969,12 @@ PrefabInstance:
     - target: {fileID: 4355537637820096644, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4355537637820096644, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4355537638835828792, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
@@ -21978,12 +21984,12 @@ PrefabInstance:
     - target: {fileID: 4355537638835828793, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
       propertyPath: m_Name
-      value: MonsterMelee (16)
+      value: TestMelee (16)
       objectReference: {fileID: 0}
     - target: {fileID: 4355537638835828793, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4355537638835828796, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
@@ -24792,14 +24798,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2639929077665738102}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.07, z: -0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.030000761, y: 0.58399963, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2639929077569572666}
   - {fileID: 4360367078054121436}
-  m_Father: {fileID: 7944422822851291715}
-  m_RootOrder: 0
+  m_Father: {fileID: 5477791637203891586}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2728674525624131395
 GameObject:
@@ -25929,12 +25935,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5477791637203891591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17, y: -10.671875, z: 3.94}
+  m_LocalPosition: {x: -1.16, y: -10.671875, z: 3.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7944422821891105981}
   - {fileID: 5477791638362166943}
-  - {fileID: 7944422822760036192}
+  - {fileID: 2639929077665738103}
   - {fileID: 1885695874}
   m_Father: {fileID: 211908435}
   m_RootOrder: 27
@@ -25950,8 +25956,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8047943, y: 1, z: 6.7}
-  m_Center: {x: -0.097602844, y: 0.53, z: -0.0030870438}
+  m_Size: {x: 3, y: 1, z: 4.34}
+  m_Center: {x: -1.19, y: 0.53, z: -0.0030870438}
 --- !u!1 &5477791637203891591
 GameObject:
   m_ObjectHideFlags: 0
@@ -25991,7 +25997,10 @@ MonoBehaviour:
   attackRate: 1
   meshRenderer: {fileID: 1885695877}
   meleeAttackAreacollider: {fileID: 1885695876}
-  meleeAttackCD: 0
+  shootingtransform: {fileID: 2639929077665738103}
+  door: {fileID: 1253541042}
+  arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
+  force: 1500
 --- !u!224 &5477791638352817466
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27200,68 +27209,6 @@ Transform:
   m_Father: {fileID: 5477791637203891586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: -90, z: 0}
---- !u!4 &7944422822760036192
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7944422822760036195}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7944422822851291715}
-  m_Father: {fileID: 5477791637203891586}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7944422822760036195
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7944422822760036192}
-  m_Layer: 9
-  m_Name: MonsterAttackRotation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &7944422822851291714
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7944422822851291715}
-  m_Layer: 9
-  m_Name: MonsterRotationCenter
-  m_TagString: MonsterAttack
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7944422822851291715
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7944422822851291714}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.514, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2639929077665738103}
-  m_Father: {fileID: 7944422822760036192}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8085716706271011089
 MonoBehaviour:
   m_ObjectHideFlags: 0

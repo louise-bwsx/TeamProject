@@ -5,13 +5,19 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Transform door;
+    public GameObject boss;
+    private void Update()
+    {
+        if (boss == null)
+        {
+            door.localPosition = new Vector3(-0.23f, 5.23f, 3.3f);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && boss != null)
         {
-            Debug.Log(1);
-            //物體軸的x
-            door.Translate(Vector3.up * -5f);
+            door.localPosition = new Vector3(4.52f, 5.23f, 3.3f);
         }
     }
 }

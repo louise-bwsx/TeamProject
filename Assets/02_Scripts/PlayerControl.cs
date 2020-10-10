@@ -19,7 +19,6 @@ public class PlayerControl : MonoBehaviour
     float staminaRoll = 10;
     //有關移動
     public int moveSpeed = 5;//移動速度
-    public int rollForce;//翻滾移動的強度
     public bool isInvincible = false;//無敵狀態
     public bool cantMove = false;//移動限制
     float ws;
@@ -28,6 +27,8 @@ public class PlayerControl : MonoBehaviour
     //有關翻滾
     float rollTime = 0f;//被存入的時間
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
+    public int rollForce;//翻滾移動的強度
+    public int rollDistence;
     //有關攻擊
     public float attackRange = 0.4f;
     public float attackSpeed;//同動畫時間
@@ -198,8 +199,10 @@ public class PlayerControl : MonoBehaviour
             isInvincible = true;
             //限制翻滾時不能轉向
             cantMove = true;
-            GetComponent<Rigidbody>().AddForce(-playerRotation.forward * rollForce);
-            //GetComponent<Rigidbody>().velocity = -playerRotation.forward * rollDistence;
+
+            //GetComponent<Rigidbody>().AddForce(-playerRotation.forward * rollForce);//不知道該決定用哪個好
+            GetComponent<Rigidbody>().velocity = -playerRotation.forward * rollDistence;
+
             GetComponent<Collider>().isTrigger = true;
             GetComponent<Rigidbody>().useGravity = false;
             //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度

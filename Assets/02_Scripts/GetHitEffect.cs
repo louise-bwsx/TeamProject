@@ -69,6 +69,7 @@ public class GetHitEffect : MonoBehaviour
         }
         if (other.CompareTag("Block") || other.CompareTag("Wall"))
         {
+            Debug.Log(1);
             gameObject.GetComponent<Collider>().isTrigger = false;
         }
         if (other.gameObject.CompareTag("MonsterAttack") && getHitInvincibleTime <= 0f)

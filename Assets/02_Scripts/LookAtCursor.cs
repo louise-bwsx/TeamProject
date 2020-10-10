@@ -17,7 +17,6 @@ public class LookAtCursor : MonoBehaviour
 
     void Update()
     {
-        //設定當我按下左鍵才會向滑鼠方向做出左鍵的相對應動作
         float cameraraylength = 100;
         Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorcross;

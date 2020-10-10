@@ -37,12 +37,8 @@ public class PlayerControl : MonoBehaviour
     public Transform AttackPoint;
     public LayerMask EnemyLayer;
 
-    NavMeshObstacle navMeshObstacle;
-
-
     void Start()
     {
-        navMeshObstacle = GetComponent<NavMeshObstacle>();
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina(staminaLimit);

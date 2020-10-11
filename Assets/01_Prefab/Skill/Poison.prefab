@@ -221,14 +221,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4993e91e0006049a21669322282b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
-  radius: 5
   force: 700
   DestroyTime: 3
   GameObjectDestroyTime: 3
+  explosionObject: {fileID: 335328963726010687, guid: c69fc2f219e64b548999c2018156cea8,
+    type: 3}
   explosionEffect: {fileID: 8792773701619345590, guid: e08cd98b0c9d2854a828c22a18171ae6,
     type: 3}
   GunAudio: {fileID: 4607675500589964240}
   SoilWallSFX: {fileID: 8300000, guid: dccb5e14b52110e418214bca7b4c802b, type: 3}
-  explosionSFX: {fileID: 8300000, guid: f3fffc00e62c2b247abbe96db875c5f8, type: 3}
-  mesh: {fileID: 3759059081806054490}

@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class Poisoning : MonoBehaviour
 {
-    public float delay = 3f;
-    public float radius = 5f;
-    public float force = 700f;
+
+
+    //public float force = 700f;
     public float DestroyTime = 3F;
-    public float GameObjectDestroyTime = 3f;
     float countdown;
     bool hasExplode = false;
 
-    public GameObject explosionEffect;
-
     public AudioSource GunAudio;//音樂放置
     public AudioClip SoilWallSFX;//毒音效
-    public AudioClip explosionSFX;//爆炸音效
+    public GameObject explosionObject;//爆炸物件生成
+    //public GameObject explosionEffect;//放置特效
 
-    public GameObject mesh;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,40 +39,23 @@ public class Poisoning : MonoBehaviour
     void Explode()
     {
         //Instantiate(explosionEffect, transform.position, transform.rotation);
-        //Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-        //foreach (Collider nearbyObject in colliders)
-        //{
-        //    Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-        //    if (rb != null)
-        //    {
-        //        rb.AddExplosionForce(force, transform.position, radius);
-        //    }
-        //}
+
         Destroy(gameObject, DestroyTime);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("FirMagic"))
         {
-           
-            GunAudio.PlayOneShot(explosionSFX);
-            explosion();
-           
+
             Destroy(gameObject, 0.3f);
+            Instantiate(explosionObject, transform.position, transform.rotation);
         }
      
 
 
     }
-    public void explosion()
-    {
-        Instantiate(explosionEffect, transform.position, transform.rotation);
-  
-    }
-    //public void expSFX()
-    //{
-    //    GunAudio.PlayOneShot(explosionSFX);
-    //}
+ 
+
 
 
 

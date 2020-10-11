@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Firetornado : MonoBehaviour
 {
-    public float delay = 3f;
-    public float radius = 5f;
-    public float force = 700f;
+    //public float delay = 3f;
+    //public float radius = 5f;
+    //public float force = 700f;
     public float DestroyTime = 1;
     float countdown;
     bool hasExplode = false;
@@ -35,15 +35,7 @@ public class Firetornado : MonoBehaviour
     void Explode()
     {
         Instantiate(explosionEffect, transform.position, transform.rotation);
-        //Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-        //foreach (Collider nearbyObject in colliders)
-        //{
-        //    Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-        //    if (rb != null)
-        //    {
-        //        rb.AddExplosionForce(force, transform.position, radius);
-        //    }
-        //}
+        
         Destroy(gameObject, DestroyTime);
     }
 }

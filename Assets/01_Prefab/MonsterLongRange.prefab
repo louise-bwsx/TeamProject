@@ -395,12 +395,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRaduis: 8.64
   attackRaduis: 5
+  monsterOriginPos: {fileID: 0}
+  attackCD: 0
+  attackRate: 2
   bow: {fileID: 2639929077437421175}
   arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
   shootingposition: {fileID: 2639929077261022266}
   monsterPlane: {fileID: 0}
-  attackCD: 0
-  attackRate: 2
   force: 1500
 --- !u!114 &5349164275163258497
 MonoBehaviour:
@@ -430,6 +431,7 @@ MonoBehaviour:
   tornadoHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
   AirAttackHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}
   FiretornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
+  BombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
 --- !u!1 &5477791637274516207
 GameObject:
   m_ObjectHideFlags: 0

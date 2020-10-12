@@ -17,9 +17,8 @@ public class NewArrow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Skill"))
+        if (other.CompareTag("Skill") || other.CompareTag("Wall"))
         {
-
             Destroy(gameObject);
         }
     }

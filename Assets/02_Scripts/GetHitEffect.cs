@@ -53,13 +53,28 @@ public class GetHitEffect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gold"))
         {
-            pickGold++;
+            pickGold += 3;
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Item"))
+        if (collision.gameObject.CompareTag("Green"))
         {
-            collision.gameObject.GetComponent<ItemPickup>().PickUp();
+            pickGold += 10;
+            Destroy(collision.gameObject);
         }
+        if (collision.gameObject.CompareTag("White"))
+        {
+            pickGold += 1;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Blue"))
+        {
+            pickGold += 5;
+            Destroy(collision.gameObject);
+        }
+        //else if (collision.gameObject.CompareTag("Item"))
+        //{
+        //    collision.gameObject.GetComponent<ItemPickup>().PickUp();
+        //}
     }
     private void OnTriggerStay(Collider other)
     {

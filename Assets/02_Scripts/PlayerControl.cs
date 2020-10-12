@@ -165,7 +165,6 @@ public class PlayerControl : MonoBehaviour
         }
         if (isInvincible)
         {
-            Debug.Log(1);
             Debug.DrawLine(oldPosition, transform.position, Color.green,1f);
             if (Physics.Raycast(oldPosition, (transform.position-oldPosition), Vector3.Distance(oldPosition ,transform.position), wall))
             {

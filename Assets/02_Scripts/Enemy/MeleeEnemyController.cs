@@ -21,7 +21,7 @@ public class MeleeEnemyController : EnemyController
         {
             agent.enabled = true;
             //向著target走
-            //agent.SetDestination(target.position);
+            agent.SetDestination(target.position);
             //面對攝影機
             FaceCamera();
             //如果攻擊距離小於攻擊範圍 且 CD時間到
@@ -44,25 +44,14 @@ public class MeleeEnemyController : EnemyController
     }
     void FaceCamera()
     {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        monsterAttackRotation.rotation = Quaternion.Slerp(monsterAttackRotation.rotation, lookRotation, Time.deltaTime * 5f);
-
-        //if (monsterAttackRotation.localEulerAngles.y < 180)
-        //{
-        //    //怪物圖片向右看
-        //    spriteRenderer.flipX = true;
-        //}
-        //else
-        //{
-        //    //向左看
-        //    spriteRenderer.flipX = false;
-        //}
-
-        //transform.rotation = Quaternion.Euler(Vector3.zero);
         //Vector3 direction = (target.position - transform.position).normalized;
         //Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         //monsterAttackRotation.rotation = Quaternion.Slerp(monsterAttackRotation.rotation, lookRotation, Time.deltaTime * 5f);
+
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        monsterAttackRotation.rotation = Quaternion.Slerp(monsterAttackRotation.rotation, lookRotation, Time.deltaTime * 5f);
     }
     public void MonsterAttack()
     {

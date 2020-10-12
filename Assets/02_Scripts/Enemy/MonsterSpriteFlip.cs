@@ -13,7 +13,9 @@ public class MonsterSpriteFlip : MonoBehaviour
     }
     void Update()
     {
-        if (spriterotation.localEulerAngles.y < 180)
+        //Debug.Log(spriterotation.localEulerAngles.y);//會以很慢的速度遞減感覺不准
+        //Debug.Log(spriterotation.eulerAngles);
+        if (spriterotation.localEulerAngles.y < 90 || spriterotation.localEulerAngles.y>270)
         {
             //怪物圖片向右看
             spriteRenderer.flipX = true;

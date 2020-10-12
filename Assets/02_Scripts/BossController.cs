@@ -43,7 +43,7 @@ public class BossController : EnemyController
         if (door.isDoorClose = true && distence >= attackRaduis)
         {
             longRangeAttackCD += Time.deltaTime;
-            if (longRangeAttackCD >= attackRate)
+            if (longRangeAttackCD >= attackRate /*&&超出攻擊範圍*/)
             { 
                 shootingtransform.LookAt(target);
                 BossLongRangeAttack();

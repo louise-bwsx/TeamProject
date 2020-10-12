@@ -15,7 +15,6 @@ public class Menu : MonoBehaviour
             window.SetActive(false);
         }
         anyWindow[0].SetActive(true);
-        Debug.Log(1);
     }
     void Update()
     {
@@ -36,10 +35,10 @@ public class Menu : MonoBehaviour
 
             anyWindow[0].SetActive(true);
         }
-        else
-        {
-            QuitGame();
-        }
+        //else
+        //{
+        //    QuitGame();
+        //}
     }
     public void PlayGame()
     {

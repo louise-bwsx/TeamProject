@@ -6,7 +6,7 @@ public class GetHitEffect : MonoBehaviour
 {
     float getHitInvincibleTime;
     float getHitInvincible = 1f;
-    public int pickGold = 0;
+    public int pickGold = 10000;
     public float maxHp = 100;
     public float playerHealth = 0;
     public HealthBarOnGame healthbarongame;

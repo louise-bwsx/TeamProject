@@ -16,20 +16,17 @@ public class WallFade : MonoBehaviour
     void Update()
     {
         float cameraraylength = 100;
-        //不穩定完全不知道怎麼觸發的
-        //Ray cameraray = Camera.main.ScreenPointToRay(player.position);
-        //只觸發滑鼠
-        //Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //型態不一樣 一個Ray 一個 Vector3
-        //Ray cameraray = Camera.main.ScreenToWorldPoint(player.position);
         Vector3 direction = (player.position - Camera.main.transform.position).normalized;
         RaycastHit wallrCross;
         if (Physics.Raycast(Camera.main.transform.position,direction ,out wallrCross,cameraraylength,wall))
         {
+            //Physics.RaycastNonAlloc 陣列raycast
+            if(alphaTransform != null)
+                alphaTransform.transform.GetComponent<MeshRenderer>().material.color = Color.black;
             alphaTransform = wallrCross.transform;
             alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.4f;
         }
-        else if (alphaTransform != null && Physics.Raycast(Camera.main.transform.position, direction, out wallrCross,cameraraylength,playerLayer))
+        else if (alphaTransform != null)
         {
             alphaTransform.transform.GetComponent<MeshRenderer>().material.color = Color.black;
         }

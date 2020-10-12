@@ -29,6 +29,8 @@ public class PlayerControl : MonoBehaviour
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
     public int rollForce;//翻滾移動的強度
     public int rollDistence;
+    public LayerMask wall;
+    Vector3 oldPosition;
     //有關攻擊
     public float attackRange = 0.4f;
     public float attackSpeed;//同動畫時間
@@ -44,6 +46,7 @@ public class PlayerControl : MonoBehaviour
         uIBarControl.SetMaxStamina(staminaLimit);
         playerOptions = GetComponent<PlayerOptions>();
         playerAction = GetComponentInChildren<PlayerAction>();
+        oldPosition = transform.position;
     }
     private void FixedUpdate()//好用的東東
     {
@@ -61,6 +64,7 @@ public class PlayerControl : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
         if (attackTime >= attackSpeed && 
@@ -159,6 +163,17 @@ public class PlayerControl : MonoBehaviour
             transform.position = new Vector3(-6.31f, 0, 6.08f);
             Application.LoadLevel(Application.loadedLevel);
         }
+        if (isInvincible)
+        {
+            Debug.Log(1);
+            Debug.DrawLine(oldPosition, transform.position, Color.green,1f);
+            if (Physics.Raycast(oldPosition, (transform.position-oldPosition), Vector3.Distance(oldPosition ,transform.position), wall))
+            {
+                transform.position = oldPosition;
+                Debug.Log("穿牆");
+            }
+        }
+        Debug.DrawLine(oldPosition, transform.position, Color.red);
     }
     public void Attack()
     {
@@ -185,8 +200,9 @@ public class PlayerControl : MonoBehaviour
     }
     void Roll()
     {
+        oldPosition = transform.position;
         if (stamina > staminaRoll)
-        { 
+        {
             //歸零動量
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             //耐力條 -= 損失耐力

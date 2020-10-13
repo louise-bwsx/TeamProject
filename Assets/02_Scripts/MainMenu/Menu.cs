@@ -35,13 +35,10 @@ public class Menu : MonoBehaviour
 
             anyWindow[0].SetActive(true);
         }
-        //else
-        //{
-        //    QuitGame();
-        //}
     }
     public void PlayGame()
     {
+        CentralData.SaveData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void QuitGame()

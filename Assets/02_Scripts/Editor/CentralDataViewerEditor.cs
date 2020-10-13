@@ -9,7 +9,7 @@ public class CentralDataViewerEditor : Editor
     {
         DrawDefaultInspector();
         CentralDataViewer mTarget = (CentralDataViewer)target;
-        EditorGUILayout.LabelField("Audio", mTarget.AudioVol.ToString());
-
+        EditorGUILayout.LabelField("BGM", mTarget.BGMVol.ToString());
+        EditorGUILayout.LabelField("SFX", mTarget.SFXVol.ToString());
     }
 }

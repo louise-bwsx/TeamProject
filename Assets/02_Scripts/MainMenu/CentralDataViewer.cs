@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class CentralDataViewer : MonoBehaviour
 {
-    public float AudioVol
+    public float BGMVol
     {
         get
         {
-            return CentralData.GetInst().AudioVol;
+            return CentralData.GetInst().BGMVol;
+        }
+    }
+    public float SFXVol
+    {
+        get
+        {
+            return CentralData.GetInst().SFXVol;
         }
     }
 

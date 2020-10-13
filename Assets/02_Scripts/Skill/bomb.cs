@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bomb : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
     //public float delay = 3f;
     //public float radius = 5f;

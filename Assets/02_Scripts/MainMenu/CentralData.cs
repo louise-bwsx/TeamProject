@@ -52,14 +52,12 @@ public class CentralData
         return data;
     }
 
-
-
     //成員變數
-    public float AudioVol = 1.0f;//音量0~1
+    public float BGMVol = 1.0f;//音量0~1
+    public float SFXVol = 1.0f;
 
 
     //建構子
-
     private CentralData()
     {
 

@@ -68,7 +68,7 @@ public class PlayerControl : MonoBehaviour
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
         if (attackTime >= attackSpeed && 
-            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[1].activeSelf&& !gameMenu.anyWindow[2].activeSelf)
+            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf&& !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf)
         {
             if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {

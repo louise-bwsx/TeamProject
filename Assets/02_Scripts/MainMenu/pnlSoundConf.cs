@@ -6,21 +6,12 @@ using UnityEngine.UI;
 
 public class pnlSoundConf : MonoBehaviour
 {
-    public Slider slider = null;
-    public AudioMgr audioMgr = null;
-    // Start is called before the first frame update
+    public Slider BGMSlider;
+    public Slider SFXSlider;
+    public AudioMgr audioMgr;
     void Start()
     {
-        slider.value = audioMgr.GetVol();
-    }
-    public void CloseDlg()
-    {
-        gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-        void Update()
-    {
-        
+        BGMSlider.value = audioMgr.GetBGMVol();
+        SFXSlider.value = audioMgr.GetSFXVol();
     }
 }

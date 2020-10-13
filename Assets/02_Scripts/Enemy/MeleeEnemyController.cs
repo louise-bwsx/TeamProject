@@ -8,6 +8,7 @@ public class MeleeEnemyController : EnemyController
     public GameObject attackCube;
     public Transform monsterAttackRotation;
     public Animator animator;
+    public MonsterHealth monsterHealth;
 
     void Start()
     {
@@ -41,13 +42,14 @@ public class MeleeEnemyController : EnemyController
             agent.enabled = false;
         }
         attackCD += Time.deltaTime;
+        if (monsterHealth.Hp < 0)
+        {
+            attackCube.SetActive(false);
+            agent.enabled = false;
+        }
     }
     void FaceCamera()
     {
-        //Vector3 direction = (target.position - transform.position).normalized;
-        //Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        //monsterAttackRotation.rotation = Quaternion.Slerp(monsterAttackRotation.rotation, lookRotation, Time.deltaTime * 5f);
-
         transform.rotation = Quaternion.Euler(Vector3.zero);
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));

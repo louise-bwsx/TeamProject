@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 3491639138931874879}
   - component: {fileID: 1949071469373561704}
   - component: {fileID: 7823103382043815615}
-  - component: {fileID: 985972908091550884}
   - component: {fileID: 1061591067915779237}
-  - component: {fileID: 1995655681548159994}
   m_Layer: 0
   m_Name: ShootingWindSkill
   m_TagString: AirAttack
@@ -29,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281075568003997482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.69, y: 0.88, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,9 +42,9 @@ SphereCollider:
   m_GameObject: {fileID: 281075568003997482}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.00001
+  m_Radius: 2.08
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7823103382043815615
 MonoBehaviour:
@@ -61,27 +59,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 3
-  audioSource: {fileID: 1061591067915779237}
-  SFX: {fileID: 8300000, guid: 2a781ef1afb967d46a1cc90b50974e83, type: 3}
-  tornado: {fileID: 3859587287699638817, guid: 8f08c990e8c96f7469d60b195aca3500, type: 3}
-  fireTornado: {fileID: 1476168764019465826, guid: a5d1b5953a555a042a64f1f19f417d0a,
+  tornado: {fileID: 5691203040058722263, guid: 355bfd1ed7f9a4c4d9f0a7866c9d4590, type: 3}
+  fireTornado: {fileID: 6444559685851273252, guid: c68fc001768b4f34b806eb9c29a8d2e8,
     type: 3}
---- !u!54 &985972908091550884
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281075568003997482}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!82 &1061591067915779237
 AudioSource:
   m_ObjectHideFlags: 0
@@ -92,7 +72,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2a781ef1afb967d46a1cc90b50974e83, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -178,17 +158,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &1995655681548159994
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281075568003997482}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.6207352
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.31036758, z: 0}

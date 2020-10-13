@@ -5,26 +5,14 @@ using UnityEngine;
 public class ShootingWindSkill : MonoBehaviour
 {
     public float destroyTime = 3F;
-    float countdown;
-    public AudioSource audioSource;//音樂放置
-    public AudioClip SFX;//毒音效
     public GameObject tornado;//爆炸物件生成
     public GameObject fireTornado;
-    //public GameObject explosionEffect;//放置特效
 
     private void Start()
     {
         GameObject shootingSkill = Instantiate(tornado, transform.position, transform.rotation);
         Destroy(shootingSkill, destroyTime);
-    }
-    void Update()
-    {
-        countdown -= Time.deltaTime;
-        if (countdown <= 0f)
-        {
-            audioSource.PlayOneShot(SFX);
-            Destroy(gameObject, destroyTime);
-        }
+        Destroy(gameObject, destroyTime);
     }
     private void OnTriggerEnter(Collider other)
     {

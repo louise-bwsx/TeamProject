@@ -10,7 +10,10 @@ public class PlayerAction: MonoBehaviour
     float attackRate;
     public float backToIdle = 0.5f;
     public GameObject sword;
+    public GameObject swingAttackEffect;
     public Transform spwan;
+    public Transform player;
+
 
     public AudioSource GunAudio;//音樂放置
     //public AudioClip walkSFX;//走路音效
@@ -48,6 +51,8 @@ public class PlayerAction: MonoBehaviour
         //動畫
         animator.SetTrigger("Attack");
         //特效
+        GameObject FX = Instantiate(swingAttackEffect, player);
+        Destroy(FX, 1);
         //不讓他造成連按抖動
         attackRate = 0;
     }

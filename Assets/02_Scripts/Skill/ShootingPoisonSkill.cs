@@ -5,26 +5,21 @@ using UnityEngine;
 public class ShootingPoisonSkill : MonoBehaviour
 {
     public float DestroyTime = 3F;
-    float countdown;
-    public AudioSource audioSource;//音樂放置
-    public AudioClip SFX;//毒音效
-    public GameObject explosionObject;//爆炸物件生成
-    //public GameObject explosionEffect;//放置特效
-    void Update()
+    public GameObject poisonEffect;
+    //public GameObject explosionEffect;
+    void Start()
     {
-        countdown -= Time.deltaTime;
-        if (countdown <= 0f)
-        {
-            audioSource.PlayOneShot(SFX);
-            Destroy(gameObject, DestroyTime);
-        }
+        GameObject UsingSkill = Instantiate(poisonEffect, transform.position, transform.rotation);
+        Destroy(gameObject, DestroyTime);
+        Destroy(UsingSkill, DestroyTime);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("FireAttack"))
         {
-            Destroy(gameObject);
-            Instantiate(explosionObject, transform.position, transform.rotation);
+            //生成爆炸特效
+            //音效
+            //特效DestroyTime後消失
         }
     }
  

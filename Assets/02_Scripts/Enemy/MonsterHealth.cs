@@ -15,6 +15,7 @@ public class MonsterHealth : MonoBehaviour
     public Animator animator;
     public NavMeshAgent navMeshAgent;
     public GameObject healthBar;
+    public GameObject getHitEffect;
 
     public AudioSource GunAudio;//音樂放置
     public AudioClip SwordHitSFX;//突擊受擊音效
@@ -41,6 +42,8 @@ public class MonsterHealth : MonoBehaviour
     }
     public void GetHit(float Damage)
     {
+        GameObject FX = Instantiate(getHitEffect, transform);
+        Destroy(FX, 1);
         Hp -= Damage;
         healthBarOnGame.SetHealth(Hp);
         if (Hp <= 0)

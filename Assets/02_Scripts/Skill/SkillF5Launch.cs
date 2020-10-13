@@ -8,7 +8,7 @@ public class SkillF5Launch : Skill
     {
         lastFireTime += Time.deltaTime;
     }
-    public void Shoot()
+    public override void Shoot()
     {
         if (lastFireTime > fireRate)
         {

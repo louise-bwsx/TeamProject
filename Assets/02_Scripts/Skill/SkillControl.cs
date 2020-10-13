@@ -9,7 +9,8 @@ public class SkillControl : MonoBehaviour
     public Button[] list;
 
 
-    public SkillF5Launch skillF5Launch;
+    public Skill[] skillList;
+    //public SkillF5Launch skillF5Launch;
     //public SkillF6Launch f6Skill;
     //public SkillF7Launch f7Skill;
     //public SkillF8Launch f8Skill;
@@ -39,7 +40,7 @@ public class SkillControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            skillF5Launch.Shoot();
+            skillList[0].Shoot();
         }
         else if (Input.GetKeyDown(KeyCode.F6))
         {

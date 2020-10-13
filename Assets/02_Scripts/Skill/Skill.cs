@@ -24,4 +24,7 @@ public class Skill : MonoBehaviour
         lastFireTime = 10f;
         fillImage = transform.Find("CDImage").GetComponent<Image>();
     }
+    public virtual void Shoot()
+    { 
+    }
 }

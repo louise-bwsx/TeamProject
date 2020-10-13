@@ -21,7 +21,7 @@ public class FireMagic : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Poison")|| other.CompareTag("tornado")|| other.CompareTag("Skill")||other.CompareTag("Monster")|| other.CompareTag("Wall"))
+        if (other.CompareTag("Poison")|| other.CompareTag("Tornado")|| other.CompareTag("Skill")||other.CompareTag("Monster")|| other.CompareTag("Wall"))
         {
             Destroy(gameObject);
         }

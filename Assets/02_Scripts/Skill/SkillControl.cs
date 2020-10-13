@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class SkillControl : MonoBehaviour
 {
     [SerializeField]
-    public Button[] list;
-
+    public Button[] buttonList;
+    public Sprite[] spriteList;
 
     public Skill[] skillList;
 
@@ -27,7 +27,7 @@ public class SkillControl : MonoBehaviour
         }
         else if (move < 0.0f)
         {
-            if (CurIdx < list.Length - 1) CurIdx++;
+            if (CurIdx < buttonList.Length - 1) CurIdx++;
             SetPos();
         }
 
@@ -81,12 +81,18 @@ public class SkillControl : MonoBehaviour
     }
     public void SetPos()
     {
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < buttonList.Length; i++)
         {
             if (i == CurIdx)
-                list[i].enabled = true;
+            {
+                //buttonList[i].image.sprite = spriteList[i];
+                buttonList[i].enabled = true;
+            }
             else
-                list[i].enabled = false;
+            {
+                //buttonList[i].image.sprite = spriteList[i];
+                buttonList[i].enabled = false;
+            }
         }
 
 

@@ -77,7 +77,7 @@ public class MonsterHealth : MonoBehaviour
             GunAudio.PlayOneShot(FirMagicHitSFX);
             GetHit(10);
         }
-        if (other.CompareTag("tornado"))
+        if (other.CompareTag("Tornado"))
         {
             GunAudio.PlayOneShot(tornadoHitSFX);
             GetHit(15);

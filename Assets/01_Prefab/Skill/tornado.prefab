@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2520081407405663885}
   m_Layer: 0
   m_Name: tornado
-  m_TagString: tornado
+  m_TagString: Undefined
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,14 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8575f49d1f9d34d88ddf4c7fb515ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
-  radius: 5
-  force: 700
   DestroyTime: 3
-  GameObjectDestroyTime: 3
   GunAudio: {fileID: 3859587287699638816}
   SoilWallSFX: {fileID: 8300000, guid: 2a781ef1afb967d46a1cc90b50974e83, type: 3}
-  explosionSFX: {fileID: 8300000, guid: eda47d91b6d49b841a15018159ac5120, type: 3}
   explosionObject: {fileID: 1476168764019465826, guid: a5d1b5953a555a042a64f1f19f417d0a,
     type: 3}
 --- !u!82 &3859587287699638816

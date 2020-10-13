@@ -8,6 +8,7 @@ public class WallFade : MonoBehaviour
     int playerLayer;
     Transform alphaTransform;
     public Transform player;
+    public Material[] colors;
     void Start()
     {
         wall = LayerMask.GetMask("Wall");
@@ -22,13 +23,16 @@ public class WallFade : MonoBehaviour
         {
             //Physics.RaycastNonAlloc 陣列raycast
             if(alphaTransform != null)
-                alphaTransform.transform.GetComponent<MeshRenderer>().material.color = Color.black;
+                alphaTransform.transform.GetComponent<MeshRenderer>().material = colors[1];
+
             alphaTransform = wallrCross.transform;
-            alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.4f;
+            alphaTransform.GetComponent<MeshRenderer>().material = colors[0];
+            //alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.4f;
         }
         else if (alphaTransform != null)
         {
-            alphaTransform.transform.GetComponent<MeshRenderer>().material.color = Color.black;
+            alphaTransform.transform.GetComponent<MeshRenderer>().material = colors[1];
+            //alphaTransform.transform.GetComponent<MeshRenderer>().material.color = Color.black;
         }
         Debug.DrawLine(Camera.main.transform.position, player.position, Color.blue);
     }

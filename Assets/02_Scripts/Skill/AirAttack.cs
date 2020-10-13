@@ -47,7 +47,6 @@ public class AirAttack : MonoBehaviour
     {
         if (other.CompareTag("Monster")|| other.CompareTag("Wall")|| other.CompareTag("Skill"))
         {
-
             Destroy(gameObject);
         }
     }

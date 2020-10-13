@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class F5SkillPosition : MonoBehaviour
+public class MousePosition : MonoBehaviour
 {
     int floor;
     Vector3 playertomouse;

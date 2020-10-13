@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
     public Transform playerRotation;
     public EquipmentManager equipmentManager;
     //有關耐力
-    float stamina;
+    public float stamina;
     float staminaLimit = 100;
     float staminaRoll = 10;
     //有關移動

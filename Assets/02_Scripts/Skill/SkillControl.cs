@@ -8,11 +8,12 @@ public class SkillControl : MonoBehaviour
     [SerializeField]
     public Button[] list;
 
-    public SkillF5Launch F5Skill;
-    public SkillF6Launch F6Skill;
-    public SkillF7Launch F7Skill;
-    public SkillF8Launch F8Skill;
-    public SkillF9Launch F9Skill;
+
+    public SkillF5Launch skillF5Launch;
+    //public SkillF6Launch f6Skill;
+    //public SkillF7Launch f7Skill;
+    //public SkillF8Launch f8Skill;
+    //public SkillF9Launch f9Skill;
 
     public int CurIdx = 0;
     // Start is called before the first frame update
@@ -35,30 +36,52 @@ public class SkillControl : MonoBehaviour
             if (CurIdx < list.Length - 1) CurIdx++;
             SetPos();
         }
+
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            skillF5Launch.Shoot();
+        }
+        else if (Input.GetKeyDown(KeyCode.F6))
+        {
+            //F6Skill.Shoot();
+        }
+        else if (Input.GetKeyDown(KeyCode.F7))
+        {
+            //F7Skill.Shoot();
+        }
+        else if (Input.GetKeyDown(KeyCode.F8))
+        {
+            //F8Skill.Shoot();
+        }
+        else if (Input.GetKeyDown(KeyCode.F9))
+        {
+            //F9Skill.Shoot();
+        }
+
         //滑鼠中鍵的效果
         if (Input.GetMouseButtonDown(2))
         {
-            Button b = list[CurIdx];
+            while(CurIdx<list.Length)
             if (CurIdx == 0)
             {
-                F5Skill.shoot();
+                skillF5Launch.Shoot();
             }
             if (CurIdx == 1)
             {
-                F6Skill.shoot();
+                //f6Skill.shoot();
             }
             if (CurIdx == 2)
             {
-                F7Skill.shoot();
+                //f7Skill.shoot();
             }
 
             if (CurIdx == 3)
             {
-                F8Skill.shoot();
+                //f8Skill.shoot();
             }
             if (CurIdx == 4)
             {
-                F9Skill.shoot();
+                //f9Skill.shoot();
             }
         }
     }

@@ -42,6 +42,7 @@ public class MonsterHealth : MonoBehaviour
     }
     public void GetHit(float Damage)
     {
+        Debug.Log(transform.name);
         GameObject FX = Instantiate(getHitEffect, transform);
         Destroy(FX, 1);
         Hp -= Damage;

@@ -1303,7 +1303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45880583}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -14, y: 0.51, z: -36.2}
+  m_LocalPosition: {x: -29.5, y: 0.51, z: -20.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -28793,6 +28793,7 @@ GameObject:
   - component: {fileID: 3739355441121237070}
   - component: {fileID: 7749620381295141325}
   - component: {fileID: 731778897}
+  - component: {fileID: 5286920964311989204}
   m_Layer: 10
   m_Name: Box186
   m_TagString: Wall
@@ -28800,6 +28801,22 @@ GameObject:
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
+--- !u!208 &5286920964311989204
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286920964311989203}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.35700002, y: 0.42200002, z: 0.455}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.455}
+  m_TimeToStationary: 0.5
 --- !u!4 &5350305248661333139
 Transform:
   m_ObjectHideFlags: 0
@@ -29135,7 +29152,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   navMeshAgent: {fileID: 0}
   healthBar: {fileID: 5477791638362166940}
-  getHitEffect: {fileID: 0}
+  getHitEffect: {fileID: 8792773701619345590, guid: e08cd98b0c9d2854a828c22a18171ae6,
+    type: 3}
   GunAudio: {fileID: 9150224076395820531}
   SwordHitSFX: {fileID: 8300000, guid: 377a02e3a1f91124db0ee8f2278fe40b, type: 3}
   PoisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}

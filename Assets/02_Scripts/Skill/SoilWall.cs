@@ -5,18 +5,10 @@ using UnityEngine;
 public class SoilWall : MonoBehaviour
 {
     public float DestroyTime = 3F;
-    float countdown;
-    public AudioSource GunAudio;//音樂放置
-    public AudioClip SFX;//音效
-    //public GameObject explosionEffect;//放置特效
-    void Update()
+
+    void Start()
     {
-        countdown -= Time.deltaTime;
-        if (countdown <= 0f)
-        {
-            GunAudio.PlayOneShot(SFX);
-            Destroy(gameObject, DestroyTime);
-        }
+        Destroy(gameObject, DestroyTime);
     }
 
 }

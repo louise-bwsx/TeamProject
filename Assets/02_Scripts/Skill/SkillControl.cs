@@ -55,8 +55,6 @@ public class SkillControl : MonoBehaviour
         //滑鼠中鍵的效果
         if (Input.GetMouseButtonDown(2))
         {
-            //while (CurIdx < list.Length)
-            //{ }
             if (CurIdx == 0)
             {
                 skillList[0].Shoot();

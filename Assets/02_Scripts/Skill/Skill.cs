@@ -14,8 +14,6 @@ public class Skill : MonoBehaviour
     public float skillForce = 200f;
     public float lastFireTime;//最後射擊時間
     public float fireRate = 2f;//射擊間隔
-    //public ParticleSystem muzzleVFX;//放置粒子物件
-    //public GameObject explosionEffect;//放置特效
     public Image fillImage;//待實作
     void Start()
     {

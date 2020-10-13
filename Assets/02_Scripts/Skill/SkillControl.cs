@@ -10,9 +10,6 @@ public class SkillControl : MonoBehaviour
 
 
     public Skill[] skillList;
-    //public SkillF5Launch skillF5Launch;
-    //public SkillF6Launch f6Skill;
-    //public SkillF7Launch f7Skill;
     //public SkillF8Launch f8Skill;
     //public SkillF9Launch f9Skill;
 
@@ -48,7 +45,7 @@ public class SkillControl : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F7))
         {
-            //F7Skill.Shoot();
+            skillList[2].Shoot();
         }
         else if (Input.GetKeyDown(KeyCode.F8))
         {
@@ -73,9 +70,8 @@ public class SkillControl : MonoBehaviour
             }
             if (CurIdx == 2)
             {
-                //f7Skill.shoot();
+                skillList[2].Shoot();
             }
-
             if (CurIdx == 3)
             {
                 //f8Skill.shoot();

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 209101486852984104}
   m_Layer: 0
   m_Name: FirMagic
-  m_TagString: FirMagic
+  m_TagString: FireAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,13 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053bc13025341284a88c7024347fc282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
-  radius: 5
   force: 700
   DestroyTime: 0.8
   GunAudio: {fileID: 209101486852984104}
   FireMagicSFX: {fileID: 8300000, guid: 3dd2434f4a935b24aa4549923fb64cc9, type: 3}
-  mesh: {fileID: 0}
 --- !u!82 &209101486852984104
 AudioSource:
   m_ObjectHideFlags: 0

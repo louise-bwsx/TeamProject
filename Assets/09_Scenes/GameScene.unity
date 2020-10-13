@@ -4086,7 +4086,7 @@ GameObject:
   - component: {fileID: 275492648}
   - component: {fileID: 275492647}
   m_Layer: 5
-  m_Name: FilledSkillThree
+  m_Name: CDImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4124,13 +4124,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.59607846}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 752b3c2979d4a95429cb23da935f6008, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7706bc0c8dedc824499c8114c17ff4a5, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8031,7 +8031,8 @@ MonoBehaviour:
   - {fileID: 8761432779233348674}
   skillList:
   - {fileID: 9063801812623118764}
-  - {fileID: 8761432779072758937}
+  - {fileID: 8761432779072758938}
+  - {fileID: 8761432779293686982}
   CurIdx: 0
 --- !u!4 &622696538 stripped
 Transform:
@@ -11111,7 +11112,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.11320752, g: 0.0090779625, b: 0.0090779625, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -30890,7 +30891,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7706bc0c8dedc824499c8114c17ff4a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 658c4b8927ee98d44a123693210d2e9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30948,7 +30949,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15ec324b46e10db47b736ff151dd581d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c53024bf3380d64880365a815e61ae8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -31024,7 +31025,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2d1b4dc33c339b84c820d48a756ef438, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9d184f027d5b494c80ac33341c37c98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -31422,7 +31423,7 @@ GameObject:
   - component: {fileID: 811531572672727764}
   - component: {fileID: 8085716707496068600}
   - component: {fileID: 932833249}
-  - component: {fileID: 8761432779072758937}
+  - component: {fileID: 8761432779072758938}
   m_Layer: 5
   m_Name: SkillSlot (1)
   m_TagString: Untagged
@@ -31430,7 +31431,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8761432779072758937
+--- !u!114 &8761432779072758938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31439,7 +31440,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8761432779072758936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 379f91c7368e24f4db5207836e7ae6aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 3324d37f3c49a8549b5bfa04588cb9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 45880586}
@@ -31451,10 +31452,7 @@ MonoBehaviour:
   skillRotation: {fileID: 3756948}
   skillForce: 200
   lastFireTime: 0
-  fireRate: 1
-  audioSource: {fileID: 7637880332491083333, guid: fb26b4bcfa79f934bb08bfcfa65df40e,
-    type: 3}
-  SFX: {fileID: 8300000, guid: 3383f9c6be75aea49a208ea4b546f729, type: 3}
+  fireRate: 2
   fillImage: {fileID: 8085716707496068600}
 --- !u!1 &8761432779233348673
 GameObject:
@@ -31467,7 +31465,6 @@ GameObject:
   - component: {fileID: 4138965639800850106}
   - component: {fileID: 811531572797678093}
   - component: {fileID: 8085716707635375393}
-  - component: {fileID: 8761432779233348675}
   - component: {fileID: 8761432779233348674}
   m_Layer: 5
   m_Name: SkillSlot (4)
@@ -31530,22 +31527,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8761432779233348675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8761432779233348673}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a43bfc36373eff4b9e45a69f10813c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ColdTime: 2
-  Timer: 0
-  FilledImage: {fileID: 0}
-  IsStartTimer: 0
 --- !u!1 &8761432779293686981
 GameObject:
   m_ObjectHideFlags: 0
@@ -31557,8 +31538,8 @@ GameObject:
   - component: {fileID: 4138965639853848126}
   - component: {fileID: 811531572862194313}
   - component: {fileID: 8085716707716734373}
-  - component: {fileID: 8761432779293686982}
   - component: {fileID: 8761432779293686983}
+  - component: {fileID: 8761432779293686982}
   m_Layer: 5
   m_Name: SkillSlot (2)
   m_TagString: Untagged
@@ -31573,15 +31554,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8761432779293686981}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e02e677278cc358458e961e7c72c1ac5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3324d37f3c49a8549b5bfa04588cb9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColdTime: 2
-  Timer: 0
-  FilledImage: {fileID: 0}
-  IsStartTimer: 0
+  playerControl: {fileID: 45880586}
+  staminaCost: 0
+  destroyTime: 3
+  skillObject: {fileID: 281075568003997482, guid: 0e798cb63dc8d3d4dab10b5359706650,
+    type: 3}
+  skillPos: {fileID: 3756948}
+  skillRotation: {fileID: 3756948}
+  skillForce: 500
+  lastFireTime: 0
+  fireRate: 2
+  fillImage: {fileID: 8085716707716734373}
 --- !u!114 &8761432779293686983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31602,7 +31590,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.066037714, g: 0.0028034868, b: 0.0028034868, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -31647,7 +31635,6 @@ GameObject:
   - component: {fileID: 4138965639035320718}
   - component: {fileID: 811531572070145337}
   - component: {fileID: 8085716706893484565}
-  - component: {fileID: 8761432779548603255}
   - component: {fileID: 8761432779548603254}
   m_Layer: 5
   m_Name: SkillSlot (3)
@@ -31710,23 +31697,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8761432779548603255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8761432779548603253}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6625a09b1adfe1c49b04b3b7f0cd9895, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ColdTime: 2
-  Timer: 0
-  FilledImage: {fileID: 0}
-  IsStartTimer: 0
-  F8Skill: {fileID: 555733808}
 --- !u!1 &8761432779777514953
 GameObject:
   m_ObjectHideFlags: 0
@@ -31782,11 +31752,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9063801812623118763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b76ff880ff70a48458ab1546adfb73e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3324d37f3c49a8549b5bfa04588cb9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 45880586}
-  staminaCost: 10
+  staminaCost: 0
   destroyTime: 3
   skillObject: {fileID: 3759059081806054490, guid: e39f6a6643204904ca2cd4c74d0d0423,
     type: 3}
@@ -31795,9 +31765,6 @@ MonoBehaviour:
   skillForce: 200
   lastFireTime: 0
   fireRate: 2
-  audioSource: {fileID: 4607675500589964240, guid: e39f6a6643204904ca2cd4c74d0d0423,
-    type: 3}
-  SFX: {fileID: 8300000, guid: dccb5e14b52110e418214bca7b4c802b, type: 3}
   fillImage: {fileID: 8388507952416796875}
 --- !u!82 &9150224076395820531
 AudioSource:

@@ -33,7 +33,7 @@ public class ShootingWaterSkill : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Monster")|| other.CompareTag("Wall")|| other.CompareTag("Skill"))
+        if (other.CompareTag("Monster") || other.CompareTag("Wall")|| other.CompareTag("Skill"))
         {
             Explode();
         }

@@ -6,22 +6,23 @@ public class PlayerAction: MonoBehaviour
 {
     public Animator animator;
     public UIBarControl uIBarControl;
-    bool isAttack = true;
     float attackRate;
-    public float backToIdle = 0.5f;
+    bool isSpikeAttack = false;
     public GameObject sword;
     public GameObject swingAttackEffect;
+    GameObject swordSpike;
     public Transform spwan;
     public Transform player;
 
 
-    public AudioSource GunAudio;//音樂放置
+    public AudioSource audioSource;//音樂放置
     //public AudioClip walkSFX;//走路音效
     public AudioClip TurnOverSFX;//翻滾音效
     public AudioClip SpikeSFX;//突刺音效
     public AudioClip SwingSFX;//揮擊音效
     void Update()
     {
+        Debug.Log(animator.GetBool("IsAttack"));
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
             //GunAudio.PlayOneShot(walkSFX);
@@ -31,23 +32,30 @@ public class PlayerAction: MonoBehaviour
         {
             animator.SetBool("Walk", false);
         }
-        if (attackRate > backToIdle)
-        {
-            animator.SetBool("IsAttack", !isAttack);
-        }
         attackRate += Time.deltaTime;
+
+        if (animator.GetBool("IsAttack") && swordSpike == null && isSpikeAttack)
+        {
+            Debug.Log(1);
+            swordSpike = Instantiate(sword, spwan.position, spwan.rotation);
+        }
+        if (!animator.GetBool("IsAttack"))
+        {
+            Destroy(swordSpike);
+            isSpikeAttack = false;
+        }
     }
     public void Roll()
     {
         animator.SetTrigger("Roll");
         //音效
-        GunAudio.PlayOneShot(TurnOverSFX);
+        audioSource.PlayOneShot(TurnOverSFX);
         //特效
     }
     public void NormalAttack()
     {
         //音效
-        GunAudio.PlayOneShot(SwingSFX);
+        audioSource.PlayOneShot(SwingSFX);
         //動畫
         animator.SetTrigger("Attack");
         //特效
@@ -58,10 +66,9 @@ public class PlayerAction: MonoBehaviour
     }
     public void SpikeAttack()
     {
-        GunAudio.PlayOneShot(SpikeSFX);
+        audioSource.PlayOneShot(SpikeSFX);
         animator.SetTrigger("Attack_Spike");
-        GameObject attackingSword = Instantiate(sword, spwan.position, spwan.rotation);
         attackRate = 0;
-        Destroy(attackingSword,0.3f);
+        isSpikeAttack = true;
     }
 }

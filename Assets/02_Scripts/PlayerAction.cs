@@ -7,7 +7,6 @@ public class PlayerAction: MonoBehaviour
     public Animator animator;
     public UIBarControl uIBarControl;
     float attackRate;
-    bool isSpikeAttack = false;
     public GameObject sword;
     public GameObject swingAttackEffect;
     GameObject swordSpike;
@@ -22,7 +21,6 @@ public class PlayerAction: MonoBehaviour
     public AudioClip SwingSFX;//揮擊音效
     void Update()
     {
-        Debug.Log(animator.GetBool("IsAttack"));
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
             //GunAudio.PlayOneShot(walkSFX);
@@ -34,16 +32,6 @@ public class PlayerAction: MonoBehaviour
         }
         attackRate += Time.deltaTime;
 
-        if (animator.GetBool("IsAttack") && swordSpike == null && isSpikeAttack)
-        {
-            Debug.Log(1);
-            swordSpike = Instantiate(sword, spwan.position, spwan.rotation);
-        }
-        if (!animator.GetBool("IsAttack"))
-        {
-            Destroy(swordSpike);
-            isSpikeAttack = false;
-        }
     }
     public void Roll()
     {
@@ -69,6 +57,7 @@ public class PlayerAction: MonoBehaviour
         audioSource.PlayOneShot(SpikeSFX);
         animator.SetTrigger("Attack_Spike");
         attackRate = 0;
-        isSpikeAttack = true;
+        swordSpike = Instantiate(sword, spwan.position, spwan.rotation);
+        Destroy(swordSpike, 0.3f);
     }
 }

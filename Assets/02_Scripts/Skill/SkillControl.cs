@@ -10,17 +10,13 @@ public class SkillControl : MonoBehaviour
 
 
     public Skill[] skillList;
-    //public SkillF8Launch f8Skill;
-    //public SkillF9Launch f9Skill;
 
     public int CurIdx = 0;
-    // Start is called before the first frame update
     void Start()
     {
         SetPos();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float move = Input.GetAxis("Mouse ScrollWheel");
@@ -49,11 +45,11 @@ public class SkillControl : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F8))
         {
-            //F8Skill.Shoot();
+            skillList[3].Shoot();
         }
         else if (Input.GetKeyDown(KeyCode.F9))
         {
-            //F9Skill.Shoot();
+            skillList[4].Shoot();
         }
 
         //滑鼠中鍵的效果
@@ -75,11 +71,11 @@ public class SkillControl : MonoBehaviour
             }
             if (CurIdx == 3)
             {
-                //f8Skill.shoot();
+                skillList[3].Shoot();
             }
             if (CurIdx == 4)
             {
-                //f9Skill.shoot();
+                skillList[4].Shoot();
             }
         }
     }

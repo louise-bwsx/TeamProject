@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickGold: 10000
-  maxHp: 10000
+  maxHp: 500
   playerHealth: 0
   healthbarongame: {fileID: 501881193}
   uIBarControl: {fileID: 2136891374}
@@ -7282,7 +7282,6 @@ MonoBehaviour:
   skillList:
   - {fileID: 9063801812623118764}
   - {fileID: 8761432779072758937}
-  skillF5Launch: {fileID: 9063801812623118764}
   CurIdx: 0
 --- !u!4 &622696538 stripped
 Transform:
@@ -13879,7 +13878,7 @@ GameObject:
   - component: {fileID: 1307310218}
   - component: {fileID: 1307310217}
   m_Layer: 5
-  m_Name: FilledSkillTwo
+  m_Name: CDImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29243,18 +29242,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379f91c7368e24f4db5207836e7ae6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerControl: {fileID: 0}
-  staminaCost: 0
+  playerControl: {fileID: 45880586}
+  staminaCost: 10
   destroyTime: 3
-  skillObject: {fileID: 0}
-  skillPos: {fileID: 0}
-  skillRotation: {fileID: 0}
+  skillObject: {fileID: 4616344345140612486, guid: fb26b4bcfa79f934bb08bfcfa65df40e,
+    type: 3}
+  skillPos: {fileID: 3756948}
+  skillRotation: {fileID: 3756948}
   skillForce: 200
   lastFireTime: 0
   fireRate: 1
-  audioSource: {fileID: 0}
-  SFX: {fileID: 0}
-  fillImage: {fileID: 0}
+  audioSource: {fileID: 7637880332491083333, guid: fb26b4bcfa79f934bb08bfcfa65df40e,
+    type: 3}
+  SFX: {fileID: 8300000, guid: 3383f9c6be75aea49a208ea4b546f729, type: 3}
+  fillImage: {fileID: 8085716707496068600}
 --- !u!1 &8761432779233348673
 GameObject:
   m_ObjectHideFlags: 0
@@ -29585,7 +29586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 45880586}
-  staminaCost: 0
+  staminaCost: 10
   destroyTime: 3
   skillObject: {fileID: 3759059081806054490, guid: e39f6a6643204904ca2cd4c74d0d0423,
     type: 3}
@@ -29593,7 +29594,7 @@ MonoBehaviour:
   skillRotation: {fileID: 3756948}
   skillForce: 200
   lastFireTime: 0
-  fireRate: 5
+  fireRate: 2
   audioSource: {fileID: 4607675500589964240, guid: e39f6a6643204904ca2cd4c74d0d0423,
     type: 3}
   SFX: {fileID: 8300000, guid: dccb5e14b52110e418214bca7b4c802b, type: 3}

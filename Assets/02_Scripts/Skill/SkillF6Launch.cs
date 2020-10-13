@@ -8,20 +8,23 @@ public class SkillF6Launch : Skill
     {
         lastFireTime += Time.deltaTime;
     }
-    public void Shoot()
+    public override void Shoot()
     {
         if (lastFireTime > fireRate)
         {
-            GameObject BulletObj_ = Instantiate(skillObject);
-            if (BulletObj_ != null)
+            GameObject shootingSkill = Instantiate(skillObject);
+            if (shootingSkill != null)
             {
-                BulletObj_.transform.position = skillPos.position + skillPos.up + skillPos.forward;
-                BulletObj_.transform.rotation = skillRotation.rotation;
-                Rigidbody BulletObjRigidbody_ = BulletObj_.GetComponent<Rigidbody>();
+                shootingSkill.transform.position = skillPos.position + skillPos.up + skillPos.forward;
+                shootingSkill.transform.rotation = skillRotation.rotation;
+                Rigidbody BulletObjRigidbody_ = shootingSkill.GetComponent<Rigidbody>();
                 if (BulletObjRigidbody_ != null)
                 {
-                    BulletObjRigidbody_.AddForce(BulletObj_.transform.forward * skillForce);
+                    BulletObjRigidbody_.AddForce(shootingSkill.transform.forward * skillForce);
                 }
+                lastFireTime = 0;
+                Destroy(shootingSkill, destroyTime);
+                playerControl.stamina -= staminaCost;
             }
         }
     }

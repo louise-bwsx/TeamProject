@@ -44,7 +44,7 @@ public class SkillControl : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F6))
         {
-            //F6Skill.Shoot();
+            skillList[1].Shoot();
         }
         else if (Input.GetKeyDown(KeyCode.F7))
         {
@@ -65,11 +65,11 @@ public class SkillControl : MonoBehaviour
             while(CurIdx<list.Length)
             if (CurIdx == 0)
             {
-                skillF5Launch.Shoot();
+                skillList[0].Shoot();
             }
             if (CurIdx == 1)
             {
-                //f6Skill.shoot();
+                skillList[1].Shoot();
             }
             if (CurIdx == 2)
             {

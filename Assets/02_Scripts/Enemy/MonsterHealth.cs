@@ -43,7 +43,7 @@ public class MonsterHealth : MonoBehaviour
     public void GetHit(float Damage)
     {
         Debug.Log(transform.name);
-        GameObject FX = Instantiate(getHitEffect, transform);
+        GameObject FX = Instantiate(getHitEffect, new Vector3(transform.position.x,transform.position.y+0.8f,transform.position.z),transform.rotation);
         Destroy(FX, 1);
         Hp -= Damage;
         healthBarOnGame.SetHealth(Hp);

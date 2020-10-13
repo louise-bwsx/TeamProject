@@ -7,6 +7,10 @@ public class Door : MonoBehaviour
     public Transform door;
     public GameObject boss;
     public bool isDoorClose = false;
+    private void Start()
+    {
+        boss.SetActive(false);
+    }
     private void Update()
     {
         if (boss == null)
@@ -21,6 +25,7 @@ public class Door : MonoBehaviour
         {
             isDoorClose = true;
             door.localPosition = new Vector3(4.52f, 5.23f, 3.3f);
+            boss.SetActive(true);
         }
     }
 }

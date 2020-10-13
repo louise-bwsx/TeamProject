@@ -183,7 +183,6 @@ public class PlayerControl : MonoBehaviour
             Collider[] hitEnemy = Physics.OverlapSphere(AttackPoint.position, attackRange, EnemyLayer);
             foreach (Collider enemy in hitEnemy)
             {
-                Debug.Log(enemy.name);
                 enemy.GetComponent<MonsterHealth>()?.GetHit(attackDamage);
             }
         }

@@ -64,7 +64,7 @@ public class BossController : EnemyController
     {
         GameObject shootingArrow = Instantiate(arrow, shootingtransform.position, shootingtransform.rotation);
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
-        Destroy(shootingArrow, 3f);
+        Destroy(shootingArrow, 5f);
         longRangeAttackCD = 0;
     }
 }

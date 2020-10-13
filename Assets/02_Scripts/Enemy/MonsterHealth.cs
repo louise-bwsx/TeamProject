@@ -28,15 +28,20 @@ public class MonsterHealth : MonoBehaviour
     void Update()
     {
         if (animator != null)
-        { 
+        {
             if (animator.GetBool("IsDead"))
             {
                 Destroy(gameObject);
             }
         }
+        else if(animator == null && Hp<=0)
+        {
+            Destroy(gameObject);
+        }
     }
     public void GetHit(float Damage)
     {
+        Debug.Log(1);
         Hp -= Damage;
         healthBarOnGame.SetHealth(Hp);
         if (Hp <= 0)
@@ -97,8 +102,14 @@ public class MonsterHealth : MonoBehaviour
     }
     public virtual void MonsterDead()
     {
-        navMeshAgent.enabled = false;
-        animator.SetBool("Dead",true);
+        if (navMeshAgent != null)
+        { 
+            navMeshAgent.enabled = false;
+        }
+        if (animator != null)
+        { 
+            animator.SetBool("Dead",true);
+        }
         healthBar.SetActive(false);
 
         Vector3 itemLocation = this.transform.position;//獲得當前怪物的地點

@@ -34,45 +34,45 @@ public class CharacterBase : MonoBehaviour
 
     public void StrOnClick()
     {
-        if (getHitEffect.pickGold >= 0)
+        if (getHitEffect.dust >= 0)
         {
-            getHitEffect.pickGold -= SkillLevelneed;
+            getHitEffect.dust -= SkillLevelneed;
             STR += 2;
            
         }
     }
     public void DefOnClick()
     {
-        if (getHitEffect.pickGold >= 0)
+        if (getHitEffect.dust >= 0)
         {
-            getHitEffect.pickGold -= SkillLevelneed;
+            getHitEffect.dust -= SkillLevelneed;
             DEF += 2;
 
         }
     }
     public void AgiOnClick()
     {
-        if (getHitEffect.pickGold >= 0)
+        if (getHitEffect.dust >= 0)
         {
-            getHitEffect.pickGold -= SkillLevelneed;
+            getHitEffect.dust -= SkillLevelneed;
             AGI += 2;
 
         }
     }
     public void IntOnClick()
     {
-        if (getHitEffect.pickGold >= 0)
+        if (getHitEffect.dust >= 0)
         {
-            getHitEffect.pickGold -= SkillLevelneed;
+            getHitEffect.dust -= SkillLevelneed;
             INT += 2;
 
         }
     }
     public void SprOnClick()
     {
-        if (getHitEffect.pickGold >= 0)
+        if (getHitEffect.dust >= 0)
         {
-            getHitEffect.pickGold -= SkillLevelneed;
+            getHitEffect.dust -= SkillLevelneed;
             SPR += 2;
 
         }

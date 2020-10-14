@@ -3,112 +3,84 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum enumSkill
+{
+    fireSkill,
+    poisonSkill,
+    stoneSkil,
+    waterSkill,
+    windSkill
+}
 public class SkillBase : MonoBehaviour
 {
-
-    public int SkillLevelneed = 1000;
-    public int FireSkillLevel=0;
-    public int PoisonSkillLevel = 0;
-    public int SoilWallSkillLevel = 0;
-    public int tornadoSkillLevel = 0;
-    public int AirAttackSkillLevel = 0;
+    public int skillLevelNeed = 1000;
+    public int fireSkillLevel=0;
+    public int poisonSkillLevel = 0;
+    public int stoneSkillLevel = 0;
+    public int waterSkillLevel = 0;
+    public int windSkillLevel = 0;
     public GetHitEffect getHitEffect;
-    public Image[] FireImage;
-    public Image[] PoisonImage;
-    public Image[] SoilWallImage;
-    public Image[] tornadoImage;
-    public Image[] AirAttackImage;
+    public Image[] fireImage;
+    public Image[] poisonImage;
+    public Image[] stoneImage;
+    public Image[] waterImage;
+    public Image[] windImage;
+    int skillMaxLevel = 5;
 
-
-
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void SkillLevelUp(int skill)
     {
-   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    
-    }
-
-
-    public void FireOnClick()
-    {
-        if (getHitEffect.pickGold >= 0)
+        switch ((enumSkill)skill)
         {
-            getHitEffect.pickGold -= SkillLevelneed*2;
-            for (int i = 0; i < FireSkillLevel; i++)
-            {
-                FireImage[i].enabled = true;
-            }
-            FireSkillLevel++;
-
-
+            case enumSkill.fireSkill:
+                {
+                    if (getHitEffect.dust - fireSkillLevel * skillLevelNeed >= 0 && fireSkillLevel < skillMaxLevel)
+                    {
+                        fireImage[fireSkillLevel].enabled = true;
+                        fireSkillLevel++;
+                        getHitEffect.dust = getHitEffect.dust - fireSkillLevel * skillLevelNeed;
+                    }
+                    break;
+                }
+            case enumSkill.poisonSkill:
+                {
+                    if (getHitEffect.dust - poisonSkillLevel * skillLevelNeed >= 0 && poisonSkillLevel < skillMaxLevel)
+                    {
+                        poisonImage[poisonSkillLevel].enabled = true;
+                        poisonSkillLevel++;
+                        getHitEffect.dust = getHitEffect.dust - poisonSkillLevel * skillLevelNeed;
+                    }
+                    break;
+                }
+            case enumSkill.stoneSkil:
+                {
+                    if (getHitEffect.dust - stoneSkillLevel * skillLevelNeed >= 0 && stoneSkillLevel < skillMaxLevel)
+                    {
+                        stoneImage[stoneSkillLevel].enabled = true;
+                        stoneSkillLevel++;
+                        getHitEffect.dust = getHitEffect.dust - stoneSkillLevel * skillLevelNeed;
+                    }
+                    break;
+                }
+            case enumSkill.waterSkill:
+                {
+                    if (getHitEffect.dust - waterSkillLevel * skillLevelNeed >= 0 && waterSkillLevel < skillMaxLevel)
+                    {
+                        waterImage[waterSkillLevel].enabled = true;
+                        waterSkillLevel++;
+                        getHitEffect.dust = getHitEffect.dust - waterSkillLevel * skillLevelNeed;
+                    }
+                    break;
+                }
+            case enumSkill.windSkill:
+                {
+                    if (getHitEffect.dust - windSkillLevel * skillLevelNeed >= 0 && windSkillLevel < skillMaxLevel)
+                    {
+                        windImage[windSkillLevel].enabled = true;
+                        windSkillLevel++;
+                        getHitEffect.dust = getHitEffect.dust - windSkillLevel * skillLevelNeed;
+                    }
+                    break;
+                }
         }
     }
-    public void PoisonOnClick()
-    {
-        if (getHitEffect.pickGold >= 0)
-        {
-            getHitEffect.pickGold -= SkillLevelneed*2;
-            for (int i = 0; i < PoisonSkillLevel; i++)
-            {
-                PoisonImage[i].enabled = true;
-            }
-            PoisonSkillLevel++;
-
-
-        }
-    }
-    public void SoilWallOnClick()
-    {
-        if (getHitEffect.pickGold >= 0)
-        {
-            getHitEffect.pickGold -= SkillLevelneed*2;
-            for (int i = 0; i < SoilWallSkillLevel; i++)
-            {
-                SoilWallImage[i].enabled = true;
-            }
-            SoilWallSkillLevel++;
-
-
-        }
-    }
-    public void tornadoOnClick()
-    {
-        if (getHitEffect.pickGold >= 0)
-        {
-            getHitEffect.pickGold -= SkillLevelneed*2;
-            for (int i = 0; i < tornadoSkillLevel; i++)
-            {
-                tornadoImage[i].enabled = true;
-            }
-            tornadoSkillLevel++;
-
-
-        }
-    }
-    public void AirAttackOnClick()
-    {
-        if (getHitEffect.pickGold >= 0)
-        {
-            getHitEffect.pickGold -= SkillLevelneed*2;
-            for (int i = 0; i < AirAttackSkillLevel; i++)
-            {
-                AirAttackImage[i].enabled = true;
-            }
-            AirAttackSkillLevel++;
-
-
-        }
-    }
-
-
 }

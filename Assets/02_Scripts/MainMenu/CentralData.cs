@@ -52,6 +52,7 @@ public class CentralData
     //成員變數
     public float BGMVol = 1.0f;//音量0~1
     public float SFXVol = 1.0f;
+    public int dust = 0;
     
 
     //建構子

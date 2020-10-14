@@ -38,7 +38,7 @@ public class Menu : MonoBehaviour
     }
     public void PlayGame()
     {
-        CentralData.SaveData();
+        CentralData.GetInst();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void QuitGame()

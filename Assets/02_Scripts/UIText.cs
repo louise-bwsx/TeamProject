@@ -8,10 +8,10 @@ public class UIText : MonoBehaviour
     GetHitEffect getHitEffect;
     void Start()
     {
-        getHitEffect = FindObjectOfType<GetHitEffect>();    
+        getHitEffect = FindObjectOfType<GetHitEffect>();
     }
     void Update()
     {
-        GetComponent<Text>().text = "剩餘魔塵:" + getHitEffect.pickGold + "\n";
+        GetComponent<Text>().text = "剩餘魔塵:" + getHitEffect.dust + "\n";
     }
 }

@@ -6,7 +6,7 @@ public class GetHitEffect : MonoBehaviour
 {
     float getHitInvincibleTime;
     float getHitInvincible = 1f;
-    public int pickGold = 10000;
+    public int dust = 99999;
     public float maxHp = 100;
     public float playerHealth = 0;
     public HealthBarOnGame healthbarongame;
@@ -22,6 +22,7 @@ public class GetHitEffect : MonoBehaviour
 
     void Start()
     {
+        dust = CentralData.GetInst().dust;
         playerHealth = maxHp;
         uIBarControl.SetMaxHealth(maxHp);//UI身上的血條
         healthbarongame.SetMaxHealth(maxHp);//人物身上的血條
@@ -53,22 +54,22 @@ public class GetHitEffect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gold"))
         {
-            pickGold += 3;
+            dust += 3;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Green"))
         {
-            pickGold += 10;
+            dust += 10;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("White"))
         {
-            pickGold += 1;
+            dust += 1;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Blue"))
         {
-            pickGold += 5;
+            dust += 5;
             Destroy(collision.gameObject);
         }
         //else if (collision.gameObject.CompareTag("Item"))

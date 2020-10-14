@@ -5,19 +5,13 @@ using UnityEngine.UI;
 
 public class UIText : MonoBehaviour
 {
-    public MonsterSpwan MonsterSpwan;
-    public GetHitEffect getHitEffect;
+    GetHitEffect getHitEffect;
     void Start()
     {
-        
+        getHitEffect = FindObjectOfType<GetHitEffect>();    
     }
-
     void Update()
     {
-        GetComponent<Text>().text = "剩餘魔塵：" + getHitEffect.pickGold + "\n" ;
-            /*"血量：　　　" + getHitEffect.playerHealth + "\n" +*/
-
-        //"剩餘敵人：　" + MonsterSpwan.monstervalue + "\n";
+        GetComponent<Text>().text = "剩餘魔塵:" + getHitEffect.pickGold + "\n";
     }
-
 }

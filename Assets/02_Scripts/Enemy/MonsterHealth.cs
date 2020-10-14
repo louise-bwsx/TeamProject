@@ -16,6 +16,8 @@ public class MonsterHealth : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public GameObject healthBar;
     public GameObject getHitEffect;
+    public CharacterBase characterBase;
+    public SkillBase skillBase;
 
     protected AudioSource audioSource;//音效在子類別調整音量大小
     //protected PlayerAction playerAction;
@@ -34,6 +36,8 @@ public class MonsterHealth : MonoBehaviour
         { 
             audioSource = GetComponent<AudioSource>();
         }
+        characterBase = FindObjectOfType<CharacterBase>();//FindObjectOfType抓取整個場景有這個物件的方法
+        skillBase = FindObjectOfType<SkillBase>();
 
         //讀不到
         //audioSource.volume = playerAction.audioSource.volume;
@@ -64,7 +68,7 @@ public class MonsterHealth : MonoBehaviour
         Debug.Log(transform.name);
         GameObject FX = Instantiate(getHitEffect, new Vector3(transform.position.x,transform.position.y+0.8f,transform.position.z),transform.rotation);
         Destroy(FX, 1);
-        Hp -= Damage;
+        Hp -= Damage + characterBase.STR;
         healthBarOnGame.SetHealth(Hp);
         if (Hp <= 0)
         {
@@ -83,8 +87,8 @@ public class MonsterHealth : MonoBehaviour
         //}
         if (other.CompareTag("Sword"))
         {
-            audioSource.PlayOneShot(SwordHitSFX);
-            GetHit(15);
+            //audioSource.PlayOneShot(SwordHitSFX);
+            GetHit(15+ characterBase.STR);
         }
         if (other.CompareTag("Skill"))
         {
@@ -93,32 +97,32 @@ public class MonsterHealth : MonoBehaviour
         if (other.CompareTag("AirAttack"))
         {
             audioSource.PlayOneShot(AirAttackHitSFX);
-            GetHit(10);
+            GetHit(10 + characterBase.INT + skillBase.waterSkill);
         }
         if (other.CompareTag("FireAttack"))
         {
             audioSource.PlayOneShot(FirMagicHitSFX);
-            GetHit(10);
+            GetHit(10+characterBase.INT + skillBase.fireSkill);
         }
         if (other.CompareTag("Tornado"))
         {
             audioSource.PlayOneShot(tornadoHitSFX);
-            GetHit(15);
+            GetHit(15+characterBase.INT + skillBase.windSkill);
         }
         if (other.CompareTag("Poison"))
         {
             audioSource.PlayOneShot(PoisonHitSFX);
-            GetHit(15);
+            GetHit(15+ characterBase.INT + skillBase.poisonSkill);
         }
         if (other.CompareTag("Firetornado"))
         {
             audioSource.PlayOneShot(FiretornadoHitSFX);
-            GetHit(30);
+            GetHit(30+ characterBase.INT);
         }
         if (other.CompareTag("Bomb"))
         {
             audioSource.PlayOneShot(BombHitSFX);
-            GetHit(30);
+            GetHit(30+ characterBase.INT);
         }
 
     }

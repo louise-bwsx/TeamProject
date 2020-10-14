@@ -50,10 +50,18 @@ public class CentralData
     }
 
     //成員變數
-    public float BGMVol = 1.0f;//音量0~1
-    public float SFXVol = 1.0f;
-    public int dust = 0;
+    public float BGMVol;//音量0~1
+    public float SFXVol;
     
+    //魔塵
+    public int dust;
+
+    //技能等級
+    public int fireSkillLevel;
+    public int poisonSkillLevel;
+    public int stoneSkillLevel;
+    public int waterSkillLevel;
+    public int windSkillLevel;
 
     //建構子
     private CentralData()

@@ -14,6 +14,7 @@ public enum enumSkill
 public class SkillBase : MonoBehaviour
 {
     public int skillLevelNeed = 1000;
+    public int[] skillType = new int[5];
     public int fireSkillLevel=0;
     public int poisonSkillLevel = 0;
     public int stoneSkillLevel = 0;
@@ -27,9 +28,29 @@ public class SkillBase : MonoBehaviour
     public Image[] windImage;
     int skillMaxLevel = 5;
 
-    public void SkillLevelUp(int skill)
+    void Start()
     {
-        switch ((enumSkill)skill)
+        fireSkillLevel = CentralData.GetInst().fireSkillLevel;
+        poisonSkillLevel = CentralData.GetInst().poisonSkillLevel;
+        stoneSkillLevel = CentralData.GetInst().stoneSkillLevel;
+        waterSkillLevel = CentralData.GetInst().waterSkillLevel;
+        windSkillLevel = CentralData.GetInst().windSkillLevel;
+        SkillImageChange(fireSkillLevel, fireImage);
+        SkillImageChange(poisonSkillLevel, poisonImage);
+        SkillImageChange(stoneSkillLevel, stoneImage);
+        SkillImageChange(waterSkillLevel, waterImage);
+        SkillImageChange(windSkillLevel, windImage);
+    }
+    void SkillImageChange(int skillLevel, Image[] skillImage)
+    {
+        for (int i = 0; i < skillLevel; i++)
+        {
+            skillImage[i].enabled = true;
+        }
+    }
+    public void SkillLevelUp(int skillType)
+    {
+        switch ((enumSkill)skillType)
         {
             case enumSkill.fireSkill:
                 {

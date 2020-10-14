@@ -7,9 +7,12 @@ public class ShootingWindSkill : MonoBehaviour
     public float destroyTime = 3F;
     public GameObject tornado;//爆炸物件生成
     public GameObject fireTornado;
+    AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = CentralData.GetInst().SFXVol;
         GameObject shootingSkill = Instantiate(tornado, transform.position, transform.rotation);
         Destroy(shootingSkill, destroyTime);
         Destroy(gameObject, destroyTime);

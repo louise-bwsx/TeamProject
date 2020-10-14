@@ -18,14 +18,9 @@ public class MonsterHealthLongRange : MonsterHealth
     //public GameObject SkillBookBlue;
     LongRangeEnemyController longRangeEnemyController;
 
-    void Start()
-    {
-        Hp = maxHp;
-        healthBarOnGame.SetMaxHealth(maxHp);
-        longRangeEnemyController = GetComponent<LongRangeEnemyController>();
-    }
     public override void MonsterDead()
     {
+        longRangeEnemyController = GetComponent<LongRangeEnemyController>();
         longRangeEnemyController.enabled = false;
         base.MonsterDead();
     }

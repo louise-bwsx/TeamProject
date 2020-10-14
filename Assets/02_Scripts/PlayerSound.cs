@@ -8,7 +8,8 @@ public class PlayerSound : MonoBehaviour
     public AudioClip Click;
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();    
+        audioSource = GetComponentInParent<AudioSource>();
+        audioSource.volume = CentralData.GetInst().SFXVol;
     }
     void Update()
     {

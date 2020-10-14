@@ -17,7 +17,8 @@ public class MonsterHealth : MonoBehaviour
     public GameObject healthBar;
     public GameObject getHitEffect;
 
-    public AudioSource GunAudio;//音樂放置
+    protected AudioSource audioSource;//音效在子類別調整音量大小
+    protected PlayerAction playerAction;
     public AudioClip SwordHitSFX;//突擊受擊音效
     public AudioClip PoisonHitSFX;//毒受擊音效
     public AudioClip FirMagicHitSFX;//火受擊音效
@@ -25,6 +26,17 @@ public class MonsterHealth : MonoBehaviour
     public AudioClip AirAttackHitSFX;//水受擊音效
     public AudioClip FiretornadoHitSFX;//龍捲風受擊音效
     public AudioClip BombHitSFX;//爆炸受擊音效
+
+    void Start()
+    {
+        playerAction = FindObjectOfType<PlayerAction>();
+        audioSource = GetComponent<AudioSource>();
+
+        //讀不到
+        //audioSource.volume = playerAction.audioSource.volume;
+        Hp = maxHp;
+        healthBarOnGame.SetMaxHealth(maxHp);
+    }
 
     void Update()
     {
@@ -64,7 +76,7 @@ public class MonsterHealth : MonoBehaviour
         //}
         if (other.CompareTag("Sword"))
         {
-            GunAudio.PlayOneShot(SwordHitSFX);
+            audioSource.PlayOneShot(SwordHitSFX);
             GetHit(15);
         }
         if (other.CompareTag("Skill"))
@@ -73,32 +85,32 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("AirAttack"))
         {
-            GunAudio.PlayOneShot(AirAttackHitSFX);
+            audioSource.PlayOneShot(AirAttackHitSFX);
             GetHit(10);
         }
         if (other.CompareTag("FireAttack"))
         {
-            GunAudio.PlayOneShot(FirMagicHitSFX);
+            audioSource.PlayOneShot(FirMagicHitSFX);
             GetHit(10);
         }
         if (other.CompareTag("Tornado"))
         {
-            GunAudio.PlayOneShot(tornadoHitSFX);
+            audioSource.PlayOneShot(tornadoHitSFX);
             GetHit(15);
         }
         if (other.CompareTag("Poison"))
         {
-            GunAudio.PlayOneShot(PoisonHitSFX);
+            audioSource.PlayOneShot(PoisonHitSFX);
             GetHit(15);
         }
         if (other.CompareTag("Firetornado"))
         {
-            GunAudio.PlayOneShot(FiretornadoHitSFX);
+            audioSource.PlayOneShot(FiretornadoHitSFX);
             GetHit(30);
         }
         if (other.CompareTag("Bomb"))
         {
-            GunAudio.PlayOneShot(BombHitSFX);
+            audioSource.PlayOneShot(BombHitSFX);
             GetHit(30);
         }
 

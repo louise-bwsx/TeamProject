@@ -14,11 +14,17 @@ public class PlayerAction: MonoBehaviour
     public Transform player;
 
 
-    public AudioSource audioSource;//音樂放置
+    public AudioSource audioSource;//音效放置給所有怪物存取音效
     //public AudioClip walkSFX;//走路音效
     public AudioClip TurnOverSFX;//翻滾音效
     public AudioClip SpikeSFX;//突刺音效
     public AudioClip SwingSFX;//揮擊音效
+
+    void Start()
+    {
+        audioSource = GetComponentInParent<AudioSource>();
+        audioSource.volume = CentralData.GetInst().SFXVol;
+    }
     void Update()
     {
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)

@@ -7,8 +7,13 @@ public class ShootingWaterSkill : MonoBehaviour
     public float explodeRadius = 5f;
     public float force = 700f;
     public float countdown = 1f;
-    public AudioSource audioSource;//音樂放置
+    AudioSource audioSource;//音樂放置
     public AudioClip SFX;//音效
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = CentralData.GetInst().SFXVol;
+    }
     void Update()
     {
         countdown -= Time.deltaTime;

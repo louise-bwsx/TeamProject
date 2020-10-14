@@ -17,14 +17,10 @@ public class MonsterHealthMelee : MonsterHealth
     //public GameObject SkillBookGold;
     //public GameObject SkillBookBlue;
     MeleeEnemyController meleeEnemyController;
-    void Start()
-    {
-        Hp = maxHp;
-        healthBarOnGame.SetMaxHealth(maxHp);
-        meleeEnemyController = GetComponent<MeleeEnemyController>();
-    }
+
     public override void MonsterDead()
     {
+        meleeEnemyController = GetComponent<MeleeEnemyController>();
         //避免怪物死亡後還繼續追著玩家
         meleeEnemyController.enabled = false;
         base.MonsterDead();

@@ -23,6 +23,8 @@ public class RemoteSkill : Skill
                 bulletObj.transform.position = skillPos.position;
                 bulletObj.transform.rotation = skillRotation.rotation;
             }
+            lastFireTime = 0;
+            playerControl.stamina -= staminaCost;
         }
     }
 }

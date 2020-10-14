@@ -13,7 +13,7 @@ public class ShootingWindSkill : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = CentralData.GetInst().SFXVol;
-        GameObject shootingSkill = Instantiate(tornado, transform.position, transform.rotation);
+        GameObject shootingSkill = Instantiate(tornado, transform.position, transform.rotation,transform);
         Destroy(shootingSkill, destroyTime);
         Destroy(gameObject, destroyTime);
     }

@@ -18,7 +18,7 @@ public class MonsterHealth : MonoBehaviour
     public GameObject getHitEffect;
 
     protected AudioSource audioSource;//音效在子類別調整音量大小
-    protected PlayerAction playerAction;
+    //protected PlayerAction playerAction;
     public AudioClip SwordHitSFX;//突擊受擊音效
     public AudioClip PoisonHitSFX;//毒受擊音效
     public AudioClip FirMagicHitSFX;//火受擊音效
@@ -29,8 +29,11 @@ public class MonsterHealth : MonoBehaviour
 
     void Start()
     {
-        playerAction = FindObjectOfType<PlayerAction>();
-        audioSource = GetComponent<AudioSource>();
+        //playerAction = FindObjectOfType<PlayerAction>();
+        if (audioSource != null)
+        { 
+            audioSource = GetComponent<AudioSource>();
+        }
 
         //讀不到
         //audioSource.volume = playerAction.audioSource.volume;
@@ -46,11 +49,15 @@ public class MonsterHealth : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            else if (Hp <= 0)
+            {
+                Destroy(gameObject);//給Boss用的
+            }
         }
-        else if(animator == null && Hp<=0)
-        {
-            Destroy(gameObject);
-        }
+        //else if(animator == null && Hp<=0)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
     public void GetHit(float Damage)
     {

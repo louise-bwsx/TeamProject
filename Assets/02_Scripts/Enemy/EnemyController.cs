@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     protected Transform target;
     protected NavMeshAgent agent;
     protected float distence;
+    protected Animator animator;
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

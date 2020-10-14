@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BossController))]
-public class BossHealthControl : MonsterHealth
+public class BossHealth : MonsterHealth
 {
     BossController bossController;
-    void Start()
+    public void BossMeleeAttackAction()
     {
-        Hp = maxHp;
-        healthBarOnGame.SetMaxHealth(maxHp);
-        bossController = GetComponent<BossController>();
+        animator.SetTrigger("WeaponAttackEnd");
     }
-
     public override void MonsterDead()
     {
+        bossController = GetComponent<BossController>();
+        bossController.enabled = false;
         base.MonsterDead();
     }
 }

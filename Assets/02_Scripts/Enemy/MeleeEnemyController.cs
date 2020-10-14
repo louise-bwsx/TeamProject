@@ -7,11 +7,11 @@ public class MeleeEnemyController : EnemyController
 {
     public GameObject attackCube;
     public Transform monsterAttackRotation;
-    public Animator animator;
     public MonsterHealth monsterHealth;
 
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }

@@ -10,8 +10,7 @@ public class CentralData
     private static string path = Application.dataPath + "/playerdata/";
     private static string filename = "record.json";
     public static CentralData GetInst()//靜態成員與GetInst()方法
-    {   //取得存檔路徑的檔名
-
+    {   
         //判斷是否有中繼點
         if (mInstance == null)
         {
@@ -26,7 +25,6 @@ public class CentralData
         }
         return mInstance;
     }
-
 
     public static void SaveData()
     {
@@ -45,7 +43,6 @@ public class CentralData
 
     public static CentralData LoadData()
     {
-
         string jstr = File.ReadAllText(path + filename);
 
         CentralData data = JsonUtility.FromJson<CentralData>(jstr);

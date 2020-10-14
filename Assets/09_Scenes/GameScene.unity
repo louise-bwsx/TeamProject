@@ -4125,7 +4125,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -15766,9 +15766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52619a920fc0d2c45b8f9795667cb349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMSlider: {fileID: 299333011}
-  SFXSlider: {fileID: 1408717671}
-  audioMgr: {fileID: 1878321794}
 --- !u!114 &1399777749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15891,7 +15888,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.19
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -22588,6 +22585,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGMSource: {fileID: 1878321793}
   SFXSource: {fileID: 963194230}
+  BGMSlider: {fileID: 299333011}
+  SFXSlider: {fileID: 1408717671}
 --- !u!4 &1878321795
 Transform:
   m_ObjectHideFlags: 0
@@ -30873,11 +30872,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8761432779293686981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3324d37f3c49a8549b5bfa04588cb9f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 09160e3240ab73d48888b2b9f6c6ac60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 45880586}
-  staminaCost: 0
+  staminaCost: 10
   destroyTime: 3
   skillObject: {fileID: 281075568003997482, guid: 0e798cb63dc8d3d4dab10b5359706650,
     type: 3}
@@ -30887,6 +30886,9 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 2
   fillImage: {fileID: 8085716707716734373}
+  wall:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &8761432779293686983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31002,7 +31004,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8761432779548603253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3324d37f3c49a8549b5bfa04588cb9f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 09160e3240ab73d48888b2b9f6c6ac60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 45880586}
@@ -31016,6 +31018,9 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 2
   fillImage: {fileID: 8085716706893484565}
+  wall:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &8761432779777514953
 GameObject:
   m_ObjectHideFlags: 0
@@ -31055,7 +31060,6 @@ GameObject:
   - component: {fileID: 8388507952416796875}
   - component: {fileID: 315193737040982069}
   - component: {fileID: 9063801812623118765}
-  - component: {fileID: 9063801812623118764}
   m_Layer: 5
   m_Name: SkillSlot
   m_TagString: Untagged
@@ -31063,29 +31067,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &9063801812623118764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9063801812623118763}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3324d37f3c49a8549b5bfa04588cb9f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl: {fileID: 45880586}
-  staminaCost: 0
-  destroyTime: 3
-  skillObject: {fileID: 3759059081806054490, guid: e39f6a6643204904ca2cd4c74d0d0423,
-    type: 3}
-  skillPos: {fileID: 1913125793}
-  skillRotation: {fileID: 3756948}
-  skillForce: 200
-  lastFireTime: 0
-  fireRate: 2
-  fillImage: {fileID: 8388507952416796875}
 --- !u!114 &9063801812623118765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31099,13 +31080,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerControl: {fileID: 45880586}
-  staminaCost: 0
+  staminaCost: 10
   destroyTime: 3
   skillObject: {fileID: 3759059081806054490, guid: e39f6a6643204904ca2cd4c74d0d0423,
     type: 3}
   skillPos: {fileID: 1913125793}
   skillRotation: {fileID: 3756948}
-  skillForce: 200
+  skillForce: 0
   lastFireTime: 0
   fireRate: 5
   fillImage: {fileID: 8388507952416796875}

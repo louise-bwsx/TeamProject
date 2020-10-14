@@ -1,28 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioMgr : MonoBehaviour
 {
     public AudioSource BGMSource;
     public AudioSource SFXSource;
-    // Start is called before the first frame update
+    public Slider BGMSlider;
+    public Slider SFXSlider;
     void Start()
     {
-        //source = this.GetComponent<AudioSource>();
-
         //音量初始
         BGMSource.volume = CentralData.GetInst().BGMVol;
         SFXSource.volume = CentralData.GetInst().SFXVol;
-    }
-
-    public float GetBGMVol()
-    {
-        return BGMSource.volume;
-    }
-    public float GetSFXVol()
-    {
-        return SFXSource.volume;
+        BGMSlider.value = CentralData.GetInst().BGMVol;
+        SFXSlider.value = CentralData.GetInst().SFXVol;
     }
     public void SetBGMVol (float v)
     {

@@ -3196,6 +3196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGMSource: {fileID: 1404585162}
   SFXSource: {fileID: 1712298653}
+  BGMSlider: {fileID: 482241909}
+  SFXSlider: {fileID: 1378517761}
 --- !u!4 &1404585164
 Transform:
   m_ObjectHideFlags: 0
@@ -3443,9 +3445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52619a920fc0d2c45b8f9795667cb349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMSlider: {fileID: 482241909}
-  SFXSlider: {fileID: 1378517761}
-  audioMgr: {fileID: 1404585163}
 --- !u!1 &1524618556
 GameObject:
   m_ObjectHideFlags: 0

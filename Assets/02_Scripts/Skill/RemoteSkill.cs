@@ -15,9 +15,8 @@ public class RemoteSkill : Skill
             GameObject bulletObj = Instantiate(skillObject);
             if (Physics.Raycast(skillRotation.position, (skillPos.position - skillRotation.position), out wallCross, cameraraylength, wall))
             {
-                Debug.Log(1);
-                bulletObj.transform.position = wallCross.point;/*+ */
-                bulletObj.transform.rotation = skillRotation.rotation;/*wallCross.collider.transform.rotation;*/
+                bulletObj.transform.position = wallCross.point;
+                bulletObj.transform.rotation = skillRotation.rotation;
             }
             else
             {

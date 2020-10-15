@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject skillUI;
     public Transform playerRotation;
     new Rigidbody rigidbody;
+    SpriteRenderer spriteRenderer;
     //有關耐力
     public float stamina;
     float staminaLimit = 100;
@@ -44,6 +45,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         rigidbody = GetComponent<Rigidbody>();
         stamina = staminaLimit;
@@ -181,6 +183,16 @@ public class PlayerControl : MonoBehaviour
     public void Attack()
     {
         playerFaceDirection.isAttack = true;
+        if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
+        {
+            spriteRenderer.flipX = true;
+            //transform.rotation = Quaternion.Euler(-30, 90, 0);
+        }
+        else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
+        {
+            spriteRenderer.flipX = false;
+            //transform.rotation = Quaternion.Euler(30, 270, 0);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             playerAction.NormalAttack();

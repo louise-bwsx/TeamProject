@@ -2719,7 +2719,7 @@ PrefabInstance:
     - target: {fileID: 3491639138931874879, guid: 0e798cb63dc8d3d4dab10b5359706650,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3491639138931874879, guid: 0e798cb63dc8d3d4dab10b5359706650,
         type: 3}
@@ -10359,7 +10359,7 @@ Transform:
   - {fileID: 1833937533}
   - {fileID: 1329670543}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &910160313
 PrefabInstance:
@@ -10600,7 +10600,7 @@ PrefabInstance:
     - target: {fileID: 8829505349809715491, guid: 7314d80ecce62f64682b77c25391b5ca,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8829505349809715491, guid: 7314d80ecce62f64682b77c25391b5ca,
         type: 3}
@@ -20936,7 +20936,9 @@ MonoBehaviour:
   animator: {fileID: 1757237622}
   uIBarControl: {fileID: 2136891374}
   sword: {fileID: 7253161420939905896, guid: c43ce70376a43114eae82070edb64b59, type: 3}
-  swingAttackEffect: {fileID: 2008309744210210329, guid: 24a6665f4868cee408e82a2917041e5f,
+  swingAttackEffectLeft: {fileID: 2146589714767106736, guid: bd478f03d61db1f48852f33df11e584c,
+    type: 3}
+  swingAttackEffectRight: {fileID: 6944432453040499547, guid: 2eec5cc8d8392d04bb272f01fb91de49,
     type: 3}
   spwanPosition: {fileID: 7706045066553140193}
   playerRotation: {fileID: 3756948}
@@ -21687,7 +21689,7 @@ Transform:
   m_LocalScale: {x: 86.941605, y: 56.954468, z: 146.95273}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1819627837
 GameObject:
@@ -24321,7 +24323,7 @@ Transform:
   - {fileID: 1049937571}
   - {fileID: 1876214776}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1966362774 stripped
 RectTransform:
@@ -30111,7 +30113,7 @@ PrefabInstance:
     - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2148854360233518268, guid: be7fd81f5cc591545bfca6b3c3057413,
         type: 3}

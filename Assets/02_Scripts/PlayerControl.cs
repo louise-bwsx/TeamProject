@@ -36,9 +36,10 @@ public class PlayerControl : MonoBehaviour
     Vector3 oldPosition;
     //有關攻擊
     public float attackRange = 0.4f;
+    public float attackTime;
     public float attackSpeed;//同動畫時間
+    public float attackSpikeSpeed;//突刺攻擊間隔
     public int attackDamage = 2;
-    float attackTime;
     public int spikeAttackDash;
     public Transform AttackPoint;
     public LayerMask EnemyLayer;
@@ -76,7 +77,16 @@ public class PlayerControl : MonoBehaviour
         if (attackTime >= attackSpeed && 
             !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf&& !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf)
         {
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    return;
+                }
+                Attack();
+                attackTime = 0;//另外一種計時方式
+            }
+            if (Input.GetMouseButtonDown(1) && attackTime >= attackSpikeSpeed)
             {
                 if (EventSystem.current.IsPointerOverGameObject())
                 {

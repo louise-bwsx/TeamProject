@@ -12,10 +12,7 @@ public class ShootingPoisonSkill : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = CentralData.GetInst().SFXVol;
-
-        GameObject UsingSkill = Instantiate(poisonEffect, transform.position, transform.rotation);
         Destroy(gameObject, DestroyTime);
-        Destroy(UsingSkill, DestroyTime);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -28,10 +25,4 @@ public class ShootingPoisonSkill : MonoBehaviour
             //特效DestroyTime後消失
         }
     }
- 
-
-
-
-
-
 }

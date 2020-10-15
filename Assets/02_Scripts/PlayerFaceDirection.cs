@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerFaceDirection : MonoBehaviour
 {
-    public PlayerControl playerControl;
     public Transform playerRotation;
     public bool isAttack = false;
+    public PlayerControl playerControl;
     SpriteRenderer spriteRenderer;
+    public SkillControl skillControl;
     void Start()
     {
+        playerControl = GetComponentInParent<PlayerControl>();
+        skillControl = FindObjectOfType<SkillControl>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Update()
@@ -41,13 +44,26 @@ public class PlayerFaceDirection : MonoBehaviour
                 }
             }
         }
+        if (playerControl.cantMove)
+        {
+            Debug.Log(1);
+        }
     }
-    void isAttackTrue()//動畫Event控制
+    void IsAttackTrue()//動畫Event控制
     {
         isAttack = true;
     }
-    void isAttackFalse()//動畫Event控制
+    void IsAttackFalse()//動畫Event控制
     {
         isAttack = false;
+    }
+    void IsMagicAtttack()//動畫Event控制
+    {
+        playerControl.isMagicAttack = true;
+    }
+    void SkillShoot()//動畫Event控制
+    {
+        skillControl.skillList[0].Shoot();
+        playerControl.isMagicAttack = false;
     }
 }

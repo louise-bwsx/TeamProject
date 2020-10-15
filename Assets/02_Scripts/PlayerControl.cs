@@ -35,6 +35,7 @@ public class PlayerControl : MonoBehaviour
     public LayerMask wall;
     Vector3 oldPosition;
     //有關攻擊
+    public bool isMagicAttack = false;
     public float attackRange = 0.4f;
     public float attackTime;
     public float attackSpeed;//同動畫時間
@@ -62,7 +63,14 @@ public class PlayerControl : MonoBehaviour
         //GunAudio.PlayOneShot(walkSFX);
         ad = Input.GetAxis("Horizontal");
         //GunAudio.PlayOneShot(walkSFX);
-        Movement.Set(-ws, 0f, ad);
+        if (isMagicAttack == true)
+        {
+            Movement.Set(0, 0, 0);
+        }
+        else if (isMagicAttack == false)
+        {
+            Movement.Set(-ws, 0f, ad);
+        }
 
         //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
         Movement = Movement * moveSpeed * Time.deltaTime;
@@ -72,6 +80,7 @@ public class PlayerControl : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+        Movement.Set(0, 0, 0);
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
         if (attackTime >= attackSpeed && 

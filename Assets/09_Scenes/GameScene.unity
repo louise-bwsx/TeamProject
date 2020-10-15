@@ -1000,6 +1000,7 @@ MonoBehaviour:
   wall:
     serializedVersion: 2
     m_Bits: 1024
+  isMagicAttack: 0
   attackRange: 0.67
   attackTime: 0
   attackSpeed: 0.3
@@ -7847,7 +7848,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cbf540e3d28ace8478c650328898c70c, type: 3}
   - {fileID: 21300000, guid: 81dbe74ddd746dd49a99cfb85951ac56, type: 3}
   - {fileID: 21300000, guid: 77deb63d4be34654aa21ff0f8596d672, type: 3}
+  animator: {fileID: 1757237622}
   skillList:
+  - {fileID: 0}
   - {fileID: 9063801812623118765}
   - {fileID: 8761432779072758938}
   - {fileID: 8761432779293686982}
@@ -21587,9 +21590,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280f5ea3c12653144b3e5e68607b6718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerControl: {fileID: 45880586}
   playerRotation: {fileID: 3756948}
   isAttack: 0
+  playerControl: {fileID: 0}
+  skillControl: {fileID: 0}
 --- !u!4 &1764625410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3541946659074637990, guid: 88b0899d706df7d44b067bf4f36a2bbd,

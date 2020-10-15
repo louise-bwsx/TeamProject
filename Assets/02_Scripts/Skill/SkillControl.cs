@@ -8,7 +8,8 @@ public class SkillControl : MonoBehaviour
     [SerializeField]
     public Button[] buttonList;
     public Sprite[] spriteList;
-
+    PlayerControl playerControl;
+    public Animator animator;
     public Skill[] skillList;
 
     public float F5ColdTime = 2;//技能CD時間 
@@ -39,9 +40,9 @@ public class SkillControl : MonoBehaviour
     public int CurIdx = 0;
     void Start()
     {
+        playerControl = FindObjectOfType<PlayerControl>();
         SetPos();
     }
-
     void Update()
     {
         float move = Input.GetAxis("Mouse ScrollWheel");
@@ -65,39 +66,43 @@ public class SkillControl : MonoBehaviour
         //滑鼠中鍵的效果
         if (Input.GetMouseButtonDown(2))
         {
+            animator.SetTrigger("Magic");
             if (CurIdx == 0)
             {
+                skillList[0] = skillList[1];
                 F5IsStartTimer = true;
                 F5OnClick();
-                skillList[0].Shoot();
+                //skillList[1].Shoot();
             }
             if (CurIdx == 1)
             {
+                skillList[0] = skillList[2];
                 F6OnClick();
                 F6IsStartTimer = true;
-                skillList[1].Shoot();
+                //skillList[2].Shoot();
             }
             if (CurIdx == 2)
             {
+                skillList[0] = skillList[3];
                 F7OnClick();
                 F7IsStartTimer = true;
-                skillList[2].Shoot();
+                //skillList[3].Shoot();
             }
             if (CurIdx == 3)
             {
+                skillList[0] = skillList[4];
                 F8OnClick();
                 F8IsStartTimer = true;
-                skillList[3].Shoot();
+                //skillList[4].Shoot();
             }
             if (CurIdx == 4)
             {
+                skillList[0] = skillList[5];
                 F9OnClick();
                 F9IsStartTimer = true;
-                skillList[4].Shoot();
+                //skillList[5].Shoot();
             }
         }
-
-
     }
     public void SetPos()
     {
@@ -114,8 +119,6 @@ public class SkillControl : MonoBehaviour
                 buttonList[i].enabled = false;
             }
         }
-
-
     }
     public void F5OnClick()
     {
@@ -132,8 +135,10 @@ public class SkillControl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F5))
         {
+            skillList[0] = skillList[1];
+            animator.SetTrigger("Magic");
             F5IsStartTimer = true;
-            skillList[0].Shoot();
+            //skillList[0].Shoot();
         }
     }
 
@@ -152,8 +157,10 @@ public class SkillControl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F6))
         {
+            skillList[0] = skillList[2];
+            animator.SetTrigger("Magic");
             F6IsStartTimer = true;
-            skillList[1].Shoot();
+            //skillList[1].Shoot();
         }
     }
     public void F7OnClick()
@@ -172,8 +179,10 @@ public class SkillControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F7))
         {
+            skillList[0] = skillList[3];
+            animator.SetTrigger("Magic");
             F7IsStartTimer = true;
-            skillList[2].Shoot();
+            //skillList[2].Shoot();
         }
 
 
@@ -193,8 +202,10 @@ public class SkillControl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F8))
         {
+            skillList[0] = skillList[4];
+            animator.SetTrigger("Magic");
             F8IsStartTimer = true;
-            skillList[3].Shoot();
+            //skillList[3].Shoot();
         }
 
     }
@@ -213,9 +224,10 @@ public class SkillControl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F9))
         {
+            skillList[0] = skillList[5];
+            animator.SetTrigger("Magic");
             F9IsStartTimer = true;
-            skillList[4].Shoot();
+            //skillList[4].Shoot();
         }
-
     }
 }

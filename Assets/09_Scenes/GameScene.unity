@@ -7864,7 +7864,7 @@ MonoBehaviour:
   F6Timer: 0
   F6FilledImage: {fileID: 1307310217}
   F6IsStartTimer: 0
-  F7ColdTime: 2
+  F7ColdTime: 5
   F7Timer: 0
   F7FilledImage: {fileID: 275492647}
   F7IsStartTimer: 0
@@ -12469,7 +12469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -182, y: -5.5}
+  m_AnchoredPosition: {x: -182, y: -5.4999695}
   m_SizeDelta: {x: -201.65192, y: 11.064941}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1128137587
@@ -21575,7 +21575,7 @@ MonoBehaviour:
   playerRotation: {fileID: 3756948}
   player: {fileID: 45880584}
   audioSource: {fileID: 0}
-  TurnOverSFX: {fileID: 8300000, guid: f3fffc00e62c2b247abbe96db875c5f8, type: 3}
+  TurnOverSFX: {fileID: 8300000, guid: f88b2e7f342b1524382a9f6ce217a232, type: 3}
   SpikeSFX: {fileID: 8300000, guid: 08530bc42c94b6f47bbf15ca7a81562b, type: 3}
   SwingSFX: {fileID: 8300000, guid: f04dff927bc4b004a84903423d94b5d0, type: 3}
 --- !u!114 &1757237625
@@ -31571,7 +31571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerControl: {fileID: 45880586}
   staminaCost: 10
-  destroyTime: 3
+  destroyTime: 5
   skillObject: {fileID: 281075568003997482, guid: 0e798cb63dc8d3d4dab10b5359706650,
     type: 3}
   skillPos: {fileID: 1913125793}

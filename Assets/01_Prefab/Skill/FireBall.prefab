@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6998448547650020761}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyTime: 0.8
-  GunAudio: {fileID: 209101486852984104}
-  SFX: {fileID: 8300000, guid: 3dd2434f4a935b24aa4549923fb64cc9, type: 3}
+  poisonEffect: {fileID: 1327289845270492346, guid: 760638155560e294e91404e711c05cff,
+    type: 3}
 --- !u!82 &209101486852984104
 AudioSource:
   m_ObjectHideFlags: 0

@@ -5,12 +5,15 @@ using UnityEngine;
 public class FireMagic : MonoBehaviour
 {
     public float DestroyTime = 3F;
+    public GameObject poisonEffect;
     AudioSource audioSource;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = CentralData.GetInst().SFXVol;
+        GameObject UsingSkill = Instantiate(poisonEffect, transform.position, transform.rotation,transform);
         Destroy(gameObject, DestroyTime);
+        Destroy(UsingSkill, DestroyTime);
     }
 
     private void OnTriggerEnter(Collider other)

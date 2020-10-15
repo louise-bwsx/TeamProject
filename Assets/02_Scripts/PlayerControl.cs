@@ -9,10 +9,11 @@ public class PlayerControl : MonoBehaviour
     public UIBarControl uIBarControl;
     public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
+    public EquipmentManager equipmentManager;
     public GameObject backPackUI;
     public GameObject skillUI;
     public Transform playerRotation;
-    public EquipmentManager equipmentManager;
+    new Rigidbody rigidbody;
     //有關耐力
     public float stamina;
     float staminaLimit = 100;
@@ -32,16 +33,19 @@ public class PlayerControl : MonoBehaviour
     public LayerMask wall;
     Vector3 oldPosition;
     //有關攻擊
+    public bool isAttack;
     public float attackRange = 0.4f;
     public float attackSpeed;//同動畫時間
     public int attackDamage = 2;
     float attackTime;
+    public int spikeAttackDash;
     public Transform AttackPoint;
     public LayerMask EnemyLayer;
 
     void Start()
     {
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
+        rigidbody = GetComponent<Rigidbody>();
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina(staminaLimit);
         playerOptions = GetComponent<PlayerOptions>();
@@ -58,13 +62,12 @@ public class PlayerControl : MonoBehaviour
 
         //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
         Movement = Movement * moveSpeed * Time.deltaTime;
-        GetComponent<Rigidbody>().MovePosition(transform.position + Movement);
+        rigidbody.MovePosition(transform.position + Movement);
     }
 
     [System.Obsolete]
     void Update()
     {
-
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
         if (attackTime >= attackSpeed && 
@@ -142,9 +145,9 @@ public class PlayerControl : MonoBehaviour
             isInvincible = false;
             cantMove = false;
             rollTime = 0;
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            rigidbody.velocity = Vector3.zero;
             GetComponent<Collider>().isTrigger = false;
-            GetComponent<Rigidbody>().useGravity = true;
+            rigidbody.useGravity = true;
         }
 
         if (stamina < staminaLimit)
@@ -188,6 +191,7 @@ public class PlayerControl : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1))
         {
+            rigidbody.velocity = playerRotation.forward * spikeAttackDash;
             playerAction.SpikeAttack();
         }
     }
@@ -202,7 +206,7 @@ public class PlayerControl : MonoBehaviour
         if (stamina > staminaRoll)
         {
             //歸零動量
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            rigidbody.velocity = Vector3.zero;
             //耐力條 -= 損失耐力
             stamina -= staminaRoll;
             uIBarControl.SetStamina(stamina);
@@ -211,12 +215,10 @@ public class PlayerControl : MonoBehaviour
             isInvincible = true;
             //限制翻滾時不能轉向
             cantMove = true;
-
             //GetComponent<Rigidbody>().AddForce(-playerRotation.forward * rollForce);//不知道該決定用哪個好
-            GetComponent<Rigidbody>().velocity = -playerRotation.forward * rollDistence;
-
+            rigidbody.velocity = -playerRotation.forward * rollDistence;
             GetComponent<Collider>().isTrigger = true;
-            GetComponent<Rigidbody>().useGravity = false;
+            rigidbody.useGravity = false;
             //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
         }
     }

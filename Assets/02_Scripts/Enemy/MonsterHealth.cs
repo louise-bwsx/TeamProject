@@ -30,11 +30,7 @@ public class MonsterHealth : MonoBehaviour
 
     void Start()
     {
-        if (audioSource == null)
-        {
-            //會讀到玩家身上的不知道為什麼
-            audioSource = GetComponent<AudioSource>();
-        }
+        audioSource = GetComponent<AudioSource>();
         characterBase = FindObjectOfType<CharacterBase>();//FindObjectOfType抓取整個場景有這個物件的方法
         skillBase = FindObjectOfType<SkillBase>();
 

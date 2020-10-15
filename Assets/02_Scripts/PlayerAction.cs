@@ -10,7 +10,8 @@ public class PlayerAction: MonoBehaviour
     public GameObject sword;
     public GameObject swingAttackEffect;
     GameObject swordSpike;
-    public Transform spwan;
+    public Transform spwanPosition;
+    public Transform spwanRotation;
     public Transform player;
 
 
@@ -63,7 +64,12 @@ public class PlayerAction: MonoBehaviour
         audioSource.PlayOneShot(SpikeSFX);
         animator.SetTrigger("Attack_Spike");
         attackRate = 0;
-        swordSpike = Instantiate(sword, spwan.position, spwan.rotation);
+        //位置不會移動
+        //swordSpike = Instantiate(sword, spwan.position, spwan.rotation);
+        //物體隨著parent太小,而且只能左右
+        //swordSpike = Instantiate(sword, transform);
+        swordSpike = Instantiate(sword, spwanPosition.position, spwanRotation.rotation);
+        swordSpike.transform.parent = transform;
         Destroy(swordSpike, 0.3f);
     }
 }

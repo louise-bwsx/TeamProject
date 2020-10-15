@@ -8,7 +8,7 @@ public class PlayerFaceDirection : MonoBehaviour
     public Transform playerRotation;
     void Update()
     {
-        if (playerControl.cantMove == false && Time.timeScale != 0)
+        if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack ==false)
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -27,5 +27,13 @@ public class PlayerFaceDirection : MonoBehaviour
                 transform.rotation = Quaternion.Euler(30, 270, 0);
             }
         }
+    }
+    void isAttackTrue()
+    {
+        playerControl.isAttack = true;
+    }
+    void isAttackFalse()
+    {
+        playerControl.isAttack = false;
     }
 }

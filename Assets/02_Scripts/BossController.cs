@@ -8,7 +8,7 @@ public class BossController : EnemyController
     public MeshRenderer meshRenderer;
     public Collider meleeAttackAreacollider;
     public Transform shootingtransform;
-    public Door door;
+    Door door;
     public GameObject arrow;
     public float force = 1500;
     BossHealth bossHealth;
@@ -17,6 +17,7 @@ public class BossController : EnemyController
     bool isMeleeAttack;
     void Start()
     {
+        door = FindObjectOfType<Door>();
         bossHealth = GetComponent<BossHealth>();
         animator = GetComponentInChildren<Animator>();
         attackRate = 1.5f;
@@ -31,6 +32,7 @@ public class BossController : EnemyController
         }
         if (meleeAttackCD > attackRate)
         {
+            animator.SetTrigger("WeaponAttackEnd");
             meleeAttackAreacollider.enabled = true;
             meshRenderer.enabled = false;
             meleeAttackCD = 0;
@@ -49,6 +51,7 @@ public class BossController : EnemyController
                 meshRenderer.enabled = false;
                 isMeleeAttack = false;
                 meleeAttackAreacollider.enabled = false;
+                //以上關閉近戰攻擊狀態
             }
             if (distence >= attackRaduis)
             {

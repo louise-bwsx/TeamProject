@@ -19,8 +19,7 @@ public class MonsterHealth : MonoBehaviour
     public CharacterBase characterBase;
     public SkillBase skillBase;
 
-    protected AudioSource audioSource;//音效在子類別調整音量大小
-    //protected PlayerAction playerAction;
+    public AudioSource audioSource;//音效在子類別調整音量大小
     public AudioClip SwordHitSFX;//突擊受擊音效
     public AudioClip PoisonHitSFX;//毒受擊音效
     public AudioClip FirMagicHitSFX;//火受擊音效
@@ -31,11 +30,11 @@ public class MonsterHealth : MonoBehaviour
 
     void Start()
     {
-        //playerAction = FindObjectOfType<PlayerAction>();
-        if (audioSource != null)
-        { 
-            audioSource = GetComponent<AudioSource>();
-        }
+        //if (audioSource == null)
+        //{ 
+        //    //會讀到玩家身上的不知道為什麼
+        //    audioSource = GetComponent<AudioSource>();
+        //}
         characterBase = FindObjectOfType<CharacterBase>();//FindObjectOfType抓取整個場景有這個物件的方法
         skillBase = FindObjectOfType<SkillBase>();
 
@@ -68,7 +67,7 @@ public class MonsterHealth : MonoBehaviour
         Debug.Log(transform.name);
         GameObject FX = Instantiate(getHitEffect, new Vector3(transform.position.x,transform.position.y+0.8f,transform.position.z),transform.rotation);
         Destroy(FX, 1);
-        Hp -= Damage + characterBase.STR;
+        Hp -= Damage;
         healthBarOnGame.SetHealth(Hp);
         if (Hp <= 0)
         {

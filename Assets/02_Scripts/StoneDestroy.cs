@@ -28,4 +28,8 @@ public class StoneDestroy : MonoBehaviour
     {
         Debug.Log("滑鼠點到有這Script的物件");
     }
+    public void OnMouseEnter()
+    {
+        Debug.Log("滑鼠碰到有這Script的物件");
+    }
 }

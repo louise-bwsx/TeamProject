@@ -78,6 +78,10 @@ public class PlayerControl : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
             {
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    return;
+                }
                 Attack();
                 attackTime = 0;//另外一種計時方式
             }
@@ -126,12 +130,6 @@ public class PlayerControl : MonoBehaviour
             healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
         }
         #endregion
-
-        //好像沒有任何作用
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space))
         {

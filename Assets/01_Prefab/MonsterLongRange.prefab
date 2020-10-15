@@ -417,15 +417,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 0
   maxHp: 50
-  healthBarOnGame: {fileID: 5477791636672222595}
   numHeldItemMin: 1
   numHeldItemMax: 3
+  beAttackTime: 0
+  attackTime: 0
+  healthBarOnGame: {fileID: 5477791636672222595}
   itemRate: {fileID: 11400000, guid: 7fd4b91e5e7081c44bd581e411e300e6, type: 2}
   animator: {fileID: 1946896890}
   navMeshAgent: {fileID: 5477791637045825153}
   healthBar: {fileID: 5477791638001741212}
-  getHitEffect: {fileID: 8792773701619345590, guid: e08cd98b0c9d2854a828c22a18171ae6,
-    type: 3}
+  getHitEffect:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 786590600395617077, guid: ec2d5c111a867914194182d9fb1ca8f3, type: 3}
+  - {fileID: 1122587035202424450, guid: 7d842ac579c49474eae9281df6eba0b8, type: 3}
   characterBase: {fileID: 0}
   skillBase: {fileID: 0}
   audioSource: {fileID: 9150224076756799219}
@@ -436,6 +441,12 @@ MonoBehaviour:
   AirAttackHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}
   FiretornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
   BombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
+  monsterMove: {fileID: 0}
+  beAttackMin: 0
+  beAttackMax: 0
+  gethit: 0
+  gethitlimit: 0.3
+  windColdTime: 5
 --- !u!1 &5477791637274516207
 GameObject:
   m_ObjectHideFlags: 0

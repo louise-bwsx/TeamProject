@@ -8,14 +8,17 @@ public class MonsterHealth : MonoBehaviour
 {
     public float Hp = 0;
     public float maxHp = 50;
-    public HealthBarOnGame healthBarOnGame;
     public int numHeldItemMin = 1;//裝備生成最小數
     public int numHeldItemMax = 3;//裝備生成最大數
+    public float beAttackTime;
+    public float attackTime;
+
+    public HealthBarOnGame healthBarOnGame;
     public ItemSTO itemRate;
     public Animator animator;
     public NavMeshAgent navMeshAgent;
     public GameObject healthBar;
-    public GameObject getHitEffect;
+    public GameObject[] getHitEffect;
     public CharacterBase characterBase;
     public SkillBase skillBase;
 
@@ -28,14 +31,26 @@ public class MonsterHealth : MonoBehaviour
     public AudioClip FiretornadoHitSFX;//龍捲風受擊音效
     public AudioClip BombHitSFX;//爆炸受擊音效
 
+    public Transform monsterMove;
+    public float beAttackMin = 0;//被打的次數
+    public float beAttackMax = 0;//被打的最大次數
+    public float gethit;
+    public float gethitlimit = 0.3F;//間格秒數
+    public float windColdTime = 5;
+
     void Start()
     {
+
         audioSource = GetComponent<AudioSource>();
         characterBase = FindObjectOfType<CharacterBase>();//FindObjectOfType抓取整個場景有這個物件的方法
         skillBase = FindObjectOfType<SkillBase>();
 
         //讀不到
         //audioSource.volume = playerAction.audioSource.volume;
+
+        beAttackMax = windColdTime / gethitlimit;
+
+
         Hp = maxHp;
         healthBarOnGame.SetMaxHealth(maxHp);
     }
@@ -53,22 +68,53 @@ public class MonsterHealth : MonoBehaviour
                 Destroy(gameObject);//給Boss用的
             }
         }
+        beAttackTime += Time.deltaTime;
+
+        //風持續傷害
+        gethit += Time.deltaTime;
+
+        if (beAttackMin >= 1)
+        {
+            if (gethit > gethitlimit)
+            {
+                gethit = 0;
+                GetHit(2);
+                beAttackMin--;
+            }
+        }
+        if (monsterMove == null)
+        {
+            beAttackMin = 0;
+        }
+
+
+
+
         //else if(animator == null && Hp<=0)
         //{
         //    Destroy(gameObject);
         //}
+
+
+
+
     }
     public void GetHit(float Damage)
     {
-        Debug.Log(transform.name);
-        GameObject FX = Instantiate(getHitEffect, new Vector3(transform.position.x,transform.position.y+0.8f,transform.position.z),transform.rotation);
-        Destroy(FX, 1);
-        Hp -= Damage;
-        healthBarOnGame.SetHealth(Hp);
-        if (Hp <= 0)
+        if (beAttackTime > attackTime)
         {
-            MonsterDead();
+            Debug.Log(transform.name);
+            GameObject FX = Instantiate(getHitEffect[0], new Vector3(transform.position.x, transform.position.y + 0.8f, transform.position.z), transform.rotation);
+            Destroy(FX, 1);
+            Hp -= Damage;
+            healthBarOnGame.SetHealth(Hp);
+            if (Hp <= 0)
+            {
+                MonsterDead();
+            }
+            beAttackTime = 0;
         }
+
     }
     protected void OnTriggerEnter(Collider other)
     {
@@ -83,7 +129,7 @@ public class MonsterHealth : MonoBehaviour
         if (other.CompareTag("Sword"))
         {
             //audioSource.PlayOneShot(SwordHitSFX);
-            GetHit(15+ characterBase.STR);
+            GetHit(15 + characterBase.STR);
         }
         if (other.CompareTag("Skill"))
         {
@@ -96,40 +142,48 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("FireAttack"))
         {
+            getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(FirMagicHitSFX);
-            GetHit(10+characterBase.INT + skillBase.fireSkill);
+            GetHit(10 + characterBase.INT + skillBase.fireSkill);
         }
-        if (other.CompareTag("Tornado"))
+        if (other.CompareTag("Tornado") && monsterMove != other.transform)
         {
+            getHitEffect[0] = getHitEffect[3];
+            beAttackMin = beAttackMax;//最大被打的次數
+            monsterMove = other.transform;
             audioSource.PlayOneShot(tornadoHitSFX);
-            GetHit(15+characterBase.INT + skillBase.windSkill);
+            GetHit(2 + characterBase.INT + skillBase.windSkill);
         }
-        if (other.CompareTag("Poison"))
+        if (other.CompareTag("Poison") && monsterMove != other.transform)
         {
+            beAttackMin = 20;//最大被打的次數
+            monsterMove = other.transform;
             audioSource.PlayOneShot(PoisonHitSFX);
-            GetHit(15+ characterBase.INT + skillBase.poisonSkill);
+            GetHit(1 + characterBase.INT + skillBase.poisonSkill);
         }
         if (other.CompareTag("Firetornado"))
         {
+            getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(FiretornadoHitSFX);
-            GetHit(30+ characterBase.INT);
+            GetHit(30 + characterBase.INT);
         }
         if (other.CompareTag("Bomb"))
         {
             audioSource.PlayOneShot(BombHitSFX);
-            GetHit(30+ characterBase.INT);
+            GetHit(30 + characterBase.INT);
         }
 
     }
+
     public virtual void MonsterDead()
     {
         if (navMeshAgent != null)
-        { 
+        {
             navMeshAgent.enabled = false;
         }
         if (animator != null)
-        { 
-            animator.SetBool("Dead",true);
+        {
+            animator.SetBool("Dead", true);
         }
         healthBar.SetActive(false);
 

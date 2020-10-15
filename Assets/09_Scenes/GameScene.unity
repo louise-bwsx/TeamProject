@@ -1676,11 +1676,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterMelee
       objectReference: {fileID: 0}
-    - target: {fileID: 3541946659074637987, guid: 88b0899d706df7d44b067bf4f36a2bbd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3541946659074637990, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1738,19 +1733,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5167227305884811197, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5167227305884811197, guid: 88b0899d706df7d44b067bf4f36a2bbd,
-        type: 3}
       propertyPath: skillBase
       value: 
       objectReference: {fileID: 1471208736}
-    - target: {fileID: 5167227305884811197, guid: 88b0899d706df7d44b067bf4f36a2bbd,
-        type: 3}
-      propertyPath: characterBase
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88b0899d706df7d44b067bf4f36a2bbd, type: 3}
 --- !u!224 &107194533 stripped
@@ -28043,6 +28028,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5167227305884811197, guid: 88b0899d706df7d44b067bf4f36a2bbd,
         type: 3}
+      propertyPath: getHitEffect.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167227305884811197, guid: 88b0899d706df7d44b067bf4f36a2bbd,
+        type: 3}
       propertyPath: GunAudio
       value: 
       objectReference: {fileID: 0}
@@ -28061,6 +28051,18 @@ PrefabInstance:
       propertyPath: skillBase
       value: 
       objectReference: {fileID: 1471208736}
+    - target: {fileID: 5167227305884811197, guid: 88b0899d706df7d44b067bf4f36a2bbd,
+        type: 3}
+      propertyPath: getHitEffect.Array.data[3]
+      value: 
+      objectReference: {fileID: 1122587035202424450, guid: 7d842ac579c49474eae9281df6eba0b8,
+        type: 3}
+    - target: {fileID: 5167227305884811197, guid: 88b0899d706df7d44b067bf4f36a2bbd,
+        type: 3}
+      propertyPath: getHitEffect.Array.data[2]
+      value: 
+      objectReference: {fileID: 786590600395617077, guid: ec2d5c111a867914194182d9fb1ca8f3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88b0899d706df7d44b067bf4f36a2bbd, type: 3}
 --- !u!4 &970715660984982456
@@ -28092,7 +28094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1042525897018106375
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30374,7 +30376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &7093511084858193096
 MeshFilter:
   m_ObjectHideFlags: 0

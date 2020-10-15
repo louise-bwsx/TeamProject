@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     PlayerOptions playerOptions;
     PlayerAction playerAction;
+    PlayerFaceDirection playerFaceDirection;
     public UIBarControl uIBarControl;
     public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
@@ -33,7 +34,6 @@ public class PlayerControl : MonoBehaviour
     public LayerMask wall;
     Vector3 oldPosition;
     //有關攻擊
-    public bool isAttack;
     public float attackRange = 0.4f;
     public float attackSpeed;//同動畫時間
     public int attackDamage = 2;
@@ -50,6 +50,7 @@ public class PlayerControl : MonoBehaviour
         uIBarControl.SetMaxStamina(staminaLimit);
         playerOptions = GetComponent<PlayerOptions>();
         playerAction = GetComponentInChildren<PlayerAction>();
+        playerFaceDirection = GetComponentInChildren<PlayerFaceDirection>();
         oldPosition = transform.position;
     }
     private void FixedUpdate()//好用的東東
@@ -179,6 +180,7 @@ public class PlayerControl : MonoBehaviour
     }
     public void Attack()
     {
+        playerFaceDirection.isAttack = true;
         if (Input.GetMouseButtonDown(0))
         {
             playerAction.NormalAttack();

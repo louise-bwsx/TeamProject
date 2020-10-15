@@ -11,8 +11,9 @@ public class PlayerAction: MonoBehaviour
     public GameObject swingAttackEffect;
     GameObject swordSpike;
     public Transform spwanPosition;
-    public Transform spwanRotation;
+    public Transform playerRotation;
     public Transform player;
+    SpriteRenderer spriteRenderer;
 
 
     public AudioSource audioSource;//音效放置給所有怪物存取音效
@@ -23,6 +24,7 @@ public class PlayerAction: MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponentInParent<AudioSource>();
         audioSource.volume = CentralData.GetInst().SFXVol;
     }
@@ -38,7 +40,6 @@ public class PlayerAction: MonoBehaviour
             animator.SetBool("Walk", false);
         }
         attackRate += Time.deltaTime;
-
     }
     public void Roll()
     {
@@ -61,6 +62,16 @@ public class PlayerAction: MonoBehaviour
     }
     public void SpikeAttack()
     {
+        if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
+        {
+            spriteRenderer.flipX = true;
+            //transform.rotation = Quaternion.Euler(-30, 90, 0);
+        }
+        else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
+        {
+            spriteRenderer.flipX = false;
+            //transform.rotation = Quaternion.Euler(30, 270, 0);
+        }
         audioSource.PlayOneShot(SpikeSFX);
         animator.SetTrigger("Attack_Spike");
         attackRate = 0;
@@ -68,8 +79,8 @@ public class PlayerAction: MonoBehaviour
         //swordSpike = Instantiate(sword, spwan.position, spwan.rotation);
         //物體隨著parent太小,而且只能左右
         //swordSpike = Instantiate(sword, transform);
-        swordSpike = Instantiate(sword, spwanPosition.position, spwanRotation.rotation);
-        swordSpike.transform.parent = transform;
+        swordSpike = Instantiate(sword, spwanPosition.position, playerRotation.rotation);
+        swordSpike.transform.parent = player.transform;
         Destroy(swordSpike, 0.3f);
     }
 }

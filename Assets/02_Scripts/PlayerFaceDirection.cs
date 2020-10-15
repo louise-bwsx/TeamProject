@@ -6,34 +6,48 @@ public class PlayerFaceDirection : MonoBehaviour
 {
     public PlayerControl playerControl;
     public Transform playerRotation;
+    public bool isAttack = false;
+    SpriteRenderer spriteRenderer;
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Update()
     {
-        if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack ==false)
+        if (playerControl.cantMove == false && Time.timeScale != 0 && isAttack == false)
         {
             if (Input.GetKey(KeyCode.D))
             {
-                transform.rotation = Quaternion.Euler(-30, 90, 0);
+                spriteRenderer.flipX = true;
+                //transform.rotation = Quaternion.Euler(-30, 90, 0);
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                transform.rotation = Quaternion.Euler(30, 270, 0);
+                spriteRenderer.flipX = false;
+                //transform.rotation = Quaternion.Euler(30, 270, 0);
             }
-            else if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
+            else if (isAttack == false)
             {
-                transform.rotation = Quaternion.Euler(-30, 90, 0);
-            }
-            else if(playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
-            {
-                transform.rotation = Quaternion.Euler(30, 270, 0);
+                if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
+                {
+                    //Debug.Log("面向右邊");
+                    spriteRenderer.flipX = true;
+                    //transform.rotation = Quaternion.Euler(-30, 90, 0);
+                }
+                else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
+                {
+                    spriteRenderer.flipX = false;
+                    //transform.rotation = Quaternion.Euler(30, 270, 0);
+                }
             }
         }
     }
-    void isAttackTrue()
+    void isAttackTrue()//動畫Event控制
     {
-        playerControl.isAttack = true;
+        isAttack = true;
     }
-    void isAttackFalse()
+    void isAttackFalse()//動畫Event控制
     {
-        playerControl.isAttack = false;
+        isAttack = false;
     }
 }

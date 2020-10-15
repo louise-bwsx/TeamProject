@@ -184,12 +184,6 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             playerAction.NormalAttack();
-            //他只會抓這個方法啟動瞬間的範圍
-            Collider[] hitEnemy = Physics.OverlapSphere(AttackPoint.position, attackRange, EnemyLayer);
-            foreach (Collider enemy in hitEnemy)
-            {
-                enemy.GetComponent<MonsterHealth>()?.GetHit(attackDamage);
-            }
         }
         else if (Input.GetMouseButtonDown(1))
         {

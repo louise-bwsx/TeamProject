@@ -6,7 +6,6 @@ public class PlayerAction: MonoBehaviour
 {
     public Animator animator;
     public UIBarControl uIBarControl;
-    float attackRate;
     public GameObject sword;
     public GameObject swingAttackEffect;
     GameObject swordSpike;
@@ -14,6 +13,7 @@ public class PlayerAction: MonoBehaviour
     public Transform playerRotation;
     public Transform player;
     SpriteRenderer spriteRenderer;
+    PlayerControl playerControl;
 
 
     public AudioSource audioSource;//音效放置給所有怪物存取音效
@@ -26,6 +26,7 @@ public class PlayerAction: MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponentInParent<AudioSource>();
+        playerControl = GetComponentInParent<PlayerControl>();
         audioSource.volume = CentralData.GetInst().SFXVol;
     }
     void Update()
@@ -39,7 +40,6 @@ public class PlayerAction: MonoBehaviour
         {
             animator.SetBool("Walk", false);
         }
-        attackRate += Time.deltaTime;
     }
     public void Roll()
     {
@@ -50,15 +50,21 @@ public class PlayerAction: MonoBehaviour
     }
     public void NormalAttack()
     {
-        //音效
-        audioSource.PlayOneShot(SwingSFX);
         //動畫
         animator.SetTrigger("Attack");
+    }
+    public void NormalAttackFX()//動畫Event呼叫
+    {   //音效
+        audioSource.PlayOneShot(SwingSFX);
         //特效
         GameObject FX = Instantiate(swingAttackEffect, player);
-        Destroy(FX, 1);
-        //不讓他造成連按抖動
-        attackRate = 0;
+        Destroy(FX, 0.3f);
+        //他只會抓這個方法啟動瞬間的範圍
+        Collider[] hitEnemy = Physics.OverlapSphere(playerControl.AttackPoint.position, playerControl.attackRange, playerControl.EnemyLayer);
+        foreach (Collider enemy in hitEnemy)
+        {
+            enemy.GetComponent<MonsterHealth>()?.GetHit(playerControl.attackDamage);
+        }
     }
     public void SpikeAttack()
     {
@@ -74,11 +80,6 @@ public class PlayerAction: MonoBehaviour
         }
         audioSource.PlayOneShot(SpikeSFX);
         animator.SetTrigger("Attack_Spike");
-        attackRate = 0;
-        //位置不會移動
-        //swordSpike = Instantiate(sword, spwan.position, spwan.rotation);
-        //物體隨著parent太小,而且只能左右
-        //swordSpike = Instantiate(sword, transform);
         swordSpike = Instantiate(sword, spwanPosition.position, playerRotation.rotation);
         swordSpike.transform.parent = player.transform;
         Destroy(swordSpike, 0.3f);

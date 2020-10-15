@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveNLoad: MonoBehaviour
 {
     GetHitEffect getHitEffect;
     SkillBase skillBase;
+    public AudioMgr audioMgr;
     void Start()
     {
         getHitEffect = FindObjectOfType<GetHitEffect>();
@@ -14,6 +16,8 @@ public class SaveNLoad: MonoBehaviour
     public void SaveData()
     {
         Debug.Log("進行存檔");
+        CentralData.SaveData();
+
         CentralData.GetInst().dust = getHitEffect.dust;
 
         CentralData.GetInst().fireSkillLevel = skillBase.fireSkillLevel;
@@ -21,11 +25,15 @@ public class SaveNLoad: MonoBehaviour
         CentralData.GetInst().stoneSkillLevel = skillBase.stoneSkillLevel;
         CentralData.GetInst().waterSkillLevel = skillBase.waterSkillLevel;
         CentralData.GetInst().windSkillLevel = skillBase.windSkillLevel;
-        CentralData.SaveData();
+
+        CentralData.GetInst().BGMVol = audioMgr.BGMSlider.value;
+        CentralData.GetInst().SFXVol = audioMgr.SFXSlider.value;
     }
     public void LoadData()
     {
         Debug.Log("進行讀檔");
+        CentralData.LoadData();
+
         getHitEffect.dust = CentralData.GetInst().dust;
 
         skillBase.fireSkillLevel = CentralData.GetInst().fireSkillLevel;
@@ -34,6 +42,7 @@ public class SaveNLoad: MonoBehaviour
         skillBase.waterSkillLevel = CentralData.GetInst().waterSkillLevel;
         skillBase.windSkillLevel = CentralData.GetInst().windSkillLevel;
 
-        CentralData.LoadData();
+        audioMgr.BGMSlider.value = CentralData.GetInst().BGMVol;
+        audioMgr.SFXSlider.value = CentralData.GetInst().SFXVol;
     }
 }

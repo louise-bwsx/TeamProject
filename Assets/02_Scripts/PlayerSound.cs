@@ -17,5 +17,9 @@ public class PlayerSound : MonoBehaviour
         {
             audioSource.PlayOneShot(Click);
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            audioSource.PlayOneShot(Click);
+        }
     }
 }

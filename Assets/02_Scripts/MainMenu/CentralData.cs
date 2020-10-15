@@ -28,7 +28,7 @@ public class CentralData
 
     public static void SaveData()
     {
-        CentralData data = GetInst();
+        //CentralData data = GetInst();
         //取得存檔的路徑與檔名
 
         //CentralData 轉Json
@@ -39,6 +39,7 @@ public class CentralData
             Directory.CreateDirectory(path);
         }
         File.WriteAllText(path + filename, jstr);
+        Debug.Log(CentralData.GetInst().BGMVol);
     }
 
     public static CentralData LoadData()

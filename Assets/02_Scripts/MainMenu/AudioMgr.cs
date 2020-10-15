@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AudioMgr : MonoBehaviour
 {
-    AudioSource BGMSource;
+    public AudioSource BGMSource;
     public AudioSource[] SFXSource;//要取所有怪物 和玩家的AudioSource
     public Slider BGMSlider;
     public Slider SFXSlider;
@@ -26,17 +26,16 @@ public class AudioMgr : MonoBehaviour
     public void SetBGMVol (float v)
     {
         //呼叫CentralData的GetInst()為變數v
-        CentralData.GetInst().BGMVol = v;
+        //CentralData.GetInst().BGMVol = v;
         BGMSource.volume= v;
     }
     public void SetSFXVol(float v)
     {
-        CentralData.GetInst().SFXVol = v;
+        //CentralData.GetInst().SFXVol = v;
         foreach (AudioSource audioSource in SFXSource)
         {
             audioSource.volume = v;
         }
         //SFXSource.volume = v;
     }
-
 }

@@ -393,15 +393,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee3976dcf2185a4bbb6acdefca7922a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRaduis: 8.64
-  attackRaduis: 5
-  monsterOriginPos: {fileID: 0}
+  longRangeRadius: 10
+  attackRadius: 1
+  detectRadius: 15
   attackCD: 0
   attackRate: 2
   bow: {fileID: 2639929077437421175}
   arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
   shootingposition: {fileID: 2639929077261022266}
-  monsterPlane: {fileID: 0}
   force: 1500
 --- !u!114 &5349164275163258497
 MonoBehaviour:
@@ -443,7 +442,7 @@ MonoBehaviour:
   waterkHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
   tornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
   bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
-  monsterMove: {fileID: 0}
+  hitByTransform: {fileID: 0}
   beAttackMin: 0
   beAttackMax: 0
   gethit: 0
@@ -825,6 +824,7 @@ GameObject:
   - component: {fileID: 1946896891}
   - component: {fileID: 1946896890}
   - component: {fileID: 1946896892}
+  - component: {fileID: 369444975877822610}
   m_Layer: 9
   m_Name: MonsterSprite
   m_TagString: Untagged
@@ -839,13 +839,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7944422821597224892}
-  m_LocalRotation: {x: 0.18301274, y: -0.6830127, z: 0.18301274, w: 0.6830127}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.14495625, y: 0.14495625, z: 0.14495625}
   m_Children: []
   m_Father: {fileID: 5477791637045825154}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!212 &1946896891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -884,7 +884,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f8c1a71c0d9545e46a3f78d1b4710b3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -928,6 +928,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriterotation: {fileID: 2639929077437421175}
+--- !u!114 &369444975877822610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944422821597224892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2827774e95b0927429653079d30a632d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7944422823078056258
 GameObject:
   m_ObjectHideFlags: 0

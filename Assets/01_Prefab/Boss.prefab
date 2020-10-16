@@ -262,7 +262,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   healthBar: {fileID: 2948084318136920938}
   getHitEffect:
-  - {fileID: 0}
+  - {fileID: 8792773701619345590, guid: e08cd98b0c9d2854a828c22a18171ae6, type: 3}
   - {fileID: 8792773701619345590, guid: e08cd98b0c9d2854a828c22a18171ae6, type: 3}
   - {fileID: 786590600395617077, guid: ec2d5c111a867914194182d9fb1ca8f3, type: 3}
   - {fileID: 1122587035202424450, guid: 7d842ac579c49474eae9281df6eba0b8, type: 3}
@@ -277,7 +277,7 @@ MonoBehaviour:
   waterkHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
   tornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
   bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
-  monsterMove: {fileID: 0}
+  hitByTransform: {fileID: 0}
   beAttackMin: 0
   beAttackMax: 0
   gethit: 0
@@ -761,9 +761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fbfdf465dd2df24396b679e33ebc66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRaduis: 10
-  attackRaduis: 3.84
-  monsterOriginPos: {fileID: 0}
+  longRangeRadius: 32.5
+  attackRadius: 4
+  detectRadius: 32.5
   attackCD: 0
   attackRate: 2
   meshRenderer: {fileID: 7272386964366070387}
@@ -771,6 +771,18 @@ MonoBehaviour:
   shootingtransform: {fileID: 4633743235194310785}
   arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
   force: 1500
+--- !u!114 &1418840631208226034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456465252857788233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2827774e95b0927429653079d30a632d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7272386964366070391
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +928,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554894226048065189, guid: a408af58efbeb2a439c11860778d037f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554894226048065189, guid: a408af58efbeb2a439c11860778d037f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554894226048065189, guid: a408af58efbeb2a439c11860778d037f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554894226048065189, guid: a408af58efbeb2a439c11860778d037f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554894226048065189, guid: a408af58efbeb2a439c11860778d037f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4554894226048065190, guid: a408af58efbeb2a439c11860778d037f,
         type: 3}

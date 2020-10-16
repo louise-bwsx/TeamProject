@@ -30,6 +30,7 @@ TagManager:
   - WindAttack
   - WaterAttack
   - door
+  - AirAttack
   layers:
   - Default
   - TransparentFX
@@ -66,4 +67,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2434193207
     locked: 0

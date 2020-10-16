@@ -10,7 +10,9 @@ public class PlayerAction : MonoBehaviour
     public GameObject swingAttackEffectLeft;
     public GameObject swingAttackEffectRight;
     public Transform player;
+    public Transform spawantransform;
     SpriteRenderer spriteRenderer;
+    GameObject spwanSwordCube;
 
 
     public AudioSource audioSource;//音效放置給所有怪物存取音效
@@ -67,7 +69,7 @@ public class PlayerAction : MonoBehaviour
             FX = Instantiate(swingAttackEffectRight, player);
             Destroy(FX, 0.3f);
         }
-        swordCube.SetActive(true);
+        spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
     }
 
     public void SpikeAttack()
@@ -78,12 +80,11 @@ public class PlayerAction : MonoBehaviour
     {
         //音效
         audioSource.PlayOneShot(SpikeSFX);
-
-        swordCube.SetActive(true);
+        spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         //特效
     }
     public void DestroySword()
     {
-        swordCube.SetActive(false);
+        Destroy(spwanSwordCube);
     }
 }

@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
-    public float lookRaduis = 10;
-    public float attackRaduis = 1;//近戰距離
+    public float longRangeRadius = 10;//遠攻距離
+    public float attackRadius = 1;//近戰距離
+    public float detectRadius = 15;
+
     public float attackCD;
     public float attackRate = 1;
+
     protected Transform target;
     protected NavMeshAgent agent;
     protected float distence;
@@ -15,9 +18,12 @@ public class EnemyController : MonoBehaviour
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, lookRaduis);
+        Gizmos.DrawWireSphere(transform.position, longRangeRadius);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRaduis);
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
     }
 }

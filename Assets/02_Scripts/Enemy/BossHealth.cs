@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class BossHealth : MonsterHealth
 {
-    BossController bossController;
     public override void MonsterDead()
     {
-        bossController = GetComponent<BossController>();
-        bossController.enabled = false;
         base.MonsterDead();
     }
 }

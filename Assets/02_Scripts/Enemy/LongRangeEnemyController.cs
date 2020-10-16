@@ -19,7 +19,7 @@ public class LongRangeEnemyController : EnemyController
     void Update()
     {
         float distence = Vector3.Distance(target.position, transform.position);
-        if (distence <= lookRaduis)
+        if (distence <= detectRadius)
         {
             agent.enabled = true;
             //變身怪物動畫播放
@@ -31,7 +31,7 @@ public class LongRangeEnemyController : EnemyController
             //弓面對Target
             WeaponFaceTarget();
             //如果攻擊距離小於攻擊範圍 且 CD時間到
-            if (distence <= attackRaduis)
+            if (distence <= longRangeRadius)
             {
                 if (attackCD > attackRate)
                 {
@@ -44,7 +44,7 @@ public class LongRangeEnemyController : EnemyController
                 }
             }
         }
-        else if (distence >= lookRaduis)
+        else if (distence >= detectRadius)
         {
             //取消往重生點跑
             agent.enabled = false;

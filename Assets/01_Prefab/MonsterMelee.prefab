@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 961096169915892002}
   - component: {fileID: 961096169915892012}
   - component: {fileID: 961096169915892003}
+  - component: {fileID: 4221067437492302187}
   m_Layer: 9
   m_Name: MonsterSprite
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 013fe4b5810e4eb40bf76227d052c7ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,6 +96,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriterotation: {fileID: 1396891828623245892}
+--- !u!114 &4221067437492302187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961096169915892001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2827774e95b0927429653079d30a632d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1396891828623245895
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,9 +874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9c50a5a3c24974d8b225fb94eee336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRaduis: 7.79
-  attackRaduis: 1.2
-  monsterOriginPos: {fileID: 0}
+  longRangeRadius: 10
+  attackRadius: 1
+  detectRadius: 15
   attackCD: 0
   attackRate: 1
   attackCube: {fileID: 1396891829607862041}
@@ -908,7 +921,7 @@ MonoBehaviour:
   waterkHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
   tornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
   bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
-  monsterMove: {fileID: 0}
+  hitByTransform: {fileID: 0}
   beAttackMin: 0
   beAttackMax: 0
   gethit: 0

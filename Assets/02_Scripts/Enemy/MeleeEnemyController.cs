@@ -18,7 +18,7 @@ public class MeleeEnemyController : EnemyController
     void Update()
     {
         distence = Vector3.Distance(target.position, transform.position);
-        if (distence <= lookRaduis)
+        if (distence <= longRangeRadius)
         {
             agent.enabled = true;
             //向著target走
@@ -26,18 +26,18 @@ public class MeleeEnemyController : EnemyController
             //面對攝影機
             FaceCamera();
             //如果攻擊距離小於攻擊範圍 且 CD時間到
-            if (distence <= attackRaduis && attackCD > attackRate)
+            if (distence <= longRangeRadius && attackCD > attackRate)
             {
                 MonsterAttack();
             }
             //如果攻擊範圍大於攻擊距離
-            else if (distence > attackRaduis)
+            else if (distence > longRangeRadius)
             {
                 //怪物收刀避免碰撞
                 attackCube.SetActive(animator.GetBool("IsAttack"));
             }
         }
-        else if (distence >= lookRaduis)
+        else if (distence >= longRangeRadius)
         {
             agent.enabled = false;
         }

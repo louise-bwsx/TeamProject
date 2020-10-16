@@ -24,8 +24,8 @@ public class BossController : EnemyController
     {
         float distence = Vector3.Distance(target.position, transform.position);
         //當門關起來的時候 且 與玩家的距離大於普攻距離
-        if (door.isDoorClose == true)
-        {
+        //if (door.isDoorClose == true)
+        //{
             if (distence <= attackRaduis)
             {
                 meshRenderer.enabled = true;
@@ -48,7 +48,7 @@ public class BossController : EnemyController
                     isLongRangeAttack = true;
                 }
             }
-        }
+        //}
     }
     void BossMeleeAttack()//由AnimatorEvent呼叫
     {

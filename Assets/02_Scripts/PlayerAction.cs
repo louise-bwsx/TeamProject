@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAction: MonoBehaviour
+public class PlayerAction : MonoBehaviour
 {
     public Animator animator;
     public UIBarControl uIBarControl;
     public GameObject sword;
     public GameObject swingAttackEffectLeft;
     public GameObject swingAttackEffectRight;
+    public GameObject getHitEffect;
     GameObject swordSpike;
     public Transform spwanPosition;
     public Transform playerRotation;
@@ -65,15 +66,16 @@ public class PlayerAction: MonoBehaviour
             Destroy(FX, 0.3f);
         }
         else if (spriteRenderer.flipX == false)
-        { 
+        {
             FX = Instantiate(swingAttackEffectRight, player);
             Destroy(FX, 0.3f);
         }
-        
+
         //他只會抓這個方法啟動瞬間的範圍
         Collider[] hitEnemy = Physics.OverlapSphere(playerControl.AttackPoint.position, playerControl.attackRange, playerControl.EnemyLayer);
         foreach (Collider enemy in hitEnemy)
         {
+            enemy.GetComponent<MonsterHealth>().getHitEffect[0] = getHitEffect;
             //這裡設定揮擊的特效 = 0
             enemy.GetComponent<MonsterHealth>()?.GetHit(playerControl.attackDamage);
         }

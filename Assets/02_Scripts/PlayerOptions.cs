@@ -6,31 +6,39 @@ using UnityEngine.UI;
 public class PlayerOptions : MonoBehaviour
 {
     public GameObject playerhealthbar;
-    public GameObject monsterhealthbar;
+    public GameObject[] monsterhealthbar;
     bool playerswtitch = false;
+    bool monsterSwitch = false;
+
+    void Start()
+    {
+        monsterhealthbar = GameObject.FindGameObjectsWithTag("EnemyCanvas");
+    }
+
     public void SetPlayerHealthActive()
     {
+        playerhealthbar.SetActive(playerswtitch);
         if (playerswtitch == true)
         {
-            playerhealthbar.SetActive(playerswtitch);
             playerswtitch = false;
         }
         else
         {
-            playerhealthbar.SetActive(playerswtitch);
             playerswtitch = true;
         }
     }
     public void SetMonsterHealthActive()
     {
-        if (playerswtitch == true)
+        foreach (GameObject i in monsterhealthbar)
         {
-            monsterhealthbar.SetActive(playerswtitch);
+            i.SetActive(playerswtitch);
+        }
+        if (monsterSwitch)
+        {
             playerswtitch = false;
         }
         else
         {
-            monsterhealthbar.SetActive(playerswtitch);
             playerswtitch = true;
         }
     }

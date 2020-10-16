@@ -14,10 +14,10 @@ public class MonsterHealth : MonoBehaviour
     public float attackTime;
 
     public HealthBarOnGame healthBarOnGame;
+    public GameObject healthBar;
     public ItemSTO itemRate;
     public Animator animator;
     public NavMeshAgent navMeshAgent;
-    public GameObject healthBar;
     public GameObject[] getHitEffect;
     public CharacterBase characterBase;
     public SkillBase skillBase;
@@ -136,7 +136,7 @@ public class MonsterHealth : MonoBehaviour
             audioSource.PlayOneShot(fireHitSFX);
             GetHit(10 + characterBase.INT + skillBase.fireSkill);
         }
-        if (other.CompareTag("Tornado") && hitByTransform != other.transform)
+        if (other.CompareTag("WindAttack") && hitByTransform != other.transform)
         {
             getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數

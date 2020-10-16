@@ -221,11 +221,6 @@ public class PlayerControl : MonoBehaviour
             playerAction.SpikeAttack();
         }
     }
-    void OnDrawGizmosSelected()
-    {
-        //畫一條中心線是AttackPoint的圓半徑是attackRange
-        Gizmos.DrawWireSphere(AttackPoint.position, attackRange);
-    }
     void Roll()
     {
         oldPosition = transform.position;

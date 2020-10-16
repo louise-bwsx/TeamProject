@@ -75,6 +75,7 @@ public class PlayerAction : MonoBehaviour
     public void SpikeAttack()
     { 
         animator.SetTrigger("Attack_Spike");
+        spawantransform.GetComponent<Collider>().enabled = true;
     }
     public void SpikeAttackFX()
     {
@@ -86,5 +87,6 @@ public class PlayerAction : MonoBehaviour
     public void DestroySword()
     {
         Destroy(spwanSwordCube);
+        spawantransform.GetComponent<Collider>().enabled = false;
     }
 }

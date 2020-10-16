@@ -23,7 +23,7 @@ public class BossController : EnemyController
         float distence = Vector3.Distance(target.position, transform.position);
         if (distence <= detectRadius && attackCD > attackRate)
         { 
-            if (distence <= attackRadius)
+            if (distence <= meleeRadius)
             {
                 meshRenderer.enabled = true;
                 if (isMeleeAttack == false)
@@ -33,7 +33,7 @@ public class BossController : EnemyController
                     isMeleeAttack = true;
                 }
             }
-            else if (distence >= attackRadius)
+            else if (distence >= meleeRadius)
             {
                 shootingtransform.LookAt(target);
                 if (isLongRangeAttack == false)

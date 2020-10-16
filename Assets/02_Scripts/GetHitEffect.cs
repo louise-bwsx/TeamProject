@@ -12,6 +12,7 @@ public class GetHitEffect : MonoBehaviour
     public HealthBarOnGame healthbarongame;
     public UIBarControl uIBarControl;
     PlayerControl playerControl;
+    Rigidbody rigidbody;
     public GameMenu gameMenu;
     public GameObject changeColor;
     public Transform playerRotation;
@@ -27,6 +28,7 @@ public class GetHitEffect : MonoBehaviour
         uIBarControl.SetMaxHealth(maxHp);//UI身上的血條
         healthbarongame.SetMaxHealth(maxHp);//人物身上的血條
         playerControl = GetComponent<PlayerControl>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -104,9 +106,13 @@ public class GetHitEffect : MonoBehaviour
                 uIBarControl.SetHealth(playerHealth);
                 //瞬間讓玩家不能動凸顯彈跳效果
                 playerControl.cantMove = true;
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
+                //GetComponent<Rigidbody>().velocity = Vector3.zero;
                 //並且朝反方向彈跳一下
-                gameObject.GetComponent<Rigidbody>().AddForce(-playerRotation.forward * bounceForce);
+                //rigidbody.velocity = other.transform.forward * bounceForce;
+                //方向對但是值會因為角色與怪物的距離越遠彈得越遠
+                rigidbody.AddForce((transform.position-other.transform.position) * bounceForce);
+
+                rigidbody.AddForce(other.transform.forward * bounceForce);
                 //玩家血量歸零時遊戲暫停
                 if (playerHealth <= 0)
                 {

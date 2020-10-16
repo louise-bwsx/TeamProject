@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float longRangeRadius = 10;//遠攻距離
-    public float attackRadius = 1;//近戰距離
+    public float meleeRadius = 1;//近戰距離
     public float detectRadius = 15;
 
     public float attackCD;
@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, longRangeRadius);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        Gizmos.DrawWireSphere(transform.position, meleeRadius);
 
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, detectRadius);

@@ -5,17 +5,12 @@ using UnityEngine;
 public class PlayerAction : MonoBehaviour
 {
     public Animator animator;
-    public UIBarControl uIBarControl;
-    public GameObject sword;
+    //public UIBarControl uIBarControl;
+    public GameObject swordCube;
     public GameObject swingAttackEffectLeft;
     public GameObject swingAttackEffectRight;
-    public GameObject getHitEffect;
-    GameObject swordSpike;
-    public Transform spwanPosition;
-    public Transform playerRotation;
     public Transform player;
     SpriteRenderer spriteRenderer;
-    PlayerControl playerControl;
 
 
     public AudioSource audioSource;//音效放置給所有怪物存取音效
@@ -28,7 +23,6 @@ public class PlayerAction : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponentInParent<AudioSource>();
-        playerControl = GetComponentInParent<PlayerControl>();
         audioSource.volume = CentralData.GetInst().SFXVol;
     }
     void Update()
@@ -50,16 +44,19 @@ public class PlayerAction : MonoBehaviour
         audioSource.PlayOneShot(TurnOverSFX);
         //特效
     }
+
     public void NormalAttack()
     {
         //動畫
         animator.SetTrigger("Attack");
     }
     public void NormalAttackFX()//動畫Event呼叫
-    {   //音效
+    {   
+        //音效
         audioSource.PlayOneShot(SwingSFX);
         //特效
         GameObject FX;
+        //左右特效不能flip
         if (spriteRenderer.flipX == true)
         {
             FX = Instantiate(swingAttackEffectLeft, player);
@@ -70,22 +67,23 @@ public class PlayerAction : MonoBehaviour
             FX = Instantiate(swingAttackEffectRight, player);
             Destroy(FX, 0.3f);
         }
-
-        //他只會抓這個方法啟動瞬間的範圍
-        Collider[] hitEnemy = Physics.OverlapSphere(playerControl.AttackPoint.position, playerControl.attackRange, playerControl.EnemyLayer);
-        foreach (Collider enemy in hitEnemy)
-        {
-            enemy.GetComponent<MonsterHealth>().getHitEffect[0] = getHitEffect;
-            //這裡設定揮擊的特效 = 0
-            enemy.GetComponent<MonsterHealth>()?.GetHit(playerControl.attackDamage);
-        }
+        swordCube.SetActive(true);
     }
+
     public void SpikeAttack()
-    {
-        audioSource.PlayOneShot(SpikeSFX);
+    { 
         animator.SetTrigger("Attack_Spike");
-        swordSpike = Instantiate(sword, spwanPosition.position, playerRotation.rotation);
-        swordSpike.transform.parent = player.transform;
-        Destroy(swordSpike, 0.3f);
+    }
+    public void SpikeAttackFX()
+    {
+        //音效
+        audioSource.PlayOneShot(SpikeSFX);
+
+        swordCube.SetActive(true);
+        //特效
+    }
+    public void DestroySword()
+    {
+        swordCube.SetActive(false);
     }
 }

@@ -200,6 +200,7 @@ public class PlayerControl : MonoBehaviour
     public void Attack()
     {
         playerFaceDirection.isAttack = true;
+        //人物貼圖轉向
         if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
         {
             spriteRenderer.flipX = true;

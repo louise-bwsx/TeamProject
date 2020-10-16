@@ -5,8 +5,7 @@ using UnityEngine;
 public class ShootingWindSkill : MonoBehaviour
 {
     public float destroyTime = 3F;
-    public GameObject tornado;//爆炸物件生成
-    public GameObject fireTornado;
+    public GameObject fireTornado;//火龍捲
     AudioSource audioSource;
 
     private void Start()

@@ -8,7 +8,6 @@ public class LongRangeEnemyController : EnemyController
     public Transform bow;
     public GameObject arrow;
     public Transform shootingposition;
-    public Transform monsterPlane;
     public float force = 1500;
     MonsterHealth monsterHealth;
     void Start()

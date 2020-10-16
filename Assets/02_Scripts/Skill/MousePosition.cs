@@ -18,7 +18,7 @@ public class MousePosition : MonoBehaviour
         if (Physics.Raycast(cameraray, out floorcross, cameraraylength, floor))
         {
             playertomouse = floorcross.point;
-            playertomouse.y = 0;
+            playertomouse.y = floorcross.point.y;
         }
         transform.position = playertomouse;
     }

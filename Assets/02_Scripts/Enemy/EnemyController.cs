@@ -6,7 +6,6 @@ public class EnemyController : MonoBehaviour
 {
     public float lookRaduis = 10;
     public float attackRaduis = 1;//近戰距離
-    public Transform monsterOriginPos;
     public float attackCD;
     public float attackRate = 1;
     protected Transform target;

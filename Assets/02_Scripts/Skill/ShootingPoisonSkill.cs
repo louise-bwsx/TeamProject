@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShootingPoisonSkill : MonoBehaviour
 {
     public float DestroyTime = 3F;
-    public GameObject poisonEffect;
     public GameObject bomb;
     AudioSource audioSource;
     //public GameObject explosionEffect;

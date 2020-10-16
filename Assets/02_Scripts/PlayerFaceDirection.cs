@@ -44,10 +44,6 @@ public class PlayerFaceDirection : MonoBehaviour
                 }
             }
         }
-        if (playerControl.cantMove)
-        {
-            Debug.Log(1);
-        }
     }
     void IsAttackTrue()//動畫Event控制
     {

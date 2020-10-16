@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 7272386963322382714}
   - component: {fileID: 1878165116266039301}
   - component: {fileID: 2948084316979677311}
+  - component: {fileID: 5477791637203891595}
   m_Layer: 9
   m_Name: Boss
   m_TagString: Monster
@@ -251,25 +252,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 0
   maxHp: 200
-  healthBarOnGame: {fileID: 2948084317352727413}
   numHeldItemMin: 1
   numHeldItemMax: 3
+  beAttackTime: 0
+  attackTime: 0
+  healthBarOnGame: {fileID: 2948084317352727413}
   itemRate: {fileID: 11400000, guid: 727aec49cb25f304fb3fa249d6120e7d, type: 2}
   animator: {fileID: 5456465252857788235}
   navMeshAgent: {fileID: 0}
   healthBar: {fileID: 2948084318136920938}
-  getHitEffect: {fileID: 8792773701619345590, guid: e08cd98b0c9d2854a828c22a18171ae6,
-    type: 3}
+  getHitEffect:
+  - {fileID: 0}
+  - {fileID: 8792773701619345590, guid: e08cd98b0c9d2854a828c22a18171ae6, type: 3}
+  - {fileID: 786590600395617077, guid: ec2d5c111a867914194182d9fb1ca8f3, type: 3}
+  - {fileID: 1122587035202424450, guid: 7d842ac579c49474eae9281df6eba0b8, type: 3}
   characterBase: {fileID: 0}
   skillBase: {fileID: 0}
   audioSource: {fileID: 0}
-  SwordHitSFX: {fileID: 8300000, guid: 377a02e3a1f91124db0ee8f2278fe40b, type: 3}
-  PoisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
-  FirMagicHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}
-  tornadoHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
-  AirAttackHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
-  FiretornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
-  BombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
+  swordHitSFX: {fileID: 8300000, guid: 377a02e3a1f91124db0ee8f2278fe40b, type: 3}
+  poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
+  fireHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}
+  windHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
+  waterHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
+  fireTornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
+  bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
+  monsterMove: {fileID: 0}
+  beAttackMin: 0
+  beAttackMax: 0
+  gethit: 0
+  gethitlimit: 0.3
+  windColdTime: 5
+--- !u!114 &5477791637203891595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948084316979677297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7402bb8637ee3046a83f707858d6799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2948084317352727415
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRaduis: 10
-  attackRaduis: 2.24
+  attackRaduis: 3.84
   monsterOriginPos: {fileID: 0}
   attackCD: 0
   attackRate: 2
@@ -794,7 +818,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7272386964366070391}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

@@ -23,13 +23,13 @@ public class MonsterHealth : MonoBehaviour
     public SkillBase skillBase;
 
     public AudioSource audioSource;//音效在子類別調整音量大小
-    public AudioClip SwordHitSFX;//突擊受擊音效
-    public AudioClip PoisonHitSFX;//毒受擊音效
-    public AudioClip FirMagicHitSFX;//火受擊音效
-    public AudioClip tornadoHitSFX;//風受擊音效
-    public AudioClip AirAttackHitSFX;//水受擊音效
-    public AudioClip FiretornadoHitSFX;//龍捲風受擊音效
-    public AudioClip BombHitSFX;//爆炸受擊音效
+    public AudioClip swordHitSFX;//突擊受擊音效
+    public AudioClip poisonHitSFX;//毒受擊音效
+    public AudioClip fireHitSFX;//火受擊音效
+    public AudioClip windHitSFX;//風受擊音效
+    public AudioClip waterHitSFX;//水受擊音效
+    public AudioClip fireTornadoHitSFX;//龍捲風受擊音效
+    public AudioClip bombHitSFX;//爆炸受擊音效
 
     public Transform monsterMove;
     public float beAttackMin = 0;//被打的次數
@@ -40,16 +40,17 @@ public class MonsterHealth : MonoBehaviour
 
     void Start()
     {
-
         audioSource = GetComponent<AudioSource>();
-        characterBase = FindObjectOfType<CharacterBase>();//FindObjectOfType抓取整個場景有這個物件的方法
-        skillBase = FindObjectOfType<SkillBase>();
-
-        //讀不到
-        //audioSource.volume = playerAction.audioSource.volume;
+        if (characterBase == null)
+        { 
+            characterBase = FindObjectOfType<CharacterBase>();//FindObjectOfType抓取整個場景有這個物件的方法
+        }
+        if (skillBase == null)
+        { 
+            skillBase = FindObjectOfType<SkillBase>();
+        }
 
         beAttackMax = windColdTime / gethitlimit;
-
 
         Hp = maxHp;
         healthBarOnGame.SetMaxHealth(maxHp);
@@ -86,18 +87,6 @@ public class MonsterHealth : MonoBehaviour
         {
             beAttackMin = 0;
         }
-
-
-
-
-        //else if(animator == null && Hp<=0)
-        //{
-        //    Destroy(gameObject);
-        //}
-
-
-
-
     }
     public void GetHit(float Damage)
     {
@@ -135,15 +124,15 @@ public class MonsterHealth : MonoBehaviour
         {
             GetHit(0);
         }
-        if (other.CompareTag("AirAttack"))
+        if (other.CompareTag("WaterAttack"))
         {
-            audioSource.PlayOneShot(AirAttackHitSFX);
+            audioSource.PlayOneShot(waterHitSFX);
             GetHit(10 + characterBase.INT + skillBase.waterSkill);
         }
         if (other.CompareTag("FireAttack"))
         {
             getHitEffect[0] = getHitEffect[2];
-            audioSource.PlayOneShot(FirMagicHitSFX);
+            audioSource.PlayOneShot(fireHitSFX);
             GetHit(10 + characterBase.INT + skillBase.fireSkill);
         }
         if (other.CompareTag("Tornado") && monsterMove != other.transform)
@@ -151,25 +140,25 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數
             monsterMove = other.transform;
-            audioSource.PlayOneShot(tornadoHitSFX);
+            audioSource.PlayOneShot(windHitSFX);
             GetHit(2 + characterBase.INT + skillBase.windSkill);
         }
         if (other.CompareTag("Poison") && monsterMove != other.transform)
         {
             beAttackMin = 20;//最大被打的次數
             monsterMove = other.transform;
-            audioSource.PlayOneShot(PoisonHitSFX);
+            audioSource.PlayOneShot(poisonHitSFX);
             GetHit(1 + characterBase.INT + skillBase.poisonSkill);
         }
         if (other.CompareTag("Firetornado"))
         {
             getHitEffect[0] = getHitEffect[2];
-            audioSource.PlayOneShot(FiretornadoHitSFX);
+            audioSource.PlayOneShot(fireTornadoHitSFX);
             GetHit(30 + characterBase.INT);
         }
         if (other.CompareTag("Bomb"))
         {
-            audioSource.PlayOneShot(BombHitSFX);
+            audioSource.PlayOneShot(bombHitSFX);
             GetHit(30 + characterBase.INT);
         }
 

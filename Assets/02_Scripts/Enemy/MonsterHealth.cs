@@ -128,7 +128,7 @@ public class MonsterHealth : MonoBehaviour
         {
             getHitEffect[0] = getHitEffect[1];
             audioSource.PlayOneShot(waterkHitSFX);
-            GetHit(10 + characterBase.INT + skillBase.waterSkill);
+            GetHit(5 + characterBase.INT + skillBase.waterSkill);
         }
         if (other.CompareTag("FireAttack"))
         {
@@ -156,7 +156,7 @@ public class MonsterHealth : MonoBehaviour
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(fireHitSFX);
-            GetHit(30 + characterBase.INT);
+            GetHit(5 + characterBase.INT);
         }
         if (other.CompareTag("Bomb"))
         {

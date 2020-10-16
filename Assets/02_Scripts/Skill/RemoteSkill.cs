@@ -17,7 +17,7 @@ public class RemoteSkill : Skill
         }
         else
         {
-            bulletObj.transform.position = skillPos.position;
+            bulletObj.transform.position = skillPos.position+skillPos.up;
             bulletObj.transform.rotation = skillRotation.rotation;
         }
         lastFireTime = 0;

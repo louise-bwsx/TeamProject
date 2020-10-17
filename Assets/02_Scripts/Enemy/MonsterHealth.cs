@@ -103,7 +103,7 @@ public class MonsterHealth : MonoBehaviour
             beAttackTime = 0;
         }
     }
-    protected void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         //暫時用不到
         //if (other.CompareTag("Arrow"))

@@ -32,6 +32,5 @@ public class StatueHealthControll : MonoBehaviour
         bossHealth.GetHit(10);
         //並且摧毀無敵區域
         Destroy(guardStatue);
-        Debug.Log(1);
     }
 }

@@ -10,12 +10,10 @@ public class GetPush : MonoBehaviour
     {
         RD = statue.GetComponent<Rigidbody>();    
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("WaterAttack"))
         {
-            Debug.Log(1);
             RD.isKinematic = false;
         }
     }

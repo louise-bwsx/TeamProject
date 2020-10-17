@@ -34,7 +34,7 @@ public class MonsterHealth : MonoBehaviour
     Transform hitByTransform;
     public float beAttackMin = 0;//被打的次數
     public float beAttackMax = 0;//被打的最大次數
-    public float gethit;
+    public float getHitTime;
     public float gethitlimit = 0.3F;//間格秒數
     public float windColdTime = 5;
 
@@ -43,14 +43,6 @@ public class MonsterHealth : MonoBehaviour
         if (audioSource == null)
         { 
             audioSource = GetComponent<AudioSource>();
-        }
-        if (characterBase == null)
-        { 
-            characterBase = FindObjectOfType<CharacterBase>();//FindObjectOfType抓取整個場景有這個物件的方法
-        }
-        if (skillBase == null)
-        { 
-            skillBase = FindObjectOfType<SkillBase>();
         }
         beAttackMax = windColdTime / gethitlimit;
         Hp = maxHp;
@@ -79,13 +71,13 @@ public class MonsterHealth : MonoBehaviour
         beAttackTime += Time.deltaTime;
 
         //風持續傷害
-        gethit += Time.deltaTime;
+        getHitTime += Time.deltaTime;
 
         if (beAttackMin >= 1)
         {
-            if (gethit > gethitlimit)
+            if (getHitTime > gethitlimit)
             {
-                gethit = 0;
+                getHitTime = 0;
                 GetHit(2);
                 beAttackMin--;
             }
@@ -95,7 +87,7 @@ public class MonsterHealth : MonoBehaviour
             beAttackMin = 0;
         }
     }
-    public void GetHit(float Damage)
+    public virtual void GetHit(float Damage)
     {
         if (beAttackTime > attackTime)
         {

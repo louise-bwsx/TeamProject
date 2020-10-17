@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class StatueHealthControll : MonoBehaviour
 {
-    bool isInvincible = false;
+    public GameObject guardStatue;
+    BossHealth bossHealth;
     MonsterHealth monsterHealth;
     void Start()
     {
+        bossHealth = FindObjectOfType<BossHealth>();
         monsterHealth = GetComponent<MonsterHealth>();
-    }
-
-    void Update()
-    {
-        
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Guard"))
         {
             monsterHealth.enabled = false;
-            //isInvincible = true;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -28,7 +24,14 @@ public class StatueHealthControll : MonoBehaviour
         if (other.CompareTag("Guard"))
         {
             monsterHealth.enabled = true;
-            //isInvincible = false;
         }
+    }
+    private void OnDestroy()
+    {
+        //當雕像被打掉時boss會受到10點傷害
+        bossHealth.GetHit(10);
+        //並且摧毀無敵區域
+        Destroy(guardStatue);
+        Debug.Log(1);
     }
 }

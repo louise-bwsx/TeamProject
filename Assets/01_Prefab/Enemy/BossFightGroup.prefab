@@ -45,8 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossFightState: 1
-  statueRespwan: {fileID: 8150323593774989071, guid: 86731f74da92f0943b12b191cde41759,
+  guardStatueRespwan: {fileID: 8150323593774989071, guid: 86731f74da92f0943b12b191cde41759,
     type: 3}
+  guardStatue: {fileID: 2439488287896545145, guid: 8dcdef0e8c276f843b0093cea59726d3,
+    type: 3}
+  finalStatue: {fileID: 0}
 --- !u!1001 &8828419891542984356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,6 +111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394045875001419874, guid: 86731f74da92f0943b12b191cde41759,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5067345322499024347, guid: 86731f74da92f0943b12b191cde41759,
         type: 3}
@@ -334,7 +342,8 @@ PrefabInstance:
       propertyPath: skillBase
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8560322726564237242, guid: 86731f74da92f0943b12b191cde41759, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 86731f74da92f0943b12b191cde41759, type: 3}
 --- !u!4 &1392439418005312405 stripped
 Transform:

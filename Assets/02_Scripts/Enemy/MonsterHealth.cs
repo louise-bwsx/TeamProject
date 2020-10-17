@@ -44,6 +44,7 @@ public class MonsterHealth : MonoBehaviour
         { 
             audioSource = GetComponent<AudioSource>();
         }
+        healthBarOnGame = GetComponentInChildren<HealthBarOnGame>();
         beAttackMax = windColdTime / gethitlimit;
         Hp = maxHp;
         healthBarOnGame.SetMaxHealth(maxHp);

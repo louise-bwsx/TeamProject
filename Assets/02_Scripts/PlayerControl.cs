@@ -211,7 +211,6 @@ public class PlayerControl : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(2);
             playerAction.NormalAttack();
         }
         else if (Input.GetMouseButtonDown(1))

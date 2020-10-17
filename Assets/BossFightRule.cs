@@ -5,25 +5,22 @@ using UnityEngine;
 public class BossFightRule : MonoBehaviour
 {
     public int bossFightState = 1;
-    //有太多奇奇怪怪的bug
-    //public Transform minionsGroup;
-    //public GameObject guardStatue;
-
-    public GameObject statueRespwan;
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    public GameObject guardStatueRespwan;
+    public GameObject guardStatue;
+    public GameObject finalStatue;
     void Update()
     {
-        if (transform.childCount == 0)
+        if (transform.childCount == 0 && bossFightState<=3)
         {
-            //Instantiate(minionsGroup, transform.position, transform.rotation,transform);
-            //Instantiate(guardStatue, transform.position, transform.rotation,transform);
-            Instantiate(statueRespwan, transform.position, transform.rotation, transform);
-            bossFightState++;
+            if (bossFightState != 3)
+            {
+                Instantiate(guardStatueRespwan, transform.position, transform.rotation, transform);
+            }
+            if (bossFightState == 3)
+            {
+                //生成點是父物件的0,0,0 但是以子物件的中心為基準
+                finalStatue = Instantiate(guardStatue, transform.position + Vector3.up*1.6f, transform.rotation,transform);
+            }
         }
     }
 }

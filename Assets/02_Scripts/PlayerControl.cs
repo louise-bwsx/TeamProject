@@ -42,7 +42,6 @@ public class PlayerControl : MonoBehaviour
     public float attackSpikeSpeed;//突刺攻擊間隔
     public int attackDamage = 2;
     public int spikeAttackDash;
-    public Transform AttackPoint;
     public LayerMask EnemyLayer;
 
     void Start()
@@ -153,7 +152,6 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Roll();
-            
         }
         if (isInvincible)
         {
@@ -213,6 +211,7 @@ public class PlayerControl : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log(2);
             playerAction.NormalAttack();
         }
         else if (Input.GetMouseButtonDown(1))

@@ -22,7 +22,7 @@ public class MonsterHealth : MonoBehaviour
     public CharacterBase characterBase;
     public SkillBase skillBase;
 
-    AudioSource audioSource;//音效在子類別調整音量大小
+    public AudioSource audioSource;//音效在子類別調整音量大小
     public AudioClip swordHitSFX;//突擊受擊音效
     public AudioClip poisonHitSFX;//毒受擊音效
     public AudioClip fireHitSFX;//火受擊音效
@@ -38,7 +38,7 @@ public class MonsterHealth : MonoBehaviour
     public float gethitlimit = 0.3F;//間格秒數
     public float windColdTime = 5;
 
-    void Start()
+    public virtual void Start()
     {
         if (audioSource == null)
         { 
@@ -49,7 +49,7 @@ public class MonsterHealth : MonoBehaviour
         healthBarOnGame.SetMaxHealth(maxHp);
     }
 
-    void Update()
+    public virtual void Update()
     {
         if (animator != null)
         {

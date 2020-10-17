@@ -15,6 +15,8 @@ public class BossHealth : MonsterHealth
         if (Hp > maxHp * 0.7 && minionsGroup.childCount == 0)
         {
             base.OnTriggerEnter(other);
+            
+            //Destroy(minionsGroup);
         }
         //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
 

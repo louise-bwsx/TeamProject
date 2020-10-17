@@ -17,13 +17,13 @@ public class EnemyController : MonoBehaviour
     protected Animator animator;
     public void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, longRangeRadius);
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, meleeRadius);
 
-        Gizmos.color = Color.black;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectRadius);
     }
 }

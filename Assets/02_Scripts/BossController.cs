@@ -23,26 +23,29 @@ public class BossController : EnemyController
         float distence = Vector3.Distance(target.position, transform.position);
         if (distence <= detectRadius && attackCD > attackRate)
         { 
-            if (distence <= meleeRadius)
-            {
-                meshRenderer.enabled = true;
-                if (isMeleeAttack == false)
-                {
-                    animator.SetTrigger("WeaponAttack");
-                    attackCD = 0;
-                    isMeleeAttack = true;
-                }
-            }
-            else if (distence >= meleeRadius)
-            {
-                shootingtransform.LookAt(target);
-                if (isLongRangeAttack == false)
-                {
-                    animator.SetTrigger("HandAttack");
-                    attackCD = 0;
-                    isLongRangeAttack = true;
-                }
-            }
+
+            ////近戰攻擊
+            //if (distence <= meleeRadius)
+            //{
+            //    meshRenderer.enabled = true;
+            //    if (isMeleeAttack == false)
+            //    {
+            //        animator.SetTrigger("WeaponAttack");
+            //        attackCD = 0;
+            //        isMeleeAttack = true;
+            //    }
+            //}
+            ////遠距離攻擊
+            //else if (distence >= meleeRadius)
+            //{
+            //    shootingtransform.LookAt(target);
+            //    if (isLongRangeAttack == false)
+            //    {
+            //        animator.SetTrigger("HandAttack");
+            //        attackCD = 0;
+            //        isLongRangeAttack = true;
+            //    }
+            //}
         }
         if(attackCD<attackRate)
         {

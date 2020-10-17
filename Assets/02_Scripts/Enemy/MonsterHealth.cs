@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-[RequireComponent(typeof(NavMeshAgent))]
+
 public class MonsterHealth : MonoBehaviour
 {
     public float Hp = 0;
@@ -22,16 +22,16 @@ public class MonsterHealth : MonoBehaviour
     public CharacterBase characterBase;
     public SkillBase skillBase;
 
-    public AudioSource audioSource;//音效在子類別調整音量大小
+    AudioSource audioSource;//音效在子類別調整音量大小
     public AudioClip swordHitSFX;//突擊受擊音效
     public AudioClip poisonHitSFX;//毒受擊音效
     public AudioClip fireHitSFX;//火受擊音效
     public AudioClip windHitSFX;//風受擊音效
-    public AudioClip waterkHitSFX;//水受擊音效
+    public AudioClip waterHitSFX;//水受擊音效
     public AudioClip tornadoHitSFX;//龍捲風受擊音效
     public AudioClip bombHitSFX;//爆炸受擊音效
 
-    public Transform hitByTransform;
+    Transform hitByTransform;
     public float beAttackMin = 0;//被打的次數
     public float beAttackMax = 0;//被打的最大次數
     public float gethit;
@@ -40,7 +40,10 @@ public class MonsterHealth : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        { 
+            audioSource = GetComponent<AudioSource>();
+        }
         if (characterBase == null)
         { 
             characterBase = FindObjectOfType<CharacterBase>();//FindObjectOfType抓取整個場景有這個物件的方法
@@ -62,10 +65,16 @@ public class MonsterHealth : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            else if (Hp <= 0)
-            {
-                Destroy(gameObject);//給Boss用的
-            }
+            //else if (Hp <= 0)
+            //{
+            //    //給Boss Statue用的
+            //    Destroy(gameObject);
+            //}
+        }
+        if (Hp <= 0)
+        {
+            //給Statue用的
+            Destroy(gameObject);
         }
         beAttackTime += Time.deltaTime;
 
@@ -101,7 +110,6 @@ public class MonsterHealth : MonoBehaviour
             }
             beAttackTime = 0;
         }
-
     }
     protected void OnTriggerEnter(Collider other)
     {
@@ -127,7 +135,7 @@ public class MonsterHealth : MonoBehaviour
         if (other.CompareTag("WaterAttack"))
         {
             getHitEffect[0] = getHitEffect[1];
-            audioSource.PlayOneShot(waterkHitSFX);
+            audioSource.PlayOneShot(waterHitSFX);
             GetHit(5 + characterBase.INT + skillBase.waterSkill);
         }
         if (other.CompareTag("FireAttack"))

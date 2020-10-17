@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossHealthReact : MonoBehaviour
 {
     BossHealth bossHealth;
+    public GameObject statue;
     bool Wheel2Trigger = true;//為了不讓Wheel_2_Broke重複呼叫
     void Start()
     {
@@ -18,6 +19,7 @@ public class BossHealthReact : MonoBehaviour
         {
             //小於140
             bossHealth.animator.SetTrigger("Wheel_1_Broke");
+            //Instantiate(statue, transform.position+transform.forward * 2, transform.rotation);
             if (bossHealth.Hp < bossHealth.maxHp * 0.3 && Wheel2Trigger)
             {
                 //小於60

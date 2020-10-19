@@ -5543,7 +5543,7 @@ MonoBehaviour:
   - {fileID: 8761432779548603255}
   - {fileID: 8761432779233348675}
   CurIdx: 0
-  playerControl: {fileID: 0}
+  playerControl: {fileID: 45880586}
 --- !u!1 &637138131
 GameObject:
   m_ObjectHideFlags: 0
@@ -16273,7 +16273,7 @@ MonoBehaviour:
   spawantransform: {fileID: 5805977527194686331}
   audioSource: {fileID: 0}
   TurnOverSFX: {fileID: 8300000, guid: f88b2e7f342b1524382a9f6ce217a232, type: 3}
-  SpikeSFX: {fileID: 8300000, guid: 08530bc42c94b6f47bbf15ca7a81562b, type: 3}
+  SpikeSFX: {fileID: 8300000, guid: 9cfb99d27ae22e340af5986e3d0d384a, type: 3}
   SwingSFX: {fileID: 8300000, guid: f04dff927bc4b004a84903423d94b5d0, type: 3}
 --- !u!114 &1757237625
 MonoBehaviour:
@@ -16289,8 +16289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotation: {fileID: 3756948}
   isAttack: 0
-  playerControl: {fileID: 0}
-  skillControl: {fileID: 0}
+  playerControl: {fileID: 45880586}
+  skillControl: {fileID: 620900550}
 --- !u!114 &1757237626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37269,6 +37269,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4607675500589964240, guid: e39f6a6643204904ca2cd4c74d0d0423,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 584b608b15d2d4546998cba12c16bdef, type: 3}
     - target: {fileID: 7327822142298474495, guid: e39f6a6643204904ca2cd4c74d0d0423,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -35,7 +35,7 @@ public class MeleeEnemyController : EnemyController
             else if (distence > meleeRadius)
             {
                 //怪物收刀避免碰撞
-                attackCube.SetActive(animator.GetBool("IsAttack"));
+                attackCube.SetActive(false);
             }
         }
         else if (distence >= detectRadius)

@@ -20,7 +20,7 @@ public class LookAtCursor : MonoBehaviour
         float cameraraylength = 100;
         Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorcross;
-        if (Physics.Raycast(cameraray, out floorcross, cameraraylength, floor))
+        if (Physics.Raycast(cameraray, out floorcross, cameraraylength,floor))
         {
             playertomouse = floorcross.point - transform.position;
             playertomouse.y = 0;

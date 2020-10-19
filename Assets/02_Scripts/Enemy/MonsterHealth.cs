@@ -66,7 +66,7 @@ public class MonsterHealth : MonoBehaviour
         //}
         if (animator == null && Hp <= 0)
         {
-            //給Statue用的
+            //給Statue MeleeMonster用的
             Destroy(gameObject);
         }
         beAttackTime += Time.deltaTime;

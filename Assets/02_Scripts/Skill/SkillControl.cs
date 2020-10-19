@@ -29,42 +29,42 @@ public class SkillControl : MonoBehaviour
             if (CurIdx < buttonList.Length - 1) CurIdx++;
             SetPos();
         }
-        if (Input.GetKeyDown(KeyCode.F5) && skillList[1].lastFireTime > skillList[1].fireRate)
+        if (Input.GetKeyDown(KeyCode.F5) && !skillList[1].isShooting)
         {
             skillList[0] = skillList[1];
             animator.SetTrigger("Magic");
             //會讓冷卻圖案怪怪的但是可以讓他不會抽搐
-            skillList[1].lastFireTime = 0;
+            skillList[1].isShooting = true;
         }
-        if (Input.GetKeyDown(KeyCode.F6) && skillList[2].lastFireTime > skillList[2].fireRate)
+        if (Input.GetKeyDown(KeyCode.F6) && !skillList[2].isShooting)
         {
             skillList[0] = skillList[2];
             animator.SetTrigger("Magic");
-            skillList[2].lastFireTime = 0;
+            skillList[2].isShooting = true;
         }
-        if (Input.GetKeyDown(KeyCode.F7) && skillList[3].lastFireTime > skillList[3].fireRate)
+        if (Input.GetKeyDown(KeyCode.F7) && !skillList[3].isShooting)
         {
             skillList[0] = skillList[3];
             animator.SetTrigger("Magic");
-            skillList[3].lastFireTime = 0;
+            skillList[3].isShooting = true;
         }
-        if (Input.GetKeyDown(KeyCode.F8) && skillList[4].lastFireTime > skillList[4].fireRate)
+        if (Input.GetKeyDown(KeyCode.F8) && !skillList[4].isShooting)
         {
             skillList[0] = skillList[4];
             animator.SetTrigger("Magic");
-            skillList[4].lastFireTime = 0;
+            skillList[4].isShooting = true;
         }
-        if (Input.GetKeyDown(KeyCode.F9) && skillList[5].lastFireTime > skillList[5].fireRate)
+        if (Input.GetKeyDown(KeyCode.F9) && !skillList[5].isShooting)
         {
             skillList[0] = skillList[5];
             animator.SetTrigger("Magic");
-            skillList[5].lastFireTime = 0;
+            skillList[5].isShooting = true;
         }
 
         //滑鼠中鍵的效果
-        if (Input.GetMouseButtonDown(2) && skillList[CurIdx + 1].lastFireTime > skillList[CurIdx + 1].fireRate)
+        if (Input.GetMouseButtonDown(2) && !skillList[CurIdx + 1].isShooting)
         {
-            skillList[CurIdx + 1].lastFireTime = 0;
+            skillList[CurIdx + 1].isShooting = true;
             animator.SetTrigger("Magic");
             skillList[0] = skillList[CurIdx + 1];
         }

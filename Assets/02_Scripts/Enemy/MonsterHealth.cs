@@ -122,7 +122,7 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("Skill"))
         {
-            getHitEffect[0] = getHitEffect[1];
+            getHitEffect[0] = getHitEffect[5];
             GetHit(0);
         }
         if (other.CompareTag("WaterAttack"))

@@ -17,6 +17,8 @@ public class GetHitEffect : MonoBehaviour
     public GameObject changeColor;
     public Transform playerRotation;
     public SpriteRenderer spriteRenderer;
+    public AudioSource audioSource;
+    public AudioClip dieSFX;
     public int bounceForce = 10000;
     public bool getHit;
     public bool attackBuff;
@@ -130,6 +132,8 @@ public class GetHitEffect : MonoBehaviour
     }
     public void Die()
     {
+        audioSource.clip = dieSFX;
+        audioSource.PlayOneShot(dieSFX);
         gameMenu.anyWindow[6].SetActive(true);
         Time.timeScale = 0;
     }

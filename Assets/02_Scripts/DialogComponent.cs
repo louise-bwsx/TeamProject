@@ -13,8 +13,8 @@ public class DialogComponent : MonoBehaviour
     private string dialog5 = "守護山林田野，與人類息息相關的稻禾大神一邊阻擋污染的擴散另一邊派出手下使者";
     private string dialog6 = "試圖要祓除汙染";
 
-    public List<string> 
-    private string dialog7 = "稻禾：快到了，就在裡面。";
+    //public List<string> 
+    public string dialog7 = "稻禾：快到了，就在裡面。";
     private string dialog8 = "稻禾：等等就像這樣，嘿呀，直接打爆他。";
     private string dialog9 = "稻禾：我會幫你壓制他的力量。你就當作練練手吧。";
     private string dialog10 = "稻禾：............";

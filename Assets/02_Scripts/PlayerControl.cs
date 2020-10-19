@@ -162,7 +162,7 @@ public class PlayerControl : MonoBehaviour
             rollTime = 0;
             rigidbody.velocity = Vector3.zero;
             GetComponent<Collider>().isTrigger = false;
-            rigidbody.useGravity = true;
+            //rigidbody.useGravity = true;
         }
 
         if (stamina < staminaLimit)
@@ -222,7 +222,7 @@ public class PlayerControl : MonoBehaviour
             //GetComponent<Rigidbody>().AddForce(-playerRotation.forward * rollForce);//不知道該決定用哪個好
             rigidbody.velocity = -playerRotation.forward * rollDistence;
             GetComponent<Collider>().isTrigger = true;
-            rigidbody.useGravity = false;
+            //rigidbody.useGravity = false;
             //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
         }
     }

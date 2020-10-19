@@ -52,18 +52,18 @@ public class MonsterHealth : MonoBehaviour
 
     public virtual void Update()
     {
-        if (animator != null)
-        {
-            if (animator.GetBool("IsDead"))
-            {
-                Destroy(gameObject);
-            }
-            //else if (Hp <= 0)
-            //{
-            //    //給Boss Statue用的
-            //    Destroy(gameObject);
-            //}
-        }
+        //if (animator != null)
+        //{
+        //    //if (animator.GetBool("IsDead"))
+        //    //{
+        //    //    Destroy(gameObject);
+        //    //}
+        //    //else if (Hp <= 0)
+        //    //{
+        //    //    //給Boss Statue用的
+        //    //    Destroy(gameObject);
+        //    //}
+        //}
         if (animator == null && Hp <= 0)
         {
             //給Statue用的

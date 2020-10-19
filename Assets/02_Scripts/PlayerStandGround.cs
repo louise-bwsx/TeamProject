@@ -16,8 +16,10 @@ public class PlayerStandGround : MonoBehaviour
         }
         else
         {
-            //0,y,0
-            transform.position.Set(transform.position.x, originTransform.y, transform.position.z);
+            //待測試看起來ok
+            transform.position = originTransform;
+            //迴避穿地板
+            //transform.position.Set(transform.position.x, originTransform.y, transform.position.z);
         }
     }
 }

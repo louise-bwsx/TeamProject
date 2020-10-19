@@ -43,11 +43,6 @@ public class MeleeEnemyController : EnemyController
             agent.enabled = false;
         }
         attackCD += Time.deltaTime;
-        if (monsterHealth.Hp < 0)
-        {
-            attackCube.SetActive(false);
-            agent.enabled = false;
-        }
     }
     void FaceCamera()
     {

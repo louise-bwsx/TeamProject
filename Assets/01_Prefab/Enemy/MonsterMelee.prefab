@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriterotation: {fileID: 1396891828623245892}
+  monsterLongRange: {fileID: 0}
 --- !u!114 &4221067437492302187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +511,7 @@ MonoBehaviour:
   healthBarOnGame: {fileID: 8510760413401196639}
   healthBar: {fileID: 8510760413310532544}
   itemRate: {fileID: 11400000, guid: 7fd4b91e5e7081c44bd581e411e300e6, type: 2}
-  animator: {fileID: 1396891828697735012}
+  animator: {fileID: 0}
   navMeshAgent: {fileID: 3541946659074637989}
   getHitEffect:
   - {fileID: 0}

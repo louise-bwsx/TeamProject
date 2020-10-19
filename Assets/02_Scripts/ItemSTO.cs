@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ItemSTO : ScriptableObject
 {
-    // Start is called before the first frame update
     public float Range;
     public GameObject[] ItemObjList;
     public float[] ItemObjRateList;

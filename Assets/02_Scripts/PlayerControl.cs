@@ -6,7 +6,6 @@ public class PlayerControl : MonoBehaviour
 {
     PlayerOptions playerOptions;
     PlayerAction playerAction;
-    PlayerFaceDirection playerFaceDirection;
     public UIBarControl uIBarControl;
     public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
@@ -15,7 +14,6 @@ public class PlayerControl : MonoBehaviour
     public GameObject skillUI;
     public Transform playerRotation;
     new Rigidbody rigidbody;
-    SpriteRenderer spriteRenderer;
     //有關耐力
     public float stamina;
     float staminaLimit = 100;
@@ -46,14 +44,12 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         rigidbody = GetComponent<Rigidbody>();
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina(staminaLimit);
         playerOptions = GetComponent<PlayerOptions>();
         playerAction = GetComponentInChildren<PlayerAction>();
-        playerFaceDirection = GetComponentInChildren<PlayerFaceDirection>();
         oldPosition = transform.position;
     }
     private void FixedUpdate()//好用的東東
@@ -64,6 +60,7 @@ public class PlayerControl : MonoBehaviour
         //GunAudio.PlayOneShot(walkSFX);
         if (isMagicAttack == true)
         {
+            Debug.Log(1);
             Movement.Set(0, 0, 0);
         }
         else if (isMagicAttack == false)
@@ -197,18 +194,6 @@ public class PlayerControl : MonoBehaviour
     }
     public void Attack()
     {
-        playerFaceDirection.isAttack = true;
-        //人物貼圖轉向
-        if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
-        {
-            spriteRenderer.flipX = true;
-            //transform.rotation = Quaternion.Euler(-30, 90, 0);
-        }
-        else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
-        {
-            spriteRenderer.flipX = false;
-            //transform.rotation = Quaternion.Euler(30, 270, 0);
-        }
         if (Input.GetMouseButtonDown(0))
         {
             playerAction.NormalAttack();

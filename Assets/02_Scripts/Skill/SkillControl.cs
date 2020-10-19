@@ -10,8 +10,8 @@ public class SkillControl : MonoBehaviour
     public Sprite[] spriteList;
     public Animator animator;
     public Skill[] skillList;
-
     public int CurIdx = 0;
+
     void Start()
     {
         SetPos();

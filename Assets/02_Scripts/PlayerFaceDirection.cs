@@ -17,7 +17,21 @@ public class PlayerFaceDirection : MonoBehaviour
     }
     void Update()
     {
-        if (playerControl.cantMove == false && Time.timeScale != 0 && isAttack == false)
+        if (isAttack || playerControl.isMagicAttack)
+        {
+            if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
+            {
+                //Debug.Log("面向右邊");
+                spriteRenderer.flipX = true;
+                //transform.rotation = Quaternion.Euler(-30, 90, 0);
+            }
+            else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
+            {
+                spriteRenderer.flipX = false;
+                //transform.rotation = Quaternion.Euler(30, 270, 0);
+            }
+        }
+        else if (playerControl.cantMove == false && Time.timeScale != 0 && isAttack == false)
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -28,20 +42,6 @@ public class PlayerFaceDirection : MonoBehaviour
             {
                 spriteRenderer.flipX = false;
                 //transform.rotation = Quaternion.Euler(30, 270, 0);
-            }
-            else if (isAttack == false)
-            {
-                if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
-                {
-                    //Debug.Log("面向右邊");
-                    spriteRenderer.flipX = true;
-                    //transform.rotation = Quaternion.Euler(-30, 90, 0);
-                }
-                else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
-                {
-                    spriteRenderer.flipX = false;
-                    //transform.rotation = Quaternion.Euler(30, 270, 0);
-                }
             }
         }
     }
@@ -55,6 +55,7 @@ public class PlayerFaceDirection : MonoBehaviour
     }
     void IsMagicAtttack()//動畫Event控制
     {
+        //不能放在一開頭 不然會讀不到很詭異
         playerControl.isMagicAttack = true;
     }
     void SkillShoot()//動畫Event控制

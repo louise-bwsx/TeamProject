@@ -3244,7 +3244,7 @@ RectTransform:
   - {fileID: 697810674}
   - {fileID: 1618889834}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5543,6 +5543,7 @@ MonoBehaviour:
   - {fileID: 8761432779548603255}
   - {fileID: 8761432779233348675}
   CurIdx: 0
+  playerControl: {fileID: 0}
 --- !u!1 &637138131
 GameObject:
   m_ObjectHideFlags: 0
@@ -6037,7 +6038,7 @@ RectTransform:
   - {fileID: 504597681}
   - {fileID: 890730746}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 2
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -11677,7 +11678,7 @@ RectTransform:
   - {fileID: 1291708355}
   - {fileID: 37590010}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12328,7 +12329,7 @@ RectTransform:
   m_Children:
   - {fileID: 435648769}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -12486,7 +12487,7 @@ RectTransform:
   - {fileID: 1437269472}
   - {fileID: 1253241805}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14381,7 +14382,7 @@ RectTransform:
   - {fileID: 1889233842}
   - {fileID: 2041415890}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14773,7 +14774,7 @@ RectTransform:
   - {fileID: 585640004}
   - {fileID: 658646546}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15156,7 +15157,7 @@ RectTransform:
   - {fileID: 1471208734}
   - {fileID: 1513721054}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -16826,7 +16827,7 @@ RectTransform:
   m_Children:
   - {fileID: 1237460842}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -20154,7 +20155,7 @@ RectTransform:
   m_Children:
   - {fileID: 850225961}
   m_Father: {fileID: 2136891373}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -20570,7 +20571,6 @@ RectTransform:
   m_Children:
   - {fileID: 1249737519}
   - {fileID: 957485561}
-  - {fileID: 672554327}
   - {fileID: 1396881876}
   - {fileID: 1820454386}
   - {fileID: 1654793700}
@@ -20580,6 +20580,7 @@ RectTransform:
   - {fileID: 319904483}
   - {fileID: 1316334111}
   - {fileID: 1399777747}
+  - {fileID: 672554327}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48639,6 +48640,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 4
   fillImage: {fileID: 8085716707496068600}
+  isCD: 0
 --- !u!1 &8761432779233348673
 GameObject:
   m_ObjectHideFlags: 0
@@ -48736,6 +48738,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 2
   fillImage: {fileID: 8085716707635375393}
+  isCD: 0
 --- !u!1 &8761432779293686981
 GameObject:
   m_ObjectHideFlags: 0
@@ -48779,6 +48782,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 5
   fillImage: {fileID: 8085716707716734373}
+  isCD: 0
   wall:
     serializedVersion: 2
     m_Bits: 1024
@@ -48933,6 +48937,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 2
   fillImage: {fileID: 8085716706893484565}
+  isCD: 0
   wall:
     serializedVersion: 2
     m_Bits: 1024
@@ -49597,6 +49602,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 5
   fillImage: {fileID: 1231209233}
+  isCD: 0
   wall:
     serializedVersion: 2
     m_Bits: 1024

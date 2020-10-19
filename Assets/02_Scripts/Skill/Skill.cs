@@ -15,7 +15,7 @@ public class Skill : MonoBehaviour
     public float lastFireTime;//最後射擊時間
     public float fireRate;//射擊間隔
     public Image fillImage;//待實作
-    public bool isShooting = false;
+    public bool isCD = false;
     void Start()
     {
         lastFireTime = 10f;//確保一開始都能按技能
@@ -28,13 +28,10 @@ public class Skill : MonoBehaviour
         {
             fillImage.fillAmount = (fireRate - lastFireTime) / fireRate;
         }
-        else if (fillImage.fillAmount == 1)
-        {
-            isShooting = false;
-        }
         else if (lastFireTime >= fireRate)
         {
             fillImage.fillAmount = 0;
+            //isCD = false;
         }
     }
     public virtual void Shoot()

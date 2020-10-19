@@ -64,7 +64,7 @@ public class MonsterHealth : MonoBehaviour
             //    Destroy(gameObject);
             //}
         }
-        if (Hp <= 0)
+        if (animator == null && Hp <= 0)
         {
             //給Statue用的
             Destroy(gameObject);
@@ -106,14 +106,8 @@ public class MonsterHealth : MonoBehaviour
     }
     public virtual void OnTriggerEnter(Collider other)
     {
-        //暫時用不到
-        //if (other.CompareTag("Arrow"))
-        //{
-        //    //打出的傷害數值 失敗
-        //    //text = Instantiate(text, new Vector3(x, 0.7f, z), transform.rotation);
-        //    GetHit(10);
-        //    other.gameObject.tag = "Broken";
-        //}
+        //打出的傷害數值 失敗
+        //text = Instantiate(text, new Vector3(x, 0.7f, z), transform.rotation);
         if (other.CompareTag("Sword"))
         {
             getHitEffect[0] = getHitEffect[1];

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerSound : MonoBehaviour
 {
-    AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip Click;
     void Start()
     {
-        audioSource = GetComponentInParent<AudioSource>();
         audioSource.volume = CentralData.GetInst().SFXVol;
     }
     void Update()

@@ -11,7 +11,6 @@ public class DetectMonster : MonoBehaviour
         door = GameObject.FindGameObjectWithTag("Door");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (transform.childCount == 0)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class SaveNLoad: MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class SaveNLoad: MonoBehaviour
         getHitEffect = FindObjectOfType<GetHitEffect>();
         skillBase = FindObjectOfType<SkillBase>();
     }
-    public void SaveData()
+    public void SaveData(Text dateTime)
     {
         Debug.Log("進行存檔");
         CentralData.SaveData();
@@ -28,6 +29,8 @@ public class SaveNLoad: MonoBehaviour
 
         CentralData.GetInst().BGMVol = audioMgr.BGMSlider.value;
         CentralData.GetInst().SFXVol = audioMgr.SFXSlider.value;
+
+        dateTime.text = DateTime.Now.ToString();
     }
     public void LoadData()
     {

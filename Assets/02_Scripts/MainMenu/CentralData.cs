@@ -39,7 +39,6 @@ public class CentralData
             Directory.CreateDirectory(path);
         }
         File.WriteAllText(path + filename, jstr);
-        Debug.Log(CentralData.GetInst().BGMVol);
     }
 
     public static CentralData LoadData()

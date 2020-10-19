@@ -142,7 +142,7 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
-            audioSource.PlayOneShot(tornadoHitSFX);
+            audioSource.PlayOneShot(windHitSFX);
             GetHit(2 + characterBase.INT + skillBase.windSkill);
         }
         if (other.CompareTag("Poison") && hitByTransform != other.transform)
@@ -153,14 +153,17 @@ public class MonsterHealth : MonoBehaviour
             audioSource.PlayOneShot(poisonHitSFX);
             GetHit(1 + characterBase.INT + skillBase.poisonSkill);
         }
-        if (other.CompareTag("Firetornado"))
+        if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
         {
             getHitEffect[0] = getHitEffect[2];
-            audioSource.PlayOneShot(fireHitSFX);
+            beAttackMin = beAttackMax;//最大被打的次數
+            hitByTransform = other.transform;
+            audioSource.PlayOneShot(tornadoHitSFX);
             GetHit(5 + characterBase.INT);
         }
         if (other.CompareTag("Bomb"))
         {
+            getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(bombHitSFX);
             GetHit(30 + characterBase.INT);
         }

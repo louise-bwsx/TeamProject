@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8765612709534708631}
   - component: {fileID: 355167518981475881}
   m_Layer: 0
-  m_Name: NewBomb
+  m_Name: Bomb
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.242184, y: -9.454599e-18, z: -41.992626}
   m_LocalScale: {x: 3.2596898, y: 2.6791732, z: 3.2596898}
-  m_Children: []
+  m_Children:
+  - {fileID: 7030473246520274209}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -94,10 +95,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 1.0789447
+  m_Height: 2.6254554
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.00000007314149, y: 0, z: 0.019476702}
 --- !u!82 &7141476752594555715
 AudioSource:
   m_ObjectHideFlags: 0
@@ -318,9 +319,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2db61186b3a9b4b9885734582c60f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 700
-  DestroyTime: 1
-  GunAudio: {fileID: 8765612709534708631}
-  explosionSFX: {fileID: 8300000, guid: f3fffc00e62c2b247abbe96db875c5f8, type: 3}
-  explosionEffect: {fileID: 8792773701619345590, guid: e08cd98b0c9d2854a828c22a18171ae6,
+  destroyTime: 3
+--- !u!1001 &3267731233966102836
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 179523491073800645}
+    m_Modifications:
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532692024975029270, guid: a2f383f57f2e61e4292ef945fda72f1a,
+        type: 3}
+      propertyPath: m_Name
+      value: Boom_Fx
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a2f383f57f2e61e4292ef945fda72f1a, type: 3}
+--- !u!4 &7030473246520274209 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5532692024975029269, guid: a2f383f57f2e61e4292ef945fda72f1a,
     type: 3}
+  m_PrefabInstance: {fileID: 3267731233966102836}
+  m_PrefabAsset: {fileID: 0}

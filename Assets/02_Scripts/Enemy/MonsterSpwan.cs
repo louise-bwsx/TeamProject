@@ -10,11 +10,6 @@ public class MonsterSpwan : MonoBehaviour
     public GameObject spwanmonster;//變成像是生怪點 但只有y會被影響 xz不會
     private float spwantime = 2f;
     private float resettime = 0;
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         resettime += Time.deltaTime;

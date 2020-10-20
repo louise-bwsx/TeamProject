@@ -5,24 +5,22 @@ using UnityEngine;
 public class WallFade : MonoBehaviour
 {
     int wall;
-    int playerLayer;
     Transform alphaTransform;
     public Transform player;
     public Material[] colors;
     void Start()
     {
         wall = LayerMask.GetMask("Wall");
-        playerLayer = LayerMask.GetMask("Player");
     }
     void Update()
     {
         float cameraraylength = 100;
         Vector3 direction = (player.position - Camera.main.transform.position).normalized;
         RaycastHit wallrCross;
-        if (Physics.Raycast(Camera.main.transform.position,direction ,out wallrCross,cameraraylength,wall))
+        if (Physics.Raycast(Camera.main.transform.position, direction, out wallrCross, cameraraylength, wall))
         {
             //Physics.RaycastNonAlloc 陣列raycast
-            if(alphaTransform != null)
+            if (alphaTransform != null)
                 alphaTransform.transform.GetComponent<MeshRenderer>().material = colors[1];
 
             alphaTransform = wallrCross.transform;

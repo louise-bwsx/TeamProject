@@ -52,13 +52,7 @@ public class MonsterHealth : MonoBehaviour
 
     public virtual void Update()
     {
-        if (animator == null && Hp <= 0)
-        {
-            //給Statue MeleeMonster用的
-            Destroy(gameObject);
-        }
         beAttackTime += Time.deltaTime;
-
         //風持續傷害
         getHitTime += Time.deltaTime;
 

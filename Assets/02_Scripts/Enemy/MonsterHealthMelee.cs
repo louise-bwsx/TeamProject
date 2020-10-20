@@ -18,6 +18,15 @@ public class MonsterHealthMelee : MonsterHealth
     //public GameObject SkillBookBlue;
     MeleeEnemyController meleeEnemyController;
 
+    public override void Update()
+    {
+        base.Update();
+        if (Hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public override void MonsterDead()
     {
         meleeEnemyController = GetComponent<MeleeEnemyController>();

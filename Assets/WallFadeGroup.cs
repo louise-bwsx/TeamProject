@@ -5,25 +5,23 @@ using UnityEngine;
 public class WallFadeGroup : MonoBehaviour
 {
     public MeshRenderer[] wallGroup;
-    public Material[] colors;
+    public List<Material> colors = new List<Material>();
     public Material fadeColor;
     public float recoverTime;
     public bool isFade = false;
     void Start()
     {
-        wallGroup = GetComponentsInChildren<MeshRenderer>();
-        //不讓輸入material 
-        //colors = transform.GetComponentsInChildren<Material>();
-        //colors = wallGroup <Material>();
-        //foreach (MeshRenderer i in wallGroup)
-        //{
-        //    colors = i.GetComponent<MeshRenderer>().materials;
-        //}
+        wallGroup = GetComponentsInChildren<MeshRenderer>(true);
+
+        foreach (MeshRenderer i in wallGroup)
+        {
+                colors.Add(i.material);
+        }
     }
     void Update()
     {
         recoverTime += Time.deltaTime;
-        if (recoverTime > 2 && isFade == false)
+        if (recoverTime > 2 && isFade == true)
         {
             AllWallRecover();
         }
@@ -31,6 +29,7 @@ public class WallFadeGroup : MonoBehaviour
 
     public void AllWallFade()
     {
+        Debug.Log(1);
         foreach (MeshRenderer i in wallGroup)
         {
             i.material = fadeColor;
@@ -40,14 +39,12 @@ public class WallFadeGroup : MonoBehaviour
     }
     public void AllWallRecover()
     {
-        for (int i = 0; i < wallGroup.Length; i++)
+        int a = 0;
+        foreach (MeshRenderer i in wallGroup)
         {
-            wallGroup[i].material = colors[i];
+            i.material = colors[a];
+            a++;
         }
-        //foreach (MeshRenderer i in wallGroup)
-        //{
-        //    i.material = colors[];
-        //}
         isFade = false;
     }
 }

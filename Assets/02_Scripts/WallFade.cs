@@ -25,14 +25,17 @@ public class WallFade : MonoBehaviour
                 if (alphaTransform.GetComponent<MeshRenderer>() != null)
                 {
                     alphaTransform.transform.GetComponent<MeshRenderer>().material = colors[1];
+
+                    alphaTransform = wallrCross.transform;
+                    alphaTransform.GetComponent<MeshRenderer>().material = colors[0];
                 }
             }
             if (wallrCross.transform.CompareTag("Invisible"))
             {
                 wallrCross.transform.GetComponent<WallFadeGroup>().AllWallFade();
             }
-            alphaTransform = wallrCross.transform;
-            alphaTransform.GetComponent<MeshRenderer>().material = colors[0];
+            //alphaTransform = wallrCross.transform;
+            //alphaTransform.GetComponent<MeshRenderer>().material = colors[0];
             //alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.4f;
         }
         else if (alphaTransform != null)

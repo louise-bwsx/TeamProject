@@ -21,14 +21,26 @@ public class WallFade : MonoBehaviour
         {
             //Physics.RaycastNonAlloc 陣列raycast
             if (alphaTransform != null)
-                alphaTransform.transform.GetComponent<MeshRenderer>().material = colors[1];
-
+            {
+                if (alphaTransform.GetComponent<MeshRenderer>() != null)
+                {
+                    alphaTransform.transform.GetComponent<MeshRenderer>().material = colors[1];
+                }
+            }
+            if (wallrCross.transform.CompareTag("Invisible"))
+            {
+                wallrCross.transform.GetComponent<WallFadeGroup>().AllWallFade();
+            }
             alphaTransform = wallrCross.transform;
             alphaTransform.GetComponent<MeshRenderer>().material = colors[0];
             //alphaTransform.GetComponent<MeshRenderer>().material.color = Color.black * 0.4f;
         }
         else if (alphaTransform != null)
         {
+            if (wallrCross.transform.CompareTag("Invisible"))
+            {
+                wallrCross.transform.GetComponent<WallFadeGroup>().AllWallRecover();
+            }
             alphaTransform.transform.GetComponent<MeshRenderer>().material = colors[1];
             //alphaTransform.transform.GetComponent<MeshRenderer>().material.color = Color.black;
         }

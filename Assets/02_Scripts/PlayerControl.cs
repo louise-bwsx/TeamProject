@@ -13,8 +13,8 @@ public class PlayerControl : MonoBehaviour
     public GameObject backPackUI;
     public GameObject skillUI;
     public Transform playerRotation;
-    public Rigidbody rigidbody;
-    public Collider collider;
+    public new Rigidbody rigidbody;
+    public new Collider collider;
     //有關耐力
     public float stamina;
     float staminaLimit = 100;

@@ -8,7 +8,7 @@ public class StatueHealthControll : MonsterHealth
     public GameObject guradArea;//無敵區域
     public GameObject minionsGroup;//用來判斷小兵是否全部清完
     public BossFightRule bossFightRule;
-    public BossHealth bossHealth;
+    public Animator bossAnimator;
     public bool isInvincible = false;
     public override void Start()
     {
@@ -24,7 +24,8 @@ public class StatueHealthControll : MonsterHealth
             if (minionsGroup.transform.childCount == 0 && bossFightRule.bossFightState == 1)
             {
                 guradArea.GetComponent<MeshRenderer>().enabled = false;
-                guradArea.GetComponent<Collider>().isTrigger = false;//關閉無敵狀態 單純關掉collider沒用
+                //關閉無敵狀態 單純關掉collider沒用
+                guradArea.GetComponent<Collider>().isTrigger = false;
                 minionsGroup.SetActive(false);
             }
         }
@@ -61,9 +62,21 @@ public class StatueHealthControll : MonsterHealth
     {
         //當雕像被打掉時boss會受到10點傷害
         //bossHealth.GetHit(10);//Boss血量這個功能暫時被移除了
+        switch (bossFightRule.bossFightState)
+        {
+            case 1:
+                {
+                    bossAnimator.SetTrigger("Wheel_1_Broke");
+                    break;
+                }
+            case 2:
+                {
+                    bossAnimator.SetTrigger("Wheel_2_Broke");
+                    break;
+                }
+        }
 
         bossFightRule.bossFightState++;
-        //bossHealth.animator.SetTrigger("Wheel_1_Broke");
         //並且摧毀整個父物件
         Destroy(guardStatue);
         Destroy(minionsGroup);

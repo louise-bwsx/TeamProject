@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriterotation: {fileID: 1396891828623245892}
-  monsterLongRange: {fileID: 0}
+  monsterParent: {fileID: 0}
 --- !u!114 &4221067437492302187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   longRangeRadius: 10
   meleeRadius: 1
-  detectRadius: 15
+  detectRadius: 5.6
   attackCD: 0
   attackRate: 1
   attackCube: {fileID: 1396891829607862041}

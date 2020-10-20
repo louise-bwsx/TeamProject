@@ -191,7 +191,6 @@ public class PlayerControl : MonoBehaviour
                 Debug.Log("穿牆");
             }
         }
-        Debug.DrawLine(oldPosition, transform.position, Color.red);
     }
     public void Attack()
     {

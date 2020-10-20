@@ -19,6 +19,7 @@ public class GetHitEffect : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public AudioSource audioSource;
     public AudioClip dieSFX;
+    public Animator animator;
     public int bounceForce = 10000;
     public bool getHit;
     public bool attackBuff;
@@ -118,7 +119,7 @@ public class GetHitEffect : MonoBehaviour
                 //玩家血量歸零時遊戲暫停
                 if (playerHealth <= 0)
                 {
-                    Die();
+                    animator.SetBool("Dead", true);
                 }
             }
             //當玩家無敵狀態

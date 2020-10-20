@@ -1079,7 +1079,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45880583}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 055eb37ac6b97434eac6f8681951713a, type: 3}
   m_Name: 
@@ -1097,6 +1097,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1757237623}
   audioSource: {fileID: 1878321793}
   dieSFX: {fileID: 8300000, guid: 56b33a0553eab2844b42d20f448e4c28, type: 3}
+  animator: {fileID: 0}
   bounceForce: 5000
   getHit: 0
   attackBuff: 0
@@ -17952,6 +17953,7 @@ GameObject:
   - component: {fileID: 1757237625}
   - component: {fileID: 1757237626}
   - component: {fileID: 1757237628}
+  - component: {fileID: 1757237629}
   m_Layer: 11
   m_Name: PlayerSprite
   m_TagString: SFXSource
@@ -18232,6 +18234,35 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &1757237629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757237620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055eb37ac6b97434eac6f8681951713a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dust: 10000
+  maxHp: 500
+  playerHealth: 0
+  healthbarongame: {fileID: 501881193}
+  uIBarControl: {fileID: 2136891374}
+  playerControl: {fileID: 1757237628}
+  RD: {fileID: 45880588}
+  gameMenu: {fileID: 2136891376}
+  changeColor: {fileID: 45880583}
+  playerRotation: {fileID: 3756948}
+  spriteRenderer: {fileID: 1757237623}
+  audioSource: {fileID: 1878321793}
+  dieSFX: {fileID: 8300000, guid: 56b33a0553eab2844b42d20f448e4c28, type: 3}
+  animator: {fileID: 0}
+  bounceForce: 5000
+  getHit: 0
+  attackBuff: 0
 --- !u!4 &1768143915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2324838579994538587, guid: 6a1b7d271ac6ed24ab2a83fff7256f0a,

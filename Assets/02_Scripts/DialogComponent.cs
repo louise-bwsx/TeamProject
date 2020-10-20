@@ -54,7 +54,6 @@ public class DialogComponent : MonoBehaviour
     public void DialogChange()
     {
         dialogState++;
-        Debug.Log(dialogState);
         if (dialogState < introDialog.Count)
         { 
             dialogText.text = introDialog[dialogState];

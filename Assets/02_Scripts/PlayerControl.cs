@@ -61,7 +61,6 @@ public class PlayerControl : MonoBehaviour
         //GunAudio.PlayOneShot(walkSFX);
         if (isAttack == true)
         {
-            Debug.Log(1);
             Movement.Set(0, 0, 0);
         }
         else if (isAttack == false)

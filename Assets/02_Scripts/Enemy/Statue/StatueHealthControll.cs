@@ -66,6 +66,7 @@ public class StatueHealthControll : MonsterHealth
         {
             case 1:
                 {
+                    Debug.Log(1);
                     bossAnimator.SetTrigger("Wheel_1_Broke");
                     break;
                 }

@@ -32,7 +32,7 @@ public class SkillControl : MonoBehaviour
             SetPos();
         }
         //避免抽搐
-        if (!playerControl.isMagicAttack)
+        if (!playerControl.isAttack)
         {
             if (Input.GetKeyDown(KeyCode.F5) && skillList[1].lastFireTime > skillList[1].fireRate)
             {

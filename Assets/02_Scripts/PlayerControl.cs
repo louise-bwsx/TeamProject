@@ -33,13 +33,14 @@ public class PlayerControl : MonoBehaviour
     public LayerMask wall;
     Vector3 oldPosition;
     //有關攻擊
-    public bool isMagicAttack = false;
+    public bool isAttack = false;
     public float attackRange = 0.4f;
     public float attackTime;
     public float attackSpeed;//同動畫時間
     public float attackSpikeSpeed;//突刺攻擊間隔
     public int attackDamage = 2;
-    public int spikeAttackDash;
+    public int spikeAttackDash = 7;
+    public int normalAttackDash = 3;
     public LayerMask EnemyLayer;
 
     void Start()
@@ -58,12 +59,12 @@ public class PlayerControl : MonoBehaviour
         //GunAudio.PlayOneShot(walkSFX);
         ad = Input.GetAxis("Horizontal");
         //GunAudio.PlayOneShot(walkSFX);
-        if (isMagicAttack == true)
+        if (isAttack == true)
         {
             Debug.Log(1);
             Movement.Set(0, 0, 0);
         }
-        else if (isMagicAttack == false)
+        else if (isAttack == false)
         {
             Movement.Set(-ws, 0f, ad);
         }
@@ -194,8 +195,10 @@ public class PlayerControl : MonoBehaviour
     }
     public void Attack()
     {
+        isAttack = true;
         if (Input.GetMouseButtonDown(0))
         {
+            rigidbody.velocity = playerRotation.forward * normalAttackDash;
             playerAction.NormalAttack();
         }
         else if (Input.GetMouseButtonDown(1))

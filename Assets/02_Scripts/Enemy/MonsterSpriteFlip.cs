@@ -6,7 +6,7 @@ public class MonsterSpriteFlip : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     public Transform spriterotation;
-    public GameObject monsterLongRange;
+    public GameObject monsterParent;
 
     void Start()
     {
@@ -27,6 +27,6 @@ public class MonsterSpriteFlip : MonoBehaviour
     }
     void Dead()//動畫Event呼叫
     {
-        Destroy(monsterLongRange);
+        Destroy(monsterParent);
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerFaceDirection : MonoBehaviour
 {
     public Transform playerRotation;
-    public bool isAttack = false;
     public PlayerControl playerControl;
     SpriteRenderer spriteRenderer;
     public SkillControl skillControl;
@@ -17,7 +16,7 @@ public class PlayerFaceDirection : MonoBehaviour
     }
     void Update()
     {
-        if (isAttack || playerControl.isMagicAttack)
+        if (playerControl.isAttack)
         {
             if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
             {
@@ -31,7 +30,7 @@ public class PlayerFaceDirection : MonoBehaviour
                 //transform.rotation = Quaternion.Euler(30, 270, 0);
             }
         }
-        else if (playerControl.cantMove == false && Time.timeScale != 0 && isAttack == false)
+        else if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack == false)
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -45,22 +44,18 @@ public class PlayerFaceDirection : MonoBehaviour
             }
         }
     }
-    void IsAttackTrue()//動畫Event控制
-    {
-        isAttack = true;
-    }
     void IsAttackFalse()//動畫Event控制
     {
-        isAttack = false;
+        playerControl.isAttack = false;
     }
     void IsMagicAtttack()//動畫Event控制
     {
         //不能放在一開頭 不然會讀不到很詭異
-        playerControl.isMagicAttack = true;
+        playerControl.isAttack = true;
     }
     void SkillShoot()//動畫Event控制
     {
         skillControl.skillList[0].Shoot();
-        playerControl.isMagicAttack = false;
+        playerControl.isAttack = false;
     }
 }

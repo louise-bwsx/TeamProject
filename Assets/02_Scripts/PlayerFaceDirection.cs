@@ -10,7 +10,6 @@ public class PlayerFaceDirection : MonoBehaviour
     public SkillControl skillControl;
     void Start()
     {
-        playerControl = GetComponentInParent<PlayerControl>();
         skillControl = FindObjectOfType<SkillControl>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

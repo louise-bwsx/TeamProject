@@ -18,7 +18,7 @@ public class BossFightRule : MonoBehaviour
             }
             if (bossFightState == 3)
             {
-                //生成點是父物件的0,0,0 但是以子物件的中心為基準
+                //生成不含怪物的雕像
                 finalStatue = Instantiate(guardStatue, transform.position + Vector3.up*1.6f, transform.rotation,transform);
             }
         }

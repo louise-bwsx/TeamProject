@@ -13,7 +13,8 @@ public class PlayerControl : MonoBehaviour
     public GameObject backPackUI;
     public GameObject skillUI;
     public Transform playerRotation;
-    new Rigidbody rigidbody;
+    public Rigidbody rigidbody;
+    public Collider collider;
     //有關耐力
     public float stamina;
     float staminaLimit = 100;
@@ -46,7 +47,6 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
-        rigidbody = GetComponent<Rigidbody>();
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina(staminaLimit);
         playerOptions = GetComponent<PlayerOptions>();
@@ -162,7 +162,7 @@ public class PlayerControl : MonoBehaviour
             cantMove = false;
             rollTime = 0;
             rigidbody.velocity = Vector3.zero;
-            GetComponent<Collider>().isTrigger = false;
+            collider.isTrigger = false;
             //rigidbody.useGravity = true;
         }
 
@@ -224,7 +224,7 @@ public class PlayerControl : MonoBehaviour
             cantMove = true;
             //GetComponent<Rigidbody>().AddForce(-playerRotation.forward * rollForce);//不知道該決定用哪個好
             rigidbody.velocity = -playerRotation.forward * rollDistence;
-            GetComponent<Collider>().isTrigger = true;
+            collider.isTrigger = true;
             //rigidbody.useGravity = false;
             //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
         }

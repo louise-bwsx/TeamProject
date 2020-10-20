@@ -8,6 +8,7 @@ public class StatueHealthControll : MonsterHealth
     public GameObject guradArea;//無敵區域
     public GameObject minionsGroup;//用來判斷小兵是否全部清完
     public BossFightRule bossFightRule;
+    public BossHealth bossHealth;
     public bool isInvincible = false;
     public override void Start()
     {
@@ -62,6 +63,7 @@ public class StatueHealthControll : MonsterHealth
         //bossHealth.GetHit(10);//Boss血量這個功能暫時被移除了
 
         bossFightRule.bossFightState++;
+        //bossHealth.animator.SetTrigger("Wheel_1_Broke");
         //並且摧毀整個父物件
         Destroy(guardStatue);
         Destroy(minionsGroup);

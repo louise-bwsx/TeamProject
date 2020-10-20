@@ -10,8 +10,9 @@ public class BossController : EnemyController
     public Transform shootingtransform;
     public GameObject arrow;
     public float force = 1500;
-    bool isMeleeAttack;
-    bool isLongRangeAttack;
+    public GameObject[] doorClose;
+    //bool isMeleeAttack;
+    //bool isLongRangeAttack;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -21,9 +22,12 @@ public class BossController : EnemyController
     {
         attackCD += Time.deltaTime;
         float distence = Vector3.Distance(target.position, transform.position);
-        if (distence <= detectRadius && attackCD > attackRate)
-        { 
-
+        if (distence <= detectRadius && attackCD > attackRate /*&& boss不是打輸的狀態*/)
+        {
+            foreach (GameObject i in doorClose)
+            {
+                i.SetActive(true);
+            }
             ////近戰攻擊
             //if (distence <= meleeRadius)
             //{
@@ -57,7 +61,7 @@ public class BossController : EnemyController
     {
         meleeAttackAreacollider.enabled = true;
         meshRenderer.enabled = false;
-        isMeleeAttack = false;
+        //isMeleeAttack = false;
         attackCD = 0;
     }
     void BossLongRangeAttack()//由AnimatorEvent呼叫
@@ -65,6 +69,6 @@ public class BossController : EnemyController
         GameObject shootingArrow = Instantiate(arrow, shootingtransform.position, shootingtransform.rotation);
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 5f);
-        isLongRangeAttack = false;
+        //isLongRangeAttack = false;
     }
 }

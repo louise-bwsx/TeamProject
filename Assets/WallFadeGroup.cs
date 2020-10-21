@@ -29,7 +29,6 @@ public class WallFadeGroup : MonoBehaviour
 
     public void AllWallFade()
     {
-        Debug.Log(1);
         foreach (MeshRenderer i in wallGroup)
         {
             i.material = fadeColor;

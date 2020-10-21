@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class LookAtCursor : MonoBehaviour
 {
-    int floor;
+    int cursorDectect;
     Rigidbody RD;
     public Vector3 playertomouse;
     public Quaternion rotationangle;
     void Start()
     {
-        floor = LayerMask.GetMask("Floor");
+        cursorDectect = LayerMask.GetMask("CursorDectect");
         RD = GetComponent<Rigidbody>();
     }
 
@@ -20,7 +20,7 @@ public class LookAtCursor : MonoBehaviour
         float cameraraylength = 100;
         Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorcross;
-        if (Physics.Raycast(cameraray, out floorcross, cameraraylength, floor))
+        if (Physics.Raycast(cameraray, out floorcross, cameraraylength, cursorDectect))
         {
             playertomouse = floorcross.point - transform.position;
             playertomouse.y = 0;

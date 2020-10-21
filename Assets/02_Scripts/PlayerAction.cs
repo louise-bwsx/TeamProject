@@ -13,6 +13,7 @@ public class PlayerAction : MonoBehaviour
     public Transform spawantransform;
     SpriteRenderer spriteRenderer;
     GameObject spwanSwordCube;
+    public GameMenu gameMenu;
 
 
     public AudioSource audioSource;//音效放置給所有怪物存取音效
@@ -20,9 +21,11 @@ public class PlayerAction : MonoBehaviour
     public AudioClip TurnOverSFX;//翻滾音效
     public AudioClip SpikeSFX;//突刺音效
     public AudioClip SwingSFX;//揮擊音效
+    public AudioClip dieSFX;
 
     void Start()
     {
+        gameMenu = FindObjectOfType<GameMenu>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponentInParent<AudioSource>();
         audioSource.volume = CentralData.GetInst().SFXVol;
@@ -72,21 +75,28 @@ public class PlayerAction : MonoBehaviour
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
     }
 
-    public void SpikeAttack()
+    public void SpikeAttack()//動畫Event呼叫
     { 
         animator.SetTrigger("Attack_Spike");
         spawantransform.GetComponent<Collider>().enabled = true;
     }
-    public void SpikeAttackFX()
+    public void SpikeAttackFX()//動畫Event呼叫
     {
         //音效
         audioSource.PlayOneShot(SpikeSFX);
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         //特效
     }
-    public void DestroySword()
+    public void DestroySword()//動畫Event呼叫
     {
         Destroy(spwanSwordCube);
         spawantransform.GetComponent<Collider>().enabled = false;
+    }
+    public void Die()//動畫Event呼叫
+    {
+        audioSource.clip = dieSFX;
+        audioSource.PlayOneShot(dieSFX);
+        gameMenu.anyWindow[6].SetActive(true);
+        Time.timeScale = 0;
     }
 }

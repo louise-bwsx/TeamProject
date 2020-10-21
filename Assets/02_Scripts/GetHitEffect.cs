@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetHitEffect : MonoBehaviour
 {
-    float getHitInvincibleTime;
+    public float getHitInvincibleTime;
     float getHitInvincible = 1f;
     public int dust = 99999;
     public float maxHp = 100;
@@ -13,12 +13,9 @@ public class GetHitEffect : MonoBehaviour
     public UIBarControl uIBarControl;
     public PlayerControl playerControl;
     public Rigidbody RD;
-    public GameMenu gameMenu;
     public GameObject changeColor;
     public Transform playerRotation;
     public SpriteRenderer spriteRenderer;
-    public AudioSource audioSource;
-    public AudioClip dieSFX;
     public Animator animator;
     public int bounceForce = 10000;
     public bool getHit;
@@ -84,6 +81,7 @@ public class GetHitEffect : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log(1);
         if (other.CompareTag("Item"))
         {
             other.GetComponent<ItemPickup>().PickUp();
@@ -119,7 +117,8 @@ public class GetHitEffect : MonoBehaviour
                 //玩家血量歸零時遊戲暫停
                 if (playerHealth <= 0)
                 {
-                    animator.SetBool("Dead", true);
+                    animator.SetTrigger("Dead");
+                    GetComponent<Collider>().enabled = false;
                 }
             }
             //當玩家無敵狀態
@@ -130,12 +129,5 @@ public class GetHitEffect : MonoBehaviour
                 attackBuff = true;
             }
         }
-    }
-    public void Die()
-    {
-        audioSource.clip = dieSFX;
-        audioSource.PlayOneShot(dieSFX);
-        gameMenu.anyWindow[6].SetActive(true);
-        Time.timeScale = 0;
     }
 }

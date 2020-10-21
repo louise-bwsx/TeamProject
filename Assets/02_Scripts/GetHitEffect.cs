@@ -81,7 +81,6 @@ public class GetHitEffect : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(1);
         if (other.CompareTag("Item"))
         {
             other.GetComponent<ItemPickup>().PickUp();

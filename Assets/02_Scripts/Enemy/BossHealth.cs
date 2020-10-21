@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BossHealth : MonsterHealth
 {
+    public GameObject brokenWheel;
+    public Transform brokenPos;
     public override void Update()
     {
         base.Update();
         if (Hp <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
@@ -48,6 +50,12 @@ public class BossHealth : MonsterHealth
         else if (Hp < maxHp * 0.3)
         {
             base.OnTriggerEnter(other);
+            if (Hp < 0)
+            {
+                Debug.Log(1);
+                GameObject FX = Instantiate(brokenWheel, brokenPos.position, transform.rotation);
+                Destroy(FX, 2.5f);
+            }
         }
     }
 }

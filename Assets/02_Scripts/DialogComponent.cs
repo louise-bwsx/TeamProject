@@ -31,6 +31,9 @@ public class DialogComponent : MonoBehaviour
     public Text dialogText;
     public GameObject dialogImage;
     public GameMenu gameMenu;
+    public AudioSource audioSource;
+    public AudioClip panelClip;
+    public AudioClip walkClip;
     void Start()
     {
         introDialog.Add("人類的貪、嗔、癡等，負面能量聚積在世間中形成一股汙染");
@@ -54,14 +57,33 @@ public class DialogComponent : MonoBehaviour
     public void DialogChange()
     {
         dialogState++;
+        Debug.Log(dialogState);
         if (dialogState < introDialog.Count)
-        { 
+        {
             dialogText.text = introDialog[dialogState];
         }
         if (dialogState >= introDialog.Count)
         {
             dialogImage.SetActive(false);
             Time.timeScale = 1;
+        }
+        if (dialogImage.activeSelf == true)
+        {
+            if (audioSource.clip != panelClip)
+            {
+                audioSource.Stop();
+                audioSource.clip = panelClip;
+                audioSource.Play();
+            }
+        }
+        else if (dialogImage.activeSelf == false)
+        {
+            if (audioSource.clip != walkClip)
+            {
+                audioSource.Stop();
+                audioSource.clip = walkClip;
+                audioSource.Play();
+            }
         }
     }
 }

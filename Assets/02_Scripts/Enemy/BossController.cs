@@ -31,7 +31,6 @@ public class BossController : EnemyController
         //當玩家進入怪物偵測範圍 是否實時追蹤目標 是不是boss打輸的狀態
         if (distence <= detectRadius && attackCD > attackRate /*&& boss不是打輸的狀態*/)
         {
-       
             //近戰攻擊
             if (distence <= meleeRadius)
             {

@@ -115,7 +115,7 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("WindAttack") && hitByTransform != other.transform)
         {
-            getHitEffect[0] = getHitEffect[6];
+            getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
             audioSource.PlayOneShot(windHitSFX);

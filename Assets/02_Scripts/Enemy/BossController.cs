@@ -8,13 +8,19 @@ public class BossController : EnemyController
     public MeshRenderer meshRenderer;
     public Collider meleeAttackAreacollider;
     public Transform shootingtransform;
+    public Transform bossUltTransform;
+    public BossHealth bossHealth;
     public GameObject arrow;
     public float force = 1500;
     public GameObject[] doorClose;
+    public GameObject bossUltArea;
+    public List<Transform> bossUltTemp = new List<Transform>();
+    public int bossUltTimes;
     bool isMeleeAttack;
     bool isLongRangeAttack;
     void Start()
     {
+        bossHealth = GetComponentInParent<BossHealth>();
         animator = GetComponentInChildren<Animator>();
         target = PlayerManager.instance.player.transform;
     }
@@ -22,6 +28,8 @@ public class BossController : EnemyController
     {
         attackCD += Time.deltaTime;
         float distence = Vector3.Distance(target.position, transform.position);
+        shootingtransform.LookAt(target);
+        //當玩家進入怪物偵測範圍 是否實時追蹤目標 是不是boss打輸的狀態
         if (distence <= detectRadius && attackCD > attackRate /*&& boss不是打輸的狀態*/)
         {
             foreach (GameObject i in doorClose)
@@ -42,13 +50,27 @@ public class BossController : EnemyController
             //遠距離攻擊
             else if (distence >= meleeRadius)
             {
-                shootingtransform.LookAt(target);
-                if (isLongRangeAttack == false)
+                //當boss是第三階段
+                if (isLongRangeAttack == false && bossUltTimes<5)
+                //if (bossHealth.Hp < bossHealth.maxHp * 0.3 && bossUltTimes<5)
                 {
-                    animator.SetTrigger("HandAttack");
-                    attackCD = 0;
-                    isLongRangeAttack = true;
+                    GameObject bossUlt;
+                    bossUlt = Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
+                    Destroy(bossUlt, 1f);
+                    attackCD = 1;
+                    bossUltTimes++;
+                    if (bossUltTimes >= 5)
+                    {
+                        attackCD = 0;
+                        bossUltTimes = 0;
+                    }
                 }
+                //if (isLongRangeAttack == false)
+                //{
+                //    animator.SetTrigger("HandAttack");
+                //    attackCD = 0;
+                //    isLongRangeAttack = true;
+                //}
             }
         }
         if(attackCD<attackRate)
@@ -66,7 +88,7 @@ public class BossController : EnemyController
     }
     void BossLongRangeAttack()//由AnimatorEvent呼叫
     {
-        GameObject shootingArrow = Instantiate(arrow, shootingtransform.position, shootingtransform.rotation);
+        GameObject shootingArrow = Instantiate(arrow, transform.position, shootingtransform.rotation);
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 5f);
         isLongRangeAttack = false;

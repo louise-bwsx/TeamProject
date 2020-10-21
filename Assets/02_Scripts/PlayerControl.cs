@@ -46,6 +46,8 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        //讓角色一開始可以攻擊
+        attackTime = 10;
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina(staminaLimit);

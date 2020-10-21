@@ -70,7 +70,6 @@ public class GetHitEffect : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Blue"))
         {
-            Debug.Log(1);
             dust += 5;
             Destroy(collision.gameObject);
         }

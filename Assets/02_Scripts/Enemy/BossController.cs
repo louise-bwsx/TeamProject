@@ -54,10 +54,9 @@ public class BossController : EnemyController
                 if (isLongRangeAttack == false && bossUltTimes<5)
                 //if (bossHealth.Hp < bossHealth.maxHp * 0.3 && bossUltTimes<5)
                 {
-                    GameObject bossUlt;
-                    bossUlt = Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
-                    Destroy(bossUlt, 1f);
-                    attackCD = 1;
+                    Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
+                    //每0.5秒鎖定玩家位置
+                    attackCD = 1.5f;
                     bossUltTimes++;
                     if (bossUltTimes >= 5)
                     {

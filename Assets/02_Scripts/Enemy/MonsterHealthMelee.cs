@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-[RequireComponent(typeof(MeleeEnemyController))]
+
 public class MonsterHealthMelee : MonsterHealth
 {
     //public GameObject gold;//黃裝

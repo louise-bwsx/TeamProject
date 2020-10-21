@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 5477791637045825153}
   - component: {fileID: 616738700}
   - component: {fileID: 9150224076756799219}
-  - component: {fileID: 5477791637045825160}
   - component: {fileID: 5349164275163258497}
   m_Layer: 9
   m_Name: MonsterLongRange
@@ -249,27 +248,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5477791637045825160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5477791637045825159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee3976dcf2185a4bbb6acdefca7922a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  longRangeRadius: 10
-  meleeRadius: 1
-  detectRadius: 15
-  attackCD: 0
-  attackRate: 2
-  bow: {fileID: 2639929077437421175}
-  arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
-  shootingposition: {fileID: 2639929077261022266}
-  force: 1500
 --- !u!114 &5349164275163258497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +420,7 @@ GameObject:
   - component: {fileID: 1946896890}
   - component: {fileID: 1946896892}
   - component: {fileID: 369444975877822610}
+  - component: {fileID: 8095893402525829023}
   m_Layer: 9
   m_Name: MonsterSprite
   m_TagString: Untagged
@@ -558,6 +537,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2827774e95b0927429653079d30a632d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8095893402525829023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944422821597224892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee3976dcf2185a4bbb6acdefca7922a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  longRangeRadius: 10
+  meleeRadius: 1
+  detectRadius: 15
+  attackCD: 0
+  attackRate: 2
+  bow: {fileID: 2639929077437421175}
+  arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
+  shootingposition: {fileID: 2639929077261022266}
+  force: 1500
+  monsterHealth: {fileID: 5349164275163258497}
 --- !u!1 &7944422823078056258
 GameObject:
   m_ObjectHideFlags: 0

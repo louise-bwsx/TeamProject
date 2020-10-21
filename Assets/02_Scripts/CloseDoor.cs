@@ -23,11 +23,8 @@ public class CloseDoor : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-        Debug.Log(1);
-            
             foreach (GameObject i in doorClose)
             {
-                Debug.Log(2);
                 i.SetActive(true);
             }
         }

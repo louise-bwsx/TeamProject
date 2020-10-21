@@ -9,11 +9,11 @@ public class LongRangeEnemyController : EnemyController
     public GameObject arrow;
     public Transform shootingposition;
     public float force = 1500;
-    MonsterHealth monsterHealth;
+    public MonsterHealth monsterHealth;
     void Start()
     {
-        monsterHealth = GetComponent<MonsterHealth>();
-        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        agent = GetComponentInParent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
     }
     void Update()
@@ -23,7 +23,7 @@ public class LongRangeEnemyController : EnemyController
         {
             agent.enabled = true;
             //變身怪物動畫播放
-            monsterHealth.animator.SetBool("IsDetect", true);
+            animator.SetBool("IsDetect", true);
             //向著target走
             agent.SetDestination(target.position);
             //面對攝影機
@@ -36,11 +36,7 @@ public class LongRangeEnemyController : EnemyController
                 if (attackCD > attackRate)
                 {
                     attackCD = 0;
-                    monsterHealth.animator.SetTrigger("Attack");
-                }
-                if (monsterHealth.animator.GetBool("IsAttack"))
-                {
-                    MonsterAttack();
+                    animator.SetTrigger("Attack");
                 }
             }
         }
@@ -48,7 +44,7 @@ public class LongRangeEnemyController : EnemyController
         {
             //取消往重生點跑
             agent.enabled = false;
-            monsterHealth.animator.SetBool("IsDetect", false);
+            animator.SetBool("IsDetect", false);
         }
 
         attackCD += Time.deltaTime;
@@ -59,13 +55,12 @@ public class LongRangeEnemyController : EnemyController
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         bow.rotation = Quaternion.Slerp(bow.rotation, lookRotation, Time.deltaTime * 5f);
     }
-    void MonsterAttack()
+    void MonsterAttack()//動畫Event呼叫
     {
         //生成
         GameObject shootingArrow = Instantiate(arrow, shootingposition.position, bow.rotation);
         //射出
         shootingArrow.GetComponent<Rigidbody>().AddForce(bow.forward * force);
-        monsterHealth.animator.SetBool("IsAttack", false);
         Destroy(shootingArrow, 5f);
     }
 }

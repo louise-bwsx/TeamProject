@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-[RequireComponent(typeof(LongRangeEnemyController))]
 public class MonsterHealthLongRange : MonsterHealth
 {
     //public GameObject gold;//黃裝

@@ -8,19 +8,23 @@ public class MeleeEnemyController : EnemyController
     public GameObject attackCube;
     public Transform monsterAttackRotation;
     public MonsterHealth monsterHealth;
+    public Material[] materials;
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         target = PlayerManager.instance.player.transform;
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInParent<NavMeshAgent>();
     }
     void Update()
     {
+        attackCube.SetActive(true);
         distence = Vector3.Distance(target.position, transform.position);
         //如果小於偵測範圍
         if (distence <= detectRadius)
         {
+            //利用遠程小怪的Animator的BackToIdle他的條件是如此
+            //而實際上近戰小怪OverrideAnimator的BackToIdle塞的是走路動畫
             agent.enabled = true;
             //向著target走
             agent.SetDestination(target.position);
@@ -29,17 +33,18 @@ public class MeleeEnemyController : EnemyController
             //如果攻擊距離小於攻擊範圍 且 CD時間到
             if (distence <= meleeRadius && attackCD > attackRate)
             {
-                MonsterAttack();
+                attackCD = 0;
+                animator.SetTrigger("Attack");
             }
-            //如果攻擊範圍大於攻擊距離
-            else if (distence > meleeRadius)
+            else if (distence >= meleeRadius && attackCD < attackRate)
             {
-                //怪物收刀避免碰撞
-                attackCube.SetActive(false);
+                attackCube.GetComponent<MeshRenderer>().material = materials[0];
+                attackCube.GetComponent<Collider>().enabled = false;
             }
         }
         else if (distence >= detectRadius)
         {
+            attackCube.SetActive(false);
             agent.enabled = false;
         }
         attackCD += Time.deltaTime;
@@ -51,10 +56,9 @@ public class MeleeEnemyController : EnemyController
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         monsterAttackRotation.rotation = Quaternion.Slerp(monsterAttackRotation.rotation, lookRotation, Time.deltaTime * 5f);
     }
-    public void MonsterAttack()
+    void MonsterAttack()//動畫Event呼叫
     {
-        attackCube.SetActive(true);
-        animator.SetTrigger("Attack");
-        attackCD = 0;
+        attackCube.GetComponent<MeshRenderer>().material = materials[1];
+        attackCube.GetComponent<Collider>().enabled = true;
     }
 }

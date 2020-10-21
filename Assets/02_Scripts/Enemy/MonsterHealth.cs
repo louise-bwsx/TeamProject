@@ -74,6 +74,7 @@ public class MonsterHealth : MonoBehaviour
     {
         if (beAttackTime > attackTime)
         {
+            animator.SetTrigger("GetHit");
             Debug.Log(transform.name);
             GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
             Destroy(FX, 1);

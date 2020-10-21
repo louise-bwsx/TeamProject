@@ -16,22 +16,16 @@ public class MonsterHealthMelee : MonsterHealth
     //public GameObject SkillBookWhite;
     //public GameObject SkillBookGold;
     //public GameObject SkillBookBlue;
-    MeleeEnemyController meleeEnemyController;
 
     public override void Update()
     {
         base.Update();
-        if (Hp <= 0)
-        {
-            Destroy(gameObject);
-        }
     }
 
     public override void MonsterDead()
     {
-        meleeEnemyController = GetComponent<MeleeEnemyController>();
         //避免怪物死亡後還繼續追著玩家
-        meleeEnemyController.enabled = false;
+        enemyController.enabled = false;
         base.MonsterDead();
     }
 }

@@ -12,6 +12,7 @@ public class MonsterHealth : MonoBehaviour
     public int numHeldItemMax = 3;//裝備生成最大數
     public float beAttackTime;
     public float attackTime;
+    public int bounceForce;
 
     public HealthBarOnGame healthBarOnGame;
     public GameObject healthBar;
@@ -21,6 +22,9 @@ public class MonsterHealth : MonoBehaviour
     public GameObject[] getHitEffect;
     public CharacterBase characterBase;
     public SkillBase skillBase;
+    public EnemyController enemyController;
+    Rigidbody rigidbody;
+    public Transform faceDirection;
 
     public AudioSource audioSource;//音效在子類別調整音量大小
     public AudioClip swordHitSFX;//突擊受擊音效
@@ -40,6 +44,7 @@ public class MonsterHealth : MonoBehaviour
 
     public virtual void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         if (audioSource == null)
         { 
             audioSource = GetComponent<AudioSource>();
@@ -74,7 +79,12 @@ public class MonsterHealth : MonoBehaviour
     {
         if (beAttackTime > attackTime)
         {
+            if (enemyController != null)
+            { 
+                enemyController.attackCD = 0;
+            }
             animator.SetTrigger("GetHit");
+            rigidbody.velocity = -faceDirection.forward * bounceForce;
             Debug.Log(transform.name);
             GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
             Destroy(FX, 1);

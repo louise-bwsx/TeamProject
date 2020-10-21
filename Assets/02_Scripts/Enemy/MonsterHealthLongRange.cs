@@ -15,12 +15,10 @@ public class MonsterHealthLongRange : MonsterHealth
     //public GameObject SkillBookWhite;
     //public GameObject SkillBookGold;
     //public GameObject SkillBookBlue;
-    LongRangeEnemyController longRangeEnemyController;
 
     public override void MonsterDead()
     {
-        longRangeEnemyController = GetComponent<LongRangeEnemyController>();
-        longRangeEnemyController.enabled = false;
+        enemyController.enabled = false;
         base.MonsterDead();
     }
 }

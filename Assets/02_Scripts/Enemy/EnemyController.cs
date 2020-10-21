@@ -7,13 +7,13 @@ public class EnemyController : MonoBehaviour
     public float longRangeRadius = 10;//遠攻距離
     public float meleeRadius = 1;//近戰距離
     public float detectRadius = 15;
+    protected float distence;
 
     public float attackCD;
     public float attackRate = 1;
 
     protected Transform target;
     protected NavMeshAgent agent;
-    protected float distence;
     protected Animator animator;
     public void OnDrawGizmos()
     {

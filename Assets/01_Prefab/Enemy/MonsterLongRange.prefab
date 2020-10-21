@@ -261,11 +261,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 0
-  maxHp: 50
+  maxHp: 100
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
   attackTime: 0
+  bounceForce: 0
   healthBarOnGame: {fileID: 1359176314707734810}
   healthBar: {fileID: 1359176314882351749}
   itemRate: {fileID: 11400000, guid: 7fd4b91e5e7081c44bd581e411e300e6, type: 2}
@@ -283,6 +284,8 @@ MonoBehaviour:
     type: 3}
   skillBase: {fileID: 5061948290639108551, guid: e3c82f9a1293aaf448127bb5924042cb,
     type: 3}
+  enemyController: {fileID: 0}
+  faceDirection: {fileID: 7944422823135693920}
   audioSource: {fileID: 0}
   swordHitSFX: {fileID: 8300000, guid: 64a1ad042a75e1645a9ffd92b395b190, type: 3}
   poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}

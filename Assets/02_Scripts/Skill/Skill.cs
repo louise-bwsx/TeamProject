@@ -20,6 +20,7 @@ public class Skill : MonoBehaviour
     {
         lastFireTime = 10f;//確保一開始都能按技能
         fillImage = transform.Find("CDImage").GetComponent<Image>();
+        playerControl = FindObjectOfType<PlayerControl>();
     }
     void Update()
     {

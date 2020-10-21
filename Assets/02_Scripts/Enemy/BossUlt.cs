@@ -5,27 +5,19 @@ using UnityEngine;
 public class BossUlt : MonoBehaviour
 {
     public float timer;
-    public float destroyTime = 1;
     public GameObject bossSkill;
-    void Start()
-    {
-    }
-
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > destroyTime)
+        //0.5秒後將區域變成傷害判定區域
+        if (timer > 0.5f && GetComponent<Collider>().enabled == false)
         {
             GetComponent<Collider>().enabled = true;
-            //可能會沒用
-            Destroy(gameObject);
+            GameObject bossUltEffect;
+            bossUltEffect = Instantiate(bossSkill, transform.position, transform.rotation);
+
+            Destroy(gameObject, 1.5f);
+            Destroy(bossUltEffect, 1.5f);
         }
-    }
-    private void OnDestroy()
-    {
-        //物件刪除後新增特效
-        GameObject bossUltEffect;
-        bossUltEffect = Instantiate(bossSkill, transform.position, transform.rotation);
-        Destroy(bossUltEffect, 0.5f);
     }
 }

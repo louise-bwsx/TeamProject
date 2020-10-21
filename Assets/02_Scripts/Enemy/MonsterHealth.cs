@@ -103,7 +103,7 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("WaterAttack"))
         {
-            getHitEffect[0] = getHitEffect[1];
+            getHitEffect[0] = getHitEffect[6];
             audioSource.PlayOneShot(waterHitSFX);
             GetHit(5 + characterBase.INT + skillBase.waterSkill);
         }
@@ -115,7 +115,7 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("WindAttack") && hitByTransform != other.transform)
         {
-            getHitEffect[0] = getHitEffect[3];
+            getHitEffect[0] = getHitEffect[6];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
             audioSource.PlayOneShot(windHitSFX);

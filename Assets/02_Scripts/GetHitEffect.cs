@@ -109,7 +109,7 @@ public class GetHitEffect : MonoBehaviour
                 //並且朝反方向彈跳一下
                 //rigidbody.velocity = other.transform.forward * bounceForce;
                 //方向對但是值會因為角色與怪物的距離越遠彈得越遠
-                RD.AddForce((transform.position-other.transform.position) * bounceForce);
+                //RD.AddForce((transform.position-other.transform.position) * bounceForce);
 
                 RD.AddForce(other.transform.forward * bounceForce);
                 //玩家血量歸零時遊戲暫停

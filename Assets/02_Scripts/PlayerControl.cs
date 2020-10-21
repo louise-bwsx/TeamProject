@@ -222,7 +222,9 @@ public class PlayerControl : MonoBehaviour
             isInvincible = true;
             //限制翻滾時不能轉向
             cantMove = true;
-            //GetComponent<Rigidbody>().AddForce(-playerRotation.forward * rollForce);//不知道該決定用哪個好
+            
+            //rigidbody.AddForce(-playerRotation.forward * rollForce);//不知道該決定用哪個好
+            
             rigidbody.velocity = -playerRotation.forward * rollDistence;
             collider.isTrigger = true;
             //rigidbody.useGravity = false;

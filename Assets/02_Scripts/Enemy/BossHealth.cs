@@ -6,6 +6,8 @@ public class BossHealth : MonsterHealth
 {
     public GameObject brokenWheel;
     public Transform brokenPos;
+    public bool[] bossUltTimes;
+    public BossController bossController;
     public override void Update()
     {
         base.Update();
@@ -52,10 +54,33 @@ public class BossHealth : MonsterHealth
             base.OnTriggerEnter(other);
             if (Hp < 0)
             {
-                Debug.Log(1);
                 GameObject FX = Instantiate(brokenWheel, brokenPos.position, transform.rotation);
                 Destroy(FX, 2.5f);
             }
         }
+        //if (Hp < maxHp * 0.35 && bossUltTimes[0] == false)
+        //{
+        //    bossController.BossUltAttack();
+        //    bossController.bossUltTimes = 0;
+        //    bossUltTimes[0] = true;
+        //}
+        //else if (Hp < maxHp * 0.25 && bossUltTimes[1] == false)
+        //{
+        //    bossController.BossUltAttack();
+        //    bossController.bossUltTimes = 0;
+        //    bossUltTimes[1] = true;
+        //}
+        //else if (Hp < maxHp * 0.20 && bossUltTimes[2] == false)
+        //{
+        //    bossController.BossUltAttack();
+        //    bossController.bossUltTimes = 0;
+        //    bossUltTimes[2] = true;
+        //}
+        //else if (Hp < maxHp * 0.10 && bossUltTimes[3] == false)
+        //{
+        //    bossController.BossUltAttack();
+        //    bossController.bossUltTimes = 0;
+        //    bossUltTimes[3] = true;
+        //}
     }
 }

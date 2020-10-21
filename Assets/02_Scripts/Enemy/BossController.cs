@@ -14,7 +14,6 @@ public class BossController : EnemyController
     public float force = 1500;
     public GameObject[] doorClose;
     public GameObject bossUltArea;
-    public List<Transform> bossUltTemp = new List<Transform>();
     public int bossUltTimes;
     bool isMeleeAttack;
     bool isLongRangeAttack;
@@ -50,21 +49,13 @@ public class BossController : EnemyController
             //遠距離攻擊
             else if (distence >= meleeRadius)
             {
-                //當boss是第三階段
-                if (isLongRangeAttack == false && bossUltTimes<5)
-                //if (bossHealth.Hp < bossHealth.maxHp * 0.3 && bossUltTimes<5)
-                {
-                    Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
-                    //每0.5秒鎖定玩家位置
-                    attackCD = 1.5f;
-                    bossUltTimes++;
-                    if (bossUltTimes >= 5)
-                    {
-                        attackCD = 0;
-                        bossUltTimes = 0;
-                    }
-                }
-                //if (isLongRangeAttack == false)
+                meshRenderer.enabled = false;
+                ////當boss是第三階段
+                //if (bossHealth.Hp < bossHealth.maxHp * 0.35 && bossUltTimes<5)
+                //{
+                //    BossUltAttack();
+                //}
+                //else if (isLongRangeAttack == false)
                 //{
                 //    animator.SetTrigger("HandAttack");
                 //    attackCD = 0;
@@ -91,5 +82,17 @@ public class BossController : EnemyController
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 5f);
         isLongRangeAttack = false;
+    }
+    public void BossUltAttack()
+    {
+        Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
+        //每0.5秒鎖定玩家位置
+        attackCD = 1.5f;
+        bossUltTimes++;
+        if (bossUltTimes >= 5)
+        {
+            attackCD = 0;
+            bossUltTimes = 0;
+        }
     }
 }

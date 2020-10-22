@@ -7,10 +7,12 @@ public class PlayerStandGround : MonoBehaviour
     RaycastHit hit;
     Vector3 originTransform;
     LayerMask floor;
+    LayerMask cantMove;
 
     void Start()
     {
         floor = LayerMask.GetMask("Floor");
+        cantMove = LayerMask.GetMask("CantMove");
     }
     void LateUpdate()
     {
@@ -20,12 +22,14 @@ public class PlayerStandGround : MonoBehaviour
             originTransform = transform.position;
             transform.position = hit.point + transform.up * 0.4f;
         }
-        else
+        else if (hit.transform.CompareTag("CantMove"))
         {
             //待測試看起來ok
             transform.position = originTransform;
-            //迴避穿地板
-            //transform.position.Set(transform.position.x, originTransform.y, transform.position.z);
+        }
+        else
+        {
+            transform.position = originTransform;
         }
     }
 }

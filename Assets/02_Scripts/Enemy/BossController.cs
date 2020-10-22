@@ -15,8 +15,7 @@ public class BossController : EnemyController
   
     public GameObject bossUltArea;
     public int bossUltTimes;
-    bool isMeleeAttack;
-    bool isLongRangeAttack;
+    public bool[] isbossUlt;
     void Start()
     {
         bossHealth = GetComponentInParent<BossHealth>();
@@ -35,28 +34,35 @@ public class BossController : EnemyController
             if (distence <= meleeRadius)
             {
                 meshRenderer.enabled = true;
-                if (isMeleeAttack == false)
-                {
-                    animator.SetTrigger("WeaponAttack");
-                    attackCD = 0;
-                    isMeleeAttack = true;
-                }
+                animator.SetTrigger("WeaponAttack");
+                attackCD = 0;
             }
             //遠距離攻擊
             else if (distence >= meleeRadius)
             {
                 meshRenderer.enabled = false;
-                ////當boss是第三階段
-                //if (bossHealth.Hp < bossHealth.maxHp * 0.35 && bossUltTimes<5)
-                //{
-                //    BossUltAttack();
-                //}
-                //else if (isLongRangeAttack == false)
-                //{
-                //    animator.SetTrigger("HandAttack");
-                //    attackCD = 0;
-                //    isLongRangeAttack = true;
-                //}
+                animator.SetTrigger("HandAttack");
+                attackCD = 0;
+                if (bossHealth.Hp < bossHealth.maxHp * 0.35 && isbossUlt[0] == false)
+                {
+                    BossUltAttack();
+                    isbossUlt[0] = true;
+                }
+                else if (bossHealth.Hp < bossHealth.maxHp * 0.25 && isbossUlt[1] == false)
+                {
+                    BossUltAttack();
+                    isbossUlt[1] = true;
+                }
+                else if (bossHealth.Hp < bossHealth.maxHp * 0.20 && isbossUlt[2] == false)
+                {
+                    BossUltAttack();
+                    isbossUlt[2] = true;
+                }
+                else if (bossHealth.Hp < bossHealth.maxHp * 0.10 && isbossUlt[3] == false)
+                {
+                    BossUltAttack();
+                    isbossUlt[3] = true;
+                }
             }
         }
         if(attackCD<attackRate)
@@ -69,15 +75,12 @@ public class BossController : EnemyController
     {
         meleeAttackAreacollider.enabled = true;
         meshRenderer.enabled = false;
-        isMeleeAttack = false;
-        attackCD = 0;
     }
     void BossLongRangeAttack()//由AnimatorEvent呼叫
     {
         GameObject shootingArrow = Instantiate(arrow, transform.position, shootingtransform.rotation);
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 5f);
-        isLongRangeAttack = false;
     }
     public void BossUltAttack()
     {

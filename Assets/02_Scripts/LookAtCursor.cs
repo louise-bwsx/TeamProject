@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class LookAtCursor : MonoBehaviour
 {
     int floor;
-    Rigidbody RD;
     public Vector3 playertomouse;
     public Quaternion rotationangle;
     void Start()
     {
+        
         floor = LayerMask.GetMask("Floor");
-        RD = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -25,9 +24,9 @@ public class LookAtCursor : MonoBehaviour
             playertomouse = floorcross.point - transform.position;
             playertomouse.y = 0;
             rotationangle = Quaternion.LookRotation(playertomouse);
-            RD.MoveRotation(rotationangle);
+            transform.rotation = rotationangle;
         }
-
+            
         //會變成只轉z軸
         //transform.LookAt(Input.mousePosition);
 

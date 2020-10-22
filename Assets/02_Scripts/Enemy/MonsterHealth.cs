@@ -23,7 +23,7 @@ public class MonsterHealth : MonoBehaviour
     public CharacterBase characterBase;
     public SkillBase skillBase;
     public EnemyController enemyController;
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
     public Transform faceDirection;
 
     public AudioSource audioSource;//音效在子類別調整音量大小
@@ -84,7 +84,10 @@ public class MonsterHealth : MonoBehaviour
                 enemyController.attackCD = 0;
             }
             animator.SetTrigger("GetHit");
-            rigidbody.velocity = -faceDirection.forward * bounceForce;
+            if (faceDirection != null)
+            { 
+                rigidbody.velocity = -faceDirection.forward * bounceForce;
+            }
             Debug.Log(transform.name);
             GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
             Destroy(FX, 1);

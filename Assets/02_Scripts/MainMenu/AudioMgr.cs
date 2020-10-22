@@ -45,7 +45,6 @@ public class AudioMgr : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(BGMSource.volume);
         if (bossHealth.Hp < 0)
         {
             if (BGMSource.clip != afterBGM)

@@ -200,7 +200,7 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("穿牆");
         }
         //迴避方向 如果沒撞牆的話是正常的
-        Debug.DrawLine(oldPosition, oldPosition + ((transform.position - oldPosition).normalized * 100f), Color.white, 1f);
+        //Debug.DrawLine(oldPosition, oldPosition + ((transform.position - oldPosition).normalized * 100f), Color.white, 1f);
         oldPosition = transform.position;
     }
     public void Attack()

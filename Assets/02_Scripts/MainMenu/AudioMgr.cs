@@ -45,7 +45,7 @@ public class AudioMgr : MonoBehaviour
     }
     void Update()
     {
-        if (bossHealth.Hp < 0)
+        if (bossHealth !=null && bossHealth.Hp < 0)
         {
             if (BGMSource.clip != afterBGM)
             {
@@ -54,8 +54,7 @@ public class AudioMgr : MonoBehaviour
                 BGMSource.Play();
             }
         }
-        //if (closeDoor.doorClose[] == true)
-        else if (closeDoor.doorClose[0].activeSelf)
+        else if (closeDoor !=null && closeDoor.doorClose[0].activeSelf)
         {
             if (BGMSource.clip != beforeBGM)
             {

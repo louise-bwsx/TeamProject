@@ -8,17 +8,24 @@ public class BossHealth : MonsterHealth
     public Transform brokenPos;
     public GameObject bossDieDialogComponent;
     public GameObject ManiMenu;
+    public float destroyTime = 2.5f;
     public override void Update()
     {
         base.Update();
         if (Hp <= 0)
         {
-            //Destroy(gameObject);
+            destroyTime -= Time.deltaTime;
+        }
+        if (destroyTime <= 0)
+        {
+            bossDieDialogComponent.SetActive(true);
         }
     }
 
     public override void MonsterDead()
     {
+        GameObject FX = Instantiate(brokenWheel, brokenPos.position, transform.rotation);
+        Destroy(FX, destroyTime);
         base.MonsterDead();
     }
     public override void OnTriggerEnter(Collider other)
@@ -52,12 +59,6 @@ public class BossHealth : MonsterHealth
         else if (Hp <= maxHp * 0.3)
         {
             base.OnTriggerEnter(other);
-            if (Hp < 0)
-            {
-                GameObject FX = Instantiate(brokenWheel, brokenPos.position, transform.rotation);
-                Destroy(FX, 2.5f);
-                bossDieDialogComponent.SetActive(true);
-            }
         }
     }
 }

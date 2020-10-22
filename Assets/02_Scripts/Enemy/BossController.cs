@@ -86,23 +86,24 @@ public class BossController : EnemyController
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 5f);
     }
-    //public void BossUltAttack()
-    //{
-    //    //歸零高度15.37
-    //    //shootingtransform.position = shootingtransform.up*15.37f;
-    //    Vector3 aa = bossUltTransform.position;
-    //    aa.y = 2;
-    //    bossUltTransform.position.y = aa;
-    //    GameObject aa = Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
-    //    //會變成橫向施放浮空 高度16多
-    //    //aa.transform.up *= 15.37f;
-    //    //每0.5秒鎖定玩家位置
-    //    attackCD = 1.5f;
-    //    bossUltTimes++;
-    //    if (bossUltTimes >= 5)
-    //    {
-    //        attackCD = 0;
-    //        bossUltTimes = 0;
-    //    }
-    //}
+    public void BossUltAttack()
+    {
+        //歸零高度15.37
+        //shootingtransform.position = shootingtransform.up*15.37f;
+        //Vector3 aa = bossUltTransform.position;
+        //aa.y = 2;
+        //bossUltTransform.position.y = aa;
+        //GameObject aa = Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
+        //會變成橫向施放浮空 高度16多
+        //aa.transform.up *= 15.37f;
+        //每0.5秒鎖定玩家位置
+        Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
+        attackCD = 1.5f;
+        bossUltTimes++;
+        if (bossUltTimes >= 5)
+        {
+            attackCD = 0;
+            bossUltTimes = 0;
+        }
+    }
 }

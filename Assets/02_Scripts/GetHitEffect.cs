@@ -115,6 +115,8 @@ public class GetHitEffect : MonoBehaviour
                 //玩家血量歸零時遊戲暫停
                 if (playerHealth <= 0)
                 {
+                    //死掉後玩家不能動
+                    playerControl.isAttack = true;
                     animator.SetTrigger("Dead");
                     GetComponent<Collider>().enabled = false;
                 }

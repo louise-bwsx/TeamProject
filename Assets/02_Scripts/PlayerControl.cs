@@ -30,7 +30,7 @@ public class PlayerControl : MonoBehaviour
     //有關翻滾
     float rollTime = 0f;//被存入的時間
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
-    public int rollForce;//翻滾移動的強度
+    public int rollForce;
     public int rollDistence;
     public LayerMask wall;
     Vector3 oldPosition;
@@ -58,10 +58,6 @@ public class PlayerControl : MonoBehaviour
     }
     private void FixedUpdate()//好用的東東
     {
-        if (isInvincible)
-        {
-           return;
-        }
         ws = Input.GetAxis("Vertical");//世界軸
         //GunAudio.PlayOneShot(walkSFX);
         ad = Input.GetAxis("Horizontal");
@@ -74,7 +70,6 @@ public class PlayerControl : MonoBehaviour
         {
             Movement.Set(-ws, 0f, ad);
         }
-
         //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
         Movement = Movement * moveSpeed * Time.deltaTime;
         rigidbody.MovePosition(transform.position + Movement);
@@ -189,27 +184,11 @@ public class PlayerControl : MonoBehaviour
             transform.position = new Vector3(-6.31f, 0, 6.08f);
             Application.LoadLevel(Application.loadedLevel);
         }
-        if (isInvincible)
-        {
-            if (Physics.Raycast(oldPosition, (transform.position-oldPosition), Vector3.Distance(oldPosition ,transform.position), wall))
-            {
-               //transform.position = oldPosition;
-                Debug.Log("穿牆");
-            }
-        }
-        else
-        {
-            if (rigidbody.velocity.magnitude > moveSpeed)
-            {
-                rigidbody.velocity = Vector3.zero;
-            }
-            
-        }
-
-        if (rigidbody.velocity.magnitude > 20)
-        {
-            Debug.Log(rigidbody.velocity + " " + rigidbody.velocity.magnitude);
-        }
+        //if (Physics.Raycast(oldPosition, (transform.position - oldPosition), Vector3.Distance(oldPosition, transform.position), wall))
+        //{
+        //    //transform.position = oldPosition;
+        //    Debug.Log("穿牆");
+        //}
     }
     public void Attack()
     {
@@ -236,20 +215,28 @@ public class PlayerControl : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
             //耐力條 -= 損失耐力
             stamina -= staminaRoll;
+            //將損失的耐力顯示在上面
             uIBarControl.SetStamina(stamina);
             playerAction.Roll();
             //開啟無敵狀態
             isInvincible = true;
             //限制翻滾時不能轉向
             cantMove = true;
-            
-            //rigidbody.AddForce(-playerRotation.forward * rollForce);//不知道該決定用哪個好
-            
+            //RaycastHit hit;
+            ////翻滾的距離
+            //Debug.DrawLine(oldPosition, playerRotation.position + -playerRotation.forward * rollDistence, Color.white,100f);
+            //if (Physics.Raycast(oldPosition, -playerRotation.forward, out hit, Vector3.Distance(oldPosition,-playerRotation.forward * rollDistence), wall))
+            //{
+            //    //transform.position = hit.transform.position;
+            //    //可能被彈飛
+            //    //transform.position = oldPosition;
+            //    Debug.Log("穿牆");
+            //}
             rigidbody.velocity = -playerRotation.forward * rollDistence;
+            //讓玩家可以穿過怪物
             collider.isTrigger = true;
+            //不要讓玩家掉下去
             rigidbody.useGravity = false;
-            //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
         }
     }
-    //testall += test1失敗
 }

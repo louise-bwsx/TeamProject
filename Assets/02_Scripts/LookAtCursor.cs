@@ -8,9 +8,9 @@ public class LookAtCursor : MonoBehaviour
     int floor;
     public Vector3 playertomouse;
     public Quaternion rotationangle;
+    public GetHitEffect getHitEffect;
     void Start()
     {
-        
         floor = LayerMask.GetMask("Floor");
     }
 
@@ -19,7 +19,7 @@ public class LookAtCursor : MonoBehaviour
         float cameraraylength = 500;
         Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorcross;
-        if (Physics.Raycast(cameraray, out floorcross, cameraraylength, floor))
+        if (getHitEffect.playerHealth>0 &&(Physics.Raycast(cameraray, out floorcross, cameraraylength, floor)))
         {
             playertomouse = floorcross.point - transform.position;
             playertomouse.y = 0;

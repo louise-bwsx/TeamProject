@@ -11,6 +11,10 @@ public class AudioMgr : MonoBehaviour
     public GameObject[] SFXGameObjectGroup2;
     public Slider BGMSlider;
     public Slider SFXSlider;
+    public AudioClip beforeBGM;
+    public AudioClip afterBGM;
+    public BossHealth bossHealth;
+    public CloseDoor closeDoor;
     void Start()
     {
         //好用的東東但用不到 會取所有的AudioSource 連帶影響到BGM
@@ -38,6 +42,30 @@ public class AudioMgr : MonoBehaviour
         BGMSource.volume = CentralData.GetInst().BGMVol;
         BGMSlider.value = CentralData.GetInst().BGMVol;
         SFXSlider.value = CentralData.GetInst().SFXVol;
+    }
+    void Update()
+    {
+        Debug.Log(BGMSource.volume);
+        if (bossHealth.Hp < 0)
+        {
+            if (BGMSource.clip != afterBGM)
+            {
+                BGMSource.Stop();
+                BGMSource.clip = afterBGM;
+                BGMSource.Play();
+            }
+        }
+        //if (closeDoor.doorClose[] == true)
+        else if (closeDoor.doorClose[0].activeSelf)
+        {
+            if (BGMSource.clip != beforeBGM)
+            {
+
+                BGMSource.clip = beforeBGM;
+                BGMSource.Play();
+            }
+        }
+
     }
     public void SetBGMVol (float v)
     {

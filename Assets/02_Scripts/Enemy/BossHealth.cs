@@ -6,6 +6,8 @@ public class BossHealth : MonsterHealth
 {
     public GameObject brokenWheel;
     public Transform brokenPos;
+    public GameObject bossDieDialogComponent;
+    public GameObject ManiMenu;
     public override void Update()
     {
         base.Update();
@@ -54,6 +56,7 @@ public class BossHealth : MonsterHealth
             {
                 GameObject FX = Instantiate(brokenWheel, brokenPos.position, transform.rotation);
                 Destroy(FX, 2.5f);
+                bossDieDialogComponent.SetActive(true);
             }
         }
     }

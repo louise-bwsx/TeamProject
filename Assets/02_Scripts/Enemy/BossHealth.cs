@@ -25,13 +25,13 @@ public class BossHealth : MonsterHealth
         if (Hp > maxHp * 0.7)
         {
             base.OnTriggerEnter(other);
-            if (Hp < maxHp * 0.7)
+            if (Hp <= maxHp * 0.7)
             {
                 animator.SetTrigger("Wheel_1_Broke");
             }
         }
         //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
-        else if (Hp < maxHp * 0.7 && Hp>maxHp*0.3)
+        else if (Hp <= maxHp * 0.7 && Hp>maxHp*0.3)
         {
             base.OnTriggerEnter(other);
             //只有組合技才能造成傷害
@@ -41,13 +41,13 @@ public class BossHealth : MonsterHealth
             //else if (other.CompareTag("火龍捲"))
             //{ 
             //}
-            if (Hp < maxHp * 0.3)
+            if (Hp <= maxHp * 0.3)
             {
                 animator.SetTrigger("Wheel_2_Broke");
             }
         }
         //Boss血量第三階段此時Boss開始會放大招
-        else if (Hp < maxHp * 0.3)
+        else if (Hp <= maxHp * 0.3)
         {
             base.OnTriggerEnter(other);
             if (Hp < 0)

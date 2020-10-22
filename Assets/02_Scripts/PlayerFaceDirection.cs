@@ -8,6 +8,7 @@ public class PlayerFaceDirection : MonoBehaviour
     public PlayerControl playerControl;
     SpriteRenderer spriteRenderer;
     public SkillControl skillControl;
+    public bool isMagicAttack;
     void Start()
     {
         skillControl = FindObjectOfType<SkillControl>();
@@ -15,21 +16,19 @@ public class PlayerFaceDirection : MonoBehaviour
     }
     void Update()
     {
-        if (playerControl.isAttack)
+        if (isMagicAttack)
         {
             if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
             {
                 //Debug.Log("面向右邊");
                 spriteRenderer.flipX = true;
-                //transform.rotation = Quaternion.Euler(-30, 90, 0);
             }
             else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
             {
                 spriteRenderer.flipX = false;
-                //transform.rotation = Quaternion.Euler(30, 270, 0);
             }
         }
-        else if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack == false)
+        if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack == false)
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -43,18 +42,34 @@ public class PlayerFaceDirection : MonoBehaviour
             }
         }
     }
+    public void PlayerSpriteFlip()
+    {
+        if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
+        {
+            //Debug.Log("面向右邊");
+            spriteRenderer.flipX = true;
+        }
+        else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
     void IsAttackFalse()//動畫Event控制
     {
+        //為了攻擊中不能移動
         playerControl.isAttack = false;
     }
     void IsMagicAtttack()//動畫Event控制
     {
+        //為了攻擊中不能移動
         //不能放在一開頭 不然會讀不到很詭異
         playerControl.isAttack = true;
+        isMagicAttack = true;
     }
     void SkillShoot()//動畫Event控制
     {
         skillControl.skillList[0].Shoot();
         playerControl.isAttack = false;
+        isMagicAttack = false;
     }
 }

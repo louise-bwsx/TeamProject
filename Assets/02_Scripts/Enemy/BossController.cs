@@ -16,6 +16,7 @@ public class BossController : EnemyController
     public GameObject bossUltArea;
     public int bossUltTimes;
     public bool[] isbossUlt;
+    public Vector3 lookDirection; 
     void Start()
     {
         bossHealth = GetComponentInParent<BossHealth>();
@@ -26,12 +27,15 @@ public class BossController : EnemyController
     {
         attackCD += Time.deltaTime;
         float distence = Vector3.Distance(target.position, transform.position);
-        shootingtransform.LookAt(target);
+        lookDirection = Vector3.ProjectOnPlane(target.position - shootingtransform.position, shootingtransform.up);
+
+        shootingtransform.rotation = Quaternion.LookRotation(lookDirection);
+        Debug.DrawLine(shootingtransform.position, target.position, Color.green);
         //當玩家進入怪物偵測範圍 是否實時追蹤目標 是不是boss打輸的狀態
         if (distence <= detectRadius && attackCD > attackRate /*&& boss不是打輸的狀態*/)
         {
-            //近戰攻擊
-            if (distence <= meleeRadius)
+            //進入近戰攻擊範圍 && 避免CD時間一到又播一次動畫覆蓋攻擊動作
+            if (distence <= meleeRadius && !meshRenderer.enabled)
             {
                 meshRenderer.enabled = true;
                 animator.SetTrigger("WeaponAttack");
@@ -78,13 +82,17 @@ public class BossController : EnemyController
     }
     void BossLongRangeAttack()//由AnimatorEvent呼叫
     {
-        GameObject shootingArrow = Instantiate(arrow, transform.position, shootingtransform.rotation);
+        GameObject shootingArrow = Instantiate(arrow, shootingtransform.position, shootingtransform.rotation);
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 5f);
     }
     public void BossUltAttack()
     {
-        Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
+        //歸零高度15.37
+        //shootingtransform.position = shootingtransform.up*15.37f;
+        GameObject aa = Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
+        //會變成橫向施放浮空 高度16多
+        //aa.transform.up *= 15.37f;
         //每0.5秒鎖定玩家位置
         attackCD = 1.5f;
         bossUltTimes++;

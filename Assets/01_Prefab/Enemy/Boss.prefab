@@ -260,6 +260,7 @@ MonoBehaviour:
   numHeldItemMax: 3
   beAttackTime: 0
   attackTime: 0
+  bounceForce: 0
   healthBarOnGame: {fileID: 8736574828475642069}
   healthBar: {fileID: 8736574829734924733}
   itemRate: {fileID: 11400000, guid: 727aec49cb25f304fb3fa249d6120e7d, type: 2}
@@ -272,10 +273,13 @@ MonoBehaviour:
   - {fileID: 5919181595379585890, guid: 8c3e7583233109e4ca6e2189c7097cdd, type: 3}
   - {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076, type: 3}
   - {fileID: 791922460492604613, guid: 45e28252bfa6bb440969a7c648e8e461, type: 3}
+  - {fileID: 1562751768510379180, guid: 84642f2af51ee8443bab032245f1d27d, type: 3}
   characterBase: {fileID: 3467926028038569551, guid: 3132c1972a1e5864684147c455dd427b,
     type: 3}
   skillBase: {fileID: 5061948290639108551, guid: e3c82f9a1293aaf448127bb5924042cb,
     type: 3}
+  enemyController: {fileID: 0}
+  faceDirection: {fileID: 0}
   audioSource: {fileID: 0}
   swordHitSFX: {fileID: 8300000, guid: 377a02e3a1f91124db0ee8f2278fe40b, type: 3}
   poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
@@ -292,8 +296,6 @@ MonoBehaviour:
   brokenWheel: {fileID: 6992360949995693572, guid: e854a57af02a6924482eb2b7e0b5b924,
     type: 3}
   brokenPos: {fileID: 0}
-  bossUltTimes: 00000000
-  bossController: {fileID: 2148843662860586344}
 --- !u!1 &6227207049893743282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,12 +1110,10 @@ MonoBehaviour:
   bossHealth: {fileID: 0}
   arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
   force: 1500
-  doorClose:
-  - {fileID: 0}
-  - {fileID: 0}
   bossUltArea: {fileID: 1826878098602081369, guid: 60d91d921950c9148837c93974172947,
     type: 3}
   bossUltTimes: 0
+  isbossUlt: 00000000
 --- !u!114 &1036538080430768565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1469,7 +1469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736574829065142064}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.28100014, z: 0}
+  m_LocalPosition: {x: 0, y: -0.36, z: 0}
   m_LocalScale: {x: 4.524999, y: 0.06, z: 7.244685}
   m_Children: []
   m_Father: {fileID: 3835812322728355123}

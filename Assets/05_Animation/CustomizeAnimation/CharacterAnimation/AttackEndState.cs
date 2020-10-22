@@ -7,6 +7,7 @@ public class AttackEndState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //不能刪跟動作連貫有關
         animator.SetBool("IsAttack", false);
     }
 

@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     PlayerOptions playerOptions;
     PlayerAction playerAction;
     public UIBarControl uIBarControl;
+    public PlayerFaceDirection playerFaceDirection;
     public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
     public EquipmentManager equipmentManager;
@@ -195,7 +196,9 @@ public class PlayerControl : MonoBehaviour
     }
     public void Attack()
     {
+        //false在動畫Event呼叫
         isAttack = true;
+        playerFaceDirection.PlayerSpriteFlip();
         if (Input.GetMouseButtonDown(0))
         {
             rigidbody.velocity = playerRotation.forward * normalAttackDash;

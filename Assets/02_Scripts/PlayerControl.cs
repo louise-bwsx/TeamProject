@@ -58,6 +58,10 @@ public class PlayerControl : MonoBehaviour
     }
     private void FixedUpdate()//好用的東東
     {
+        if (isInvincible)
+        {
+           return;
+        }
         ws = Input.GetAxis("Vertical");//世界軸
         //GunAudio.PlayOneShot(walkSFX);
         ad = Input.GetAxis("Horizontal");
@@ -165,7 +169,8 @@ public class PlayerControl : MonoBehaviour
             rollTime = 0;
             rigidbody.velocity = Vector3.zero;
             collider.isTrigger = false;
-            //rigidbody.useGravity = true;
+            rigidbody.useGravity = true;
+            oldPosition = transform.position;
         }
 
         if (stamina < staminaLimit)
@@ -186,12 +191,24 @@ public class PlayerControl : MonoBehaviour
         }
         if (isInvincible)
         {
-            Debug.DrawLine(oldPosition, transform.position, Color.green,1f);
             if (Physics.Raycast(oldPosition, (transform.position-oldPosition), Vector3.Distance(oldPosition ,transform.position), wall))
             {
-                transform.position = oldPosition;
+               //transform.position = oldPosition;
                 Debug.Log("穿牆");
             }
+        }
+        else
+        {
+            if (rigidbody.velocity.magnitude > moveSpeed)
+            {
+                rigidbody.velocity = Vector3.zero;
+            }
+            
+        }
+
+        if (rigidbody.velocity.magnitude > 20)
+        {
+            Debug.Log(rigidbody.velocity + " " + rigidbody.velocity.magnitude);
         }
     }
     public void Attack()
@@ -230,7 +247,7 @@ public class PlayerControl : MonoBehaviour
             
             rigidbody.velocity = -playerRotation.forward * rollDistence;
             collider.isTrigger = true;
-            //rigidbody.useGravity = false;
+            rigidbody.useGravity = false;
             //PlayerCube.transform.Rotate(Vector3.right * 200);//瞬間轉到x.200度
         }
     }

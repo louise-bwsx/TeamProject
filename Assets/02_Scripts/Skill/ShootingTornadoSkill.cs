@@ -13,5 +13,4 @@ public class ShootingTornadoSkill : MonoBehaviour
         audioSource.volume = CentralData.GetInst().SFXVol;
         Destroy(gameObject, destroyTime);
     }
-
 }

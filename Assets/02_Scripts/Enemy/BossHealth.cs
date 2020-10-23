@@ -30,7 +30,7 @@ public class BossHealth : MonsterHealth
 
     public override void MonsterDead()
     {
-        GameObject FX = Instantiate(brokenWheel, brokenPos.position, transform.rotation);
+        GameObject FX = Instantiate(brokenWheel, brokenPos.position, brokenPos.rotation);
         Destroy(FX, destroyTime);
         base.MonsterDead();
     }
@@ -48,7 +48,7 @@ public class BossHealth : MonsterHealth
         //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
         else if (Hp <= maxHp * 0.7 && Hp>maxHp*0.3)
         {
-            //base.OnTriggerEnter(other);
+            base.OnTriggerEnter(other);
             //只有組合技才能造成傷害
             if (other.CompareTag("Bomb"))
             {
@@ -57,9 +57,15 @@ public class BossHealth : MonsterHealth
                 GetHit(30 + characterBase.INT);
                 Debug.Log(1);
             }
-            //else if (other.CompareTag("火龍捲"))
-            //{ 
-            //}
+            if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
+            {
+                getHitEffect[0] = getHitEffect[2];
+                beAttackMin = beAttackMax;//最大被打的次數
+                hitByTransform = other.transform;
+                GetHit(5 + characterBase.INT);
+                enumAttack = EnumAttack.fireTornado;
+                Debug.Log(2);
+            }
             if (Hp <= maxHp * 0.3)
             {
                 animator.SetTrigger("Wheel_2_Broke");

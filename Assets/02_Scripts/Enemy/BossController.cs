@@ -95,7 +95,7 @@ public class BossController : EnemyController
     {
         isBossUlt = true;
         Vector3 bossUltPosition = bossUltTransform.position;
-        bossUltPosition.y = 15.5f;
+        bossUltPosition.y = 15.7f;
         Instantiate(bossUltArea, bossUltPosition, shootingtransform.rotation);
         //每0.5秒鎖定玩家位置
         attackCD = 1.5f;

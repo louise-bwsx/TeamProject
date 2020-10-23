@@ -293,9 +293,13 @@ MonoBehaviour:
   getHitTime: 0
   gethitlimit: 0.3
   windColdTime: 5
+  enumAttack: 0
   brokenWheel: {fileID: 6992360949995693572, guid: e854a57af02a6924482eb2b7e0b5b924,
     type: 3}
   brokenPos: {fileID: 0}
+  bossDieDialogComponent: {fileID: 0}
+  ManiMenu: {fileID: 0}
+  destroyTime: 2.5
 --- !u!1 &6227207049893743282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1117,8 @@ MonoBehaviour:
   bossUltArea: {fileID: 1826878098602081369, guid: 60d91d921950c9148837c93974172947,
     type: 3}
   bossUltTimes: 0
-  isbossUlt: 00000000
+  isBossUlt: 0
+  lookDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1036538080430768565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1697,40 +1702,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8736574829862034894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ab672bb7ec6fd4f8f0fc3bc5c23f46, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a6eff15ac436d49b69cd3466b17a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 8736574829862034736}
-  gradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 0.06170082, g: 1, b: 0, a: 1}
-    key2: {r: 0, g: 0.69411767, b: 0.105882354, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 21627
-    ctime1: 43253
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 1
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
-  Fill: {fileID: 8736574829932909402}
 --- !u!114 &8736574829862034736
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class MonsterHealth : MonoBehaviour
     public AudioClip tornadoHitSFX;//龍捲風受擊音效
     public AudioClip bombHitSFX;//爆炸受擊音效
 
-    Transform hitByTransform;
+    public Transform hitByTransform;
     public float beAttackMin = 0;//被打的次數
     public float beAttackMax = 0;//被打的最大次數
     public float getHitTime;

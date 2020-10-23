@@ -5,6 +5,8 @@ using UnityEngine;
 public class CloseDoor : MonoBehaviour
 {
     public GameObject[] doorClose;
+    public GameObject[] door;
+    public GameObject aa;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +27,23 @@ public class CloseDoor : MonoBehaviour
         {
             foreach (GameObject i in doorClose)
             {
-                i.SetActive(true);
+                i.SetActive(false);
             }
+           
+
         }
-    }
+        if (other.CompareTag("Player"))
+        {
+            aa.SetActive(true);
+            foreach (GameObject h in door)
+            {
+                h.SetActive(false);
+                h.GetComponent<MeshRenderer>().enabled = false;
+            }
+
+        }
+
+        }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

@@ -9,8 +9,12 @@ public class PlayerAction : MonoBehaviour
     public GameObject swordCube;
     public GameObject swingAttackEffectLeft;
     public GameObject swingAttackEffectRight;
+    public GameObject SpikeAttackEffectLeft;
+    public GameObject SpikeAttackEffectRight;
     public Transform player;
     public Transform spawantransform;
+    public Transform SpikeAttackLeftPos;
+    public Transform SpikeAttackRightPos;
     SpriteRenderer spriteRenderer;
     GameObject spwanSwordCube;
     public GameMenu gameMenu;
@@ -83,8 +87,19 @@ public class PlayerAction : MonoBehaviour
     public void SpikeAttackFX()//動畫Event呼叫
     {
         //音效
+        GameObject FX;
         audioSource.PlayOneShot(SpikeSFX);
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
+        if (spriteRenderer.flipX == false)
+        {
+            FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
+            Destroy(FX, 0.5f);
+        }
+        else if (spriteRenderer.flipX == true)
+        {
+            FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
+            Destroy(FX, 0.5f);
+        }
         //特效
     }
     public void DestroySword()//動畫Event呼叫

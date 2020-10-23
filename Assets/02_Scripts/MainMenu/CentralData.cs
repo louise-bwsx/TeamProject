@@ -50,11 +50,11 @@ public class CentralData
     }
 
     //成員變數
-    public float BGMVol;//音量0~1
-    public float SFXVol;
+    public float BGMVol = 1;//音量0~1
+    public float SFXVol = 1;
     
     //魔塵
-    public int dust;
+    public int dust = 100000;
 
     //技能等級
     public int fireSkillLevel;

@@ -281,13 +281,14 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   faceDirection: {fileID: 0}
   audioSource: {fileID: 0}
-  swordHitSFX: {fileID: 8300000, guid: 377a02e3a1f91124db0ee8f2278fe40b, type: 3}
+  swordHitSFX: {fileID: 8300000, guid: 64a1ad042a75e1645a9ffd92b395b190, type: 3}
   poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
   fireHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}
   windHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
   waterHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
   tornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
   bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
+  hitByTransform: {fileID: 0}
   beAttackMin: 0
   beAttackMax: 0
   getHitTime: 0
@@ -1113,12 +1114,15 @@ MonoBehaviour:
   bossUltTransform: {fileID: 462101550}
   bossHealth: {fileID: 0}
   arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
+  swordPos: {fileID: 0}
+  BossSwordEffect: {fileID: 0}
   force: 1500
   bossUltArea: {fileID: 1826878098602081369, guid: 60d91d921950c9148837c93974172947,
     type: 3}
   bossUltTimes: 0
   isBossUlt: 0
   lookDirection: {x: 0, y: 0, z: 0}
+  FX: {fileID: 0}
 --- !u!114 &1036538080430768565
 MonoBehaviour:
   m_ObjectHideFlags: 0

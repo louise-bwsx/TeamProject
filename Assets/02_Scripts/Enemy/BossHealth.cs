@@ -48,7 +48,8 @@ public class BossHealth : MonsterHealth
         //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
         else if (Hp <= maxHp * 0.7 && Hp>maxHp*0.3)
         {
-            base.OnTriggerEnter(other);
+            //測試用只要打開就不受階段限制
+            //base.OnTriggerEnter(other);
             //只有組合技才能造成傷害
             if (other.CompareTag("Bomb"))
             {

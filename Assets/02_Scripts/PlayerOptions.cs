@@ -31,15 +31,15 @@ public class PlayerOptions : MonoBehaviour
     {
         foreach (GameObject i in monsterhealthbar)
         {
-            i.SetActive(playerswtitch);
+            i.SetActive(monsterSwitch);
         }
         if (monsterSwitch)
         {
-            playerswtitch = false;
+            monsterSwitch = false;
         }
         else
         {
-            playerswtitch = true;
+            monsterSwitch = true;
         }
     }
 }

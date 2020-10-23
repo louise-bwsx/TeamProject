@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 public class PlayerControl : MonoBehaviour
 {
-    PlayerOptions playerOptions;
     PlayerAction playerAction;
+    public PlayerOptions playerOptions;
     public UIBarControl uIBarControl;
     public PlayerFaceDirection playerFaceDirection;
     public GameMenu gameMenu;
@@ -53,7 +53,6 @@ public class PlayerControl : MonoBehaviour
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina(staminaLimit);
-        playerOptions = GetComponent<PlayerOptions>();
         playerAction = GetComponentInChildren<PlayerAction>();
         oldPosition = transform.position;
         rayMask = wall & monster;

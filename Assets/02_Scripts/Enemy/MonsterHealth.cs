@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-
+using UnityScript.Macros;
+public enum EnumAttack
+{
+    wind,
+    poison,
+    fireTornado,
+    count
+}
 public class MonsterHealth : MonoBehaviour
 {
     public float Hp = 0;
@@ -41,6 +48,7 @@ public class MonsterHealth : MonoBehaviour
     public float getHitTime;
     public float gethitlimit = 0.3F;//間格秒數
     public float windColdTime = 5;
+    public EnumAttack enumAttack;
 
     public virtual void Start()
     {
@@ -69,10 +77,33 @@ public class MonsterHealth : MonoBehaviour
                 getHitTime = 0;
                 GetHit(2);
                 beAttackMin--;
+                if (enumAttack != EnumAttack.count)
+                {
+                    switch (enumAttack)
+                    {
+                        case EnumAttack.wind:
+                            {
+                                audioSource.PlayOneShot(windHitSFX);
+                                break;
+                            }
+                        case EnumAttack.poison:
+                            {
+                                audioSource.PlayOneShot(poisonHitSFX);
+                                break;
+                            }
+                        case EnumAttack.fireTornado:
+                            {
+                                audioSource.PlayOneShot(tornadoHitSFX);
+                                break;
+                            }
+                    }
+                }
             }
         }
+
         if (hitByTransform == null)
         {
+            enumAttack = EnumAttack.count;
             beAttackMin = 0;
         }
     }
@@ -130,32 +161,28 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("WindAttack") && hitByTransform != other.transform)
         {
-            audioSource.clip = windHitSFX;
-            audioSource.Play();
+         
             getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
-            audioSource.Stop();
-
             GetHit(2 + characterBase.INT + skillBase.windSkill);
+            enumAttack = EnumAttack.wind;
         }
         if (other.CompareTag("Poison") && hitByTransform != other.transform)
         {
             getHitEffect[0] = getHitEffect[4];
             beAttackMin = 20;//最大被打的次數
             hitByTransform = other.transform;
-            audioSource.PlayOneShot(poisonHitSFX);
             GetHit(1 + characterBase.INT + skillBase.poisonSkill);
+            enumAttack = EnumAttack.poison;
         }
         if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
         {
-            audioSource.clip = tornadoHitSFX;
             getHitEffect[0] = getHitEffect[2];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
-            audioSource.PlayOneShot(tornadoHitSFX);
             GetHit(5 + characterBase.INT);
-     
+            enumAttack = EnumAttack.fireTornado;
         }
         if (other.CompareTag("Bomb"))
         {

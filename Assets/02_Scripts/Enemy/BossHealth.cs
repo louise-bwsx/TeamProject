@@ -9,6 +9,12 @@ public class BossHealth : MonsterHealth
     public GameObject bossDieDialogComponent;
     public GameObject ManiMenu;
     public float destroyTime = 2.5f;
+    BossController bossController;
+    public override void Start()
+    {
+        base.Start();
+        bossController = FindObjectOfType<BossController>();
+    }
     public override void Update()
     {
         base.Update();
@@ -53,6 +59,7 @@ public class BossHealth : MonsterHealth
             if (Hp <= maxHp * 0.3)
             {
                 animator.SetTrigger("Wheel_2_Broke");
+                bossController.BossUltAttack();
             }
         }
         //Boss血量第三階段此時Boss開始會放大招

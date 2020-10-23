@@ -15,7 +15,7 @@ public class BossController : EnemyController
   
     public GameObject bossUltArea;
     public int bossUltTimes;
-    public bool[] isbossUlt;
+    public bool isBossUlt;
     public Vector3 lookDirection; 
     void Start()
     {
@@ -45,27 +45,32 @@ public class BossController : EnemyController
             else if (distence >= meleeRadius)
             {
                 meshRenderer.enabled = false;
-                animator.SetTrigger("HandAttack");
-                attackCD = 0;
-                if (bossHealth.Hp < bossHealth.maxHp * 0.35 && isbossUlt[0] == false)
+                if (isBossUlt)
                 {
-                    BossUltAttack(isbossUlt[0]);
-                    //isbossUlt[0] = true;
+                    BossUltAttack();
+                    return;
                 }
-                else if (bossHealth.Hp < bossHealth.maxHp * 0.25 && isbossUlt[1] == false)
+                if (bossHealth.Hp <= bossHealth.maxHp * 0.3)
                 {
-                    BossUltAttack(isbossUlt[1]);
-                    //isbossUlt[1] = true;
+                    switch (Random.Range(0, 2))
+                    {
+                        case 0:
+                            {
+                                animator.SetTrigger("HandAttack");
+                                attackCD = 0;
+                                break;
+                            }
+                        case 1:
+                            {
+                                BossUltAttack();
+                                break;
+                            }
+                    }
                 }
-                else if (bossHealth.Hp < bossHealth.maxHp * 0.20 && isbossUlt[2] == false)
+                else if (bossHealth.Hp > bossHealth.maxHp * 0.3)
                 {
-                    BossUltAttack(isbossUlt[2]);
-                    //isbossUlt[2] = true;
-                }
-                else if (bossHealth.Hp < bossHealth.maxHp * 0.10 && isbossUlt[3] == false)
-                {
-                    BossUltAttack(isbossUlt[3]);
-                    //isbossUlt[3] = true;
+                    animator.SetTrigger("HandAttack");
+                    attackCD = 0;
                 }
             }
         }
@@ -86,20 +91,20 @@ public class BossController : EnemyController
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 3f);
     }
-    public void BossUltAttack(bool isbossUlt)
+    public void BossUltAttack()
     {
+        isBossUlt = true;
         Vector3 bossUltPosition = bossUltTransform.position;
-        bossUltPosition.y = 15.37f;
+        bossUltPosition.y = 15.5f;
         Instantiate(bossUltArea, bossUltPosition, shootingtransform.rotation);
         //每0.5秒鎖定玩家位置
         attackCD = 1.5f;
         bossUltTimes++;
-        Debug.Log(bossUltTimes);
         if (bossUltTimes >= 5)
         {
-            isbossUlt = true;
-            attackCD = 0;
             bossUltTimes = 0;
+            attackCD = 0;
+            isBossUlt = false;
         }
     }
 }

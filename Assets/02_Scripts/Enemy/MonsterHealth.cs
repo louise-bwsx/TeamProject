@@ -3,13 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
-public enum EnumAttack
-{
-    wind,
-    poison,
-    fireTornado,
-    count
-}
+
 public class MonsterHealth : MonoBehaviour
 {
     public float Hp = 0;

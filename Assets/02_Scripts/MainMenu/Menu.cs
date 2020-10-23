@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -41,6 +42,12 @@ public class Menu : MonoBehaviour
     {
         if (tutorialImage.activeSelf)
         {
+            Text[] tutorialChild = tutorialImage.GetComponentsInChildren<Text>();
+            for (int i = 0; i < tutorialChild.Length; i++)
+            {
+                tutorialChild[i].enabled = false;
+            }
+            tutorialImage.GetComponent<Image>().color = Color.black;
             //不知道為什麼開始有讀取時間了
             CentralData.GetInst();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

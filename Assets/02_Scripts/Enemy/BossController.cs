@@ -49,23 +49,23 @@ public class BossController : EnemyController
                 attackCD = 0;
                 if (bossHealth.Hp < bossHealth.maxHp * 0.35 && isbossUlt[0] == false)
                 {
-                    //BossUltAttack();
-                    isbossUlt[0] = true;
+                    BossUltAttack(isbossUlt[0]);
+                    //isbossUlt[0] = true;
                 }
                 else if (bossHealth.Hp < bossHealth.maxHp * 0.25 && isbossUlt[1] == false)
                 {
-                    //BossUltAttack();
-                    isbossUlt[1] = true;
+                    BossUltAttack(isbossUlt[1]);
+                    //isbossUlt[1] = true;
                 }
                 else if (bossHealth.Hp < bossHealth.maxHp * 0.20 && isbossUlt[2] == false)
                 {
-                    //BossUltAttack();
-                    isbossUlt[2] = true;
+                    BossUltAttack(isbossUlt[2]);
+                    //isbossUlt[2] = true;
                 }
                 else if (bossHealth.Hp < bossHealth.maxHp * 0.10 && isbossUlt[3] == false)
                 {
-                    //BossUltAttack();
-                    isbossUlt[3] = true;
+                    BossUltAttack(isbossUlt[3]);
+                    //isbossUlt[3] = true;
                 }
             }
         }
@@ -86,22 +86,18 @@ public class BossController : EnemyController
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 5f);
     }
-    public void BossUltAttack()
+    public void BossUltAttack(bool isbossUlt)
     {
-        //歸零高度15.37
-        //shootingtransform.position = shootingtransform.up*15.37f;
-        //Vector3 aa = bossUltTransform.position;
-        //aa.y = 2;
-        //bossUltTransform.position.y = aa;
-        //GameObject aa = Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
-        //會變成橫向施放浮空 高度16多
-        //aa.transform.up *= 15.37f;
+        Vector3 bossUltPosition = bossUltTransform.position;
+        bossUltPosition.y = 15.37f;
+        Instantiate(bossUltArea, bossUltPosition, shootingtransform.rotation);
         //每0.5秒鎖定玩家位置
-        Instantiate(bossUltArea, bossUltTransform.position, shootingtransform.rotation);
         attackCD = 1.5f;
         bossUltTimes++;
+        Debug.Log(bossUltTimes);
         if (bossUltTimes >= 5)
         {
+            isbossUlt = true;
             attackCD = 0;
             bossUltTimes = 0;
         }

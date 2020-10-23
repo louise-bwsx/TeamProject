@@ -48,11 +48,15 @@ public class BossHealth : MonsterHealth
         //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
         else if (Hp <= maxHp * 0.7 && Hp>maxHp*0.3)
         {
-            base.OnTriggerEnter(other);
+            //base.OnTriggerEnter(other);
             //只有組合技才能造成傷害
-            //if (other.CompareTag("爆炸"))
-            //{
-            //}
+            if (other.CompareTag("Bomb"))
+            {
+                getHitEffect[0] = getHitEffect[2];
+                audioSource.PlayOneShot(bombHitSFX);
+                GetHit(30 + characterBase.INT);
+                Debug.Log(1);
+            }
             //else if (other.CompareTag("火龍捲"))
             //{ 
             //}

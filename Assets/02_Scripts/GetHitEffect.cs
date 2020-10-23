@@ -121,7 +121,6 @@ public class GetHitEffect : MonoBehaviour
         }
         if (other.gameObject.CompareTag("MonsterAttack") && getHitInvincibleTime <= 0f)
         {
-            Debug.Log(playerControl.isInvincible);
             //當玩家非無敵狀態
             if (!playerControl.isInvincible)
             {

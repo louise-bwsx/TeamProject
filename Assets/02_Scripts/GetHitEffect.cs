@@ -20,6 +20,7 @@ public class GetHitEffect : MonoBehaviour
     public int bounceForce = 10000;
     public bool getHit;
     public bool attackBuff;
+    public GameObject[] getHitEffect;
 
     void Start()
     {
@@ -88,8 +89,39 @@ public class GetHitEffect : MonoBehaviour
         {
             gameObject.GetComponent<Collider>().isTrigger = false;
         }
+
+        if (other.gameObject.CompareTag("BossUlt"))
+        {    
+            //當玩家非無敵狀態
+            if (!playerControl.isInvincible)
+            {
+                getHitEffect[0] = getHitEffect[1];
+                Debug.Log("danger");
+                //隨機怪物傷害
+                playerHealth -= Random.Range(30f, 50f);
+                getHit = true;
+                //怪打到玩家時把無敵時間輸入進去
+                getHitInvincibleTime = getHitInvincible;
+                //將血量輸入到頭頂的UI
+                healthbarongame.SetHealth(playerHealth);
+                //將血量輸入到畫面上的UI
+                uIBarControl.SetHealth(playerHealth);
+                //瞬間讓玩家不能動凸顯彈跳效果
+                playerControl.cantMove = true;
+                RD.AddForce(other.transform.forward * bounceForce);
+                //玩家血量歸零時遊戲暫停
+                if (playerHealth <= 0)
+                {
+                    //死掉後玩家不能動
+                    playerControl.isAttack = true;
+                    animator.SetTrigger("Dead");
+                    GetComponent<Collider>().enabled = false;
+                }
+            }
+        }
         if (other.gameObject.CompareTag("MonsterAttack") && getHitInvincibleTime <= 0f)
         {
+            Debug.Log(playerControl.isInvincible);
             //當玩家非無敵狀態
             if (!playerControl.isInvincible)
             {
@@ -115,13 +147,14 @@ public class GetHitEffect : MonoBehaviour
                     GetComponent<Collider>().enabled = false;
                 }
             }
-            //當玩家無敵狀態
-            else if (playerControl.isInvincible)
-            {
-                //尚未實作
-                Debug.Log("攻擊力*3");
-                attackBuff = true;
-            }
         }
+        //當玩家無敵狀態
+        else if (playerControl.isInvincible)
+        {
+            //尚未實作
+            Debug.Log("攻擊力*3");
+            attackBuff = true;
+        } 
     }
 }
+

@@ -51,6 +51,7 @@ public class MonsterHealth : MonoBehaviour
         }
         healthBarOnGame = GetComponentInChildren<HealthBarOnGame>();
         beAttackMax = windColdTime / gethitlimit;
+
         Hp = maxHp;
         healthBarOnGame.SetMaxHealth(maxHp);
     }
@@ -129,10 +130,13 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("WindAttack") && hitByTransform != other.transform)
         {
+            audioSource.clip = windHitSFX;
+            audioSource.Play();
             getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
-            audioSource.PlayOneShot(windHitSFX);
+            audioSource.Stop();
+
             GetHit(2 + characterBase.INT + skillBase.windSkill);
         }
         if (other.CompareTag("Poison") && hitByTransform != other.transform)
@@ -145,11 +149,13 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
         {
+            audioSource.clip = tornadoHitSFX;
             getHitEffect[0] = getHitEffect[2];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
             audioSource.PlayOneShot(tornadoHitSFX);
             GetHit(5 + characterBase.INT);
+     
         }
         if (other.CompareTag("Bomb"))
         {

@@ -54,7 +54,7 @@ public class AudioMgr : MonoBehaviour
                 BGMSource.Play();
             }
         }
-        else if (closeDoor !=null && closeDoor.doorClose[0].activeSelf)
+        else if (closeDoor !=null && closeDoor.aa.activeSelf)
         {
             if (BGMSource.clip != beforeBGM)
             {

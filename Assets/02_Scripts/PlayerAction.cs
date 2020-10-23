@@ -32,9 +32,9 @@ public class PlayerAction : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
+        if (Input.GetAxis("Horizontal") != 0)
         {
-            //GunAudio.PlayOneShot(walkSFX);
             animator.SetBool("Walk", true);
         }
         else

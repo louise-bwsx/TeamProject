@@ -11,12 +11,15 @@ public class BossController : EnemyController
     public Transform bossUltTransform;
     public BossHealth bossHealth;
     public GameObject arrow;
+    public Transform swordPos;
+    public GameObject BossSwordEffect;
     public float force = 1500;
   
     public GameObject bossUltArea;
     public int bossUltTimes;
     public bool isBossUlt;
-    public Vector3 lookDirection; 
+    public Vector3 lookDirection;
+    public GameObject FX;
     void Start()
     {
         bossHealth = GetComponentInParent<BossHealth>();
@@ -106,5 +109,11 @@ public class BossController : EnemyController
             attackCD = 0;
             isBossUlt = false;
         }
+    }
+    void BossSword()
+    {
+        FX = Instantiate(BossSwordEffect, swordPos.position, swordPos.rotation);
+        animator.SetBool("IsWeaponAttack", true);
+        Destroy(FX, 1f);
     }
 }

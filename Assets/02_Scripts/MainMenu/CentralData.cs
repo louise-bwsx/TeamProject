@@ -39,6 +39,7 @@ public class CentralData
             Directory.CreateDirectory(path);
         }
         File.WriteAllText(path + filename, jstr);
+        Debug.Log("存檔成功");
     }
 
     public static CentralData LoadData()
@@ -46,6 +47,7 @@ public class CentralData
         string jstr = File.ReadAllText(path + filename);
 
         CentralData data = JsonUtility.FromJson<CentralData>(jstr);
+        Debug.Log("讀檔成功");
         return data;
     }
 

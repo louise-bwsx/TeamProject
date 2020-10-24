@@ -47,5 +47,11 @@ public class SaveNLoad: MonoBehaviour
 
         audioMgr.BGMSlider.value = CentralData.GetInst().BGMVol;
         audioMgr.SFXSlider.value = CentralData.GetInst().SFXVol;
+
+        Debug.Log("火技能" + skillBase.fireSkillLevel +
+                  "\n毒技能" + skillBase.poisonSkillLevel +
+                  "\n土技能" + skillBase.stoneSkillLevel +
+                  "\n水技能" + skillBase.waterSkillLevel +
+                  "\n風技能" + skillBase.windSkillLevel);
     }
 }

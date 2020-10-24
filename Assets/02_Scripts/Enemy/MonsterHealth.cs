@@ -23,7 +23,7 @@ public class MonsterHealth : MonoBehaviour
     public CharacterBase characterBase;
     public SkillBase skillBase;
     public EnemyController enemyController;
-    new Rigidbody rigidbody;
+    public new Rigidbody rigidbody;
     public Transform faceDirection;
 
     public AudioSource audioSource;//音效在子類別調整音量大小
@@ -42,7 +42,7 @@ public class MonsterHealth : MonoBehaviour
     public float gethitlimit = 0.3F;//間格秒數
     public float windColdTime = 5;
     public EnumAttack enumAttack;
-    new Collider collider;
+    public new Collider collider;
 
     public virtual void Start()
     {

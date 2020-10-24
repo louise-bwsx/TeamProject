@@ -55,6 +55,7 @@ public class PlayerControl : MonoBehaviour
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina(staminaLimit);
         playerAction = GetComponentInChildren<PlayerAction>();
+        collider = GetComponentInParent<Collider>();
         oldPosition = transform.position;
         rayMask = wall & monster;
     }

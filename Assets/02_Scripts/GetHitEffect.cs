@@ -74,31 +74,24 @@ public class GetHitEffect : MonoBehaviour
             dust += 5;
             Destroy(collision.gameObject);
         }
+
         //else if (collision.gameObject.CompareTag("Item"))
         //{
         //    collision.gameObject.GetComponent<ItemPickup>().PickUp();
         //}
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item"))
-        {
-            other.GetComponent<ItemPickup>().PickUp();
-        }
-        if (other.CompareTag("Block") || other.CompareTag("Wall"))
-        {
-            gameObject.GetComponent<Collider>().isTrigger = false;
-        }
-
+        //放在Stay會重複傷害因為大招不會因為玩家碰到而消失
         if (other.gameObject.CompareTag("BossUlt"))
-        {    
+        {
             //當玩家非無敵狀態
             if (!playerControl.isInvincible)
             {
                 getHitEffect[0] = getHitEffect[1];
                 Debug.Log("danger");
-                //隨機怪物傷害10到20 如果是int是10到19
-                playerHealth -= Random.Range(10f, 20f);
+                //隨機怪物傷害 左 到 右 如果是int是 左 到 右-1
+                playerHealth -= Random.Range(30f, 50f);
                 getHit = true;
                 //怪打到玩家時把無敵時間輸入進去
                 getHitInvincibleTime = getHitInvincible;
@@ -118,6 +111,17 @@ public class GetHitEffect : MonoBehaviour
                     GetComponent<Collider>().enabled = false;
                 }
             }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            other.GetComponent<ItemPickup>().PickUp();
+        }
+        if (other.CompareTag("Block") || other.CompareTag("Wall"))
+        {
+            gameObject.GetComponent<Collider>().isTrigger = false;
         }
         if (other.gameObject.CompareTag("MonsterAttack") && getHitInvincibleTime <= 0f)
         {

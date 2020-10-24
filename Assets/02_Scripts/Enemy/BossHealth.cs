@@ -9,7 +9,7 @@ public class BossHealth : MonsterHealth
     public GameObject brokenWheel;
     public GameObject bossDieDialogComponent;
     public GameObject ManiMenu;
-    public float destroyTime = 2.5f;
+    public float destroyTime = 2.5f;//環破碎所需要的時間
     BossController bossController;
     public GameObject BossInvincibleEffect;
     public Transform BossInvinciblePos;
@@ -29,7 +29,7 @@ public class BossHealth : MonsterHealth
         {
             destroyTime -= Time.deltaTime;
         }
-        if (destroyTime <= 0)
+        if (destroyTime <= -2)//多給兩秒的休息時間
         {
             bossDieDialogComponent.SetActive(true);
         }

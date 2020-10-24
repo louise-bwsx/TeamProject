@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     public GameObject[] anyWindow = new GameObject[3];
-    public GameObject tutorialImage;
     public GameObject welcomeImage;
+    public bool isStart;
     void Start()
     {
         //一開始先把所有視窗打開讓參數讀的到遊戲開始時自動關閉
@@ -40,19 +40,20 @@ public class Menu : MonoBehaviour
     }
     public void PlayGame()
     {
-        if (tutorialImage.activeSelf)
+        if (anyWindow[3].activeSelf)
         {
-            Text[] tutorialChild = tutorialImage.GetComponentsInChildren<Text>();
+            Text[] tutorialChild = anyWindow[3].GetComponentsInChildren<Text>();
             for (int i = 0; i < tutorialChild.Length; i++)
             {
                 tutorialChild[i].enabled = false;
             }
-            tutorialImage.GetComponent<Image>().color = Color.black;
+            anyWindow[3].GetComponent<Image>().color = Color.black;
             //不知道為什麼開始有讀取時間了
             CentralData.GetInst();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        tutorialImage.SetActive(true);
+        anyWindow[3].SetActive(true);
+        isStart = true;
     }
     public void QuitGame()
     {

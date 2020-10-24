@@ -20,8 +20,8 @@ public class MonsterHealth : MonoBehaviour
     public Animator animator;
     public NavMeshAgent navMeshAgent;
     public GameObject[] getHitEffect;
-    public CharacterBase characterBase;
-    public SkillBase skillBase;
+    CharacterBase characterBase;
+    SkillBase skillBase;
     public EnemyController enemyController;
     public new Rigidbody rigidbody;
     public Transform faceDirection;
@@ -46,6 +46,9 @@ public class MonsterHealth : MonoBehaviour
 
     public virtual void Start()
     {
+        characterBase = FindObjectOfType<CharacterBase>();
+        skillBase = FindObjectOfType<SkillBase>();
+
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
         if (audioSource == null)
@@ -127,6 +130,8 @@ public class MonsterHealth : MonoBehaviour
             if (Hp <= 0)
             {
                 MonsterDead();
+                //避免一直跳進來
+                beAttackMin = 0;
             }
             beAttackTime = 0;
         }
@@ -135,11 +140,13 @@ public class MonsterHealth : MonoBehaviour
     {
         //打出的傷害數值 失敗
         //text = Instantiate(text, new Vector3(x, 0.7f, z), transform.rotation);
+        //為了讓MonsterDead只執行一次
         if (other.CompareTag("Sword"))
         {
             getHitEffect[0] = getHitEffect[1];
             //audioSource.PlayOneShot(SwordHitSFX);
             GetHit(15 + characterBase.STR);
+            Debug.Log(characterBase.STR);
         }
         if (other.CompareTag("Skill"))
         {
@@ -173,6 +180,7 @@ public class MonsterHealth : MonoBehaviour
             hitByTransform = other.transform;
             GetHit(1 + characterBase.INT + skillBase.poisonSkill);
             enumAttack = EnumAttack.poison;
+            Debug.Log(characterBase.INT + " " + skillBase.poisonSkill);
         }
         if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
         {

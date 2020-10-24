@@ -11,11 +11,12 @@ public class PlayerControl : MonoBehaviour
     public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
     public EquipmentManager equipmentManager;
+    public GetHitEffect getHitEffect;
     public GameObject backPackUI;
     public GameObject skillUI;
+    public GameObject miniMap;
     public Transform playerRotation;
     public new Rigidbody rigidbody;
-    public GetHitEffect getHitEffect;
     public new Collider collider;
     //有關耐力
     public float stamina;
@@ -125,6 +126,11 @@ public class PlayerControl : MonoBehaviour
         {
             skillUI.SetActive(!skillUI.activeSelf);
         }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            miniMap.SetActive(!miniMap.activeSelf);
+        }
+
         //卸下所有裝備欄裡的裝備
         if (Input.GetKeyDown(KeyCode.U))
         {

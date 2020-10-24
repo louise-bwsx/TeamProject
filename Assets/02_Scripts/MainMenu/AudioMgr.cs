@@ -46,7 +46,7 @@ public class AudioMgr : MonoBehaviour
     }
     void Update()
     {
-        if (bossHealth !=null && bossHealth.Hp < 0)
+        if (bossHealth !=null && bossHealth.Hp <= 0)
         {
             if (BGMSource.clip != afterBGM)
             {

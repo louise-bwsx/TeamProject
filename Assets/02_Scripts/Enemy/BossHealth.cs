@@ -15,7 +15,7 @@ public class BossHealth : MonsterHealth
     public Transform BossInvinciblePos;
     public GameObject bossSecondStateDialog;
     public GameObject bossThirdStateDialog;
-    GameObject invincibleGuard;
+    public GameObject invincibleGuard;
 
     public override void Start()
     {
@@ -28,6 +28,8 @@ public class BossHealth : MonsterHealth
         if (Hp <= 0)
         {
             destroyTime -= Time.deltaTime;
+            //聽說關不起來再關一次
+            Destroy(invincibleGuard);
         }
         if (destroyTime <= -2)//多給兩秒的休息時間
         {
@@ -90,11 +92,14 @@ public class BossHealth : MonsterHealth
         //Boss血量第三階段此時Boss開始會放大招
         else if (Hp <= maxHp * 0.3)
         {
+            //聽說會有的時候沒關所以再加一個
+            Destroy(invincibleGuard);
             base.OnTriggerEnter(other);
         }
-        if (Hp <= 0)
+
+        if (Hp <= 0 && curseWheel != null)
         {
-            Destroy(curseWheel);
+            curseWheel.SetActive(false);
         }
     }
 }

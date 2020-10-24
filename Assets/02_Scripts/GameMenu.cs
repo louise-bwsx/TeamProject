@@ -23,11 +23,14 @@ public class GameMenu : MonoBehaviour
     }
     public void EscButton()
     {
-        if (anyWindow[3].activeSelf)
+        //當背包是開的 或是 教學介面是開著的
+        if (anyWindow[3].activeSelf || anyWindow[7].activeSelf)
         {
-            //當背包是開的 把他關起來
+            //把他們關起來
             anyWindow[3].SetActive(false);
+            anyWindow[7].SetActive(false);
         }
+
         else if (!anyWindow[0].activeSelf)
         {
             //如果主選單是關閉的
@@ -57,7 +60,6 @@ public class GameMenu : MonoBehaviour
         { 
             Time.timeScale = 1f;
         }
-
     }
     public void QuitGame()
     {

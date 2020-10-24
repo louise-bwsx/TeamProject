@@ -95,8 +95,13 @@ public class BossController : EnemyController
     }
     void BossMeleeAttack()//由AnimatorEvent呼叫
     {
+        //刪除劍光
+        Destroy(FX);
+        //生成劍氣
         Instantiate(bossFxBossSlash, transform.position, transform.rotation);
+        //預留好的攻擊Collider打開
         meleeAttackAreacollider.enabled = true;
+        //攻擊範圍關閉
         meshRenderer.enabled = false;
     }
     void BossLongRangeAttack()//由AnimatorEvent呼叫
@@ -122,10 +127,11 @@ public class BossController : EnemyController
             isBossUlt = false;
         }
     }
-    void BossSword()
+    void BossSword()//由AnimatorEvent呼叫
     {
+        //生成劍光
         FX = Instantiate(BossSwordEffect, swordPos.position, swordPos.rotation);
+        //近戰下一階段動畫條件確認
         animator.SetBool("IsWeaponAttack", true);
-        Destroy(FX, 1f);
     }
 }

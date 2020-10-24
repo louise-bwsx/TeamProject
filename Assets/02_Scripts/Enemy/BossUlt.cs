@@ -14,8 +14,9 @@ public class BossUlt : MonoBehaviour
         {
             GetComponent<Collider>().enabled = true;
             GameObject bossUltEffect;
-            Vector3 bossSkillPosition = transform.up * 16;
-            bossUltEffect = Instantiate(bossSkill, transform.position, transform.rotation);
+            Vector3 bossSkillPosition = transform.position;
+            bossSkillPosition.y = 16f;
+            bossUltEffect = Instantiate(bossSkill, bossSkillPosition, transform.rotation);
 
             Destroy(gameObject, 1.5f);
             Destroy(bossUltEffect, 1.5f);

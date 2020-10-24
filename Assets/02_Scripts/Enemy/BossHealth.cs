@@ -10,6 +10,8 @@ public class BossHealth : MonsterHealth
     public GameObject ManiMenu;
     public float destroyTime = 2.5f;
     BossController bossController;
+    public GameObject BossInvincibleEffect;
+    public Transform BossInvinciblePos;
     public override void Start()
     {
         base.Start();
@@ -51,8 +53,10 @@ public class BossHealth : MonsterHealth
             //測試用只要打開就不受階段限制
             //base.OnTriggerEnter(other);
             //只有組合技才能造成傷害
+            Instantiate(BossInvincibleEffect, BossInvinciblePos.position, BossInvinciblePos.rotation);
             if (other.CompareTag("Bomb"))
             {
+                //Destroy(BossInvincibleEffect);
                 getHitEffect[0] = getHitEffect[2];
                 audioSource.PlayOneShot(bombHitSFX);
                 GetHit(30 + characterBase.INT);
@@ -60,6 +64,7 @@ public class BossHealth : MonsterHealth
             }
             if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
             {
+              
                 getHitEffect[0] = getHitEffect[2];
                 beAttackMin = beAttackMax;//最大被打的次數
                 hitByTransform = other.transform;
@@ -67,12 +72,14 @@ public class BossHealth : MonsterHealth
                 enumAttack = EnumAttack.fireTornado;
                 Debug.Log(2);
             }
+          
             if (Hp <= maxHp * 0.3)
             {
                 animator.SetTrigger("Wheel_2_Broke");
                 bossController.BossUltAttack();
             }
         }
+
         //Boss血量第三階段此時Boss開始會放大招
         else if (Hp <= maxHp * 0.3)
         {

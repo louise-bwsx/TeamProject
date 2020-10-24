@@ -33,14 +33,14 @@ public class DialogComponentTEST : MonoBehaviour
     public GameMenu gameMenu;
     void Start()
     {
-        introDialog.Add("稻禾：快到了，就在裡面。");
-        introDialog.Add("稻禾：等等就像這樣，嘿呀，直接打爆他。");
-        introDialog.Add("稻禾：我會幫你壓制他的力量。你就當作練練手吧。");
-        introDialog.Add("稻禾：............");
-        introDialog.Add("稻禾：你說是像怎樣?");
-        introDialog.Add("稻禾：蛤?");
-        introDialog.Add("稻禾：敢頂嘴");
-        introDialog.Add("稻禾：回來給你好看。");
+        introDialog.Add("稻荷神：快到了，就在裡面。");
+        introDialog.Add("稻荷神：等等就像這樣，嘿呀，直接打爆他。");
+        introDialog.Add("稻荷神：我會幫你壓制他的力量。你就當作練練手吧。");
+        introDialog.Add("稻荷神：............");
+        introDialog.Add("稻荷神：你說是像怎樣?");
+        introDialog.Add("稻荷神：蛤?");
+        introDialog.Add("稻荷神：敢頂嘴");
+        introDialog.Add("稻荷神：回來給你好看。");
 
         //public string dialog7 = "稻禾：快到了，就在裡面。";
         //private string dialog8 = "稻禾：等等就像這樣，嘿呀，直接打爆他。";

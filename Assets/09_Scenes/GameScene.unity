@@ -1079,6 +1079,7 @@ Transform:
   - {fileID: 1286178016}
   - {fileID: 1757237621}
   - {fileID: 1913125793}
+  - {fileID: 526393374}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -10226,6 +10227,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525454832}
   m_CullTransparentMesh: 0
+--- !u!1 &526393373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526393374}
+  m_Layer: 11
+  m_Name: FxBossSlash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &526393374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526393373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.23, y: 0.74, z: 5.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 45880584}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &527607547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9884418d6871e1f4cb1155981546dcec,
@@ -25702,6 +25733,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905239863}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1908698487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1908698488}
+  m_Layer: 9
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1908698488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908698487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24, y: -0.21, z: -1.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5477791637203891586}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1913125792
 GameObject:
   m_ObjectHideFlags: 0
@@ -99529,6 +99590,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2605488624636585751, guid: c6ee8622e8d60244bb7b5b5eba104812,
         type: 3}
+    - target: {fileID: 2148843662860586344, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
+        type: 3}
+      propertyPath: bossFx_Boss_Slash
+      value: 
+      objectReference: {fileID: 735206578837097789, guid: 6008834438a920841a78c9936118105d,
+        type: 3}
+    - target: {fileID: 2148843662860586344, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
+        type: 3}
+      propertyPath: bossFxBossSlashPos
+      value: 
+      objectReference: {fileID: 526393374}
+    - target: {fileID: 2148843662860586344, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
+        type: 3}
+      propertyPath: bossFxBossSlash
+      value: 
+      objectReference: {fileID: 735206578837097789, guid: 6008834438a920841a78c9936118105d,
+        type: 3}
     - target: {fileID: 3835812322728355123, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -99614,6 +99692,17 @@ PrefabInstance:
       propertyPath: ManiMenu
       value: 
       objectReference: {fileID: 1685542584}
+    - target: {fileID: 3835812322728355129, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
+        type: 3}
+      propertyPath: BossInvinciblePos
+      value: 
+      objectReference: {fileID: 1908698488}
+    - target: {fileID: 3835812322728355129, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
+        type: 3}
+      propertyPath: BossInvincibleEffect
+      value: 
+      objectReference: {fileID: 713062533747916334, guid: f4271b3ed97230148beb22755ee83404,
+        type: 3}
     - target: {fileID: 8736574829932909403, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
         type: 3}
       propertyPath: m_AnchorMax.x

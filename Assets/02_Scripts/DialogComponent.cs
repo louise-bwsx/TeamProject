@@ -40,7 +40,7 @@ public class DialogComponent : MonoBehaviour
         introDialog.Add("此種汙染會令其所接觸的人事物極具攻擊性");
         introDialog.Add("而在神社中長期接觸百姓的神明首先被影響");
         introDialog.Add("失去山野中各路神明的調和使得災害與飢荒越演越烈");
-        introDialog.Add("守護山林田野，與人類息息相關的稻禾大神一邊阻止感染的擴散;一邊派出使者祓除感染");
+        introDialog.Add("守護山林田野，與人類息息相關的稻荷神一邊阻止感染的擴散;一邊派出使者祓除感染");
 
         gameMenu = GetComponent<GameMenu>();
         Time.timeScale = 0;

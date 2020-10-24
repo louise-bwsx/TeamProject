@@ -9,6 +9,7 @@ public class BossController : EnemyController
     public Collider meleeAttackAreacollider;
     public Transform shootingtransform;
     public Transform bossUltTransform;
+    public Transform bossFxBossSlashPos;
     public BossHealth bossHealth;
     public GameObject arrow;
     public Transform swordPos;
@@ -16,6 +17,7 @@ public class BossController : EnemyController
     public float force = 1500;
   
     public GameObject bossUltArea;
+    public GameObject bossFxBossSlash;
     public int bossUltTimes;
     public bool isBossUlt;
     public Vector3 lookDirection;
@@ -40,8 +42,10 @@ public class BossController : EnemyController
             //進入近戰攻擊範圍 && 避免CD時間一到又播一次動畫覆蓋攻擊動作
             if (distence <= meleeRadius && !meshRenderer.enabled)
             {
+
                 meshRenderer.enabled = true;
                 animator.SetTrigger("WeaponAttack");
+                Instantiate(bossFxBossSlash, bossFxBossSlashPos.position, bossFxBossSlashPos.rotation);
                 attackCD = 0;
             }
             //遠距離攻擊
@@ -100,6 +104,7 @@ public class BossController : EnemyController
         Vector3 bossUltPosition = bossUltTransform.position;
         bossUltPosition.y = 15.7f;
         Instantiate(bossUltArea, bossUltPosition, shootingtransform.rotation);
+
         //每0.5秒鎖定玩家位置
         attackCD = 1.5f;
         bossUltTimes++;

@@ -13,7 +13,10 @@ public class BossHealth : MonsterHealth
     BossController bossController;
     public GameObject BossInvincibleEffect;
     public Transform BossInvinciblePos;
+    public GameObject bossSecondStateDialog;
+    public GameObject bossThirdStateDialog;
     GameObject invincibleGuard;
+
     public override void Start()
     {
         base.Start();
@@ -48,6 +51,8 @@ public class BossHealth : MonsterHealth
             {
                 animator.SetTrigger("Wheel_1_Broke");
                 invincibleGuard = Instantiate(BossInvincibleEffect, BossInvinciblePos.position, BossInvinciblePos.rotation);
+                Time.timeScale = 0f;
+                bossSecondStateDialog.SetActive(true);
             }
         }
         //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
@@ -79,6 +84,7 @@ public class BossHealth : MonsterHealth
                 animator.SetTrigger("Wheel_2_Broke");
                 bossController.BossUltAttack();
                 Destroy(invincibleGuard);
+                bossThirdStateDialog.SetActive(true);
             }
         }
         //Boss血量第三階段此時Boss開始會放大招

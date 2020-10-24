@@ -15,6 +15,7 @@ public class AudioMgr : MonoBehaviour
     public AudioClip afterBGM;
     public BossHealth bossHealth;
     public CloseDoor closeDoor;
+    public GetHitEffect getHitEffect;
     void Start()
     {
         //好用的東東但用不到 會取所有的AudioSource 連帶影響到BGM
@@ -22,7 +23,7 @@ public class AudioMgr : MonoBehaviour
         //抓取全部有以下 Tag的物件
         SFXGameObjectGroup1 = GameObject.FindGameObjectsWithTag("Monster");
         SFXGameObjectGroup2 = GameObject.FindGameObjectsWithTag("SFXSource");//本來只有一個現在Player跟Canvas
-
+        getHitEffect = FindObjectOfType<GetHitEffect>();
         BGMSource = GetComponent<AudioSource>();
         //音量初始
         //foreach (AudioSource SFXAudioSource in SFXSource)
@@ -54,11 +55,10 @@ public class AudioMgr : MonoBehaviour
                 BGMSource.Play();
             }
         }
-        else if (closeDoor !=null && closeDoor.aa.activeSelf)
+        else if (closeDoor !=null && closeDoor.aa.activeSelf && getHitEffect.playerHealth>0)
         {
             if (BGMSource.clip != beforeBGM)
             {
-
                 BGMSource.clip = beforeBGM;
                 BGMSource.Play();
             }

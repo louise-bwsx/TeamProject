@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject skillUI;
     public Transform playerRotation;
     public new Rigidbody rigidbody;
+    public GetHitEffect getHitEffect;
     public new Collider collider;
     //有關耐力
     public float stamina;
@@ -149,7 +150,7 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
         //翻滾
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && getHitEffect.playerHealth>0)
         {
             Roll();
         }

@@ -61,6 +61,6 @@ public class GameMenu : MonoBehaviour
     }
     public void QuitGame()
     {
-        SceneManager.LoadScene(0) ;
+        SceneManager.LoadScene(0);
     }
 }

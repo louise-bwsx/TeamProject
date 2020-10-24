@@ -19,8 +19,8 @@ public class PlayerAction : MonoBehaviour
     GameObject spwanSwordCube;
     public GameMenu gameMenu;
 
-
-    public AudioSource audioSource;//音效放置給所有怪物存取音效
+    public AudioSource BGMSource;
+    public AudioSource SFXSource;//音效放置給所有怪物存取音效
     //public AudioClip walkSFX;//走路音效
     public AudioClip TurnOverSFX;//翻滾音效
     public AudioClip SpikeSFX;//突刺音效
@@ -31,8 +31,8 @@ public class PlayerAction : MonoBehaviour
     {
         gameMenu = FindObjectOfType<GameMenu>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        audioSource = GetComponentInParent<AudioSource>();
-        audioSource.volume = CentralData.GetInst().SFXVol;
+        SFXSource = GetComponentInParent<AudioSource>();
+        SFXSource.volume = CentralData.GetInst().SFXVol;
     }
     void Update()
     {
@@ -50,7 +50,7 @@ public class PlayerAction : MonoBehaviour
     {
         animator.SetTrigger("Roll");
         //音效
-        audioSource.PlayOneShot(TurnOverSFX);
+        SFXSource.PlayOneShot(TurnOverSFX);
         //特效
     }
 
@@ -62,7 +62,7 @@ public class PlayerAction : MonoBehaviour
     public void NormalAttackFX()//動畫Event呼叫
     {   
         //音效
-        audioSource.PlayOneShot(SwingSFX);
+        SFXSource.PlayOneShot(SwingSFX);
         //特效
         GameObject FX;
         //左右特效不能flip
@@ -88,7 +88,7 @@ public class PlayerAction : MonoBehaviour
     {
         //音效
         GameObject FX;
-        audioSource.PlayOneShot(SpikeSFX);
+        SFXSource.PlayOneShot(SpikeSFX);
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         if (spriteRenderer.flipX == false)
         {
@@ -109,8 +109,8 @@ public class PlayerAction : MonoBehaviour
     }
     public void Die()//動畫Event呼叫
     {
-        audioSource.clip = dieSFX;
-        audioSource.PlayOneShot(dieSFX);
+        BGMSource.clip = dieSFX;
+        SFXSource.PlayOneShot(dieSFX);
         gameMenu.anyWindow[6].SetActive(true);
         Time.timeScale = 0;
     }

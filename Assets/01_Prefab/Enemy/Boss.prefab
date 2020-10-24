@@ -79,6 +79,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &1908698487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1908698488}
+  m_Layer: 9
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1908698488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908698487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24, y: -0.21, z: -1.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3835812322728355123}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3835812322728355126
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +122,7 @@ GameObject:
   - component: {fileID: 8736574828027331645}
   - component: {fileID: 559199338612532546}
   - component: {fileID: 3835812322728355129}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Boss
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -114,6 +144,7 @@ Transform:
   - {fileID: 512456869271907339}
   - {fileID: 6745377422131281350}
   - {fileID: 8736574829734924732}
+  - {fileID: 1908698488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -255,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 0
-  maxHp: 200
+  maxHp: 500
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
@@ -295,12 +326,18 @@ MonoBehaviour:
   gethitlimit: 0.3
   windColdTime: 5
   enumAttack: 0
+  brokenPos: {fileID: 0}
+  curseWheel: {fileID: 0}
   brokenWheel: {fileID: 6992360949995693572, guid: e854a57af02a6924482eb2b7e0b5b924,
     type: 3}
-  brokenPos: {fileID: 0}
   bossDieDialogComponent: {fileID: 0}
   ManiMenu: {fileID: 0}
   destroyTime: 2.5
+  BossInvincibleEffect: {fileID: 713062533747916334, guid: f4271b3ed97230148beb22755ee83404,
+    type: 3}
+  BossInvinciblePos: {fileID: 1908698488}
+  bossSecondStateDialog: {fileID: 0}
+  bossThirdStateDialog: {fileID: 0}
 --- !u!1 &6227207049893743282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,12 +1149,16 @@ MonoBehaviour:
   meleeAttackAreacollider: {fileID: 8736574829065142069}
   shootingtransform: {fileID: 6745377422131281350}
   bossUltTransform: {fileID: 462101550}
+  bossFxBossSlashPos: {fileID: 0}
   bossHealth: {fileID: 0}
-  arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
+  arrow: {fileID: 3879860098530953800, guid: 13c6d7c90cf3f5d47bdc263edbcd2212, type: 3}
   swordPos: {fileID: 0}
-  BossSwordEffect: {fileID: 0}
+  BossSwordEffect: {fileID: 2605488624636585751, guid: c6ee8622e8d60244bb7b5b5eba104812,
+    type: 3}
   force: 1500
   bossUltArea: {fileID: 1826878098602081369, guid: 60d91d921950c9148837c93974172947,
+    type: 3}
+  bossFxBossSlash: {fileID: 735206578837097789, guid: 6008834438a920841a78c9936118105d,
     type: 3}
   bossUltTimes: 0
   isBossUlt: 0
@@ -1499,7 +1540,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736574829065142064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

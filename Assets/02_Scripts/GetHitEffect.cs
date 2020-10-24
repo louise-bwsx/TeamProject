@@ -97,8 +97,8 @@ public class GetHitEffect : MonoBehaviour
             {
                 getHitEffect[0] = getHitEffect[1];
                 Debug.Log("danger");
-                //隨機怪物傷害
-                playerHealth -= Random.Range(30f, 50f);
+                //隨機怪物傷害10到20 如果是int是10到19
+                playerHealth -= Random.Range(10f, 20f);
                 getHit = true;
                 //怪打到玩家時把無敵時間輸入進去
                 getHitInvincibleTime = getHitInvincible;

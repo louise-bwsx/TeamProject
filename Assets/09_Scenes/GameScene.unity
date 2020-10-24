@@ -26497,6 +26497,12 @@ Transform:
   m_Father: {fileID: 734062404}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1990680709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3169397697762332706, guid: 7d2ff3081ab37ca4ab7e66621a0e24ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 30548507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1995037070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 825e50efca5365a4c93bc9659b511051,
@@ -99672,6 +99678,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3835812322728355126, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3835812322728355129, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
         type: 3}
       propertyPath: brokenPos
@@ -99703,6 +99714,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 713062533747916334, guid: f4271b3ed97230148beb22755ee83404,
         type: 3}
+    - target: {fileID: 3835812322728355129, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
+        type: 3}
+      propertyPath: curseWheel
+      value: 
+      objectReference: {fileID: 1990680709}
+    - target: {fileID: 8736574829065142068, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8736574829932909403, guid: 2d1ba14e9129e0d49bd8a804d55217a6,
         type: 3}
       propertyPath: m_AnchorMax.x

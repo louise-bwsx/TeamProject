@@ -31,10 +31,12 @@ public class BossController : EnemyController
     void Update()
     {
         attackCD += Time.deltaTime;
+        //Boss與玩家之間的距離
         float distence = Vector3.Distance(target.position, transform.position);
+        //一個可以讓Z軸看向玩家方法 又不會改到X跟Z軸
         lookDirection = Vector3.ProjectOnPlane(target.position - shootingtransform.position, shootingtransform.up);
-
         shootingtransform.rotation = Quaternion.LookRotation(lookDirection);
+
         Debug.DrawLine(shootingtransform.position, target.position, Color.green);
         //當玩家進入怪物偵測範圍 是否實時追蹤目標 是不是boss打輸的狀態
         if (distence <= detectRadius && attackCD > attackRate /*&& boss不是打輸的狀態*/)

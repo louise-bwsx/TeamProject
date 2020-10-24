@@ -42,9 +42,11 @@ public class MonsterHealth : MonoBehaviour
     public float gethitlimit = 0.3F;//間格秒數
     public float windColdTime = 5;
     public EnumAttack enumAttack;
+    new Collider collider;
 
     public virtual void Start()
     {
+        collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
         if (audioSource == null)
         { 
@@ -181,6 +183,10 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(bombHitSFX);
             GetHit(30 + characterBase.INT);
+        }
+        if (Hp <= 0)
+        {
+            collider.enabled = false;
         }
     }
 

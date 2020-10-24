@@ -62,8 +62,5 @@ public class GameMenu : MonoBehaviour
     public void QuitGame()
     {
         SceneManager.LoadScene(0) ;
-        //聽說build出來真的會結束但是在unity裡面不會有任何作用所以用debug.log來代替
-        Debug.Log("QUIT!");
-        Application.Quit();
     }
 }

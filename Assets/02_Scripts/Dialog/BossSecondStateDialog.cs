@@ -12,9 +12,8 @@ public class BossSecondStateDialog : MonoBehaviour
     public GameObject dialogImage;
     void Start()
     {
-        bossSecondStateDialog.Add("稻荷神：他自身現在擁有特殊結界。");
+        bossSecondStateDialog.Add("稻荷神：他現在擁有特殊結界。");
         bossSecondStateDialog.Add("稻荷神：使用組合技吧。");
-        bossSecondStateDialog.Add("稻荷神：我會幫你壓制他的力量。你就當作練練手吧。");
         bossSecondStateDialog.Add("稻荷神：往毒裡丟入火或是往風裡丟入火試試看。");
 
         Time.timeScale = 0;

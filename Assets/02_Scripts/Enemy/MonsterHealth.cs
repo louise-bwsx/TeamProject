@@ -57,6 +57,10 @@ public class MonsterHealth : MonoBehaviour
 
         Hp = maxHp;
         healthBarOnGame.SetMaxHealth(maxHp);
+
+        characterBase = FindObjectOfType<CharacterBase>();
+        skillBase = FindObjectOfType<SkillBase>();
+
     }
 
     public virtual void Update()

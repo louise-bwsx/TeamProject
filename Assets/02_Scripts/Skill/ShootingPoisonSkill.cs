@@ -19,7 +19,7 @@ public class ShootingPoisonSkill : MonoBehaviour
         if (other.CompareTag("FireAttack"))
         {
             Destroy(gameObject);
-            Instantiate(bomb, transform.position, transform.rotation);
+            Instantiate(bomb, transform.position+transform.up*-3.0F, transform.rotation);
             //生成爆炸特效
             //音效
             //特效DestroyTime後消失

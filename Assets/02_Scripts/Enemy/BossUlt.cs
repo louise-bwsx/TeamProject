@@ -16,7 +16,7 @@ public class BossUlt : MonoBehaviour
             GameObject bossUltEffect;
             Vector3 bossSkillPosition = transform.position;
             bossSkillPosition.y = 16f;
-            bossUltEffect = Instantiate(bossSkill, bossSkillPosition, transform.rotation);
+            bossUltEffect = Instantiate(bossSkill, bossSkillPosition+ transform.up*0.3f, transform.rotation);
 
             Destroy(gameObject, 1.5f);
             Destroy(bossUltEffect, 1.5f);

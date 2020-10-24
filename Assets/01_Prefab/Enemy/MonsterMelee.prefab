@@ -218,10 +218,6 @@ MonoBehaviour:
   - {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076, type: 3}
   - {fileID: 791922460492604613, guid: 45e28252bfa6bb440969a7c648e8e461, type: 3}
   - {fileID: 1562751768510379180, guid: 84642f2af51ee8443bab032245f1d27d, type: 3}
-  characterBase: {fileID: 3467926028038569551, guid: 3132c1972a1e5864684147c455dd427b,
-    type: 3}
-  skillBase: {fileID: 5061948290639108551, guid: e3c82f9a1293aaf448127bb5924042cb,
-    type: 3}
   enemyController: {fileID: 3925477345567892591}
   rigidbody: {fileID: 0}
   faceDirection: {fileID: 2904442090115409670}
@@ -418,7 +414,7 @@ MonoBehaviour:
   meleeRadius: 1.35
   detectRadius: 5.6
   attackCD: 0
-  attackRate: 1
+  attackRate: 4
   attackCube: {fileID: 4263896224901563790}
   monsterAttackRotation: {fileID: 2904442090115409670}
   monsterHealth: {fileID: 8978430384124451583}

@@ -280,10 +280,6 @@ MonoBehaviour:
   - {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076, type: 3}
   - {fileID: 791922460492604613, guid: 45e28252bfa6bb440969a7c648e8e461, type: 3}
   - {fileID: 1562751768510379180, guid: 84642f2af51ee8443bab032245f1d27d, type: 3}
-  characterBase: {fileID: 3467926028038569551, guid: 3132c1972a1e5864684147c455dd427b,
-    type: 3}
-  skillBase: {fileID: 5061948290639108551, guid: e3c82f9a1293aaf448127bb5924042cb,
-    type: 3}
   enemyController: {fileID: 8095893402525829023}
   rigidbody: {fileID: 0}
   faceDirection: {fileID: 7944422823135693920}
@@ -560,11 +556,11 @@ MonoBehaviour:
   meleeRadius: 1
   detectRadius: 15
   attackCD: 0
-  attackRate: 2
+  attackRate: 4
   bow: {fileID: 2639929077437421175}
   arrow: {fileID: 5417678330697561027, guid: 608bf715e46f7914b9459ee8723d2a41, type: 3}
   shootingposition: {fileID: 2639929077261022266}
-  force: 1500
+  force: 1000
   monsterHealth: {fileID: 5349164275163258497}
 --- !u!1 &7944422823078056258
 GameObject:

@@ -38,7 +38,7 @@ public class MeleeEnemyController : EnemyController
             }
             else if (distence >= meleeRadius && attackCD < attackRate)
             {
-                attackCube.GetComponent<MeshRenderer>().material = materials[0];
+                //attackCube.GetComponent<MeshRenderer>().material = materials[0];
                 attackCube.GetComponent<Collider>().enabled = false;
             }
         }
@@ -58,7 +58,7 @@ public class MeleeEnemyController : EnemyController
     }
     void MonsterAttack()//動畫Event呼叫
     {
-        attackCube.GetComponent<MeshRenderer>().material = materials[1];
+        //attackCube.GetComponent<MeshRenderer>().material = materials[1];
         attackCube.GetComponent<Collider>().enabled = true;
     }
 }

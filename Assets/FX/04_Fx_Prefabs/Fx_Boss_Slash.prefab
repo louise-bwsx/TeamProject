@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 735206578837097778}
   - component: {fileID: 735206578837097779}
   - component: {fileID: 735206578837097788}
+  - component: {fileID: 7177758190549009676}
   m_Layer: 0
   m_Name: Fx_Boss_Slash
-  m_TagString: Untagged
+  m_TagString: MonsterAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4755,6 +4756,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!65 &7177758190549009676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735206578837097789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.001531, y: 3.033658, z: 3.6411881}
+  m_Center: {x: -0.04147196, y: -0.806829, z: -2.047508}
 --- !u!1 &7353676901279117989
 GameObject:
   m_ObjectHideFlags: 0

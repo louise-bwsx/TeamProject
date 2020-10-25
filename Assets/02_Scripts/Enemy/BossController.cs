@@ -22,11 +22,20 @@ public class BossController : EnemyController
     public bool isBossUlt;
     public Vector3 lookDirection;
     public GameObject FX;
+   AudioSource audioSource;
+    public AudioClip bossSwordSFX;
+    public AudioClip meleeAttackSFX;
+    public AudioClip longRangeAttackSFX;
+    public AudioClip bossSkillSFX;
     void Start()
     {
         bossHealth = GetComponentInParent<BossHealth>();
         animator = GetComponentInChildren<Animator>();
         target = PlayerManager.instance.player.transform;
+        if (audioSource == null)
+        {
+            audioSource = GetComponentInParent<AudioSource>();
+        }
     }
     void Update()
     {
@@ -108,6 +117,8 @@ public class BossController : EnemyController
     {
         //刪除劍光
         Destroy(FX);
+        //近戰音效
+        audioSource.PlayOneShot(meleeAttackSFX);
         //生成劍氣
         Instantiate(bossFxBossSlash, transform.position, transform.rotation);
         //預留好的攻擊Collider打開
@@ -117,6 +128,7 @@ public class BossController : EnemyController
     }
     void BossLongRangeAttack()//由AnimatorEvent呼叫
     {
+        audioSource.PlayOneShot(longRangeAttackSFX);
         GameObject shootingArrow = Instantiate(arrow, shootingtransform.position, shootingtransform.rotation);
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 3f);
@@ -127,6 +139,7 @@ public class BossController : EnemyController
         Vector3 bossUltPosition = bossUltTransform.position;
         bossUltPosition.y = 15.7f;
         Instantiate(bossUltArea, bossUltPosition, shootingtransform.rotation);
+        audioSource.PlayOneShot(bossSkillSFX);
 
         //每0.5秒鎖定玩家位置
         attackCD = 1.5f;
@@ -140,6 +153,8 @@ public class BossController : EnemyController
     }
     void BossSword()//由AnimatorEvent呼叫
     {
+        //拔劍音效
+        audioSource.PlayOneShot(bossSwordSFX);
         //生成劍光
         FX = Instantiate(BossSwordEffect, swordPos.position, swordPos.rotation);
         //近戰下一階段動畫條件確認

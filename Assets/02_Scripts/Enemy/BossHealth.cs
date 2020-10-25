@@ -16,11 +16,17 @@ public class BossHealth : MonsterHealth
     public GameObject bossSecondStateDialog;
     public GameObject bossThirdStateDialog;
     public GameObject invincibleGuard;
+    public AudioClip behindWheelBrokeSFX;
+    public AudioClip wheelBrokeSFX;
 
     public override void Start()
     {
         base.Start();
         bossController = FindObjectOfType<BossController>();
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
     public override void Update()
     {
@@ -39,6 +45,7 @@ public class BossHealth : MonsterHealth
 
     public override void MonsterDead()
     {
+        audioSource.PlayOneShot(wheelBrokeSFX);
         GameObject FX = Instantiate(brokenWheel, brokenPos.position, brokenPos.rotation);
         Destroy(FX, destroyTime);
         base.MonsterDead();
@@ -52,6 +59,7 @@ public class BossHealth : MonsterHealth
             if (Hp <= maxHp * 0.7)
             {
                 animator.SetTrigger("Wheel_1_Broke");
+                audioSource.PlayOneShot(behindWheelBrokeSFX);
                 invincibleGuard = Instantiate(BossInvincibleEffect, BossInvinciblePos.position, BossInvinciblePos.rotation);
                 Time.timeScale = 0f;
                 bossSecondStateDialog.SetActive(true);
@@ -84,6 +92,7 @@ public class BossHealth : MonsterHealth
             if (Hp <= maxHp * 0.3)
             {
                 animator.SetTrigger("Wheel_2_Broke");
+                audioSource.PlayOneShot(behindWheelBrokeSFX);
                 bossController.BossUltAttack();
                 Destroy(invincibleGuard);
                 bossThirdStateDialog.SetActive(true);

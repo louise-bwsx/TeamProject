@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 0
-  maxHp: 500
+  maxHp: 100
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
@@ -337,6 +337,8 @@ MonoBehaviour:
   bossSecondStateDialog: {fileID: 0}
   bossThirdStateDialog: {fileID: 0}
   invincibleGuard: {fileID: 0}
+  behindWheelBrokeSFX: {fileID: 8300000, guid: 0eb9a1088074ada47aa5b9fd5d0990e5, type: 3}
+  wheelBrokeSFX: {fileID: 8300000, guid: d8edb3b6a767dc54fa39d67d2eae05dc, type: 3}
 --- !u!1 &6227207049893743282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1167,10 @@ MonoBehaviour:
   isBossUlt: 0
   lookDirection: {x: 0, y: 0, z: 0}
   FX: {fileID: 0}
+  bossSwordSFX: {fileID: 8300000, guid: b129df224d9d222448c470db285032f7, type: 3}
+  meleeAttackSFX: {fileID: 8300000, guid: e530a25ad28ecf640a35a74816dc858e, type: 3}
+  longRangeAttackSFX: {fileID: 8300000, guid: d6e6fea7057060046a1324ef5b1b69f3, type: 3}
+  bossSkillSFX: {fileID: 8300000, guid: 9c781ff404e76cd40a09cfd97e5ec229, type: 3}
 --- !u!114 &1036538080430768565
 MonoBehaviour:
   m_ObjectHideFlags: 0

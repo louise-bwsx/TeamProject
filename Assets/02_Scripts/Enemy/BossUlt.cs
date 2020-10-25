@@ -6,6 +6,7 @@ public class BossUlt : MonoBehaviour
 {
     public float timer;
     public GameObject bossSkill;
+
     void Update()
     {
         timer += Time.deltaTime;

@@ -176,10 +176,10 @@ public class MonsterHealth : MonoBehaviour
         if (other.CompareTag("Poison") && hitByTransform != other.transform)
         {
             getHitEffect[0] = getHitEffect[4];
+            audioSource.PlayOneShot(poisonHitSFX);
             beAttackMin = 20;//最大被打的次數
             hitByTransform = other.transform;
             GetHit(1 + characterBase.INT + skillBase.poisonSkill);
-            enumAttack = EnumAttack.poison;
             Debug.Log(characterBase.INT + " " + skillBase.poisonSkill);
         }
         if (other.CompareTag("Firetornado") && hitByTransform != other.transform)

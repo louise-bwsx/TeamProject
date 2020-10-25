@@ -86,17 +86,20 @@ public class PlayerAction : MonoBehaviour
     }
     public void SpikeAttackFX()//動畫Event呼叫
     {
+        
         //音效
-        GameObject FX;
         SFXSource.PlayOneShot(SpikeSFX);
+        GameObject FX;
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         if (spriteRenderer.flipX == false)
         {
+           
             FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
             Destroy(FX, 0.5f);
         }
         else if (spriteRenderer.flipX == true)
         {
+            
             FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
             Destroy(FX, 0.5f);
         }

@@ -15,7 +15,7 @@ public class IntroDialog : MonoBehaviour
     public AudioClip walkClip;
     void Start()
     {
-        introDialog.Add("人類的貪、嗔、癡等，負面能量聚積在世間中形成一股感染");
+        introDialog.Add("人類的貪、嗔、癡等，負面能量在世間中形成一股感染");
         introDialog.Add("此種汙染會令其所接觸的人事物極具攻擊性");
         introDialog.Add("而在神社中長期接觸百姓的神明首先被影響");
         introDialog.Add("失去山野中各路神明的調和使得災害與飢荒越演越烈");

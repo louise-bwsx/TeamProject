@@ -18,6 +18,9 @@ public class BossHealth : MonsterHealth
     public GameObject invincibleGuard;
     public AudioClip behindWheelBrokeSFX;
     public AudioClip wheelBrokeSFX;
+    public AudioClip afterBGM;
+    public AudioSource BGMSource;
+
 
     public override void Start()
     {
@@ -40,6 +43,12 @@ public class BossHealth : MonsterHealth
         if (destroyTime <= -2)//多給兩秒的休息時間
         {
             bossDieDialogComponent.SetActive(true);
+            if (BGMSource.clip != afterBGM)
+            {
+                BGMSource.Stop();
+                BGMSource.clip = afterBGM;
+                BGMSource.Play();
+            }
         }
     }
 

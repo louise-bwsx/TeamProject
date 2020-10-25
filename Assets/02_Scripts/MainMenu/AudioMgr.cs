@@ -46,16 +46,7 @@ public class AudioMgr : MonoBehaviour
     }
     void Update()
     {
-        if (bossHealth !=null && bossHealth.Hp <= 0)
-        {
-            if (BGMSource.clip != afterBGM)
-            {
-                BGMSource.Stop();
-                BGMSource.clip = afterBGM;
-                BGMSource.Play();
-            }
-        }
-        else if (closeDoor !=null && closeDoor.aa.activeSelf && getHitEffect.playerHealth>0)
+        if (closeDoor !=null && closeDoor.aa.activeSelf && getHitEffect.playerHealth>0 && bossHealth.Hp>0)
         {
             if (BGMSource.clip != beforeBGM)
             {

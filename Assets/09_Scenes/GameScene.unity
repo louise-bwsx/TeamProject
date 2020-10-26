@@ -12200,13 +12200,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: IntOnClick
-        m_Mode: 1
+      - m_Target: {fileID: 905599411}
+        m_MethodName: StatsUpgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14071,13 +14071,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SprOnClick
-        m_Mode: 1
+      - m_Target: {fileID: 905599411}
+        m_MethodName: StatsUpgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20754,7 +20754,6 @@ GameObject:
   - component: {fileID: 722527120}
   - component: {fileID: 722527122}
   - component: {fileID: 722527121}
-  - component: {fileID: 722527123}
   m_Layer: 5
   m_Name: SPRNum
   m_TagString: Untagged
@@ -20822,19 +20821,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722527119}
   m_CullTransparentMesh: 0
---- !u!114 &722527123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722527119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d20d98dc365624faa957554bfd1f25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
 --- !u!1 &732046337
 GameObject:
   m_ObjectHideFlags: 0
@@ -23586,12 +23572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillLevelneed: 100
   getHitEffect: {fileID: 45880586}
-  STR: 10
-  DEF: 10
-  AGI: 10
-  INT: 10
-  SPR: 10
-  charaterStats:
+  charaterStats: 0000000000000000000000000000000000000000
+  charaterNumber:
   - {fileID: 1335277173}
   - {fileID: 1732924505}
   - {fileID: 1074347190}
@@ -26750,7 +26732,6 @@ GameObject:
   - component: {fileID: 1074347189}
   - component: {fileID: 1074347191}
   - component: {fileID: 1074347190}
-  - component: {fileID: 1074347192}
   m_Layer: 5
   m_Name: AGINum
   m_TagString: Untagged
@@ -26818,19 +26799,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074347188}
   m_CullTransparentMesh: 0
---- !u!114 &1074347192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074347188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8afc8d7483a4a4fac998765f0b8bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
 --- !u!1001 &1077055264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28453,13 +28421,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: AgiOnClick
-        m_Mode: 1
+      - m_Target: {fileID: 905599411}
+        m_MethodName: StatsUpgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -31960,7 +31928,6 @@ GameObject:
   - component: {fileID: 1335277172}
   - component: {fileID: 1335277174}
   - component: {fileID: 1335277173}
-  - component: {fileID: 1335277175}
   m_Layer: 5
   m_Name: ATKNum
   m_TagString: Untagged
@@ -32028,19 +31995,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335277171}
   m_CullTransparentMesh: 0
---- !u!114 &1335277175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1335277171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83943b24a36792543ae3d40adf961377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
 --- !u!1001 &1337209005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32684,9 +32638,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: StrOnClick
-        m_Mode: 1
+      - m_Target: {fileID: 905599411}
+        m_MethodName: StatsUpgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -41204,7 +41158,6 @@ GameObject:
   - component: {fileID: 1732924504}
   - component: {fileID: 1732924506}
   - component: {fileID: 1732924505}
-  - component: {fileID: 1732924507}
   m_Layer: 5
   m_Name: DEFNum
   m_TagString: Untagged
@@ -41272,19 +41225,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732924503}
   m_CullTransparentMesh: 0
---- !u!114 &1732924507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732924503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8773695a0538ed7418a4aef4b3ba3663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
 --- !u!4 &1735376172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc8e38a25a72fe44c80bbad8715a7708,
@@ -42929,7 +42869,6 @@ GameObject:
   - component: {fileID: 1802403154}
   - component: {fileID: 1802403156}
   - component: {fileID: 1802403155}
-  - component: {fileID: 1802403157}
   m_Layer: 5
   m_Name: INTNum
   m_TagString: Untagged
@@ -42997,19 +42936,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802403153}
   m_CullTransparentMesh: 0
---- !u!114 &1802403157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802403153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06bd517b69d9a64182cd9f702252462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
 --- !u!4 &1804031267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc8e38a25a72fe44c80bbad8715a7708,
@@ -45848,13 +45774,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: DefOnClick
-        m_Mode: 1
+      - m_Target: {fileID: 905599411}
+        m_MethodName: StatsUpgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

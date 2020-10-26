@@ -143,7 +143,7 @@ public class MonsterHealth : MonoBehaviour
             //audioSource.PlayOneShot(SwordHitSFX);
             if (characterBase != null)
             { 
-                GetHit(15 + characterBase.STR);
+                GetHit(15 + characterBase.charaterStats[(int)CharacterStats.STR]);
             }
         }
         if (other.CompareTag("Skill"))
@@ -155,21 +155,20 @@ public class MonsterHealth : MonoBehaviour
         {
             getHitEffect[0] = getHitEffect[6];
             audioSource.PlayOneShot(waterHitSFX);
-            GetHit(5 + characterBase.INT + skillBase.waterSkill);
+            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.waterSkill);
         }
         if (other.CompareTag("FireAttack"))
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(fireHitSFX);
-            GetHit(10 + characterBase.INT + skillBase.fireSkill);
-            Debug.Log(10 + " " + characterBase.INT + " " + skillBase.fireSkill);
+            GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkill);
         }
         if (other.CompareTag("WindAttack") /*&& hitByTransform != other.transform*/)
         {
             getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數
             //hitByTransform = other.transform;
-            GetHit(2 + characterBase.INT + skillBase.windSkill);
+            GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkill);
             enumAttack = EnumAttack.wind;
         }
         if (other.CompareTag("Poison") && hitByTransform != other.transform)
@@ -178,22 +177,21 @@ public class MonsterHealth : MonoBehaviour
             audioSource.PlayOneShot(poisonHitSFX);
             beAttackMin = 20;//最大被打的次數
             hitByTransform = other.transform;
-            GetHit(1 + characterBase.INT + skillBase.poisonSkill);
-            Debug.Log(characterBase.INT + " " + skillBase.poisonSkill);
+            GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkill);
         }
         if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
         {
             getHitEffect[0] = getHitEffect[2];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
-            GetHit(5 + characterBase.INT);
+            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT]);
             enumAttack = EnumAttack.fireTornado;
         }
         if (other.CompareTag("Bomb"))
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(bombHitSFX);
-            GetHit(30 + characterBase.INT);
+            GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT]);
         }
         if (Hp <= 0)
         {

@@ -16,61 +16,26 @@ public class CharacterBase : MonoBehaviour
 {
     public int SkillLevelneed = 100;
     public GetHitEffect getHitEffect;
-    public int STR;
-    public int DEF;
-    public int AGI;
-    public int INT;
-    public int SPR;
-
-    public Text[] charaterStats;
+    public int[] charaterStats;
+    public Text[] charaterNumber;
 
     void Start()
     {
-        charaterStats[(int)CharacterStats.STR].text = "" + STR;
-        charaterStats[(int)CharacterStats.DEF].text = "" + DEF;
-        charaterStats[(int)CharacterStats.AGI].text = "" + AGI;
-        charaterStats[(int)CharacterStats.INT].text = "" + INT;
-        charaterStats[(int)CharacterStats.SPR].text = "" + SPR;
+        charaterNumber[(int)CharacterStats.STR].text = "" + charaterStats[(int)CharacterStats.STR];
+        charaterNumber[(int)CharacterStats.DEF].text = "" + charaterStats[(int)CharacterStats.DEF];
+        charaterNumber[(int)CharacterStats.AGI].text = "" + charaterStats[(int)CharacterStats.AGI];
+        charaterNumber[(int)CharacterStats.INT].text = "" + charaterStats[(int)CharacterStats.INT];
+        charaterNumber[(int)CharacterStats.SPR].text = "" + charaterStats[(int)CharacterStats.SPR];
     }
-
-    public void StrOnClick()
+    public void StatsUpgrade(int charaterStats)
     {
-        if (getHitEffect.dust >= 0)
+        if (getHitEffect.dust >= SkillLevelneed)
         {
             getHitEffect.dust -= SkillLevelneed;
-            STR += 2;
-        }
-    }
-    public void DefOnClick()
-    {
-        if (getHitEffect.dust >= 0)
-        {
-            getHitEffect.dust -= SkillLevelneed;
-            DEF += 2;
-        }
-    }
-    public void AgiOnClick()
-    {
-        if (getHitEffect.dust >= 0)
-        {
-            getHitEffect.dust -= SkillLevelneed;
-            AGI += 2;
-        }
-    }
-    public void IntOnClick()
-    {
-        if (getHitEffect.dust >= 0)
-        {
-            getHitEffect.dust -= SkillLevelneed;
-            INT += 2;
-        }
-    }
-    public void SprOnClick()
-    {
-        if (getHitEffect.dust >= 0)
-        {
-            getHitEffect.dust -= SkillLevelneed;
-            SPR += 2;
+            //按鈕選擇的數值+=2
+            this.charaterStats[charaterStats] += 2;
+            //面板上的數值更改成實際的數值
+            charaterNumber[charaterStats].text = "" + this.charaterStats[charaterStats];
         }
     }
 }

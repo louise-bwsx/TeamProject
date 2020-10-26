@@ -98,7 +98,7 @@ public class BossHealth : MonsterHealth
                     //Destroy(BossInvincibleEffect);
                     getHitEffect[0] = getHitEffect[2];
                     audioSource.PlayOneShot(bombHitSFX);
-                    GetHit(30 + characterBase.INT);
+                    GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT]);
                     Debug.Log(1);
                 }
                 if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
@@ -107,7 +107,7 @@ public class BossHealth : MonsterHealth
                     getHitEffect[0] = getHitEffect[2];
                     beAttackMin = beAttackMax;//最大被打的次數
                     hitByTransform = other.transform;
-                    GetHit(5 + characterBase.INT);
+                    GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT]);
                     enumAttack = EnumAttack.fireTornado;
                     Debug.Log(2);
                 }

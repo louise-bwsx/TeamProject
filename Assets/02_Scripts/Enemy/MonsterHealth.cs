@@ -164,6 +164,7 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(fireHitSFX);
             GetHit(10 + characterBase.INT + skillBase.fireSkill);
+            Debug.Log(10 + " " + characterBase.INT + " " + skillBase.fireSkill);
         }
         if (other.CompareTag("WindAttack") && hitByTransform != other.transform)
         {

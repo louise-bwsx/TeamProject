@@ -42,11 +42,17 @@ public class SkillBase : MonoBehaviour
         stoneSkillLevel = CentralData.GetInst().stoneSkillLevel;
         waterSkillLevel = CentralData.GetInst().waterSkillLevel;
         windSkillLevel = CentralData.GetInst().windSkillLevel;
+        fireSkill = fireSkillLevel * 20;
+        poisonSkill = poisonSkillLevel * 20;
+        stoneSkill = stoneSkillLevel * 20;
+        waterSkill = waterSkillLevel * 20;
+        windSkill = windSkillLevel * 20;
         SkillImageChange(fireSkillLevel, fireImage);
         SkillImageChange(poisonSkillLevel, poisonImage);
         SkillImageChange(stoneSkillLevel, stoneImage);
         SkillImageChange(waterSkillLevel, waterImage);
         SkillImageChange(windSkillLevel, windImage);
+        Debug.Log(fireSkillLevel);
     }
     void SkillImageChange(int skillLevel, Image[] skillImage)
     {
@@ -61,6 +67,7 @@ public class SkillBase : MonoBehaviour
         {
             case enumSkill.fireSkill:
                 {
+                    Debug.Log(getHitEffect.dust + " " + fireSkillLevel + " " + skillLevelNeed + " " + 0 + " " + fireSkillLevel + " " + skillMaxLevel);
                     if (getHitEffect.dust - fireSkillLevel * skillLevelNeed >= 0 && fireSkillLevel < skillMaxLevel)
                     {
                         fireImage[fireSkillLevel].enabled = true;

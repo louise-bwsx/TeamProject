@@ -91,9 +91,9 @@ public class PlayerAction : MonoBehaviour
         SFXSource.PlayOneShot(SpikeSFX);
         GameObject FX;
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
+        Destroy(spwanSwordCube, 0.5f);
         if (spriteRenderer.flipX == false)
         {
-           
             FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
             Destroy(FX, 0.5f);
         }

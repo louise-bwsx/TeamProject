@@ -166,11 +166,11 @@ public class MonsterHealth : MonoBehaviour
             GetHit(10 + characterBase.INT + skillBase.fireSkill);
             Debug.Log(10 + " " + characterBase.INT + " " + skillBase.fireSkill);
         }
-        if (other.CompareTag("WindAttack") && hitByTransform != other.transform)
+        if (other.CompareTag("WindAttack") /*&& hitByTransform != other.transform*/)
         {
             getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數
-            hitByTransform = other.transform;
+            //hitByTransform = other.transform;
             GetHit(2 + characterBase.INT + skillBase.windSkill);
             enumAttack = EnumAttack.wind;
         }

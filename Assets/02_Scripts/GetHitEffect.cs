@@ -57,21 +57,25 @@ public class GetHitEffect : MonoBehaviour
         if (collision.gameObject.CompareTag("Gold"))
         {
             dust += 3;
+            playerHealth += 30;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Green"))
         {
             dust += 10;
+            playerHealth += 100;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("White"))
         {
             dust += 1;
+            playerHealth += 10;
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Blue"))
         {
             dust += 5;
+            playerHealth += 50;
             Destroy(collision.gameObject);
         }
 

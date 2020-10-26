@@ -23,8 +23,7 @@ public class MeleeEnemyController : EnemyController
         //如果小於偵測範圍
         if (distence <= detectRadius)
         {
-            //利用遠程小怪的Animator的BackToIdle他的條件是如此
-            //而實際上近戰小怪OverrideAnimator的BackToIdle塞的是走路動畫
+            animator.SetBool("Walk", true);
             agent.enabled = true;
             //向著target走
             agent.SetDestination(target.position);
@@ -44,6 +43,7 @@ public class MeleeEnemyController : EnemyController
         }
         else if (distence >= detectRadius)
         {
+            animator.SetBool("Walk", false);
             attackCube.SetActive(false);
             agent.enabled = false;
         }

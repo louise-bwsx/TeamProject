@@ -58,7 +58,7 @@ public class LongRangeEnemyController : EnemyController
     void MonsterAttack()//動畫Event呼叫
     {
         //生成
-        GameObject shootingArrow = Instantiate(arrow, shootingposition.position, bow.rotation);
+        GameObject shootingArrow = Instantiate(arrow, shootingposition.position, Quaternion.Euler(Vector3.zero));
         //射出
         shootingArrow.GetComponent<Rigidbody>().AddForce(bow.forward * force);
         Destroy(shootingArrow, 5f);

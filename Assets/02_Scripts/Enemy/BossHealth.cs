@@ -37,6 +37,7 @@ public class BossHealth : MonsterHealth
         base.Update();
         if (Hp <= 0)
         {
+            BGMSource.Stop();
             destroyTime -= Time.deltaTime;
         }
         if (destroyTime <= -2)//多給兩秒的休息時間
@@ -44,7 +45,6 @@ public class BossHealth : MonsterHealth
             bossDieDialogComponent.SetActive(true);
             if (BGMSource.clip != afterBGM)
             {
-                BGMSource.Stop();
                 BGMSource.clip = afterBGM;
                 BGMSource.Play();
             }

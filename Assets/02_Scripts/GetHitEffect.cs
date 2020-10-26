@@ -95,6 +95,9 @@ public class GetHitEffect : MonoBehaviour
                 getHit = true;
                 //怪打到玩家時把無敵時間輸入進去
                 getHitInvincibleTime = getHitInvincible;
+                //生出被大招打中的特效
+                GameObject bossUltHitFX = Instantiate(getHitEffect[1], transform.position, transform.rotation);
+                Destroy(bossUltHitFX, 1f);
                 //將血量輸入到頭頂的UI
                 healthbarongame.SetHealth(playerHealth);
                 //將血量輸入到畫面上的UI

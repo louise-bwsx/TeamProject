@@ -121,7 +121,7 @@ public class BossController : EnemyController
         audioSource.PlayOneShot(longRangeAttackSFX);
         GameObject shootingArrow = Instantiate(arrow, shootingtransform.position, shootingtransform.rotation);
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
-        Destroy(shootingArrow, 3f);
+        Destroy(shootingArrow, 2f);
     }
     public void BossUltAttack()
     {

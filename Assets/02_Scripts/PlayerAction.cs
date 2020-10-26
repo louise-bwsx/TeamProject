@@ -86,7 +86,6 @@ public class PlayerAction : MonoBehaviour
     }
     public void SpikeAttackFX()//動畫Event呼叫
     {
-        
         //音效
         SFXSource.PlayOneShot(SpikeSFX);
         GameObject FX;

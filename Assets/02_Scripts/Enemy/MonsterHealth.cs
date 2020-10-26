@@ -209,7 +209,7 @@ public class MonsterHealth : MonoBehaviour
         {
             navMeshAgent.enabled = false;
         }
-        if (animator != null)
+        if (animator != null && animator.GetBool("Dead") == false)
         {
             animator.SetBool("Dead", true);
         }

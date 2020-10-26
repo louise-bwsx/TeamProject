@@ -231,6 +231,8 @@ public class PlayerControl : MonoBehaviour
     {
         rayMask = wall;
         oldPosition = transform.position;
+        isAttack = false;
+        playerFaceDirection.isMagicAttack = false;
         if (stamina > staminaRoll)
         {
             //歸零動量

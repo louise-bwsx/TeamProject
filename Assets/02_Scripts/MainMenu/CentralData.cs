@@ -30,7 +30,8 @@ public class CentralData
     {
         //CentralData data = GetInst();
         //取得存檔的路徑與檔名
-
+        //測試
+        CentralData data = GetInst();
         //CentralData 轉Json
         string jstr = JsonUtility.ToJson(mInstance);
         //寫檔

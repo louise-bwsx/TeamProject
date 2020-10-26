@@ -48,7 +48,7 @@ public class MonsterHealth : MonoBehaviour
     {
         characterBase = FindObjectOfType<CharacterBase>();
         skillBase = FindObjectOfType<SkillBase>();
-
+        
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
         if (audioSource == null)
@@ -141,7 +141,10 @@ public class MonsterHealth : MonoBehaviour
         {
             getHitEffect[0] = getHitEffect[1];
             //audioSource.PlayOneShot(SwordHitSFX);
-            GetHit(15 + characterBase.STR);
+            if (characterBase != null)
+            { 
+                GetHit(15 + characterBase.STR);
+            }
         }
         if (other.CompareTag("Skill"))
         {

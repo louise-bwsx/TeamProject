@@ -16,6 +16,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject skillUI;
     public GameObject miniMap;
     public Transform playerRotation;
+    public Transform rollDirection;
     public new Rigidbody rigidbody;
     public new Collider collider;
     //有關耐力
@@ -243,7 +244,7 @@ public class PlayerControl : MonoBehaviour
             isInvincible = true;
             //限制翻滾時不能轉向
             cantMove = true;
-            rigidbody.velocity = -playerRotation.forward * rollDistence;
+            rigidbody.velocity = rollDirection.forward * rollDistence;
             //讓玩家可以穿過怪物
             //collider.isTrigger = true;
             //不要讓玩家掉下去

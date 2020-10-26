@@ -52,7 +52,6 @@ public class SkillBase : MonoBehaviour
         SkillImageChange(stoneSkillLevel, stoneImage);
         SkillImageChange(waterSkillLevel, waterImage);
         SkillImageChange(windSkillLevel, windImage);
-        Debug.Log(fireSkillLevel);
     }
     void SkillImageChange(int skillLevel, Image[] skillImage)
     {

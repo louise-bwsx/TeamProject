@@ -5,22 +5,7 @@ using UnityEngine;
 public class CloseDoor : MonoBehaviour
 {
     public GameObject[] doorClose;
-    public GameObject[] door;
-    public GameObject aa;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-       
-       
-        
-    }
+    public GameObject invisibleWall;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -29,21 +14,12 @@ public class CloseDoor : MonoBehaviour
             {
                 i.SetActive(false);
             }
-           
-
         }
         if (other.CompareTag("Player"))
         {
-            aa.SetActive(true);
-            foreach (GameObject h in door)
-            {
-                h.SetActive(false);
-                h.GetComponent<MeshRenderer>().enabled = false;
-            }
-
+            invisibleWall.SetActive(true);
         }
-
-        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -57,5 +33,4 @@ public class CloseDoor : MonoBehaviour
             }
         }
     }
-
 }

@@ -46,7 +46,7 @@ public class AudioMgr : MonoBehaviour
     }
     void Update()
     {
-        if (closeDoor !=null && closeDoor.aa.activeSelf && getHitEffect.playerHealth>0 && bossHealth.Hp>0)
+        if (closeDoor !=null && closeDoor.invisibleWall.activeSelf && getHitEffect.playerHealth>0 && bossHealth.Hp>0)
         {
             if (BGMSource.clip != beforeBGM)
             {

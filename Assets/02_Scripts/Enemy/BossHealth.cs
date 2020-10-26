@@ -20,6 +20,7 @@ public class BossHealth : MonsterHealth
     public AudioClip wheelBrokeSFX;
     public AudioClip afterBGM;
     public AudioSource BGMSource;
+    public bool easyMode;
     public bool[] bossState = new bool[2];
 
 
@@ -90,24 +91,27 @@ public class BossHealth : MonsterHealth
             //測試用只要打開就不受階段限制
             base.OnTriggerEnter(other);
             //只有組合技才能造成傷害
-            //if (other.CompareTag("Bomb"))
-            //{
-            //    //Destroy(BossInvincibleEffect);
-            //    getHitEffect[0] = getHitEffect[2];
-            //    audioSource.PlayOneShot(bombHitSFX);
-            //    GetHit(30 + characterBase.INT);
-            //    Debug.Log(1);
-            //}
-            //if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
-            //{
-              
-            //    getHitEffect[0] = getHitEffect[2];
-            //    beAttackMin = beAttackMax;//最大被打的次數
-            //    hitByTransform = other.transform;
-            //    GetHit(5 + characterBase.INT);
-            //    enumAttack = EnumAttack.fireTornado;
-            //    Debug.Log(2);
-            //}
+            if (!easyMode)
+            {
+                if (other.CompareTag("Bomb"))
+                {
+                    //Destroy(BossInvincibleEffect);
+                    getHitEffect[0] = getHitEffect[2];
+                    audioSource.PlayOneShot(bombHitSFX);
+                    GetHit(30 + characterBase.INT);
+                    Debug.Log(1);
+                }
+                if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
+                {
+
+                    getHitEffect[0] = getHitEffect[2];
+                    beAttackMin = beAttackMax;//最大被打的次數
+                    hitByTransform = other.transform;
+                    GetHit(5 + characterBase.INT);
+                    enumAttack = EnumAttack.fireTornado;
+                    Debug.Log(2);
+                }
+            }
         }
         //Boss血量第三階段此時Boss開始會放大招
         else if (Hp <= maxHp * 0.3)

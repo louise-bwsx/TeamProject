@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 0
-  maxHp: 100
+  maxHp: 500
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
@@ -421,6 +421,7 @@ MonoBehaviour:
   wheelBrokeSFX: {fileID: 8300000, guid: d8edb3b6a767dc54fa39d67d2eae05dc, type: 3}
   afterBGM: {fileID: 8300000, guid: a026b54947d5ad84ca73b38ef680a72f, type: 3}
   BGMSource: {fileID: 0}
+  bossState: 
 --- !u!1 &6227207049893743282
 GameObject:
   m_ObjectHideFlags: 0

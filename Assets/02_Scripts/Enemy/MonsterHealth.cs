@@ -20,8 +20,8 @@ public class MonsterHealth : MonoBehaviour
     public Animator animator;
     public NavMeshAgent navMeshAgent;
     public GameObject[] getHitEffect;
-    CharacterBase characterBase;
-    SkillBase skillBase;
+    public CharacterBase characterBase;
+    public SkillBase skillBase;
     public EnemyController enemyController;
     public new Rigidbody rigidbody;
     public Transform faceDirection;

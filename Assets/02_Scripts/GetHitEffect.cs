@@ -108,7 +108,7 @@ public class GetHitEffect : MonoBehaviour
                 uIBarControl.SetHealth(playerHealth);
                 //瞬間讓玩家不能動凸顯彈跳效果
                 playerControl.cantMove = true;
-                RD.AddForce(other.transform.forward * bounceForce);
+                //RD.AddForce(other.transform.forward * bounceForce);
                 //玩家血量歸零時遊戲暫停
                 if (playerHealth <= 0)
                 {
@@ -147,7 +147,7 @@ public class GetHitEffect : MonoBehaviour
                 uIBarControl.SetHealth(playerHealth);
                 //瞬間讓玩家不能動凸顯彈跳效果
                 playerControl.cantMove = true;
-                RD.AddForce(other.transform.forward * bounceForce);
+                //RD.AddForce(other.transform.forward * bounceForce);
                 //玩家血量歸零時遊戲暫停
                 if (playerHealth <= 0)
                 {

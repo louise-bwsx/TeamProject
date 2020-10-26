@@ -20,6 +20,7 @@ public class BossHealth : MonsterHealth
     public AudioClip wheelBrokeSFX;
     public AudioClip afterBGM;
     public AudioSource BGMSource;
+    public bool[] bossState = new bool[2];
 
 
     public override void Start()
@@ -37,8 +38,6 @@ public class BossHealth : MonsterHealth
         if (Hp <= 0)
         {
             destroyTime -= Time.deltaTime;
-            //聽說關不起來再關一次
-            Destroy(invincibleGuard);
         }
         if (destroyTime <= -2)//多給兩秒的休息時間
         {
@@ -49,6 +48,25 @@ public class BossHealth : MonsterHealth
                 BGMSource.clip = afterBGM;
                 BGMSource.Play();
             }
+        }
+        if (Hp <= maxHp * 0.7 && !bossState[0])
+        {
+            animator.SetTrigger("Wheel_1_Broke");
+            audioSource.PlayOneShot(behindWheelBrokeSFX);
+            invincibleGuard = Instantiate(BossInvincibleEffect, BossInvinciblePos.position, BossInvinciblePos.rotation);
+            Time.timeScale = 0f;
+            bossSecondStateDialog.SetActive(true);
+            bossState[0] = true;
+        }
+        else if (Hp <= maxHp * 0.3 && !bossState[1])
+        {
+            animator.SetTrigger("Wheel_2_Broke");
+            audioSource.PlayOneShot(behindWheelBrokeSFX);
+            bossController.BossUltAttack();
+            Destroy(invincibleGuard);
+            //第三階段提示
+            bossThirdStateDialog.SetActive(true);
+            bossState[1] = true;
         }
     }
 
@@ -65,14 +83,6 @@ public class BossHealth : MonsterHealth
         if (Hp > maxHp * 0.7)
         {
             base.OnTriggerEnter(other);
-            if (Hp <= maxHp * 0.7)
-            {
-                animator.SetTrigger("Wheel_1_Broke");
-                audioSource.PlayOneShot(behindWheelBrokeSFX);
-                invincibleGuard = Instantiate(BossInvincibleEffect, BossInvinciblePos.position, BossInvinciblePos.rotation);
-                Time.timeScale = 0f;
-                bossSecondStateDialog.SetActive(true);
-            }
         }
         //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
         else if (Hp <= maxHp * 0.7 && Hp>maxHp*0.3)
@@ -98,20 +108,10 @@ public class BossHealth : MonsterHealth
             //    enumAttack = EnumAttack.fireTornado;
             //    Debug.Log(2);
             //}
-            if (Hp <= maxHp * 0.3)
-            {
-                animator.SetTrigger("Wheel_2_Broke");
-                audioSource.PlayOneShot(behindWheelBrokeSFX);
-                bossController.BossUltAttack();
-                Destroy(invincibleGuard);
-                bossThirdStateDialog.SetActive(true);
-            }
         }
         //Boss血量第三階段此時Boss開始會放大招
         else if (Hp <= maxHp * 0.3)
         {
-            //聽說會有的時候沒關所以再加一個
-            Destroy(invincibleGuard);
             base.OnTriggerEnter(other);
         }
 

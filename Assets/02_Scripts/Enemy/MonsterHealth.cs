@@ -60,10 +60,6 @@ public class MonsterHealth : MonoBehaviour
 
         Hp = maxHp;
         healthBarOnGame.SetMaxHealth(maxHp);
-
-        characterBase = FindObjectOfType<CharacterBase>();
-        skillBase = FindObjectOfType<SkillBase>();
-
     }
 
     public virtual void Update()
@@ -146,7 +142,6 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[1];
             //audioSource.PlayOneShot(SwordHitSFX);
             GetHit(15 + characterBase.STR);
-            Debug.Log(characterBase.STR);
         }
         if (other.CompareTag("Skill"))
         {

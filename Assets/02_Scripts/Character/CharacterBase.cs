@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CharacterBase : MonoBehaviour
 {
-    public float cube = 0;
     public int SkillLevelneed = 100;
     public GetHitEffect getHitEffect;
     public int STR = 0;
@@ -14,31 +13,12 @@ public class CharacterBase : MonoBehaviour
     public int INT = 0;
     public int SPR = 0;
 
-
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    
-    }
-
-
     public void StrOnClick()
     {
         if (getHitEffect.dust >= 0)
         {
             getHitEffect.dust -= SkillLevelneed;
             STR += 2;
-           
         }
     }
     public void DefOnClick()
@@ -47,7 +27,6 @@ public class CharacterBase : MonoBehaviour
         {
             getHitEffect.dust -= SkillLevelneed;
             DEF += 2;
-
         }
     }
     public void AgiOnClick()
@@ -56,7 +35,6 @@ public class CharacterBase : MonoBehaviour
         {
             getHitEffect.dust -= SkillLevelneed;
             AGI += 2;
-
         }
     }
     public void IntOnClick()
@@ -65,7 +43,6 @@ public class CharacterBase : MonoBehaviour
         {
             getHitEffect.dust -= SkillLevelneed;
             INT += 2;
-
         }
     }
     public void SprOnClick()
@@ -74,7 +51,6 @@ public class CharacterBase : MonoBehaviour
         {
             getHitEffect.dust -= SkillLevelneed;
             SPR += 2;
-
         }
     }
 }

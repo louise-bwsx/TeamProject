@@ -60,6 +60,7 @@ public class PlayerControl : MonoBehaviour
         collider = GetComponentInParent<Collider>();
         oldPosition = transform.position;
         rayMask = wall & monster;
+        playerOptions = FindObjectOfType<PlayerOptions>();
     }
     private void FixedUpdate()//好用的東東
     {

@@ -3,15 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum CharacterStats
+{ 
+    STR,
+    DEF,
+    AGI,
+    INT,
+    SPR
+}
+
 public class CharacterBase : MonoBehaviour
 {
     public int SkillLevelneed = 100;
     public GetHitEffect getHitEffect;
-    public int STR = 0;
-    public int DEF = 0;
-    public int AGI = 0;
-    public int INT = 0;
-    public int SPR = 0;
+    public int STR;
+    public int DEF;
+    public int AGI;
+    public int INT;
+    public int SPR;
+
+    public Text[] charaterStats;
+
+    void Start()
+    {
+        charaterStats[(int)CharacterStats.STR].text = "" + STR;
+        charaterStats[(int)CharacterStats.DEF].text = "" + DEF;
+        charaterStats[(int)CharacterStats.AGI].text = "" + AGI;
+        charaterStats[(int)CharacterStats.INT].text = "" + INT;
+        charaterStats[(int)CharacterStats.SPR].text = "" + SPR;
+    }
 
     public void StrOnClick()
     {

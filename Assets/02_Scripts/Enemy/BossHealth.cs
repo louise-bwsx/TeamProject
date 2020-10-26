@@ -88,29 +88,27 @@ public class BossHealth : MonsterHealth
         //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
         else if (Hp <= maxHp * 0.7 && Hp>maxHp*0.3)
         {
-            //測試用只要打開就不受階段限制
-            base.OnTriggerEnter(other);
-            //只有組合技才能造成傷害
-            if (!easyMode)
+            if (easyMode)
             {
-                if (other.CompareTag("Bomb"))
-                {
-                    //Destroy(BossInvincibleEffect);
-                    getHitEffect[0] = getHitEffect[2];
-                    audioSource.PlayOneShot(bombHitSFX);
-                    GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT]);
-                    Debug.Log(1);
-                }
-                if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
-                {
+                //測試用只要打開就不受階段限制
+                base.OnTriggerEnter(other);
+            }
+            //只有組合技才能造成傷害
+            if (other.CompareTag("Bomb"))
+            {
+                //Destroy(BossInvincibleEffect);
+                getHitEffect[0] = getHitEffect[2];
+                audioSource.PlayOneShot(bombHitSFX);
+                GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT]);
+            }
+            if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
+            {
 
-                    getHitEffect[0] = getHitEffect[2];
-                    beAttackMin = beAttackMax;//最大被打的次數
-                    hitByTransform = other.transform;
-                    GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT]);
-                    enumAttack = EnumAttack.fireTornado;
-                    Debug.Log(2);
-                }
+                getHitEffect[0] = getHitEffect[2];
+                beAttackMin = beAttackMax;//最大被打的次數
+                hitByTransform = other.transform;
+                GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT]);
+                enumAttack = EnumAttack.fireTornado;
             }
         }
         //Boss血量第三階段此時Boss開始會放大招

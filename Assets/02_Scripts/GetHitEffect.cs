@@ -51,6 +51,13 @@ public class GetHitEffect : MonoBehaviour
                 spriteRenderer.color = Color.white;
             }
         }
+        if (playerHealth <= 0 && GetComponent<Collider>().enabled == true)
+        {
+            //死掉後玩家不能動
+            playerControl.isAttack = true;
+            animator.SetTrigger("Dead");
+            GetComponent<Collider>().enabled = false;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -59,24 +66,33 @@ public class GetHitEffect : MonoBehaviour
             dust += 5;
             playerHealth += 5;
             Destroy(collision.gameObject);
+            uIBarControl.SetHealth(playerHealth);
+            healthbarongame.SetHealth(playerHealth);
+
         }
         if (collision.gameObject.CompareTag("Green"))
         {
             dust += 5;
             playerHealth += 5;
             Destroy(collision.gameObject);
+            uIBarControl.SetHealth(playerHealth);
+            healthbarongame.SetHealth(playerHealth);
         }
         if (collision.gameObject.CompareTag("White"))
         {
             dust += 5;
             playerHealth += 5;
             Destroy(collision.gameObject);
+            uIBarControl.SetHealth(playerHealth);
+            healthbarongame.SetHealth(playerHealth);
         }
         if (collision.gameObject.CompareTag("Blue"))
         {
             dust += 5;
             playerHealth += 5;
             Destroy(collision.gameObject);
+            uIBarControl.SetHealth(playerHealth);
+            healthbarongame.SetHealth(playerHealth);
         }
 
         //else if (collision.gameObject.CompareTag("Item"))
@@ -110,13 +126,13 @@ public class GetHitEffect : MonoBehaviour
                 playerControl.cantMove = true;
                 //RD.AddForce(other.transform.forward * bounceForce);
                 //玩家血量歸零時遊戲暫停
-                if (playerHealth <= 0)
-                {
-                    //死掉後玩家不能動
-                    playerControl.isAttack = true;
-                    animator.SetTrigger("Dead");
-                    GetComponent<Collider>().enabled = false;
-                }
+                //if (playerHealth <= 0)
+                //{
+                //    //死掉後玩家不能動
+                //    playerControl.isAttack = true;
+                //    animator.SetTrigger("Dead");
+                //    GetComponent<Collider>().enabled = false;
+                //}
             }
         }
     }
@@ -149,13 +165,13 @@ public class GetHitEffect : MonoBehaviour
                 playerControl.cantMove = true;
                 //RD.AddForce(other.transform.forward * bounceForce);
                 //玩家血量歸零時遊戲暫停
-                if (playerHealth <= 0)
-                {
-                    //死掉後玩家不能動
-                    playerControl.isAttack = true;
-                    animator.SetTrigger("Dead");
-                    GetComponent<Collider>().enabled = false;
-                }
+                //if (playerHealth <= 0)
+                //{
+                //    //死掉後玩家不能動
+                //    playerControl.isAttack = true;
+                //    animator.SetTrigger("Dead");
+                //    GetComponent<Collider>().enabled = false;
+                //}
             }
         }
         //當玩家無敵狀態

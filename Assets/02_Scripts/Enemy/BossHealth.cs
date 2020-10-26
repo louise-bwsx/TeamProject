@@ -35,7 +35,7 @@ public class BossHealth : MonsterHealth
     public override void Update()
     {
         base.Update();
-        if (Hp <= 0)
+        if (Hp <= 0 && destroyTime>-2)
         {
             BGMSource.Stop();
             destroyTime -= Time.deltaTime;

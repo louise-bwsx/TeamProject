@@ -46,7 +46,7 @@ public class RemoteSkillPosition : MonoBehaviour
         }
         else
         {
-            //skillRotation.enabled = false;
+            skillRotation.enabled = false;
             meshRenderer.enabled = false;
         }
     }

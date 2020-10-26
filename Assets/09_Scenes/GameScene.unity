@@ -1390,7 +1390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45880583}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 111.92, y: 10.96, z: 50.44}
+  m_LocalPosition: {x: 111.92, y: 14.5, z: 73.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   getHitInvincibleTime: 0
   dust: 10000
-  maxHp: 500
+  maxHp: 100
   playerHealth: 5
   healthbarongame: {fileID: 501881193}
   uIBarControl: {fileID: 2136891374}
@@ -22508,6 +22508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978430384124451583, guid: 408f2ca2371132142b997c8bb0ab7c40,
+        type: 3}
+      propertyPath: maxHp
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}

@@ -62,6 +62,8 @@ public class SkillControl : MonoBehaviour
             //滑鼠中鍵的效果
             if (Input.GetMouseButtonDown(2) && skillList[CurIdx + 1].lastFireTime> skillList[CurIdx+1].fireRate)
             {
+                //正式版一定要這樣才能讀的到
+                playerControl.isAttack = true;
                 animator.SetTrigger("Magic");
                 skillList[0] = skillList[CurIdx + 1];
             }

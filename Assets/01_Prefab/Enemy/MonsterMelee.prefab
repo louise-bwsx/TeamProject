@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 0
-  maxHp: 100
+  maxHp: 30
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
@@ -219,6 +219,8 @@ MonoBehaviour:
   - {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076, type: 3}
   - {fileID: 791922460492604613, guid: 45e28252bfa6bb440969a7c648e8e461, type: 3}
   - {fileID: 1562751768510379180, guid: 84642f2af51ee8443bab032245f1d27d, type: 3}
+  characterBase: {fileID: 0}
+  skillBase: {fileID: 0}
   enemyController: {fileID: 3925477345567892591}
   rigidbody: {fileID: 0}
   faceDirection: {fileID: 2904442090115409670}

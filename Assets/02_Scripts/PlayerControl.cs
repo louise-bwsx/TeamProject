@@ -71,11 +71,11 @@ public class PlayerControl : MonoBehaviour
         //GunAudio.PlayOneShot(walkSFX);
         ad = Input.GetAxis("Horizontal");
         //GunAudio.PlayOneShot(walkSFX);
-        if (isAttack == true)
+        if (isAttack)
         {
             Movement.Set(0, 0, 0);
         }
-        else if (isAttack == false)
+        else if (!isAttack)
         {
             Movement.Set(-ws, 0f, ad);
         }
@@ -218,14 +218,12 @@ public class PlayerControl : MonoBehaviour
             rigidbody.MovePosition(hit.point);
             Debug.Log("穿牆");
         }
-        //迴避方向 如果沒撞牆的話是正常的
-        //Debug.DrawLine(oldPosition, oldPosition + ((transform.position - oldPosition).normalized * 100f), Color.white, 1f);
         oldPosition = transform.position;
     }
     public void Attack()
     {
         //false在動畫Event呼叫
-        isAttack = true;
+        //isAttack = true;
         playerFaceDirection.PlayerSpriteFlip();
         if (Input.GetMouseButtonDown(0))
         {

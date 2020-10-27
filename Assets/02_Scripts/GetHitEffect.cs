@@ -124,15 +124,6 @@ public class GetHitEffect : MonoBehaviour
                 uIBarControl.SetHealth(playerHealth);
                 //瞬間讓玩家不能動凸顯彈跳效果
                 playerControl.cantMove = true;
-                //RD.AddForce(other.transform.forward * bounceForce);
-                //玩家血量歸零時遊戲暫停
-                //if (playerHealth <= 0)
-                //{
-                //    //死掉後玩家不能動
-                //    playerControl.isAttack = true;
-                //    animator.SetTrigger("Dead");
-                //    GetComponent<Collider>().enabled = false;
-                //}
             }
         }
     }
@@ -163,15 +154,6 @@ public class GetHitEffect : MonoBehaviour
                 uIBarControl.SetHealth(playerHealth);
                 //瞬間讓玩家不能動凸顯彈跳效果
                 playerControl.cantMove = true;
-                //RD.AddForce(other.transform.forward * bounceForce);
-                //玩家血量歸零時遊戲暫停
-                //if (playerHealth <= 0)
-                //{
-                //    //死掉後玩家不能動
-                //    playerControl.isAttack = true;
-                //    animator.SetTrigger("Dead");
-                //    GetComponent<Collider>().enabled = false;
-                //}
             }
         }
         //當玩家無敵狀態

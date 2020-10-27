@@ -227,6 +227,7 @@ public class PlayerControl : MonoBehaviour
         playerFaceDirection.PlayerSpriteFlip();
         if (Input.GetMouseButtonDown(0))
         {
+            //playerOptions.GetComponent<Transform>().position += playerRotation.forward;
             rigidbody.velocity = playerRotation.forward * normalAttackDash;
             playerAction.NormalAttack();
         }

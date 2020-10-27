@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirebBall : MonoBehaviour
+public class FireBall : MonoBehaviour
 {
     public float DestroyTime = 3F;
     AudioSource audioSource;
@@ -11,7 +11,6 @@ public class FirebBall : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = CentralData.GetInst().SFXVol;
         Destroy(gameObject, DestroyTime);
-   
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,5 +20,4 @@ public class FirebBall : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

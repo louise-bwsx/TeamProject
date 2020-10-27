@@ -36,27 +36,27 @@ public class SkillControl : MonoBehaviour
         //避免抽搐
         if (!playerControl.isAttack && getHitEffect.playerHealth>0)
         {
-            if (Input.GetKeyDown(KeyCode.F5) && skillList[1].lastFireTime > skillList[1].fireRate)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && skillList[1].lastFireTime > skillList[1].fireRate)
             {
                 animator.SetTrigger("Magic");
                 skillList[0] = skillList[1];
             }
-            if (Input.GetKeyDown(KeyCode.F6) && skillList[2].lastFireTime > skillList[2].fireRate)
+            if (Input.GetKeyDown(KeyCode.Alpha2) && skillList[2].lastFireTime > skillList[2].fireRate)
             {
                 animator.SetTrigger("Magic");
                 skillList[0] = skillList[2];
             }
-            if (Input.GetKeyDown(KeyCode.F7) && skillList[3].lastFireTime > skillList[3].fireRate)
+            if (Input.GetKeyDown(KeyCode.Alpha3) && skillList[3].lastFireTime > skillList[3].fireRate)
             {
                 animator.SetTrigger("Magic");
                 skillList[0] = skillList[3];
             }
-            if (Input.GetKeyDown(KeyCode.F8) && skillList[4].lastFireTime > skillList[4].fireRate)
+            if (Input.GetKeyDown(KeyCode.Alpha4) && skillList[4].lastFireTime > skillList[4].fireRate)
             {
                 animator.SetTrigger("Magic");
                 skillList[0] = skillList[4];
             }
-            if (Input.GetKeyDown(KeyCode.F9) && skillList[5].lastFireTime > skillList[5].fireRate)
+            if (Input.GetKeyDown(KeyCode.Alpha5) && skillList[5].lastFireTime > skillList[5].fireRate)
             {
                 animator.SetTrigger("Magic");
                 skillList[0] = skillList[5];

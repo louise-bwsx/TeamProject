@@ -88,7 +88,8 @@ public class PlayerControl : MonoBehaviour
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
         if (attackTime >= attackSpeed && 
-            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf&& !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf)
+            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf&& !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf &&
+            !playerFaceDirection.isMagicAttack)
         {
             if (Input.GetMouseButtonDown(0))
             {

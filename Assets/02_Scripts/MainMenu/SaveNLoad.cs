@@ -9,8 +9,10 @@ public class SaveNLoad: MonoBehaviour
     GetHitEffect getHitEffect;
     SkillBase skillBase;
     public AudioMgr audioMgr;
+    public CharacterBase characterBase;
     void Start()
     {
+        characterBase = FindObjectOfType<CharacterBase>();
         getHitEffect = FindObjectOfType<GetHitEffect>();
         skillBase = FindObjectOfType<SkillBase>();
     }
@@ -28,7 +30,10 @@ public class SaveNLoad: MonoBehaviour
 
         CentralData.GetInst().BGMVol = audioMgr.BGMSlider.value;
         CentralData.GetInst().SFXVol = audioMgr.SFXSlider.value;
-
+        for (int i = 0; i < (int)CharacterStats.Count; i++)
+        {
+            CentralData.GetInst().charaterStats[i] = characterBase.charaterStats[i];
+        }
         dateTime.text = DateTime.Now.ToString();
         CentralData.SaveData();
     }
@@ -44,7 +49,10 @@ public class SaveNLoad: MonoBehaviour
         skillBase.stoneSkillLevel = CentralData.GetInst().stoneSkillLevel;
         skillBase.waterSkillLevel = CentralData.GetInst().waterSkillLevel;
         skillBase.windSkillLevel = CentralData.GetInst().windSkillLevel;
-
+        for (int i = 0; i < (int)CharacterStats.Count; i++)
+        {
+            characterBase.charaterStats[i] = CentralData.GetInst().charaterStats[i];
+        }
         audioMgr.BGMSlider.value = CentralData.GetInst().BGMVol;
         audioMgr.SFXSlider.value = CentralData.GetInst().SFXVol;
 

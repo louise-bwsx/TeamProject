@@ -65,6 +65,7 @@ public class CentralData
     public int stoneSkillLevel;
     public int waterSkillLevel;
     public int windSkillLevel;
+    public int[] charaterStats = new int[5];
 
     //建構子
     private CentralData()

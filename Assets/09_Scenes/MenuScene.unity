@@ -1264,6 +1264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMgr: {fileID: 1404585163}
+  characterBase: {fileID: 0}
 --- !u!1 &230698048
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,7 +4185,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 202182113}
+        - m_Target: {fileID: 1191952301}
           m_MethodName: SetActive
           m_Mode: 6
           m_Arguments:

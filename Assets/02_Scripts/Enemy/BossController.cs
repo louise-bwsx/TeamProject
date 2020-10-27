@@ -67,7 +67,6 @@ public class BossController : EnemyController
             //進入近戰攻擊範圍 && 避免CD時間一到又播一次動畫覆蓋攻擊動作
             if (distence <= meleeRadius && !meshRenderer.enabled)
             {
-                //meshRenderer.enabled = true;
                 animator.SetTrigger("WeaponAttack");
                 attackCD = 0;
             }

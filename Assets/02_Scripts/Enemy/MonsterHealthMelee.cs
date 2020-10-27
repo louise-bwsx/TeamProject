@@ -12,8 +12,4 @@ public class MonsterHealthMelee : MonsterHealth
         enemyController.enabled = false;
         base.MonsterDead();
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.CompareTag())
-    //}
 }

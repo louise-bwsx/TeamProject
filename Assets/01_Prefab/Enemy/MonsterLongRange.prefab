@@ -24,42 +24,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2639929077261022261}
   m_LocalRotation: {x: -0, y: -0.000000059604645, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0023412975, y: 0.0053765588, z: 0.76630414}
+  m_LocalPosition: {x: 0.03234148, y: 0.58937657, z: 0.766304}
   m_LocalScale: {x: 1, y: 1, z: 2.3874998}
   m_Children: []
-  m_Father: {fileID: 2639929077437421175}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2639929077437421174
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2639929077437421175}
-  m_Layer: 0
-  m_Name: MonsterBow
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2639929077437421175
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2639929077437421174}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.07, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2639929077261022266}
-  - {fileID: 4360367077876643036}
-  m_Father: {fileID: 7944422823078056259}
+  m_Father: {fileID: 7944422823135693920}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2908451218238927877
@@ -381,36 +349,6 @@ MonoBehaviour:
   windColdTime: 5
   enumAttack: 0
   collider: {fileID: 0}
---- !u!1 &5659587028621202591
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4360367077876643036}
-  m_Layer: 0
-  m_Name: GunCube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4360367077876643036
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5659587028621202591}
-  m_LocalRotation: {x: -0, y: -0.000000059604645, z: -0, w: 1}
-  m_LocalPosition: {x: 0.009000063, y: 0.0053765588, z: 0.38599998}
-  m_LocalScale: {x: 0.16646887, y: 0.16646889, z: 0.7761306}
-  m_Children: []
-  m_Father: {fileID: 2639929077437421175}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7403635187053180876
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,13 +458,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7944422821597224892}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 0.14495625, y: 0.14495625, z: 0.14495625}
   m_Children: []
   m_Father: {fileID: 5477791637045825154}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1946896891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -608,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c16411936e118244846aabeee87d9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriterotation: {fileID: 2639929077437421175}
+  spriterotation: {fileID: 7944422823135693920}
   monsterParent: {fileID: 5477791637045825159}
 --- !u!114 &369444975877822610
 MonoBehaviour:
@@ -639,42 +577,11 @@ MonoBehaviour:
   detectRadius: 15
   attackCD: 0
   attackRate: 4
-  bow: {fileID: 2639929077437421175}
+  bow: {fileID: 7944422823135693920}
   arrow: {fileID: 1327289845270492346, guid: 760638155560e294e91404e711c05cff, type: 3}
   shootingposition: {fileID: 2639929077261022266}
   force: 1000
   monsterHealth: {fileID: 5349164275163258497}
---- !u!1 &7944422823078056258
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7944422823078056259}
-  m_Layer: 9
-  m_Name: MonsterRotationCenter
-  m_TagString: MonsterAttack
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7944422823078056259
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7944422823078056258}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.514, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2639929077437421175}
-  m_Father: {fileID: 7944422823135693920}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7944422823135693923
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +609,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7944422823078056259}
+  - {fileID: 2639929077261022266}
   m_Father: {fileID: 5477791637045825154}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

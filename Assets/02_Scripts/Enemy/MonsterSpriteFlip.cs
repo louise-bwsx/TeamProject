@@ -5,7 +5,6 @@ using UnityEngine;
 public class MonsterSpriteFlip : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-    public Transform spriterotation;
     public GameObject monsterParent;
 
     void Start()
@@ -14,16 +13,15 @@ public class MonsterSpriteFlip : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(spriterotation.localEulerAngles.y);
-        if (spriterotation.localEulerAngles.y < 90 || spriterotation.localEulerAngles.y>270)
-        {
-            //怪物圖片向右看
-            spriteRenderer.flipX = true;
-        }
-        else
+        if(monsterParent.transform.localEulerAngles.y>90 && monsterParent.transform.localEulerAngles.y<270)
         {
             //向左看
             spriteRenderer.flipX = false;
+        }
+        else
+        {
+            //怪物圖片向右看
+            spriteRenderer.flipX = true;
         }
     }
     void Dead()//動畫Event呼叫

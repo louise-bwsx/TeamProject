@@ -27,7 +27,7 @@ public class LongRangeEnemyController : EnemyController
             //向著target走
             agent.SetDestination(target.position);
             //面對攝影機
-            transform.rotation = Quaternion.Euler(Vector3.zero);
+            //transform.rotation = Quaternion.Euler(Vector3.zero);
             //弓面對Target
             WeaponFaceTarget();
             //如果攻擊距離小於攻擊範圍 且 CD時間到

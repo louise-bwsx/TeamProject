@@ -17,7 +17,6 @@ public class SaveNLoad: MonoBehaviour
     public void SaveData(Text dateTime)
     {
         Debug.Log("進行存檔");
-        CentralData.SaveData();
 
         CentralData.GetInst().dust = getHitEffect.dust;
 
@@ -31,6 +30,7 @@ public class SaveNLoad: MonoBehaviour
         CentralData.GetInst().SFXVol = audioMgr.SFXSlider.value;
 
         dateTime.text = DateTime.Now.ToString();
+        CentralData.SaveData();
     }
     public void LoadData()
     {

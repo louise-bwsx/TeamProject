@@ -9,6 +9,7 @@ public class BossController : EnemyController
     public Transform shootingtransform;
     public Transform bossUltTransform;
     public Transform bossFxBossSlashPos;
+    public GameObject bossUltAim;
     public BossHealth bossHealth;
     public GameObject arrow;
     public Transform swordPos;
@@ -125,6 +126,8 @@ public class BossController : EnemyController
     }
     public void BossUltAttack()
     {
+        GameObject FX = Instantiate(bossUltAim, transform.position, transform.rotation);
+        Destroy(FX, 1f);
         isBossUlt = true;
         Vector3 bossUltPosition = bossUltTransform.position;
         bossUltPosition.y = 15.7f;

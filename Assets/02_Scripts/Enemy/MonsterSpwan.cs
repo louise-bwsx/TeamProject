@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class MonsterSpwan : MonoBehaviour
 {
-    public GameObject monster;
-    public GameObject spwanmonster;//變成像是生怪點 但只有y會被影響 xz不會
-    private float spwantime = 2f;//每次生成時間
+    public GameObject[] monster;
+    public float spwantime = 2f;//每次生成時間
     private float resettime = 0;
     void Update()
     {
@@ -19,8 +18,9 @@ public class MonsterSpwan : MonoBehaviour
     }
     void Spwanmonster()
     {
-        float x = Random.Range(9.0f, 21.0f);
-        float z = Random.Range(-3.5f, 3.5f);
-        spwanmonster = Instantiate(monster, new Vector3(x, 0.06f, z), transform.rotation);//如果monster是地圖上的物件那生成的位置會被他影響
+        float x = Random.Range(72f, 82f);
+        float z = Random.Range(67f, 77f);
+        int random = Random.Range(0, 2);
+        Instantiate(monster[random], new Vector3(x, 16f, z), transform.rotation);//如果monster是地圖上的物件那生成的位置會被他影響
     }
 }

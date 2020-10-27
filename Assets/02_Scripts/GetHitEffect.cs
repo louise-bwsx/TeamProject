@@ -61,7 +61,7 @@ public class GetHitEffect : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Gold"))
+        if (collision.gameObject.CompareTag("Gold") && playerHealth>0)
         {
             dust += 5;
             playerHealth += 5;
@@ -70,7 +70,7 @@ public class GetHitEffect : MonoBehaviour
             healthbarongame.SetHealth(playerHealth);
 
         }
-        if (collision.gameObject.CompareTag("Green"))
+        if (collision.gameObject.CompareTag("Green") && playerHealth > 0)
         {
             dust += 5;
             playerHealth += 5;
@@ -78,7 +78,7 @@ public class GetHitEffect : MonoBehaviour
             uIBarControl.SetHealth(playerHealth);
             healthbarongame.SetHealth(playerHealth);
         }
-        if (collision.gameObject.CompareTag("White"))
+        if (collision.gameObject.CompareTag("White") && playerHealth > 0)
         {
             dust += 5;
             playerHealth += 5;
@@ -86,7 +86,7 @@ public class GetHitEffect : MonoBehaviour
             uIBarControl.SetHealth(playerHealth);
             healthbarongame.SetHealth(playerHealth);
         }
-        if (collision.gameObject.CompareTag("Blue"))
+        if (collision.gameObject.CompareTag("Blue") && playerHealth > 0)
         {
             dust += 5;
             playerHealth += 5;
@@ -103,7 +103,7 @@ public class GetHitEffect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //放在Stay會重複傷害因為大招不會因為玩家碰到而消失
-        if (other.gameObject.CompareTag("BossUlt"))
+        if (other.gameObject.CompareTag("BossUlt") && playerHealth>0)
         {
             //當玩家非無敵狀態
             if (!playerControl.isInvincible)
@@ -111,7 +111,7 @@ public class GetHitEffect : MonoBehaviour
                 getHitEffect[0] = getHitEffect[1];
                 Debug.Log("danger");
                 //隨機怪物傷害 左 到 右 如果是int是 左 到 右-1
-                playerHealth -= Random.Range(30f, 50f);
+                playerHealth -= 30;
                 getHit = true;
                 //怪打到玩家時把無敵時間輸入進去
                 getHitInvincibleTime = getHitInvincible;
@@ -149,11 +149,11 @@ public class GetHitEffect : MonoBehaviour
         if (other.gameObject.CompareTag("MonsterAttack") && getHitInvincibleTime <= 0f)
         {
             //當玩家非無敵狀態
-            if (!playerControl.isInvincible)
+            if (!playerControl.isInvincible && playerHealth > 0)
             {
                 Debug.Log("danger");
                 //隨機怪物傷害
-                playerHealth -= Random.Range(10f, 20f);
+                playerHealth -= 10;
                 getHit = true;
                 //怪打到玩家時把無敵時間輸入進去
                 getHitInvincibleTime = getHitInvincible;

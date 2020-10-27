@@ -4597,6 +4597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monster: []
   spwantime: 2
+  bossHealth: {fileID: 0}
 --- !u!4 &205671122
 Transform:
   m_ObjectHideFlags: 0
@@ -24673,6 +24674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monster: []
   spwantime: 2
+  bossHealth: {fileID: 0}
 --- !u!4 &967489457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7303905059462634077, guid: b4b0b62bfe627fd46b3a1e30c4a08c18,
@@ -115589,7 +115591,8 @@ MonoBehaviour:
   monster:
   - {fileID: 723921473835574753, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
   - {fileID: 5477791637045825159, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
-  spwantime: 2
+  spwantime: 5
+  bossHealth: {fileID: 292325539}
 --- !u!4 &5477791637203891586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3835812322728355123, guid: 2d1ba14e9129e0d49bd8a804d55217a6,

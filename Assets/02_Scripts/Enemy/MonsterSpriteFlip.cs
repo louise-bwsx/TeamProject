@@ -14,6 +14,7 @@ public class MonsterSpriteFlip : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(spriterotation.localEulerAngles.y);
         if (spriterotation.localEulerAngles.y < 90 || spriterotation.localEulerAngles.y>270)
         {
             //怪物圖片向右看

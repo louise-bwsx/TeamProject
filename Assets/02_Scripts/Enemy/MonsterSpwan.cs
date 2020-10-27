@@ -7,13 +7,18 @@ public class MonsterSpwan : MonoBehaviour
     public GameObject[] monster;
     public float spwantime = 2f;//每次生成時間
     private float resettime = 0;
+    public BossHealth bossHealth;
     void Update()
     {
         resettime += Time.deltaTime;
         if (resettime >= spwantime)
         {
-            Spwanmonster();
-            resettime = 0;
+            //只有第二階段會生成
+            if (bossHealth.Hp <= bossHealth.maxHp * 0.7 && bossHealth.Hp > bossHealth.maxHp * 0.3)
+            { 
+                Spwanmonster();
+                resettime = 0;
+            }
         }
     }
     void Spwanmonster()

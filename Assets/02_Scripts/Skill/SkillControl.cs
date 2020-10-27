@@ -12,9 +12,11 @@ public class SkillControl : MonoBehaviour
     public Skill[] skillList;
     public int CurIdx = 0;
     public PlayerControl playerControl;
+    public GetHitEffect getHitEffect;
 
     void Start()
     {
+        getHitEffect = FindObjectOfType<GetHitEffect>();
         playerControl = FindObjectOfType<PlayerControl>();
         SetPos();
     }
@@ -32,7 +34,7 @@ public class SkillControl : MonoBehaviour
             SetPos();
         }
         //避免抽搐
-        if (!playerControl.isAttack)
+        if (!playerControl.isAttack && getHitEffect.playerHealth>0)
         {
             if (Input.GetKeyDown(KeyCode.F5) && skillList[1].lastFireTime > skillList[1].fireRate)
             {

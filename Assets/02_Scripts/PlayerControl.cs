@@ -48,9 +48,12 @@ public class PlayerControl : MonoBehaviour
     public int spikeAttackDash = 7;
     public int normalAttackDash = 3;
     public LayerMask EnemyLayer;
+    public float lastFireTime;
+    public float fireRate=1f;
 
     void Start()
     {
+        lastFireTime = 10f;
         //讓角色一開始可以攻擊
         attackTime = 10;
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
@@ -84,6 +87,7 @@ public class PlayerControl : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+        lastFireTime += Time.deltaTime;
         Movement.Set(0, 0, 0);
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
@@ -162,7 +166,12 @@ public class PlayerControl : MonoBehaviour
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space) && getHitEffect.playerHealth>0)
         {
-            Roll();
+            if (lastFireTime > fireRate)
+            {   
+                Roll();
+                lastFireTime = 0;
+            }
+          
         }
         if (isInvincible)
         {

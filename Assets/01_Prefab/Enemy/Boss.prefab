@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 8736574828027331645}
   - component: {fileID: 559199338612532546}
   - component: {fileID: 3835812322728355129}
+  - component: {fileID: 3478700591657850946}
   m_Layer: 10
   m_Name: Boss
   m_TagString: Monster
@@ -385,6 +386,8 @@ MonoBehaviour:
   - {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076, type: 3}
   - {fileID: 791922460492604613, guid: 45e28252bfa6bb440969a7c648e8e461, type: 3}
   - {fileID: 1562751768510379180, guid: 84642f2af51ee8443bab032245f1d27d, type: 3}
+  characterBase: {fileID: 0}
+  skillBase: {fileID: 0}
   enemyController: {fileID: 0}
   rigidbody: {fileID: 0}
   faceDirection: {fileID: 0}
@@ -421,7 +424,24 @@ MonoBehaviour:
   wheelBrokeSFX: {fileID: 8300000, guid: d8edb3b6a767dc54fa39d67d2eae05dc, type: 3}
   afterBGM: {fileID: 8300000, guid: a026b54947d5ad84ca73b38ef680a72f, type: 3}
   BGMSource: {fileID: 0}
-  bossState: 
+  easyMode: 0
+  bossState: 0000
+--- !u!208 &3478700591657850946
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3835812322728355126}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6227207049893743282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1254,8 @@ MonoBehaviour:
   shootingtransform: {fileID: 6745377422131281350}
   bossUltTransform: {fileID: 462101550}
   bossFxBossSlashPos: {fileID: 735206578837097778, guid: 6008834438a920841a78c9936118105d,
+    type: 3}
+  bossUltAim: {fileID: 6593811671206240348, guid: 2ed52b16dcc29a44fbb4d626fe372f82,
     type: 3}
   bossHealth: {fileID: 0}
   arrow: {fileID: 6515706004448927526, guid: 13c6d7c90cf3f5d47bdc263edbcd2212, type: 3}

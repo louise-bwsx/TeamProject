@@ -11,6 +11,7 @@ public class BossDieDialog : MonoBehaviour
     public int dialogState = 1;
     public Text dialogText;
     public GameObject dialogImage;
+    public Image godImage;
  
     void Start()
     {
@@ -46,6 +47,14 @@ public class BossDieDialog : MonoBehaviour
             dialogImage.SetActive(false);
             Time.timeScale = 1;
             SceneManager.LoadScene("MenuScene");
+        }
+        if (dialogState == 3 || dialogState == 6 || dialogState == 7)
+        {
+            godImage.enabled = true;
+        }
+        else
+        {
+            godImage.enabled = false;
         }
       
     }

@@ -76,7 +76,7 @@ public class BossHealth : MonsterHealth
         audioSource.PlayOneShot(wheelBrokeSFX);
         GameObject FX = Instantiate(brokenWheel, brokenPos.position, brokenPos.rotation);
         Destroy(FX, destroyTime);
-        base.MonsterDead();
+        //base.MonsterDead();
     }
     public override void OnTriggerEnter(Collider other)
     {

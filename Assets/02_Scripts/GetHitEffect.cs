@@ -111,7 +111,7 @@ public class GetHitEffect : MonoBehaviour
                 getHitEffect[0] = getHitEffect[1];
                 Debug.Log("danger");
                 //隨機怪物傷害 左 到 右 如果是int是 左 到 右-1
-                playerHealth -= 30;
+                playerHealth -= 20;
                 getHit = true;
                 //怪打到玩家時把無敵時間輸入進去
                 getHitInvincibleTime = getHitInvincible;

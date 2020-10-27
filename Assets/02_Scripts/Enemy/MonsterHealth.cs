@@ -143,7 +143,7 @@ public class MonsterHealth : MonoBehaviour
             //audioSource.PlayOneShot(SwordHitSFX);
             if (characterBase != null)
             { 
-                GetHit(15 + characterBase.charaterStats[(int)CharacterStats.STR]);
+                GetHit(20 + characterBase.charaterStats[(int)CharacterStats.STR]);
             }
         }
         if (other.CompareTag("Skill"))

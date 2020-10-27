@@ -23,7 +23,7 @@ public class BossDieDialog : MonoBehaviour
         bossDieDialog.Add("(狐狸轉身離去)");
         bossDieDialog.Add("稻荷神：你要去哪裡?");
         bossDieDialog.Add("稻荷神：給我回來!");
-        bossDieDialog.Add("Fin");
+        bossDieDialog.Add("遊戲結束");
 
         Time.timeScale = 0;
         dialogText.text = bossDieDialog[0];

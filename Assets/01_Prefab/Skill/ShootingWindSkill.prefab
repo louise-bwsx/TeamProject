@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3491639138931874879}
   - component: {fileID: 1949071469373561704}
-  - component: {fileID: 7823103382043815615}
   - component: {fileID: 1061591067915779237}
+  - component: {fileID: 7823103382043815615}
+  - component: {fileID: 1860093808362854067}
   m_Layer: 0
   m_Name: ShootingWindSkill
   m_TagString: WindAttack
@@ -47,21 +48,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.08
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7823103382043815615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281075568003997482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e736ef5a3887d42b4c109a49bbc105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 5
-  fireTornado: {fileID: 8129715087960493497, guid: 4047be372eb1f694989742d23ad43887,
-    type: 3}
 --- !u!82 &1061591067915779237
 AudioSource:
   m_ObjectHideFlags: 0
@@ -158,6 +144,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7823103382043815615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281075568003997482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e736ef5a3887d42b4c109a49bbc105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 5
+  fireTornado: {fileID: 8129715087960493497, guid: 4047be372eb1f694989742d23ad43887,
+    type: 3}
+--- !u!114 &1860093808362854067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281075568003997482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5ead7c7cbfcb34ba128d0a002f27bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 5919181595379585890, guid: 8c3e7583233109e4ca6e2189c7097cdd,
+    type: 3}
 --- !u!1001 &3607059075275421410
 PrefabInstance:
   m_ObjectHideFlags: 0

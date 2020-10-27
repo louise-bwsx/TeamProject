@@ -167,7 +167,6 @@ GameObject:
   - component: {fileID: 3467926027039416528}
   - component: {fileID: 3467926027039416530}
   - component: {fileID: 3467926027039416529}
-  - component: {fileID: 3467926027039416531}
   m_Layer: 5
   m_Name: ATKNum
   m_TagString: Untagged
@@ -235,19 +234,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 999
---- !u!114 &3467926027039416531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3467926027039416535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83943b24a36792543ae3d40adf961377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 3467926028038569551}
 --- !u!1 &3467926027051414853
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +325,6 @@ GameObject:
   - component: {fileID: 3467926027133233681}
   - component: {fileID: 3467926027133233683}
   - component: {fileID: 3467926027133233682}
-  - component: {fileID: 3467926027133233692}
   m_Layer: 5
   m_Name: AGINum
   m_TagString: Untagged
@@ -407,19 +392,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 999
---- !u!114 &3467926027133233692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3467926027133233680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8afc8d7483a4a4fac998765f0b8bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 3467926028038569551}
 --- !u!1 &3467926027161414720
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,18 +512,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3467926027161414722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3467926028038569551}
-        m_MethodName: AgiOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3467926027161414733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,18 +661,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3467926027397820190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3467926028038569551}
-        m_MethodName: StrOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3467926027397820185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +781,6 @@ GameObject:
   - component: {fileID: 3467926027525483510}
   - component: {fileID: 3467926027525483504}
   - component: {fileID: 3467926027525483511}
-  - component: {fileID: 3467926027525483505}
   m_Layer: 5
   m_Name: INTNum
   m_TagString: Untagged
@@ -899,19 +848,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 999
---- !u!114 &3467926027525483505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3467926027525483509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06bd517b69d9a64182cd9f702252462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 3467926028038569551}
 --- !u!1 &3467926027724440307
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +859,6 @@ GameObject:
   - component: {fileID: 3467926027724440316}
   - component: {fileID: 3467926027724440318}
   - component: {fileID: 3467926027724440317}
-  - component: {fileID: 3467926027724440319}
   m_Layer: 5
   m_Name: DEFNum
   m_TagString: Untagged
@@ -991,19 +926,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 999
---- !u!114 &3467926027724440319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3467926027724440307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8773695a0538ed7418a4aef4b3ba3663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 3467926028038569551}
 --- !u!1 &3467926027816451452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,18 +1126,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3467926027951078973}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3467926028038569551}
-        m_MethodName: DefOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3467926027951078968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,14 +1335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70648d5934208c647814d23cc29114ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: 0
   SkillLevelneed: 100
   getHitEffect: {fileID: 0}
-  STR: 10
-  DEF: 10
-  AGI: 10
-  INT: 10
-  SPR: 10
+  charaterStats: 
+  charaterNumber: []
 --- !u!1 &3467926028151449657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,18 +1539,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3467926028338089254}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3467926028038569551}
-        m_MethodName: SprOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3467926028338089249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1872,18 +1768,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3467926028457172156}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3467926028038569551}
-        m_MethodName: IntOnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3467926028457172159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,7 +1886,6 @@ GameObject:
   - component: {fileID: 3467926028591199540}
   - component: {fileID: 3467926028591199542}
   - component: {fileID: 3467926028591199541}
-  - component: {fileID: 3467926028591199543}
   m_Layer: 5
   m_Name: SPRNum
   m_TagString: Untagged
@@ -2069,19 +1953,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 999
---- !u!114 &3467926028591199543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3467926028591199531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d20d98dc365624faa957554bfd1f25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBase: {fileID: 3467926028038569551}
 --- !u!1 &3467926029070326238
 GameObject:
   m_ObjectHideFlags: 0

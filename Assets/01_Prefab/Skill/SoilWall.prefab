@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8829505349809715491}
   - component: {fileID: 8829505349809715516}
-  - component: {fileID: 8829505349809715518}
   - component: {fileID: 3880752952663937173}
   - component: {fileID: 1348948031}
+  - component: {fileID: 8829505349809715518}
   - component: {fileID: 4468485522096840177}
   m_Layer: 0
   m_Name: SoilWall
@@ -49,19 +49,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.4655011, z: 0.9999901}
   m_Center: {x: 0, y: 0.26645696, z: 0}
---- !u!114 &8829505349809715518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8829505349809715513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31346085870ac1648be4326b9c3adeff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 3
 --- !u!208 &3880752952663937173
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -174,6 +161,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8829505349809715518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829505349809715513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31346085870ac1648be4326b9c3adeff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 3
 --- !u!114 &4468485522096840177
 MonoBehaviour:
   m_ObjectHideFlags: 0

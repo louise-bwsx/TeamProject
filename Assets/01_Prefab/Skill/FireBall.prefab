@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4644124924792791240}
   - component: {fileID: 209101486852984104}
   - component: {fileID: -1437728889893428069}
+  - component: {fileID: 8596303301425478836}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: FireAttack
@@ -173,6 +174,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyTime: 3
+--- !u!114 &8596303301425478836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998448547650020761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5ead7c7cbfcb34ba128d0a002f27bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 1127800687620224913, guid: e80a38c2360d8ff4985c13a37c771fb8,
+    type: 3}
 --- !u!1001 &4406983638808424534
 PrefabInstance:
   m_ObjectHideFlags: 0

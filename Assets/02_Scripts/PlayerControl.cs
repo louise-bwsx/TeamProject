@@ -50,6 +50,7 @@ public class PlayerControl : MonoBehaviour
     public LayerMask EnemyLayer;
     public float lastFireTime;
     public float fireRate=1f;
+    Vector3 position;
 
     void Start()
     {
@@ -144,24 +145,24 @@ public class PlayerControl : MonoBehaviour
             equipmentManager.UnequipAll();
         }
         #region 存檔功能
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("存檔中");
-            //SaveSystem.SavePlayer(getHitEffect, transform);
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log("回復存檔");
-            PlayerData data = SaveSystem.LoadPlayer();
-            //getHitEffect.playerHealth = data.Playerhealth;
-            uIBarControl.SetHealth(data.Playerhealth);
-            Vector3 SavePosition;
-            SavePosition.x = data.position[0];
-            SavePosition.y = data.position[1];
-            SavePosition.z = data.position[2];
-            transform.position = SavePosition;
-            healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
-        }
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    Debug.Log("存檔中");
+        //    SaveSystem.SavePlayer(getHitEffect, transform);
+        //}
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    Debug.Log("回復存檔");
+        //    PlayerData data = SaveSystem.LoadPlayer();
+        //    getHitEffect.playerHealth = data.Playerhealth;
+        //    uIBarControl.SetHealth(data.Playerhealth);
+        //    Vector3 SavePosition;
+        //    SavePosition.x = data.position[0];
+        //    SavePosition.y = data.position[1];
+        //    SavePosition.z = data.position[2];
+        //    transform.position = SavePosition;
+        //    healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
+        //}
         #endregion
         //翻滾
         if (Input.GetKeyDown(KeyCode.Space) && getHitEffect.playerHealth>0)

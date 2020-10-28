@@ -52,19 +52,18 @@ public class CentralData
         return data;
     }
 
-    //成員變數
+    //BGM及音效
     public float BGMVol = 1;//音量0~1
     public float SFXVol = 1;
-    
     //魔塵
     public int dust = 100000;
-
     //技能等級
     public int fireSkillLevel;
     public int poisonSkillLevel;
     public int stoneSkillLevel;
     public int waterSkillLevel;
     public int windSkillLevel;
+    //角色數值
     public int[] charaterStats = new int[5];
 
     //建構子

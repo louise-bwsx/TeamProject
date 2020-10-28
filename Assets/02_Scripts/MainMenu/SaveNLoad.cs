@@ -58,11 +58,6 @@ public class SaveNLoad: MonoBehaviour
         skillBase.SkillImageChange(skillBase.stoneSkillLevel, skillBase.stoneImage);
         skillBase.SkillImageChange(skillBase.waterSkillLevel, skillBase.waterImage);
         skillBase.SkillImageChange(skillBase.windSkillLevel, skillBase.windImage);
-        skillBase.fireSkill = skillBase.fireSkillLevel *20;
-        skillBase.poisonSkill = skillBase.poisonSkillLevel * 20;
-        skillBase.stoneSkill = skillBase.stoneSkillLevel * 20;
-        skillBase.waterSkill = skillBase.waterSkillLevel * 20;
-        skillBase.windSkill = skillBase.windSkillLevel * 20;
         //角色數值
         for (int i = 0; i < (int)CharacterStats.Count; i++)
         {

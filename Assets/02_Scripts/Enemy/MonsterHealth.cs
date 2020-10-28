@@ -155,21 +155,21 @@ public class MonsterHealth : MonoBehaviour
         {
             getHitEffect[0] = getHitEffect[6];
             audioSource.PlayOneShot(waterHitSFX);
-            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.waterSkill);
-            Debug.Log("角色數值: " + characterBase.charaterStats[(int)CharacterStats.INT] + "技能數值: " + skillBase.waterSkill);
+            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.waterSkillLevel*20);
+            Debug.Log("角色數值: " + characterBase.charaterStats[(int)CharacterStats.INT] + "技能傷害: " + skillBase.waterSkillLevel*20);
         }
         if (other.CompareTag("FireAttack"))
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(fireHitSFX);
-            GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkill);
+            GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkillLevel*20);
         }
         if (other.CompareTag("WindAttack") /*&& hitByTransform != other.transform*/)
         {
             getHitEffect[0] = getHitEffect[3];
             beAttackMin = beAttackMax;//最大被打的次數
             //hitByTransform = other.transform;
-            GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkill);
+            GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel*20);
             enumAttack = EnumAttack.wind;
         }
         if (other.CompareTag("Poison") && hitByTransform != other.transform)
@@ -178,7 +178,7 @@ public class MonsterHealth : MonoBehaviour
             audioSource.PlayOneShot(poisonHitSFX);
             beAttackMin = 20;//最大被打的次數
             hitByTransform = other.transform;
-            GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkill);
+            GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel*20);
         }
         if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
         {

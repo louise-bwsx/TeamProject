@@ -22,17 +22,12 @@ public class SkillBase : MonoBehaviour
     //等級
     public int skillLevelNeed = 1000;
     public int[] skillType = new int[5];
+
     public int fireSkillLevel=0;
     public int poisonSkillLevel = 0;
     public int stoneSkillLevel = 0;
     public int waterSkillLevel = 0;
     public int windSkillLevel = 0;
-    //攻擊數值
-    public int fireSkill = 0;
-    public int poisonSkill = 0;
-    public int stoneSkill = 0;
-    public int waterSkill = 0;
-    public int windSkill = 0;
 
     public GetHitEffect getHitEffect;
     public Image[] fireImage;
@@ -52,11 +47,6 @@ public class SkillBase : MonoBehaviour
         stoneSkillLevel = CentralData.GetInst().stoneSkillLevel;
         waterSkillLevel = CentralData.GetInst().waterSkillLevel;
         windSkillLevel = CentralData.GetInst().windSkillLevel;
-        fireSkill = fireSkillLevel * 20;
-        poisonSkill = poisonSkillLevel * 20;
-        stoneSkill = stoneSkillLevel * 20;
-        waterSkill = waterSkillLevel * 20;
-        windSkill = windSkillLevel * 20;
         SkillImageChange(fireSkillLevel, fireImage);
         SkillImageChange(poisonSkillLevel, poisonImage);
         SkillImageChange(stoneSkillLevel, stoneImage);
@@ -84,7 +74,6 @@ public class SkillBase : MonoBehaviour
                     if (getHitEffect.dust - fireSkillLevel * skillLevelNeed >= 0 && fireSkillLevel < skillMaxLevel)
                     {
                         fireImage[fireSkillLevel].enabled = true;
-                        fireSkill += 20;
                         fireSkillLevel++;
                         getHitEffect.dust = getHitEffect.dust - fireSkillLevel * skillLevelNeed;
                     }
@@ -95,7 +84,6 @@ public class SkillBase : MonoBehaviour
                     if (getHitEffect.dust - poisonSkillLevel * skillLevelNeed >= 0 && poisonSkillLevel < skillMaxLevel)
                     {
                         poisonImage[poisonSkillLevel].enabled = true;
-                        poisonSkill += 20;
                         poisonSkillLevel++;
                         getHitEffect.dust = getHitEffect.dust - poisonSkillLevel * skillLevelNeed;
                     }
@@ -106,7 +94,6 @@ public class SkillBase : MonoBehaviour
                     if (getHitEffect.dust - stoneSkillLevel * skillLevelNeed >= 0 && stoneSkillLevel < skillMaxLevel)
                     {
                         stoneImage[stoneSkillLevel].enabled = true;
-                        stoneSkill += 20;
                         stoneSkillLevel++;
                         getHitEffect.dust = getHitEffect.dust - stoneSkillLevel * skillLevelNeed;
                     }
@@ -117,7 +104,6 @@ public class SkillBase : MonoBehaviour
                     if (getHitEffect.dust - waterSkillLevel * skillLevelNeed >= 0 && waterSkillLevel < skillMaxLevel)
                     {
                         waterImage[waterSkillLevel].enabled = true;
-                        waterSkill += 20;
                         waterSkillLevel++;
                         getHitEffect.dust = getHitEffect.dust - waterSkillLevel * skillLevelNeed;
                     }
@@ -128,7 +114,6 @@ public class SkillBase : MonoBehaviour
                     if (getHitEffect.dust - windSkillLevel * skillLevelNeed >= 0 && windSkillLevel < skillMaxLevel)
                     {
                         windImage[windSkillLevel].enabled = true;
-                        windSkill += 20;
                         windSkillLevel++;
                         getHitEffect.dust = getHitEffect.dust - windSkillLevel * skillLevelNeed;
                     }

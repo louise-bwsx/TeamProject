@@ -156,6 +156,7 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[6];
             audioSource.PlayOneShot(waterHitSFX);
             GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.waterSkill);
+            Debug.Log("角色數值: " + characterBase.charaterStats[(int)CharacterStats.INT] + "技能數值: " + skillBase.waterSkill);
         }
         if (other.CompareTag("FireAttack"))
         {

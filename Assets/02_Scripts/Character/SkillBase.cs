@@ -7,7 +7,7 @@ public enum enumSkill
 {
     fireSkill,
     poisonSkill,
-    stoneSkil,
+    stoneSkill,
     waterSkill,
     windSkill
 }
@@ -91,7 +91,7 @@ public class SkillBase : MonoBehaviour
                     }
                     break;
                 }
-            case enumSkill.stoneSkil:
+            case enumSkill.stoneSkill:
                 {
                     if (getHitEffect.dust - stoneSkillLevel * skillLevelNeed >= 0 && stoneSkillLevel < skillMaxLevel)
                     {

@@ -53,6 +53,7 @@ public class SaveNLoad: MonoBehaviour
         {
             characterBase.charaterStats[i] = CentralData.GetInst().charaterStats[i];
         }
+        characterBase.StatsCheck();
         audioMgr.BGMSlider.value = CentralData.GetInst().BGMVol;
         audioMgr.SFXSlider.value = CentralData.GetInst().SFXVol;
 

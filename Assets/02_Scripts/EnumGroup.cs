@@ -9,17 +9,6 @@ public enum EnumAttack
     fireTornado,
     count
 }
-
-public enum EnumGetHitEffect
-{ 
-    Empty,
-    SwordHit,
-    FireHit,
-    WindHit,
-    PoisonHit,
-    Skill,//土牆
-    WaterHit
-}
 public class EnumGroup : MonoBehaviour
 {
 

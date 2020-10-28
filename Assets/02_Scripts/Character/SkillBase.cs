@@ -53,8 +53,12 @@ public class SkillBase : MonoBehaviour
         SkillImageChange(waterSkillLevel, waterImage);
         SkillImageChange(windSkillLevel, windImage);
     }
-    void SkillImageChange(int skillLevel, Image[] skillImage)
+    public void SkillImageChange(int skillLevel, Image[] skillImage)
     {
+        for (int i = 0; i < skillMaxLevel; i++)
+        {
+            skillImage[i].enabled = false;
+        }
         for (int i = 0; i < skillLevel; i++)
         {
             skillImage[i].enabled = true;

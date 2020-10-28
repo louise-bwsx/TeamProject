@@ -49,6 +49,11 @@ public class SaveNLoad: MonoBehaviour
         skillBase.stoneSkillLevel = CentralData.GetInst().stoneSkillLevel;
         skillBase.waterSkillLevel = CentralData.GetInst().waterSkillLevel;
         skillBase.windSkillLevel = CentralData.GetInst().windSkillLevel;
+        skillBase.SkillImageChange(skillBase.fireSkillLevel, skillBase.fireImage);
+        skillBase.SkillImageChange(skillBase.poisonSkillLevel, skillBase.poisonImage);
+        skillBase.SkillImageChange(skillBase.stoneSkillLevel, skillBase.stoneImage);
+        skillBase.SkillImageChange(skillBase.waterSkillLevel, skillBase.waterImage);
+        skillBase.SkillImageChange(skillBase.windSkillLevel, skillBase.windImage);
         for (int i = 0; i < (int)CharacterStats.Count; i++)
         {
             characterBase.charaterStats[i] = CentralData.GetInst().charaterStats[i];

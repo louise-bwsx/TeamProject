@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class PlayerControl : MonoBehaviour
 {
     PlayerAction playerAction;
+    CharacterBase characterBase;
     public PlayerOptions playerOptions;
     public UIBarControl uIBarControl;
     public PlayerFaceDirection playerFaceDirection;
@@ -62,9 +63,10 @@ public class PlayerControl : MonoBehaviour
         uIBarControl.SetMaxStamina(staminaLimit);
         playerAction = GetComponentInChildren<PlayerAction>();
         collider = GetComponentInParent<Collider>();
+        playerOptions = FindObjectOfType<PlayerOptions>();
+        characterBase = FindObjectOfType<CharacterBase>();
         oldPosition = transform.position;
         rayMask = wall & monster;
-        playerOptions = FindObjectOfType<PlayerOptions>();
     }
     private void FixedUpdate()//好用的東東
     {
@@ -81,7 +83,7 @@ public class PlayerControl : MonoBehaviour
             Movement.Set(-ws, 0f, ad);
         }
         //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
-        Movement = Movement * moveSpeed * Time.deltaTime;
+        Movement = Movement * (moveSpeed + characterBase.charaterStats[(int)CharacterStats.AGI]) * Time.deltaTime;
         rigidbody.MovePosition(transform.position + Movement);
     }
 

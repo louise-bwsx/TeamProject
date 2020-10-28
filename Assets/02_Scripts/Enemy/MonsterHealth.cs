@@ -185,14 +185,14 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[2];
             beAttackMin = beAttackMax;//最大被打的次數
             hitByTransform = other.transform;
-            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT]);
+            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
             enumAttack = EnumAttack.fireTornado;
         }
         if (other.CompareTag("Bomb"))
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(bombHitSFX);
-            GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT]);
+            GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
         }
         if (Hp <= 0)
         {

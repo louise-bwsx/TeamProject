@@ -11,8 +11,15 @@ public enum enumSkill
     waterSkill,
     windSkill
 }
+//土炮二維陣列
+[System.Serializable]
+public class aa
+{
+    public Image image;
+}
 public class SkillBase : MonoBehaviour
-{   //等級
+{   
+    //等級
     public int skillLevelNeed = 1000;
     public int[] skillType = new int[5];
     public int fireSkillLevel=0;
@@ -34,6 +41,9 @@ public class SkillBase : MonoBehaviour
     public Image[] waterImage;
     public Image[] windImage;
     int skillMaxLevel = 5;
+    //土炮二維陣列
+    public aa[] aaa;
+
 
     void Start()
     {

@@ -105,7 +105,7 @@ public class GetHitEffect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //放在Stay會重複傷害因為大招不會因為玩家碰到而消失
-        if (other.gameObject.CompareTag("BossUlt") && playerHealth>0 && Mathf.Abs(characterBase.charaterStats[(int)CharacterStats.DEF] - 20) < 0)
+        if (other.gameObject.CompareTag("BossUlt") && playerHealth>0 && characterBase.charaterStats[(int)CharacterStats.DEF] - 20 < 0)
         {
             //當玩家非無敵狀態
             if (!playerControl.isInvincible)
@@ -142,7 +142,7 @@ public class GetHitEffect : MonoBehaviour
         if (other.gameObject.CompareTag("MonsterAttack") && getHitInvincibleTime <= 0f)
         {
             //當玩家非無敵狀態
-            if (!playerControl.isInvincible && playerHealth > 0 && Mathf.Abs(characterBase.charaterStats[(int)CharacterStats.DEF] - 10) < 0)
+            if (!playerControl.isInvincible && playerHealth > 0 && characterBase.charaterStats[(int)CharacterStats.DEF] - 10 < 0)
             {
                 Debug.Log("danger");
                 //絕對值(人物的防禦值-10)<0

@@ -19,6 +19,7 @@ public class PlayerAction : MonoBehaviour
     GameObject spwanSwordCube;
     public GameMenu gameMenu;
 
+    public PlayerControl playerControl;
     public AudioSource BGMSource;
     public AudioSource SFXSource;//音效放置給所有怪物存取音效
     //public AudioClip walkSFX;//走路音效
@@ -29,6 +30,7 @@ public class PlayerAction : MonoBehaviour
 
     void Start()
     {
+        playerControl = FindObjectOfType<PlayerControl>();
         gameMenu = FindObjectOfType<GameMenu>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         SFXSource = GetComponentInParent<AudioSource>();
@@ -61,11 +63,15 @@ public class PlayerAction : MonoBehaviour
     }
     public void NormalAttackFX()//動畫Event呼叫
     {   
+        //左右特效不能flip
+        spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
+    }
+    public void NormalAttackEffect()
+    {
         //音效
         SFXSource.PlayOneShot(SwingSFX);
         //特效
         GameObject FX;
-        //左右特效不能flip
         if (spriteRenderer.flipX == true)
         {
             FX = Instantiate(swingAttackEffectLeft, player);
@@ -76,7 +82,6 @@ public class PlayerAction : MonoBehaviour
             FX = Instantiate(swingAttackEffectRight, player);
             Destroy(FX, 0.3f);
         }
-        spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
     }
 
     public void SpikeAttack()//動畫Event呼叫
@@ -106,6 +111,7 @@ public class PlayerAction : MonoBehaviour
     }
     public void DestroySword()//動畫Event呼叫
     {
+        //刪除攻擊範圍
         Destroy(spwanSwordCube);
         spawantransform.GetComponent<Collider>().enabled = false;
     }
@@ -115,5 +121,13 @@ public class PlayerAction : MonoBehaviour
         SFXSource.PlayOneShot(dieSFX);
         gameMenu.anyWindow[6].SetActive(true);
         Time.timeScale = 0;
+    }
+    public void StartMoving()
+    {
+        playerControl.rigidbody.velocity = playerControl.playerRotation.forward * playerControl.normalAttackDash;
+    }
+    public void StopMoveing()
+    {
+        playerControl.rigidbody.velocity = Vector3.zero;
     }
 }

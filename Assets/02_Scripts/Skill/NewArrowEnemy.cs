@@ -7,7 +7,7 @@ public class NewArrowEnemy : MonoBehaviour
     public GameObject hitEffect;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Skill") || other.CompareTag("Wall") || other.CompareTag("Player"))
+        if (other.CompareTag("Skill") || other.CompareTag("Wall"))
         {
             GameObject FX = Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(FX,1f);

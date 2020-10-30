@@ -204,7 +204,7 @@ MonoBehaviour:
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
-  attackTime: 0
+  attackTime: 0.12
   bounceForce: 0
   healthBarOnGame: {fileID: 5561994501750623517}
   healthBar: {fileID: 5561994501849685634}
@@ -240,6 +240,7 @@ MonoBehaviour:
   windColdTime: 5
   enumAttack: 0
   collider: {fileID: 0}
+  pushforce: 7.5
 --- !u!1 &2904442090115409669
 GameObject:
   m_ObjectHideFlags: 0

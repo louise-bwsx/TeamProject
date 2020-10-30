@@ -43,6 +43,7 @@ public class MonsterHealth : MonoBehaviour
     public float windColdTime = 5;
     public EnumAttack enumAttack;
     public new Collider collider;
+    public float pushforce;
 
     public virtual void Start()
     {
@@ -104,6 +105,11 @@ public class MonsterHealth : MonoBehaviour
             enumAttack = EnumAttack.count;
             beAttackMin = 0;
         }
+        if (beAttackTime > attackTime && navMeshAgent != null)
+        {
+            rigidbody.velocity = Vector3.zero;
+            navMeshAgent.enabled = true;
+        }
     }
     public virtual void GetHit(float Damage)
     {
@@ -118,11 +124,16 @@ public class MonsterHealth : MonoBehaviour
             { 
                 rigidbody.velocity = -faceDirection.forward * bounceForce;
             }
+            if (navMeshAgent != null)
+            {
+                navMeshAgent.enabled = false;
+            }
             Debug.Log(transform.name);
             GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
             Destroy(FX, 1);
             Hp -= Damage;
             healthBarOnGame.SetHealth(Hp);
+            rigidbody.velocity = -gameObject.transform.forward * pushforce;
             if (Hp <= 0)
             {
                 MonsterDead();

@@ -31,6 +31,11 @@ public class IntroDialog : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+    //private void LateUpdate()
+    //{
+
+    //    Time.timeScale = 1;
+    //}
     public void DialogChange()
     {
         dialogState++;

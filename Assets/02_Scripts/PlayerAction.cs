@@ -11,6 +11,7 @@ public class PlayerAction : MonoBehaviour
     public GameObject swingAttackEffectRight;
     public GameObject SpikeAttackEffectLeft;
     public GameObject SpikeAttackEffectRight;
+    public GameObject shadowDestory;
     public Transform player;
     public Transform spawantransform;
     public Transform SpikeAttackLeftPos;
@@ -117,6 +118,7 @@ public class PlayerAction : MonoBehaviour
     }
     public void Die()//動畫Event呼叫
     {
+        shadowDestory.SetActive(false);
         BGMSource.clip = dieSFX;
         SFXSource.PlayOneShot(dieSFX);
         gameMenu.anyWindow[6].SetActive(true);

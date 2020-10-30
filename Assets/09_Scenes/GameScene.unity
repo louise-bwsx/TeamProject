@@ -15364,10 +15364,10 @@ RectTransform:
   m_Father: {fileID: 1062749869}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 159.5}
-  m_SizeDelta: {x: 2078, y: 319}
+  m_SizeDelta: {x: 0, y: 319}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &475571629
 MonoBehaviour:
@@ -25634,10 +25634,10 @@ RectTransform:
   m_Father: {fileID: 2136891373}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36.946033, y: 0}
-  m_SizeDelta: {x: 1942, y: 1080}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005461778
 MonoBehaviour:
@@ -25656,9 +25656,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1005461776}
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 2136891381}
+          m_MethodName: LoadScene
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -43891,6 +43891,7 @@ GameObject:
   - component: {fileID: 1820454386}
   - component: {fileID: 1820454388}
   - component: {fileID: 1820454387}
+  - component: {fileID: 1820454389}
   m_Layer: 5
   m_Name: Dialog
   m_TagString: Untagged
@@ -43956,6 +43957,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820454385}
   m_CullTransparentMesh: 0
+--- !u!114 &1820454389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820454385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41587e851c518b047b3e25fe76934db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  image: {fileID: 298741678}
 --- !u!224 &1821923644 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1891723443402928546, guid: e73d2538cef871c48a81ebd5bd11cf6f,
@@ -56563,6 +56578,7 @@ MonoBehaviour:
   dialogText: {fileID: 1042793655}
   dialogImage: {fileID: 1311930452}
   godImage: {fileID: 1102431814}
+  staffImage: {fileID: 1005461776}
 --- !u!114 &2136891382
 MonoBehaviour:
   m_ObjectHideFlags: 0

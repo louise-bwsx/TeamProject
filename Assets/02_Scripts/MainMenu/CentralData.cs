@@ -53,8 +53,8 @@ public class CentralData
     }
 
     //BGM及音效
-    public float BGMVol = 1;//音量0~1
-    public float SFXVol = 1;
+    public float BGMVol = 0.5f;//音量0~1
+    public float SFXVol = 0.5f;
     //魔塵
     public int dust = 100000;
     //技能等級

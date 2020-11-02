@@ -227,7 +227,7 @@ public class PlayerControl : MonoBehaviour
     public void Attack()
     {
         //false在動畫Event呼叫
-        //isAttack = true;
+        isAttack = true;
         playerFaceDirection.PlayerSpriteFlip();
         if (Input.GetMouseButtonDown(0))
         {

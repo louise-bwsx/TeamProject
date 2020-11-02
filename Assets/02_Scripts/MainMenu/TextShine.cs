@@ -14,7 +14,7 @@ public class TextShine : MonoBehaviour
         //好像變太快顯示不出來
         if (image.color.a >= 0)
         {
-            Debug.Log(image.color);
+            //Debug.Log(image.color);
             //變換前，變換後
             image.color = Color.Lerp(alpha, noAlpha, Time.unscaledDeltaTime);
         }

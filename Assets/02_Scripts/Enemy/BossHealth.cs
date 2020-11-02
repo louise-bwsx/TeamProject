@@ -10,6 +10,8 @@ public class BossHealth : MonsterHealth
     public GameObject bossDieDialogComponent;
     public GameObject ManiMenu;
     public float destroyTime = 2.5f;//環破碎所需要的時間
+    public float destroySoundTime = 1f; //Boss血量歸零後幾秒要播放環破碎音效
+    public float timer;
     BossController bossController;
     public GameObject BossInvincibleEffect;
     public Transform BossInvinciblePos;
@@ -69,11 +71,18 @@ public class BossHealth : MonsterHealth
             bossThirdStateDialog.SetActive(true);
             bossState[1] = true;
         }
+        if (Hp <= 0 && timer < destroySoundTime)
+        {
+            timer += Time.deltaTime;
+            if (timer >= destroySoundTime)
+            {
+                audioSource.PlayOneShot(wheelBrokeSFX);
+            }
+        }
     }
 
     public override void MonsterDead()
     {
-        audioSource.PlayOneShot(wheelBrokeSFX);
         GameObject FX = Instantiate(brokenWheel, brokenPos.position, brokenPos.rotation);
         Destroy(FX, destroyTime);
         //base.MonsterDead();

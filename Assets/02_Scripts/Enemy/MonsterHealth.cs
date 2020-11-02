@@ -191,11 +191,11 @@ public class MonsterHealth : MonoBehaviour
             hitByTransform = other.transform;
             GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel*20);
         }
-        if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
+        if (other.CompareTag("Firetornado") /*&& hitByTransform != other.transform*/)
         {
             getHitEffect[0] = getHitEffect[2];
             beAttackMin = beAttackMax;//最大被打的次數
-            hitByTransform = other.transform;
+            //hitByTransform = other.transform;
             GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
             enumAttack = EnumAttack.fireTornado;
         }

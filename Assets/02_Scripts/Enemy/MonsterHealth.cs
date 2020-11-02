@@ -27,7 +27,6 @@ public class MonsterHealth : MonoBehaviour
     public Transform faceDirection;
 
     public AudioSource audioSource;//音效在子類別調整音量大小
-    public AudioClip swordHitSFX;//突擊受擊音效
     public AudioClip poisonHitSFX;//毒受擊音效
     public AudioClip fireHitSFX;//火受擊音效
     public AudioClip windHitSFX;//風受擊音效
@@ -37,10 +36,7 @@ public class MonsterHealth : MonoBehaviour
 
     public Transform hitByTransform;
     public float beAttackMin = 0;//被打的次數
-    public float beAttackMax = 0;//被打的最大次數
-    public float getHitTime;
-    public float gethitlimit = 0.9F;//間格秒數
-    public float windColdTime = 5;
+    public float beAttackMax = 20;//被打的最大次數
     public EnumAttack enumAttack;
     public new Collider collider;
     public float pushforce;
@@ -57,7 +53,6 @@ public class MonsterHealth : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
         }
         healthBarOnGame = GetComponentInChildren<HealthBarOnGame>();
-        beAttackMax = windColdTime / gethitlimit;
 
         Hp = maxHp;
         healthBarOnGame.SetMaxHealth(maxHp);
@@ -66,47 +61,16 @@ public class MonsterHealth : MonoBehaviour
     public virtual void Update()
     {
         beAttackTime += Time.deltaTime;
-        //風持續傷害
-        getHitTime += Time.deltaTime;
-
-        if (beAttackMin >= 1)
-        {
-            if (getHitTime > gethitlimit)
-            {
-                getHitTime = 0;
-                GetHit(2);
-                beAttackMin--;
-                if (enumAttack != EnumAttack.count)
-                {
-                    switch (enumAttack)
-                    {
-                        case EnumAttack.wind:
-                            {
-                                audioSource.PlayOneShot(windHitSFX);
-                                break;
-                            }
-                        case EnumAttack.poison:
-                            {
-                                audioSource.PlayOneShot(poisonHitSFX);
-                                break;
-                            }
-                        case EnumAttack.fireTornado:
-                            {
-                                audioSource.PlayOneShot(tornadoHitSFX);
-                                break;
-                            }
-                    }
-                }
-            }
-        }
 
         if (hitByTransform == null)
         {
             enumAttack = EnumAttack.count;
             beAttackMin = 0;
         }
+        //當受擊狀態結束後
         if (beAttackTime > attackTime && navMeshAgent != null)
         {
+            //停止被打飛
             rigidbody.velocity = Vector3.zero;
             navMeshAgent.enabled = true;
         }
@@ -127,6 +91,36 @@ public class MonsterHealth : MonoBehaviour
             if (navMeshAgent != null)
             {
                 navMeshAgent.enabled = false;
+            }
+            if (beAttackMin > 0)
+            {
+                beAttackMin--;
+            }
+            if (enumAttack != EnumAttack.count)
+            {
+                switch (enumAttack)
+                {
+                    case EnumAttack.wind:
+                        {
+                            audioSource.PlayOneShot(windHitSFX);
+                            break;
+                        }
+                    case EnumAttack.poison:
+                        {
+                            audioSource.PlayOneShot(poisonHitSFX);
+                            break;
+                        }
+                    case EnumAttack.fireTornado:
+                        {
+                            audioSource.PlayOneShot(tornadoHitSFX);
+                            break;
+                        }
+                    default:
+                        {
+                            //如果被風、讀、火龍捲打到就跳過
+                            break;
+                        }
+                }
             }
             Debug.Log(transform.name);
             GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
@@ -151,7 +145,6 @@ public class MonsterHealth : MonoBehaviour
         if (other.CompareTag("Sword"))
         {
             getHitEffect[0] = getHitEffect[1];
-            //audioSource.PlayOneShot(SwordHitSFX);
             if (characterBase != null)
             { 
                 GetHit(20 + characterBase.charaterStats[(int)CharacterStats.STR]);
@@ -176,14 +169,7 @@ public class MonsterHealth : MonoBehaviour
             audioSource.PlayOneShot(fireHitSFX);
             GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkillLevel*20);
         }
-        if (other.CompareTag("Poison") && hitByTransform != other.transform)
-        {
-            getHitEffect[0] = getHitEffect[4];
-            audioSource.PlayOneShot(poisonHitSFX);
-            beAttackMin = 20;//最大被打的次數
-            hitByTransform = other.transform;
-            GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel*20);
-        }
+
         if (other.CompareTag("Bomb"))
         {
             getHitEffect[0] = getHitEffect[2];
@@ -198,7 +184,14 @@ public class MonsterHealth : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (Hp > 0)
-        { 
+        {
+            if (other.CompareTag("Poison") && hitByTransform != other.transform)
+            {
+                getHitEffect[0] = getHitEffect[4];
+                beAttackMin = beAttackMax;//最大被打的次數
+                hitByTransform = other.transform;
+                GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
+            }
             if (other.CompareTag("WindAttack"))
             {
                 getHitEffect[0] = getHitEffect[3];

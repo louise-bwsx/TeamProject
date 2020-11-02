@@ -204,7 +204,7 @@ MonoBehaviour:
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
-  attackTime: 0.9
+  attackTime: 0.5
   bounceForce: 0
   healthBarOnGame: {fileID: 5561994501750623517}
   healthBar: {fileID: 5561994501849685634}
@@ -225,7 +225,6 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   faceDirection: {fileID: 2904442090115409670}
   audioSource: {fileID: 0}
-  swordHitSFX: {fileID: 8300000, guid: 64a1ad042a75e1645a9ffd92b395b190, type: 3}
   poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
   fireHitSFX: {fileID: 8300000, guid: 019b46edb5c4eb6418ee02f1e0e67102, type: 3}
   windHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
@@ -235,9 +234,6 @@ MonoBehaviour:
   hitByTransform: {fileID: 0}
   beAttackMin: 0
   beAttackMax: 0
-  getHitTime: 0
-  gethitlimit: 0.9
-  windColdTime: 5
   enumAttack: 0
   collider: {fileID: 0}
   pushforce: 7.5

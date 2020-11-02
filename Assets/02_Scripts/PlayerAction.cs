@@ -64,7 +64,7 @@ public class PlayerAction : MonoBehaviour
     }
     public void NormalAttackFX()//動畫Event呼叫
     {   
-        //左右特效不能flip
+        //生成攻擊範圍
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
     }
     public void NormalAttackEffect()

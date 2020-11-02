@@ -11,7 +11,8 @@ public class MonsterHealth : MonoBehaviour
     public int numHeldItemMin = 1;//裝備生成最小數
     public int numHeldItemMax = 3;//裝備生成最大數
     public float beAttackTime;
-    public float attackTime = 0.9f;
+    public float attackTime = 0.5f;
+    public float recoverTime = 0.1f;
     public int bounceForce;
 
     public HealthBarOnGame healthBarOnGame;
@@ -68,7 +69,7 @@ public class MonsterHealth : MonoBehaviour
             beAttackMin = 0;
         }
         //當受擊狀態結束後
-        if (beAttackTime > attackTime && navMeshAgent != null)
+        if (beAttackTime > recoverTime && navMeshAgent != null)
         {
             //停止被打飛
             rigidbody.velocity = Vector3.zero;
@@ -190,18 +191,18 @@ public class MonsterHealth : MonoBehaviour
                 getHitEffect[0] = getHitEffect[4];
                 beAttackMin = beAttackMax;//最大被打的次數
                 hitByTransform = other.transform;
-                GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
+                GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
             }
             if (other.CompareTag("WindAttack"))
             {
                 getHitEffect[0] = getHitEffect[3];
-                GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel * 20);
+                GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel * 20);
                 enumAttack = EnumAttack.wind;
             }
             if (other.CompareTag("Firetornado"))
             {
                 getHitEffect[0] = getHitEffect[2];
-                GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2);
+                GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2 + skillBase.windSkillLevel * 20);
                 enumAttack = EnumAttack.fireTornado;
             }
         }

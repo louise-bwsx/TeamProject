@@ -11,7 +11,7 @@ public class MonsterHealth : MonoBehaviour
     public int numHeldItemMin = 1;//裝備生成最小數
     public int numHeldItemMax = 3;//裝備生成最大數
     public float beAttackTime;
-    public float attackTime;
+    public float attackTime = 0.9f;
     public int bounceForce;
 
     public HealthBarOnGame healthBarOnGame;
@@ -39,7 +39,7 @@ public class MonsterHealth : MonoBehaviour
     public float beAttackMin = 0;//被打的次數
     public float beAttackMax = 0;//被打的最大次數
     public float getHitTime;
-    public float gethitlimit = 0.3F;//間格秒數
+    public float gethitlimit = 0.9F;//間格秒數
     public float windColdTime = 5;
     public EnumAttack enumAttack;
     public new Collider collider;
@@ -169,19 +169,12 @@ public class MonsterHealth : MonoBehaviour
             GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.waterSkillLevel*20);
             Debug.Log("角色數值: " + characterBase.charaterStats[(int)CharacterStats.INT] + "技能傷害: " + skillBase.waterSkillLevel*20);
         }
+
         if (other.CompareTag("FireAttack"))
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(fireHitSFX);
             GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkillLevel*20);
-        }
-        if (other.CompareTag("WindAttack") /*&& hitByTransform != other.transform*/)
-        {
-            getHitEffect[0] = getHitEffect[3];
-            beAttackMin = beAttackMax;//最大被打的次數
-            //hitByTransform = other.transform;
-            GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel*20);
-            enumAttack = EnumAttack.wind;
         }
         if (other.CompareTag("Poison") && hitByTransform != other.transform)
         {
@@ -190,14 +183,6 @@ public class MonsterHealth : MonoBehaviour
             beAttackMin = 20;//最大被打的次數
             hitByTransform = other.transform;
             GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel*20);
-        }
-        if (other.CompareTag("Firetornado") /*&& hitByTransform != other.transform*/)
-        {
-            getHitEffect[0] = getHitEffect[2];
-            beAttackMin = beAttackMax;//最大被打的次數
-            //hitByTransform = other.transform;
-            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
-            enumAttack = EnumAttack.fireTornado;
         }
         if (other.CompareTag("Bomb"))
         {
@@ -208,6 +193,24 @@ public class MonsterHealth : MonoBehaviour
         if (Hp <= 0)
         {
             collider.enabled = false;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (Hp > 0)
+        { 
+            if (other.CompareTag("WindAttack"))
+            {
+                getHitEffect[0] = getHitEffect[3];
+                GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel * 20);
+                enumAttack = EnumAttack.wind;
+            }
+            if (other.CompareTag("Firetornado"))
+            {
+                getHitEffect[0] = getHitEffect[2];
+                GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2);
+                enumAttack = EnumAttack.fireTornado;
+            }
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootingTornadoSkill : MonoBehaviour
 {
-    public float destroyTime = 3F;
+    public float destroyTime = 5F;
     AudioSource audioSource;
 
     private void Start()

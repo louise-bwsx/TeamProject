@@ -18,7 +18,7 @@ public class ShootingWindSkill : MonoBehaviour
     {
         if (other.CompareTag("FireAttack"))
         {
-            Destroy(gameObject);
+            Destroy(gameObject,0.5F);
             Instantiate(fireTornado, transform.position, transform.rotation);
         }
     }

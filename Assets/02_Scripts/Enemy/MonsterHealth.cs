@@ -66,7 +66,6 @@ public class MonsterHealth : MonoBehaviour
         if (hitByTransform == null)
         {
             enumAttack = EnumAttack.count;
-            beAttackMin = 0;
         }
         //當受擊狀態結束後
         if (beAttackTime > recoverTime && navMeshAgent != null)
@@ -74,6 +73,10 @@ public class MonsterHealth : MonoBehaviour
             //停止被打飛
             rigidbody.velocity = Vector3.zero;
             navMeshAgent.enabled = true;
+        }
+        if (beAttackMin > 0)
+        {
+            GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
         }
     }
     public virtual void GetHit(float Damage)
@@ -186,7 +189,7 @@ public class MonsterHealth : MonoBehaviour
     {
         if (Hp > 0)
         {
-            if (other.CompareTag("Poison") && hitByTransform != other.transform)
+            if (other.CompareTag("Poison"))
             {
                 getHitEffect[0] = getHitEffect[4];
                 beAttackMin = beAttackMax;//最大被打的次數

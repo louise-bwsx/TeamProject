@@ -205,6 +205,7 @@ MonoBehaviour:
   numHeldItemMax: 3
   beAttackTime: 0
   attackTime: 0.5
+  recoverTime: 0.1
   bounceForce: 0
   healthBarOnGame: {fileID: 5561994501750623517}
   healthBar: {fileID: 5561994501849685634}
@@ -233,7 +234,7 @@ MonoBehaviour:
   bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
   hitByTransform: {fileID: 0}
   beAttackMin: 0
-  beAttackMax: 0
+  beAttackMax: 5
   enumAttack: 0
   collider: {fileID: 0}
   pushforce: 7.5

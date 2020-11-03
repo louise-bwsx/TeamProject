@@ -83,6 +83,7 @@ public class BossHealth : MonsterHealth
 
     public override void MonsterDead()
     {
+        curseWheel.SetActive(false);
         GameObject FX = Instantiate(brokenWheel, brokenPos.position, brokenPos.rotation);
         Destroy(FX, destroyTime);
         //base.MonsterDead();
@@ -124,11 +125,6 @@ public class BossHealth : MonsterHealth
         else if (Hp <= maxHp * 0.3)
         {
             base.OnTriggerEnter(other);
-        }
-
-        if (Hp <= 0 && curseWheel != null)
-        {
-            curseWheel.SetActive(false);
         }
     }
 }

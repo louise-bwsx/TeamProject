@@ -148,7 +148,7 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[1];
             if (characterBase != null)
             { 
-                GetHit(20 + characterBase.charaterStats[(int)CharacterStats.STR]);
+                GetHit(15 + characterBase.charaterStats[(int)CharacterStats.STR]);
             }
         }
         if (other.CompareTag("Skill"))
@@ -168,14 +168,14 @@ public class MonsterHealth : MonoBehaviour
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(fireHitSFX);
-            GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkillLevel*20);
+            GetHit(20 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkillLevel*20);
         }
 
         if (other.CompareTag("Bomb"))
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(bombHitSFX);
-            GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
+            GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
         }
         if (Hp <= 0)
         {
@@ -191,18 +191,18 @@ public class MonsterHealth : MonoBehaviour
                 getHitEffect[0] = getHitEffect[4];
                 beAttackMin = beAttackMax;//最大被打的次數
                 hitByTransform = other.transform;
-                GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
+                GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
             }
             if (other.CompareTag("WindAttack"))
             {
                 getHitEffect[0] = getHitEffect[3];
-                GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel * 20);
+                GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel * 20);
                 enumAttack = EnumAttack.wind;
             }
             if (other.CompareTag("Firetornado"))
             {
                 getHitEffect[0] = getHitEffect[2];
-                GetHit(10 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2 + skillBase.windSkillLevel * 20);
+                GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2 + skillBase.windSkillLevel * 20);
                 enumAttack = EnumAttack.fireTornado;
             }
         }

@@ -65,6 +65,6 @@ public class BossDieDialog : MonoBehaviour
     }
     public void LoadScene()
     { 
-            SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("MenuScene");
     }
 }

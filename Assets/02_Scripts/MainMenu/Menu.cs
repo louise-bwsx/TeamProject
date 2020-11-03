@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     public GameObject welcomeImage;
     void Start()
     {
+        Time.timeScale = 1f;
         //一開始先把所有視窗打開讓參數讀的到遊戲開始時自動關閉
         foreach (GameObject window in anyWindow)
         {

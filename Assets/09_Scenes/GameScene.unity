@@ -42450,6 +42450,7 @@ MonoBehaviour:
   SpikeSFX: {fileID: 8300000, guid: 9cfb99d27ae22e340af5986e3d0d384a, type: 3}
   SwingSFX: {fileID: 8300000, guid: f04dff927bc4b004a84903423d94b5d0, type: 3}
   dieSFX: {fileID: 8300000, guid: 56b33a0553eab2844b42d20f448e4c28, type: 3}
+  playerFaceDirection: {fileID: 1757237625}
 --- !u!114 &1757237625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42628,6 +42629,7 @@ MonoBehaviour:
   lastFireTime: 0
   fireRate: 0.1
   animator: {fileID: 1757237622}
+  isRoll: 0
 --- !u!4 &1757600928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 300e014b77d94954284b4599b66df6a5,
@@ -115907,7 +115909,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5805977527194686324}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

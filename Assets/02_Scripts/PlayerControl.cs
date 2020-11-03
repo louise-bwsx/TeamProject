@@ -53,6 +53,7 @@ public class PlayerControl : MonoBehaviour
     public float fireRate=1f;
     Vector3 position;
     public Animator animator;
+    public bool isRoll;
 
     void Start()
     {
@@ -97,7 +98,7 @@ public class PlayerControl : MonoBehaviour
         attackTime += Time.deltaTime;
         if (attackTime >= attackSpeed && 
             !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf&& !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf &&
-            !playerFaceDirection.isMagicAttack && getHitEffect.playerHealth>0)
+            !playerFaceDirection.isMagicAttack && getHitEffect.playerHealth>0 && !isRoll)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -169,7 +170,7 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
         //翻滾
-        if (Input.GetKeyDown(KeyCode.Space) && getHitEffect.playerHealth>0)
+        if (Input.GetKeyDown(KeyCode.Space) && getHitEffect.playerHealth>0/* && !animator.GetBool("IsAttack")*/)
         {
             if (lastFireTime > fireRate)
             {   
@@ -192,6 +193,7 @@ public class PlayerControl : MonoBehaviour
             collider.isTrigger = false;
             rigidbody.useGravity = true;
             rayMask = wall & monster;
+            isRoll = false;
         }
 
         if (stamina < staminaLimit)
@@ -248,6 +250,7 @@ public class PlayerControl : MonoBehaviour
         rayMask = wall;
         oldPosition = transform.position;
         isAttack = false;
+        isRoll = true;
         playerFaceDirection.isMagicAttack = false;
         if (stamina > staminaRoll)
         {

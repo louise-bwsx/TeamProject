@@ -29,6 +29,7 @@ public class PlayerAction : MonoBehaviour
     public AudioClip SpikeSFX;//突刺音效
     public AudioClip SwingSFX;//揮擊音效
     public AudioClip dieSFX;
+    public PlayerFaceDirection playerFaceDirection;
 
     void Start()
     {
@@ -73,7 +74,6 @@ public class PlayerAction : MonoBehaviour
         //音效
         SFXSource.PlayOneShot(SwingSFX);
         //特效
-            Debug.Log(playerRotation.localEulerAngles);
         GameObject FX;
         if (playerRotation.localEulerAngles.y > 0 && playerRotation.localEulerAngles.y < 180)
         {
@@ -133,5 +133,11 @@ public class PlayerAction : MonoBehaviour
     public void StopMoveing()
     {
         playerControl.rigidbody.velocity = Vector3.zero;
+    }
+    public void RollCancelAttack()
+    {
+        animator.SetBool("IsAttack", false);
+        playerControl.isAttack = false;
+        playerFaceDirection.isMagicAttack = false;
     }
 }

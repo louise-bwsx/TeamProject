@@ -19,6 +19,7 @@ public class PlayerAction : MonoBehaviour
     SpriteRenderer spriteRenderer;
     GameObject spwanSwordCube;
     public GameMenu gameMenu;
+    public Transform playerRotation;
 
     public PlayerControl playerControl;
     public AudioSource BGMSource;
@@ -72,13 +73,14 @@ public class PlayerAction : MonoBehaviour
         //音效
         SFXSource.PlayOneShot(SwingSFX);
         //特效
+            Debug.Log(playerRotation.localEulerAngles);
         GameObject FX;
-        if (spriteRenderer.flipX == true)
+        if (playerRotation.localEulerAngles.y > 0 && playerRotation.localEulerAngles.y < 180)
         {
             FX = Instantiate(swingAttackEffectLeft, player);
             Destroy(FX, 0.3f);
         }
-        else if (spriteRenderer.flipX == false)
+        else
         {
             FX = Instantiate(swingAttackEffectRight, player);
             Destroy(FX, 0.3f);

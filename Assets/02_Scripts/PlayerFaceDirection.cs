@@ -9,8 +9,10 @@ public class PlayerFaceDirection : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public SkillControl skillControl;
     public bool isMagicAttack;
+    public Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
         skillControl = FindObjectOfType<SkillControl>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -28,7 +30,7 @@ public class PlayerFaceDirection : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
-        if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack == false)
+        if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack == false && !animator.GetBool("IsAttack"))
         {
             if (Input.GetKey(KeyCode.D))
             {

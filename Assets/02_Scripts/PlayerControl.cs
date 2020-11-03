@@ -52,6 +52,7 @@ public class PlayerControl : MonoBehaviour
     public float lastFireTime;
     public float fireRate=1f;
     Vector3 position;
+    public Animator animator;
 
     void Start()
     {
@@ -74,11 +75,11 @@ public class PlayerControl : MonoBehaviour
         //GunAudio.PlayOneShot(walkSFX);
         ad = Input.GetAxis("Horizontal");
         //GunAudio.PlayOneShot(walkSFX);
-        if (isAttack)
+        if (isAttack && animator.GetBool("IsAttack"))
         {
             Movement.Set(0, 0, 0);
         }
-        else if (!isAttack)
+        else if (!isAttack && !animator.GetBool("IsAttack"))
         {
             Movement.Set(-ws, 0f, ad);
         }
@@ -228,6 +229,7 @@ public class PlayerControl : MonoBehaviour
     {
         //false在動畫Event呼叫
         isAttack = true;
+        //讓人物轉向
         playerFaceDirection.PlayerSpriteFlip();
         if (Input.GetMouseButtonDown(0))
         {

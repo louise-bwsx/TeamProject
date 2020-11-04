@@ -38,7 +38,7 @@ public class Skill : MonoBehaviour
         GameObject bulletObj = Instantiate(skillObject);
         if (bulletObj != null)
         {
-            bulletObj.transform.position = skillPos.position;
+            bulletObj.transform.position = skillPos.position+skillPos.up*0.7f;
             bulletObj.transform.rotation = skillRotation.rotation;
             Rigidbody BulletObjRigidbody_ = bulletObj.GetComponent<Rigidbody>();
             if (BulletObjRigidbody_ != null)

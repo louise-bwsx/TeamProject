@@ -90,15 +90,16 @@ public class PlayerAction : MonoBehaviour
     public void SpikeAttack()//動畫Event呼叫
     { 
         animator.SetTrigger("Attack_Spike");
-        spawantransform.GetComponent<Collider>().enabled = true;
+        //spawantransform.GetComponent<Collider>().enabled = true;
     }
     public void SpikeAttackFX()//動畫Event呼叫
     {
         //音效
         SFXSource.PlayOneShot(SpikeSFX);
         GameObject FX;
+        //攻擊範圍
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
-        //Destroy(spwanSwordCube, 0.5f);
+        //攻擊特效
         if (spriteRenderer.flipX == false)
         {
             FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
@@ -110,7 +111,6 @@ public class PlayerAction : MonoBehaviour
             FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
             Destroy(FX, 0.5f);
         }
-        //特效
     }
     public void DestroySword()//動畫Event呼叫
     {

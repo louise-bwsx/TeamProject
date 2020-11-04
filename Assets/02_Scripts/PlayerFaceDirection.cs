@@ -30,7 +30,7 @@ public class PlayerFaceDirection : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
-        if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack == false && !animator.GetBool("IsAttack"))
+        if (Time.timeScale != 0 && playerControl.isAttack == false && !animator.GetBool("IsAttack"))
         {
             if (Input.GetKey(KeyCode.D))
             {

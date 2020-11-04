@@ -27,7 +27,6 @@ public class PlayerControl : MonoBehaviour
     //有關移動
     public int moveSpeed = 5;//移動速度
     public bool isInvincible = false;//無敵狀態
-    public bool cantMove = false;//移動限制
     float ws;
     float ad;
     Vector3 Movement;
@@ -187,7 +186,6 @@ public class PlayerControl : MonoBehaviour
         if (rollTime > rollTimeLimit)
         {
             isInvincible = false;
-            cantMove = false;
             rollTime = 0;
             rigidbody.velocity = Vector3.zero;
             collider.isTrigger = false;
@@ -263,8 +261,6 @@ public class PlayerControl : MonoBehaviour
             playerAction.Roll();
             //開啟無敵狀態
             isInvincible = true;
-            //限制翻滾時不能轉向
-            cantMove = true;
             rigidbody.velocity = rollDirection.forward * rollDistence;
             //讓玩家可以穿過怪物
             //collider.isTrigger = true;

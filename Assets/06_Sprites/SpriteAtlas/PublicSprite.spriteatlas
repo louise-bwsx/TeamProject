@@ -26,8 +26,8 @@ SpriteAtlas:
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
@@ -36,10 +36,34 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 8d78a6409c741f746be6b2e54f51fbd6, type: 3}
     - {fileID: 2800000, guid: 3a906ab7e09e8364fbb5fe4860013e3f, type: 3}
     - {fileID: 2800000, guid: 1ab4218bc54ea5b4da551194654c9ff1, type: 3}
-    totalSpriteSurfaceArea: 0
+    - {fileID: 2800000, guid: cb5df42982ed79049abe1199bb2d08a6, type: 3}
+    - {fileID: 2800000, guid: 8416a291aca4a744299bffa2aaa86361, type: 3}
+    - {fileID: 2800000, guid: 3548bcdfd24459f41b429f461c4d0deb, type: 3}
+    - {fileID: 2800000, guid: b82f7a33b3c2370489e1a136f0237bad, type: 3}
+    totalSpriteSurfaceArea: 7211418
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8d78a6409c741f746be6b2e54f51fbd6, type: 3}
+  - {fileID: 21300000, guid: 159366d0351794f4d982867a3de7173b, type: 3}
+  - {fileID: 21300000, guid: 8416a291aca4a744299bffa2aaa86361, type: 3}
+  - {fileID: 21300000, guid: b82f7a33b3c2370489e1a136f0237bad, type: 3}
+  - {fileID: 21300000, guid: 3a906ab7e09e8364fbb5fe4860013e3f, type: 3}
+  - {fileID: 21300000, guid: cb5df42982ed79049abe1199bb2d08a6, type: 3}
+  - {fileID: 21300000, guid: 1ab4218bc54ea5b4da551194654c9ff1, type: 3}
+  - {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
+  - {fileID: 21300000, guid: 3548bcdfd24459f41b429f461c4d0deb, type: 3}
+  - {fileID: 21300000, guid: 89c7e1ff14cc08b409f726b928ae2615, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - title_bg
+  - meun_exit
+  - paper_background
+  - skill_background
+  - menu
+  - exit_butten
+  - title_3
+  - butten
+  - paper_background_2
+  - butten_select
   m_Tag: PublicSprite
   m_IsVariant: 0

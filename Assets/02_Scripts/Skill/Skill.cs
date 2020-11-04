@@ -47,7 +47,7 @@ public class Skill : MonoBehaviour
             }
             lastFireTime = 0;
             Destroy(bulletObj, destroyTime);
-            playerControl.stamina -= staminaCost;
+            //playerControl.stamina -= staminaCost;
             //射擊特效
             //扣能量
         }

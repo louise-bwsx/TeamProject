@@ -47,33 +47,33 @@ public class PlayerAction : MonoBehaviour
         //特效
     }
 
-    public void NormalAttack()
-    {
-        //動畫
-        animator.SetTrigger("Attack");
-    }
-    public void NormalAttackFX()//動畫Event呼叫
-    {   
-        //生成攻擊範圍
-        spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
-    }
-    public void NormalAttackEffect()
-    {
-        //音效
-        SFXSource.PlayOneShot(SwingSFX);
-        //特效
-        GameObject FX;
-        if (playerRotation.localEulerAngles.y > 0 && playerRotation.localEulerAngles.y < 180)
-        {
-            FX = Instantiate(swingAttackEffectLeft, player);
-            Destroy(FX, 0.3f);
-        }
-        else
-        {
-            FX = Instantiate(swingAttackEffectRight, player);
-            Destroy(FX, 0.3f);
-        }
-    }
+    //public void NormalAttack()
+    //{
+    //    //動畫
+    //    animator.SetTrigger("Attack");
+    //}
+    //public void NormalAttackFX()//動畫Event呼叫
+    //{   
+    //    //生成攻擊範圍
+    //    spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
+    //}
+    //public void NormalAttackEffect()
+    //{
+    //    //音效
+    //    SFXSource.PlayOneShot(SwingSFX);
+    //    //特效
+    //    GameObject FX;
+    //    if (playerRotation.localEulerAngles.y > 0 && playerRotation.localEulerAngles.y < 180)
+    //    {
+    //        FX = Instantiate(swingAttackEffectLeft, player);
+    //        Destroy(FX, 0.3f);
+    //    }
+    //    else
+    //    {
+    //        FX = Instantiate(swingAttackEffectRight, player);
+    //        Destroy(FX, 0.3f);
+    //    }
+    //}
 
     public void SpikeAttack()//動畫Event呼叫
     { 
@@ -98,14 +98,13 @@ public class PlayerAction : MonoBehaviour
             FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
             Destroy(FX, 0.5f);
         }
-        //特效
     }
-    public void DestroySword()//動畫Event呼叫
-    {
-        //刪除攻擊範圍
-        Destroy(spwanSwordCube);
-        spawantransform.GetComponent<Collider>().enabled = false;
-    }
+    //public void DestroySword()//動畫Event呼叫
+    //{
+    //    //刪除攻擊範圍
+    //    Destroy(spwanSwordCube);
+    //    spawantransform.GetComponent<Collider>().enabled = false;
+    //}
     public void Die()//動畫Event呼叫
     {
         shadowDestory.SetActive(false);
@@ -114,14 +113,14 @@ public class PlayerAction : MonoBehaviour
         gameMenu.anyWindow[6].SetActive(true);
         Time.timeScale = 0;
     }
-    public void StartMoving()
-    {
-        playerControl.rigidbody.velocity = playerControl.playerRotation.forward * playerControl.normalAttackDash;
-    }
-    public void StopMoveing()
-    {
-        playerControl.rigidbody.velocity = Vector3.zero;
-    }
+    //public void StartMoving()
+    //{
+    //    playerControl.rigidbody.velocity = playerControl.playerRotation.forward * playerControl.normalAttackDash;
+    //}
+    //public void StopMoveing()
+    //{
+    //    playerControl.rigidbody.velocity = Vector3.zero;
+    //}
     public void RollCancelAttack()
     {
         animator.SetBool("IsAttack", false);

@@ -5,7 +5,6 @@ using UnityEngine.AI;
 public class PlayerControl : MonoBehaviour
 {
     PlayerAction playerAction;
-    CharacterBase characterBase;
     public PlayerOptions playerOptions;
     public UIBarControl uIBarControl;
     public PlayerFaceDirection playerFaceDirection;
@@ -20,24 +19,9 @@ public class PlayerControl : MonoBehaviour
     public Transform rollDirection;
     public new Rigidbody rigidbody;
     public new Collider collider;
-    //有關耐力
-    public float stamina;
-    float staminaLimit = 100;
-    float staminaRoll = 10;
     //有關移動
     public int moveSpeed = 5;//移動速度
     public bool isInvincible = false;//無敵狀態
-    float ws;
-    float ad;
-    Vector3 moveMent;
-    //有關翻滾
-    float rollTime = 0f;//被存入的時間
-    public float rollTimeLimit = 0.4f;//翻滾的無敵時間
-    public int rollForce;
-    public int rollDistence;
-    LayerMask rayMask;
-    public LayerMask wall, monster;
-    Vector3 oldPosition;
     //有關攻擊
     public bool isAttack = false;
     public float attackRange = 0.4f;
@@ -50,31 +34,23 @@ public class PlayerControl : MonoBehaviour
     public LayerMask EnemyLayer;
     public float lastFireTime;
     public float fireRate=1f;
-    Vector3 position;
     public Animator animator;
     public bool isRoll;
     public FixedJoystick leftJoyStick;
 
     void Start()
     {
-        //lastFireTime = 10f;
         //讓角色一開始可以攻擊
         attackTime = 10;
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
-        stamina = staminaLimit;
-        uIBarControl.SetMaxStamina(staminaLimit);
         playerAction = GetComponentInChildren<PlayerAction>();
         collider = GetComponentInParent<Collider>();
         playerOptions = FindObjectOfType<PlayerOptions>();
-        characterBase = FindObjectOfType<CharacterBase>();
-        oldPosition = transform.position;
-        rayMask = wall & monster;
     }
 
     [System.Obsolete]
     void Update()
     {
-        //lastFireTime += Time.deltaTime;
         //moveMent.Set(0, 0, 0);
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
@@ -89,7 +65,7 @@ public class PlayerControl : MonoBehaviour
                     return;
                 }
                 Attack();
-                attackTime = 0;//另外一種計時方式
+                //attackTime = 0;//另外一種計時方式
             }
             if (Input.GetMouseButtonDown(1) && attackTime >= attackSpikeSpeed)
             {
@@ -151,61 +127,12 @@ public class PlayerControl : MonoBehaviour
             healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
         }
         #endregion
-        //翻滾
-        //if (Input.GetKeyDown(KeyCode.Space) && getHitEffect.playerHealth>0/* && !animator.GetBool("IsAttack")*/)
-        //{
-        //    if (lastFireTime > fireRate)
-        //    {   
-        //        Roll();
-        //    }
-        //}
-        //if (isInvincible)
-        //{
-        //    rollTime += Time.deltaTime;
-        //}
-        //無敵時間超過上限取消無敵狀態
-        //if (rollTime > rollTimeLimit)
-        //{
-        //    isInvincible = false;
-        //    rollTime = 0;
-        //    rigidbody.velocity = Vector3.zero;
-        //    collider.isTrigger = false;
-        //    rigidbody.useGravity = true;
-        //    rayMask = wall & monster;
-        //    isRoll = false;
-        //}
-
-        //if (stamina < staminaLimit)
-        //{
-        //    stamina += Time.deltaTime * 10;
-        //    uIBarControl.SetStamina(stamina);
-        //}
-        //else
-        //{
-        //    stamina = staminaLimit;
-        //    uIBarControl.SetStamina(stamina);
-        //}
-
         if (Input.GetKeyDown(KeyCode.N))//傳送到指定地點 &場景重置
         {
             transform.position = new Vector3(-6.31f, 0, 6.08f);
             Application.LoadLevel(Application.loadedLevel);
         }
     }
-    //void LateUpdate()
-    //{
-    //    RaycastHit hit;
-    //    //原點,方向,hit,最大移動距離,可變更的rayMask
-    //    if (Physics.Raycast(oldPosition, (transform.position - oldPosition), out hit, Vector3.Distance(oldPosition, transform.position), rayMask))
-    //    {
-    //        //撞到牆velocity歸零
-    //        rigidbody.velocity = Vector3.zero;
-    //        //將玩家移動到被射線打到的點
-    //        rigidbody.MovePosition(hit.point);
-    //        Debug.Log("穿牆");
-    //    }
-    //    oldPosition = transform.position;
-    //}
     public void Attack()
     {
         //false在動畫Event呼叫
@@ -216,7 +143,7 @@ public class PlayerControl : MonoBehaviour
         {
             //playerOptions.GetComponent<Transform>().position += playerRotation.forward;
             //rigidbody.velocity = playerRotation.forward * normalAttackDash;
-            playerAction.NormalAttack();
+            //playerAction.NormalAttack();
         }
         else if (Input.GetMouseButtonDown(1))
         {
@@ -224,30 +151,4 @@ public class PlayerControl : MonoBehaviour
             playerAction.SpikeAttack();
         }
     }
-    //public void Roll()
-    //{
-    //    lastFireTime = 0;
-    //    rayMask = wall;
-    //    oldPosition = transform.position;
-    //    isAttack = false;
-    //    isRoll = true;
-    //    playerFaceDirection.isMagicAttack = false;
-    //    if (stamina > staminaRoll)
-    //    {
-    //        //歸零動量
-    //        rigidbody.velocity = Vector3.zero;
-    //        //耐力條 -= 損失耐力
-    //        stamina -= staminaRoll;
-    //        //將損失的耐力顯示在上面
-    //        uIBarControl.SetStamina(stamina);
-    //        playerAction.Roll();
-    //        //開啟無敵狀態
-    //        isInvincible = true;
-    //        rigidbody.velocity = rollDirection.forward * rollDistence;
-    //        //讓玩家可以穿過怪物
-    //        //collider.isTrigger = true;
-    //        //不要讓玩家掉下去
-    //        rigidbody.useGravity = false;
-    //    }
-    //}
 }

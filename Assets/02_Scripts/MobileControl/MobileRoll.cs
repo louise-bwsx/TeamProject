@@ -19,6 +19,7 @@ public class MobileRoll : MonoBehaviour
     float stamina;
     float staminaLimit = 100;
     MobileCharacterStats mobileCharacterStats;
+    MobileAttack mobileAttack;
     MobileMove mobileMove;
     LayerMask rayMask;
     Vector3 oldPosition;
@@ -27,19 +28,20 @@ public class MobileRoll : MonoBehaviour
     AudioSource sourceSFX;
     void Start()
     {
+        mobileMove = GetComponent<MobileMove>();
         sourceSFX = GetComponent<AudioSource>();
         sourceSFX.volume = CentralData.GetInst().SFXVol;
         animator = GetComponent<Animator>();
         uIBarControl = FindObjectOfType<UIBarControl>();
         rigidbody = GetComponentInParent<Rigidbody>();
-        mobileMove = FindObjectOfType<MobileMove>();
+        mobileAttack = FindObjectOfType<MobileAttack>();
         mobileCharacterStats = FindObjectOfType<MobileCharacterStats>();
         //初始化耐力值為最大值
+        uIBarControl.SetMaxStamina(staminaLimit);
         stamina = staminaLimit;
         //不可穿牆的layer是wall和monster
         rayMask = wall & monster;
     }
-
     void Update()
     {
         rollTimer += Time.deltaTime;
@@ -82,7 +84,7 @@ public class MobileRoll : MonoBehaviour
             //儲存oldPosition打射線
             oldPosition = transform.position;
             //取消攻擊中不能移動的限制
-            mobileMove.isAttack = false;
+            mobileAttack.isAttack = false;
             //取消施法中不能移動的限制
             mobileMove.isMagicAttack = false;
             //迴避中不能攻擊

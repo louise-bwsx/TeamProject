@@ -8,8 +8,8 @@ public class MobileMove : MonoBehaviour
     public float ws;
     public float ad;
     public float moveSpeed;
-    public bool isAttack;
     public bool isMagicAttack;
+    MobileAttack mobileAttack;
     SpriteRenderer spriteRenderer;
     Rigidbody rigidbody;
     CharacterBase characterBase;
@@ -17,6 +17,7 @@ public class MobileMove : MonoBehaviour
     Vector3 moveMent;
     void Start()
     {
+        mobileAttack = FindObjectOfType<MobileAttack>();
         rigidbody = GetComponentInParent<Rigidbody>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,7 +28,7 @@ public class MobileMove : MonoBehaviour
         ws = leftJoyStick.Vertical;
         ad = leftJoyStick.Horizontal;
         //攻擊時不能移動
-        if (!isAttack && !animator.GetBool("IsAttack"))
+        if (!mobileAttack.isAttack && !animator.GetBool("IsAttack"))
         {
             moveMent.Set(-ws, 0f, ad);
         }
@@ -50,7 +51,7 @@ public class MobileMove : MonoBehaviour
         {
             animator.SetBool("Walk", false);
         }
-        if (Time.timeScale != 0 && isAttack == false && !animator.GetBool("IsAttack"))
+        if (Time.timeScale != 0 && mobileAttack.isAttack == false && !animator.GetBool("IsAttack"))
         {
             if (ad>0)
             {

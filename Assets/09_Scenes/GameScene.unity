@@ -7567,7 +7567,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1757237628}
+      - m_Target: {fileID: 1757237630}
         m_MethodName: Roll
         m_Mode: 1
         m_Arguments:
@@ -17791,6 +17791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18b2b8c99d120e49af4e7c811e51c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mobileMove: {fileID: 0}
 --- !u!4 &1123086037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a5d8b878dc194bf46af3517948a66706,
@@ -25576,6 +25577,8 @@ GameObject:
   - component: {fileID: 1757237626}
   - component: {fileID: 1757237628}
   - component: {fileID: 1757237629}
+  - component: {fileID: 1757237630}
+  - component: {fileID: 1757237631}
   m_Layer: 11
   m_Name: PlayerSprite
   m_TagString: SFXSource
@@ -25902,6 +25905,49 @@ MonoBehaviour:
   ad: 0
   moveSpeed: 5
   isAttack: 0
+  isMagicAttack: 0
+--- !u!114 &1757237630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757237620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46af548f60afd0f439c9a180ca810cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollTimer: 0
+  rollCost: 10
+  rollCD: 0.5
+  rollTimeLimit: 0.15
+  rollDistence: 30
+  isRoll: 0
+  isInvincible: 0
+  wall:
+    serializedVersion: 2
+    m_Bits: 1024
+  monster:
+    serializedVersion: 2
+    m_Bits: 512
+  uIBarControl: {fileID: 0}
+  healthbarongame: {fileID: 501881193}
+  rollSFX: {fileID: 8300000, guid: f88b2e7f342b1524382a9f6ce217a232, type: 3}
+  rollDirection: {fileID: 1111911155}
+--- !u!114 &1757237631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757237620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48ec22b39e4c75488243f7027f8b52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
 --- !u!4 &1768143915
 Transform:
   m_ObjectHideFlags: 0

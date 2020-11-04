@@ -4,37 +4,42 @@ using UnityEngine;
 
 public class RollDirection : MonoBehaviour
 {
+    public MobileMove mobileMove;
+    void Start()
+    {
+        mobileMove = FindObjectOfType<MobileMove>();    
+    }
     void Update()
     {
-        if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") > 0)
+        if (mobileMove.ws > 0 && mobileMove.ad > 0)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * (-90+45));
         }
-        else if (Input.GetAxis("Vertical") > 0)
+        else if (mobileMove.ws > 0)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * -90);
         }
-        else if (Input.GetAxis("Horizontal") > 0)
+        else if (mobileMove.ad > 0)
         {
             transform.rotation = Quaternion.Euler(Vector3.zero);
         }
-        if (Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") > 0)
+        if (mobileMove.ws < 0 && mobileMove.ad > 0)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * (-90 + 135));
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (mobileMove.ws < 0)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * (-90 + 180));
         }
-        if (Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") < 0)
+        if (mobileMove.ws < 0 && mobileMove.ad < 0)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * (90+45));
         }
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (mobileMove.ad < 0)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * 180);
         }
-        if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") < 0)
+        if (mobileMove.ws > 0 && mobileMove.ad < 0)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * (90 + 135));
         }

@@ -81,15 +81,78 @@ public class MonsterHealth : MonoBehaviour
     }
     public virtual void GetHit(float Damage)
     {
-        if (beAttackTime > attackTime)
+        if (hitByTransform != null && hitByTransform.CompareTag("Bomb"))
         {
             if (enemyController != null)
-            { 
+            {
                 enemyController.attackCD = 0;
             }
             animator.SetTrigger("GetHit");
             if (faceDirection != null)
-            { 
+            {
+                rigidbody.velocity = -faceDirection.forward * bounceForce;
+            }
+            if (navMeshAgent != null)
+            {
+                navMeshAgent.enabled = false;
+            }
+            if (beAttackMin > 0)
+            {
+                beAttackMin--;
+            }
+            if (enumAttack != EnumAttack.count)
+            {
+                switch (enumAttack)
+                {
+                    case EnumAttack.wind:
+                        {
+                            audioSource.PlayOneShot(windHitSFX);
+                            break;
+                        }
+                    case EnumAttack.poison:
+                        {
+                            audioSource.PlayOneShot(poisonHitSFX);
+                            break;
+                        }
+                    case EnumAttack.fireTornado:
+                        {
+                            audioSource.PlayOneShot(tornadoHitSFX);
+                            break;
+                        }
+                    default:
+                        {
+                            //如果被風、讀、火龍捲打到就跳過
+                            break;
+                        }
+                }
+            }
+            Debug.Log(transform.name);
+            GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
+            Destroy(FX, 1);
+            Hp -= Damage;
+            healthBarOnGame.SetHealth(Hp);
+            rigidbody.velocity = -gameObject.transform.forward * pushforce;
+            if (Hp <= 0)
+            {
+                MonsterDead();
+                //避免一直跳進來
+                beAttackMin = 0;
+            }
+            beAttackTime = 0;
+            if (hitByTransform.CompareTag("Bomb"))
+            {
+                hitByTransform = null;
+            }
+        }
+        if (beAttackTime > attackTime)
+        {
+            if (enemyController != null)
+            {
+                enemyController.attackCD = 0;
+            }
+            animator.SetTrigger("GetHit");
+            if (faceDirection != null)
+            {
                 rigidbody.velocity = -faceDirection.forward * bounceForce;
             }
             if (navMeshAgent != null)
@@ -178,14 +241,15 @@ public class MonsterHealth : MonoBehaviour
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(bombHitSFX);
-            GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
+            hitByTransform = other.transform;
+            GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
         }
         if (Hp <= 0)
         {
             collider.enabled = false;
         }
     }
-    private void OnTriggerStay(Collider other)
+    public virtual void OnTriggerStay(Collider other)
     {
         if (Hp > 0)
         {

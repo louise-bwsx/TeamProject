@@ -68,6 +68,7 @@ public class PlayerAction : MonoBehaviour
     {   
         //生成攻擊範圍
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
+        Destroy(spwanSwordCube, 0.3f);
     }
     public void NormalAttackEffect()
     {
@@ -111,11 +112,15 @@ public class PlayerAction : MonoBehaviour
             FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
             Destroy(FX, 0.5f);
         }
+        Destroy(spwanSwordCube, 0.3f);
     }
     public void DestroySword()//動畫Event呼叫
     {
         //刪除攻擊範圍
-        Destroy(spwanSwordCube);
+        if (spwanSwordCube != null)
+        { 
+            Destroy(spwanSwordCube);
+        }
         spawantransform.GetComponent<Collider>().enabled = false;
     }
     public void Die()//動畫Event呼叫

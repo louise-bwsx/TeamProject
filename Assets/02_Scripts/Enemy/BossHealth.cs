@@ -95,13 +95,30 @@ public class BossHealth : MonsterHealth
         {
             base.OnTriggerEnter(other);
         }
-        //Boss血量第二階段 當雕像打爆以後會繞過碰觸機制直接GetHit Boss
-        else if (Hp <= maxHp * 0.7 && Hp>maxHp*0.3)
+  
+        //Boss血量第三階段此時Boss開始會放大招
+        else if (Hp <= maxHp * 0.3)
+        {
+            base.OnTriggerEnter(other);
+        }
+    }
+    public override void OnTriggerStay(Collider other)
+    {    //Boss血量第一階段扣血條件
+        if (Hp > maxHp * 0.7)
+        {
+            base.OnTriggerStay(other);
+        }
+        //Boss血量第三階段此時Boss開始會放大招
+        else if (Hp <= maxHp * 0.3)
+        {
+            base.OnTriggerStay(other);
+        }
+        if (Hp <= maxHp * 0.7 && Hp > maxHp * 0.3)
         {
             if (easyMode)
             {
                 //測試用只要打開就不受階段限制
-                base.OnTriggerEnter(other);
+                base.OnTriggerStay(other);
             }
             //只有組合技才能造成傷害
             if (other.CompareTag("Bomb"))
@@ -109,7 +126,8 @@ public class BossHealth : MonsterHealth
                 //Destroy(BossInvincibleEffect);
                 getHitEffect[0] = getHitEffect[2];
                 audioSource.PlayOneShot(bombHitSFX);
-                GetHit(30 + characterBase.charaterStats[(int)CharacterStats.INT]);
+                hitByTransform = other.transform;
+                GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2);
             }
             if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
             {
@@ -121,10 +139,6 @@ public class BossHealth : MonsterHealth
                 enumAttack = EnumAttack.fireTornado;
             }
         }
-        //Boss血量第三階段此時Boss開始會放大招
-        else if (Hp <= maxHp * 0.3)
-        {
-            base.OnTriggerEnter(other);
-        }
+
     }
 }

@@ -43,11 +43,11 @@ public class PlayerFaceDirection : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-    void IsAttackFalse()//動畫Event控制
-    {
-        //為了攻擊中不能移動
-        playerControl.isAttack = false;
-    }
+    //void IsAttackFalse()//動畫Event控制
+    //{
+    //    //為了攻擊中不能移動
+    //    playerControl.isAttack = false;
+    //}
     void IsMagicAtttack()//動畫Event控制
     {
         //為了攻擊中不能移動

@@ -52,33 +52,33 @@ public class MobileAttack : MonoBehaviour
         {
             //動畫
             animator.SetTrigger(attackType);
-            //音效
-            switch (attackType)
-            {
-                case "Attack":
-                    {
-                        sourceSFX.PlayOneShot(swingSFX);
-                        break;
-                    }
-                case "Attack_Spike":
-                    {
-                        sourceSFX.PlayOneShot(spikeSFX);
-                        break;
-                    }
-            }
-            //sourceSFX.PlayOneShot(swingSFX);
             //false在動畫Event呼叫
             isAttack = true;
             attackTimer = 0;
         }
     }
-    public void AttackRange()//動畫Event呼叫
-    {
+    void AttackRange(string attackType)//動畫Event呼叫
+    {   
+        //音效選擇
+        switch (attackType)
+        {
+            case "Attack":
+                {
+                    sourceSFX.PlayOneShot(swingSFX);
+                    break;
+                }
+            case "Attack_Spike":
+                {
+                    sourceSFX.PlayOneShot(spikeSFX);
+                    spawantransform.GetComponent<Collider>().enabled = true;
+                    break;
+                }
+        }
         //生成攻擊範圍
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         Destroy(spwanSwordCube, 0.3f);
     }
-    public void AttackEffect()
+    void AttackEffect()//動畫Event呼叫
     {
         //特效
         GameObject FX;
@@ -101,25 +101,29 @@ public class MobileAttack : MonoBehaviour
                 }
         }
     }
-    public void RecoverMove()
+    void StartMoving()//動畫Event呼叫
     {
-        isAttack = false;
-    }
-    public void StartMoving()
-    {
+        //普攻向前移動
         rigidbody.velocity = playerRotation.forward * normalAttackDash;
     }
-    public void StopMoving()
+    void StopMoving()//動畫Event呼叫
     {
+        //踏步停止
         rigidbody.velocity = Vector3.zero;
     }
-    public void DestroySword()//動畫Event呼叫
+    void DestroySword()//動畫Event呼叫
     {
         //刪除攻擊範圍
         if (spwanSwordCube != null)
         { 
             Destroy(spwanSwordCube);
         }
+        //關閉傷害範圍
         spawantransform.GetComponent<Collider>().enabled = false;
+    }
+    void IsAttackFalse()//動畫Event控制
+    {
+        //為了攻擊中不能移動
+        isAttack = false;
     }
 }

@@ -39,13 +39,13 @@ public class PlayerAction : MonoBehaviour
         SFXSource = GetComponentInParent<AudioSource>();
         SFXSource.volume = CentralData.GetInst().SFXVol;
     }
-    public void Roll()
-    {
-        animator.SetTrigger("Roll");
-        //音效
-        SFXSource.PlayOneShot(TurnOverSFX);
-        //特效
-    }
+    //public void Roll()
+    //{
+    //    animator.SetTrigger("Roll");
+    //    //音效
+    //    SFXSource.PlayOneShot(TurnOverSFX);
+    //    //特效
+    //}
 
     //public void NormalAttack()
     //{

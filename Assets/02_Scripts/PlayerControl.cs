@@ -27,10 +27,9 @@ public class PlayerControl : MonoBehaviour
     //有關移動
     public int moveSpeed = 5;//移動速度
     public bool isInvincible = false;//無敵狀態
-    public bool cantMove = false;//移動限制
     float ws;
     float ad;
-    Vector3 Movement;
+    Vector3 moveMent;
     //有關翻滾
     float rollTime = 0f;//被存入的時間
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
@@ -54,6 +53,7 @@ public class PlayerControl : MonoBehaviour
     Vector3 position;
     public Animator animator;
     public bool isRoll;
+    public FixedJoystick leftJoyStick;
 
     void Start()
     {
@@ -70,30 +70,12 @@ public class PlayerControl : MonoBehaviour
         oldPosition = transform.position;
         rayMask = wall & monster;
     }
-    private void FixedUpdate()//好用的東東
-    {
-        ws = Input.GetAxis("Vertical");//世界軸
-        //GunAudio.PlayOneShot(walkSFX);
-        ad = Input.GetAxis("Horizontal");
-        //GunAudio.PlayOneShot(walkSFX);
-        if (isAttack && animator.GetBool("IsAttack"))
-        {
-            Movement.Set(0, 0, 0);
-        }
-        else if (!isAttack && !animator.GetBool("IsAttack"))
-        {
-            Movement.Set(-ws, 0f, ad);
-        }
-        //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
-        Movement = Movement * (moveSpeed + characterBase.charaterStats[(int)CharacterStats.AGI]) * Time.deltaTime;
-        rigidbody.MovePosition(transform.position + Movement);
-    }
 
     [System.Obsolete]
     void Update()
     {
         lastFireTime += Time.deltaTime;
-        Movement.Set(0, 0, 0);
+        //moveMent.Set(0, 0, 0);
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
         if (attackTime >= attackSpeed && 
@@ -175,9 +157,7 @@ public class PlayerControl : MonoBehaviour
             if (lastFireTime > fireRate)
             {   
                 Roll();
-                lastFireTime = 0;
             }
-          
         }
         if (isInvincible)
         {
@@ -187,7 +167,6 @@ public class PlayerControl : MonoBehaviour
         if (rollTime > rollTimeLimit)
         {
             isInvincible = false;
-            cantMove = false;
             rollTime = 0;
             rigidbody.velocity = Vector3.zero;
             collider.isTrigger = false;
@@ -231,7 +210,7 @@ public class PlayerControl : MonoBehaviour
     {
         //false在動畫Event呼叫
         isAttack = true;
-        //讓人物轉向
+        //讓人物轉向 測試人物轉向暫時關閉
         playerFaceDirection.PlayerSpriteFlip();
         if (Input.GetMouseButtonDown(0))
         {
@@ -245,8 +224,9 @@ public class PlayerControl : MonoBehaviour
             playerAction.SpikeAttack();
         }
     }
-    void Roll()
+    public void Roll()
     {
+        lastFireTime = 0;
         rayMask = wall;
         oldPosition = transform.position;
         isAttack = false;
@@ -263,8 +243,6 @@ public class PlayerControl : MonoBehaviour
             playerAction.Roll();
             //開啟無敵狀態
             isInvincible = true;
-            //限制翻滾時不能轉向
-            cantMove = true;
             rigidbody.velocity = rollDirection.forward * rollDistence;
             //讓玩家可以穿過怪物
             //collider.isTrigger = true;

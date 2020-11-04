@@ -39,18 +39,6 @@ public class PlayerAction : MonoBehaviour
         SFXSource = GetComponentInParent<AudioSource>();
         SFXSource.volume = CentralData.GetInst().SFXVol;
     }
-    void Update()
-    {
-        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            animator.SetBool("Walk", true);
-        }
-        else
-        {
-            animator.SetBool("Walk", false);
-        }
-    }
     public void Roll()
     {
         animator.SetTrigger("Roll");

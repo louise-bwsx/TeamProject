@@ -18,31 +18,18 @@ public class PlayerFaceDirection : MonoBehaviour
     }
     void Update()
     {
-        if (isMagicAttack)
-        {
-            if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
-            {
-                //Debug.Log("面向右邊");
-                spriteRenderer.flipX = true;
-            }
-            else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
-            {
-                spriteRenderer.flipX = false;
-            }
-        }
-        if (playerControl.cantMove == false && Time.timeScale != 0 && playerControl.isAttack == false && !animator.GetBool("IsAttack"))
-        {
-            if (Input.GetKey(KeyCode.D))
-            {
-                spriteRenderer.flipX = true;
-                //transform.rotation = Quaternion.Euler(-30, 90, 0);
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                spriteRenderer.flipX = false;
-                //transform.rotation = Quaternion.Euler(30, 270, 0);
-            }
-        }
+        //if (isMagicAttack)
+        //{
+        //    if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
+        //    {
+        //        //Debug.Log("面向右邊");
+        //        spriteRenderer.flipX = true;
+        //    }
+        //    else if (playerRotation.localEulerAngles.y < 360 && playerRotation.localEulerAngles.y > 180)
+        //    {
+        //        spriteRenderer.flipX = false;
+        //    }
+        //}
     }
     public void PlayerSpriteFlip()
     {

@@ -45,8 +45,6 @@ public class GetHitEffect : MonoBehaviour
         {
             //關閉被打中狀態
             getHit = false;
-            //解除移動限制
-            playerControl.cantMove = false;
             if (getHitInvincibleTime < 0f)
             {
                 getHitInvincibleTime = 0f;
@@ -124,8 +122,6 @@ public class GetHitEffect : MonoBehaviour
                 healthbarongame.SetHealth(playerHealth);
                 //將血量輸入到畫面上的UI
                 uIBarControl.SetHealth(playerHealth);
-                //瞬間讓玩家不能動凸顯彈跳效果
-                playerControl.cantMove = true;
             }
         }
     }
@@ -154,8 +150,6 @@ public class GetHitEffect : MonoBehaviour
                 healthbarongame.SetHealth(playerHealth);
                 //將血量輸入到畫面上的UI
                 uIBarControl.SetHealth(playerHealth);
-                //瞬間讓玩家不能動凸顯彈跳效果
-                playerControl.cantMove = true;
             }
         }
         //當玩家無敵狀態

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LookAtCursor : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class LookAtCursor : MonoBehaviour
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         float cameraraylength = 500;
         Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorcross;

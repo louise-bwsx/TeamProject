@@ -29,8 +29,8 @@ public class PlayerControl : MonoBehaviour
     public float attackSpeed;//同動畫時間
     public float attackSpikeSpeed;//突刺攻擊間隔
     public int attackDamage = 2;
-    public int spikeAttackDash = 7;
-    public int normalAttackDash = 3;
+    //public int spikeAttackDash = 7;
+    //public int normalAttackDash = 3;
     public LayerMask EnemyLayer;
     public float lastFireTime;
     public float fireRate=1f;
@@ -64,7 +64,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     return;
                 }
-                Attack();
+                //Attack();
                 //attackTime = 0;//另外一種計時方式
             }
             if (Input.GetMouseButtonDown(1) && attackTime >= attackSpikeSpeed)
@@ -73,8 +73,9 @@ public class PlayerControl : MonoBehaviour
                 {
                     return;
                 }
-                Attack();
-                attackTime = 0;//另外一種計時方式
+                animator.SetTrigger("Attack_Spike");
+                //Attack();
+                //attackTime = 0;//另外一種計時方式
             }
         }
         //開關玩家血條
@@ -133,22 +134,22 @@ public class PlayerControl : MonoBehaviour
             Application.LoadLevel(Application.loadedLevel);
         }
     }
-    public void Attack()
-    {
-        //false在動畫Event呼叫
-        isAttack = true;
-        //讓人物轉向 測試人物轉向暫時關閉
-        playerFaceDirection.PlayerSpriteFlip();
-        if (Input.GetMouseButtonDown(0))
-        {
-            //playerOptions.GetComponent<Transform>().position += playerRotation.forward;
-            //rigidbody.velocity = playerRotation.forward * normalAttackDash;
-            //playerAction.NormalAttack();
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            rigidbody.velocity = playerRotation.forward * spikeAttackDash;
-            playerAction.SpikeAttack();
-        }
-    }
+    //public void Attack()
+    //{
+    //    //false在動畫Event呼叫
+    //    isAttack = true;
+    //    //讓人物轉向 測試人物轉向暫時關閉
+    //    playerFaceDirection.PlayerSpriteFlip();
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        //playerOptions.GetComponent<Transform>().position += playerRotation.forward;
+    //        //rigidbody.velocity = playerRotation.forward * normalAttackDash;
+    //        //playerAction.NormalAttack();
+    //    }
+    //    else if (Input.GetMouseButtonDown(1))
+    //    {
+    //        rigidbody.velocity = playerRotation.forward * spikeAttackDash;
+    //        //playerAction.SpikeAttack();
+    //    }
+    //}
 }

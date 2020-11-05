@@ -168,7 +168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3756947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f9473da9e8546f4595a8bb31a24f6b1, type: 3}
   m_Name: 
@@ -369,6 +369,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16273240}
   m_CullTransparentMesh: 0
+--- !u!1 &30497889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30497890}
+  - component: {fileID: 30497891}
+  - component: {fileID: 30497892}
+  m_Layer: 5
+  m_Name: CenterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &30497890
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30497889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 724834002226827919}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &30497891
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30497889}
+  m_CullTransparentMesh: 0
+--- !u!114 &30497892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30497889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b19ba0aae8fab4cae0e50ab5b656c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handle: {fileID: 724834001909059956}
 --- !u!1 &37590009
 GameObject:
   m_ObjectHideFlags: 0
@@ -16573,7 +16631,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -18468,7 +18526,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1111911155}
-  - component: {fileID: 1111911156}
   m_Layer: 11
   m_Name: RollDirection
   m_TagString: Untagged
@@ -18490,19 +18547,6 @@ Transform:
   m_Father: {fileID: 45880584}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1111911156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111911154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a18b2b8c99d120e49af4e7c811e51c68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mobileMove: {fileID: 0}
 --- !u!4 &1123086037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a5d8b878dc194bf46af3517948a66706,
@@ -21912,7 +21956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1380137638}
   m_Layer: 11
-  m_Name: AttackFxLeft
+  m_Name: AttackFx_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21930,7 +21974,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1757237621}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1381729225 stripped
 Transform:
@@ -26829,8 +26873,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.36, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
-  - {fileID: 1772630459}
   - {fileID: 1380137638}
+  - {fileID: 1772630459}
   m_Father: {fileID: 45880584}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
@@ -27100,8 +27144,6 @@ MonoBehaviour:
   attackSpeed: 0.3
   attackSpikeSpeed: 1
   attackDamage: 20
-  spikeAttackDash: 5
-  normalAttackDash: 3
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -27147,15 +27189,24 @@ MonoBehaviour:
   isRoll: 0
   isInvincible: 0
   wall:
-    serializedVersion: 2
     m_Bits: 1024
   monster:
-    serializedVersion: 2
     m_Bits: 512
   uIBarControl: {fileID: 0}
   healthbarongame: {fileID: 501881193}
   rollSFX: {fileID: 8300000, guid: f88b2e7f342b1524382a9f6ce217a232, type: 3}
   rollDirection: {fileID: 1111911155}
+  stamina: 0
+  staminaLimit: 100
+  mobileCharacterStats: {fileID: 0}
+  mobileAttack: {fileID: 0}
+  mobileMove: {fileID: 0}
+  rayMask:
+    m_Bits: 0
+  oldPosition: {x: 0, y: 0, z: 0}
+  rigidbody: {fileID: 0}
+  animator: {fileID: 0}
+  sourceSFX: {fileID: 0}
 --- !u!114 &1757237631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27182,20 +27233,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCD: 0
+  normalAttackDash: 3
+  spikeAttackDash: 10
   isAttack: 0
   swordCube: {fileID: 1274731740723205147, guid: 4ad330f496f2b5341aa5ee519d6da287,
     type: 3}
   player: {fileID: 45880584}
+  handleRotation: {fileID: 0}
   spawantransform: {fileID: 5805977527194686331}
   playerRotation: {fileID: 3756948}
   spikeSFX: {fileID: 8300000, guid: 9cfb99d27ae22e340af5986e3d0d384a, type: 3}
   swingSFX: {fileID: 8300000, guid: f04dff927bc4b004a84903423d94b5d0, type: 3}
-  normalAttackDash: 0
   attackEffect:
   - {fileID: 2146589714767106736, guid: bd478f03d61db1f48852f33df11e584c, type: 3}
   - {fileID: 6944432453040499547, guid: 2eec5cc8d8392d04bb272f01fb91de49, type: 3}
-  spikeEffect: []
-  spikeDirection: {fileID: 0}
+  spikeEffect:
+  - {fileID: 3908884330443153031, guid: faaa749b838d9b64aae382a8a4cea403, type: 3}
+  - {fileID: 1760297604239239131, guid: 0823424513675964aa045be78e25a56f, type: 3}
+  spikeDirection:
+  - {fileID: 1772630459}
+  - {fileID: 1380137638}
+  fixedJoystick: {fileID: 0}
 --- !u!4 &1768143915
 Transform:
   m_ObjectHideFlags: 0
@@ -27351,7 +27409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1772630459}
   m_Layer: 11
-  m_Name: AttackFxRight
+  m_Name: AttackFx_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27369,7 +27427,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1757237621}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1773066402 stripped
 Transform:
@@ -94034,6 +94092,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 724834001909059957}
+  - {fileID: 30497890}
   m_Father: {fileID: 2136891373}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

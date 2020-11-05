@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,18 +13,22 @@ public enum EffectDirection
 public class MobileAttack : MonoBehaviour
 {
     public float attackCD;//同動畫時間
+    public float normalAttackDash;
+    public int spikeAttackDash;
     public bool isAttack;
     public GameObject swordCube;
     public Transform player;
+    public Transform handleRotation;
     public Transform spawantransform;
     public Transform playerRotation;
     public AudioClip spikeSFX;//突刺音效
     public AudioClip swingSFX;//揮擊音效
-    public float normalAttackDash;
     public GameObject[] attackEffect;
     public GameObject[] spikeEffect;
-    public Transform spikeDirection;
+    public Transform[] spikeDirection;
+    public FixedJoystick fixedJoystick;
 
+    bool isSpike;
     float attackTimer;
     GameObject spwanSwordCube;
     Animator animator;
@@ -72,6 +75,7 @@ public class MobileAttack : MonoBehaviour
                 }
             case "Attack_Spike":
                 {
+                    isSpike = true;
                     sourceSFX.PlayOneShot(spikeSFX);
                     spawantransform.GetComponent<Collider>().enabled = true;
                     break;
@@ -81,7 +85,7 @@ public class MobileAttack : MonoBehaviour
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         Destroy(spwanSwordCube, 0.3f);
     }
-    void AttackEffect(bool isSpike = false)//動畫Event呼叫
+    void AttackEffect()//動畫Event呼叫
     {
         //特效
         GameObject FX;
@@ -93,9 +97,9 @@ public class MobileAttack : MonoBehaviour
                     //左
                     if (isSpike)
                     {
-                        FX = Instantiate(spikeEffect[(int)EffectDirection.Left], spikeDirection.position, spikeDirection.rotation);
+                        FX = Instantiate(spikeEffect[(int)EffectDirection.Left], spikeDirection[(int)EffectDirection.Left].position, spikeDirection[(int)EffectDirection.Left].rotation);
                         Destroy(FX, 0.5f);
-                        return;
+                        break;
                     }
                     FX = Instantiate(attackEffect[(int)EffectDirection.Left], player);
                     Destroy(FX, 0.3f);
@@ -106,9 +110,9 @@ public class MobileAttack : MonoBehaviour
                     //右
                     if (isSpike)
                     {
-                        FX = Instantiate(spikeEffect[(int)EffectDirection.Right], spikeDirection.position, spikeDirection.rotation);
+                        FX = Instantiate(spikeEffect[(int)EffectDirection.Right], spikeDirection[(int)EffectDirection.Right].position, spikeDirection[(int)EffectDirection.Right].rotation);
                         Destroy(FX, 0.5f);
-                        return;
+                        break;
                     }
                     FX = Instantiate(attackEffect[(int)EffectDirection.Right], player);
                     Destroy(FX, 0.3f);
@@ -116,24 +120,14 @@ public class MobileAttack : MonoBehaviour
                 }
         }
     }
-    void SpikeEffect()//動畫Event呼叫
-    {
-        //GameObject FX;
-        //Switch(spriteRenderer.flipX)
-        //if (spriteRenderer.flipX == false)
-        //{
-        //    FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
-        //    Destroy(FX, 0.5f);
-        //}
-        //else if (spriteRenderer.flipX == true)
-        //{
-
-        //    FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
-        //    Destroy(FX, 0.5f);
-        //}
-    }
     void StartMoving()//動畫Event呼叫
     {
+        if (isSpike)
+        {
+            rigidbody.velocity = fixedJoystick.Direction * spikeAttackDash;
+            //rigidbody.velocity = playerRotation.forward * spikeAttackDash;
+            return;
+        }
         //普攻向前移動
         rigidbody.velocity = playerRotation.forward * normalAttackDash;
     }
@@ -144,6 +138,7 @@ public class MobileAttack : MonoBehaviour
     }
     void DestroySword()//動畫Event呼叫
     {
+        isSpike = false;
         //刪除攻擊範圍
         if (spwanSwordCube != null)
         { 

@@ -18,7 +18,7 @@ public class MobileAttack : MonoBehaviour
     public bool isAttack;
     public GameObject swordCube;
     public Transform player;
-    public Transform handleRotation;
+    public Transform rollDirection;
     public Transform spawantransform;
     public Transform playerRotation;
     public AudioClip spikeSFX;//突刺音效
@@ -26,7 +26,6 @@ public class MobileAttack : MonoBehaviour
     public GameObject[] attackEffect;
     public GameObject[] spikeEffect;
     public Transform[] spikeDirection;
-    public FixedJoystick fixedJoystick;
 
     bool isSpike;
     float attackTimer;
@@ -124,8 +123,7 @@ public class MobileAttack : MonoBehaviour
     {
         if (isSpike)
         {
-            rigidbody.velocity = fixedJoystick.Direction * spikeAttackDash;
-            //rigidbody.velocity = playerRotation.forward * spikeAttackDash;
+            rigidbody.velocity = rollDirection.forward * spikeAttackDash;
             return;
         }
         //普攻向前移動

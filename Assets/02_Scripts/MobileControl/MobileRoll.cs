@@ -7,7 +7,7 @@ public class MobileRoll : MonoBehaviour
     public float rollTimer;
     public float rollCost;
     public float rollCD;
-    public float rollTimeLimit;
+    public float invincibleTime;
     public int rollDistence;
     public bool isRoll;
     public bool isInvincible;
@@ -46,7 +46,7 @@ public class MobileRoll : MonoBehaviour
     {
         rollTimer += Time.deltaTime;
         //無敵狀態切換 及 迴避移動停止
-        if (rollTimer > rollTimeLimit && isInvincible)
+        if (rollTimer > invincibleTime && isInvincible)
         {
             //迴避移動停止
             rigidbody.velocity = Vector3.zero;

@@ -81,127 +81,74 @@ public class MonsterHealth : MonoBehaviour
     }
     public virtual void GetHit(float Damage)
     {
-        if (hitByTransform != null && hitByTransform.CompareTag("Bomb"))
+        //被攻擊後歸零下一次怪物攻擊時間
+        if (enemyController != null)
         {
-            if (enemyController != null)
+            enemyController.attackCD = 0;
+        }
+        //播放受擊動畫
+        animator.SetTrigger("GetHit");
+        //朝面對的反方向後退
+        if (faceDirection != null)
+        {
+            rigidbody.velocity = -faceDirection.forward * bounceForce;
+        }
+        //取消追蹤玩家凸顯後退效果應該沒用
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.enabled = false;
+        }
+        //毒的受擊次數減少
+        if (beAttackMin > 0)
+        {
+            beAttackMin--;
+        }
+        //受擊音效
+        if (enumAttack != EnumAttack.count)
+        {
+            switch (enumAttack)
             {
-                enemyController.attackCD = 0;
-            }
-            animator.SetTrigger("GetHit");
-            if (faceDirection != null)
-            {
-                rigidbody.velocity = -faceDirection.forward * bounceForce;
-            }
-            if (navMeshAgent != null)
-            {
-                navMeshAgent.enabled = false;
-            }
-            if (beAttackMin > 0)
-            {
-                beAttackMin--;
-            }
-            if (enumAttack != EnumAttack.count)
-            {
-                switch (enumAttack)
-                {
-                    case EnumAttack.wind:
-                        {
-                            audioSource.PlayOneShot(windHitSFX);
-                            break;
-                        }
-                    case EnumAttack.poison:
-                        {
-                            audioSource.PlayOneShot(poisonHitSFX);
-                            break;
-                        }
-                    case EnumAttack.fireTornado:
-                        {
-                            audioSource.PlayOneShot(tornadoHitSFX);
-                            break;
-                        }
-                    default:
-                        {
-                            //如果被風、讀、火龍捲打到就跳過
-                            break;
-                        }
-                }
-            }
-            Debug.Log(transform.name);
-            GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
-            Destroy(FX, 1);
-            Hp -= Damage;
-            healthBarOnGame.SetHealth(Hp);
-            rigidbody.velocity = -gameObject.transform.forward * pushforce;
-            if (Hp <= 0)
-            {
-                MonsterDead();
-                //避免一直跳進來
-                beAttackMin = 0;
-            }
-            beAttackTime = 0;
-            if (hitByTransform.CompareTag("Bomb"))
-            {
-                hitByTransform = null;
+                case EnumAttack.wind:
+                    {
+                        audioSource.PlayOneShot(windHitSFX);
+                        break;
+                    }
+                    //暫時沒用
+                //case EnumAttack.poison:
+                //    {
+                //        audioSource.PlayOneShot(poisonHitSFX);
+                //        break;
+                //    }
+                case EnumAttack.fireTornado:
+                    {
+                        audioSource.PlayOneShot(tornadoHitSFX);
+                        break;
+                    }
+                default:
+                    {
+                        //如果被風、讀、火龍捲打到就跳過
+                        break;
+                    }
             }
         }
-        if (beAttackTime > attackTime)
+        //誰被打到
+        Debug.Log(transform.name);
+        //生成特效
+        GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
+        //一秒後刪除特效
+        Destroy(FX, 1);
+        //怪物血量減少
+        Hp -= Damage;
+        //實際血量顯示在UI
+        healthBarOnGame.SetHealth(Hp);
+        //跟上面重複被擊退應該沒用
+        //rigidbody.velocity = -gameObject.transform.forward * pushforce;
+        //如果怪物死亡
+        if (Hp <= 0)
         {
-            if (enemyController != null)
-            {
-                enemyController.attackCD = 0;
-            }
-            animator.SetTrigger("GetHit");
-            if (faceDirection != null)
-            {
-                rigidbody.velocity = -faceDirection.forward * bounceForce;
-            }
-            if (navMeshAgent != null)
-            {
-                navMeshAgent.enabled = false;
-            }
-            if (beAttackMin > 0)
-            {
-                beAttackMin--;
-            }
-            if (enumAttack != EnumAttack.count)
-            {
-                switch (enumAttack)
-                {
-                    case EnumAttack.wind:
-                        {
-                            audioSource.PlayOneShot(windHitSFX);
-                            break;
-                        }
-                    case EnumAttack.poison:
-                        {
-                            audioSource.PlayOneShot(poisonHitSFX);
-                            break;
-                        }
-                    case EnumAttack.fireTornado:
-                        {
-                            audioSource.PlayOneShot(tornadoHitSFX);
-                            break;
-                        }
-                    default:
-                        {
-                            //如果被風、讀、火龍捲打到就跳過
-                            break;
-                        }
-                }
-            }
-            Debug.Log(transform.name);
-            GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
-            Destroy(FX, 1);
-            Hp -= Damage;
-            healthBarOnGame.SetHealth(Hp);
-            rigidbody.velocity = -gameObject.transform.forward * pushforce;
-            if (Hp <= 0)
-            {
-                MonsterDead();
-                //避免一直跳進來
-                beAttackMin = 0;
-            }
-            beAttackTime = 0;
+            MonsterDead();
+            //避免一直跳進來
+            beAttackMin = 0;
         }
     }
     public virtual void OnTriggerEnter(Collider other)
@@ -212,10 +159,7 @@ public class MonsterHealth : MonoBehaviour
         if (other.CompareTag("Sword"))
         {
             getHitEffect[0] = getHitEffect[1];
-            if (characterBase != null)
-            { 
-                GetHit(15 + characterBase.charaterStats[(int)CharacterStats.STR]);
-            }
+            GetHit(15 + characterBase.charaterStats[(int)CharacterStats.STR]);
         }
         if (other.CompareTag("Skill"))
         {
@@ -258,18 +202,33 @@ public class MonsterHealth : MonoBehaviour
                 getHitEffect[0] = getHitEffect[4];
                 beAttackMin = beAttackMax;//最大被打的次數
                 hitByTransform = other.transform;
-                GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
+                if (beAttackTime > attackTime)
+                { 
+                    GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
+                    //怪物被受擊的間隔時間歸零
+                    beAttackTime = 0;
+                }
             }
             if (other.CompareTag("WindAttack"))
             {
                 getHitEffect[0] = getHitEffect[3];
-                GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel * 20);
+                if (beAttackTime > attackTime)
+                {
+                    GetHit(2 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.windSkillLevel * 20);
+                    //怪物被受擊的間隔時間歸零
+                    beAttackTime = 0;
+                }
                 enumAttack = EnumAttack.wind;
             }
             if (other.CompareTag("Firetornado"))
             {
                 getHitEffect[0] = getHitEffect[2];
-                GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2 + skillBase.windSkillLevel * 20);
+                if (beAttackTime > attackTime)
+                { 
+                    GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2 + skillBase.windSkillLevel * 20);
+                    //怪物被受擊的間隔時間歸零
+                    beAttackTime = 0;
+                }
                 enumAttack = EnumAttack.fireTornado;
             }
         }

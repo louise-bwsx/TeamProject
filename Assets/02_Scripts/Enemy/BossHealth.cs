@@ -95,6 +95,7 @@ public class BossHealth : MonsterHealth
         {
             base.OnTriggerEnter(other);
         }
+        //Boss血量第二階段
         if (Hp <= maxHp * 0.7 && Hp > maxHp * 0.3)
         {
             if (easyMode)
@@ -124,12 +125,8 @@ public class BossHealth : MonsterHealth
         {
             base.OnTriggerStay(other);
         }
-        //Boss血量第三階段此時Boss開始會放大招
-        else if (Hp <= maxHp * 0.3)
-        {
-            base.OnTriggerStay(other);
-        }
-        if (Hp <= maxHp * 0.7 && Hp > maxHp * 0.3)
+        //Boss血量第二階段
+        else if (Hp <= maxHp * 0.7 && Hp > maxHp * 0.3)
         {
             if (easyMode)
             {
@@ -140,12 +137,19 @@ public class BossHealth : MonsterHealth
             {
 
                 getHitEffect[0] = getHitEffect[2];
-                //beAttackMin = beAttackMax;//最大被打的次數
-                //hitByTransform = other.transform;
-                GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT]);
+                if (beAttackTime > attackTime)
+                {
+                    GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2 + skillBase.windSkillLevel * 20);
+                    //怪物被受擊的間隔時間歸零
+                    beAttackTime = 0;
+                }
                 enumAttack = EnumAttack.fireTornado;
             }
         }
-
+        //Boss血量第三階段此時Boss開始會放大招
+        else if (Hp <= maxHp * 0.3)
+        {
+            base.OnTriggerStay(other);
+        }
     }
 }

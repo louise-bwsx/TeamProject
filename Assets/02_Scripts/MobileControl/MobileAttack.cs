@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -22,6 +23,8 @@ public class MobileAttack : MonoBehaviour
     public AudioClip swingSFX;//揮擊音效
     public float normalAttackDash;
     public GameObject[] attackEffect;
+    public GameObject[] spikeEffect;
+    public Transform spikeDirection;
 
     float attackTimer;
     GameObject spwanSwordCube;
@@ -78,16 +81,22 @@ public class MobileAttack : MonoBehaviour
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         Destroy(spwanSwordCube, 0.3f);
     }
-    void AttackEffect()//動畫Event呼叫
+    void AttackEffect(bool isSpike = false)//動畫Event呼叫
     {
         //特效
         GameObject FX;
-        //根據滑鼠位置調整特效方向
+        //根據人物面對位置調整特效方向
         switch (spriteRenderer.flipX)
         {
             case true:
                 {
                     //左
+                    if (isSpike)
+                    {
+                        FX = Instantiate(spikeEffect[(int)EffectDirection.Left], spikeDirection.position, spikeDirection.rotation);
+                        Destroy(FX, 0.5f);
+                        return;
+                    }
                     FX = Instantiate(attackEffect[(int)EffectDirection.Left], player);
                     Destroy(FX, 0.3f);
                     break;
@@ -95,11 +104,33 @@ public class MobileAttack : MonoBehaviour
             case false:
                 {
                     //右
+                    if (isSpike)
+                    {
+                        FX = Instantiate(spikeEffect[(int)EffectDirection.Right], spikeDirection.position, spikeDirection.rotation);
+                        Destroy(FX, 0.5f);
+                        return;
+                    }
                     FX = Instantiate(attackEffect[(int)EffectDirection.Right], player);
                     Destroy(FX, 0.3f);
                     break;
                 }
         }
+    }
+    void SpikeEffect()//動畫Event呼叫
+    {
+        //GameObject FX;
+        //Switch(spriteRenderer.flipX)
+        //if (spriteRenderer.flipX == false)
+        //{
+        //    FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
+        //    Destroy(FX, 0.5f);
+        //}
+        //else if (spriteRenderer.flipX == true)
+        //{
+
+        //    FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
+        //    Destroy(FX, 0.5f);
+        //}
     }
     void StartMoving()//動畫Event呼叫
     {

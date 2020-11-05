@@ -75,30 +75,30 @@ public class PlayerAction : MonoBehaviour
     //    }
     //}
 
-    public void SpikeAttack()//動畫Event呼叫
-    { 
-        animator.SetTrigger("Attack_Spike");
-        spawantransform.GetComponent<Collider>().enabled = true;
-    }
-    public void SpikeAttackFX()//動畫Event呼叫
-    {
-        //音效
-        SFXSource.PlayOneShot(SpikeSFX);
-        GameObject FX;
-        spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
-        //Destroy(spwanSwordCube, 0.5f);
-        if (spriteRenderer.flipX == false)
-        {
-            FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
-            Destroy(FX, 0.5f);
-        }
-        else if (spriteRenderer.flipX == true)
-        {
+    //public void SpikeAttack()//動畫Event呼叫
+    //{ 
+    //    animator.SetTrigger("Attack_Spike");
+    //    spawantransform.GetComponent<Collider>().enabled = true;
+    //}
+    //public void SpikeAttackFX()//動畫Event呼叫
+    //{
+    //    //音效
+    //    SFXSource.PlayOneShot(SpikeSFX);
+    //    GameObject FX;
+    //    spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
+    //    //Destroy(spwanSwordCube, 0.5f);
+    //    if (spriteRenderer.flipX == false)
+    //    {
+    //        FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
+    //        Destroy(FX, 0.5f);
+    //    }
+    //    else if (spriteRenderer.flipX == true)
+    //    {
             
-            FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
-            Destroy(FX, 0.5f);
-        }
-    }
+    //        FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
+    //        Destroy(FX, 0.5f);
+    //    }
+    //}
     //public void DestroySword()//動畫Event呼叫
     //{
     //    //刪除攻擊範圍

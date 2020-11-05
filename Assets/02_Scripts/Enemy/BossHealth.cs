@@ -95,7 +95,23 @@ public class BossHealth : MonsterHealth
         {
             base.OnTriggerEnter(other);
         }
-  
+        if (Hp <= maxHp * 0.7 && Hp > maxHp * 0.3)
+        {
+            if (easyMode)
+            {
+                //測試用只要打開就不受階段限制
+                base.OnTriggerStay(other);
+            }
+            //只有組合技才能造成傷害
+            if (other.CompareTag("Bomb"))
+            {
+                //Destroy(BossInvincibleEffect);
+                getHitEffect[0] = getHitEffect[2];
+                audioSource.PlayOneShot(bombHitSFX);
+                hitByTransform = other.transform;
+                GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2);
+            }
+        }
         //Boss血量第三階段此時Boss開始會放大招
         else if (Hp <= maxHp * 0.3)
         {
@@ -120,21 +136,12 @@ public class BossHealth : MonsterHealth
                 //測試用只要打開就不受階段限制
                 base.OnTriggerStay(other);
             }
-            //只有組合技才能造成傷害
-            if (other.CompareTag("Bomb"))
-            {
-                //Destroy(BossInvincibleEffect);
-                getHitEffect[0] = getHitEffect[2];
-                audioSource.PlayOneShot(bombHitSFX);
-                hitByTransform = other.transform;
-                GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2);
-            }
-            if (other.CompareTag("Firetornado") && hitByTransform != other.transform)
+            if (other.CompareTag("Firetornado"))
             {
 
                 getHitEffect[0] = getHitEffect[2];
-                beAttackMin = beAttackMax;//最大被打的次數
-                hitByTransform = other.transform;
+                //beAttackMin = beAttackMax;//最大被打的次數
+                //hitByTransform = other.transform;
                 GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT]);
                 enumAttack = EnumAttack.fireTornado;
             }

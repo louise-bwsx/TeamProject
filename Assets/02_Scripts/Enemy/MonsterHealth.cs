@@ -188,10 +188,10 @@ public class MonsterHealth : MonoBehaviour
             hitByTransform = other.transform;
             GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
         }
-        if (Hp <= 0)
-        {
-            collider.enabled = false;
-        }
+        //if (Hp <= 0)
+        //{
+        //    collider.enabled = false;
+        //}
     }
     public virtual void OnTriggerStay(Collider other)
     {
@@ -244,6 +244,7 @@ public class MonsterHealth : MonoBehaviour
         {
             animator.SetBool("Dead", true);
         }
+        collider.enabled = false;
         healthBar.SetActive(false);
 
         Vector3 itemLocation = this.transform.position;//獲得當前怪物的地點

@@ -10,7 +10,6 @@ public class PlayerControl : MonoBehaviour
     public PlayerFaceDirection playerFaceDirection;
     public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
-    public EquipmentManager equipmentManager;
     public GetHitEffect getHitEffect;
     public GameObject backPackUI;
     public GameObject skillUI;
@@ -73,7 +72,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     return;
                 }
-                animator.SetTrigger("Attack_Spike");
+                //animator.SetTrigger("Attack_Spike");
                 //Attack();
                 //attackTime = 0;//另外一種計時方式
             }
@@ -96,16 +95,6 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K) && !gameMenu.anyWindow[0].activeSelf)
         {
             skillUI.SetActive(!skillUI.activeSelf);
-        }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            miniMap.SetActive(!miniMap.activeSelf);
-        }
-
-        //卸下所有裝備欄裡的裝備
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            equipmentManager.UnequipAll();
         }
         #region 存檔功能
         if (Input.GetKeyDown(KeyCode.Z))
@@ -134,22 +123,4 @@ public class PlayerControl : MonoBehaviour
             Application.LoadLevel(Application.loadedLevel);
         }
     }
-    //public void Attack()
-    //{
-    //    //false在動畫Event呼叫
-    //    isAttack = true;
-    //    //讓人物轉向 測試人物轉向暫時關閉
-    //    playerFaceDirection.PlayerSpriteFlip();
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        //playerOptions.GetComponent<Transform>().position += playerRotation.forward;
-    //        //rigidbody.velocity = playerRotation.forward * normalAttackDash;
-    //        //playerAction.NormalAttack();
-    //    }
-    //    else if (Input.GetMouseButtonDown(1))
-    //    {
-    //        rigidbody.velocity = playerRotation.forward * spikeAttackDash;
-    //        //playerAction.SpikeAttack();
-    //    }
-    //}
 }

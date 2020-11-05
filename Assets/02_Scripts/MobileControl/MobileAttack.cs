@@ -45,13 +45,9 @@ public class MobileAttack : MonoBehaviour
     }
     void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
         attackTimer += Time.deltaTime;
     }
-    public void Attack(string attackType)
+    void Attack(string attackType)//按鈕呼叫
     {
         if (attackTimer >= attackCD)
         {
@@ -61,6 +57,7 @@ public class MobileAttack : MonoBehaviour
             isAttack = true;
             attackTimer = 0;
         }
+        Debug.Log(1);
     }
     void AttackRange(string attackType)//動畫Event呼叫
     {   
@@ -127,7 +124,7 @@ public class MobileAttack : MonoBehaviour
             return;
         }
         //普攻向前移動
-        rigidbody.velocity = playerRotation.forward * normalAttackDash;
+        rigidbody.velocity = rollDirection.forward * normalAttackDash;
     }
     void StopMoving()//動畫Event呼叫
     {

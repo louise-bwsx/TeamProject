@@ -6,12 +6,8 @@ using UnityEngine.UI;
 public class UIBarControl : MonoBehaviour
 {
     public Slider healthSlider;
-    //public Gradient healthGradient;
-    //public Image healthFill;
 
     public Slider staminaSlider;
-    //public Gradient staminaGradient;
-    //public Image staminaFill;
     public GetHitEffect getHitEffect;
     public void SetMaxHealth(float maxHp)
     {
@@ -21,7 +17,6 @@ public class UIBarControl : MonoBehaviour
     public void SetHealth(float playerHealth)
     {
         healthSlider.value = playerHealth;
-        //healthFill.color = healthGradient.Evaluate(healthSlider.normalizedValue);//血條變色
     }
     public void SetMaxStamina(float maxStamina)
     {

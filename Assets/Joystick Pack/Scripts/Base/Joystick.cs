@@ -50,6 +50,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             Debug.LogError("The Joystick is not placed inside a canvas");
 
         //他會每次開頭鎖中心點取消掉自訂
+        //但取消會讓搖桿沒辦法移動左半邊而且沒有到邊界的過渡
         Vector2 center = new Vector2(0.5f, 0.5f);
         background.pivot = center;
         handle.anchorMin = center;
@@ -132,7 +133,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
+        //輸入數值返回零
         input = Vector2.zero;
+        //搖桿圖片返回零
         handle.anchoredPosition = Vector2.zero;
     }
 

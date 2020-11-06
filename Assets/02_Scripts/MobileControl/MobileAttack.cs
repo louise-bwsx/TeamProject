@@ -57,7 +57,6 @@ public class MobileAttack : MonoBehaviour
             isAttack = true;
             attackTimer = 0;
         }
-        Debug.Log(1);
     }
     void AttackRange(string attackType)//動畫Event呼叫
     {   

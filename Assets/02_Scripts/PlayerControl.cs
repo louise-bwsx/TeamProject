@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour
     public Transform playerRotation;
     public Transform rollDirection;
     public Rigidbody RB;
-    public new Collider collider;
+    public Collider boxCollider;
     //有關移動
     public int moveSpeed = 5;//移動速度
     public bool isInvincible = false;//無敵狀態
@@ -43,7 +43,7 @@ public class PlayerControl : MonoBehaviour
         attackTime = 10;
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         playerAction = GetComponentInChildren<PlayerAction>();
-        collider = GetComponentInParent<Collider>();
+        boxCollider = GetComponentInParent<Collider>();
         playerOptions = FindObjectOfType<PlayerOptions>();
     }
 

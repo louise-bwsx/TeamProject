@@ -10006,11 +10006,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 0}
   handle: {fileID: 0}
+  baseRect: {fileID: 0}
   canvas: {fileID: 0}
   cam: {fileID: 0}
   input: {x: 0, y: 0}
   axisOptions: 0
   deadZone: 0
+  handleRange: 1
 --- !u!4 &356675719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9884418d6871e1f4cb1155981546dcec,
@@ -14651,11 +14653,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 0}
   handle: {fileID: 0}
+  baseRect: {fileID: 0}
   canvas: {fileID: 0}
   cam: {fileID: 0}
   input: {x: 0, y: 0}
   axisOptions: 0
   deadZone: 0
+  handleRange: 1
 --- !u!4 &743947743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d3074af0f0756714682a6f2f9e79990f,
@@ -26196,7 +26200,7 @@ MonoBehaviour:
   playerRotation: {fileID: 3756948}
   rollDirection: {fileID: 1111911155}
   RB: {fileID: 0}
-  collider: {fileID: 45880587}
+  boxCollider: {fileID: 0}
   moveSpeed: 5
   isInvincible: 0
   isAttack: 0

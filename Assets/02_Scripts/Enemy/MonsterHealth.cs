@@ -39,7 +39,7 @@ public class MonsterHealth : MonoBehaviour
     public float beAttackMin = 0;//被打的次數
     public float beAttackMax = 20;//被打的最大次數
     public EnumAttack enumAttack;
-    public new Collider collider;
+    public Collider boxCollider;
     public float pushforce;
 
     public virtual void Start()
@@ -47,7 +47,7 @@ public class MonsterHealth : MonoBehaviour
         characterBase = FindObjectOfType<CharacterBase>();
         skillBase = FindObjectOfType<SkillBase>();
         
-        collider = GetComponent<Collider>();
+        boxCollider = GetComponent<Collider>();
         RB = GetComponent<Rigidbody>();
         if (audioSource == null)
         { 
@@ -182,7 +182,7 @@ public class MonsterHealth : MonoBehaviour
         }
         if (Hp <= 0)
         {
-            collider.enabled = false;
+            boxCollider.enabled = false;
         }
     }
     private void OnTriggerStay(Collider other)

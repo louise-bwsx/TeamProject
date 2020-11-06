@@ -33,11 +33,11 @@ public class MobileAttack : MonoBehaviour
     Animator animator;
     AudioSource sourceSFX;
     SpriteRenderer spriteRenderer;
-    Rigidbody rigidbody;
+    Rigidbody RB;
 
     void Start()
     {
-        rigidbody = GetComponentInParent<Rigidbody>();
+        RB = GetComponentInParent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         sourceSFX = GetComponentInParent<AudioSource>();
@@ -119,16 +119,16 @@ public class MobileAttack : MonoBehaviour
     {
         if (isSpike)
         {
-            rigidbody.velocity = rollDirection.forward * spikeAttackDash;
+            RB.velocity = rollDirection.forward * spikeAttackDash;
             return;
         }
         //普攻向前移動
-        rigidbody.velocity = rollDirection.forward * normalAttackDash;
+        RB.velocity = rollDirection.forward * normalAttackDash;
     }
     void StopMoving()//動畫Event呼叫
     {
         //踏步停止
-        rigidbody.velocity = Vector3.zero;
+        RB.velocity = Vector3.zero;
     }
     void DestroySword()//動畫Event呼叫
     {

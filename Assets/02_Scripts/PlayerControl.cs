@@ -16,7 +16,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject miniMap;
     public Transform playerRotation;
     public Transform rollDirection;
-    public new Rigidbody rigidbody;
+    public Rigidbody RB;
     public new Collider collider;
     //有關移動
     public int moveSpeed = 5;//移動速度

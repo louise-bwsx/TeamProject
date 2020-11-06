@@ -23,7 +23,7 @@ public class MobileRoll : MonoBehaviour
     MobileMove mobileMove;
     LayerMask rayMask;
     Vector3 oldPosition;
-    Rigidbody rigidbody;
+    Rigidbody RB;
     Animator animator;
     AudioSource sourceSFX;
     void Start()
@@ -33,7 +33,7 @@ public class MobileRoll : MonoBehaviour
         sourceSFX.volume = CentralData.GetInst().SFXVol;
         animator = GetComponent<Animator>();
         uIBarControl = FindObjectOfType<UIBarControl>();
-        rigidbody = GetComponentInParent<Rigidbody>();
+        RB = GetComponentInParent<Rigidbody>();
         mobileAttack = FindObjectOfType<MobileAttack>();
         mobileCharacterStats = FindObjectOfType<MobileCharacterStats>();
         //初始化耐力值為最大值
@@ -49,7 +49,7 @@ public class MobileRoll : MonoBehaviour
         if (rollTimer > invincibleTime && isInvincible)
         {
             //迴避移動停止
-            rigidbody.velocity = Vector3.zero;
+            RB.velocity = Vector3.zero;
             //玩家現在不能穿wall 及 monster
             rayMask = wall & monster;
             //取消不能攻擊的限制
@@ -90,7 +90,7 @@ public class MobileRoll : MonoBehaviour
             //迴避中不能攻擊
             isRoll = true;
             //歸零動量
-            rigidbody.velocity = Vector3.zero;
+            RB.velocity = Vector3.zero;
             //耐力條 -= 損失耐力
             stamina -= rollCost;
             //將損失的耐力顯示在上面
@@ -98,7 +98,7 @@ public class MobileRoll : MonoBehaviour
             //開啟無敵狀態
             isInvincible = true;
             //朝rollDirection移動rollDistence距離
-            rigidbody.velocity = rollDirection.forward * rollDistence;
+            RB.velocity = rollDirection.forward * rollDistence;
         }
     }
     void LateUpdate()
@@ -108,9 +108,9 @@ public class MobileRoll : MonoBehaviour
         if (Physics.Raycast(oldPosition, (transform.position - oldPosition), out hit, Vector3.Distance(oldPosition, transform.position), rayMask))
         {
             //撞到牆velocity歸零
-            rigidbody.velocity = Vector3.zero;
+            RB.velocity = Vector3.zero;
             //將玩家移動到被射線打到的點
-            rigidbody.MovePosition(hit.point);
+            RB.MovePosition(hit.point);
             Debug.Log("穿牆");
         }
         //每一幀的最後都把自己的位置存起來給下一幀使用

@@ -12,7 +12,7 @@ public class GetHitEffect : MonoBehaviour
     public HealthBarOnGame healthbarongame;
     public UIBarControl uIBarControl;
     public PlayerControl playerControl;
-    public Rigidbody RD;
+    public Rigidbody RB;
     public GameObject changeColor;
     public Transform playerRotation;
     public SpriteRenderer spriteRenderer;
@@ -30,7 +30,7 @@ public class GetHitEffect : MonoBehaviour
         playerHealth = maxHp;
         uIBarControl.SetMaxHealth(maxHp);//UI身上的血條
         healthbarongame.SetMaxHealth(maxHp);//人物身上的血條
-        RD = GetComponent<Rigidbody>();
+        RB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

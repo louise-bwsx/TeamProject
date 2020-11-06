@@ -24,7 +24,7 @@ public class MonsterHealth : MonoBehaviour
     public CharacterBase characterBase;
     public SkillBase skillBase;
     public EnemyController enemyController;
-    public new Rigidbody rigidbody;
+    public Rigidbody RB;
     public Transform faceDirection;
 
     public AudioSource audioSource;//音效在子類別調整音量大小
@@ -48,7 +48,7 @@ public class MonsterHealth : MonoBehaviour
         skillBase = FindObjectOfType<SkillBase>();
         
         collider = GetComponent<Collider>();
-        rigidbody = GetComponent<Rigidbody>();
+        RB = GetComponent<Rigidbody>();
         if (audioSource == null)
         { 
             audioSource = GetComponent<AudioSource>();
@@ -71,7 +71,7 @@ public class MonsterHealth : MonoBehaviour
         if (beAttackTime > recoverTime && navMeshAgent != null)
         {
             //停止被打飛
-            rigidbody.velocity = Vector3.zero;
+            RB.velocity = Vector3.zero;
             navMeshAgent.enabled = true;
         }
         if (beAttackMin > 0)
@@ -90,7 +90,7 @@ public class MonsterHealth : MonoBehaviour
             animator.SetTrigger("GetHit");
             if (faceDirection != null)
             { 
-                rigidbody.velocity = -faceDirection.forward * bounceForce;
+                RB.velocity = -faceDirection.forward * bounceForce;
             }
             if (navMeshAgent != null)
             {
@@ -131,7 +131,7 @@ public class MonsterHealth : MonoBehaviour
             Destroy(FX, 1);
             Hp -= Damage;
             healthBarOnGame.SetHealth(Hp);
-            rigidbody.velocity = -gameObject.transform.forward * pushforce;
+            RB.velocity = -gameObject.transform.forward * pushforce;
             if (Hp <= 0)
             {
                 MonsterDead();

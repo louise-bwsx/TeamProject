@@ -11,14 +11,14 @@ public class MobileMove : MonoBehaviour
     public bool isMagicAttack;
     MobileAttack mobileAttack;
     SpriteRenderer spriteRenderer;
-    Rigidbody rigidbody;
+    Rigidbody RB;
     CharacterBase characterBase;
     Animator animator;
     Vector3 moveMent;
     void Start()
     {
         mobileAttack = FindObjectOfType<MobileAttack>();
-        rigidbody = GetComponentInParent<Rigidbody>();
+        RB = GetComponentInParent<Rigidbody>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         characterBase = FindObjectOfType<CharacterBase>();
@@ -38,7 +38,7 @@ public class MobileMove : MonoBehaviour
         }
         //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
         moveMent = moveMent * (moveSpeed + characterBase.charaterStats[(int)CharacterStats.AGI]) * Time.deltaTime;
-        rigidbody.MovePosition(transform.position + moveMent);
+        RB.MovePosition(transform.position + moveMent);
     }
     void Update()
     {

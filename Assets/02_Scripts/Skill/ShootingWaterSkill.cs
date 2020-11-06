@@ -28,10 +28,10 @@ public class ShootingWaterSkill : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, explodeRadius);
         foreach (Collider nearbyObject in colliders)
         {
-            Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-            if (rb != null)
+            Rigidbody RB = nearbyObject.GetComponent<Rigidbody>();
+            if (RB != null)
             {
-                rb.AddExplosionForce(force, transform.position, explodeRadius);
+                RB.AddExplosionForce(force, transform.position, explodeRadius);
             }
         }
         Destroy(gameObject);

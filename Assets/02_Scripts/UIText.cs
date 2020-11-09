@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class UIText : MonoBehaviour
 {
-    GetHitEffect getHitEffect;
+    MobileStats getHitEffect;
     void Start()
     {
-        getHitEffect = FindObjectOfType<GetHitEffect>();
+        getHitEffect = FindObjectOfType<MobileStats>();
     }
     void Update()
     {

@@ -15,10 +15,12 @@ public class Skill : MonoBehaviour
     public float skillTimer;//最後射擊時間
     public float skillCD;//射擊間隔
     public Image fillImage;
+    protected MobileAttack mobileAttack;
     void Start()
     {
         skillTimer = 10f;//確保一開始都能按技能
         mobileStats = FindObjectOfType<MobileStats>();
+        mobileAttack = FindObjectOfType<MobileAttack>();
     }
     void Update()
     {
@@ -34,24 +36,21 @@ public class Skill : MonoBehaviour
     }
     public virtual void Shoot()
     {
-        if (skillTimer > skillCD)
-        { 
-            GameObject bulletObj = Instantiate(skillObject);
-            if (bulletObj != null)
+        GameObject bulletObj = Instantiate(skillObject);
+        if (bulletObj != null)
+        {
+            bulletObj.transform.position = skillPos.position;
+            bulletObj.transform.rotation = skillRotation.rotation;
+            Rigidbody BulletObjRigidbody_ = bulletObj.GetComponent<Rigidbody>();
+            if (BulletObjRigidbody_ != null)
             {
-                bulletObj.transform.position = skillPos.position;
-                bulletObj.transform.rotation = skillRotation.rotation;
-                Rigidbody BulletObjRigidbody_ = bulletObj.GetComponent<Rigidbody>();
-                if (BulletObjRigidbody_ != null)
-                {
-                    BulletObjRigidbody_.AddForce(bulletObj.transform.forward * skillForce);
-                }
-                skillTimer = 0;
-                Destroy(bulletObj, destroyTime);
-                mobileStats.stamina -= staminaCost;
-                //射擊特效
-                //扣能量
+                BulletObjRigidbody_.AddForce(bulletObj.transform.forward * skillForce);
             }
+            Destroy(bulletObj, destroyTime);
+            mobileStats.stamina -= staminaCost;
+            //射擊特效
+            //扣能量
         }
+        mobileAttack.isAttack = false;
     }
 }

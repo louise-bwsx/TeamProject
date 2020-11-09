@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SavePlayer(GetHitEffect playerhealth, Transform playerPosition)
+    public static void SavePlayer(MobileStats playerhealth, Transform playerPosition)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Unity_Project_Save.lui";

@@ -16,12 +16,13 @@ public enum CharacterStats
 public class CharacterBase : MonoBehaviour
 {
     public int SkillLevelneed = 100;
-    public GetHitEffect getHitEffect;
+    MobileStats mobileStats;
     public int[] charaterStats;
     public Text[] charaterNumber;
 
     void Start()
     {
+        mobileStats = FindObjectOfType<MobileStats>();
         for (int i = 0; i < (int)CharacterStats.Count; i++)
         {
             charaterStats[i] = CentralData.GetInst().charaterStats[i];
@@ -44,9 +45,9 @@ public class CharacterBase : MonoBehaviour
     }
     public void StatsUpgrade(int charaterStats)
     {
-        if (getHitEffect.dust >= SkillLevelneed)
+        if (mobileStats.dust >= SkillLevelneed)
         {
-            getHitEffect.dust -= SkillLevelneed;
+            mobileStats.dust -= SkillLevelneed;
             //按鈕選擇的數值+=2
             this.charaterStats[charaterStats] += 2;
             //面板上的數值更改成實際的數值

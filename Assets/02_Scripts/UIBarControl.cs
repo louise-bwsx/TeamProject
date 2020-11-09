@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class UIBarControl : MonoBehaviour
 {
     public Slider healthSlider;
-
     public Slider staminaSlider;
-    public GetHitEffect getHitEffect;
+
     public void SetMaxHealth(float maxHp)
     {
         healthSlider.maxValue = maxHp;

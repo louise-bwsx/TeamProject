@@ -6,14 +6,14 @@ using System;
 
 public class SaveNLoad: MonoBehaviour
 {
-    GetHitEffect getHitEffect;
+    MobileStats mobileStats;
     SkillBase skillBase;
     public AudioMgr audioMgr;
     public CharacterBase characterBase;
     void Start()
     {
         characterBase = FindObjectOfType<CharacterBase>();
-        getHitEffect = FindObjectOfType<GetHitEffect>();
+        mobileStats = FindObjectOfType<MobileStats>();
         skillBase = FindObjectOfType<SkillBase>();
     }
     public void SaveData(Text dateTime)
@@ -23,7 +23,7 @@ public class SaveNLoad: MonoBehaviour
         CentralData.GetInst().BGMVol = audioMgr.BGMSlider.value;
         CentralData.GetInst().SFXVol = audioMgr.SFXSlider.value;
         //魔塵
-        CentralData.GetInst().dust = getHitEffect.dust;
+        CentralData.GetInst().dust = mobileStats.dust;
         //技能等級
         CentralData.GetInst().fireSkillLevel = skillBase.fireSkillLevel;
         CentralData.GetInst().poisonSkillLevel = skillBase.poisonSkillLevel;
@@ -46,7 +46,7 @@ public class SaveNLoad: MonoBehaviour
         audioMgr.BGMSlider.value = CentralData.GetInst().BGMVol;
         audioMgr.SFXSlider.value = CentralData.GetInst().SFXVol;
         //魔塵
-        getHitEffect.dust = CentralData.GetInst().dust;
+        mobileStats.dust = CentralData.GetInst().dust;
         //技能等級
         skillBase.fireSkillLevel = CentralData.GetInst().fireSkillLevel;
         skillBase.poisonSkillLevel = CentralData.GetInst().poisonSkillLevel;

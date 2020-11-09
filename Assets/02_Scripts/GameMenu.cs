@@ -6,22 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameMenu : MonoBehaviour
 {
     public GameObject[] anyWindow = new GameObject[4];
-    public GetHitEffect getHitEffect;
+    public  MobileStats mobileStats;
     void Start()
     {
+        mobileStats = FindObjectOfType<MobileStats>();
         foreach (GameObject window in anyWindow)
         {
             window.SetActive(false);
         }
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            EscButton();
-        }
-    }
-    public void EscButton()
+    public void EscButton()//按鈕選擇
     {
         //當背包是開的 或是 教學介面是開著的
         if (anyWindow[3].activeSelf || anyWindow[7].activeSelf)
@@ -47,7 +41,7 @@ public class GameMenu : MonoBehaviour
         {   
             //主選單是開著的就把它關掉
             anyWindow[0].SetActive(false);
-            if (getHitEffect.playerHealth > 0)
+            if (mobileStats.hp > 0)
             { 
                 Time.timeScale = 1f;
             }
@@ -56,7 +50,7 @@ public class GameMenu : MonoBehaviour
     public void GameContinue()
     {
         //綁在button上
-        if (getHitEffect.playerHealth > 0)
+        if (mobileStats.hp > 0)
         { 
             Time.timeScale = 1f;
         }

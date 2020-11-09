@@ -11,9 +11,9 @@ public class PlayerData
     public float[] position;
     //物品
     //裝備欄
-    public PlayerData(GetHitEffect playerhealth, Transform playerPosition)
+    public PlayerData(MobileStats mobileStats, Transform playerPosition)
     {
-        Playerhealth = playerhealth.playerHealth;
+        Playerhealth = mobileStats.hp;
 
         position = new float[3];
         position[0] = playerPosition.position.x;

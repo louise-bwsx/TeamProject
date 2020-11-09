@@ -8,7 +8,6 @@ public class MobileMove : MonoBehaviour
     public float ws;
     public float ad;
     public float moveSpeed;
-    public bool isMagicAttack;
     MobileAttack mobileAttack;
     SpriteRenderer spriteRenderer;
     Rigidbody RB;

@@ -49,7 +49,7 @@ public class MobileAttack : MonoBehaviour
     }
     void Attack(string attackType)//按鈕呼叫
     {
-        if (attackTimer >= attackCD)
+        if (attackTimer >= attackCD && !isAttack)
         {
             //動畫
             animator.SetTrigger(attackType);
@@ -143,7 +143,7 @@ public class MobileAttack : MonoBehaviour
     }
     void IsAttackFalse()//動畫Event控制
     {
-        //為了攻擊中不能移動
+        //為了解除攻擊中不能移動的限制
         isAttack = false;
     }
 }

@@ -4,79 +4,21 @@ using UnityEngine.AI;
 
 public class PlayerControl : MonoBehaviour
 {
-    PlayerAction playerAction;
     public PlayerOptions playerOptions;
     public UIBarControl uIBarControl;
-    public PlayerFaceDirection playerFaceDirection;
-    public GameMenu gameMenu;
     public HealthBarOnGame healthbarongame;
-    public GetHitEffect getHitEffect;
-    public GameObject backPackUI;
-    public GameObject skillUI;
-    public GameObject miniMap;
-    public Transform playerRotation;
-    public Transform rollDirection;
-    public Rigidbody RB;
-    public Collider boxCollider;
-    //有關移動
-    public int moveSpeed = 5;//移動速度
-    public bool isInvincible = false;//無敵狀態
-    //有關攻擊
-    public bool isAttack = false;
-    public float attackRange = 0.4f;
-    public float attackTime;
-    public float attackSpeed;//同動畫時間
-    public float attackSpikeSpeed;//突刺攻擊間隔
-    public int attackDamage = 2;
-    //public int spikeAttackDash = 7;
-    //public int normalAttackDash = 3;
-    public LayerMask EnemyLayer;
-    public float lastFireTime;
-    public float fireRate=1f;
-    public Animator animator;
-    public bool isRoll;
-    public FixedJoystick leftJoyStick;
+    MobileStats mobileStats;
 
     void Start()
     {
-        //讓角色一開始可以攻擊
-        attackTime = 10;
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
-        playerAction = GetComponentInChildren<PlayerAction>();
-        boxCollider = GetComponentInParent<Collider>();
+        mobileStats = FindObjectOfType<MobileStats>();
         playerOptions = FindObjectOfType<PlayerOptions>();
     }
 
     [System.Obsolete]
     void Update()
     {
-        //moveMent.Set(0, 0, 0);
-        //攻速&普攻按鍵
-        attackTime += Time.deltaTime;
-        if (attackTime >= attackSpeed && 
-            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf&& !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf &&
-            !playerFaceDirection.isMagicAttack && getHitEffect.playerHealth>0 && !isRoll)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (EventSystem.current.IsPointerOverGameObject())
-                {
-                    return;
-                }
-                //Attack();
-                //attackTime = 0;//另外一種計時方式
-            }
-            if (Input.GetMouseButtonDown(1) && attackTime >= attackSpikeSpeed)
-            {
-                if (EventSystem.current.IsPointerOverGameObject())
-                {
-                    return;
-                }
-                //animator.SetTrigger("Attack_Spike");
-                //Attack();
-                //attackTime = 0;//另外一種計時方式
-            }
-        }
         //開關玩家血條
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -87,26 +29,17 @@ public class PlayerControl : MonoBehaviour
         {
             playerOptions.SetMonsterHealthActive();
         }
-        //開關背包介面
-        if (Input.GetKeyDown(KeyCode.B) && !gameMenu.anyWindow[0].activeSelf)
-        {
-            backPackUI.SetActive(!backPackUI.activeSelf);
-        }
-        if (Input.GetKeyDown(KeyCode.K) && !gameMenu.anyWindow[0].activeSelf)
-        {
-            skillUI.SetActive(!skillUI.activeSelf);
-        }
         #region 存檔功能
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Debug.Log("存檔中");
-            SaveSystem.SavePlayer(getHitEffect, transform);
+            SaveSystem.SavePlayer(mobileStats, transform);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("回復存檔");
             PlayerData data = SaveSystem.LoadPlayer();
-            getHitEffect.playerHealth = data.Playerhealth;
+            mobileStats.hp = data.Playerhealth;
             uIBarControl.SetHealth(data.Playerhealth);
             Vector3 SavePosition;
             SavePosition.x = data.position[0];

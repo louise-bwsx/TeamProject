@@ -73,6 +73,8 @@ public class MobileRoll : MonoBehaviour
         {
             //播動畫
             animator.SetTrigger("Roll");
+            //取消攻擊動畫
+            animator.SetBool("IsAttack", false);
             //播音效
             sourceSFX.PlayOneShot(rollSFX);
             //迴避的冷卻時間
@@ -83,8 +85,6 @@ public class MobileRoll : MonoBehaviour
             oldPosition = transform.position;
             //取消攻擊中不能移動的限制
             mobileAttack.isAttack = false;
-            //取消施法中不能移動的限制
-            mobileMove.isMagicAttack = false;
             //迴避中不能攻擊
             isRoll = true;
             //歸零動量
@@ -113,5 +113,9 @@ public class MobileRoll : MonoBehaviour
         }
         //每一幀的最後都把自己的位置存起來給下一幀使用
         oldPosition = transform.position;
+    }
+    public void RollStop()
+    {
+        RB.velocity = Vector3.zero;
     }
 }

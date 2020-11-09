@@ -175,7 +175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playertomouse: {x: 0, y: 0, z: 0}
   rotationangle: {x: 0, y: 0, z: 0, w: 0}
-  getHitEffect: {fileID: 45880586}
 --- !u!1 &8395889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,7 +1114,7 @@ GameObject:
   - component: {fileID: 45880590}
   - component: {fileID: 45880585}
   - component: {fileID: 45880592}
-  - component: {fileID: 45880586}
+  - component: {fileID: 45880589}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1158,36 +1157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerhealthbar: {fileID: 501881191}
   monsterhealthbar: []
---- !u!114 &45880586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45880583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 055eb37ac6b97434eac6f8681951713a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  getHitInvincibleTime: 0
-  dust: 10000
-  maxHp: 200
-  playerHealth: 5
-  healthbarongame: {fileID: 501881193}
-  uIBarControl: {fileID: 2136891374}
-  playerControl: {fileID: 1757237628}
-  RB: {fileID: 0}
-  changeColor: {fileID: 45880583}
-  playerRotation: {fileID: 3756948}
-  spriteRenderer: {fileID: 1757237623}
-  animator: {fileID: 1757237622}
-  bounceForce: 5000
-  getHit: 0
-  attackBuff: 0
-  getHitEffect:
-  - {fileID: 0}
-  - {fileID: 70265069246844157, guid: 1ced3f31025edaa428e22d1a65f121f4, type: 3}
 --- !u!65 &45880587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1217,6 +1186,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &45880589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45880583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48ec22b39e4c75488243f7027f8b52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  maxHp: 200
+  stamina: 0
+  staminaLimit: 100
+  invincibleLimit: 1
+  dust: 10000
+  healthbarongame: {fileID: 501881193}
+  uIBarControl: {fileID: 2136891374}
+  getHitEffect:
+  - {fileID: 0}
+  - {fileID: 70265069246844157, guid: 1ced3f31025edaa428e22d1a65f121f4, type: 3}
+  spriteRenderer: {fileID: 1757237623}
+  animator: {fileID: 1757237622}
+  invincibleTimer: 0
 --- !u!208 &45880590
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -14653,7 +14648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillLevelneed: 100
-  getHitEffect: {fileID: 45880586}
   charaterStats: 0000000000000000000000000000000000000000
   charaterNumber:
   - {fileID: 1335277173}
@@ -14680,7 +14674,6 @@ MonoBehaviour:
   stoneSkillLevel: 1
   waterSkillLevel: 1
   windSkillLevel: 1
-  getHitEffect: {fileID: 45880586}
   fireImage:
   - {fileID: 941642820}
   - {fileID: 1414140149}
@@ -23940,12 +23933,10 @@ GameObject:
   - component: {fileID: 1757237622}
   - component: {fileID: 1757237627}
   - component: {fileID: 1757237624}
-  - component: {fileID: 1757237625}
   - component: {fileID: 1757237626}
   - component: {fileID: 1757237628}
   - component: {fileID: 1757237629}
   - component: {fileID: 1757237630}
-  - component: {fileID: 1757237631}
   - component: {fileID: 1757237632}
   - component: {fileID: 1757237633}
   m_Layer: 11
@@ -24052,49 +24043,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b1b368dbd2eda4394d50a184c3e8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1757237622}
-  swordCube: {fileID: 1274731740723205147, guid: 4ad330f496f2b5341aa5ee519d6da287,
-    type: 3}
-  swingAttackEffectLeft: {fileID: 2146589714767106736, guid: bd478f03d61db1f48852f33df11e584c,
-    type: 3}
-  swingAttackEffectRight: {fileID: 6944432453040499547, guid: 2eec5cc8d8392d04bb272f01fb91de49,
-    type: 3}
-  SpikeAttackEffectLeft: {fileID: 1760297604239239131, guid: 0823424513675964aa045be78e25a56f,
-    type: 3}
-  SpikeAttackEffectRight: {fileID: 3908884330443153031, guid: faaa749b838d9b64aae382a8a4cea403,
-    type: 3}
   shadowDestory: {fileID: 1871177936}
-  player: {fileID: 45880584}
-  spawantransform: {fileID: 5805977527194686331}
-  SpikeAttackLeftPos: {fileID: 1380137638}
-  SpikeAttackRightPos: {fileID: 1772630459}
   gameMenu: {fileID: 0}
-  playerRotation: {fileID: 3756948}
-  playerControl: {fileID: 0}
   BGMSource: {fileID: 1878321793}
   SFXSource: {fileID: 0}
-  TurnOverSFX: {fileID: 8300000, guid: f88b2e7f342b1524382a9f6ce217a232, type: 3}
-  SpikeSFX: {fileID: 8300000, guid: 9cfb99d27ae22e340af5986e3d0d384a, type: 3}
-  SwingSFX: {fileID: 8300000, guid: f04dff927bc4b004a84903423d94b5d0, type: 3}
   dieSFX: {fileID: 8300000, guid: 56b33a0553eab2844b42d20f448e4c28, type: 3}
-  playerFaceDirection: {fileID: 1757237625}
---- !u!114 &1757237625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757237620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 280f5ea3c12653144b3e5e68607b6718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRotation: {fileID: 3756948}
-  playerControl: {fileID: 1757237628}
-  mobileSkill: {fileID: 0}
-  isMagicAttack: 0
-  animator: {fileID: 0}
 --- !u!114 &1757237626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24217,33 +24170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOptions: {fileID: 45880585}
   uIBarControl: {fileID: 2136891374}
-  playerFaceDirection: {fileID: 1757237625}
-  gameMenu: {fileID: 2136891376}
   healthbarongame: {fileID: 501881193}
-  getHitEffect: {fileID: 45880586}
-  backPackUI: {fileID: 1617842221}
-  skillUI: {fileID: 1654793699}
-  miniMap: {fileID: 0}
-  playerRotation: {fileID: 3756948}
-  rollDirection: {fileID: 1111911155}
-  RB: {fileID: 0}
-  boxCollider: {fileID: 0}
-  moveSpeed: 5
-  isInvincible: 0
-  isAttack: 0
-  attackRange: 0.67
-  attackTime: 0
-  attackSpeed: 0.3
-  attackSpikeSpeed: 1
-  attackDamage: 20
-  EnemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  lastFireTime: 0
-  fireRate: 0.1
-  animator: {fileID: 1757237622}
-  isRoll: 0
-  leftJoyStick: {fileID: 724834002226827906}
 --- !u!114 &1757237629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24260,7 +24187,6 @@ MonoBehaviour:
   ws: 0
   ad: 0
   moveSpeed: 5
-  isMagicAttack: 0
 --- !u!114 &1757237630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24290,22 +24216,6 @@ MonoBehaviour:
   healthbarongame: {fileID: 501881193}
   rollSFX: {fileID: 8300000, guid: f88b2e7f342b1524382a9f6ce217a232, type: 3}
   rollDirection: {fileID: 1111911155}
---- !u!114 &1757237631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757237620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c48ec22b39e4c75488243f7027f8b52b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 100
-  maxHp: 0
-  stamina: 0
-  staminaLimit: 100
 --- !u!114 &1757237632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25945,7 +25855,6 @@ MonoBehaviour:
   afterBGM: {fileID: 8300000, guid: a026b54947d5ad84ca73b38ef680a72f, type: 3}
   bossHealth: {fileID: 5477791637203891592}
   closeDoor: {fileID: 416530105642191125}
-  getHitEffect: {fileID: 0}
 --- !u!4 &1878321795
 Transform:
   m_ObjectHideFlags: 0
@@ -33399,7 +33308,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 1237076504}
   staminaSlider: {fileID: 580402011}
-  getHitEffect: {fileID: 45880586}
 --- !u!114 &2136891376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33421,7 +33329,7 @@ MonoBehaviour:
   - {fileID: 1399777746}
   - {fileID: 1941005697}
   - {fileID: 1920688808262575768}
-  getHitEffect: {fileID: 45880586}
+  mobileStats: {fileID: 0}
 --- !u!82 &2136891377
 AudioSource:
   m_ObjectHideFlags: 0

@@ -18,13 +18,6 @@ public class Menu : MonoBehaviour
         }
         anyWindow[0].SetActive(true);
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            EscButton();
-        }
-    }
     public void EscButton()
     {
         if (!anyWindow[0].activeSelf)

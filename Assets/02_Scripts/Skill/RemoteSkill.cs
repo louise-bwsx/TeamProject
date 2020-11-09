@@ -22,5 +22,6 @@ public class RemoteSkill : Skill
         }
         skillTimer = 0;
         mobileStats.stamina -= staminaCost;
+        mobileAttack.isAttack = false;
     }
 }

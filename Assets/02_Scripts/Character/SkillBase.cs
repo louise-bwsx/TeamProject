@@ -29,7 +29,7 @@ public class SkillBase : MonoBehaviour
     public int waterSkillLevel = 0;
     public int windSkillLevel = 0;
 
-    public GetHitEffect getHitEffect;
+    MobileStats mobileStats;
     public Image[] fireImage;
     public Image[] poisonImage;
     public Image[] stoneImage;
@@ -42,6 +42,7 @@ public class SkillBase : MonoBehaviour
 
     void Start()
     {
+        mobileStats = FindObjectOfType<MobileStats>();
         fireSkillLevel = CentralData.GetInst().fireSkillLevel;
         poisonSkillLevel = CentralData.GetInst().poisonSkillLevel;
         stoneSkillLevel = CentralData.GetInst().stoneSkillLevel;
@@ -70,52 +71,52 @@ public class SkillBase : MonoBehaviour
         {
             case enumSkill.fireSkill:
                 {
-                    Debug.Log(getHitEffect.dust + " " + fireSkillLevel + " " + skillLevelNeed + " " + 0 + " " + fireSkillLevel + " " + skillMaxLevel);
-                    if (getHitEffect.dust - fireSkillLevel * skillLevelNeed >= 0 && fireSkillLevel < skillMaxLevel)
+                    Debug.Log(mobileStats.dust + " " + fireSkillLevel + " " + skillLevelNeed + " " + 0 + " " + fireSkillLevel + " " + skillMaxLevel);
+                    if (mobileStats.dust - fireSkillLevel * skillLevelNeed >= 0 && fireSkillLevel < skillMaxLevel)
                     {
                         fireImage[fireSkillLevel].enabled = true;
                         fireSkillLevel++;
-                        getHitEffect.dust = getHitEffect.dust - fireSkillLevel * skillLevelNeed;
+                        mobileStats.dust = mobileStats.dust - fireSkillLevel * skillLevelNeed;
                     }
                     break;
                 }
             case enumSkill.poisonSkill:
                 {
-                    if (getHitEffect.dust - poisonSkillLevel * skillLevelNeed >= 0 && poisonSkillLevel < skillMaxLevel)
+                    if (mobileStats.dust - poisonSkillLevel * skillLevelNeed >= 0 && poisonSkillLevel < skillMaxLevel)
                     {
                         poisonImage[poisonSkillLevel].enabled = true;
                         poisonSkillLevel++;
-                        getHitEffect.dust = getHitEffect.dust - poisonSkillLevel * skillLevelNeed;
+                        mobileStats.dust = mobileStats.dust - poisonSkillLevel * skillLevelNeed;
                     }
                     break;
                 }
             case enumSkill.stoneSkill:
                 {
-                    if (getHitEffect.dust - stoneSkillLevel * skillLevelNeed >= 0 && stoneSkillLevel < skillMaxLevel)
+                    if (mobileStats.dust - stoneSkillLevel * skillLevelNeed >= 0 && stoneSkillLevel < skillMaxLevel)
                     {
                         stoneImage[stoneSkillLevel].enabled = true;
                         stoneSkillLevel++;
-                        getHitEffect.dust = getHitEffect.dust - stoneSkillLevel * skillLevelNeed;
+                        mobileStats.dust = mobileStats.dust - stoneSkillLevel * skillLevelNeed;
                     }
                     break;
                 }
             case enumSkill.waterSkill:
                 {
-                    if (getHitEffect.dust - waterSkillLevel * skillLevelNeed >= 0 && waterSkillLevel < skillMaxLevel)
+                    if (mobileStats.dust - waterSkillLevel * skillLevelNeed >= 0 && waterSkillLevel < skillMaxLevel)
                     {
                         waterImage[waterSkillLevel].enabled = true;
                         waterSkillLevel++;
-                        getHitEffect.dust = getHitEffect.dust - waterSkillLevel * skillLevelNeed;
+                        mobileStats.dust = mobileStats.dust - waterSkillLevel * skillLevelNeed;
                     }
                     break;
                 }
             case enumSkill.windSkill:
                 {
-                    if (getHitEffect.dust - windSkillLevel * skillLevelNeed >= 0 && windSkillLevel < skillMaxLevel)
+                    if (mobileStats.dust - windSkillLevel * skillLevelNeed >= 0 && windSkillLevel < skillMaxLevel)
                     {
                         windImage[windSkillLevel].enabled = true;
                         windSkillLevel++;
-                        getHitEffect.dust = getHitEffect.dust - windSkillLevel * skillLevelNeed;
+                        mobileStats.dust = mobileStats.dust - windSkillLevel * skillLevelNeed;
                     }
                     break;
                 }

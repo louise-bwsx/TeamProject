@@ -127,10 +127,6 @@ public class GetHitEffect : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Item"))
-        {
-            other.GetComponent<ItemPickup>().PickUp();
-        }
         if (other.CompareTag("Block") || other.CompareTag("Wall"))
         {
             gameObject.GetComponent<Collider>().isTrigger = false;

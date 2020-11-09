@@ -5,51 +5,53 @@ using UnityEngine.UI;
 
 public class Skill : MonoBehaviour
 {
-    public PlayerControl playerControl;
     public float staminaCost;
     public float destroyTime = 3F;
     public GameObject skillObject;
     public Transform skillPos;
     public Transform skillRotation;
+    public MobileStats mobileStats;
     public float skillForce = 200f;
-    public float lastFireTime;//最後射擊時間
-    public float fireRate;//射擊間隔
+    public float skillTimer;//最後射擊時間
+    public float skillCD;//射擊間隔
     public Image fillImage;
     void Start()
     {
-        lastFireTime = 10f;//確保一開始都能按技能
-        fillImage = transform.Find("CDImage").GetComponent<Image>();
-        playerControl = FindObjectOfType<PlayerControl>();
+        skillTimer = 10f;//確保一開始都能按技能
+        mobileStats = FindObjectOfType<MobileStats>();
     }
     void Update()
     {
-        lastFireTime += Time.deltaTime;
-        if (lastFireTime < fireRate)
+        skillTimer += Time.deltaTime;
+        if (skillTimer < skillCD)
         {
-            fillImage.fillAmount = (fireRate - lastFireTime) / fireRate;
+            fillImage.fillAmount = (skillCD - skillTimer) / skillCD;
         }
-        else if (lastFireTime >= fireRate)
+        else if (skillTimer >= skillCD)
         {
             fillImage.fillAmount = 0;
         }
     }
     public virtual void Shoot()
     {
-        GameObject bulletObj = Instantiate(skillObject);
-        if (bulletObj != null)
-        {
-            bulletObj.transform.position = skillPos.position;
-            bulletObj.transform.rotation = skillRotation.rotation;
-            Rigidbody BulletObjRigidbody_ = bulletObj.GetComponent<Rigidbody>();
-            if (BulletObjRigidbody_ != null)
+        if (skillTimer > skillCD)
+        { 
+            GameObject bulletObj = Instantiate(skillObject);
+            if (bulletObj != null)
             {
-                BulletObjRigidbody_.AddForce(bulletObj.transform.forward * skillForce);
+                bulletObj.transform.position = skillPos.position;
+                bulletObj.transform.rotation = skillRotation.rotation;
+                Rigidbody BulletObjRigidbody_ = bulletObj.GetComponent<Rigidbody>();
+                if (BulletObjRigidbody_ != null)
+                {
+                    BulletObjRigidbody_.AddForce(bulletObj.transform.forward * skillForce);
+                }
+                skillTimer = 0;
+                Destroy(bulletObj, destroyTime);
+                mobileStats.stamina -= staminaCost;
+                //射擊特效
+                //扣能量
             }
-            lastFireTime = 0;
-            Destroy(bulletObj, destroyTime);
-            //playerControl.stamina -= staminaCost;
-            //射擊特效
-            //扣能量
         }
     }
 }

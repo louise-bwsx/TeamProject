@@ -16,9 +16,7 @@ public class MobileRoll : MonoBehaviour
     public HealthBarOnGame healthbarongame;
     public AudioClip rollSFX;
     public Transform rollDirection;
-    float stamina;
-    float staminaLimit = 100;
-    MobileCharacterStats mobileCharacterStats;
+    MobileStats mobileStats;
     MobileAttack mobileAttack;
     MobileMove mobileMove;
     LayerMask rayMask;
@@ -35,10 +33,10 @@ public class MobileRoll : MonoBehaviour
         uIBarControl = FindObjectOfType<UIBarControl>();
         RB = GetComponentInParent<Rigidbody>();
         mobileAttack = FindObjectOfType<MobileAttack>();
-        mobileCharacterStats = FindObjectOfType<MobileCharacterStats>();
+        mobileStats = FindObjectOfType<MobileStats>();
         //初始化耐力值為最大值
-        uIBarControl.SetMaxStamina(staminaLimit);
-        stamina = staminaLimit;
+        uIBarControl.SetMaxStamina(mobileStats.staminaLimit);
+        mobileStats.stamina = mobileStats.staminaLimit;
         //不可穿牆的layer是wall和monster
         rayMask = wall & monster;
     }
@@ -58,20 +56,20 @@ public class MobileRoll : MonoBehaviour
             isInvincible = false;
         }
         //耐力遞增
-        if (stamina < staminaLimit)
+        if (mobileStats.stamina < mobileStats.staminaLimit)
         {
-            stamina += Time.deltaTime * 10;
-            uIBarControl.SetStamina(stamina);
+            mobileStats.stamina += Time.deltaTime * 10;
+            uIBarControl.SetStamina(mobileStats.stamina);
         }
         else
         {
-            stamina = staminaLimit;
-            uIBarControl.SetStamina(stamina);
+            mobileStats.stamina = mobileStats.staminaLimit;
+            uIBarControl.SetStamina(mobileStats.stamina);
         }
     }
     public void Roll()
     {
-        if (stamina > rollCost && rollTimer > rollCD && mobileCharacterStats.hp>0)
+        if (mobileStats.stamina > rollCost && rollTimer > rollCD && mobileStats.hp >0)
         {
             //播動畫
             animator.SetTrigger("Roll");
@@ -92,9 +90,9 @@ public class MobileRoll : MonoBehaviour
             //歸零動量
             RB.velocity = Vector3.zero;
             //耐力條 -= 損失耐力
-            stamina -= rollCost;
+            mobileStats.stamina -= rollCost;
             //將損失的耐力顯示在上面
-            uIBarControl.SetStamina(stamina);
+            uIBarControl.SetStamina(mobileStats.stamina);
             //開啟無敵狀態
             isInvincible = true;
             //朝rollDirection移動rollDistence距離

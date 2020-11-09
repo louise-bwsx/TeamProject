@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MobileCharacterStats : MonoBehaviour
+public class MobileStats : MonoBehaviour
 {
     public float hp;
+    public float maxHp;
+    public float stamina;
+    public float staminaLimit = 100;
     void Start()
     {
         

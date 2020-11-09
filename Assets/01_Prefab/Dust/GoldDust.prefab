@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 1123216377704474716}
   - component: {fileID: 1123216377704474715}
   - component: {fileID: 1123216377704474714}
-  - component: {fileID: 1123216377704474717}
   - component: {fileID: 913745231665230152}
   m_Layer: 0
-  m_Name: YellowDust
+  m_Name: GoldDust
   m_TagString: Gold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,20 +63,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &1123216377704474717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123216377704474719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ce370ce7a8a2146abcd55a3d3ce158, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemScriptableObject: {fileID: 11400000, guid: db3d5143fd4a8b340b8896fa37be9fe9,
-    type: 2}
 --- !u!114 &913745231665230152
 MonoBehaviour:
   m_ObjectHideFlags: 0

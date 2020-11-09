@@ -7,13 +7,13 @@ public class PlayerFaceDirection : MonoBehaviour
     public Transform playerRotation;
     public PlayerControl playerControl;
     SpriteRenderer spriteRenderer;
-    public SkillControl skillControl;
+    public MobileSkill mobileSkill;
     public bool isMagicAttack;
     public Animator animator;
     void Start()
     {
         animator = GetComponent<Animator>();
-        skillControl = FindObjectOfType<SkillControl>();
+        mobileSkill = FindObjectOfType<MobileSkill>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Update()
@@ -57,7 +57,7 @@ public class PlayerFaceDirection : MonoBehaviour
     }
     void SkillShoot()//動畫Event控制
     {
-        skillControl.skillList[0].Shoot();
+        mobileSkill.skillList[0].Shoot();
         playerControl.isAttack = false;
         isMagicAttack = false;
     }

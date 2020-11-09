@@ -371,7 +371,7 @@ MonoBehaviour:
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
-  attackTime: 0.5
+  attackTime: 0.3
   recoverTime: 0.1
   bounceForce: 0
   healthBarOnGame: {fileID: 8736574828475642069}
@@ -390,7 +390,7 @@ MonoBehaviour:
   characterBase: {fileID: 0}
   skillBase: {fileID: 0}
   enemyController: {fileID: 0}
-  rigidbody: {fileID: 0}
+  RB: {fileID: 0}
   faceDirection: {fileID: 0}
   audioSource: {fileID: 0}
   poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
@@ -403,7 +403,7 @@ MonoBehaviour:
   beAttackMin: 0
   beAttackMax: 5
   enumAttack: 0
-  collider: {fileID: 0}
+  boxCollider: {fileID: 0}
   pushforce: 0
   brokenPos: {fileID: 1842234555217130944}
   curseWheel: {fileID: 1842234555217130975}
@@ -412,7 +412,7 @@ MonoBehaviour:
   bossDieDialogComponent: {fileID: 0}
   ManiMenu: {fileID: 0}
   destroyTime: 2.5
-  destroySoundTime: 1
+  destroySoundTime: 1.1
   timer: 0
   BossInvincibleEffect: {fileID: 713062533747916334, guid: f4271b3ed97230148beb22755ee83404,
     type: 3}
@@ -520,7 +520,7 @@ SpriteRenderer:
   m_Size: {x: 9.93, y: 11.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6227207049940589731
@@ -1203,15 +1203,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 95f3fa258ec81424caf0e039d86fbe77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.33, y: 12.28}
+  m_Size: {x: 9.93, y: 11.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &6227207051608250892
@@ -1976,7 +1976,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7d5f574260db1cd498e836ea0390e4d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fcb4c8b9cff252444b159b6831286753, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

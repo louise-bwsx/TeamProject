@@ -203,7 +203,7 @@ MonoBehaviour:
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
-  attackTime: 0.5
+  attackTime: 0.3
   recoverTime: 0.1
   bounceForce: 0
   healthBarOnGame: {fileID: 5561994501750623517}
@@ -222,7 +222,7 @@ MonoBehaviour:
   characterBase: {fileID: 0}
   skillBase: {fileID: 0}
   enemyController: {fileID: 3925477345567892591}
-  rigidbody: {fileID: 0}
+  RB: {fileID: 0}
   faceDirection: {fileID: 2904442090115409670}
   audioSource: {fileID: 0}
   poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
@@ -235,7 +235,7 @@ MonoBehaviour:
   beAttackMin: 0
   beAttackMax: 5
   enumAttack: 0
-  collider: {fileID: 0}
+  boxCollider: {fileID: 0}
   pushforce: 7.5
 --- !u!1 &2904442090115409669
 GameObject:
@@ -350,7 +350,7 @@ SpriteRenderer:
   m_Size: {x: 7.04, y: 10.05}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &8325912654245321894

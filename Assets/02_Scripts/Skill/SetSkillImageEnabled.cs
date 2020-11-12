@@ -20,7 +20,7 @@ public class SetSkillImageEnabled : MonoBehaviour
         //當放開技能鍵時
         if (!enabled)
         {
-            mobileSkillChoose.SkillShoot();
+            mobileSkillChoose.animator.SetBool("IsCheck", true);
         }
     }
 }

@@ -5,19 +5,23 @@ using UnityEngine.UI;
 
 public class RemoteSkillPosition : MonoBehaviour
 {
+    public float skillControlSpeed;
     public Transform skillPosition;
     public RectTransform hadle;
     public RectTransform outerCircle;
-    public float skillControlSpeed;
     public MeshRenderer meshRenderer;
+    public Animator animator;
 
-
-    bool isTouch;
-    Vector3 originPosition;
+    public bool isTouch;
     int floor;
+    Vector3 originPosition;
+    MobileSkillChoose mobileSkillChoose;
+    MobileAttack mobileAttack;
 
     void Start()
     {
+        mobileAttack = FindObjectOfType<MobileAttack>();
+        mobileSkillChoose = FindObjectOfType<MobileSkillChoose>();
         meshRenderer = GetComponent<MeshRenderer>();
         floor = LayerMask.GetMask("Floor");
     }
@@ -25,6 +29,7 @@ public class RemoteSkillPosition : MonoBehaviour
     {
         if (isTouch)
         {
+            animator.SetBool("IsCheck", !isTouch);
             meshRenderer.enabled = isTouch;
             //用一個Vector3把搖桿距離中心點的位置給存起來
             Vector3 offset = outerCircle.position - hadle.position;
@@ -49,14 +54,14 @@ public class RemoteSkillPosition : MonoBehaviour
                 skillPosition.position = originPosition;
             }
         }
-        else if (!isTouch)
-        {
-            meshRenderer.enabled = false;
-            skillPosition.position = skillPosition.parent.position;
-        }
     }
     public void SetSkillPosition(bool isTouch)
     {
         this.isTouch = isTouch;
+        //為了讓每次按下技能時確保從角色底下出現而不是上一個施放位置
+        if (isTouch)
+        {
+            skillPosition.position = skillPosition.parent.position;
+        }
     }
 }

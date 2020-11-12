@@ -1,67 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RemoteSkillPosition : MonoBehaviour
 {
-    public Transform skillRotation;
+    public Transform skillPosition;
     public RectTransform hadle;
-    public RectTransform center;
+    public RectTransform outerCircle;
+    public float skillControlSpeed;
+    public MeshRenderer meshRenderer;
 
+
+    bool isTouch;
+    Vector3 originPosition;
     int floor;
-    Vector3 playertomouse;
-    MobileSkillChoose mobileSkillChoose;
-    MeshRenderer meshRenderer;
-    //public MeshRenderer skillRotation;
-    RaycastHit wallCross;
 
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        mobileSkillChoose = FindObjectOfType<MobileSkillChoose>();
         floor = LayerMask.GetMask("Floor");
     }
-    void Update()
+    void FixedUpdate()
     {
-        //    //毒水風土火
-        //    if (Input.GetMouseButton(2) &&
-        //        skillControl.skillList[skillControl.CurIdx + 1].skillTimer > skillControl.skillList[skillControl.CurIdx + 1].skillCD)
-        //    {
-        //        //毒風土
-        //        if (skillControl.CurIdx + 1 == 1 ||
-        //           skillControl.CurIdx + 1 == 3 ||
-        //           skillControl.CurIdx + 1 == 4)
-        //        {
-        //            float cameraraylength = 100;
-        //            Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //            RaycastHit floorcross;
-        //            if (Physics.Raycast(cameraray, out floorcross, cameraraylength, floor))
-        //            {
-        //                playertomouse = floorcross.point;
-        //                playertomouse.y = floorcross.point.y;
-        //            }
-        //            meshRenderer.enabled = true;
-        //            transform.position = playertomouse;
-        //        }
-        //        //水火
-        //        else if (skillControl.CurIdx + 1 == 2 ||
-        //                 skillControl.CurIdx + 1 == 5)
-        //        {
-        //            skillRotation.enabled = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        skillRotation.enabled = false;
-        //        meshRenderer.enabled = false;
-        //    }
+        if (isTouch)
+        {
+            meshRenderer.enabled = isTouch;
+            //用一個Vector3把搖桿距離中心點的位置給存起來
+            Vector3 offset = outerCircle.position - hadle.position;
+            //因為搖桿是Vector2所以要把它的Y給Z
+            offset.z = offset.y;
+            //算距離?
+            Vector3 direction = Vector3.ClampMagnitude(offset, 1f);
+            //技能施放位置移動
+            skillPosition.Translate(direction * -1f * skillControlSpeed * Time.deltaTime);
+            RaycastHit hit;
+            //技能施放位置朝地板打射線如果碰到地板
+            if (Physics.Raycast(skillPosition.position, -skillPosition.up, out hit, 10f, floor))
+            {
+                //先存起來等不小心跑進地板再拿出來用
+                originPosition = skillPosition.position;
+                //技能位置等於射線打到的點朝上0.1f
+                skillPosition.position = hit.point + skillPosition.up * 0.1f;
+            }
+            //如果潛入地下就回到還沒回到地下以前的點
+            else
+            {
+                skillPosition.position = originPosition;
+            }
+        }
+        else if (!isTouch)
+        {
+            meshRenderer.enabled = false;
+            skillPosition.position = skillPosition.parent.position;
+        }
     }
-    //public void SetRemoteSkillPosition()
-    //{
-    //    //
-    //    if (Physics.Raycast(skillRotation.position, (hadle.position - center.position), out wallCross, Mathf.Infinity, floor))
-    //    {
-
-    //    }
-    //}
+    public void SetSkillPosition(bool isTouch)
+    {
+        this.isTouch = isTouch;
+    }
 }

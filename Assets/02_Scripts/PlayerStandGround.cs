@@ -23,6 +23,7 @@ public class PlayerStandGround : MonoBehaviour
             originTransform = transform.position;
             transform.position = hit.point + transform.up * 0.4f;
         }
+        //如果潛入地下就回到還沒回到地下以前的點
         else
         {
             //待測試看起來ok

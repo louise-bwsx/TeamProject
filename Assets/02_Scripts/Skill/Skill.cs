@@ -15,6 +15,7 @@ public class Skill : MonoBehaviour
     public float skillTimer;//最後射擊時間
     public float skillCD;//射擊間隔
     public Image fillImage;
+    public Image[] skillActiveImages;
     protected MobileAttack mobileAttack;
     void Start()
     {
@@ -28,6 +29,10 @@ public class Skill : MonoBehaviour
         if (skillTimer < skillCD)
         {
             fillImage.fillAmount = (skillCD - skillTimer) / skillCD;
+            foreach (Image i in skillActiveImages)
+            {
+                i.enabled = false;
+            }
         }
         else if (skillTimer >= skillCD)
         {
@@ -36,6 +41,7 @@ public class Skill : MonoBehaviour
     }
     public virtual void Shoot()
     {
+        //生成攻擊範圍
         GameObject bulletObj = Instantiate(skillObject);
         if (bulletObj != null)
         {
@@ -44,13 +50,21 @@ public class Skill : MonoBehaviour
             Rigidbody BulletObjRigidbody_ = bulletObj.GetComponent<Rigidbody>();
             if (BulletObjRigidbody_ != null)
             {
+                //指向性技能朝指定Z軸方向射擊
                 BulletObjRigidbody_.AddForce(bulletObj.transform.forward * skillForce);
             }
+            //在一定秒數摧毀攻擊範圍
             Destroy(bulletObj, destroyTime);
-            mobileStats.stamina -= staminaCost;
-            //射擊特效
             //扣能量
+            mobileStats.stamina -= staminaCost;
         }
+        //開始冷卻時間
+        skillTimer = 0;
+        //使玩家移動限制解除
         mobileAttack.isAttack = false;
+        foreach (Image i in skillActiveImages)
+        {
+            i.enabled = false;
+        }
     }
 }

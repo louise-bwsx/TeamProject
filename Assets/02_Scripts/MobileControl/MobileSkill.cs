@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MobileSkill : MonoBehaviour
 {
@@ -16,11 +17,10 @@ public class MobileSkill : MonoBehaviour
     public void SetSkill(int skillNum)
     {
         skillList[0] = skillList[skillNum];
-        if (skillList[0].skillTimer > skillList[0].skillCD)
+        if (skillList[0].skillTimer > skillList[0].skillCD && !mobileAttack.isAttack)
         { 
             mobileAttack.isAttack = true;
             animator.SetTrigger("Magic");
-            skillList[0].skillTimer = 0;
         }
     }
     public void SkillShoot()//動畫Event控制

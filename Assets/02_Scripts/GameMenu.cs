@@ -6,13 +6,20 @@ using UnityEngine.SceneManagement;
 public class GameMenu : MonoBehaviour
 {
     public GameObject[] anyWindow = new GameObject[4];
-    public  MobileStats mobileStats;
+    public GameObject[] startOpenWindow;
+    public MobileStats mobileStats;
     void Start()
     {
         mobileStats = FindObjectOfType<MobileStats>();
         foreach (GameObject window in anyWindow)
         {
             window.SetActive(false);
+        }
+        //因為開頭的字幕打開修改UI很礙眼
+        //但不打開匯出的時候會忘記開
+        foreach (GameObject window in startOpenWindow)
+        {
+            window.SetActive(true);
         }
     }
     public void EscButton()//按鈕選擇

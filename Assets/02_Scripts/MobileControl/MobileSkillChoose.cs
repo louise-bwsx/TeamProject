@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MobileSkill : MonoBehaviour
+public class MobileSkillChoose : MonoBehaviour
 {
     public Skill[] skillList;
     public MeshRenderer meshRenderer;

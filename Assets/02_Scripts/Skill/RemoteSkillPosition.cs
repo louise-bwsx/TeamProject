@@ -56,10 +56,6 @@ public class RemoteSkillPosition : MonoBehaviour
         //        meshRenderer.enabled = false;
         //    }
     }
-    //project physics floor跟player交界取消勾選 就可以解決上坡會卡頓的問題
-    //角色rigidbody interpolate 改interpolate EquipmentGroup就可以刪掉
-    //有可能會合作
-    //永恆之柱先做戰鬥
     //public void SetRemoteSkillPosition()
     //{
     //    //

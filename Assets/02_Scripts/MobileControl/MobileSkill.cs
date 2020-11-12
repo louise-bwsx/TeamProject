@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MobileSkill : MonoBehaviour
 {
     public Skill[] skillList;
+    public MeshRenderer meshRenderer;
     Animator animator;
     MobileAttack mobileAttack;
 
@@ -18,7 +19,8 @@ public class MobileSkill : MonoBehaviour
     {
         skillList[0] = skillList[skillNum];
         if (skillList[0].skillTimer > skillList[0].skillCD && !mobileAttack.isAttack)
-        { 
+        {
+            meshRenderer.enabled = true;
             mobileAttack.isAttack = true;
             animator.SetTrigger("Magic");
         }

@@ -405,6 +405,7 @@ MonoBehaviour:
   skillCD: 1
   fillImage: {fileID: 1228887198}
   skillActiveImages: []
+  meshRenderer: {fileID: 0}
 --- !u!1 &21172737
 GameObject:
   m_ObjectHideFlags: 0
@@ -13091,6 +13092,7 @@ MonoBehaviour:
   skillCD: 1
   fillImage: {fileID: 1153259668}
   skillActiveImages: []
+  meshRenderer: {fileID: 0}
   wall:
     serializedVersion: 2
     m_Bits: 1024
@@ -13880,6 +13882,7 @@ MonoBehaviour:
   skillCD: 1
   fillImage: {fileID: 987142784}
   skillActiveImages: []
+  meshRenderer: {fileID: 0}
   wall:
     serializedVersion: 2
     m_Bits: 1024
@@ -24206,6 +24209,7 @@ MonoBehaviour:
   - {fileID: 849701507}
   - {fileID: 1806623250}
   - {fileID: 7421796699136687284}
+  meshRenderer: {fileID: 2099682634}
 --- !u!1 &1768838678
 GameObject:
   m_ObjectHideFlags: 0
@@ -24840,6 +24844,7 @@ MonoBehaviour:
   skillCD: 1
   fillImage: {fileID: 876580347}
   skillActiveImages: []
+  meshRenderer: {fileID: 0}
   wall:
     serializedVersion: 2
     m_Bits: 1024
@@ -32789,7 +32794,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099682631}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -92954,6 +92959,7 @@ MonoBehaviour:
   - {fileID: 7421796699136687282}
   - {fileID: 289903793}
   - {fileID: 7421796700962273460}
+  meshRenderer: {fileID: 2099682634}
 --- !u!114 &7421796699136687285
 MonoBehaviour:
   m_ObjectHideFlags: 0

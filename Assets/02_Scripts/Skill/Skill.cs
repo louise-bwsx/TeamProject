@@ -16,6 +16,7 @@ public class Skill : MonoBehaviour
     public float skillCD;//射擊間隔
     public Image fillImage;
     public Image[] skillActiveImages;
+    public MeshRenderer meshRenderer;
     protected MobileAttack mobileAttack;
     void Start()
     {
@@ -62,6 +63,8 @@ public class Skill : MonoBehaviour
         skillTimer = 0;
         //使玩家移動限制解除
         mobileAttack.isAttack = false;
+        //指向性技能範圍提示關閉
+        meshRenderer.enabled = false;
         foreach (Image i in skillActiveImages)
         {
             i.enabled = false;

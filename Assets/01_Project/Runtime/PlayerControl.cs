@@ -1,6 +1,5 @@
-﻿using UnityEngine.EventSystems;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -49,7 +48,7 @@ public class PlayerControl : MonoBehaviour
     public int normalAttackDash = 3;
     public LayerMask EnemyLayer;
     public float lastFireTime;
-    public float fireRate=1f;
+    public float fireRate = 1f;
     Vector3 position;
     public Animator animator;
     public bool isRoll;
@@ -61,7 +60,7 @@ public class PlayerControl : MonoBehaviour
         attackTime = 10;
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         stamina = staminaLimit;
-        uIBarControl.SetMaxStamina(staminaLimit);
+        uIBarControl.SetMaxStamina();
         playerAction = GetComponentInChildren<PlayerAction>();
         collider = GetComponentInParent<Collider>();
         playerOptions = FindObjectOfType<PlayerOptions>();
@@ -95,9 +94,9 @@ public class PlayerControl : MonoBehaviour
         Movement.Set(0, 0, 0);
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
-        if (attackTime >= attackSpeed && 
-            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf&& !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf &&
-            !playerFaceDirection.isMagicAttack && getHitEffect.playerHealth>0 && !isRoll)
+        if (attackTime >= attackSpeed &&
+            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf && !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf &&
+            !playerFaceDirection.isMagicAttack && getHitEffect.playerHealth > 0 && !isRoll)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -158,7 +157,7 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("回復存檔");
             PlayerData data = SaveSystem.LoadPlayer();
             getHitEffect.playerHealth = data.Playerhealth;
-            uIBarControl.SetHealth(data.Playerhealth);
+            uIBarControl.SetHealth(data.Playerhealth / data.maxHealth);
             Vector3 SavePosition;
             SavePosition.x = data.position[0];
             SavePosition.y = data.position[1];
@@ -169,14 +168,14 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
         //翻滾
-        if (Input.GetKeyDown(KeyCode.Space) && getHitEffect.playerHealth>0/* && !animator.GetBool("IsAttack")*/)
+        if (Input.GetKeyDown(KeyCode.Space) && getHitEffect.playerHealth > 0/* && !animator.GetBool("IsAttack")*/)
         {
             if (lastFireTime > fireRate)
-            {   
+            {
                 Roll();
                 lastFireTime = 0;
             }
-          
+
         }
         if (isInvincible)
         {
@@ -197,12 +196,12 @@ public class PlayerControl : MonoBehaviour
         if (stamina < staminaLimit)
         {
             stamina += Time.deltaTime * 10;
-            uIBarControl.SetStamina(stamina);
+            uIBarControl.SetStamina(stamina / staminaLimit);
         }
         else
         {
             stamina = staminaLimit;
-            uIBarControl.SetStamina(stamina);
+            uIBarControl.SetStamina(stamina / staminaLimit);
         }
 
         if (Input.GetKeyDown(KeyCode.N))//傳送到指定地點 &場景重置
@@ -257,7 +256,7 @@ public class PlayerControl : MonoBehaviour
             //耐力條 -= 損失耐力
             stamina -= staminaRoll;
             //將損失的耐力顯示在上面
-            uIBarControl.SetStamina(stamina);
+            uIBarControl.SetStamina(stamina / staminaLimit);
             playerAction.Roll();
             //開啟無敵狀態
             isInvincible = true;

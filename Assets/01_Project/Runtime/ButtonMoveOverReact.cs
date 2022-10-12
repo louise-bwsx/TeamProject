@@ -5,11 +5,11 @@ public class ButtonMoveOverReact : MonoBehaviour, IPointerEnterHandler, IPointer
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        AudioManager.Inst.PlaySFX("Click");
+        AudioManager.Inst.PlaySFX("ButtonClick");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        AudioManager.Inst.PlaySFX("Click");
+        AudioManager.Inst.PlaySFX("ButtonClick");
     }
 }

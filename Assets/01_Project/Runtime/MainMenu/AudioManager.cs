@@ -1,10 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Audio;
-using System.Collections.Generic;
-using System.Linq;
-using Sirenix.OdinInspector;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class AudioManager : MonoSingleton<AudioManager>, ILoadData
 {
@@ -12,17 +9,29 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
     [SerializeField] private AudioSource sourceSFX;
     [SerializeField] private Slider sliderBGM;
     [SerializeField] private Slider sliderSFX;
-    [SerializeField] private AudioMixer audioMixer; 
-    [SerializeField] private List<AudioClip> clips = new List<AudioClip>();
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private List<AudioClip> audioClips = new List<AudioClip>();
+    private Dictionary<string, AudioClip> clipsDict = new Dictionary<string, AudioClip>();
 
-    [field: SerializeField] public string currentPlayClipName;
-
-        public float volumeBGM => sliderBGM.value;
+    public float volumeBGM => sliderBGM.value;
     public float volumeSFX => sliderSFX.value;
     private const string MASTERVOLUME = "MasterVolume";
     private const string MUSICVOLUME = "MusicVolume";
     private const string SFXVOLUME = "SFXVolume";
     private const int MULITIPLIER = 30;
+
+    protected override void OnAwake()
+    {
+        foreach (var clip in audioClips)
+        {
+            char[] splitChar = new char[] { '(', ')' };
+            string[] clipName = clip.name.Split(splitChar);
+            //clipName[0] = 
+            //clipName[1] = AfterBossFight
+            //clipName[2] = 井の中の蛙
+            clipsDict.Add(clipName[1], clip);
+        }
+    }
 
     private void Start()
     {
@@ -35,7 +44,7 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
         if (Input.GetMouseButtonDown(0) ||
             Input.GetMouseButtonUp(0))
         {
-            PlaySFX("Click");
+            PlaySFX("ButtonClick");
         }
     }
 
@@ -49,7 +58,6 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
         }
         sourceBGM.clip = findClip;
         sourceBGM.Play();
-        currentPlayClipName = clipName;
     }
 
     public void PlaySFX(string clipName)
@@ -58,8 +66,7 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
         sourceSFX.PlayOneShot(findClip);
     }
 
-        public void Load(object value1, object value2)
-
+    public void Load(object value1, object value2)
     {
         Debug.Log("設定音樂音效");
         SetBGMVolume((float)value1);
@@ -68,12 +75,12 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
 
     private AudioClip FIndClip(string clipName)
     {
-        AudioClip findClip = clips.FirstOrDefault(clip => clip.name.Contains(clipName));
-        if (findClip == null)
+        if (!clipsDict.ContainsKey(clipName))
         {
-            Debug.LogError("找不到此BGM: " + clipName);
+            Debug.LogError("找不到此Audio: " + clipName);
+            return null;
         }
-        return findClip;
+        return clipsDict[clipName];
     }
 
     private void SetBGMVolume(float volume)

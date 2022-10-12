@@ -6,6 +6,7 @@ public enum MenuType
     Welcome,
     Menu,
     Load,
+    Save,
     Settings,
     Tutorial,
     Credit,
@@ -56,6 +57,11 @@ public class MenuManager : MonoSingleton<MenuManager>
     {
         CloseAllMenu();
         menus[(int)type].SetActive(true);
+    }
+
+    public void CloseMenu(MenuType type)
+    {
+        menus[(int)type].SetActive(false);
     }
 
     private void CloseAllMenu()

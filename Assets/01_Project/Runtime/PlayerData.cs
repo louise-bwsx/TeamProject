@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class PlayerData
 {
-    //血量
     public float Playerhealth;
+    public float maxHealth;
     //位置
     public float[] position;
     //物品
@@ -14,6 +12,7 @@ public class PlayerData
     public PlayerData(GetHitEffect playerhealth, Transform playerPosition)
     {
         Playerhealth = playerhealth.playerHealth;
+        maxHealth = playerhealth.maxHealth;
 
         position = new float[3];
         position[0] = playerPosition.position.x;

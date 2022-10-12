@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+
 
 public class GameMenu : MonoBehaviour
 {
@@ -44,11 +42,11 @@ public class GameMenu : MonoBehaviour
             Time.timeScale = 0f;
         }
         else
-        {   
+        {
             //主選單是開著的就把它關掉
             anyWindow[0].SetActive(false);
             if (getHitEffect.playerHealth > 0)
-            { 
+            {
                 Time.timeScale = 1f;
             }
         }
@@ -57,7 +55,7 @@ public class GameMenu : MonoBehaviour
     {
         //綁在button上
         if (getHitEffect.playerHealth > 0)
-        { 
+        {
             Time.timeScale = 1f;
         }
     }

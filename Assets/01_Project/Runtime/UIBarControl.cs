@@ -1,35 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIBarControl : MonoBehaviour
 {
-    public Slider healthSlider;
-    //public Gradient healthGradient;
-    //public Image healthFill;
+    [SerializeField] private Image healthFill;
+    [SerializeField] private Image staminaFill;
 
-    public Slider staminaSlider;
-    //public Gradient staminaGradient;
-    //public Image staminaFill;
-    public GetHitEffect getHitEffect;
-    public void SetMaxHealth(float maxHp)
+    public void OpenUI()
     {
-        healthSlider.maxValue = maxHp;
-        healthSlider.value = maxHp;
+        healthFill.gameObject.SetActive(true);
+        staminaFill.gameObject.SetActive(true);
     }
-    public void SetHealth(float playerHealth)
+
+    public void HideUI()
     {
-        healthSlider.value = playerHealth;
-        //healthFill.color = healthGradient.Evaluate(healthSlider.normalizedValue);//血條變色
+        healthFill.gameObject.SetActive(false);
+        staminaFill.gameObject.SetActive(false);
     }
-    public void SetMaxStamina(float maxStamina)
+
+    public void SetMaxHealth()
     {
-        staminaSlider.maxValue = maxStamina;
-        staminaSlider.value = maxStamina;
+        healthFill.fillAmount = 1;
     }
-    public void SetStamina(float stamina)
+
+    public void SetHealth(float healthPercent)
     {
-        staminaSlider.value = stamina;
+        healthFill.fillAmount = healthPercent;
+    }
+
+    public void SetMaxStamina()
+    {
+        staminaFill.fillAmount = 1;
+    }
+
+    public void SetStamina(float staminaPercent)
+    {
+        staminaFill.fillAmount = staminaPercent;
     }
 }

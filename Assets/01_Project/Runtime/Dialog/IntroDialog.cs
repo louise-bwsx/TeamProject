@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +12,13 @@ public class IntroDialog : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip panelClip;
     public AudioClip walkClip;
-    void Start()
+
+    private void Awake()
+    {
+        AudioManager.Inst.PlayBGM("GameSceneIntro");
+    }
+
+    private void Start()
     {
         introDialog.Add("人類的貪、嗔、癡等，負面能量在世間中形成一股感染");
         introDialog.Add("此種汙染會令其所接觸的人事物極具攻擊性");
@@ -24,18 +29,14 @@ public class IntroDialog : MonoBehaviour
         Time.timeScale = 0;
         dialogText.text = introDialog[0];
     }
-    void Update()
+    private void Update()
     {
         if (dialogImage.activeSelf)
         {
             Time.timeScale = 0;
         }
     }
-    //private void LateUpdate()
-    //{
 
-    //    Time.timeScale = 1;
-    //}
     public void DialogChange()
     {
         dialogState++;
@@ -47,24 +48,7 @@ public class IntroDialog : MonoBehaviour
         {
             dialogImage.SetActive(false);
             Time.timeScale = 1;
-        }
-        if (dialogImage.activeSelf == true)
-        {
-            if (audioSource.clip != panelClip)
-            {
-                audioSource.Stop();
-                audioSource.clip = panelClip;
-                audioSource.Play();
-            }
-        }
-        else if (dialogImage.activeSelf == false)
-        {
-            if (audioSource.clip != walkClip)
-            {
-                audioSource.Stop();
-                audioSource.clip = walkClip;
-                audioSource.Play();
-            }
+            AudioManager.Inst.PlayBGM("AfterGameSceneIntro");
         }
     }
 }

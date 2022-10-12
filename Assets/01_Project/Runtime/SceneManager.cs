@@ -10,6 +10,8 @@ public class SceneManager : MonoSingleton<SceneManager>
     [SerializeField] private Button loadGame1;
     [SerializeField] private Button loadGame2;
     [SerializeField] private Button loadGame3;
+    [SerializeField] private UIBarControl uIBarControl;
+    public string currentScene { get; private set; }
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class SceneManager : MonoSingleton<SceneManager>
     {
         if (async == null)
         {
+            currentProgress = 0;
             return;
         }
         // 進度條需要到達的進度值  
@@ -61,20 +64,24 @@ public class SceneManager : MonoSingleton<SceneManager>
         {
             // 設定為true的時候，如果場景數據加載完畢，就可以自動跳轉場景  
             async.allowSceneActivation = true;
-            currentProgress = 0;
+            //currentProgress = 0;
         }
     }
 
     private void OnSceneLoad(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode)
     {
-        Debug.Log(scene.name);
-        switch (scene.name)
+        //這裡會比Start快
+        currentScene = scene.name;
+        Debug.Log(currentScene);
+        switch (currentScene)
         {
             case "GameScene":
-                AudioManager.Inst.PlayBGM("GameSceneIntro");
+                MenuManager.Inst.CloseMenu(MenuType.Loading);
+                uIBarControl.OpenUI();
                 break;
             case "MenuScene":
                 AudioManager.Inst.PlayBGM("MenuSceneBGM");
+                uIBarControl.HideUI();
                 break;
             default:
                 break;

@@ -5,7 +5,7 @@ public class GetHitEffect : MonoBehaviour
     public float getHitInvincibleTime;
     float getHitInvincible = 1f;
     public int dust = 99999;
-    public float maxHp = 100;
+    public float maxHealth = 100;
     public float playerHealth = 0;
     public HealthBarOnGame healthbarongame;
     public UIBarControl uIBarControl;
@@ -25,9 +25,9 @@ public class GetHitEffect : MonoBehaviour
     {
         characterBase = FindObjectOfType<CharacterBase>();
         dust = CentralData.GetInst().dust;
-        playerHealth = maxHp;
-        uIBarControl.SetMaxHealth(maxHp);//UI身上的血條
-        healthbarongame.SetMaxHealth(maxHp);//人物身上的血條
+        playerHealth = maxHealth;
+        uIBarControl.SetMaxHealth();//UI身上的血條
+        healthbarongame.SetMaxHealth(maxHealth);//人物身上的血條
         RD = GetComponent<Rigidbody>();
     }
 
@@ -65,7 +65,7 @@ public class GetHitEffect : MonoBehaviour
             dust += 5;
             playerHealth += 5;
             Destroy(collision.gameObject);
-            uIBarControl.SetHealth(playerHealth);
+            uIBarControl.SetHealth(playerHealth / maxHealth);
             healthbarongame.SetHealth(playerHealth);
 
         }
@@ -74,7 +74,7 @@ public class GetHitEffect : MonoBehaviour
             dust += 5;
             playerHealth += 5;
             Destroy(collision.gameObject);
-            uIBarControl.SetHealth(playerHealth);
+            uIBarControl.SetHealth(playerHealth / maxHealth);
             healthbarongame.SetHealth(playerHealth);
         }
         if (collision.gameObject.CompareTag("White") && playerHealth > 0)
@@ -82,7 +82,7 @@ public class GetHitEffect : MonoBehaviour
             dust += 5;
             playerHealth += 5;
             Destroy(collision.gameObject);
-            uIBarControl.SetHealth(playerHealth);
+            uIBarControl.SetHealth(playerHealth / maxHealth);
             healthbarongame.SetHealth(playerHealth);
         }
         if (collision.gameObject.CompareTag("Blue") && playerHealth > 0)
@@ -90,7 +90,7 @@ public class GetHitEffect : MonoBehaviour
             dust += 5;
             playerHealth += 5;
             Destroy(collision.gameObject);
-            uIBarControl.SetHealth(playerHealth);
+            uIBarControl.SetHealth(playerHealth / maxHealth);
             healthbarongame.SetHealth(playerHealth);
         }
 
@@ -120,7 +120,7 @@ public class GetHitEffect : MonoBehaviour
                 //將血量輸入到頭頂的UI
                 healthbarongame.SetHealth(playerHealth);
                 //將血量輸入到畫面上的UI
-                uIBarControl.SetHealth(playerHealth);
+                uIBarControl.SetHealth(playerHealth / maxHealth);
             }
         }
     }
@@ -148,7 +148,7 @@ public class GetHitEffect : MonoBehaviour
                 //將血量輸入到頭頂的UI
                 healthbarongame.SetHealth(playerHealth);
                 //將血量輸入到畫面上的UI
-                uIBarControl.SetHealth(playerHealth);
+                uIBarControl.SetHealth(playerHealth / maxHealth);
             }
         }
         //當玩家無敵狀態

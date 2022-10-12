@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public enum MenuType
 {
@@ -8,16 +9,29 @@ public enum MenuType
     Settings,
     Tutorial,
     Credit,
-    Loading
+    Loading,
+    TutorialForButton
 }
 
 public class MenuManager : MonoSingleton<MenuManager>
 {
     [SerializeField] private GameObject[] menus;
-    //private GameObject welcomeImage;
+    [SerializeField] private Button startGame;
+    [SerializeField] private Button loadGame;
+    [SerializeField] private Button settings;
+    [SerializeField] private Button tutorial;
+    [SerializeField] private Button credit;
+    [SerializeField] private Button quitGame;
 
     private void Start()
     {
+        startGame.onClick.AddListener(() => { OpenMenu(MenuType.Tutorial); });
+        loadGame.onClick.AddListener(() => { OpenMenu(MenuType.Load); });
+        settings.onClick.AddListener(() => { OpenMenu(MenuType.Settings); });
+        tutorial.onClick.AddListener(() => { OpenMenu(MenuType.TutorialForButton); });
+        credit.onClick.AddListener(() => { OpenMenu(MenuType.Credit); });
+        quitGame.onClick.AddListener(QuitGame);
+
         OpenMenu(MenuType.Welcome);
     }
 

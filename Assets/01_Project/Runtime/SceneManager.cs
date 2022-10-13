@@ -10,7 +10,6 @@ public class SceneManager : MonoSingleton<SceneManager>
     [SerializeField] private Button loadGame1;
     [SerializeField] private Button loadGame2;
     [SerializeField] private Button loadGame3;
-    [SerializeField] private UIBarControl uIBarControl;
     public string currentScene { get; private set; }
 
     private void Awake()
@@ -34,7 +33,7 @@ public class SceneManager : MonoSingleton<SceneManager>
     //public為了給TutorialEvnetTrigger用
     public void LoadLevel()
     {
-        MenuManager.Inst.OpenMenu(MenuType.Loading);
+        MainMenuController.Inst.OpenMenu(MainMenuType.Loading);
         CentralData.GetInst();
         async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
         //設定讀取完後不能自動跳場景
@@ -75,13 +74,13 @@ public class SceneManager : MonoSingleton<SceneManager>
         Debug.Log(currentScene);
         switch (currentScene)
         {
-            case "GameScene":
-                MenuManager.Inst.CloseMenu(MenuType.Loading);
-                uIBarControl.OpenUI();
-                break;
             case "MenuScene":
                 AudioManager.Inst.PlayBGM("MenuSceneBGM");
-                uIBarControl.HideUI();
+                MainMenuController.Inst.enabled = true;
+                break;
+            case "GameScene":
+                MainMenuController.Inst.CloseMenu(MainMenuType.Loading);
+                MainMenuController.Inst.enabled = false;
                 break;
             default:
                 break;

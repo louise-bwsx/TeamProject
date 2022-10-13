@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerAction : MonoBehaviour
 {
@@ -18,7 +16,7 @@ public class PlayerAction : MonoBehaviour
     public Transform SpikeAttackRightPos;
     SpriteRenderer spriteRenderer;
     GameObject spwanSwordCube;
-    public GameMenu gameMenu;
+    public GameMenuController gameMenu;
     public Transform playerRotation;
 
     public PlayerControl playerControl;
@@ -31,14 +29,19 @@ public class PlayerAction : MonoBehaviour
     public AudioClip dieSFX;
     public PlayerFaceDirection playerFaceDirection;
 
-    void Start()
+    private void Awake()
     {
         playerControl = FindObjectOfType<PlayerControl>();
-        gameMenu = FindObjectOfType<GameMenu>();
+        gameMenu = FindObjectOfType<GameMenuController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         SFXSource = GetComponentInParent<AudioSource>();
+    }
+
+    private void Start()
+    {
         SFXSource.volume = CentralData.GetInst().SFXVol;
     }
+
     void Update()
     {
         animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
@@ -65,7 +68,7 @@ public class PlayerAction : MonoBehaviour
         animator.SetTrigger("Attack");
     }
     public void NormalAttackFX()//動畫Event呼叫
-    {   
+    {
         //生成攻擊範圍
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         Destroy(spwanSwordCube, 0.3f);
@@ -89,7 +92,7 @@ public class PlayerAction : MonoBehaviour
     }
 
     public void SpikeAttack()//動畫Event呼叫
-    { 
+    {
         animator.SetTrigger("Attack_Spike");
         //spawantransform.GetComponent<Collider>().enabled = true;
     }
@@ -108,7 +111,7 @@ public class PlayerAction : MonoBehaviour
         }
         else if (spriteRenderer.flipX == true)
         {
-            
+
             FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
             Destroy(FX, 0.5f);
         }
@@ -118,7 +121,7 @@ public class PlayerAction : MonoBehaviour
     {
         //刪除攻擊範圍
         if (spwanSwordCube != null)
-        { 
+        {
             Destroy(spwanSwordCube);
         }
         spawantransform.GetComponent<Collider>().enabled = false;
@@ -128,7 +131,7 @@ public class PlayerAction : MonoBehaviour
         shadowDestory.SetActive(false);
         BGMSource.clip = dieSFX;
         SFXSource.PlayOneShot(dieSFX);
-        gameMenu.anyWindow[6].SetActive(true);
+        gameMenu.OpenMenu("DiePanel");
         Time.timeScale = 0;
     }
     public void StartMoving()

@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     public PlayerOptions playerOptions;
     public UIBarControl uIBarControl;
     public PlayerFaceDirection playerFaceDirection;
-    public GameMenu gameMenu;
+    public GameMenuController gameMenu;
     public HealthBarOnGame healthbarongame;
     public EquipmentManager equipmentManager;
     public GetHitEffect getHitEffect;
@@ -53,7 +53,15 @@ public class PlayerControl : MonoBehaviour
     public Animator animator;
     public bool isRoll;
 
-    void Start()
+    private void Awake()
+    {
+        playerAction = GetComponentInChildren<PlayerAction>();
+        collider = GetComponentInParent<Collider>();
+        playerOptions = FindObjectOfType<PlayerOptions>();
+        characterBase = FindObjectOfType<CharacterBase>();
+    }
+
+    private void Start()
     {
         lastFireTime = 10f;
         //讓角色一開始可以攻擊
@@ -61,10 +69,6 @@ public class PlayerControl : MonoBehaviour
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         stamina = staminaLimit;
         uIBarControl.SetMaxStamina();
-        playerAction = GetComponentInChildren<PlayerAction>();
-        collider = GetComponentInParent<Collider>();
-        playerOptions = FindObjectOfType<PlayerOptions>();
-        characterBase = FindObjectOfType<CharacterBase>();
         oldPosition = transform.position;
         rayMask = wall & monster;
     }
@@ -95,7 +99,7 @@ public class PlayerControl : MonoBehaviour
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
         if (attackTime >= attackSpeed &&
-            !gameMenu.anyWindow[0].activeSelf && !gameMenu.anyWindow[2].activeSelf && !gameMenu.anyWindow[4].activeSelf && !gameMenu.anyWindow[5].activeSelf && !gameMenu.anyWindow[6].activeSelf &&
+            !gameMenu.IsMenuActive("Menu") && !gameMenu.IsMenuActive("Load") && !gameMenu.IsMenuActive("Save") && !gameMenu.IsMenuActive("Settings") && !gameMenu.IsMenuActive("DiePanel") &&
             !playerFaceDirection.isMagicAttack && getHitEffect.playerHealth > 0 && !isRoll)
         {
             if (Input.GetMouseButtonDown(0))
@@ -128,11 +132,11 @@ public class PlayerControl : MonoBehaviour
             playerOptions.SetMonsterHealthActive();
         }
         //開關背包介面
-        if (Input.GetKeyDown(KeyCode.B) && !gameMenu.anyWindow[0].activeSelf)
+        if (Input.GetKeyDown(KeyCode.B) && !gameMenu.IsMenuActive("Menu"))
         {
             backPackUI.SetActive(!backPackUI.activeSelf);
         }
-        if (Input.GetKeyDown(KeyCode.K) && !gameMenu.anyWindow[0].activeSelf)
+        if (Input.GetKeyDown(KeyCode.K) && !gameMenu.IsMenuActive("Menu"))
         {
             skillUI.SetActive(!skillUI.activeSelf);
         }

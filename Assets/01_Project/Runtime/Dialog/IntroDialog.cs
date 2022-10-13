@@ -12,14 +12,17 @@ public class IntroDialog : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip panelClip;
     public AudioClip walkClip;
+    private GameMenuController gameMenu;
 
     private void Awake()
     {
-        AudioManager.Inst.PlayBGM("GameSceneIntro");
+        gameMenu = GetComponent<GameMenuController>();
     }
 
     private void Start()
     {
+        AudioManager.Inst.PlayBGM("GameSceneIntro");
+        gameMenu.OpenMenu("Dialog");
         introDialog.Add("人類的貪、嗔、癡等，負面能量在世間中形成一股感染");
         introDialog.Add("此種汙染會令其所接觸的人事物極具攻擊性");
         introDialog.Add("而在神社中長期接觸百姓的神明首先被影響");

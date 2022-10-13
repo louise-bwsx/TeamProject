@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +11,7 @@ public class BossDieDialog : MonoBehaviour
     public GameObject dialogImage;
     public Image godImage;
     public GameObject staffImage;
- 
+
     void Start()
     {
         bossDieDialog.Add("天王：啊!");
@@ -44,7 +43,7 @@ public class BossDieDialog : MonoBehaviour
             staffImage.SetActive(true);
         }
         else if (dialogState < bossDieDialog.Count)
-        { 
+        {
             dialogText.text = bossDieDialog[dialogState];
         }
         if (dialogState >= bossDieDialog.Count)

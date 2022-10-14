@@ -1,91 +1,132 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillControl : MonoBehaviour
 {
-    [SerializeField]
-    public Image[] skillBorderList;
-    public Sprite[] skillBorderChange;
-    public Animator animator;
-    public Skill[] skillList;
-    public int CurIdx = 0;
-    public PlayerControl playerControl;
-    public GetHitEffect getHitEffect;
+    [SerializeField] private Image[] skillFrames;
+    [SerializeField] private Sprite[] skillFrameSprites;
+    [field: SerializeField] public int currentIndex { get; private set; }
+    private int previousIndex = 1;
+    private PlayerControl playerControl;
+    private GetHitEffect getHitEffect;
+    [SerializeField] private Animator animator;
+    [field: SerializeField] public Skill[] skillList { get; private set; }
+    /// <summary>
+    /// 給其他Script知道當前發動的是什麼技能
+    /// </summary>
+    public Skill selectSkill { get; private set; }
 
-    void Start()
+    private void Awake()
     {
         getHitEffect = FindObjectOfType<GetHitEffect>();
         playerControl = FindObjectOfType<PlayerControl>();
-        SetPos();
     }
-    void Update()
+
+    private void Start()
     {
-        float move = Input.GetAxis("Mouse ScrollWheel");
-        if (move > 0.0f)
+        ChangeSelectSkillFrame(0);
+    }
+
+    private void Update()
+    {
+        if (playerControl.isAttack || getHitEffect.playerHealth < 0)
         {
-            if (CurIdx > 0) CurIdx--;
-            SetPos();
-        }
-        else if (move < 0.0f)
-        {
-            if (CurIdx < skillBorderList.Length - 1) CurIdx++;
-            SetPos();
-        }
-        //避免抽搐
-        if (!playerControl.isAttack && getHitEffect.playerHealth>0)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && skillList[1].lastFireTime > skillList[1].fireRate)
-            {
-                animator.SetTrigger("Magic");
-                skillList[0] = skillList[1];
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && skillList[2].lastFireTime > skillList[2].fireRate)
-            {
-                animator.SetTrigger("Magic");
-                skillList[0] = skillList[2];
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3) && skillList[3].lastFireTime > skillList[3].fireRate)
-            {
-                animator.SetTrigger("Magic");
-                skillList[0] = skillList[3];
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4) && skillList[4].lastFireTime > skillList[4].fireRate)
-            {
-                animator.SetTrigger("Magic");
-                skillList[0] = skillList[4];
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha5) && skillList[5].lastFireTime > skillList[5].fireRate)
-            {
-                animator.SetTrigger("Magic");
-                skillList[0] = skillList[5];
-            }
-            //滑鼠中鍵的效果
-            if (Input.GetMouseButtonDown(2) && skillList[CurIdx + 1].lastFireTime> skillList[CurIdx+1].fireRate)
-            {
-                //正式版一定要這樣才能讀的到
-                //playerControl.isAttack = true;
-                animator.SetTrigger("Magic");
-                skillList[0] = skillList[CurIdx + 1];
-            }
+            return;
         }
 
-    }
-    public void SetPos()
-    {
-        for (int i = 0; i < skillBorderList.Length; i++)
+        ScrollSelect();
+        KeyboardTriggerSkill();
+        if (Input.GetMouseButtonDown(2))
         {
-            if (i == CurIdx)
+            MiddleMouseButtonTriggerSkill();
+        }
+    }
+
+    public void SkillShoot()
+    {
+        skillList[currentIndex].Shoot();
+    }
+
+    private void MiddleMouseButtonTriggerSkill()
+    {
+        if (skillList[currentIndex].lastFireTime > skillList[currentIndex].fireRate)
+        {
+            //正式版一定要這樣才能讀的到
+            //playerControl.isAttack = true;
+            selectSkill = skillList[currentIndex];
+            animator.SetTrigger("Magic");
+        }
+    }
+
+    private void KeyboardTriggerSkill()
+    {
+        int inputKey = -1;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            inputKey = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            inputKey = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            inputKey = 2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            inputKey = 3;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            inputKey = 4;
+        }
+        if (inputKey == -1)
+        {
+            return;
+        }
+        currentIndex = inputKey;
+        ChangeSelectSkillFrame(currentIndex);
+        if (skillList[inputKey].lastFireTime > skillList[inputKey].fireRate)
+        {
+            selectSkill = skillList[inputKey];
+            animator.SetTrigger("Magic");
+        }
+    }
+
+    private void ScrollSelect()
+    {
+        float scrollSelect = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollSelect != 0)
+        {
+            if (scrollSelect > 0.0f)
             {
-                //buttonList[i].enabled = true;
-                skillBorderList[i].sprite = skillBorderChange[0];
+                currentIndex--;
             }
-            else
+            else if (scrollSelect < 0.0f)
             {
-                //buttonList[i].enabled = false;
-                skillBorderList[i].sprite = skillBorderChange[1];
+                currentIndex++;
+            }
+            if (currentIndex < 0)
+            {
+                currentIndex = 0;
+            }
+            if (currentIndex > skillFrames.Length - 1)
+            {
+                currentIndex = skillFrames.Length - 1;
+            }
+            if (previousIndex != currentIndex)
+            {
+                ChangeSelectSkillFrame(currentIndex);
             }
         }
+        return;
+    }
+
+    private void ChangeSelectSkillFrame(int selectIndex)
+    {
+        skillFrames[selectIndex].sprite = skillFrameSprites[0];
+        skillFrames[previousIndex].sprite = skillFrameSprites[1];
+        previousIndex = selectIndex;
     }
 }

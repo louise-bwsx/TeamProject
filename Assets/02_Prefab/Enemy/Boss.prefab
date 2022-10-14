@@ -237,7 +237,7 @@ Transform:
   - {fileID: 1908698488}
   - {fileID: 1511958577}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &3835812322728355122
 BoxCollider:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 0
-  maxHp: 500
+  maxHp: 700
   numHeldItemMin: 1
   numHeldItemMax: 3
   beAttackTime: 0
@@ -423,7 +423,7 @@ MonoBehaviour:
   bossDieDialogComponent: {fileID: 0}
   ManiMenu: {fileID: 0}
   destroyTime: 2.5
-  destroySoundTime: 1
+  destroySoundTime: 1.1
   timer: 0
   BossInvincibleEffect: {fileID: 713062533747916334, guid: f4271b3ed97230148beb22755ee83404,
     type: 3}
@@ -1565,8 +1565,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18133f6b8d18f1241bedd6345b9c408d, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: c34281f54bea6c3449fda091d5819748, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerFaceDirection : MonoBehaviour
 {
@@ -70,7 +68,7 @@ public class PlayerFaceDirection : MonoBehaviour
     }
     void SkillShoot()//動畫Event控制
     {
-        skillControl.skillList[0].Shoot();
+        skillControl.SkillShoot();
         playerControl.isAttack = false;
         isMagicAttack = false;
     }

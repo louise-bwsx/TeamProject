@@ -1,53 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RemoteSkillPosition : MonoBehaviour
 {
-    int floor;
-    Vector3 playertomouse;
-    SkillControl skillControl;
-    MeshRenderer meshRenderer;
-    public MeshRenderer skillRotation;
-    void Start()
+    private int floor;
+    private Vector3 playertomouse;
+    private MeshRenderer mousePosition;
+    [SerializeField] private PlayerFaceDirection playerFaceDirection;
+    [SerializeField] private SkillControl skillControl;
+    [SerializeField] private MeshRenderer skillRotation;
+
+    private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-        skillControl = FindObjectOfType<SkillControl>();
+        mousePosition = GetComponent<MeshRenderer>();
+    }
+
+    private void Start()
+    {
         floor = LayerMask.GetMask("Floor");
     }
-    void Update()
+    private void Update()
     {
-        //毒水風土火
-        if (Input.GetMouseButton(2) &&
-            skillControl.skillList[skillControl.CurIdx + 1].lastFireTime > skillControl.skillList[skillControl.CurIdx + 1].fireRate)
+        //TODO: 這裡應該還可以移到動畫Event控制
+        if (playerFaceDirection.isMagicAttack)
         {
-            //毒風土
-            if (skillControl.CurIdx + 1 == 1 ||
-               skillControl.CurIdx + 1 == 3 ||
-               skillControl.CurIdx + 1 == 4)
+            switch (skillControl.currentIndex)
             {
-                float cameraraylength = 100;
-                Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit floorcross;
-                if (Physics.Raycast(cameraray, out floorcross, cameraraylength, floor))
-                {
-                    playertomouse = floorcross.point;
-                    playertomouse.y = floorcross.point.y;
-                }
-                meshRenderer.enabled = true;
-                transform.position = playertomouse;
-            }
-            //水火
-            else if (skillControl.CurIdx + 1 == 2 ||
-                     skillControl.CurIdx + 1 == 5)
-            {
-                skillRotation.enabled = true;
+                //毒風土
+                case (int)SkillType.Poison:
+                case (int)SkillType.Wind:
+                case (int)SkillType.Earth:
+                    float cameraraylength = 500;
+                    Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    if (Physics.Raycast(cameraray, out hit, cameraraylength, floor))
+                    {
+                        playertomouse = hit.point;
+                    }
+                    mousePosition.enabled = true;
+                    transform.position = playertomouse;
+                    break;
+                //水火
+                case (int)SkillType.Water:
+                case (int)SkillType.Fire:
+                    skillRotation.enabled = true;
+                    break;
+                default:
+                    break;
             }
         }
         else
         {
             skillRotation.enabled = false;
-            meshRenderer.enabled = false;
+            mousePosition.enabled = false;
         }
     }
 }

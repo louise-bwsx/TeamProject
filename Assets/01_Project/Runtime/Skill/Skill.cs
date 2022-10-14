@@ -1,7 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
+public enum SkillType
+{
+    Poison,
+    Water,
+    Wind,
+    Earth,
+    Fire
+}
 
 public class Skill : MonoBehaviour
 {
@@ -38,7 +45,7 @@ public class Skill : MonoBehaviour
         GameObject bulletObj = Instantiate(skillObject);
         if (bulletObj != null)
         {
-            bulletObj.transform.position = skillPos.position+skillPos.up*0.7f;
+            bulletObj.transform.position = skillPos.position + skillPos.up * 0.7f;
             bulletObj.transform.rotation = skillRotation.rotation;
             Rigidbody BulletObjRigidbody_ = bulletObj.GetComponent<Rigidbody>();
             if (BulletObjRigidbody_ != null)

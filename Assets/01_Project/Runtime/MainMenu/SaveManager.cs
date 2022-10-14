@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
@@ -69,6 +69,7 @@ public class SaveManager : MonoSingleton<SaveManager>
     private void LoadUserSettings()
     {
         Debug.Log("讀取使用者設定");
+        //TODO: 看能不能改成只讀使用者設定
         CentralData centralData = CentralData.LoadData();
         //BGM及音效
         audioMgr.Load(centralData.BGMVol, centralData.SFXVol);

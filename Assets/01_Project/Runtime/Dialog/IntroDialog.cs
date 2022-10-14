@@ -1,48 +1,43 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IntroDialog : MonoBehaviour
 {
-    private List<string> introDialog = new List<string>();
-    private TextMeshPro dialogText;
-    private int dialogState;
-
-    public GameObject dialogImage;
+    [SerializeField] private List<string> introDialog;
+    [SerializeField] private TMP_Text dialogText;
+    [SerializeField] private GameObject dialog;
+    [SerializeField] private Button nextDialogBtn;
     private GameMenuController gameMenu;
+    private int dialogState;
 
     private void Awake()
     {
         gameMenu = GetComponent<GameMenuController>();
-        dialogText = GetComponent<TextMeshPro>();
     }
 
     private void Start()
     {
+        nextDialogBtn.onClick.AddListener(DialogChange);
         AudioManager.Inst.PlayBGM("GameSceneIntro");
-        gameMenu.OpenMenu("Dialog");
-        introDialog.Add("人類的貪、嗔、癡等，負面能量在世間中形成一股感染");
-        introDialog.Add("此種汙染會令其所接觸的人事物極具攻擊性");
-        introDialog.Add("而在神社中長期接觸百姓的神明首先被影響");
-        introDialog.Add("失去山野中各路神明的調和使得災害與飢荒越演越烈");
-        introDialog.Add("於是與山林息息相關的稻荷大神派出使者祓除感染");
-
+        //TODO: 之後想統一在SceneManager.OnSceneLoad呼叫
+        gameMenu.OpenMenu("IntroDialog");
         Time.timeScale = 0;
         dialogText.text = introDialog[0];
     }
 
-    public void DialogChange()
+    private void DialogChange()
     {
         dialogState++;
-        if (dialogState < introDialog.Count)
-        {
-            dialogText.text = introDialog[dialogState];
-        }
         if (dialogState >= introDialog.Count)
         {
-            dialogImage.SetActive(false);
+            dialog.SetActive(false);
             Time.timeScale = 1;
             AudioManager.Inst.PlayBGM("AfterGameSceneIntro");
+            dialogState = 0;
+            return;
         }
+        dialogText.text = introDialog[dialogState];
     }
 }

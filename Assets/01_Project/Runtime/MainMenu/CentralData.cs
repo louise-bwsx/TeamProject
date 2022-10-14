@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.IO;
+﻿using System.IO;
+using UnityEngine;
 
 public class CentralData
 {
@@ -51,7 +51,7 @@ public class CentralData
             CreateData();
         }
         string jsonString = File.ReadAllText(path + filename);
-        Debug.Log(jsonString);
+        //Debug.Log(jsonString);
         inst = JsonUtility.FromJson<CentralData>(jsonString);
         Debug.Log("讀檔成功");
         return inst;

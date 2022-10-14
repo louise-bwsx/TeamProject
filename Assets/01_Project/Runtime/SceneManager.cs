@@ -63,7 +63,7 @@ public class SceneManager : MonoSingleton<SceneManager>
         {
             // 設定為true的時候，如果場景數據加載完畢，就可以自動跳轉場景  
             async.allowSceneActivation = true;
-            //currentProgress = 0;
+            async = null;
         }
     }
 
@@ -71,7 +71,11 @@ public class SceneManager : MonoSingleton<SceneManager>
     {
         //這裡會比Start快
         currentScene = scene.name;
-        Debug.Log(currentScene);
+        Debug.Log("進入Scene: " + currentScene);
+
+        //不能在這邊開關 他會跑到Menu然後不帶任何GameScene的UI
+        //GameMenuController.Inst.enabled = false;
+        //GameMenuController.Inst.enabled = true;
         switch (currentScene)
         {
             case "MenuScene":
@@ -82,6 +86,12 @@ public class SceneManager : MonoSingleton<SceneManager>
             case "GameScene":
                 MainMenuController.Inst.CloseMenu(MainMenuType.Loading);
                 MainMenuController.Inst.enabled = false;
+                ////TODO: 暫時這樣用 在GameMenuController.Awake太慢
+                //if (!gameMenu)
+                //{
+                //    gameMenu = FindObjectOfType<GameMenuController>();
+                //}
+                //gameMenu.OpenMenu("IntroDialog");
                 break;
             default:
                 break;

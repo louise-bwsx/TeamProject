@@ -77,6 +77,7 @@ public class SceneManager : MonoSingleton<SceneManager>
             case "MenuScene":
                 AudioManager.Inst.PlayBGM("MenuSceneBGM");
                 MainMenuController.Inst.enabled = true;
+                MainMenuController.Inst.OpenMenu(MainMenuType.Welcome);
                 break;
             case "GameScene":
                 MainMenuController.Inst.CloseMenu(MainMenuType.Loading);

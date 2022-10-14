@@ -1,22 +1,20 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class IntroDialog : MonoBehaviour
 {
-    public List<string> introDialog;
+    private List<string> introDialog = new List<string>();
+    private TextMeshPro dialogText;
+    private int dialogState;
 
-    public int dialogState = 1;
-    public Text dialogText;
     public GameObject dialogImage;
-    public AudioSource audioSource;
-    public AudioClip panelClip;
-    public AudioClip walkClip;
     private GameMenuController gameMenu;
 
     private void Awake()
     {
         gameMenu = GetComponent<GameMenuController>();
+        dialogText = GetComponent<TextMeshPro>();
     }
 
     private void Start()
@@ -31,13 +29,6 @@ public class IntroDialog : MonoBehaviour
 
         Time.timeScale = 0;
         dialogText.text = introDialog[0];
-    }
-    private void Update()
-    {
-        if (dialogImage.activeSelf)
-        {
-            Time.timeScale = 0;
-        }
     }
 
     public void DialogChange()

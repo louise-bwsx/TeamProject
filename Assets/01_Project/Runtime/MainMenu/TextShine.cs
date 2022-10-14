@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class TextShine : MonoBehaviour
 {
-    public Text text;
     public Image image;
     void Update()
     {

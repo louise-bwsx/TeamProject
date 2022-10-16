@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
@@ -15,7 +13,7 @@ public class EnemyController : MonoBehaviour
     protected Transform target;
     protected NavMeshAgent agent;
     protected Animator animator;
-    public void OnDrawGizmos()
+    public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, longRangeRadius);

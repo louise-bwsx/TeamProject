@@ -61,8 +61,9 @@ public class BossDieDialog : MonoBehaviour
             godImage.enabled = false;
         }
     }
+
     public void LoadScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
+        SceneManager.Inst.LoadLevel("MenuScene");
     }
 }

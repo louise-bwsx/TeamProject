@@ -14,10 +14,10 @@ public class SceneManager : MonoSingleton<SceneManager>
 
     private void Awake()
     {
-        tutorial.onClick.AddListener(LoadLevel);
-        loadGame1.onClick.AddListener(LoadLevel);
-        loadGame2.onClick.AddListener(LoadLevel);
-        loadGame3.onClick.AddListener(LoadLevel);
+        tutorial.onClick.AddListener(() => { LoadLevel("GameScene"); });
+        loadGame1.onClick.AddListener(() => { LoadLevel("GameScene"); });
+        loadGame2.onClick.AddListener(() => { LoadLevel("GameScene"); });
+        loadGame3.onClick.AddListener(() => { LoadLevel("GameScene"); });
     }
 
     private void OnEnable()
@@ -31,11 +31,16 @@ public class SceneManager : MonoSingleton<SceneManager>
     }
 
     //public為了給TutorialEvnetTrigger用
-    public void LoadLevel()
+    public void LoadLevel(string sceneName)
     {
+        if (UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName) == null)
+        {
+            Debug.LogError("找不到該Scene: " + sceneName);
+            return;
+        }
         MainMenuController.Inst.OpenMenu(MainMenuType.Loading);
         CentralData.GetInst();
-        async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
+        async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
         //設定讀取完後不能自動跳場景
         async.allowSceneActivation = false;
         loadingFill.fillAmount = 0;

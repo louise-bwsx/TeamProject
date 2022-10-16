@@ -64,7 +64,7 @@ public class GameMenuController : MonoBehaviour
 
     private void QuitGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        SceneManager.Inst.LoadLevel("MenuScene");
         Time.timeScale = 1f;
     }
 
@@ -88,21 +88,22 @@ public class GameMenuController : MonoBehaviour
         menuDict[menuName].SetActive(false);
     }
 
+    public bool IsMenuActive(string menuName)
+    {
+        Initialize();
+        if (!IsMenuExist(menuName))
+        {
+            return false;
+        }
+        return menuDict[menuName].activeSelf;
+    }
+
     private void CloseAllMenu()
     {
         foreach (var menu in menus)
         {
             menu.SetActive(false);
         }
-    }
-
-    public bool IsMenuActive(string menuName)
-    {
-        if (!IsMenuExist(menuName))
-        {
-            return false;
-        }
-        return menuDict[menuName].activeSelf;
     }
 
     private bool IsMenuExist(string menuName)

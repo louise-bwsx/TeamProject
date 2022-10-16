@@ -23,7 +23,6 @@ public class PlayerControl : MonoBehaviour
     public GameObject miniMap;
     public Transform playerRotation;
     public Transform rollDirection;
-    public new Rigidbody rigidbody;
     public new Collider collider;
     //有關耐力
     public float stamina;
@@ -55,6 +54,7 @@ public class PlayerControl : MonoBehaviour
     public Animator animator;
     public bool isRoll;
 
+    [field: SerializeField] public Rigidbody rigidbody { get; private set; }
     [SerializeField] private LayerMask wall;
     [SerializeField] private LayerMask monster;
     private Vector3 previousPos;
@@ -63,6 +63,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
+        rigidbody = GetComponentInParent<Rigidbody>();
         playerAction = GetComponentInChildren<PlayerAction>();
         collider = GetComponentInParent<Collider>();
         playerOptions = FindObjectOfType<PlayerOptions>();
@@ -81,20 +82,12 @@ public class PlayerControl : MonoBehaviour
         layerMask = wall & monster;
     }
 
-    private void FixedUpdate()//好用的東東
-    {
-        if (moveDirection != Vector3.zero)
-        {
-            rigidbody.MovePosition(rigidbody.position + moveDirection);
-        }
-        //不能用transform因為這個Script跟rigidbody的位置不一樣所以在rigidbody沒有freezePos.y.enable的情況會往上飛
-        //rigidbody.MovePosition(transform.position + Movement);
-    }
-
     private void Update()
     {
-        ws = Input.GetAxis("Vertical");//世界軸
-        ad = Input.GetAxis("Horizontal");
+        //不能用transform因為這個Script跟rigidbody的位置不一樣所以在rigidbody沒有freezePos.y.enable的情況會往上飛
+        //rigidbody.MovePosition(transform.position + Movement);
+        ws = Input.GetAxisRaw("Vertical");//世界軸
+        ad = Input.GetAxisRaw("Horizontal");
         if (isAttack && animator.GetBool("IsAttack"))
         {
             moveDirection.Set(0, 0, 0);
@@ -103,7 +96,11 @@ public class PlayerControl : MonoBehaviour
         {
             moveDirection.Set(-ws, 0f, ad);
         }
-        moveDirection = moveDirection * (moveSpeed + characterBase.charaterStats[(int)CharacterStats.AGI]) * Time.deltaTime;
+        moveDirection.Normalize();
+        if (moveDirection != Vector3.zero)
+        {
+            rigidbody.position += moveDirection * (moveSpeed + characterBase.charaterStats[(int)CharacterStats.AGI]) * Time.deltaTime; ;
+        }
 
         lastFireTime += Time.deltaTime;
         //不懂為什麼這邊原本要Set(0, 0, 0)
@@ -207,26 +204,52 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.N))//傳送到指定地點 &場景重置
         {
-            transform.position = new Vector3(-6.31f, 0, 6.08f);
             SceneManager.Inst.LoadLevel("GameScene");
         }
     }
 
     private void LateUpdate()
     {
-        Vector3 raycastDir = transform.position - previousPos;
-        float distance = Vector3.Distance(previousPos, transform.position);
+        CheckMoveThroughWall();
+        PlayerStandGround();
+    }
+
+    private void CheckMoveThroughWall()
+    {
+        Vector3 raycastDir = rigidbody.position - previousPos;
+        float distance = Vector3.Distance(previousPos, rigidbody.position);
         RaycastHit hit;
         if (Physics.Raycast(previousPos, raycastDir, out hit, distance, layerMask))
         {
             //撞到牆velocity歸零
             rigidbody.velocity = Vector3.zero;
             //將玩家移動到被射線打到的點
-            //rigidbody.MovePosition(hit.point);
-            transform.position = hit.point;
+            rigidbody.position = hit.point;
             Debug.Log("穿牆");
         }
-        previousPos = transform.position;
+        previousPos = rigidbody.position;
+    }
+
+    private void PlayerStandGround()
+    {
+        LayerMask floor = LayerMask.GetMask("Floor");
+        float distance = 5;
+        float lift = 0.5f;
+        RaycastHit hit;
+        //沒有transform.down 負數的選項
+        if (Physics.Raycast(rigidbody.position, -rigidbody.transform.up, out hit, distance, floor))
+        {
+            Vector3 hitLift = hit.point + rigidbody.transform.up * lift;
+            Vector3 originPos = rigidbody.position;
+            originPos.y = hitLift.y;
+            rigidbody.position = originPos;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawLine(rigidbody.position, rigidbody.transform.localPosition.With(y: rigidbody.transform.localPosition.y - 1));
     }
 
     private void Attack(AttackType type)
@@ -279,7 +302,7 @@ public class PlayerControl : MonoBehaviour
     void Roll()
     {
         layerMask = wall;
-        previousPos = transform.position;
+        previousPos = rigidbody.position;
         isAttack = false;
         isRoll = true;
         playerFaceDirection.isMagicAttack = false;

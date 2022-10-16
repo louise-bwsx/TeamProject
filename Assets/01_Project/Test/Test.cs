@@ -4,10 +4,16 @@ public class Test : MonoBehaviour
 {
     [SerializeField] private LayerMask floor;
     [SerializeField] private float distance;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private Vector3 moveDirection;
 
-    private void Start()
+    private void Update()
     {
-        floor = LayerMask.GetMask("Floor");
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.z = Input.GetAxisRaw("Vertical");
+        moveDirection.Normalize();
+
+        transform.position += moveDirection * Time.deltaTime * moveSpeed;
     }
 
     private void LateUpdate()
@@ -16,7 +22,13 @@ public class Test : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position - transform.up * distance, Color.green);
         if (Physics.Raycast(transform.position, -transform.up, out hit, distance, floor))
         {
-            transform.position = hit.point + transform.up * 0.5f;
+            //還是卡 但沒有卡到完全動不了
+            Vector3 hitLift = hit.point + transform.up * 0.5f;
+            //Debug.Log(hitLift);
+            Vector3 originPos = transform.position;
+            originPos.y = hitLift.y;
+            transform.position = originPos;
+            //transform.position = hit.point + transform.up * 0.5f;
             Debug.Log("回到地板上");
         }
     }

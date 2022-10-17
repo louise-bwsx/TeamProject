@@ -14,7 +14,7 @@ public class GameMenuController : MonoBehaviour
     private void Start()
     {
         continueBtn.onClick.AddListener(GameContinue);
-        quitBtn.onClick.AddListener(QuitGame);
+        quitBtn.onClick.AddListener(BackToMainMenu);
     }
 
     private void Update()
@@ -27,10 +27,6 @@ public class GameMenuController : MonoBehaviour
 
     public void EscButton()
     {
-        if (IsMenuActive("IntroDialog"))
-        {
-            return;
-        }
         //當背包是開的 或是 教學介面是開著的
         if (IsMenuActive("Inventory") || IsMenuActive("TutorialImage"))
         {
@@ -39,18 +35,18 @@ public class GameMenuController : MonoBehaviour
             CloseMenu("TutorialImage");
             return;
         }
-        if (!IsMenuActive("Menu"))
+        switch (GameStateManager.Inst.CurrentState)
         {
-            OpenMenu("Menu");
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            CloseMenu("Menu");
-            if (getHitEffect.playerHealth > 0)
-            {
+            case GameState.Gaming:
+                OpenMenu("Menu");
+                GameStateManager.Inst.ChangState(GameState.Pausing);
+                Time.timeScale = 0f;
+                return;
+            case GameState.Pausing:
+                CloseMenu("Menu");
+                GameStateManager.Inst.ChangState(GameState.Gaming);
                 Time.timeScale = 1f;
-            }
+                return;
         }
     }
 
@@ -62,8 +58,9 @@ public class GameMenuController : MonoBehaviour
         }
     }
 
-    private void QuitGame()
+    private void BackToMainMenu()
     {
+        CloseAllMenu();
         SceneManager.Inst.LoadLevel("MenuScene");
         Time.timeScale = 1f;
     }

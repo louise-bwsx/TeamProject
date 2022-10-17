@@ -56,6 +56,7 @@ public class GetHitEffect : MonoBehaviour
             animator.SetTrigger("Dead");
             GetComponent<Collider>().enabled = false;
             AudioManager.Inst.PlayBGM("Dead");
+            GameStateManager.Inst.ChangState(GameState.PlayerDead);
         }
     }
     private void OnCollisionEnter(Collision collision)

@@ -1966,6 +1966,7 @@ GameObject:
   - component: {fileID: 5484134139565430558}
   - component: {fileID: 5484134139565430556}
   - component: {fileID: 6534486581606625190}
+  - component: {fileID: 2339187695282400802}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1987,7 +1988,7 @@ Transform:
   m_Children:
   - {fileID: 5484134141186991618}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5484134139565430559
 MonoBehaviour:
@@ -2290,6 +2291,19 @@ PlayableDirector:
     value: {fileID: 5484134139922915821}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &2339187695282400802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484134139565430547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef477b0fa5ff944c8e8728e9eea35f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentState>k__BackingField: 0
 --- !u!1 &5484134139572529019
 GameObject:
   m_ObjectHideFlags: 0
@@ -8006,7 +8020,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &5484134141186991620
 MonoBehaviour:

@@ -10,6 +10,7 @@ public class SceneManager : MonoSingleton<SceneManager>
     [SerializeField] private Button loadGame1;
     [SerializeField] private Button loadGame2;
     [SerializeField] private Button loadGame3;
+    private GameMenuController gameMenu;
     public string currentScene { get; private set; }
 
     private void Awake()
@@ -38,6 +39,7 @@ public class SceneManager : MonoSingleton<SceneManager>
             Debug.LogError("找不到該Scene: " + sceneName);
             return;
         }
+        GameStateManager.Inst.ChangState(GameState.Loading);
         MainMenuController.Inst.OpenMenu(MainMenuType.Loading);
         CentralData.GetInst();
         async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
@@ -84,19 +86,22 @@ public class SceneManager : MonoSingleton<SceneManager>
         switch (currentScene)
         {
             case "MenuScene":
+                GameStateManager.Inst.ChangState(GameState.MainMenu);
                 AudioManager.Inst.PlayBGM("MenuSceneBGM");
                 MainMenuController.Inst.enabled = true;
                 MainMenuController.Inst.OpenMenu(MainMenuType.Welcome);
                 break;
             case "GameScene":
+                GameStateManager.Inst.ChangState(GameState.Gaming);
                 MainMenuController.Inst.CloseMenu(MainMenuType.Loading);
                 MainMenuController.Inst.enabled = false;
+                AudioManager.Inst.PlayBGM("GameSceneIntro");
                 ////TODO: 暫時這樣用 在GameMenuController.Awake太慢
-                //if (!gameMenu)
-                //{
-                //    gameMenu = FindObjectOfType<GameMenuController>();
-                //}
-                //gameMenu.OpenMenu("IntroDialog");
+                if (!gameMenu)
+                {
+                    gameMenu = FindObjectOfType<GameMenuController>();
+                }
+                gameMenu.OpenMenu("IntroDialog");
                 break;
             default:
                 break;

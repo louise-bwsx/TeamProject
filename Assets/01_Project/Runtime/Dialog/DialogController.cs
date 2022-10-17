@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour
@@ -10,9 +9,10 @@ public class DialogController : MonoBehaviour
     [SerializeField] private TMP_Text dialogText;
     [SerializeField] private GameObject dialogObject;
     [SerializeField] private Button nextDialogBtn;
-    [SerializeField] private string playBGMName;
+    [SerializeField] private string afterFinishThisDialogPlayBGMName;
     [SerializeField] private GameMenuController gameMenu;
-    [SerializeField] private UnityEvent afterFinishThisDialog;
+    [Header("BossDieDialog專用")]
+    [SerializeField] private Image avatarImage;
     private int dialogState;
 
     private void OnEnable()
@@ -32,18 +32,46 @@ public class DialogController : MonoBehaviour
         dialogState++;
         if (dialogState >= dialog.Count)
         {
-            if (playBGMName != null)
+            if (afterFinishThisDialogPlayBGMName != "")
             {
-                AudioManager.Inst.PlayBGM(playBGMName);
+                AudioManager.Inst.PlayBGM(afterFinishThisDialogPlayBGMName);
             }
             dialogState = 0;
             Time.timeScale = 1;
             GameStateManager.Inst.ChangState(GameState.Gaming);
-            afterFinishThisDialog.Invoke();
+            AfterIntroDialog();
             dialogObject.SetActive(false);
             return;
         }
+        ChangeAvatar();
         dialogText.text = dialog[dialogState];
+    }
+
+    //BossDieDialog專用
+    private void ChangeAvatar()
+    {
+        if (gameObject.name != "BossDialog")
+        {
+            return;
+        }
+        if (dialogState == 3 || dialogState == 6 || dialogState == 7)
+        {
+            avatarImage.enabled = true;
+        }
+        else
+        {
+            avatarImage.enabled = false;
+        }
+    }
+
+    //IntroDialog專用
+    private void AfterIntroDialog()
+    {
+        if (gameObject.name != "IntroDialog")
+        {
+            return;
+        }
+        gameMenu.OpenMenu("GodTalkDialog");
     }
 
     //GameSceneIntro:
@@ -63,4 +91,26 @@ public class DialogController : MonoBehaviour
     //"稻荷神：蛤?"
     //"稻荷神：敢頂嘴。"
     //"稻荷神：回來給你好看。"
+
+    //BossSecondState:
+    //"稻荷神：他現在擁有特殊結界。"
+    //"稻荷神：使用組合技吧。"
+    //"稻荷神：往毒裡丟入火或是往風裡丟入火試試看。"
+
+    //BossThirdStateDialog
+    //"稻荷神：小心點別被他的雷刑擊中了。"
+    //"稻荷神：她為了使出此技能已經不能用無敵護罩了。"
+    //"稻荷神：直接將他擊敗吧。"
+
+    //BossDieDialog
+    //"天王：啊!"
+    //"天王：(看了看自己)"
+    //"天王：謝謝你的幫忙。"
+    //"稻荷神：好了，你先回來一趟吧!"
+    //"天王：诶?你給我使者令牌幹嘛?"
+    //"(狐狸轉身離去)"
+    //"稻荷神：你要去哪裡?"
+    //"稻荷神：給我回來!"
+    //"遊戲結束"
+    //"製作人員名單畫面顯現"//這句應該不用加吧?? 不知道為什麼原本有
 }

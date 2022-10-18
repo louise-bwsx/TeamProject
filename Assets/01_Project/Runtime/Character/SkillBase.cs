@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public enum enumSkill
@@ -18,12 +16,12 @@ public class aa
     public Image image;
 }
 public class SkillBase : MonoBehaviour
-{   
+{
     //等級
     public int skillLevelNeed = 1000;
     public int[] skillType = new int[5];
 
-    public int fireSkillLevel=0;
+    public int fireSkillLevel = 0;
     public int poisonSkillLevel = 0;
     public int stoneSkillLevel = 0;
     public int waterSkillLevel = 0;
@@ -47,12 +45,14 @@ public class SkillBase : MonoBehaviour
         stoneSkillLevel = CentralData.GetInst().stoneSkillLevel;
         waterSkillLevel = CentralData.GetInst().waterSkillLevel;
         windSkillLevel = CentralData.GetInst().windSkillLevel;
-        SkillImageChange(fireSkillLevel, fireImage);
-        SkillImageChange(poisonSkillLevel, poisonImage);
-        SkillImageChange(stoneSkillLevel, stoneImage);
-        SkillImageChange(waterSkillLevel, waterImage);
-        SkillImageChange(windSkillLevel, windImage);
+        //TODO: 之後改在SkillWindow
+        //SkillImageChange(fireSkillLevel, fireImage);
+        //SkillImageChange(poisonSkillLevel, poisonImage);
+        //SkillImageChange(stoneSkillLevel, stoneImage);
+        //SkillImageChange(waterSkillLevel, waterImage);
+        //SkillImageChange(windSkillLevel, windImage);
     }
+
     public void SkillImageChange(int skillLevel, Image[] skillImage)
     {
         for (int i = 0; i < skillMaxLevel; i++)
@@ -64,6 +64,7 @@ public class SkillBase : MonoBehaviour
             skillImage[i].enabled = true;
         }
     }
+
     public void SkillLevelUp(int skillType)
     {
         switch ((enumSkill)skillType)

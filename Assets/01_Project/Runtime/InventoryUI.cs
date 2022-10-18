@@ -14,11 +14,11 @@ public class InventoryUI : MonoBehaviour
         //取得所有塞InventorySlot的子物件
         inventorySlots = GetComponentsInChildren<InventorySlot>();
     }
-    void Start()
-    {
-        //預設遊戲開啟時關閉 如果遊戲還沒開始時物件是關閉的會讀不到InventorySlot[]
-        BackpackUI.SetActive(false);
-    }
+    //void Start()
+    //{
+    //    //預設遊戲開啟時關閉 如果遊戲還沒開始時物件是關閉的會讀不到InventorySlot[]
+    //    BackpackUI.SetActive(false);
+    //}
     void UpdateUI()
     {
         //Debug.Log(inventorySlots.Length);//這數字是gameObject InventorySlot

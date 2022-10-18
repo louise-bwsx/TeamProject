@@ -48,11 +48,12 @@ public class SaveManager : MonoSingleton<SaveManager>
         skillBase.stoneSkillLevel = centralData.stoneSkillLevel;
         skillBase.waterSkillLevel = centralData.waterSkillLevel;
         skillBase.windSkillLevel = centralData.windSkillLevel;
-        skillBase.SkillImageChange(skillBase.fireSkillLevel, skillBase.fireImage);
-        skillBase.SkillImageChange(skillBase.poisonSkillLevel, skillBase.poisonImage);
-        skillBase.SkillImageChange(skillBase.stoneSkillLevel, skillBase.stoneImage);
-        skillBase.SkillImageChange(skillBase.waterSkillLevel, skillBase.waterImage);
-        skillBase.SkillImageChange(skillBase.windSkillLevel, skillBase.windImage);
+        //TODO: 之後改在SkillWindow
+        //skillBase.SkillImageChange(skillBase.fireSkillLevel, skillBase.fireImage);
+        //skillBase.SkillImageChange(skillBase.poisonSkillLevel, skillBase.poisonImage);
+        //skillBase.SkillImageChange(skillBase.stoneSkillLevel, skillBase.stoneImage);
+        //skillBase.SkillImageChange(skillBase.waterSkillLevel, skillBase.waterImage);
+        //skillBase.SkillImageChange(skillBase.windSkillLevel, skillBase.windImage);
         //角色數值
         for (int i = 0; i < (int)CharacterStats.Count; i++)
         {

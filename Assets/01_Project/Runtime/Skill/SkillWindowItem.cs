@@ -16,6 +16,7 @@ public class SkillWindowItem : MonoBehaviour
         icon.sprite = iconSprite;
         nameText.text = name;
         infoText.text = info;
+        levelUpBtn.onClick.RemoveAllListeners();
         levelUpBtn.onClick.AddListener(LevelUP);
         this.level = level;
         for (int i = 0; i < level; i++)
@@ -26,6 +27,12 @@ public class SkillWindowItem : MonoBehaviour
 
     private void LevelUP()
     {
+        if (level >= 4)
+        {
+            Debug.Log("等級已達到最大值");
+            return;
+        }
+        Debug.Log(nameText.text + "等級提升");
         level++;
         for (int i = 0; i < level; i++)
         {

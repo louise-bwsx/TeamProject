@@ -28,11 +28,12 @@ public class GameMenuController : MonoBehaviour
     public void EscButton()
     {
         //當背包是開的 或是 教學介面是開著的
-        if (IsMenuActive("Inventory") || IsMenuActive("TutorialImage"))
+        if (IsMenuActive("Inventory") || IsMenuActive("TutorialImage") || IsMenuActive("SkillWindow"))
         {
             //把他們關起來
             CloseMenu("Inventory");
             CloseMenu("TutorialImage");
+            CloseMenu("SkillWindow");
             return;
         }
         switch (GameStateManager.Inst.CurrentState)
@@ -122,7 +123,10 @@ public class GameMenuController : MonoBehaviour
         }
         foreach (GameObject menu in menus)
         {
-            menu.SetActive(false);
+            //註解掉是因為測試SkillWindow時在editMode下手動開啟
+            //進入遊戲後呼叫PlayerControl.Attack()時會確認IsMenuActive然後Initialize
+            //不確定為什麼要關閉
+            //menu.SetActive(false);
             menuDict.Add(menu.name, menu);
         }
         isInitialized = true;

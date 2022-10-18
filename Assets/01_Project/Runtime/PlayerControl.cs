@@ -130,7 +130,7 @@ public class PlayerControl : MonoBehaviour
         {
             backPackUI.SetActive(!backPackUI.activeSelf);
         }
-        if (Input.GetKeyDown(KeyCode.K) && !gameMenu.IsMenuActive("Menu"))
+        if (Input.GetKeyDown(KeyCode.K) && GameStateManager.Inst.CurrentState == GameState.Gaming)
         {
             skillUI.SetActive(!skillUI.activeSelf);
         }

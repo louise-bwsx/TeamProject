@@ -124,14 +124,16 @@ public class PlayerControl : MonoBehaviour
         {
             playerOptions.SetMonsterHealthActive();
         }
-        //開關背包介面
-        if (Input.GetKeyDown(KeyCode.B) && !gameMenu.IsMenuActive("Menu"))
+        if (GameStateManager.Inst.CurrentState == GameState.Gaming)
         {
-            backPackUI.SetActive(!backPackUI.activeSelf);
-        }
-        if (Input.GetKeyDown(KeyCode.K) && GameStateManager.Inst.CurrentState == GameState.Gaming)
-        {
-            skillUI.SetActive(!skillUI.activeSelf);
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                backPackUI.SetActive(!backPackUI.activeSelf);
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                skillUI.SetActive(!skillUI.activeSelf);
+            }
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {

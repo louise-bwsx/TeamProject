@@ -31,7 +31,7 @@ public class BossController : EnemyController
     {
         bossHealth = GetComponentInParent<BossHealth>();
         animator = GetComponentInChildren<Animator>();
-        target = PlayerManager.instance.player.transform;
+        target = PlayerManager.instance.Player.transform;
         if (audioSource == null)
         {
             audioSource = GetComponentInParent<AudioSource>();

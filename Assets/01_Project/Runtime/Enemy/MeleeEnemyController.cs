@@ -13,7 +13,7 @@ public class MeleeEnemyController : EnemyController
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        target = PlayerManager.instance.player.transform;
+        target = PlayerManager.instance.Player.transform;
         agent = GetComponentInParent<NavMeshAgent>();
     }
     void Update()

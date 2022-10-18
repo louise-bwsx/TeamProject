@@ -14,7 +14,7 @@ public class LongRangeEnemyController : EnemyController
     {
         animator = GetComponent<Animator>();
         agent = GetComponentInParent<NavMeshAgent>();
-        target = PlayerManager.instance.player.transform;
+        target = PlayerManager.instance.Player.transform;
     }
     void Update()
     {

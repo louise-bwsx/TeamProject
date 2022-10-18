@@ -7,6 +7,10 @@ public class GameMenuController : MonoBehaviour
     [SerializeField] private GameObject[] menus;
     private Dictionary<string, GameObject> menuDict = new Dictionary<string, GameObject>();
     [SerializeField] private Button continueBtn;
+    [SerializeField] private Button saveBtn;
+    [SerializeField] private Button loadBtn;
+    [SerializeField] private Button settingsBtn;
+    [SerializeField] private Button tutorialBtn;
     [SerializeField] private Button quitBtn;
     private bool isInitialized;
     public GetHitEffect getHitEffect;
@@ -14,6 +18,10 @@ public class GameMenuController : MonoBehaviour
     private void Start()
     {
         continueBtn.onClick.AddListener(GameContinue);
+        saveBtn.onClick.AddListener(() => { OpenMenu("Save"); });
+        loadBtn.onClick.AddListener(() => { OpenMenu("Load"); });
+        settingsBtn.onClick.AddListener(() => { OpenMenu("Settings"); });
+        tutorialBtn.onClick.AddListener(() => { OpenMenu("Tutorial"); });
         quitBtn.onClick.AddListener(BackToMainMenu);
     }
 

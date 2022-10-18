@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public enum CharacterStats
-{ 
+{
     STR,
     DEF,
     AGI,
@@ -26,10 +24,10 @@ public class CharacterBase : MonoBehaviour
         {
             charaterStats[i] = CentralData.GetInst().charaterStats[i];
         }
-        for (int i = 0; i < charaterStats.Length; i++)
-        {
-            charaterNumber[i].text = charaterStats[i].ToString();
-        }
+        //for (int i = 0; i < charaterStats.Length; i++)
+        //{
+        //    charaterNumber[i].text = charaterStats[i].ToString();
+        //}
     }
     public void StatsCheck()
     {

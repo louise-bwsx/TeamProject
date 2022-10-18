@@ -28,10 +28,10 @@ public class GameMenuController : MonoBehaviour
     public void EscButton()
     {
         //當背包是開的 或是 教學介面是開著的
-        if (IsMenuActive("Inventory") || IsMenuActive("TutorialImage") || IsMenuActive("SkillWindow"))
+        if (IsMenuActive("StatsWindow") || IsMenuActive("TutorialImage") || IsMenuActive("SkillWindow"))
         {
             //把他們關起來
-            CloseMenu("Inventory");
+            CloseMenu("StatsWindow");
             CloseMenu("TutorialImage");
             CloseMenu("SkillWindow");
             return;

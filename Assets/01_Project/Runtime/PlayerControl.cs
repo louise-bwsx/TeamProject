@@ -16,7 +16,6 @@ public class PlayerControl : MonoBehaviour
     public PlayerFaceDirection playerFaceDirection;
     public GameMenuController gameMenu;
     public HealthBarOnGame healthbarongame;
-    public EquipmentManager equipmentManager;
     public GetHitEffect getHitEffect;
     public GameObject backPackUI;
     public GameObject skillUI;
@@ -138,12 +137,11 @@ public class PlayerControl : MonoBehaviour
         {
             miniMap.SetActive(!miniMap.activeSelf);
         }
-
         //卸下所有裝備欄裡的裝備
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            equipmentManager.UnequipAll();
-        }
+        //if (Input.GetKeyDown(KeyCode.U))
+        //{
+        //    equipmentManager.UnequipAll();
+        //}
         #region 存檔功能
         if (Input.GetKeyDown(KeyCode.Z))
         {

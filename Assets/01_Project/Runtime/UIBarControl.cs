@@ -28,11 +28,6 @@ public class UIBarControl : MonoBehaviour
         healthFill.fillAmount = healthPercent;
     }
 
-    public void SetMaxStamina()
-    {
-        staminaFill.fillAmount = 1;
-    }
-
     public void SetStamina(float staminaPercent)
     {
         staminaFill.fillAmount = staminaPercent;

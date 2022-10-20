@@ -49,7 +49,7 @@ public class SkillControl : MonoBehaviour
 
     private void MiddleMouseButtonTriggerSkill()
     {
-        if (skillList[currentIndex].lastFireTime > skillList[currentIndex].fireRate)
+        if (skillList[currentIndex].CanShoot())
         {
             //正式版一定要這樣才能讀的到
             //playerControl.isAttack = true;
@@ -87,7 +87,7 @@ public class SkillControl : MonoBehaviour
         }
         currentIndex = inputKey;
         ChangeSelectSkillFrame(currentIndex);
-        if (skillList[inputKey].lastFireTime > skillList[inputKey].fireRate)
+        if (skillList[inputKey].CanShoot())
         {
             selectSkill = skillList[inputKey];
             animator.SetTrigger("Magic");

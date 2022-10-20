@@ -1,26 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RemoteSkill : Skill
 {
-    public LayerMask wall;
+    private LayerMask wall;
+
+    private void Start()
+    {
+        wall = LayerMask.GetMask("Wall");
+    }
+
     public override void Shoot()
     {
         float cameraraylength = 100;
-        RaycastHit wallCross;
-        GameObject bulletObj = Instantiate(skillObject);
-        if (Physics.Raycast(skillRotation.position, (skillPos.position - skillRotation.position), out wallCross, cameraraylength, wall))
+        RaycastHit hit;
+        Rigidbody bulletObj = Instantiate(skillObject);
+        if (Physics.Raycast(skillRotation.position, skillPos.position - skillRotation.position, out hit, cameraraylength, wall))
         {
-            bulletObj.transform.position = wallCross.point;
-            bulletObj.transform.rotation = skillRotation.rotation;
+            bulletObj.position = hit.point;
+            bulletObj.rotation = skillRotation.rotation;
         }
         else
         {
-            bulletObj.transform.position = skillPos.position+skillPos.up*0.13f;
-            bulletObj.transform.rotation = skillRotation.rotation;
+            bulletObj.position = skillPos.position + skillPos.up * 0.13f;
+            bulletObj.rotation = skillRotation.rotation;
         }
-        lastFireTime = 0;
-        playerControl.stamina -= staminaCost;
+        skillCD = 0;
+        //playerControl.stamina -= staminaCost;
     }
 }

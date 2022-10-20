@@ -231,14 +231,14 @@ public class PlayerControl : MonoBehaviour
 
     private void Attack(AttackType type)
     {
+        if (GameStateManager.Inst.CurrentState != GameState.Gaming)
+        {
+            return;
+        }
         //TODO: 會因為點到血條沒辦法攻擊 做個script放在指定UI來判斷
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Debug.Log("點到UI無法攻擊");
-            return;
-        }
-        if (GameStateManager.Inst.CurrentState != GameState.Gaming)
-        {
             return;
         }
         //TODO: 這裡應該可以用PlayerState來判斷 currentPlayerState != PlayerState.Gaming return;

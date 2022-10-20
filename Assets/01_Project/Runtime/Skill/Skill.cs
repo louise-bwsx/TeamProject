@@ -14,10 +14,11 @@ public enum SkillType
 public class Skill : MonoBehaviour
 {
     [SerializeField] protected PlayerStamina stamina;
-    [SerializeField] protected Rigidbody skillObject;
+    //[SerializeField] protected Rigidbody skillObject;
     [SerializeField] protected Transform skillPos;
     [SerializeField] protected Transform skillRotation;
     [SerializeField] protected Image fillImage;
+    [SerializeField] protected string prefabName;
     [SerializeField] protected float staminaCost;
     [SerializeField] protected float destroyTime;
     [SerializeField] protected float skillCD;//最後射擊時間
@@ -28,13 +29,18 @@ public class Skill : MonoBehaviour
 
     public virtual void Shoot()
     {
-        Rigidbody bulletObj = Instantiate(skillObject);
-        bulletObj.position = skillPos.position + skillPos.up * 0.7f;
-        bulletObj.rotation = skillRotation.rotation;
-        bulletObj.AddForce(bulletObj.transform.forward * skillForce);
-        skillCD = 0;
-        Destroy(bulletObj, destroyTime);
-        StartCoroutine(CoolDown());
+        Vector3 spawanPos = skillPos.position + skillPos.up * 0.7f;
+        Quaternion spawnRotation = skillRotation.rotation;
+        GameObject skillObject = ObjectPool.Inst.SpawnFromPool(prefabName, spawanPos, spawnRotation);
+        if (skillObject == null)
+        {
+            return;
+        }
+        if (skillObject.TryGetComponent(out Rigidbody rigidbody))
+        {
+            rigidbody.AddForce(rigidbody.transform.forward * skillForce);
+        }
+        StartCoroutine(StartCoolDown());
         stamina.Cost(staminaCost);
     }
 
@@ -43,8 +49,9 @@ public class Skill : MonoBehaviour
         return skillCD < skillRate;
     }
 
-    protected IEnumerator CoolDown()
+    protected IEnumerator StartCoolDown()
     {
+        skillCD = 0;
         while (true)
         {
             skillCD -= Time.deltaTime;

@@ -20,6 +20,7 @@ public class SkillControl : MonoBehaviour
     {
         getHitEffect = FindObjectOfType<GetHitEffect>();
         playerControl = FindObjectOfType<PlayerControl>();
+        skillList = GetComponentsInChildren<Skill>();
     }
 
     private void Start()

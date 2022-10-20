@@ -13,18 +13,22 @@ public class RemoteSkill : Skill
     {
         float cameraraylength = 100;
         RaycastHit hit;
-        Rigidbody bulletObj = Instantiate(skillObject);
+        Vector3 spawanPos = skillPos.position + skillPos.up * 0.7f;
+        Quaternion spawnRotation = skillRotation.rotation;
+        GameObject skillObject = ObjectPool.Inst.SpawnFromPool(prefabName, spawanPos, spawnRotation);
+        if (skillObject == null)
+        {
+            return;
+        }
         if (Physics.Raycast(skillRotation.position, skillPos.position - skillRotation.position, out hit, cameraraylength, wall))
         {
-            bulletObj.position = hit.point;
-            bulletObj.rotation = skillRotation.rotation;
+            skillObject.transform.position = hit.point;
         }
         else
         {
-            bulletObj.position = skillPos.position + skillPos.up * 0.13f;
-            bulletObj.rotation = skillRotation.rotation;
+            skillObject.transform.position = skillPos.position + skillPos.up * 0.13f;
         }
-        skillCD = 0;
-        //playerControl.stamina -= staminaCost;
+        skillObject.transform.rotation = skillRotation.rotation;
+        StartCoroutine(StartCoolDown());
     }
 }

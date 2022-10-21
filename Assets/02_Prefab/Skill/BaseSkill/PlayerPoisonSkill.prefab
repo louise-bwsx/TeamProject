@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 7327822142298474495}
   - component: {fileID: 4962511003636640933}
   - component: {fileID: 4607675500589964240}
-  - component: {fileID: 4817047116748584068}
-  - component: {fileID: 2967722620818661517}
   - component: {fileID: 5797594257127964777}
+  - component: {fileID: -2763490363159338847}
   m_Layer: 0
   m_Name: PlayerPoisonSkill
   m_TagString: Poison
@@ -148,34 +147,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4817047116748584068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3759059081806054490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4993e91e0006049a21669322282b68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyTime: 3
-  bomb: {fileID: 335328963726010687, guid: c69fc2f219e64b548999c2018156cea8, type: 3}
---- !u!114 &2967722620818661517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3759059081806054490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5ead7c7cbfcb34ba128d0a002f27bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076,
-    type: 3}
 --- !u!54 &5797594257127964777
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -192,6 +163,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-2763490363159338847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3759059081806054490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053bc13025341284a88c7024347fc282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffectObject: {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076,
+    type: 3}
+  hitEffectSpawnTags:
+  - Monster
+  advancedSkllObject: {fileID: 335328963726010687, guid: c69fc2f219e64b548999c2018156cea8,
+    type: 3}
+  advancedDestroyTime: 2
+  onTouchCastAdvancedSkillTags:
+  - FireAttack
+  onTouchDisableTags:
+  - FireAttack
 --- !u!1001 &5399527338794330522
 PrefabInstance:
   m_ObjectHideFlags: 0

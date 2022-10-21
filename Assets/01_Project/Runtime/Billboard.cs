@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    Camera cam;
-    void Start()
+    private Camera cam;
+
+    private void Start()
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        cam = Camera.main;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         transform.LookAt(transform.position + cam.transform.forward);
     }

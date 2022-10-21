@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 4846105461504413356}
   - component: {fileID: 7509864930191051259}
   - component: {fileID: 9047625009181716022}
-  - component: {fileID: 5169551839246334541}
-  - component: {fileID: 3236941293536378892}
   - component: {fileID: 8989415983703176674}
+  - component: {fileID: 1590442464033641150}
   m_Layer: 0
-  m_Name: ShootingTornadoSkill
+  m_Name: FireTornado
   m_TagString: Firetornado
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,33 +146,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5169551839246334541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8129715087960493497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23b1afc2d3d400c4ebec9468fc483306, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 5
---- !u!114 &3236941293536378892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8129715087960493497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5ead7c7cbfcb34ba128d0a002f27bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 1127800687620224913, guid: e80a38c2360d8ff4985c13a37c771fb8,
-    type: 3}
 --- !u!54 &8989415983703176674
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -190,6 +162,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1590442464033641150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129715087960493497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053bc13025341284a88c7024347fc282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffectObject: {fileID: 1127800687620224913, guid: e80a38c2360d8ff4985c13a37c771fb8,
+    type: 3}
+  hitEffectSpawnTags:
+  - EarthSkill
+  - Wall
+  - Monster
+  advancedSkllObject: {fileID: 0}
+  advancedDestroyTime: 0
+  onTouchCastAdvancedSkillTags: []
+  onTouchDisableTags: []
 --- !u!1001 &8464874942808731182
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &20062412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 20062413}
+  m_Layer: 0
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &20062413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20062412}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5484134139565430546}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &844417268578827211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1782,7 @@ GameObject:
   - component: {fileID: 5484134139565430556}
   - component: {fileID: 6534486581606625190}
   - component: {fileID: 2339187695282400802}
+  - component: {fileID: 8121483187823987767}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1770,9 +1802,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 20062413}
   - {fileID: 5484134141186991618}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5484134139565430559
 MonoBehaviour:
@@ -2087,6 +2120,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CurrentState>k__BackingField: 0
+--- !u!114 &8121483187823987767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484134139565430547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1805e30b425c04183d039b3212cdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolParent: {fileID: 20062413}
+  pools:
+  - prefab: {fileID: 3759059081806054490, guid: e39f6a6643204904ca2cd4c74d0d0423,
+      type: 3}
+    size: 5
+  - prefab: {fileID: 4616344345140612486, guid: fb26b4bcfa79f934bb08bfcfa65df40e,
+      type: 3}
+    size: 5
+  - prefab: {fileID: 281075568003997482, guid: 0e798cb63dc8d3d4dab10b5359706650, type: 3}
+    size: 5
+  - prefab: {fileID: 4249042040237307965, guid: deeb2da83d5fb6b49938aa90318cea93,
+      type: 3}
+    size: 5
+  - prefab: {fileID: 6998448547650020761, guid: be7fd81f5cc591545bfca6b3c3057413,
+      type: 3}
+    size: 5
+  - prefab: {fileID: 335328963726010687, guid: c69fc2f219e64b548999c2018156cea8, type: 3}
+    size: 5
+  - prefab: {fileID: 8129715087960493497, guid: 4047be372eb1f694989742d23ad43887,
+      type: 3}
+    size: 5
+  - prefab: {fileID: 1127800687620224913, guid: e80a38c2360d8ff4985c13a37c771fb8,
+      type: 3}
+    size: 5
+  - prefab: {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076,
+      type: 3}
+    size: 5
+  - prefab: {fileID: 6297029440285001474, guid: 3516fbcf44498a34185e44fb015c28a7,
+      type: 3}
+    size: 5
+  - prefab: {fileID: 5919181595379585890, guid: 8c3e7583233109e4ca6e2189c7097cdd,
+      type: 3}
+    size: 5
 --- !u!1 &5484134139572529019
 GameObject:
   m_ObjectHideFlags: 0

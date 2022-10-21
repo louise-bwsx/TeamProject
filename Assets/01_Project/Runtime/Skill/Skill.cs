@@ -14,8 +14,9 @@ public enum SkillType
 public class Skill : MonoBehaviour
 {
     [SerializeField] protected PlayerStamina stamina;
-    //[SerializeField] protected Rigidbody skillObject;
+    //把skillPos能貼合著地板
     [SerializeField] protected Transform skillPos;
+    //把skillRotation能跟著地板一起轉
     [SerializeField] protected Transform skillRotation;
     [SerializeField] protected Image fillImage;
     [SerializeField] protected string prefabName;
@@ -25,13 +26,12 @@ public class Skill : MonoBehaviour
     [SerializeField] protected float skillRate;//射擊間隔
 
     private float skillForce = 500f;
-    //skillCD <= 0 才能施放
 
     public virtual void Shoot()
     {
         Vector3 spawanPos = skillPos.position + skillPos.up * 0.7f;
         Quaternion spawnRotation = skillRotation.rotation;
-        GameObject skillObject = ObjectPool.Inst.SpawnFromPool(prefabName, spawanPos, spawnRotation);
+        GameObject skillObject = ObjectPool.Inst.SpawnFromPool(prefabName, spawanPos, spawnRotation, duration: destroyTime);
         if (skillObject == null)
         {
             return;

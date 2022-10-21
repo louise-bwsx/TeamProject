@@ -2,15 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : MonoSingleton<ObjectPool>
 {
-    #region Singleton
-    public static ObjectPool Inst { get; private set; }
-    private void Awake()
-    {
-        Inst = this;
-    }
-    #endregion
     [System.Serializable]
     public class Pool
     {
@@ -38,11 +31,11 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string objectName, Vector3 pos, Quaternion rotation, Transform parent = null, float duration = 0)
+    //TODO: 超過PoolSize會怎樣?
+    public GameObject SpawnFromPool(string objectName, Vector3 pos, Quaternion rotation, Transform parent = null, float duration = -1)
     {
-        if (!poolDict.ContainsKey(objectName))
+        if (!FindObjectInPoolByName(objectName))
         {
-            Debug.LogError("物件池找不到: " + objectName);
             return null;
         }
         GameObject poolObject = poolDict[objectName].Dequeue();
@@ -50,18 +43,58 @@ public class ObjectPool : MonoBehaviour
         poolObject.transform.SetParent(parent);
         poolObject.transform.position = pos;
         poolObject.transform.rotation = rotation;
-        StartCoroutine(DelayEnqueue(poolObject, duration));
+        StartCoroutine(DelayEnqueueCoroutine(poolObject, duration));
         return poolObject;
     }
 
-    public IEnumerator DelayEnqueue(GameObject poolObject, float duration)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="poolObject">需要回收的物件</param>
+    /// <param name="duration">-1: 不需要回收至物件池<para></para>
+    ///                         0: 立即回收<para></para>
+    ///                        >0: 等待數秒再回收<para></para></param>
+    public void PutBackInPool(GameObject poolObject, float duration)
     {
-        if (duration != 0)
+        StartCoroutine(DelayEnqueueCoroutine(poolObject, duration));
+    }
+
+    private IEnumerator DelayEnqueueCoroutine(GameObject poolObject, float duration)
+    {
+        string name = poolObject.name.Split('(')[0];
+        if (duration == -1)
+        {
+            Debug.Log(name + " 不需要回收至物件池");
+            Destroy(poolObject);
+            yield break;
+        }
+        if (duration > 0)
         {
             yield return new WaitForSeconds(duration);
         }
-        string name = poolObject.name.Split('(')[0];
+        if (!poolObject)
+        {
+            Debug.Log(name + "再等待數秒後 被提早收回");
+            yield break;
+        }
+        if (!FindObjectInPoolByName(name))
+        {
+            Destroy(poolObject);
+            yield break;
+        }
+        Debug.Log(name + ": 物件回收至物件池");
         poolObject.transform.SetParent(poolParent);
+        poolObject.SetActive(false);
         poolDict[name].Enqueue(poolObject);
+    }
+
+    private bool FindObjectInPoolByName(string objectName)
+    {
+        if (!poolDict.ContainsKey(objectName))
+        {
+            Debug.LogError("物件池找不到: " + objectName);
+            return false;
+        }
+        return true;
     }
 }

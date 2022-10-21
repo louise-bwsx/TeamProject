@@ -6,7 +6,7 @@ public class RemoteSkillPosition : MonoBehaviour
     private Vector3 playertomouse;
     private MeshRenderer mousePosition;
     [SerializeField] private PlayerFaceDirection playerFaceDirection;
-    [SerializeField] private SkillControl skillControl;
+    [SerializeField] private SkillSelect skillControl;
     [SerializeField] private MeshRenderer skillRotation;
 
     private void Awake()
@@ -23,7 +23,7 @@ public class RemoteSkillPosition : MonoBehaviour
         //TODO: 這裡應該還可以移到動畫Event控制
         if (playerFaceDirection.isMagicAttack)
         {
-            switch (skillControl.currentIndex)
+            switch (skillControl.CurrentIndex)
             {
                 //毒風土
                 case (int)SkillType.Poison:

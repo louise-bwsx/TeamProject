@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 3048317406798872446}
   - component: {fileID: 2765019739788135977}
   - component: {fileID: 7637880332491083333}
-  - component: {fileID: 8266237742987750857}
-  - component: {fileID: -5494135608032592432}
+  - component: {fileID: -2887176193592219370}
   m_Layer: 0
   m_Name: PlayerWaterSkill
   m_TagString: WaterAttack
@@ -163,7 +162,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8266237742987750857
+--- !u!114 &-2887176193592219370
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,27 +171,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4616344345140612486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35529715c721365459ba88166cc6729d, type: 3}
+  m_Script: {fileID: 11500000, guid: 053bc13025341284a88c7024347fc282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeRadius: 5
-  force: 5000
-  countdown: 1
-  SFX: {fileID: 8300000, guid: 3383f9c6be75aea49a208ea4b546f729, type: 3}
---- !u!114 &-5494135608032592432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4616344345140612486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5ead7c7cbfcb34ba128d0a002f27bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 6297029440285001474, guid: 3516fbcf44498a34185e44fb015c28a7,
+  hitEffectObject: {fileID: 6297029440285001474, guid: 3516fbcf44498a34185e44fb015c28a7,
     type: 3}
+  hitEffectSpawnTags:
+  - EarthSkill
+  - Wall
+  - Monster
+  advancedSkllObject: {fileID: 0}
+  advancedDestroyTime: 0
+  onTouchCastAdvancedSkillTags: []
+  onTouchDisableTags:
+  - WindAttack
+  - EarthSkill
+  - Monster
+  - Wall
 --- !u!1001 &5346880659179371206
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class RemoteSkill : Skill
         RaycastHit hit;
         Vector3 spawanPos = skillPos.position + skillPos.up * 0.7f;
         Quaternion spawnRotation = skillRotation.rotation;
-        GameObject skillObject = ObjectPool.Inst.SpawnFromPool(prefabName, spawanPos, spawnRotation);
+        GameObject skillObject = ObjectPool.Inst.SpawnFromPool(prefabName, spawanPos, spawnRotation, duration: destroyTime);
         if (skillObject == null)
         {
             return;

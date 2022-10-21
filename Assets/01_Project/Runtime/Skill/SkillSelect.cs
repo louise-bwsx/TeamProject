@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillControl : MonoBehaviour
+public class SkillSelect : MonoBehaviour
 {
     [SerializeField] private Image[] skillFrames;
     [SerializeField] private Sprite[] skillFrameSprites;
-    [field: SerializeField] public int currentIndex { get; private set; }
+    [field: SerializeField] public int CurrentIndex { get; private set; }
     private int previousIndex = 1;
     private PlayerControl playerControl;
     private GetHitEffect getHitEffect;
     [SerializeField] private Animator animator;
-    [field: SerializeField] public Skill[] skillList { get; private set; }
+    [field: SerializeField] public Skill[] SkillList { get; private set; }
     /// <summary>
     /// 給其他Script知道當前發動的是什麼技能
     /// </summary>
@@ -20,7 +20,7 @@ public class SkillControl : MonoBehaviour
     {
         getHitEffect = FindObjectOfType<GetHitEffect>();
         playerControl = FindObjectOfType<PlayerControl>();
-        skillList = GetComponentsInChildren<Skill>();
+        SkillList = GetComponentsInChildren<Skill>();
     }
 
     private void Start()
@@ -45,16 +45,16 @@ public class SkillControl : MonoBehaviour
 
     public void SkillShoot()
     {
-        skillList[currentIndex].Shoot();
+        SkillList[CurrentIndex].Shoot();
     }
 
     private void MiddleMouseButtonTriggerSkill()
     {
-        if (skillList[currentIndex].CanShoot())
+        if (SkillList[CurrentIndex].CanShoot())
         {
             //正式版一定要這樣才能讀的到
             //playerControl.isAttack = true;
-            selectSkill = skillList[currentIndex];
+            selectSkill = SkillList[CurrentIndex];
             animator.SetTrigger("Magic");
         }
     }
@@ -86,11 +86,11 @@ public class SkillControl : MonoBehaviour
         {
             return;
         }
-        currentIndex = inputKey;
-        ChangeSelectSkillFrame(currentIndex);
-        if (skillList[inputKey].CanShoot())
+        CurrentIndex = inputKey;
+        ChangeSelectSkillFrame(CurrentIndex);
+        if (SkillList[inputKey].CanShoot())
         {
-            selectSkill = skillList[inputKey];
+            selectSkill = SkillList[inputKey];
             animator.SetTrigger("Magic");
         }
     }
@@ -102,23 +102,23 @@ public class SkillControl : MonoBehaviour
         {
             if (scrollSelect > 0.0f)
             {
-                currentIndex--;
+                CurrentIndex--;
             }
             else if (scrollSelect < 0.0f)
             {
-                currentIndex++;
+                CurrentIndex++;
             }
-            if (currentIndex < 0)
+            if (CurrentIndex < 0)
             {
-                currentIndex = 0;
+                CurrentIndex = 0;
             }
-            if (currentIndex > skillFrames.Length - 1)
+            if (CurrentIndex > skillFrames.Length - 1)
             {
-                currentIndex = skillFrames.Length - 1;
+                CurrentIndex = skillFrames.Length - 1;
             }
-            if (previousIndex != currentIndex)
+            if (previousIndex != CurrentIndex)
             {
-                ChangeSelectSkillFrame(currentIndex);
+                ChangeSelectSkillFrame(CurrentIndex);
             }
         }
         return;

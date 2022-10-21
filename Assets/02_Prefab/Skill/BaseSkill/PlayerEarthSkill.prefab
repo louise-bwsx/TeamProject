@@ -24384,11 +24384,10 @@ GameObject:
   - component: {fileID: 4249042040237307960}
   - component: {fileID: 8476937040281145745}
   - component: {fileID: 4647456897454919995}
-  - component: {fileID: 4249042040237307962}
   - component: {fileID: 9114206496028417269}
   m_Layer: 0
   m_Name: PlayerEarthSkill
-  m_TagString: Skill
+  m_TagString: EarthSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24535,19 +24534,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4249042040237307962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4249042040237307965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31346085870ac1648be4326b9c3adeff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 3
 --- !u!114 &9114206496028417269
 MonoBehaviour:
   m_ObjectHideFlags: 0

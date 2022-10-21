@@ -5,13 +5,13 @@ public class PlayerFaceDirection : MonoBehaviour
     public Transform playerRotation;
     public PlayerControl playerControl;
     SpriteRenderer spriteRenderer;
-    public SkillControl skillControl;
+    public SkillSelect skillControl;
     public bool isMagicAttack;
     public Animator animator;
     void Start()
     {
         animator = GetComponent<Animator>();
-        skillControl = FindObjectOfType<SkillControl>();
+        skillControl = FindObjectOfType<SkillSelect>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Update()

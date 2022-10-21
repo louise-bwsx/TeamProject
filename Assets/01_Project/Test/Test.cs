@@ -7,10 +7,19 @@ public class Test : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Vector3 moveDirection;
 
-    private void OnEnable()
-    {
-        Debug.Log("OnEnable");
-    }
+    //不會因為Destroy(null)報錯
+    //[SerializeField] private GameObject aa;
+    //private void Start()
+    //{
+    //    StartCoroutine(Testing());
+    //    Destroy(aa);
+    //}
+    //private IEnumerator Testing()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //    Destroy(aa);
+    //    Debug.Log(11);
+    //}
 
     private void Update()
     {

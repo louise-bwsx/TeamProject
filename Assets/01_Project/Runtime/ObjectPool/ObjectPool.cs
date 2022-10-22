@@ -9,29 +9,18 @@ public class ObjectPool : MonoSingleton<ObjectPool>
     {
         public string name => prefab.name;
         public GameObject prefab;
-        public int size;
+        public int defaultSize = 5;
     }
 
     [SerializeField] private Transform poolParent;
     [SerializeField] private List<Pool> pools = new List<Pool>();
     private Dictionary<string, Queue<GameObject>> poolDict = new Dictionary<string, Queue<GameObject>>();
+
     private void Start()
     {
-        foreach (Pool pool in pools)
-        {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
-            for (int i = 0; i < pool.size; i++)
-            {
-                GameObject newObject = Instantiate(pool.prefab);
-                newObject.transform.SetParent(poolParent);
-                newObject.SetActive(false);
-                objectPool.Enqueue(newObject);
-            }
-            poolDict.Add(pool.name, objectPool);
-        }
+        Initialize();
     }
 
-    //TODO: 超過PoolSize會怎樣?
     public GameObject SpawnFromPool(string objectName, Vector3 pos, Quaternion rotation, Transform parent = null, float duration = -1)
     {
         if (!FindObjectInPoolByName(objectName))
@@ -39,6 +28,11 @@ public class ObjectPool : MonoSingleton<ObjectPool>
             return null;
         }
         GameObject poolObject = poolDict[objectName].Dequeue();
+        if (poolDict[objectName].Count < 1)
+        {
+            Debug.Log(objectName + "數量不夠1補生成");
+            InstatiateObject(poolObject);
+        }
         poolObject.SetActive(true);
         poolObject.transform.SetParent(parent);
         poolObject.transform.position = pos;
@@ -96,5 +90,31 @@ public class ObjectPool : MonoSingleton<ObjectPool>
             return false;
         }
         return true;
+    }
+
+    private void InstatiateObject(GameObject poolObject)
+    {
+        GameObject newObject = Instantiate(poolObject);
+        newObject.transform.SetParent(poolParent);
+        newObject.SetActive(false);
+        newObject.name = newObject.name.Split('(')[0];
+        poolDict[poolObject.name].Enqueue(newObject);
+    }
+
+    private void Initialize()
+    {
+        foreach (Pool pool in pools)
+        {
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            if (poolDict.ContainsKey(pool.name))
+            {
+                continue;
+            }
+            poolDict.Add(pool.name, objectPool);
+            for (int i = 0; i < pool.defaultSize; i++)
+            {
+                InstatiateObject(pool.prefab);
+            }
+        }
     }
 }

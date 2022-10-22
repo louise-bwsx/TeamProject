@@ -26,7 +26,6 @@ public class Test : MonoBehaviour
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.z = Input.GetAxisRaw("Vertical");
         moveDirection.Normalize();
-
         transform.position += moveDirection * Time.deltaTime * moveSpeed;
     }
 
@@ -47,7 +46,50 @@ public class Test : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        //Gizmos.DrawLine(transform.position, transform.localPosition.With(y: transform.localPosition.y - distance));
-        //Gizmos.DrawLine(transform.position, transform.localPosition.With(y: transform.localPosition.y - distance));
+        Gizmos.DrawLine(transform.position, transform.localPosition.With(y: transform.localPosition.y - 10000));
+    }
+    //Gizmos.DrawLine(transform.position, transform.localPosition.With(y: transform.localPosition.y - distance));
+
+
+    private Vector3 previousPos = Vector3.zero;
+    private bool isGround;
+    private void CalculateFallDamage()
+    {
+        if (previousPos == Vector3.zero)
+        {
+            return;
+        }
+        float result = previousPos.y - transform.position.y;
+        Debug.Log(result);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 10000, LayerMask.GetMask("Ground")))
+        {
+            Debug.Log("hit.point: " + hit.point);
+            Debug.Log("hit.normal: " + hit.normal);
+        }
+        if (result > 5)
+        {
+            Debug.Log("承受掉落傷害");
+        }
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGround = true;
+            CalculateFallDamage();
+        }
+    }
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGround = true;
+            previousPos = transform.position;
+        }
     }
 }

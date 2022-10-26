@@ -14,10 +14,15 @@ public class SkillOnTouch : MonoBehaviour
     private float explodeRadius = 5f;
     private float force = 700f;
     private float explodeTimer = 1f;
+
     private void Start()
     {
-        StartCoroutine(Explode(explodeTimer));
+        if (gameObject.name == "PlayerWaterSkill")
+        {
+            StartCoroutine(Explode(explodeTimer));
+        }
     }
+
     private IEnumerator Explode(float explodeTimer)
     {
         if (explodeTimer > 0)

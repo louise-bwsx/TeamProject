@@ -46,11 +46,11 @@ public class MonsterHealth : MonoBehaviour
     {
         characterBase = FindObjectOfType<CharacterBase>();
         skillBase = FindObjectOfType<SkillBase>();
-        
+
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
         if (audioSource == null)
-        { 
+        {
             audioSource = GetComponent<AudioSource>();
         }
         healthBarOnGame = GetComponentInChildren<HealthBarOnGame>();
@@ -113,7 +113,7 @@ public class MonsterHealth : MonoBehaviour
                         audioSource.PlayOneShot(windHitSFX);
                         break;
                     }
-                    //暫時沒用
+                //暫時沒用
                 //case EnumAttack.poison:
                 //    {
                 //        audioSource.PlayOneShot(poisonHitSFX);
@@ -132,7 +132,7 @@ public class MonsterHealth : MonoBehaviour
             }
         }
         //誰被打到
-        Debug.Log(transform.name);
+        // Debug.Log(transform.name);
         //生成特效
         GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
         //一秒後刪除特效
@@ -170,15 +170,15 @@ public class MonsterHealth : MonoBehaviour
         {
             getHitEffect[0] = getHitEffect[6];
             audioSource.PlayOneShot(waterHitSFX);
-            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.waterSkillLevel*20);
-            Debug.Log("角色數值: " + characterBase.charaterStats[(int)CharacterStats.INT] + "技能傷害: " + skillBase.waterSkillLevel*20);
+            GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.waterSkillLevel * 20);
+            Debug.Log("角色數值: " + characterBase.charaterStats[(int)CharacterStats.INT] + "技能傷害: " + skillBase.waterSkillLevel * 20);
         }
 
         if (other.CompareTag("FireAttack"))
         {
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(fireHitSFX);
-            GetHit(20 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkillLevel*20);
+            GetHit(20 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.fireSkillLevel * 20);
         }
 
         if (other.CompareTag("Bomb"))
@@ -186,7 +186,7 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[2];
             audioSource.PlayOneShot(bombHitSFX);
             hitByTransform = other.transform;
-            GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR]*2);
+            GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2);
         }
         //if (Hp <= 0)
         //{
@@ -203,7 +203,7 @@ public class MonsterHealth : MonoBehaviour
                 beAttackMin = beAttackMax;//最大被打的次數
                 hitByTransform = other.transform;
                 if (beAttackTime > attackTime)
-                { 
+                {
                     GetHit(1 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.poisonSkillLevel * 20);
                     //怪物被受擊的間隔時間歸零
                     beAttackTime = 0;
@@ -224,7 +224,7 @@ public class MonsterHealth : MonoBehaviour
             {
                 getHitEffect[0] = getHitEffect[2];
                 if (beAttackTime > attackTime)
-                { 
+                {
                     GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2 + skillBase.windSkillLevel * 20);
                     //怪物被受擊的間隔時間歸零
                     beAttackTime = 0;

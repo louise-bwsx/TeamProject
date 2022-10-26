@@ -27,6 +27,13 @@ public class Test : MonoBehaviour
         moveDirection.z = Input.GetAxisRaw("Vertical");
         moveDirection.Normalize();
         transform.position += moveDirection * Time.deltaTime * moveSpeed;
+
+        //RaycastHit hit;
+        //if (Physics.Raycast(transform.position, -transform.up, out hit, 10000, LayerMask.GetMask("Ground")))
+        //{
+        //    Debug.Log("hit.point: " + hit.point);
+        //    Debug.Log("hit.normal: " + hit.normal);
+        //}
     }
 
     private void LateUpdate()

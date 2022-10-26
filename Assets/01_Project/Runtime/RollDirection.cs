@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RollDirection : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class RollDirection : MonoBehaviour
     {
         if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") > 0)
         {
-            transform.rotation = Quaternion.Euler(Vector3.up * (-90+45));
+            transform.rotation = Quaternion.Euler(Vector3.up * (-90 + 45));
         }
         else if (Input.GetAxis("Vertical") > 0)
         {
@@ -28,7 +26,7 @@ public class RollDirection : MonoBehaviour
         }
         if (Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") < 0)
         {
-            transform.rotation = Quaternion.Euler(Vector3.up * (90+45));
+            transform.rotation = Quaternion.Euler(Vector3.up * (90 + 45));
         }
         else if (Input.GetAxis("Horizontal") < 0)
         {

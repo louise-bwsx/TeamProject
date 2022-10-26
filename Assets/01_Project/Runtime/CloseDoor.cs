@@ -23,7 +23,6 @@ public class CloseDoor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
             foreach (GameObject i in doorClose)
             {
                 i.SetActive(true);

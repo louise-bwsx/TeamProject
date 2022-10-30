@@ -97,7 +97,7 @@ public class RoomGenerator : MonoBehaviour
         int index = 0;
         for (var i = 0; i < rooms.Count; i++)
         {
-            if (rooms[i].doorNumber > 1)
+            // if (rooms[i].doorNumber > 1)
             {
                 continue;
             }
@@ -118,7 +118,7 @@ public class RoomGenerator : MonoBehaviour
         }
         Vector3 farestPosition = farRoom.transform.position;
         Destroy(rooms[index].gameObject);
-        rooms[index] = Instantiate(roomRrefab[bossRoom], farestPosition, Quaternion.identity).GetComponent<Room>();
+        // rooms[index] = Instantiate(roomRrefab[bossRoom], farestPosition, Quaternion.identity).GetComponent<Room>();
         farRoom.GetComponent<SpriteRenderer>().color = Color.red;
         //最大數值
         // for (int i = 0; i < rooms.Count; i++)

@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class CentralData
 {
-    private static CentralData inst = null;//static 具有唯一性 全域變數
+    private static CentralData inst = null;
     private static string path = Application.dataPath + "/Playerdata/";
     private static string filename = "Record.json";
 
     public static CentralData GetInst()
     {
-        //判斷是否有中繼點
         if (inst == null)
         {
             Debug.Log("inst == null");
@@ -28,6 +27,9 @@ public class CentralData
         return inst;
     }
 
+
+    //TODO: 之後改成path + date
+    //TODO: 跟使用者設定分開
     public void SaveData()
     {
         if (inst == null)
@@ -44,6 +46,7 @@ public class CentralData
         Debug.Log("存檔成功");
     }
 
+    //TODO: 之後改成path + date
     public static CentralData LoadData()
     {
         if (!File.Exists(path + filename))

@@ -6,8 +6,9 @@ public class SaveManager : MonoSingleton<SaveManager>
 {
     GetHitEffect getHitEffect;
     SkillBase skillBase;
-    public AudioManager audioMgr;
     public CharacterBase characterBase;
+    // [SerializeField] private SaveSpace[] saveSpace;
+
     private void Start()
     {
         characterBase = FindObjectOfType<CharacterBase>();
@@ -17,26 +18,28 @@ public class SaveManager : MonoSingleton<SaveManager>
         Debug.Log("SaveManager.Start()");
         LoadUserSettings();
     }
-    public void SaveData(Text dateTime)
+
+    public void SaveData(string date)
     {
         Debug.Log("進行存檔");
+        CentralData centralData = CentralData.GetInst();
         //魔塵
-        CentralData.GetInst().dust = getHitEffect.dust;
+        centralData.dust = getHitEffect.dust;
         //技能等級
-        CentralData.GetInst().fireSkillLevel = skillBase.fireSkillLevel;
-        CentralData.GetInst().poisonSkillLevel = skillBase.poisonSkillLevel;
-        CentralData.GetInst().stoneSkillLevel = skillBase.stoneSkillLevel;
-        CentralData.GetInst().waterSkillLevel = skillBase.waterSkillLevel;
-        CentralData.GetInst().windSkillLevel = skillBase.windSkillLevel;
+        centralData.fireSkillLevel = skillBase.fireSkillLevel;
+        centralData.poisonSkillLevel = skillBase.poisonSkillLevel;
+        centralData.stoneSkillLevel = skillBase.stoneSkillLevel;
+        centralData.waterSkillLevel = skillBase.waterSkillLevel;
+        centralData.windSkillLevel = skillBase.windSkillLevel;
         //角色數值
         for (int i = 0; i < (int)CharacterStats.Count; i++)
         {
-            CentralData.GetInst().charaterStats[i] = characterBase.charaterStats[i];
+            centralData.charaterStats[i] = characterBase.charaterStats[i];
         }
-        dateTime.text = DateTime.Now.ToString();
-        CentralData.GetInst().SaveData();
+        centralData.SaveData();
     }
-    public void LoadData()
+
+    public void LoadData(string loadDate)
     {
         Debug.Log("進行讀檔");
         CentralData centralData = CentralData.LoadData();
@@ -73,7 +76,7 @@ public class SaveManager : MonoSingleton<SaveManager>
         //TODO: 看能不能改成只讀使用者設定
         CentralData centralData = CentralData.LoadData();
         //BGM及音效
-        audioMgr.Load(centralData.BGMVol, centralData.SFXVol);
+        AudioManager.Inst.Load(centralData.BGMVol, centralData.SFXVol);
     }
 
     public void SaveUserSettings()
@@ -81,8 +84,8 @@ public class SaveManager : MonoSingleton<SaveManager>
         Debug.Log("儲存使用者設定 目前只有音樂音效");
         //BGM及音效
         CentralData centralData = CentralData.GetInst();
-        centralData.BGMVol = audioMgr.volumeBGM;
-        centralData.SFXVol = audioMgr.volumeSFX;
+        centralData.BGMVol = AudioManager.Inst.volumeBGM;
+        centralData.SFXVol = AudioManager.Inst.volumeSFX;
         centralData.SaveData();
     }
 }

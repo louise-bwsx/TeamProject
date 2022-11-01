@@ -29,6 +29,7 @@ public class CharacterBase : MonoBehaviour
         //    charaterNumber[i].text = charaterStats[i].ToString();
         //}
     }
+
     public void StatsCheck()
     {
         for (int i = 0; i < (int)CharacterStats.Count; i++)
@@ -40,6 +41,7 @@ public class CharacterBase : MonoBehaviour
             charaterNumber[i].text = charaterStats[i].ToString();
         }
     }
+
     public void StatsUpgrade(int charaterStats)
     {
         if (getHitEffect.dust >= SkillLevelneed)

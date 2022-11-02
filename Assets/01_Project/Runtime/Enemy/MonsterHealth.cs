@@ -38,7 +38,7 @@ public class MonsterHealth : MonoBehaviour
     public Transform hitByTransform;
     public float beAttackMin = 0;//被打的次數
     public float beAttackMax = 20;//被打的最大次數
-    public EnumAttack enumAttack;
+    public SkillType getHitBySkillType;
     public new Collider collider;
     public float pushforce;
 
@@ -65,7 +65,7 @@ public class MonsterHealth : MonoBehaviour
 
         if (hitByTransform == null)
         {
-            enumAttack = EnumAttack.count;
+            getHitBySkillType = SkillType.Null;
         }
         //當受擊狀態結束後
         if (beAttackTime > recoverTime && navMeshAgent != null)
@@ -104,11 +104,11 @@ public class MonsterHealth : MonoBehaviour
             beAttackMin--;
         }
         //受擊音效
-        if (enumAttack != EnumAttack.count)
+        if (getHitBySkillType != SkillType.Count)
         {
-            switch (enumAttack)
+            switch (getHitBySkillType)
             {
-                case EnumAttack.wind:
+                case SkillType.Wind:
                     {
                         audioSource.PlayOneShot(windHitSFX);
                         break;
@@ -119,7 +119,7 @@ public class MonsterHealth : MonoBehaviour
                 //        audioSource.PlayOneShot(poisonHitSFX);
                 //        break;
                 //    }
-                case EnumAttack.fireTornado:
+                case SkillType.FireTornado:
                     {
                         audioSource.PlayOneShot(tornadoHitSFX);
                         break;
@@ -218,7 +218,7 @@ public class MonsterHealth : MonoBehaviour
                     //怪物被受擊的間隔時間歸零
                     beAttackTime = 0;
                 }
-                enumAttack = EnumAttack.wind;
+                getHitBySkillType = SkillType.Wind;
             }
             if (other.CompareTag("Firetornado"))
             {
@@ -229,7 +229,7 @@ public class MonsterHealth : MonoBehaviour
                     //怪物被受擊的間隔時間歸零
                     beAttackTime = 0;
                 }
-                enumAttack = EnumAttack.fireTornado;
+                getHitBySkillType = SkillType.FireTornado;
             }
         }
     }

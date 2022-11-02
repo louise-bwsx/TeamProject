@@ -36,7 +36,7 @@ public class BossHealth : MonsterHealth
     public override void Update()
     {
         base.Update();
-        if (Hp <= 0 && destroyTime>-2)
+        if (Hp <= 0 && destroyTime > -2)
         {
             BGMSource.Stop();
             destroyTime -= Time.deltaTime;
@@ -137,7 +137,7 @@ public class BossHealth : MonsterHealth
                     //怪物被受擊的間隔時間歸零
                     beAttackTime = 0;
                 }
-                enumAttack = EnumAttack.fireTornado;
+                getHitBySkillType = SkillType.FireTornado;
             }
         }
         //Boss血量第三階段此時Boss開始會放大招

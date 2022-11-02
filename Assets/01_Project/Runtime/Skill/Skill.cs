@@ -8,8 +8,20 @@ public enum SkillType
     Water,
     Wind,
     Earth,
-    Fire
+    Fire,
+    FireTornado,
+
+    Null,
+    Count
 }
+
+// public enum SkillType
+// {
+//     Wind,
+//     Poison,
+//     FireTornado,
+//     Count
+// }
 
 public class Skill : MonoBehaviour
 {

@@ -2,7 +2,7 @@
 
 public class RollDirection : MonoBehaviour
 {
-    void Update()
+    private void Update()
     {
         if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") > 0)
         {

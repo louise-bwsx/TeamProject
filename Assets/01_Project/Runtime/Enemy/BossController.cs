@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class BossController : EnemyController
 {
@@ -15,18 +12,19 @@ public class BossController : EnemyController
     public Transform swordPos;
     public GameObject BossSwordEffect;
     public float force = 1500;
-  
+
     public GameObject bossUltArea;
     public GameObject bossFxBossSlash;
     public int bossUltTimes;
     public bool isBossUlt;
     public Vector3 lookDirection;
     public GameObject FX;
-   AudioSource audioSource;
+    AudioSource audioSource;
     public AudioClip bossSwordSFX;
     public AudioClip meleeAttackSFX;
     public AudioClip longRangeAttackSFX;
     public AudioClip bossSkillSFX;
+
     void Start()
     {
         bossHealth = GetComponentInParent<BossHealth>();
@@ -37,6 +35,7 @@ public class BossController : EnemyController
             audioSource = GetComponentInParent<AudioSource>();
         }
     }
+
     void Update()
     {
         //所有只要Boss死後應該做的事
@@ -104,6 +103,7 @@ public class BossController : EnemyController
             }
         }
     }
+
     void BossMeleeAttack()//由AnimatorEvent呼叫
     {
         //刪除劍光
@@ -116,6 +116,7 @@ public class BossController : EnemyController
         //攻擊範圍關閉
         meshRenderer.enabled = false;
     }
+
     void BossLongRangeAttack()//由AnimatorEvent呼叫
     {
         audioSource.PlayOneShot(longRangeAttackSFX);
@@ -123,6 +124,7 @@ public class BossController : EnemyController
         shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
         Destroy(shootingArrow, 2f);
     }
+
     public void BossUltAttack()
     {
         GameObject FX = Instantiate(bossUltAim, transform.position, transform.rotation);
@@ -143,6 +145,7 @@ public class BossController : EnemyController
             isBossUlt = false;
         }
     }
+
     void BossSword()//由AnimatorEvent呼叫
     {
         meshRenderer.enabled = true;

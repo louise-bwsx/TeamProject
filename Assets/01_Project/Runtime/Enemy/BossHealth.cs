@@ -5,7 +5,6 @@ public class BossHealth : MonsterHealth
     public Transform brokenPos;
     public GameObject curseWheel;
     public GameObject brokenWheel;
-    public GameObject bossDieDialogComponent;
     public GameObject ManiMenu;
     public float destroyTime = 2.5f;//環破碎所需要的時間
     public float destroySoundTime = 1f; //Boss血量歸零後幾秒要播放環破碎音效
@@ -15,6 +14,7 @@ public class BossHealth : MonsterHealth
     public Transform BossInvinciblePos;
     public GameObject bossSecondStateDialog;
     public GameObject bossThirdStateDialog;
+    public GameObject bossDieDialogComponent;
     public GameObject invincibleGuard;
     public AudioClip behindWheelBrokeSFX;
     public AudioClip wheelBrokeSFX;

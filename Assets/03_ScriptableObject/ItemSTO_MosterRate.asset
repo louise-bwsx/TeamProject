@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2b890ae2ebdeccefbee62ff9b7e226aeda8b3415c012bd523b69c03f0021ada9
-size 719
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b6e7ee38e484c4fb18411ee2ea2551, type: 3}
+  m_Name: ItemSTO_MosterRate
+  m_EditorClassIdentifier: 
+  Range: 3
+  ItemObjList:
+  - {fileID: 7897515598009919275, guid: 5f1f0f16aedc819448db1a49c0c6a820, type: 3}
+  - {fileID: 1123216377704474719, guid: 6a79a08d8100b204198094549cff1eb0, type: 3}
+  - {fileID: 5893690982550367687, guid: 12ddd35ddbec28d4aae8aa9ea366449b, type: 3}
+  ItemObjRateList:
+  - 1
+  - 1
+  - 1

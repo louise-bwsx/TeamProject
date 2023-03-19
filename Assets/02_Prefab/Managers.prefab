@@ -290,6 +290,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &4601064585531896954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3105775304959275940}
+  m_Layer: 5
+  m_Name: "Save\u4E0D\u8981\u522A\u6389"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3105775304959275940
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601064585531896954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5484134141186991618}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5147678192860954078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,7 +1841,7 @@ Transform:
   - {fileID: 20062413}
   - {fileID: 5484134141186991618}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5484134139565430559
 MonoBehaviour:
@@ -2072,6 +2108,7 @@ MonoBehaviour:
   - {fileID: 5484134140249618384}
   - {fileID: 5484134141009623637}
   - {fileID: 5484134140221872206}
+  - {fileID: 4601064585531896954}
   - {fileID: 5484134140547961898}
   - {fileID: 5484134140560822091}
   - {fileID: 5484134140656324604}
@@ -6885,6 +6922,7 @@ RectTransform:
   - {fileID: 5484134140249618399}
   - {fileID: 5484134141009623634}
   - {fileID: 5484134140221872205}
+  - {fileID: 3105775304959275940}
   - {fileID: 5484134140547961897}
   - {fileID: 5484134140560822090}
   - {fileID: 3427689106150546770}

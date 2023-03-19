@@ -4,7 +4,7 @@ public class PlayerFaceDirection : MonoBehaviour
 {
     public Transform playerRotation;
     public PlayerControl playerControl;
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     public SkillSelect skillControl;
     public bool isMagicAttack;
     public Animator animator;
@@ -16,6 +16,11 @@ public class PlayerFaceDirection : MonoBehaviour
     }
     void Update()
     {
+        if(Time.timeScale ==0)
+        {
+            return;
+        }
+        Vector3 inputDir = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
         if (isMagicAttack)
         {
             if (playerRotation.localEulerAngles.y < 180 && playerRotation.localEulerAngles.y > 0)
@@ -28,17 +33,15 @@ public class PlayerFaceDirection : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
-        if (Time.timeScale != 0 && playerControl.isAttack == false && !animator.GetBool("IsAttack"))
+        if (playerControl.isAttack == false && !animator.GetBool("IsAttack"))
         {
-            if (Input.GetKey(KeyCode.D))
+            if (inputDir.x>0)
             {
                 spriteRenderer.flipX = true;
-                //transform.rotation = Quaternion.Euler(-30, 90, 0);
             }
-            else if (Input.GetKey(KeyCode.A))
+            else if (inputDir.x<0)
             {
                 spriteRenderer.flipX = false;
-                //transform.rotation = Quaternion.Euler(30, 270, 0);
             }
         }
     }

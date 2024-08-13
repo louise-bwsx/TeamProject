@@ -15,15 +15,11 @@ public class SceneManager : MonoSingleton<SceneManager>
 
     private void Awake()
     {
-        tutorial.onClick.AddListener(() => { LoadLevel("GameScene"); });
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
+        //tutorial.onClick.AddListener(() => { LoadLevel("GameScene"); });
         loadGame1.onClick.AddListener(() => { LoadLevel("GameScene"); });
         loadGame2.onClick.AddListener(() => { LoadLevel("GameScene"); });
         loadGame3.onClick.AddListener(() => { LoadLevel("GameScene"); });
-    }
-
-    private void OnEnable()
-    {
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
     }
 
     private void OnDisable()

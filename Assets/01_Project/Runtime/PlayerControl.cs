@@ -61,6 +61,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         rigidbody = GetComponentInParent<Rigidbody>();
         playerAction = GetComponentInChildren<PlayerAction>();
         collider = GetComponentInParent<Collider>();

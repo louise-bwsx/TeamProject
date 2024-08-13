@@ -94,11 +94,6 @@ public class GetHitEffect : MonoBehaviour
             uIBarControl.SetHealth(playerHealth / maxHealth);
             healthbarongame.SetHealth(playerHealth);
         }
-
-        //else if (collision.gameObject.CompareTag("Item"))
-        //{
-        //    collision.gameObject.GetComponent<ItemPickup>().PickUp();
-        //}
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -24,16 +24,27 @@ public class MainMenuController : MonoSingleton<MainMenuController>
     [SerializeField] private Button credit;
     [SerializeField] private Button quitGame;
 
+    [SerializeField] private Button tutorialBackgrounBtn;
+    [SerializeField] private Image tutorialImage;
+    [SerializeField] private Sprite pcTutorial;
+    [SerializeField] private Sprite mobileTutorial;
+    private bool isStarting;
+
     private void Start()
     {
-        startGame.onClick.AddListener(() => { OpenMenu(MainMenuType.Tutorial); });
+        startGame.onClick.AddListener(StartBtnOnClick);
         loadGame.onClick.AddListener(() => { OpenMenu(MainMenuType.Load); });
         settings.onClick.AddListener(() => { OpenMenu(MainMenuType.Settings); });
-        tutorial.onClick.AddListener(() => { OpenMenu(MainMenuType.TutorialForButton); });
+        tutorial.onClick.AddListener(() => { OpenMenu(MainMenuType.Tutorial); });
+        tutorialBackgrounBtn.onClick.AddListener(TutorialBackgroundBtnOnClick);
         credit.onClick.AddListener(() => { OpenMenu(MainMenuType.Credit); });
         quitGame.onClick.AddListener(QuitGame);
 
-        OpenMenu(MainMenuType.Welcome);
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MenuScene")
+        {
+            OpenMenu(MainMenuType.Welcome);
+        }
+        ChangeTutorialSprite();
     }
 
     private void Update()
@@ -44,7 +55,7 @@ public class MainMenuController : MonoSingleton<MainMenuController>
         }
     }
 
-    public void EscButton()
+    private void EscButton()
     {
         if (menus[(int)MainMenuType.Menu].activeSelf)
         {
@@ -80,7 +91,7 @@ public class MainMenuController : MonoSingleton<MainMenuController>
         }
     }
 
-    public void QuitGame()
+    private void QuitGame()
     {
         Debug.Log("QUIT!");
         Application.Quit();
@@ -94,5 +105,35 @@ public class MainMenuController : MonoSingleton<MainMenuController>
             return false;
         }
         return true;
+    }
+
+    private void StartBtnOnClick()
+    {
+        isStarting = true;
+        OpenMenu(MainMenuType.Tutorial);
+    }
+
+    private void TutorialBackgroundBtnOnClick()
+    {
+        Debug.Log(isStarting);
+        if (isStarting)
+        {
+            SceneManager.Inst.LoadLevel("GameScene");
+            return;
+        }
+        OpenMenu(MainMenuType.Menu);
+    }
+
+    private void ChangeTutorialSprite()
+    {
+        if (Application.platform == RuntimePlatform.Android ||
+            Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            tutorialImage.sprite = mobileTutorial;
+        }
+        else
+        {
+            tutorialImage.sprite = pcTutorial;
+        }
     }
 }

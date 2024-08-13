@@ -30,7 +30,7 @@ public class CentralData
 
     //TODO: 之後改成path + date
     //TODO: 跟使用者設定分開
-    public void SaveData()
+    public static void SaveData()
     {
         if (inst == null)
         {

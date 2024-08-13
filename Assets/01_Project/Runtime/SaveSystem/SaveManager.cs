@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
@@ -36,7 +34,7 @@ public class SaveManager : MonoSingleton<SaveManager>
         {
             centralData.charaterStats[i] = characterBase.charaterStats[i];
         }
-        centralData.SaveData();
+        CentralData.SaveData();
     }
 
     public void LoadData(string loadDate)
@@ -86,6 +84,6 @@ public class SaveManager : MonoSingleton<SaveManager>
         CentralData centralData = CentralData.GetInst();
         centralData.BGMVol = AudioManager.Inst.volumeBGM;
         centralData.SFXVol = AudioManager.Inst.volumeSFX;
-        centralData.SaveData();
+        CentralData.SaveData();
     }
 }

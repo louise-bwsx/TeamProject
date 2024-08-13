@@ -13,15 +13,12 @@ public class AttackEndState : StateMachineBehaviour
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
+    //{ 
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    //不能刪跟動作連貫有關
-    //    animator.SetBool("IsAttack", false);
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

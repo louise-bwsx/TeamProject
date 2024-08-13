@@ -31,6 +31,7 @@ public class PlayerAction : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         playerControl = FindObjectOfType<PlayerControl>();
         gameMenu = FindObjectOfType<GameMenuController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -42,7 +43,7 @@ public class PlayerAction : MonoBehaviour
         SFXSource.volume = CentralData.GetInst().SFXVol;
     }
 
-    void Update()
+    private void Update()
     {
         animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
         if (Input.GetAxis("Horizontal") != 0)
@@ -54,6 +55,7 @@ public class PlayerAction : MonoBehaviour
             animator.SetBool("Walk", false);
         }
     }
+
     public void Roll()
     {
         animator.SetTrigger("Roll");
@@ -67,12 +69,14 @@ public class PlayerAction : MonoBehaviour
         //動畫
         animator.SetTrigger("Attack");
     }
+
     public void NormalAttackFX()//動畫Event呼叫
     {
         //生成攻擊範圍
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         Destroy(spwanSwordCube, 0.3f);
     }
+
     public void NormalAttackEffect()
     {
         //音效
@@ -96,6 +100,7 @@ public class PlayerAction : MonoBehaviour
         animator.SetTrigger("Attack_Spike");
         //spawantransform.GetComponent<Collider>().enabled = true;
     }
+
     public void SpikeAttackFX()//動畫Event呼叫
     {
         //音效
@@ -117,6 +122,7 @@ public class PlayerAction : MonoBehaviour
         }
         Destroy(spwanSwordCube, 0.3f);
     }
+
     public void DestroySword()//動畫Event呼叫
     {
         //刪除攻擊範圍
@@ -126,6 +132,7 @@ public class PlayerAction : MonoBehaviour
         }
         spawantransform.GetComponent<Collider>().enabled = false;
     }
+
     public void Die()//動畫Event呼叫
     {
         shadowDestory.SetActive(false);
@@ -134,14 +141,17 @@ public class PlayerAction : MonoBehaviour
         gameMenu.OpenMenu("DiePanel");
         Time.timeScale = 0;
     }
+
     public void StartMoving()
     {
         playerControl.rigidbody.velocity = playerControl.playerRotation.forward * playerControl.normalAttackDash;
     }
+
     public void StopMoveing()
     {
         playerControl.rigidbody.velocity = Vector3.zero;
     }
+
     public void RollCancelAttack()
     {
         animator.SetBool("IsAttack", false);

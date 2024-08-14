@@ -97,7 +97,7 @@ public class MobileStats : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         //碰到牆不能穿牆
-        if (other.CompareTag("Block") || other.CompareTag("Wall"))
+        if (other.CompareTag("Wall"))
         {
             gameObject.GetComponent<Collider>().isTrigger = false;
         }

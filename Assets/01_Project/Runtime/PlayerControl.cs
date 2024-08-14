@@ -20,16 +20,15 @@ public class PlayerControl : MonoBehaviour
     public GameObject statsWindow;
     public GameObject skillUI;
     public GameObject miniMap;
-    public Transform playerRotation;
-    public Transform rollDirection;
+    [SerializeField] private Transform faceDirection;
     public new Collider collider;
     //有關耐力
     [SerializeField] private PlayerStamina stamina;
     //有關移動
     public int moveSpeed = 5;
     public bool isInvincible = false;//無敵狀態
-    float ws;
-    float ad;
+    private float ws;
+    private float ad;
     //有關翻滾
     private float rollCostStamina = 10;
     float rollTime = 0f;//被存入的時間
@@ -271,7 +270,7 @@ public class PlayerControl : MonoBehaviour
 
     private void SpikeAttack()
     {
-        rigidbody.velocity = playerRotation.forward * spikeAttackDash;
+        rigidbody.velocity = faceDirection.forward * spikeAttackDash;
         playerAction.SpikeAttack();
     }
 
@@ -294,7 +293,7 @@ public class PlayerControl : MonoBehaviour
         playerAction.Roll();
         //開啟無敵狀態
         isInvincible = true;
-        rigidbody.velocity = rollDirection.forward * rollDistence;
+        rigidbody.velocity = faceDirection.forward * rollDistence;
         //讓玩家可以穿過怪物
         //collider.isTrigger = true;
         rollCD = rollRate;

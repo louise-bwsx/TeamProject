@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class LookAtCursor : MonoBehaviour
@@ -10,6 +7,7 @@ public class LookAtCursor : MonoBehaviour
     public Vector3 playertomouse;
     public Quaternion rotationangle;
     MobileStats mobileStats;
+
     void Start()
     {
         mobileStats = FindObjectOfType<MobileStats>();
@@ -25,14 +23,14 @@ public class LookAtCursor : MonoBehaviour
         float cameraraylength = 500;
         Ray cameraray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit floorcross;
-        if (mobileStats.hp>0 &&(Physics.Raycast(cameraray, out floorcross, cameraraylength, floor)))
+        if (mobileStats.hp > 0 && (Physics.Raycast(cameraray, out floorcross, cameraraylength, floor)))
         {
             playertomouse = floorcross.point - transform.position;
             playertomouse.y = 0;
             rotationangle = Quaternion.LookRotation(playertomouse);
             transform.rotation = rotationangle;
         }
-            
+
         //會變成只轉z軸
         //transform.LookAt(Input.mousePosition);
 

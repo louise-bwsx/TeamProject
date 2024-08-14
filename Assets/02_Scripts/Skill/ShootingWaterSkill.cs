@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootingWaterSkill : MonoBehaviour
 {
@@ -38,7 +36,7 @@ public class ShootingWaterSkill : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Monster") || other.CompareTag("Wall")|| other.CompareTag("Skill"))
+        if (other.CompareTag("Monster") || other.CompareTag("Wall"))
         {
             Explode();
         }

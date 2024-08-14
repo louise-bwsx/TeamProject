@@ -20,6 +20,7 @@ public class RemoteSkillPosition : MonoBehaviour
     }
     private void Update()
     {
+        //TODOError: 沒辦法使用技能特效
         //TODO: 這裡應該還可以移到動畫Event控制
         if (playerFaceDirection.isMagicAttack)
         {

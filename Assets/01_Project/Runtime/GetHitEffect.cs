@@ -31,7 +31,6 @@ public class GetHitEffect : MonoBehaviour
         RD = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (getHitInvincibleTime > 0f)
@@ -126,7 +125,7 @@ public class GetHitEffect : MonoBehaviour
         //{
         //    other.GetComponent<ItemPickup>().PickUp();
         //}
-        if (other.CompareTag("Block") || other.CompareTag("Wall"))
+        if (other.CompareTag("Wall"))
         {
             gameObject.GetComponent<Collider>().isTrigger = false;
         }
@@ -151,7 +150,7 @@ public class GetHitEffect : MonoBehaviour
         else if (playerControl.isInvincible)
         {
             //尚未實作
-            Debug.Log("攻擊力*3");
+            //Debug.Log("攻擊力*3");
             attackBuff = true;
         }
     }

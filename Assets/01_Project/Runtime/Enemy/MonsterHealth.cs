@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class MonsterHealth : MonoBehaviour
@@ -161,14 +158,9 @@ public class MonsterHealth : MonoBehaviour
             getHitEffect[0] = getHitEffect[1];
             GetHit(15 + characterBase.charaterStats[(int)CharacterStats.STR]);
         }
-        if (other.CompareTag("Skill"))
-        {
-            getHitEffect[0] = getHitEffect[5];
-            GetHit(0);
-        }
         if (other.CompareTag("WaterAttack"))
         {
-            getHitEffect[0] = getHitEffect[6];
+            getHitEffect[0] = getHitEffect[5];
             audioSource.PlayOneShot(waterHitSFX);
             GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + skillBase.waterSkillLevel * 20);
             Debug.Log("角色數值: " + characterBase.charaterStats[(int)CharacterStats.INT] + "技能傷害: " + skillBase.waterSkillLevel * 20);
@@ -188,10 +180,6 @@ public class MonsterHealth : MonoBehaviour
             hitByTransform = other.transform;
             GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2);
         }
-        //if (Hp <= 0)
-        //{
-        //    collider.enabled = false;
-        //}
     }
     public virtual void OnTriggerStay(Collider other)
     {

@@ -20,6 +20,13 @@ public class DialogController : MonoBehaviour
         GameStateManager.Inst.ChangState(GameState.Dialog);
         Time.timeScale = 0;
         dialogText.text = dialog[0];
+
+        //測試用打開 跳過開頭劇情
+        //dialogState = 0;
+        //Time.timeScale = 1;
+        //GameStateManager.Inst.ChangState(GameState.Gaming);
+        //AfterIntroDialog();
+        //dialogObject.SetActive(false);
     }
 
     private void Start()

@@ -19,7 +19,7 @@ public class PlayerAction : MonoBehaviour
     public GameMenuController gameMenu;
     public Transform playerRotation;
 
-    public PlayerControl playerControl;
+    private PlayerControl playerControl;
     public AudioSource BGMSource;
     public AudioSource SFXSource;//音效放置給所有怪物存取音效
     //public AudioClip walkSFX;//走路音效
@@ -32,7 +32,7 @@ public class PlayerAction : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        playerControl = FindObjectOfType<PlayerControl>();
+        playerControl = GetComponent<PlayerControl>();
         gameMenu = FindObjectOfType<GameMenuController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         SFXSource = GetComponentInParent<AudioSource>();
@@ -95,6 +95,8 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
+    //TODOError: 施法動畫被分段了 本來Magic 被分成Magic_Prepare Magic_Shoot Callback 也沒設定
+    //TODOWarning: Roll動畫多了一個Event RollStop不確定是否正確
     public void SpikeAttack()//動畫Event呼叫
     {
         animator.SetTrigger("Attack_Spike");
@@ -109,14 +111,13 @@ public class PlayerAction : MonoBehaviour
         //攻擊範圍
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
         //攻擊特效
-        if (spriteRenderer.flipX == false)
+        if (spriteRenderer.flipX)
         {
             FX = Instantiate(SpikeAttackEffectLeft, SpikeAttackLeftPos.position, SpikeAttackLeftPos.rotation);
             Destroy(FX, 0.5f);
         }
-        else if (spriteRenderer.flipX == true)
+        else if (!spriteRenderer.flipX == true)
         {
-
             FX = Instantiate(SpikeAttackEffectRight, SpikeAttackRightPos.position, SpikeAttackRightPos.rotation);
             Destroy(FX, 0.5f);
         }
@@ -144,7 +145,7 @@ public class PlayerAction : MonoBehaviour
 
     public void StartMoving()
     {
-        playerControl.rigidbody.velocity = playerControl.playerRotation.forward * playerControl.normalAttackDash;
+        playerControl.rigidbody.velocity = playerFaceDirection.playerRotation.forward * playerControl.normalAttackDash;
     }
 
     public void StopMoveing()

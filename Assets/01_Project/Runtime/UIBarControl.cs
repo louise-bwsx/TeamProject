@@ -6,6 +6,11 @@ public class UIBarControl : MonoBehaviour
     [SerializeField] private Image healthFill;
     [SerializeField] private Image staminaFill;
 
+    public void Init(PlayerStamina playerStamina)
+    {
+        playerStamina.OnStaminaChange.AddListener(SetStamina);
+    }
+
     public void OpenUI()
     {
         healthFill.gameObject.SetActive(true);

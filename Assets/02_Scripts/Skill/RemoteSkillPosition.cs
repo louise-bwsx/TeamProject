@@ -12,15 +12,15 @@ public class RemoteSkillPosition : MonoBehaviour
     public bool isTouch;
     public MobileSkillChoose mobileSkillChoose;
 
-    int floor;
-    Vector3 originPosition;
+    private int floor;
+    private Vector3 originPosition;
 
-    void Start()
+    private void Start()
     {
         mobileSkillChoose = FindObjectOfType<MobileSkillChoose>();
         floor = LayerMask.GetMask("Floor");
     }
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         //範圍鎖定失敗
         if (isTouch /*&& Vector3.Distance(transform.position,playerSprite.position)< maxDistence*/)
@@ -51,6 +51,7 @@ public class RemoteSkillPosition : MonoBehaviour
             }
         }
     }
+
     public void SetSkillPosition(bool isTouch)
     {
         if (mobileSkillChoose.skillList[0].CanShoot())

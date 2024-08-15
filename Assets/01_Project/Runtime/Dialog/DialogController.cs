@@ -17,16 +17,18 @@ public class DialogController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameStateManager.Inst.ChangState(GameState.Dialog);
-        Time.timeScale = 0;
-        dialogText.text = dialog[0];
+        //TODOError: GameScene中沒辦法調整BGM音量
+        //TODOError: 透過X關閉設定音效介面無法取消暫停
+        //GameStateManager.Inst.ChangState(GameState.Dialog);
+        //Time.timeScale = 0;
+        //dialogText.text = dialog[0];
 
         //測試用打開 跳過開頭劇情
-        //dialogState = 0;
-        //Time.timeScale = 1;
-        //GameStateManager.Inst.ChangState(GameState.Gaming);
-        //AfterIntroDialog();
-        //dialogObject.SetActive(false);
+        dialogState = 0;
+        Time.timeScale = 1;
+        GameStateManager.Inst.ChangState(GameState.Gaming);
+        AfterIntroDialog();
+        dialogObject.SetActive(false);
     }
 
     private void Start()

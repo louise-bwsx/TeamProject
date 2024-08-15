@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
-public class MobileStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
     public float hp;
     public float maxHp;
-    public float stamina;
-    public float staminaLimit = 100;
     public float invincibleLimit;
     public int dust = 99999;
     public HealthBarOnGame healthbarongame;
-    public UIBarControl uIBarControl;
     public GameObject[] getHitEffect;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
@@ -18,19 +16,24 @@ public class MobileStats : MonoBehaviour
     CharacterBase characterBase;
     MobileRoll mobileRoll;
     MobileAttack mobileAttack;
-    void Start()
+
+    public PlayerControl playerControl;
+    public Rigidbody RD;
+    public GameObject changeColor;
+    public Transform playerRotation;
+
+    public UnityEvent<float> OnHealthChange = new UnityEvent<float>();
+
+    private void Start()
     {
         hp = maxHp;
-        stamina = staminaLimit;
-        uIBarControl.SetMaxHealth();
-        uIBarControl.SetMaxStamina();
+        OnHealthChange?.Invoke(1);
         characterBase = FindObjectOfType<CharacterBase>();
-        mobileRoll = FindObjectOfType<MobileRoll>();
+        mobileRoll = GetComponentInChildren<MobileRoll>();
         mobileAttack = FindObjectOfType<MobileAttack>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (invincibleTimer > 0)
         {
@@ -70,7 +73,7 @@ public class MobileStats : MonoBehaviour
                 //將血量輸入到頭頂的UI
                 healthbarongame.SetHealth(hp);
                 //將血量輸入到畫面上的UI
-                uIBarControl.SetHealth(hp);
+                OnHealthChange?.Invoke(hp / maxHp);
                 //玩家貼圖變紅
                 spriteRenderer.color = Color.red;
             }
@@ -86,7 +89,7 @@ public class MobileStats : MonoBehaviour
                 //將血量輸入到頭頂的UI
                 healthbarongame.SetHealth(hp);
                 //將血量輸入到畫面上的UI
-                uIBarControl.SetHealth(hp);
+                OnHealthChange?.Invoke(hp / maxHp);
                 //玩家貼圖變紅
                 spriteRenderer.color = Color.red;
                 Debug.Log(mobileRoll.isInvincible);
@@ -114,7 +117,7 @@ public class MobileStats : MonoBehaviour
                 dust += 5;
                 hp += 5;
                 Destroy(collision.gameObject);
-                uIBarControl.SetHealth(hp);
+                OnHealthChange?.Invoke(hp / maxHp);
                 healthbarongame.SetHealth(hp);
             }
         }

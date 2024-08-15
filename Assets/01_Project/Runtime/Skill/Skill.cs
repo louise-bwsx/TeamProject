@@ -2,26 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum SkillType
-{
-    Poison,
-    Water,
-    Wind,
-    Earth,
-    Fire,
-    FireTornado,
 
-    Null,
-    Count
-}
-
-// public enum SkillType
-// {
-//     Wind,
-//     Poison,
-//     FireTornado,
-//     Count
-// }
 
 public class Skill : MonoBehaviour
 {

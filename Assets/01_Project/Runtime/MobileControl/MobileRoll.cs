@@ -14,7 +14,6 @@ public class MobileRoll : MonoBehaviour
     public HealthBarOnGame healthbarongame;
     public AudioClip rollSFX;
     public Transform rollDirection;
-    MobileStats mobileStats;
     MobileAttack mobileAttack;
     MobileMove mobileMove;
     LayerMask rayMask;
@@ -22,19 +21,25 @@ public class MobileRoll : MonoBehaviour
     Rigidbody RB;
     Animator animator;
     AudioSource sourceSFX;
-    void Start()
+    private PlayerStamina playerStamina;
+    private PlayerStats playerStats;
+
+    private void Awake()
     {
+        playerStats = GetComponent<PlayerStats>();
+        playerStamina = GetComponent<PlayerStamina>();
         mobileMove = GetComponent<MobileMove>();
         sourceSFX = GetComponent<AudioSource>();
-        sourceSFX.volume = CentralData.GetInst().SFXVol;
         animator = GetComponent<Animator>();
         uIBarControl = FindObjectOfType<UIBarControl>();
         RB = GetComponentInParent<Rigidbody>();
         mobileAttack = FindObjectOfType<MobileAttack>();
-        mobileStats = FindObjectOfType<MobileStats>();
+    }
+
+    private void Start()
+    {
+        sourceSFX.volume = CentralData.GetInst().SFXVol;
         //初始化耐力值為最大值
-        uIBarControl.SetMaxStamina();
-        mobileStats.stamina = mobileStats.staminaLimit;
         //不可穿牆的layer是wall和monster
         rayMask = wall & monster;
     }
@@ -53,21 +58,32 @@ public class MobileRoll : MonoBehaviour
             //取消無敵狀態
             isInvincible = false;
         }
-        //耐力遞增
-        if (mobileStats.stamina < mobileStats.staminaLimit)
-        {
-            mobileStats.stamina += Time.deltaTime * 10;
-            uIBarControl.SetStamina(mobileStats.stamina);
-        }
-        else
-        {
-            mobileStats.stamina = mobileStats.staminaLimit;
-            uIBarControl.SetStamina(mobileStats.stamina);
-        }
     }
+
+    void LateUpdate()
+    {
+        RaycastHit hit;
+        //原點,方向,hit,最大移動距離,可變更的rayMask
+        if (Physics.Raycast(oldPosition, (transform.position - oldPosition), out hit, Vector3.Distance(oldPosition, transform.position), rayMask))
+        {
+            //撞到牆velocity歸零
+            RB.velocity = Vector3.zero;
+            //將玩家移動到被射線打到的點
+            RB.MovePosition(hit.point);
+            Debug.Log("穿牆");
+        }
+        //每一幀的最後都把自己的位置存起來給下一幀使用
+        oldPosition = transform.position;
+    }
+
+    public void RollStop()
+    {
+        RB.velocity = Vector3.zero;
+    }
+
     public void Roll()
     {
-        if (mobileStats.stamina > rollCost && rollTimer > rollCD && mobileStats.hp > 0)
+        if (playerStamina.IsEnough(rollCost) && rollTimer > rollCD && playerStats.hp > 0)
         {
             //播動畫
             animator.SetTrigger("Roll");
@@ -88,32 +104,11 @@ public class MobileRoll : MonoBehaviour
             //歸零動量
             RB.velocity = Vector3.zero;
             //耐力條 -= 損失耐力
-            mobileStats.stamina -= rollCost;
-            //將損失的耐力顯示在上面
-            uIBarControl.SetStamina(mobileStats.stamina);
+            playerStamina.Cost(rollCost);
             //開啟無敵狀態
             isInvincible = true;
             //朝rollDirection移動rollDistence距離
             RB.velocity = rollDirection.forward * rollDistence;
         }
-    }
-    void LateUpdate()
-    {
-        RaycastHit hit;
-        //原點,方向,hit,最大移動距離,可變更的rayMask
-        if (Physics.Raycast(oldPosition, (transform.position - oldPosition), out hit, Vector3.Distance(oldPosition, transform.position), rayMask))
-        {
-            //撞到牆velocity歸零
-            RB.velocity = Vector3.zero;
-            //將玩家移動到被射線打到的點
-            RB.MovePosition(hit.point);
-            Debug.Log("穿牆");
-        }
-        //每一幀的最後都把自己的位置存起來給下一幀使用
-        oldPosition = transform.position;
-    }
-    public void RollStop()
-    {
-        RB.velocity = Vector3.zero;
     }
 }

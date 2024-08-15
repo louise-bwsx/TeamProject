@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class MeleeEnemyController : EnemyController
@@ -13,7 +11,7 @@ public class MeleeEnemyController : EnemyController
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        target = PlayerManager.instance.Player.transform;
+        target = PlayerManager.Inst.Player.transform;
         agent = GetComponentInParent<NavMeshAgent>();
     }
     void Update()

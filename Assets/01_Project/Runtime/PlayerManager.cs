@@ -1,13 +1,37 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoSingleton<PlayerManager>
 {
-    #region Singleton
-    public static PlayerManager instance;
-    private void Awake()
+    private PlayerControl playerControl;
+    [SerializeField] private GetHitEffect playerPrefab;
+    [field: SerializeField, ReadOnly] public GetHitEffect Player { get; private set; }
+    [field: SerializeField, ReadOnly] public SkillSelector SkillSelector { get; private set; }
+    [field: SerializeField, ReadOnly] public PlayerStamina PlayerStamina { get; private set; }
+
+    public void SpawnPlayer()
     {
-        instance = this;
+        Player = Instantiate(playerPrefab, new Vector3(112.5f, 10.7f, 49.5f), Quaternion.Euler(0, -90, 0));
+        playerControl = Player.GetComponent<PlayerControl>();
+        SkillSelector = Player.GetComponent<SkillSelector>();
+        PlayerStamina = Player.GetComponent<PlayerStamina>();
     }
-    #endregion
-    [field: SerializeField] public GameObject Player { get; private set; }
+
+    public bool IsDead()
+    {
+        if (!Player)
+        {
+            return false;
+        }
+        return Player.playerHealth <= 0;
+    }
+
+    public bool IsAttacking()
+    {
+        if (!Player)
+        {
+            return false;
+        }
+        return playerControl.isAttack;
+    }
 }

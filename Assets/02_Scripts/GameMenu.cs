@@ -4,10 +4,10 @@ public class GameMenu : MonoBehaviour
 {
     public GameObject[] anyWindow = new GameObject[4];
     public GameObject[] startOpenWindow;
-    public MobileStats mobileStats;
+    public PlayerStats mobileStats;
     void Start()
     {
-        mobileStats = FindObjectOfType<MobileStats>();
+        mobileStats = FindObjectOfType<PlayerStats>();
         foreach (GameObject window in anyWindow)
         {
             window.SetActive(false);

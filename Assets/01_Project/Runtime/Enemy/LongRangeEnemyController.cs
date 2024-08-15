@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class LongRangeEnemyController : EnemyController
@@ -14,7 +12,7 @@ public class LongRangeEnemyController : EnemyController
     {
         animator = GetComponent<Animator>();
         agent = GetComponentInParent<NavMeshAgent>();
-        target = PlayerManager.instance.Player.transform;
+        target = PlayerManager.Inst.Player.transform;
     }
     void Update()
     {

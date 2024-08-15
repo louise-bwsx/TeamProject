@@ -6,11 +6,11 @@ public class LookAtCursor : MonoBehaviour
     int floor;
     public Vector3 playertomouse;
     public Quaternion rotationangle;
-    MobileStats mobileStats;
+    PlayerStats mobileStats;
 
     void Start()
     {
-        mobileStats = FindObjectOfType<MobileStats>();
+        mobileStats = FindObjectOfType<PlayerStats>();
         floor = LayerMask.GetMask("Floor");
     }
 

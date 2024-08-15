@@ -14,13 +14,13 @@ public enum CharacterStats
 public class CharacterBase : MonoBehaviour
 {
     public int SkillLevelneed = 100;
-    MobileStats mobileStats;
+    PlayerStats mobileStats;
     public int[] charaterStats;
     public Text[] charaterNumber;
 
     void Start()
     {
-        mobileStats = FindObjectOfType<MobileStats>();
+        mobileStats = FindObjectOfType<PlayerStats>();
         for (int i = 0; i < (int)CharacterStats.Count; i++)
         {
             charaterStats[i] = CentralData.GetInst().charaterStats[i];

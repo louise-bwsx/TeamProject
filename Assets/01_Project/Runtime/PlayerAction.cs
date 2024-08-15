@@ -20,14 +20,7 @@ public class PlayerAction : MonoBehaviour
     public Transform playerRotation;
 
     private PlayerControl playerControl;
-    public AudioSource BGMSource;
-    public AudioSource SFXSource;//音效放置給所有怪物存取音效
-    //public AudioClip walkSFX;//走路音效
-    public AudioClip TurnOverSFX;//翻滾音效
-    public AudioClip SpikeSFX;//突刺音效
-    public AudioClip SwingSFX;//揮擊音效
-    public AudioClip dieSFX;
-    public PlayerFaceDirection playerFaceDirection;
+    public PlayerSprite playerFaceDirection;
 
     private void Awake()
     {
@@ -35,12 +28,6 @@ public class PlayerAction : MonoBehaviour
         playerControl = GetComponent<PlayerControl>();
         gameMenu = FindObjectOfType<GameMenuController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        SFXSource = GetComponentInParent<AudioSource>();
-    }
-
-    private void Start()
-    {
-        SFXSource.volume = CentralData.GetInst().SFXVol;
     }
 
     private void Update()
@@ -59,9 +46,7 @@ public class PlayerAction : MonoBehaviour
     public void Roll()
     {
         animator.SetTrigger("Roll");
-        //音效
-        SFXSource.PlayOneShot(TurnOverSFX);
-        //特效
+        AudioManager.Inst.PlaySFX("Roll");
     }
 
     public void NormalAttack()
@@ -79,8 +64,7 @@ public class PlayerAction : MonoBehaviour
 
     public void NormalAttackEffect()
     {
-        //音效
-        SFXSource.PlayOneShot(SwingSFX);
+        AudioManager.Inst.PlaySFX("Swing");
         //特效
         GameObject FX;
         if (playerRotation.localEulerAngles.y > 0 && playerRotation.localEulerAngles.y < 180)
@@ -105,8 +89,7 @@ public class PlayerAction : MonoBehaviour
 
     public void SpikeAttackFX()//動畫Event呼叫
     {
-        //音效
-        SFXSource.PlayOneShot(SpikeSFX);
+        AudioManager.Inst.PlaySFX("Spike");
         GameObject FX;
         //攻擊範圍
         spwanSwordCube = Instantiate(swordCube, spawantransform.position, spawantransform.rotation);
@@ -137,15 +120,14 @@ public class PlayerAction : MonoBehaviour
     public void Die()//動畫Event呼叫
     {
         shadowDestory.SetActive(false);
-        BGMSource.clip = dieSFX;
-        SFXSource.PlayOneShot(dieSFX);
+        AudioManager.Inst.PlayBGM("Dead");
         gameMenu.OpenMenu("DiePanel");
         Time.timeScale = 0;
     }
 
     public void StartMoving()
     {
-        playerControl.rigidbody.velocity = playerFaceDirection.playerRotation.forward * playerControl.normalAttackDash;
+        playerControl.rigidbody.velocity = playerFaceDirection.faceDirection.forward * playerControl.normalAttackDash;
     }
 
     public void StopMoveing()

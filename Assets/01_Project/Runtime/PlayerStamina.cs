@@ -1,46 +1,49 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStamina : MonoBehaviour
 {
-    [SerializeField] private UIBarControl uIBarControl;
-
     [SerializeField] private float stamina;
-    public float Stamina
-    {
-        get { return stamina; }
-        private set
-        {
-            stamina = value;
-            uIBarControl.SetStamina(staminaPercentage);
-        }
-    }
     private float maxStamina = 100;
-    private float staminaPercentage => Stamina / maxStamina;
+    public UnityEvent<float> OnStaminaChange = new UnityEvent<float>();
 
     private void Start()
     {
-        Stamina = maxStamina;
+        stamina = maxStamina;
+        OnStaminaChange?.Invoke(GetStaminaPercentage());
     }
 
     private void Update()
     {
-        if (Stamina < maxStamina)
+        if (stamina < maxStamina)
         {
-            Stamina += Time.deltaTime * 10;
-            if (Stamina > maxStamina)
+            stamina += Time.deltaTime * 10;
+            if (stamina > maxStamina)
             {
-                Stamina = maxStamina;
+                stamina = maxStamina;
             }
+            OnStaminaChange?.Invoke(GetStaminaPercentage());
         }
     }
 
-    public bool Enough(float cost)
+    public bool IsEnough(float cost)
     {
-        return Stamina >= cost;
+        return stamina >= cost;
     }
 
     public void Cost(float cost)
     {
-        Stamina -= cost;
+        stamina -= cost;
+        OnStaminaChange?.Invoke(GetStaminaPercentage());
+    }
+
+    private float GetStaminaPercentage()
+    {
+        //為了不除以0
+        if (stamina == 0)
+        {
+            return 0.01f;
+        }
+        return stamina / maxStamina;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,17 +13,22 @@ public class GameMenuController : MonoBehaviour
     [SerializeField] private Button settingsBtn;
     [SerializeField] private Button tutorialBtn;
     [SerializeField] private Button quitBtn;
+    [SerializeField] private Button[] closeBtns;
+    [SerializeField, ReadOnly] private List<string> openMenuNames = new List<string>();
     private bool isInitialized;
-    public GetHitEffect getHitEffect;
 
     private void Start()
     {
-        continueBtn.onClick.AddListener(GameContinue);
+        continueBtn.onClick.AddListener(Unpause);
         saveBtn.onClick.AddListener(() => { OpenMenu("Save"); });
         loadBtn.onClick.AddListener(() => { OpenMenu("Load"); });
         settingsBtn.onClick.AddListener(() => { OpenMenu("Settings"); });
         tutorialBtn.onClick.AddListener(() => { OpenMenu("Tutorial"); });
         quitBtn.onClick.AddListener(BackToMainMenu);
+        foreach (var btn in closeBtns)
+        {
+            btn.onClick.AddListener(CloseBtnOnClick);
+        }
     }
 
     private void Update()
@@ -33,15 +39,26 @@ public class GameMenuController : MonoBehaviour
         }
     }
 
-    public void EscButton()
+    public bool IsUIOpen(string uiName)
     {
-        //當背包是開的 或是 教學介面是開著的
-        if (IsMenuActive("StatsWindow") || IsMenuActive("TutorialImage") || IsMenuActive("SkillWindow"))
+        if (!menuDict.ContainsKey(uiName))
         {
-            //把他們關起來
-            CloseMenu("StatsWindow");
-            CloseMenu("TutorialImage");
-            CloseMenu("SkillWindow");
+            Debug.Log($"!menuDict.ContainsKey(uiName): {uiName}");
+            return false;
+        }
+        return menuDict[uiName].activeSelf;
+    }
+
+    private void EscButton()
+    {
+        if (openMenuNames.Count > 0)
+        {
+            CloseAllMenu();
+            //在打開SavePanel狀態下按下ESC
+            if (GameStateManager.Inst.CurrentState == GameState.Pausing)
+            {
+                OpenMenu("Menu");
+            }
             return;
         }
         switch (GameStateManager.Inst.CurrentState)
@@ -52,16 +69,16 @@ public class GameMenuController : MonoBehaviour
                 Time.timeScale = 0f;
                 return;
             case GameState.Pausing:
-                CloseMenu("Menu");
-                GameStateManager.Inst.ChangState(GameState.Gaming);
-                Time.timeScale = 1f;
+                Unpause();
                 return;
         }
     }
 
-    private void GameContinue()
+    private void Unpause()
     {
-        if (getHitEffect.playerHealth > 0)
+        CloseMenu("Menu");
+        GameStateManager.Inst.ChangState(GameState.Gaming);
+        if (PlayerManager.Inst.Player.playerHealth > 0)
         {
             Time.timeScale = 1f;
         }
@@ -82,6 +99,7 @@ public class GameMenuController : MonoBehaviour
             return;
         }
         CloseAllMenu();
+        openMenuNames.Add(menuName);
         menuDict[menuName].SetActive(true);
     }
 
@@ -91,17 +109,8 @@ public class GameMenuController : MonoBehaviour
         {
             return;
         }
+        openMenuNames.Remove(menuName);
         menuDict[menuName].SetActive(false);
-    }
-
-    public bool IsMenuActive(string menuName)
-    {
-        Initialize();
-        if (!IsMenuExist(menuName))
-        {
-            return false;
-        }
-        return menuDict[menuName].activeSelf;
     }
 
     private void CloseAllMenu()
@@ -110,15 +119,15 @@ public class GameMenuController : MonoBehaviour
         {
             menu.SetActive(false);
         }
+        openMenuNames.Clear();
     }
 
     private bool IsMenuExist(string menuName)
     {
         if (!menuDict.ContainsKey(menuName))
         {
-            Debug.LogError(menuName + "為空");
+            Debug.LogError($"!menuDict.ContainsKey( {menuName} )");
             return false;
-
         }
         return true;
     }
@@ -131,12 +140,14 @@ public class GameMenuController : MonoBehaviour
         }
         foreach (GameObject menu in menus)
         {
-            //註解掉是因為測試SkillWindow時在editMode下手動開啟
-            //進入遊戲後呼叫PlayerControl.Attack()時會確認IsMenuActive然後Initialize
-            //不確定為什麼要關閉
-            //menu.SetActive(false);
             menuDict.Add(menu.name, menu);
         }
         isInitialized = true;
+    }
+
+    private void CloseBtnOnClick()
+    {
+        CloseAllMenu();
+        OpenMenu("Menu");
     }
 }

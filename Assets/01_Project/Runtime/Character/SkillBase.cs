@@ -27,7 +27,7 @@ public class SkillBase : MonoBehaviour
     public int waterSkillLevel = 0;
     public int windSkillLevel = 0;
 
-    MobileStats mobileStats;
+    PlayerStats mobileStats;
     public Image[] fireImage;
     public Image[] poisonImage;
     public Image[] stoneImage;
@@ -40,7 +40,7 @@ public class SkillBase : MonoBehaviour
 
     void Start()
     {
-        mobileStats = FindObjectOfType<MobileStats>();
+        mobileStats = FindObjectOfType<PlayerStats>();
         fireSkillLevel = CentralData.GetInst().fireSkillLevel;
         poisonSkillLevel = CentralData.GetInst().poisonSkillLevel;
         stoneSkillLevel = CentralData.GetInst().stoneSkillLevel;

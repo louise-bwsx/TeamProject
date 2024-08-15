@@ -8,7 +8,7 @@ public class GetHitEffect : MonoBehaviour
     public float maxHealth = 100;
     public float playerHealth = 0;
     public HealthBarOnGame healthbarongame;
-    public UIBarControl uIBarControl;
+    private UIBarControl uiBarControl;
     public PlayerControl playerControl;
     public Rigidbody RD;
     public GameObject changeColor;
@@ -21,17 +21,17 @@ public class GetHitEffect : MonoBehaviour
     public GameObject[] getHitEffect;
     CharacterBase characterBase;
 
-    void Start()
+
+    private void Start()
     {
         characterBase = FindObjectOfType<CharacterBase>();
         dust = CentralData.GetInst().dust;
         playerHealth = maxHealth;
-        uIBarControl.SetMaxHealth();//UI身上的血條
         healthbarongame.SetMaxHealth(maxHealth);//人物身上的血條
         RD = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void Update()
     {
         if (getHitInvincibleTime > 0f)
         {
@@ -60,38 +60,24 @@ public class GetHitEffect : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Gold") && playerHealth > 0)
+        if (playerHealth <= 0)
         {
-            dust += 5;
-            playerHealth += 5;
-            Destroy(collision.gameObject);
-            uIBarControl.SetHealth(playerHealth / maxHealth);
-            healthbarongame.SetHealth(playerHealth);
+            return;
+        }
 
-        }
-        if (collision.gameObject.CompareTag("Green") && playerHealth > 0)
+        switch (collision.gameObject.tag)
         {
-            dust += 5;
-            playerHealth += 5;
-            Destroy(collision.gameObject);
-            uIBarControl.SetHealth(playerHealth / maxHealth);
-            healthbarongame.SetHealth(playerHealth);
-        }
-        if (collision.gameObject.CompareTag("White") && playerHealth > 0)
-        {
-            dust += 5;
-            playerHealth += 5;
-            Destroy(collision.gameObject);
-            uIBarControl.SetHealth(playerHealth / maxHealth);
-            healthbarongame.SetHealth(playerHealth);
-        }
-        if (collision.gameObject.CompareTag("Blue") && playerHealth > 0)
-        {
-            dust += 5;
-            playerHealth += 5;
-            Destroy(collision.gameObject);
-            uIBarControl.SetHealth(playerHealth / maxHealth);
-            healthbarongame.SetHealth(playerHealth);
+            case "Gold":
+            case "Green":
+            case "White":
+            case "Blue":
+
+                dust += 5;
+                playerHealth += 5;
+                Destroy(collision.gameObject);
+                uiBarControl.SetHealth(playerHealth / maxHealth);
+                healthbarongame.SetHealth(playerHealth);
+                break;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -115,7 +101,7 @@ public class GetHitEffect : MonoBehaviour
                 //將血量輸入到頭頂的UI
                 healthbarongame.SetHealth(playerHealth);
                 //將血量輸入到畫面上的UI
-                uIBarControl.SetHealth(playerHealth / maxHealth);
+                uiBarControl.SetHealth(playerHealth / maxHealth);
             }
         }
     }
@@ -143,7 +129,7 @@ public class GetHitEffect : MonoBehaviour
                 //將血量輸入到頭頂的UI
                 healthbarongame.SetHealth(playerHealth);
                 //將血量輸入到畫面上的UI
-                uIBarControl.SetHealth(playerHealth / maxHealth);
+                uiBarControl.SetHealth(playerHealth / maxHealth);
             }
         }
         //當玩家無敵狀態

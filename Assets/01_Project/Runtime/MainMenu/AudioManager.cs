@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class AudioManager : MonoSingleton<AudioManager>, ILoadData
+public class AudioManager : MonoSingleton<AudioManager>
 {
     //TODO: GameMenu的Slider好像不會跟著變
     [SerializeField] private AudioSource sourceBGM;
@@ -36,6 +36,8 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
 
     private void Start()
     {
+        sliderBGM.value = CentralData.GetInst().BGMVol;
+        sliderSFX.value = CentralData.GetInst().SFXVol;
         sliderBGM.onValueChanged.AddListener(SetBGMVolume);
         sliderSFX.onValueChanged.AddListener(SetSFXVolume);
     }
@@ -46,6 +48,7 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
         {
             return;
         }
+
         if (Input.GetMouseButtonDown(0) ||
             Input.GetMouseButtonUp(0))
         {
@@ -71,13 +74,6 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
         sourceSFX.PlayOneShot(findClip);
     }
 
-    public void Load(object value1, object value2)
-    {
-        Debug.Log("設定音樂音效");
-        SetBGMVolume((float)value1);
-        SetSFXVolume((float)value2);
-    }
-
     private AudioClip FIndClip(string clipName)
     {
         if (!clipsDict.ContainsKey(clipName))
@@ -90,9 +86,9 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
 
     private void SetBGMVolume(float volume)
     {
+        Debug.Log(volume);
         CentralData.GetInst().BGMVol = volume;
         audioMixer.SetFloat(MUSICVOLUME, Mathf.Log10(volume) * MULITIPLIER);
-        sliderBGM.value = volume;
         SaveManager.Inst.SaveUserSettings();
     }
 
@@ -100,14 +96,6 @@ public class AudioManager : MonoSingleton<AudioManager>, ILoadData
     {
         CentralData.GetInst().SFXVol = volume;
         audioMixer.SetFloat(SFXVOLUME, Mathf.Log10(volume) * MULITIPLIER);
-        sliderSFX.value = volume;
         SaveManager.Inst.SaveUserSettings();
     }
-
-    //[SerializeField] private EventTrigger[] eventTriggers;
-    //[Button]
-    //private void FindEventTrigger()
-    //{
-    //    eventTriggers = FindObjectsOfType<EventTrigger>();
-    //}
 }

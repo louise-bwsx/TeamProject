@@ -2,19 +2,20 @@
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
-    GetHitEffect getHitEffect;
-    SkillBase skillBase;
+    private GetHitEffect getHitEffect;
+    private SkillBase skillBase;
     public CharacterBase characterBase;
-    // [SerializeField] private SaveSpace[] saveSpace;
 
-    private void Start()
+    protected override void OnAwake()
     {
         characterBase = FindObjectOfType<CharacterBase>();
         getHitEffect = FindObjectOfType<GetHitEffect>();
         skillBase = FindObjectOfType<SkillBase>();
 
         Debug.Log("SaveManager.Start()");
-        LoadUserSettings();
+        Debug.Log("讀取使用者設定");
+        //TODO: 看能不能改成只讀使用者設定
+        CentralData.LoadData();
     }
 
     public void SaveData(string date)
@@ -66,15 +67,6 @@ public class SaveManager : MonoSingleton<SaveManager>
                   "\n土技能" + skillBase.stoneSkillLevel +
                   "\n水技能" + skillBase.waterSkillLevel +
                   "\n風技能" + skillBase.windSkillLevel);
-    }
-
-    private void LoadUserSettings()
-    {
-        Debug.Log("讀取使用者設定");
-        //TODO: 看能不能改成只讀使用者設定
-        CentralData centralData = CentralData.LoadData();
-        //BGM及音效
-        AudioManager.Inst.Load(centralData.BGMVol, centralData.SFXVol);
     }
 
     public void SaveUserSettings()

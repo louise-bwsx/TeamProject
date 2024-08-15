@@ -84,10 +84,9 @@ public class CentralData
     //角色數值
     public int[] charaterStats = new int[5];
 
-    //建構子
     private CentralData()
     {
-
+        //給空的代表新存檔 由變數預設決定是多少
     }
 
     public CentralData(

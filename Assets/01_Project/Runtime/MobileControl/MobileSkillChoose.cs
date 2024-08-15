@@ -12,6 +12,7 @@ public class MobileSkillChoose : MonoBehaviour
         animator = GetComponent<Animator>();
         mobileAttack = FindObjectOfType<MobileAttack>();
     }
+
     public void SetSkill(int skillNum)
     {
         skillList[0] = skillList[skillNum];
@@ -20,10 +21,11 @@ public class MobileSkillChoose : MonoBehaviour
             //為了單獨讓指向性技能取消 不然下次按會直接射出
             animator.SetBool("IsCheck", false);
             meshRenderer.enabled = true;
-            animator.SetTrigger("Magic");
+            //animator.SetTrigger("Magic");
             mobileAttack.isAttack = true;
         }
     }
+
     public void SkillShoot()//動畫Event控制
     {
         skillList[0].Shoot();

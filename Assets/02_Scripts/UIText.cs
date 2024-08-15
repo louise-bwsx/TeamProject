@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class UIText : MonoBehaviour
 {
-    private MobileStats getHitEffect;
+    private PlayerStats getHitEffect;
 
     private void Awake()
     {
-        getHitEffect = FindObjectOfType<MobileStats>();
+        getHitEffect = FindObjectOfType<PlayerStats>();
     }
 
     private void Update()

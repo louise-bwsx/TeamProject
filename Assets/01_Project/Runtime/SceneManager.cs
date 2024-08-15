@@ -10,7 +10,12 @@ public class SceneManager : MonoSingleton<SceneManager>
     [SerializeField] private Button loadGame1;
     [SerializeField] private Button loadGame2;
     [SerializeField] private Button loadGame3;
-    private GameMenuController gameMenu;
+
+    [SerializeField] private GameMenuController gameMenu;
+    [SerializeField] private SkillUI skillUI;
+    [SerializeField] private MiniMap miniMap;
+    [SerializeField] private UIBarControl uiBarControl;
+
     public string currentScene { get; private set; }
 
     private void Awake()
@@ -92,11 +97,12 @@ public class SceneManager : MonoSingleton<SceneManager>
                 MainMenuController.Inst.CloseMenu(MainMenuType.Loading);
                 MainMenuController.Inst.enabled = false;
                 AudioManager.Inst.PlayBGM("GameSceneIntro");
-                ////TODO: 暫時這樣用 在GameMenuController.Awake太慢
-                if (!gameMenu)
-                {
-                    gameMenu = FindObjectOfType<GameMenuController>();
-                }
+                PlayerManager.Inst.SpawnPlayer();
+                skillUI.Init(PlayerManager.Inst.SkillSelector);
+                miniMap.Init(PlayerManager.Inst.Player.transform);
+                uiBarControl.Init(PlayerManager.Inst.PlayerStamina);
+                //PlayerManager.Inst.Player.Init(uiBarControl);
+                //TODO: 暫時這樣用 在GameMenuController.Awake太慢
                 gameMenu.OpenMenu("IntroDialog");
                 break;
             default:

@@ -13,13 +13,11 @@ public class PlayerControl : MonoBehaviour
     CharacterBase characterBase;
     public PlayerOptions playerOptions;
     public UIBarControl uIBarControl;
-    public PlayerFaceDirection playerFaceDirection;
+    private PlayerSprite playersprite;
     public GameMenuController gameMenu;
     public HealthBarOnGame healthbarongame;
     public GetHitEffect getHitEffect;
     public GameObject statsWindow;
-    public GameObject skillUI;
-    public GameObject miniMap;
     [SerializeField] private Transform faceDirection;
     public new Collider collider;
     //有關耐力
@@ -66,6 +64,7 @@ public class PlayerControl : MonoBehaviour
         collider = GetComponentInParent<Collider>();
         playerOptions = FindObjectOfType<PlayerOptions>();
         characterBase = FindObjectOfType<CharacterBase>();
+        playersprite = GetComponent<PlayerSprite>();
     }
 
     private void Start()
@@ -125,12 +124,20 @@ public class PlayerControl : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
-                skillUI.SetActive(!skillUI.activeSelf);
+                if (gameMenu.IsUIOpen("SkillWindow"))
+                {
+                    gameMenu.CloseMenu("SkillWindow");
+                }
+                gameMenu.OpenMenu("SkillWindow");
             }
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            miniMap.SetActive(!miniMap.activeSelf);
+            if (gameMenu.IsUIOpen("MiniMap"))
+            {
+                gameMenu.CloseMenu("MiniMap");
+            }
+            gameMenu.OpenMenu("MiniMap");
         }
         //卸下所有裝備欄裡的裝備
         //if (Input.GetKeyDown(KeyCode.U))
@@ -242,7 +249,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         //TODO: 這裡應該可以用PlayerState來判斷 currentPlayerState != PlayerState.Gaming return;
-        if (playerFaceDirection.isMagicAttack || getHitEffect.playerHealth < 0 || isRoll)
+        if (playersprite.isMagicAttack || getHitEffect.playerHealth < 0 || isRoll)
         {
             Debug.Log("玩家在一個無法攻擊的狀態");
             return;
@@ -250,7 +257,7 @@ public class PlayerControl : MonoBehaviour
         //false在動畫Event呼叫
         isAttack = true;
         //讓人物轉向
-        playerFaceDirection.PlayerSpriteFlip();
+        playersprite.PlayerSpriteFlip();
         switch (type)
         {
             case AttackType.NormalAttack:
@@ -278,7 +285,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (rollCD > 0 ||
             GameStateManager.Inst.CurrentState != GameState.Gaming ||
-            !stamina.Enough(rollCostStamina))
+            !stamina.IsEnough(rollCostStamina))
         {
             return;
         }
@@ -286,7 +293,7 @@ public class PlayerControl : MonoBehaviour
         previousPos = rigidbody.position;
         isAttack = false;
         isRoll = true;
-        playerFaceDirection.isMagicAttack = false;
+        playersprite.isMagicAttack = false;
         //歸零動量
         rigidbody.velocity = Vector3.zero;
         stamina.Cost(rollCostStamina);

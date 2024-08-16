@@ -4,7 +4,6 @@ using UnityEngine;
 public class SkillOnTouch : MonoBehaviour
 {
     [SerializeField] private GameObject hitEffectObject;
-    [SerializeField] private string[] hitEffectSpawnTags;
     [SerializeField] private GameObject advancedSkllObject;
     [SerializeField] private float advancedDestroyTime;
     [SerializeField] private string[] onTouchCastAdvancedSkillTags;
@@ -14,6 +13,18 @@ public class SkillOnTouch : MonoBehaviour
     private float explodeRadius = 5f;
     private float force = 700f;
     private float explodeTimer = 1f;
+    private Collider collider;
+
+    private void Awake()
+    {
+        collider = GetComponent<Collider>();
+    }
+
+    //為了讓重回pool再生成的skillcollider打開
+    private void OnEnable()
+    {
+        collider.enabled = true;
+    }
 
     private void Start()
     {
@@ -43,6 +54,13 @@ public class SkillOnTouch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Player" ||
+            other.gameObject.tag == "Default"//為了不打到隱形牆
+            )
+        {
+            return;
+        }
+        Debug.Log($"技能打到: {other.gameObject}");
         if (hitEffectObject)
         {
             SpawanHitEffect(other);
@@ -56,17 +74,11 @@ public class SkillOnTouch : MonoBehaviour
 
     private void SpawanHitEffect(Collider other)
     {
-        for (int i = 0; i < hitEffectSpawnTags.Length; i++)
+        ObjectPool.Inst.SpawnFromPool(hitEffectObject.name, transform.position, transform.rotation, other.transform.parent, duration: 1f);
+        if (gameObject.CompareTag("WaterAttack"))
         {
-            if (other.CompareTag(hitEffectSpawnTags[i]))
-            {
-                ObjectPool.Inst.SpawnFromPool(hitEffectObject.name, transform.position, transform.rotation, other.transform.parent, duration: 1f);
-                break;
-            }
-            if (gameObject.CompareTag("WaterAttack"))
-            {
-                StartCoroutine(Explode(0));
-            }
+            collider.enabled = false;
+            StartCoroutine(Explode(0));
         }
     }
 

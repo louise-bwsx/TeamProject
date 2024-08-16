@@ -49,7 +49,6 @@ public class SkillSelector : MonoBehaviour
             Debug.Log("MiddleMouseButtonTriggerSkill");
             //正式版一定要這樣才能讀的到
             //playerControl.isAttack = true;
-            //selectSkill = skillArray[CurrentIndex];
             animator.SetTrigger("Magic");
         }
     }
@@ -86,7 +85,6 @@ public class SkillSelector : MonoBehaviour
         ChangeSelectSkill?.Invoke(CurrentIndex, previousIndex);
         if (skillSOArray[inputKey].CanShoot())
         {
-            //selectSkill = skillArray[inputKey];
             animator.SetTrigger("Magic");
         }
     }

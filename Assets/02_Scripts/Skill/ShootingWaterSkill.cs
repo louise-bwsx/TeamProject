@@ -7,6 +7,7 @@ public class ShootingWaterSkill : MonoBehaviour
     public float countdown = 1f;
     AudioSource audioSource;//音樂放置
     public AudioClip SFX;//音效
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();

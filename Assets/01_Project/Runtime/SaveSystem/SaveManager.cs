@@ -13,7 +13,7 @@ public class SaveManager : MonoSingleton<SaveManager>
         skillBase = FindObjectOfType<SkillBase>();
 
         Debug.Log("SaveManager.Start()");
-        Debug.Log("讀取使用者設定");
+        //Debug.Log("讀取使用者設定");
         //TODO: 看能不能改成只讀使用者設定
         CentralData.LoadData();
     }

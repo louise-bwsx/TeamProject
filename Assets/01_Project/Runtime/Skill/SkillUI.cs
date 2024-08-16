@@ -9,11 +9,8 @@ public class SkillUI : MonoBehaviour
     [SerializeField] private Sprite selectedFrame;
     [SerializeField] private Sprite defaultFrame;
 
-    [field: SerializeField] public Skill[] SkillList { get; private set; }
-
     public void Init(SkillSelector skillSelector)
     {
-        SkillList = GetComponentsInChildren<Skill>();
         skillSelector.ChangeSelectSkill.AddListener(ChangeSelectSkillFrame);
         for (int i = 0; i < skillSO.Length; i++)
         {

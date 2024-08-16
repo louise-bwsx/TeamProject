@@ -20,7 +20,7 @@ public class PlayerAction : MonoBehaviour
     public Transform playerRotation;
 
     private PlayerControl playerControl;
-    public PlayerSprite playerFaceDirection;
+    private PlayerSprite playerSprite;
 
     private void Awake()
     {
@@ -28,6 +28,7 @@ public class PlayerAction : MonoBehaviour
         playerControl = GetComponent<PlayerControl>();
         gameMenu = FindObjectOfType<GameMenuController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerSprite = GetComponent<PlayerSprite>();
     }
 
     private void Update()
@@ -121,13 +122,13 @@ public class PlayerAction : MonoBehaviour
     {
         shadowDestory.SetActive(false);
         AudioManager.Inst.PlayBGM("Dead");
-        gameMenu.OpenMenu("DiePanel");
+        UIManager.Inst.OpenMenu("DiePanel");
         Time.timeScale = 0;
     }
 
     public void StartMoving()
     {
-        playerControl.rigidbody.velocity = playerFaceDirection.faceDirection.forward * playerControl.normalAttackDash;
+        playerControl.rigidbody.velocity = playerSprite.faceDirection.forward * playerControl.normalAttackDash;
     }
 
     public void StopMoveing()
@@ -139,6 +140,6 @@ public class PlayerAction : MonoBehaviour
     {
         animator.SetBool("IsAttack", false);
         playerControl.isAttack = false;
-        playerFaceDirection.isMagicAttack = false;
+        playerSprite.isMagicAttack = false;
     }
 }

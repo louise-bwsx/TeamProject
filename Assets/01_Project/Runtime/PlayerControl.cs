@@ -124,20 +124,20 @@ public class PlayerControl : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
-                if (gameMenu.IsUIOpen("SkillWindow"))
+                if (UIManager.Inst.IsUIOpen("SkillWindow"))
                 {
-                    gameMenu.CloseMenu("SkillWindow");
+                    UIManager.Inst.CloseMenu("SkillWindow");
                 }
-                gameMenu.OpenMenu("SkillWindow");
+                UIManager.Inst.OpenMenu("SkillWindow");
             }
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (gameMenu.IsUIOpen("MiniMap"))
+            if (UIManager.Inst.IsUIOpen("MiniMap"))
             {
-                gameMenu.CloseMenu("MiniMap");
+                UIManager.Inst.CloseMenu("MiniMap");
             }
-            gameMenu.OpenMenu("MiniMap");
+            UIManager.Inst.OpenMenu("MiniMap");
         }
         //卸下所有裝備欄裡的裝備
         //if (Input.GetKeyDown(KeyCode.U))

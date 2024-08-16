@@ -18,9 +18,9 @@ public enum SkillType
 public class SkillShooter : MonoBehaviour
 {
     [SerializeField] private SkillSO[] skills;
-    //把skillPos能貼合著地板
-    [SerializeField] private Transform skillPos;
     [SerializeField] private MeshRenderer shootDirectionMesh;
+
+    //把remoteMesh能貼合著地板
     [SerializeField] private MeshRenderer remoteMesh;
 
     private LayerMask floor;
@@ -61,7 +61,8 @@ public class SkillShooter : MonoBehaviour
     private void CastDirectionBasedSkill(SkillSO skillSO)
     {
         Debug.Log("CastDirectionBasedSkill");
-        Vector3 spawanPos = skillPos.position + skillPos.up * 0.7f;
+        Vector3 spawanPos = transform.position.With(y: transform.position.y + 0.7f);
+        Debug.Log(spawanPos);
         Quaternion spawnRotation = shootDirectionMesh.transform.rotation;
         GameObject skillObject = ObjectPool.Inst.SpawnFromPool(skillSO.prefabName,
                                                                spawanPos,
@@ -85,7 +86,7 @@ public class SkillShooter : MonoBehaviour
         float raylength = 500;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Vector3 spawanPos = skillPos.position + skillPos.up * 0.7f;
+        Vector3 spawanPos = remoteMesh.transform.position + remoteMesh.transform.up * 0.7f;
         GameObject skillObject = ObjectPool.Inst.SpawnFromPool(skillSO.prefabName,
                                                                spawanPos,
                                                                Quaternion.identity,

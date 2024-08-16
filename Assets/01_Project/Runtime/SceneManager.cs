@@ -32,6 +32,8 @@ public class SceneManager : MonoSingleton<SceneManager>
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoad;
     }
 
+    public bool IsGameScene() => currentScene == "GameScene";
+
     //public為了給TutorialEvnetTrigger用
     public void LoadLevel(string sceneName)
     {
@@ -41,7 +43,7 @@ public class SceneManager : MonoSingleton<SceneManager>
             return;
         }
         GameStateManager.Inst.ChangState(GameState.Loading);
-        MainMenuController.Inst.OpenMenu(MainMenuType.Loading);
+        UIManager.Inst.OpenMenu("Loading");
         CentralData.GetInst();
         async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
         //設定讀取完後不能自動跳場景
@@ -89,21 +91,18 @@ public class SceneManager : MonoSingleton<SceneManager>
             case "MenuScene":
                 GameStateManager.Inst.ChangState(GameState.MainMenu);
                 AudioManager.Inst.PlayBGM("MenuSceneBGM");
-                MainMenuController.Inst.enabled = true;
-                MainMenuController.Inst.OpenMenu(MainMenuType.Welcome);
+                UIManager.Inst.OpenMenu("Welcome");
                 break;
             case "GameScene":
                 GameStateManager.Inst.ChangState(GameState.Gaming);
-                MainMenuController.Inst.CloseMenu(MainMenuType.Loading);
-                MainMenuController.Inst.enabled = false;
+                UIManager.Inst.CloseMenu("Loading");
                 AudioManager.Inst.PlayBGM("GameSceneIntro");
                 PlayerManager.Inst.SpawnPlayer();
                 skillUI.Init(PlayerManager.Inst.SkillSelector);
                 miniMap.Init(PlayerManager.Inst.Player.transform);
                 uiBarControl.Init(PlayerManager.Inst.PlayerStamina);
-                //PlayerManager.Inst.Player.Init(uiBarControl);
                 //TODO: 暫時這樣用 在GameMenuController.Awake太慢
-                gameMenu.OpenMenu("IntroDialog");
+                UIManager.Inst.OpenMenu("IntroDialog");
                 break;
             default:
                 break;

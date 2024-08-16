@@ -23,11 +23,13 @@ public class DialogController : MonoBehaviour
         //Time.timeScale = 0;
         //dialogText.text = dialog[0];
 
+
         //測試用打開 跳過開頭劇情
         dialogState = 0;
         Time.timeScale = 1;
         GameStateManager.Inst.ChangState(GameState.Gaming);
-        AfterIntroDialog();
+        //TODOError 暫時註解掉會造成遞迴
+        //AfterIntroDialog();
         dialogObject.SetActive(false);
     }
 
@@ -59,6 +61,7 @@ public class DialogController : MonoBehaviour
     //BossDieDialog專用
     private void ChangeAvatar()
     {
+        //每一個Dialog一個GameObject 用name來判斷 自己要做哪個動作
         if (gameObject.name != "BossDialog")
         {
             return;
@@ -76,11 +79,12 @@ public class DialogController : MonoBehaviour
     //IntroDialog專用
     private void AfterIntroDialog()
     {
+        //每一個Dialog一個GameObject 用name來判斷 自己要做哪個動作
         if (gameObject.name != "IntroDialog")
         {
             return;
         }
-        gameMenu.OpenMenu("GodTalkDialog");
+        UIManager.Inst.OpenMenu("GodTalkDialog");
     }
 
     //GameSceneIntro:

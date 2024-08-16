@@ -56,7 +56,7 @@ public class CentralData
         string jsonString = File.ReadAllText(path + filename);
         //Debug.Log(jsonString);
         inst = JsonUtility.FromJson<CentralData>(jsonString);
-        Debug.Log("讀檔成功");
+        //Debug.Log("讀檔成功");
         return inst;
     }
 

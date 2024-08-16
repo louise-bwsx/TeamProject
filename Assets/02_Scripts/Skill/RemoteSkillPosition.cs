@@ -54,14 +54,14 @@ public class RemoteSkillPosition : MonoBehaviour
 
     public void SetSkillPosition(bool isTouch)
     {
-        if (mobileSkillChoose.skillList[0].CanShoot())
-        {
-            meshRenderer.enabled = false;
-        }
-        else
-        {
-            meshRenderer.enabled = true;
-        }
+        //if (mobileSkillChoose.skillList[0].CanShoot())
+        //{
+        //    meshRenderer.enabled = false;
+        //}
+        //else
+        //{
+        //    meshRenderer.enabled = true;
+        //}
         //為了讓每次按下技能時確保從角色底下出現而不是上一個施放位置
         if (isTouch)
         {

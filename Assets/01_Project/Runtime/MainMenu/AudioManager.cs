@@ -36,10 +36,8 @@ public class AudioManager : MonoSingleton<AudioManager>
 
     private void Start()
     {
-        sliderBGM.value = CentralData.GetInst().BGMVol;
-        sliderSFX.value = CentralData.GetInst().SFXVol;
-        sliderBGM.onValueChanged.AddListener(SetBGMVolume);
-        sliderSFX.onValueChanged.AddListener(SetSFXVolume);
+        //放Awake太快
+        Load();
     }
 
     private void Update()
@@ -97,5 +95,19 @@ public class AudioManager : MonoSingleton<AudioManager>
         CentralData.GetInst().SFXVol = volume;
         audioMixer.SetFloat(SFXVOLUME, Mathf.Log10(volume) * MULITIPLIER);
         SaveManager.Inst.SaveUserSettings();
+    }
+
+    private void Load()
+    {
+        //0.05807604
+        float bgmVolume = CentralData.GetInst().BGMVol;
+        float sfxVolume = CentralData.GetInst().SFXVol;
+        //Debug.Log(bgmVolume);
+        audioMixer.SetFloat(MUSICVOLUME, Mathf.Log10(bgmVolume) * MULITIPLIER);
+        audioMixer.SetFloat(SFXVOLUME, Mathf.Log10(sfxVolume) * MULITIPLIER);
+        sliderBGM.value = bgmVolume;
+        sliderSFX.value = sfxVolume;
+        sliderBGM.onValueChanged.AddListener(SetBGMVolume);
+        sliderSFX.onValueChanged.AddListener(SetSFXVolume);
     }
 }

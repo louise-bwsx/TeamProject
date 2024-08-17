@@ -76,7 +76,7 @@ public class MobileRoll : MonoBehaviour
         oldPosition = transform.position;
     }
 
-    public void RollStop()
+    private void RollStop()//動畫Event
     {
         RB.velocity = Vector3.zero;
     }

@@ -76,7 +76,7 @@ public class ObjectPool : MonoSingleton<ObjectPool>
             Destroy(poolObject);
             yield break;
         }
-        Debug.Log(name + ": 物件回收至物件池");
+        //Debug.Log(name + ": 物件回收至物件池");
         poolObject.transform.SetParent(poolParent);
         poolObject.SetActive(false);
         poolDict[name].Enqueue(poolObject);

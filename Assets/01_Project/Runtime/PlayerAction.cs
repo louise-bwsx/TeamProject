@@ -80,8 +80,6 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
-    //TODOError: 施法動畫被分段了 本來Magic 被分成Magic_Prepare Magic_Shoot Callback 也沒設定
-    //TODOWarning: Roll動畫多了一個Event RollStop不確定是否正確
     public void SpikeAttack()//動畫Event呼叫
     {
         animator.SetTrigger("Attack_Spike");

@@ -71,7 +71,7 @@ public class PlayerSprite : MonoBehaviour
 
     void SkillShoot()//動畫Event控制
     {
-        Debug.Log("SkillShoot");
+        //Debug.Log("SkillShoot");
         //animator.SetTrigger("Magic");
         playerControl.isAttack = false;
         isMagicAttack = false;

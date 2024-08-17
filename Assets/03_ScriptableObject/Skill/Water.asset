@@ -15,6 +15,9 @@ MonoBehaviour:
   prefabName: PlayerWaterSkill
   staminaCost: 10
   destroyTime: 3
-  skillCD: 0
+  skillCD: -0.014906207
   skillRate: 4
-  skillForce: 500
+  skillForce: 15
+  CoolDownChange:
+    m_PersistentCalls:
+      m_Calls: []

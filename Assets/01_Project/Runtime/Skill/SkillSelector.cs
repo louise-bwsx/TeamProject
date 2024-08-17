@@ -22,6 +22,12 @@ public class SkillSelector : MonoBehaviour
 
     private void Start()
     {
+        //不重置的話重新開始遊戲會永遠不能施法
+        for (int i = 0; i < skillSOArray.Length; i++)
+        {
+            skillSOArray[i].skillCD = 0;
+        }
+
         ChangeSelectSkill?.Invoke(0, 0);
     }
 
@@ -46,7 +52,7 @@ public class SkillSelector : MonoBehaviour
 
         if (skillSOArray[CurrentIndex].CanShoot())
         {
-            Debug.Log("MiddleMouseButtonTriggerSkill");
+            //Debug.Log("MiddleMouseButtonTriggerSkill");
             //正式版一定要這樣才能讀的到
             //playerControl.isAttack = true;
             animator.SetTrigger("Magic");

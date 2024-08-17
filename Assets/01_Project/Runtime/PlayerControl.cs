@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 public enum AttackType
 {
@@ -120,7 +119,11 @@ public class PlayerControl : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
-                statsWindow.SetActive(!statsWindow.activeSelf);
+                if (UIManager.Inst.IsUIOpen("StatsWindow"))
+                {
+                    UIManager.Inst.CloseMenu("StatsWindow");
+                }
+                UIManager.Inst.OpenMenu("StatsWindow");
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -242,10 +245,10 @@ public class PlayerControl : MonoBehaviour
         {
             return;
         }
-        //TODO: 會因為點到血條沒辦法攻擊 做個script放在指定UI來判斷
-        if (EventSystem.current.IsPointerOverGameObject())
+        //不要利用 EventSystem.current.IsPointerOverGameObject() 會因為點到血條沒辦法攻擊
+        if (UIManager.Inst.IsUIOpen("StatsWindow") ||
+            UIManager.Inst.IsUIOpen("SkillWindow"))
         {
-            Debug.Log("點到UI無法攻擊");
             return;
         }
         //TODO: 這裡應該可以用PlayerState來判斷 currentPlayerState != PlayerState.Gaming return;

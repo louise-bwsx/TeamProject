@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5141821229171947587}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -147,6 +146,7 @@ GameObject:
   - component: {fileID: 7346388027587980995}
   - component: {fileID: 7452457733654028703}
   - component: {fileID: 1721172059343111831}
+  - component: {fileID: 7342287993669028050}
   m_Layer: 5
   m_Name: LevelUpButton
   m_TagString: Untagged
@@ -168,7 +168,6 @@ RectTransform:
   m_Children:
   - {fileID: 8994387362402256725}
   m_Father: {fileID: 5141821229171947587}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -257,6 +256,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7342287993669028050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960587184106913415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586e39314a942cb4186572dbc56b239a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6018165435894405169
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +299,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5141821229171947587}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -326,8 +336,7 @@ MonoBehaviour:
   m_text: "\u653B\u64CA:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7fa2072c5f43abb4780e7d65cc7f81b7, type: 2}
-  m_sharedMaterial: {fileID: -5311701357839525586, guid: 7fa2072c5f43abb4780e7d65cc7f81b7,
-    type: 2}
+  m_sharedMaterial: {fileID: -1872238481571958522, guid: 7fa2072c5f43abb4780e7d65cc7f81b7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -424,7 +433,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4581513379738455301}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -561,7 +569,6 @@ RectTransform:
   - {fileID: 7527810095698863780}
   - {fileID: 4581513379738455301}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

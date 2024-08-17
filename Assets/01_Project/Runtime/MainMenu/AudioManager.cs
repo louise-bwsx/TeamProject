@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoSingleton<AudioManager>
 {
-    //TODO: GameMenu的Slider好像不會跟著變
     [SerializeField] private AudioSource sourceBGM;
     [SerializeField] private AudioSource sourceSFX;
     [SerializeField] private Slider sliderBGM;

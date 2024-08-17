@@ -15,6 +15,7 @@ public class SkillUI : MonoBehaviour
         for (int i = 0; i < skillSO.Length; i++)
         {
             int index = i;
+            skillSO[i].CoolDownChange.RemoveAllListeners();
             skillSO[i].CoolDownChange.AddListener((cd, rate) => UICoolDown(index, cd, rate));
         }
     }

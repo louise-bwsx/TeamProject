@@ -13,14 +13,9 @@ public class PlayerStats : MonoBehaviour
     public Animator animator;
     public float invincibleTimer;
 
-    CharacterBase characterBase;
-    MobileRoll mobileRoll;
-    MobileAttack mobileAttack;
-
-    public PlayerControl playerControl;
-    public Rigidbody RD;
-    public GameObject changeColor;
-    public Transform playerRotation;
+    private CharacterBase characterBase;
+    private MobileRoll mobileRoll;
+    private MobileAttack mobileAttack;
 
     public UnityEvent<float> OnHealthChange = new UnityEvent<float>();
 

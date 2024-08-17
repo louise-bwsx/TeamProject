@@ -35,6 +35,7 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] private Button backToMainMenuBtn;
 
     [SerializeField] private Button tutorialBackgrounBtn;
+    [SerializeField] private Image loadImage;
     [SerializeField] private Image tutorialImage;
     [SerializeField] private Image settingsImage;
     [SerializeField] private Sprite pcTutorial;
@@ -150,6 +151,9 @@ public class UIManager : MonoSingleton<UIManager>
             case "Settings":
                 OpenSettingsMenu();
                 break;
+            case "Load":
+                OpenLoadMenu();
+                break;
         }
         menuDict[menuName].SetActive(true);
     }
@@ -216,10 +220,15 @@ public class UIManager : MonoSingleton<UIManager>
 
         if (isStarting)
         {
+            isStarting = false;
             SceneManager.Inst.LoadLevel("GameScene");
             return;
         }
-        //TODOError: 這邊檢查看看遊戲中暫停去按有沒有正常
+        if (SceneManager.Inst.IsGameScene())
+        {
+            OpenMenu("GameMenu");
+            return;
+        }
         OpenMenu("MainMenu");
     }
 
@@ -249,12 +258,26 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
-    //TODOError: 記得給UI新增ButtonMoveOverReact
-    //TODOError: 遊戲中的AudioSettings的背景顏色 沒有圖片 #00000078
+    private void OpenLoadMenu()
+    {
+        if (SceneManager.Inst.IsGameScene())
+        {
+            loadImage.sprite = null;
+            loadImage.color = new Color(0, 0, 0, 120f / 255f);
+            return;
+        }
+        loadImage.sprite = mainMenuSettingsSprite;
+        loadImage.color = Color.white;
+    }
+
     private void CloseBtnOnClick()
     {
-        //TODOError: 這邊檢查看看在GameScene和MainMenuScene是不是正常的
         CloseAllMenu();
-        OpenMenu("GameMenu");
+        if (SceneManager.Inst.IsGameScene())
+        {
+            OpenMenu("GameMenu");
+            return;
+        }
+        OpenMenu("MainMenu");
     }
 }

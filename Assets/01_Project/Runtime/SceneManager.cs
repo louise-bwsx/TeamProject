@@ -18,7 +18,7 @@ public class SceneManager : MonoSingleton<SceneManager>
 
     public string currentScene { get; private set; }
 
-    private void Awake()
+    protected override void OnAwake()
     {
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
         //tutorial.onClick.AddListener(() => { LoadLevel("GameScene"); });

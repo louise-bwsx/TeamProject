@@ -35,7 +35,6 @@ public class SkillShooter : MonoBehaviour
         floor = LayerMask.GetMask("Floor");
     }
 
-    //TODO Magic_Prepare時還可以選方向 放開就Magic_Shoot
     public void Cast()
     {
         switch (skillSelector.CurrentIndex)

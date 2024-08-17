@@ -7,21 +7,19 @@ public class StatWindowItem : MonoBehaviour
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private Button levelUpBtn;
-    private int level;
+    private int statIndex;
 
-    public void Initialize(string name, int level)
+    public void Init(string name, string level, int index)
     {
         nameText.text = name;
-        this.level = level;
-        levelText.text = level.ToString();
-        levelUpBtn.onClick.RemoveAllListeners();
-        levelUpBtn.onClick.AddListener(LevelUP);
+        levelText.text = level;
+        statIndex = index;
+        levelUpBtn.onClick.AddListener(LevelUpBtnOnClick);
     }
 
-    private void LevelUP()
+    private void LevelUpBtnOnClick()
     {
-        Debug.Log(nameText.text + "等級提升");
-        level++;
-        levelText.text = level.ToString();
+        PlayerManager.Inst.Player.StatLevelUp(statIndex);
+        levelText.text = PlayerManager.Inst.Player.GetStatLevel(statIndex).ToString();
     }
 }

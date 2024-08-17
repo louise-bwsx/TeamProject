@@ -1,81 +1,190 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEngine;
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
-    private GetHitEffect getHitEffect;
-    private SkillBase skillBase;
-    public CharacterBase characterBase;
+    private GameSaveData currentGameSave;
+    private SettingsSaveData currentSettingsSave;
+    private static string path = Application.dataPath + "/Playerdata/";
+    private static string filename = "Save.json";
+    private LoadSpace[] loadSpaces;
+    private SaveSpace[] saveSpaces;
+    private List<TextAsset> saveFiles = new List<TextAsset>();
+
+    public List<ISave> ISaves { get; private set; } = new List<ISave>();//interface沒辦法SerializeField
 
     protected override void OnAwake()
     {
-        characterBase = FindObjectOfType<CharacterBase>();
-        getHitEffect = FindObjectOfType<GetHitEffect>();
-        skillBase = FindObjectOfType<SkillBase>();
-
-        Debug.Log("SaveManager.Start()");
-        //Debug.Log("讀取使用者設定");
-        //TODO: 看能不能改成只讀使用者設定
-        CentralData.LoadData();
+        Debug.Log("SaveManager.OnAwake()");
+        loadSpaces = GetComponentsInChildren<LoadSpace>();
+        saveSpaces = GetComponentsInChildren<SaveSpace>();
+        RefreshUI();
     }
 
-    public void SaveData(string date)
+    public void RefreshUI()
     {
-        Debug.Log("進行存檔");
-        CentralData centralData = CentralData.GetInst();
-        //魔塵
-        centralData.dust = getHitEffect.dust;
-        //技能等級
-        centralData.fireSkillLevel = skillBase.fireSkillLevel;
-        centralData.poisonSkillLevel = skillBase.poisonSkillLevel;
-        centralData.stoneSkillLevel = skillBase.stoneSkillLevel;
-        centralData.waterSkillLevel = skillBase.waterSkillLevel;
-        centralData.windSkillLevel = skillBase.windSkillLevel;
-        //角色數值
-        for (int i = 0; i < (int)CharacterStats.Count; i++)
+        GetAllSaveFile();
+        for (int i = 0; i < loadSpaces.Length; i++)
         {
-            centralData.charaterStats[i] = characterBase.charaterStats[i];
+            if (i > saveFiles.Count - 1)
+            {
+                loadSpaces[i].Init(null);
+                saveSpaces[i].Init(null);
+                continue;
+            }
+            loadSpaces[i].Init(saveFiles[i]);
+            saveSpaces[i].Init(saveFiles[i]);
         }
-        CentralData.SaveData();
-    }
-
-    public void LoadData(string loadDate)
-    {
-        Debug.Log("進行讀檔");
-        CentralData centralData = CentralData.LoadData();
-        //魔塵
-        getHitEffect.dust = centralData.dust;
-        //技能等級
-        skillBase.fireSkillLevel = centralData.fireSkillLevel;
-        skillBase.poisonSkillLevel = centralData.poisonSkillLevel;
-        skillBase.stoneSkillLevel = centralData.stoneSkillLevel;
-        skillBase.waterSkillLevel = centralData.waterSkillLevel;
-        skillBase.windSkillLevel = centralData.windSkillLevel;
-        //TODO: 之後改在SkillWindow
-        //skillBase.SkillImageChange(skillBase.fireSkillLevel, skillBase.fireImage);
-        //skillBase.SkillImageChange(skillBase.poisonSkillLevel, skillBase.poisonImage);
-        //skillBase.SkillImageChange(skillBase.stoneSkillLevel, skillBase.stoneImage);
-        //skillBase.SkillImageChange(skillBase.waterSkillLevel, skillBase.waterImage);
-        //skillBase.SkillImageChange(skillBase.windSkillLevel, skillBase.windImage);
-        //角色數值
-        for (int i = 0; i < (int)CharacterStats.Count; i++)
-        {
-            characterBase.charaterStats[i] = centralData.charaterStats[i];
-        }
-        characterBase.StatsCheck();
-        Debug.Log("火技能" + skillBase.fireSkillLevel +
-                  "\n毒技能" + skillBase.poisonSkillLevel +
-                  "\n土技能" + skillBase.stoneSkillLevel +
-                  "\n水技能" + skillBase.waterSkillLevel +
-                  "\n風技能" + skillBase.windSkillLevel);
     }
 
     public void SaveUserSettings()
     {
         Debug.Log("儲存使用者設定 目前只有音樂音效");
         //BGM及音效
-        CentralData centralData = CentralData.GetInst();
-        centralData.BGMVol = AudioManager.Inst.volumeBGM;
-        centralData.SFXVol = AudioManager.Inst.volumeSFX;
-        CentralData.SaveData();
+        if (currentSettingsSave == null)
+        {
+            currentSettingsSave = new SettingsSaveData();
+        }
+        string jsonString = JsonUtility.ToJson(currentSettingsSave);
+        File.WriteAllText(path + "Settings" + filename, jsonString);
+    }
+
+    public void Save()
+    {
+        if (currentGameSave == null)
+        {
+            currentGameSave = new GameSaveData();
+        }
+
+        foreach (var save in ISaves)
+        {
+            save.Save(currentGameSave);
+        }
+
+        currentGameSave.time = DateTime.Now.ToString(); ;
+        string jsonString = JsonUtility.ToJson(currentGameSave);
+        Debug.Log($"jsonString: {jsonString}");
+        Debug.Log($"currentGameSave: {currentGameSave}");
+
+        if (!File.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        File.WriteAllText(path + filename, jsonString);
+        Debug.Log("存檔成功");
+    }
+
+    public void Load(TextAsset saveFile)
+    {
+        if (!File.Exists(path + filename))
+        {
+            Debug.LogError($"!File.Exists Path:{path} FileName:{filename}");
+            return;
+        }
+
+        Debug.Log($"saveFile.text: {saveFile.text}");
+        Debug.Log($"currentGameSave: {currentGameSave}");
+
+        currentGameSave = JsonUtility.FromJson<GameSaveData>(saveFile.text);
+        //TODO: 這邊要帶著currentGameSave重新LoadGameScene
+        Debug.Log("讀檔成功");
+    }
+
+    public GameSaveData GetGameSave()
+    {
+        //第一次進入 或是 快速進入
+        if (currentGameSave == null)
+        {
+            if (saveFiles.Count < 1)
+            {
+                currentGameSave = new GameSaveData();
+            }
+            else
+            {
+                //已經有根據最後修改時間排列
+                currentGameSave = JsonUtility.FromJson<GameSaveData>(saveFiles[0].text);
+            }
+        }
+        return currentGameSave;
+    }
+
+    public SettingsSaveData GetSettinsSave()
+    {
+        if (currentSettingsSave == null)
+        {
+            currentSettingsSave = GetSettingsFile();
+        }
+        return currentSettingsSave;
+    }
+
+    private void GetAllSaveFile()
+    {
+        FileInfo[] files = new FileInfo[0];
+        if (!File.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        if (!Directory.Exists(path))
+        {
+            Debug.Log("目前沒有任何存檔");
+            return;
+        }
+        DirectoryInfo info = new DirectoryInfo(path);
+        // 尋找檔名有Save但沒有Settings的json檔
+        files = info.GetFiles("*.json")
+                    .Where(file => file.Name.Contains("Save") && !file.Name.Contains("Settings"))
+                    //聽AI說file.LastWriteTime包含路徑
+                    .OrderByDescending(file => file.LastWriteTime)
+                    .ToArray();
+
+        foreach (var file in files)
+        {
+            string fileContent = File.ReadAllText(file.FullName);
+            TextAsset textAsset = new TextAsset(fileContent);
+            saveFiles.Add(textAsset);
+        }
+    }
+
+    private SettingsSaveData GetSettingsFile()
+    {
+        IEnumerable<FileInfo> files = null;
+        if (!File.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        if (Directory.Exists(path))
+        {
+            DirectoryInfo info = new DirectoryInfo(path);
+
+            files = info.GetFiles("*.json")
+                        .Where(file => file.Name.Contains("Settings"));
+            //Debug.Log(files.Count());
+            if (files.Count() <= 0)
+            {
+                CreateNewSettingsFile();
+                return currentSettingsSave;
+            }
+        }
+        if (files == null)
+        {
+            Debug.Log("files == null");
+            CreateNewSettingsFile();
+            return currentSettingsSave;
+        }
+
+        string fileContent = File.ReadAllText(files.First().FullName);
+        currentSettingsSave = JsonUtility.FromJson<SettingsSaveData>(fileContent);
+        return currentSettingsSave;
+    }
+
+    private void CreateNewSettingsFile()
+    {
+        Debug.Log("CreateNewSettingsFile");
+        currentSettingsSave = new SettingsSaveData();
+        string jsonString = JsonUtility.ToJson(currentSettingsSave);
+        File.WriteAllText(path + "Settings" + filename, jsonString);
     }
 }

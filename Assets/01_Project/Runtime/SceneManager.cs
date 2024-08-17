@@ -11,15 +11,24 @@ public class SceneManager : MonoSingleton<SceneManager>
     [SerializeField] private Button loadGame2;
     [SerializeField] private Button loadGame3;
 
-    [SerializeField] private GameMenuController gameMenu;
-    [SerializeField] private SkillUI skillUI;
-    [SerializeField] private MiniMap miniMap;
-    [SerializeField] private UIBarControl uiBarControl;
+    private GameMenuController gameMenu;
+    private SkillUI skillUI;
+    private StatsWindow statsWindow;
+    private SkillWindow skillWindow;
+    private MiniMap miniMap;
+    private UIBarControl uiBarControl;
 
     public string currentScene { get; private set; }
 
     protected override void OnAwake()
     {
+        gameMenu = GetComponentInChildren<GameMenuController>(true);
+        skillUI = GetComponentInChildren<SkillUI>(true);
+        statsWindow = GetComponentInChildren<StatsWindow>(true);
+        skillWindow = GetComponentInChildren<SkillWindow>(true);
+        miniMap = GetComponentInChildren<MiniMap>(true);
+        uiBarControl = GetComponentInChildren<UIBarControl>(true);
+
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
         //tutorial.onClick.AddListener(() => { LoadLevel("GameScene"); });
         loadGame1.onClick.AddListener(() => { LoadLevel("GameScene"); });
@@ -44,7 +53,6 @@ public class SceneManager : MonoSingleton<SceneManager>
         }
         GameStateManager.Inst.ChangState(GameState.Loading);
         UIManager.Inst.OpenMenu("Loading");
-        CentralData.GetInst();
         async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
         //設定讀取完後不能自動跳場景
         async.allowSceneActivation = false;
@@ -99,9 +107,10 @@ public class SceneManager : MonoSingleton<SceneManager>
                 AudioManager.Inst.PlayBGM("GameSceneIntro");
                 PlayerManager.Inst.SpawnPlayer();
                 skillUI.Init(PlayerManager.Inst.SkillSelector);
+                statsWindow.Init();
+                skillWindow.Init();
                 miniMap.Init(PlayerManager.Inst.Player.transform);
                 uiBarControl.Init(PlayerManager.Inst.PlayerStamina);
-                //TODO: 暫時這樣用 在GameMenuController.Awake太慢
                 UIManager.Inst.OpenMenu("IntroDialog");
                 break;
             default:

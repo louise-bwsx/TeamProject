@@ -3,7 +3,6 @@
 public class PlayerAction : MonoBehaviour
 {
     public Animator animator;
-    //public UIBarControl uIBarControl;
     public GameObject swordCube;
     public GameObject swingAttackEffectLeft;
     public GameObject swingAttackEffectRight;
@@ -14,13 +13,16 @@ public class PlayerAction : MonoBehaviour
     public Transform spawantransform;
     public Transform SpikeAttackLeftPos;
     public Transform SpikeAttackRightPos;
-    SpriteRenderer spriteRenderer;
-    GameObject spwanSwordCube;
     public GameMenuController gameMenu;
     public Transform playerRotation;
 
+    private SpriteRenderer spriteRenderer;
+    private GameObject spwanSwordCube;
     private PlayerControl playerControl;
     private PlayerSprite playerSprite;
+    private float horizontal;
+    private float vertical;
+
 
     private void Awake()
     {
@@ -33,15 +35,22 @@ public class PlayerAction : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
-        if (Input.GetAxis("Horizontal") != 0)
+        //避免先按住左 再按住右會播放移動動畫
+        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+
+        if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) ||
+            (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
         {
-            animator.SetBool("Walk", true);
+            horizontal = 0f;
         }
-        else
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) ||
+            (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.DownArrow)))
         {
-            animator.SetBool("Walk", false);
+            vertical = 0f;
         }
+        animator.SetFloat("Vertical", vertical);
+        animator.SetFloat("Horizontal", horizontal);
     }
 
     public void Roll()
@@ -83,7 +92,6 @@ public class PlayerAction : MonoBehaviour
     public void SpikeAttack()//動畫Event呼叫
     {
         animator.SetTrigger("Attack_Spike");
-        //spawantransform.GetComponent<Collider>().enabled = true;
     }
 
     public void SpikeAttackFX()//動畫Event呼叫

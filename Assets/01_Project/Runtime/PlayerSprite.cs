@@ -4,6 +4,7 @@ public class PlayerSprite : MonoBehaviour
 {
     public Transform faceDirection;
     public PlayerControl playerControl;
+    //TODOWarning: 利用IsMagicAttack去判斷能不能移動 會比用animator.GetBool來的準確 
     public bool isMagicAttack;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -72,7 +73,6 @@ public class PlayerSprite : MonoBehaviour
     void SkillShoot()//動畫Event控制
     {
         //Debug.Log("SkillShoot");
-        //animator.SetTrigger("Magic");
         playerControl.isAttack = false;
         isMagicAttack = false;
     }

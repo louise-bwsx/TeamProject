@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkillOnTouch : MonoBehaviour
 {
@@ -9,10 +8,6 @@ public class SkillOnTouch : MonoBehaviour
     [SerializeField] private string[] onTouchCastAdvancedSkillTags;
     [SerializeField] private string[] onTouchDisableTags;
 
-    //TODO: 水技能的攻擊效果暫時放在這邊 找機會分離
-    private float explodeRadius = 5f;
-    private float force = 700f;
-    private float explodeTimer = 1f;
     private Collider collider;
 
     private void Awake()
@@ -24,32 +19,6 @@ public class SkillOnTouch : MonoBehaviour
     private void OnEnable()
     {
         collider.enabled = true;
-    }
-
-    private void Start()
-    {
-        if (gameObject.name == "PlayerWaterSkill")
-        {
-            StartCoroutine(Explode(explodeTimer));
-        }
-    }
-
-    private IEnumerator Explode(float explodeTimer)
-    {
-        if (explodeTimer > 0)
-        {
-            yield return new WaitForSeconds(explodeTimer);
-        }
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explodeRadius);
-        foreach (Collider nearbyObject in colliders)
-        {
-            Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.AddExplosionForce(force, transform.position, explodeRadius);
-            }
-        }
-        ObjectPool.Inst.PutBackInPool(gameObject, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,11 +44,6 @@ public class SkillOnTouch : MonoBehaviour
     private void SpawanHitEffect(Collider other)
     {
         ObjectPool.Inst.SpawnFromPool(hitEffectObject.name, transform.position, transform.rotation, other.transform.parent, duration: 1f);
-        if (gameObject.CompareTag("WaterAttack"))
-        {
-            collider.enabled = false;
-            StartCoroutine(Explode(0));
-        }
     }
 
     private void CastAdvancedSkill(Collider other)

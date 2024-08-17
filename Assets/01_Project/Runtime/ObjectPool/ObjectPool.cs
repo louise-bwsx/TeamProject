@@ -45,9 +45,8 @@ public class ObjectPool : MonoSingleton<ObjectPool>
     /// 
     /// </summary>
     /// <param name="poolObject">需要回收的物件</param>
-    /// <param name="duration">-1: 不需要回收至物件池<para></para>
-    ///                         0: 立即回收<para></para>
-    ///                        >0: 等待數秒再回收<para></para></param>
+    /// <param name="duration"> == 0: 立即回收<para></para>
+    ///                         >= 0: 等待數秒再回收<para></para></param>
     public void PutBackInPool(GameObject poolObject, float duration)
     {
         StartCoroutine(DelayEnqueueCoroutine(poolObject, duration));
@@ -56,12 +55,6 @@ public class ObjectPool : MonoSingleton<ObjectPool>
     private IEnumerator DelayEnqueueCoroutine(GameObject poolObject, float duration)
     {
         string name = poolObject.name.Split('(')[0];
-        if (duration == -1)
-        {
-            Debug.Log(name + " 不需要回收至物件池");
-            Destroy(poolObject);
-            yield break;
-        }
         if (duration > 0)
         {
             yield return new WaitForSeconds(duration);

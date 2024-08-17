@@ -45,18 +45,24 @@ public class SkillSelector : MonoBehaviour
 
     private void MiddleMouseButtonTriggerSkill()
     {
-        if (!Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2))
         {
+            if (skillSOArray[CurrentIndex].CanShoot())
+            {
+                //正式版一定要這樣才能讀的到
+                //playerControl.isAttack = true;
+                animator.SetBool("Magic_Prepare", true);
+            }
             return;
         }
-
-        if (skillSOArray[CurrentIndex].CanShoot())
+        if (Input.GetMouseButtonUp(2))
         {
-            //Debug.Log("MiddleMouseButtonTriggerSkill");
-            //正式版一定要這樣才能讀的到
-            //playerControl.isAttack = true;
-            animator.SetTrigger("Magic");
+            if (animator.GetBool("Magic_Prepare"))
+            {
+                animator.SetBool("Magic_Prepare", false);
+            }
         }
+
     }
 
     private void KeyboardTriggerSkill()
@@ -89,6 +95,8 @@ public class SkillSelector : MonoBehaviour
         CurrentIndex = inputKey;
 
         ChangeSelectSkill?.Invoke(CurrentIndex, previousIndex);
+        previousIndex = CurrentIndex;
+        //利用鍵盤施法 比較不好瞄準 所以按下去就直接發動
         if (skillSOArray[inputKey].CanShoot())
         {
             animator.SetTrigger("Magic");

@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1432081543611194481}
   - component: {fileID: 3048317406798872446}
   - component: {fileID: 2765019739788135977}
-  - component: {fileID: 7637880332491083333}
-  - component: {fileID: -2887176193592219370}
+  - component: {fileID: 395143692109620354}
   m_Layer: 0
   m_Name: PlayerWaterSkill
   m_TagString: WaterAttack
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4616344345140612486}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06838711, y: -1.6454268, z: 5.165696}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -84,103 +83,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!82 &7637880332491083333
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4616344345140612486}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4402566634441791770, guid: 540e0d645a384794cb1390c6b28d0d53, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3383f9c6be75aea49a208ea4b546f729, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &-2887176193592219370
+--- !u!114 &395143692109620354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,18 +92,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4616344345140612486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 053bc13025341284a88c7024347fc282, type: 3}
+  m_Script: {fileID: 11500000, guid: f3b9025fc28f4c74695cc3339859a60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffectObject: {fileID: 6297029440285001474, guid: 3516fbcf44498a34185e44fb015c28a7, type: 3}
-  advancedSkllObject: {fileID: 0}
-  advancedDestroyTime: 0
-  onTouchCastAdvancedSkillTags: []
-  onTouchDisableTags:
-  - WindAttack
-  - EarthSkill
-  - Monster
-  - Wall
+  explodeRadius: 5
+  force: 700
+  duration: 0
+  defaultDuration: 1
+  hitEfffectName: Hit_Water_Fx
 --- !u!1001 &5346880659179371206
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,10 @@ public enum AttackType
     SpikeAttack
 }
 
+//角色Rigidbody的Interpolate的下拉式選單改成interpolate就可以把EquipmentGroup就可以刪掉
+//原因是EquipmentGroup裡的物件Rigidbody的Interpolate選項是Extrapolate會影響其他物件
+//Interpolate和Extrapolate 最好只讓玩家使用就好
+
 public class PlayerControl : MonoBehaviour
 {
     PlayerAction playerAction;
@@ -80,7 +84,7 @@ public class PlayerControl : MonoBehaviour
         //不能用transform因為這個Script跟rigidbody的位置不一樣
         ws = Input.GetAxisRaw("Vertical");//世界軸
         ad = Input.GetAxisRaw("Horizontal");
-        if (isAttack && animator.GetBool("IsAttack"))
+        if (isAttack || animator.GetBool("IsAttack") || animator.GetBool("Magic_Prepare"))
         {
             moveDirection.Set(0, 0, 0);
         }

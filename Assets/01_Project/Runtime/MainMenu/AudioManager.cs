@@ -13,8 +13,6 @@ public class AudioManager : MonoSingleton<AudioManager>
     [SerializeField] private List<AudioClip> audioClips = new List<AudioClip>();
     private Dictionary<string, AudioClip> clipsDict = new Dictionary<string, AudioClip>();
 
-    public float volumeBGM => sliderBGM.value;
-    public float volumeSFX => sliderSFX.value;
     private const string MASTERVOLUME = "MasterVolume";
     private const string MUSICVOLUME = "MusicVolume";
     private const string SFXVOLUME = "SFXVolume";
@@ -84,23 +82,27 @@ public class AudioManager : MonoSingleton<AudioManager>
     private void SetBGMVolume(float volume)
     {
         Debug.Log(volume);
-        CentralData.GetInst().BGMVol = volume;
+        SettingsSaveData settingsSave = SaveManager.Inst.GetSettinsSave();
+        settingsSave.BGMVol = volume;
         audioMixer.SetFloat(MUSICVOLUME, Mathf.Log10(volume) * MULITIPLIER);
         SaveManager.Inst.SaveUserSettings();
     }
 
     private void SetSFXVolume(float volume)
     {
-        CentralData.GetInst().SFXVol = volume;
+        SettingsSaveData settingsSave = SaveManager.Inst.GetSettinsSave();
+        settingsSave.SFXVol = volume;
         audioMixer.SetFloat(SFXVOLUME, Mathf.Log10(volume) * MULITIPLIER);
         SaveManager.Inst.SaveUserSettings();
     }
 
     private void Load()
     {
+        //Debug.Log("AudioManager.Load");
+        SettingsSaveData settingsSave = SaveManager.Inst.GetSettinsSave();
         //0.05807604
-        float bgmVolume = CentralData.GetInst().BGMVol;
-        float sfxVolume = CentralData.GetInst().SFXVol;
+        float bgmVolume = settingsSave.BGMVol;
+        float sfxVolume = settingsSave.SFXVol;
         //Debug.Log(bgmVolume);
         audioMixer.SetFloat(MUSICVOLUME, Mathf.Log10(bgmVolume) * MULITIPLIER);
         audioMixer.SetFloat(SFXVOLUME, Mathf.Log10(sfxVolume) * MULITIPLIER);

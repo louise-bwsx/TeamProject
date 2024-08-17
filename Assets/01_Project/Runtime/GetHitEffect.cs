@@ -2,9 +2,9 @@
 
 public class GetHitEffect : MonoBehaviour
 {
+    //TODOError: 這裡之後取消被PlayerStats替代
     public float getHitInvincibleTime;
     float getHitInvincible = 1f;
-    public int dust = 99999;
     public float maxHealth = 100;
     public float playerHealth = 0;
     public HealthBarOnGame healthbarongame;
@@ -25,7 +25,6 @@ public class GetHitEffect : MonoBehaviour
     private void Start()
     {
         characterBase = FindObjectOfType<CharacterBase>();
-        dust = CentralData.GetInst().dust;
         playerHealth = maxHealth;
         healthbarongame.SetMaxHealth(maxHealth);//人物身上的血條
         RD = GetComponent<Rigidbody>();
@@ -58,28 +57,7 @@ public class GetHitEffect : MonoBehaviour
             GameStateManager.Inst.ChangState(GameState.PlayerDead);
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (playerHealth <= 0)
-        {
-            return;
-        }
 
-        switch (collision.gameObject.tag)
-        {
-            case "Gold":
-            case "Green":
-            case "White":
-            case "Blue":
-
-                dust += 5;
-                playerHealth += 5;
-                Destroy(collision.gameObject);
-                uiBarControl.SetHealth(playerHealth / maxHealth);
-                healthbarongame.SetHealth(playerHealth);
-                break;
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         //放在Stay會重複傷害因為大招不會因為玩家碰到而消失

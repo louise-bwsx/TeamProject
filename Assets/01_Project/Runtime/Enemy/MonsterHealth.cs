@@ -19,6 +19,7 @@ public class MonsterHealth : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public GameObject[] getHitEffect;
     public CharacterBase characterBase;
+    //TODOError: 取得玩家skillLevel 根據SkillLevel決定受到傷害多少
     public SkillBase skillBase;
     public EnemyController enemyController;
     public new Rigidbody rigidbody;

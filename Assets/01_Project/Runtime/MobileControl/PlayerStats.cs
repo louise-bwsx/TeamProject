@@ -1,31 +1,56 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerStats : MonoBehaviour
+public enum CharacterStats
+{
+    STR,
+    DEF,
+    AGI,
+    INT,
+    SPR,
+    Count
+}
+
+public class PlayerStats : MonoBehaviour, ISave
 {
     public float hp;
     public float maxHp;
     public float invincibleLimit;
-    public int dust = 99999;
+    public int dust = 100;
     public HealthBarOnGame healthbarongame;
     public GameObject[] getHitEffect;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     public float invincibleTimer;
-
     private CharacterBase characterBase;
+
+    private PlayerControl playerControl;
+    private Collider collider;
     private MobileRoll mobileRoll;
-    private MobileAttack mobileAttack;
+    private int statsLevelNeed = 100;
+    private int skillLevelNeed = 100;
+    private int[] statsLevel;
+    private int[] skillLevels;
 
     public UnityEvent<float> OnHealthChange = new UnityEvent<float>();
+    public UnityEvent<int> OnDustChange = new UnityEvent<int>();
+
+    //TODOError: 存讀檔的資料 順序 還沒做好
+    private void Awake()
+    {
+        characterBase = FindObjectOfType<CharacterBase>();
+
+        playerControl = GetComponentInChildren<PlayerControl>();
+        collider = GetComponent<Collider>();
+        mobileRoll = GetComponentInChildren<MobileRoll>();
+        Load();
+    }
 
     private void Start()
     {
         hp = maxHp;
         OnHealthChange?.Invoke(1);
-        characterBase = FindObjectOfType<CharacterBase>();
-        mobileRoll = GetComponentInChildren<MobileRoll>();
-        mobileAttack = FindObjectOfType<MobileAttack>();
+        OnDustChange?.Invoke(dust);
     }
 
     private void Update()
@@ -41,13 +66,53 @@ public class PlayerStats : MonoBehaviour
             mobileRoll.isInvincible = false;
             spriteRenderer.color = Color.white;
         }
-        if (hp <= 0 && GetComponent<Collider>().enabled)
+        if (hp <= 0 && collider.enabled)
         {
-            mobileAttack.isAttack = true;
+            playerControl.isAttack = false;
             animator.SetTrigger("Dead");
-            GetComponent<Collider>().enabled = false;
+            collider.enabled = false;
         }
     }
+
+    public int GetStatLevel(int statIndex)
+    {
+        return statsLevel[statIndex];
+    }
+
+    public int GetSkillLevel(int skillIndex)
+    {
+        return skillLevels[skillIndex];
+    }
+
+    public void StatLevelUp(int statsIndex)
+    {
+        if (dust < statsLevelNeed)
+        {
+            Debug.LogError("魔塵不足");
+            return;
+        }
+        dust -= statsLevelNeed;
+        statsLevel[statsIndex]++;
+        OnDustChange?.Invoke(dust);
+    }
+
+    public void SkillLevelUp(int skillIndex)
+    {
+        if (dust < skillLevelNeed * skillLevels[skillIndex])
+        {
+            Debug.LogError("魔塵不足");
+            return;
+        }
+        if (skillLevels[skillIndex] >= 4)
+        {
+            Debug.Log("等級已達最大值");
+            return;
+        }
+        dust -= skillLevelNeed;
+        skillLevels[skillIndex]++;
+        OnDustChange?.Invoke(dust);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //放在Stay會重複傷害因為大招不會因為玩家碰到而消失
@@ -100,21 +165,47 @@ public class PlayerStats : MonoBehaviour
             gameObject.GetComponent<Collider>().isTrigger = false;
         }
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (hp > 0)
+        if (hp <= 0)
         {
-            if (collision.gameObject.CompareTag("Gold") ||
-               collision.gameObject.CompareTag("Green") ||
-               collision.gameObject.CompareTag("White") ||
-               collision.gameObject.CompareTag("Blue"))
-            {
+            return;
+        }
+        switch (collision.gameObject.tag)
+        {
+            case "Gold":
+            case "Green":
+            case "White":
+            case "Blue":
                 dust += 5;
                 hp += 5;
                 Destroy(collision.gameObject);
                 OnHealthChange?.Invoke(hp / maxHp);
                 healthbarongame.SetHealth(hp);
-            }
+                break;
         }
+    }
+
+    public void Save(GameSaveData gameSave)
+    {
+    }
+
+    public void Load()
+    {
+        GameSaveData gameSave = SaveManager.Inst.GetGameSave();
+        dust = gameSave.dust;
+        skillLevels = gameSave.skillLevels;
+        statsLevel = gameSave.charaterStats;
+        hp = gameSave.playerHp;
+        maxHp = gameSave.playerMaxHp;
+        if (!gameSave.transformSaves.ContainsKey(transform.name))
+        {
+            TransformSave transformSave = new TransformSave(transform);
+            gameSave.transformSaves.Add(transform.name, transformSave);
+            return;
+        }
+        transform.position = gameSave.transformSaves[transform.name].position;
+        transform.rotation = gameSave.transformSaves[transform.name].rotation;
     }
 }

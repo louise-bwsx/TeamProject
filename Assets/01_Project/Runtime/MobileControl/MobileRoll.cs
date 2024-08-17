@@ -20,7 +20,6 @@ public class MobileRoll : MonoBehaviour
     Vector3 oldPosition;
     Rigidbody RB;
     Animator animator;
-    AudioSource sourceSFX;
     private PlayerStamina playerStamina;
     private PlayerStats playerStats;
 
@@ -29,7 +28,6 @@ public class MobileRoll : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerStamina = GetComponent<PlayerStamina>();
         mobileMove = GetComponent<MobileMove>();
-        sourceSFX = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         uIBarControl = FindObjectOfType<UIBarControl>();
         RB = GetComponentInParent<Rigidbody>();
@@ -38,7 +36,6 @@ public class MobileRoll : MonoBehaviour
 
     private void Start()
     {
-        sourceSFX.volume = CentralData.GetInst().SFXVol;
         //初始化耐力值為最大值
         //不可穿牆的layer是wall和monster
         rayMask = wall & monster;
@@ -90,7 +87,7 @@ public class MobileRoll : MonoBehaviour
             //取消攻擊動畫
             animator.SetBool("IsAttack", false);
             //播音效
-            sourceSFX.PlayOneShot(rollSFX);
+            AudioManager.Inst.PlaySFX("Roll");
             //迴避的冷卻時間
             rollTimer = 0;
             //設定不能穿過wall

@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 
 public class SkillWindow : MonoBehaviour
@@ -7,19 +7,22 @@ public class SkillWindow : MonoBehaviour
     [SerializeField] private Sprite[] skillIcons;
     [SerializeField] private string[] skillNames;
     [SerializeField] private string[] skillInfo;
-    [SerializeField] private int[] skillLevel;
+    [SerializeField] private TMP_Text dustText;
 
-    private void Start()
+    public void Init()
     {
-        Initialize();
-    }
-
-    [Button]
-    private void Initialize()
-    {
+        PlayerStats player = PlayerManager.Inst.Player;
+        player.OnDustChange.AddListener(ChangeDust);
         for (int i = 0; i < skillWindowItems.Length; i++)
         {
-            skillWindowItems[i].Initialize(skillIcons[i], skillNames[i], skillInfo[i], skillLevel[i]);
+            int index = i;
+            int level = player.GetStatLevel(index);
+            skillWindowItems[i].Init(skillIcons[i], skillNames[i], skillInfo[i], level, index);
         }
+    }
+
+    private void ChangeDust(int dust)
+    {
+        dustText.text = $"³Ñ¾lÅ]¹Ð: {dust}";
     }
 }

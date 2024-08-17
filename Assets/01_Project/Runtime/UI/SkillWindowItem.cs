@@ -9,31 +9,25 @@ public class SkillWindowItem : MonoBehaviour
     [SerializeField] private TMP_Text infoText;
     [SerializeField] private Button levelUpBtn;
     [SerializeField] private Image[] levelImage;
-    private int level;
+    private int skillIndex;
 
-    public void Initialize(Sprite iconSprite, string name, string info, int level)
+    public void Init(Sprite iconSprite, string name, string info, int level, int index)
     {
         icon.sprite = iconSprite;
         nameText.text = name;
         infoText.text = info;
-        levelUpBtn.onClick.RemoveAllListeners();
-        levelUpBtn.onClick.AddListener(LevelUP);
-        this.level = level;
+        skillIndex = index;
         for (int i = 0; i < level; i++)
         {
             levelImage[i].enabled = true;
         }
+        levelUpBtn.onClick.AddListener(LevelUP);
     }
 
     private void LevelUP()
     {
-        if (level >= 4)
-        {
-            Debug.Log("等級已達到最大值");
-            return;
-        }
-        Debug.Log(nameText.text + "等級提升");
-        level++;
+        PlayerManager.Inst.Player.SkillLevelUp(skillIndex);
+        int level = PlayerManager.Inst.Player.GetSkillLevel(skillIndex);
         for (int i = 0; i < level; i++)
         {
             levelImage[i].enabled = true;

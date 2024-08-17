@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 
 public enum EffectDirection
-{ 
+{
     Left,
     Right,
     Count
@@ -31,7 +28,6 @@ public class MobileAttack : MonoBehaviour
     float attackTimer;
     GameObject spwanSwordCube;
     Animator animator;
-    AudioSource sourceSFX;
     SpriteRenderer spriteRenderer;
     Rigidbody RB;
 
@@ -40,13 +36,12 @@ public class MobileAttack : MonoBehaviour
         RB = GetComponentInParent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        sourceSFX = GetComponentInParent<AudioSource>();
-        sourceSFX.volume = CentralData.GetInst().SFXVol;
     }
     void Update()
     {
         attackTimer += Time.deltaTime;
     }
+
     void Attack(string attackType)//按鈕呼叫
     {
         if (attackTimer >= attackCD && !isAttack)
@@ -58,20 +53,21 @@ public class MobileAttack : MonoBehaviour
             attackTimer = 0;
         }
     }
+
     void AttackRange(string attackType)//動畫Event呼叫
-    {   
+    {
         //音效選擇
         switch (attackType)
         {
             case "Attack":
                 {
-                    sourceSFX.PlayOneShot(swingSFX);
+                    AudioManager.Inst.PlaySFX("Swing");
                     break;
                 }
             case "Attack_Spike":
                 {
                     isSpike = true;
-                    sourceSFX.PlayOneShot(spikeSFX);
+                    AudioManager.Inst.PlaySFX("Spike");
                     spawantransform.GetComponent<Collider>().enabled = true;
                     break;
                 }
@@ -135,7 +131,7 @@ public class MobileAttack : MonoBehaviour
         isSpike = false;
         //刪除攻擊範圍
         if (spwanSwordCube != null)
-        { 
+        {
             Destroy(spwanSwordCube);
         }
         //關閉傷害範圍

@@ -124,7 +124,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         CloseMenu("GameMenu");
         GameStateManager.Inst.ChangState(GameState.Gaming);
-        if (PlayerManager.Inst.Player.playerHealth > 0)
+        if (PlayerManager.Inst.Player.hp > 0)
         {
             Time.timeScale = 1f;
         }
@@ -153,6 +153,9 @@ public class UIManager : MonoSingleton<UIManager>
                 break;
             case "Load":
                 OpenLoadMenu();
+                break;
+            case "Save":
+                SaveManager.Inst.RefreshUI();
                 break;
         }
         menuDict[menuName].SetActive(true);
@@ -260,6 +263,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     private void OpenLoadMenu()
     {
+        SaveManager.Inst.RefreshUI();
         if (SceneManager.Inst.IsGameScene())
         {
             loadImage.sprite = null;

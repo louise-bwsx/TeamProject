@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class PlayerManager : MonoSingleton<PlayerManager>
 {
-    private PlayerControl playerControl;
     [SerializeField] private PlayerStats playerPrefab;
     [field: SerializeField, ReadOnly] public PlayerStats Player { get; private set; }
+    [field: SerializeField, ReadOnly] public PlayerControl PlayerControl { get; private set; }
     [field: SerializeField, ReadOnly] public SkillSelector SkillSelector { get; private set; }
     [field: SerializeField, ReadOnly] public PlayerStamina PlayerStamina { get; private set; }
+    [field: SerializeField, ReadOnly] public ShootDirectionSetter ShootDirection { get; private set; }
 
     public void SpawnPlayer()
     {
         Player = Instantiate(playerPrefab, new Vector3(112.5f, 10.7f, 49.5f), Quaternion.Euler(0, -90, 0));
         Player.name = Player.name.Replace("(Clone)", "");
-        playerControl = Player.GetComponent<PlayerControl>();
+        PlayerControl = Player.GetComponent<PlayerControl>();
         SkillSelector = Player.GetComponent<SkillSelector>();
         PlayerStamina = Player.GetComponent<PlayerStamina>();
+        ShootDirection = Player.GetComponent<ShootDirectionSetter>();
     }
 
     public bool IsDead()
@@ -33,6 +35,6 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         {
             return false;
         }
-        return playerControl.isAttack;
+        return PlayerControl.isAttack;
     }
 }

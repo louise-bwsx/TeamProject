@@ -2,62 +2,28 @@
 
 public class MobileMove : MonoBehaviour
 {
-    //public FixedJoystick leftJoyStick;
-    public float ws;
-    public float ad;
-    public float moveSpeed;
-    MobileAttack mobileAttack;
-    SpriteRenderer spriteRenderer;
-    Rigidbody RB;
-    CharacterBase characterBase;
-    Animator animator;
-    Vector3 moveMent;
-    void Start()
+    [SerializeField] private FixedJoystick joystick;
+    private float vertical;
+    private float horizontal;
+    private PlayerControl playerControl;
+    private ShootDirectionSetter shootDirectionSetter;
+
+    public void Init(PlayerControl playerControl, ShootDirectionSetter shootDirectionSetter)
     {
-        mobileAttack = FindObjectOfType<MobileAttack>();
-        RB = GetComponentInParent<Rigidbody>();
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        characterBase = FindObjectOfType<CharacterBase>();
+        this.playerControl = playerControl;
+        this.shootDirectionSetter = shootDirectionSetter;
     }
-    void FixedUpdate()
+
+    private void Update()
     {
-        //ws = leftJoyStick.Vertical;
-        //ad = leftJoyStick.Horizontal;
-        //攻擊時不能移動
-        if (!mobileAttack.isAttack && !animator.GetBool("IsAttack"))
+        vertical = joystick.Vertical;
+        horizontal = joystick.Horizontal;
+        playerControl.SetMoveDirection(vertical, horizontal);
+        if (vertical == 0 && horizontal == 0)
         {
-            moveMent.Set(-ws, 0f, ad);
+            return;
         }
-        else
-        {
-            moveMent.Set(0, 0, 0);
-        }
-        //如果有Movement.normalized會延遲很嚴重 因為四捨五入?
-        moveMent = moveMent * (moveSpeed + characterBase.charaterStats[(int)CharacterStats.AGI]) * Time.deltaTime;
-        RB.MovePosition(transform.position + moveMent);
-    }
-    void Update()
-    {
-        animator.SetFloat("Vertical", ws);
-        if (ad != 0 && ad > Mathf.Abs(ws))
-        {
-            animator.SetBool("Walk", true);
-        }
-        else
-        {
-            animator.SetBool("Walk", false);
-        }
-        if (Time.timeScale != 0 && mobileAttack.isAttack == false && !animator.GetBool("IsAttack"))
-        {
-            if (ad > 0)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (ad < 0)
-            {
-                spriteRenderer.flipX = false;
-            }
-        }
+        float targetYAngle = Mathf.Atan2(-vertical, horizontal) * Mathf.Rad2Deg;
+        shootDirectionSetter.MobileShootDirectionChange(targetYAngle);
     }
 }

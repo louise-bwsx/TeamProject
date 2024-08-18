@@ -12,17 +12,11 @@ public enum AttackType
 
 public class PlayerControl : MonoBehaviour
 {
-    PlayerAction playerAction;
-    CharacterBase characterBase;
-    public PlayerOptions playerOptions;
     public UIBarControl uIBarControl;
-    private PlayerSprite playersprite;
     public GameMenuController gameMenu;
     public HealthBarOnGame healthbarongame;
     public GetHitEffect getHitEffect;
     public GameObject statsWindow;
-    [SerializeField] private Transform faceDirection;
-    public new Collider collider;
     //有關耐力
     [SerializeField] private PlayerStamina stamina;
     //有關移動
@@ -49,25 +43,29 @@ public class PlayerControl : MonoBehaviour
     public int normalAttackDash = 3;
     public LayerMask EnemyLayer;
     Vector3 position;
-    public Animator animator;
     public bool isRoll;
 
     [field: SerializeField] public Rigidbody rigidbody { get; private set; }
-    [SerializeField] private LayerMask wall;
-    [SerializeField] private LayerMask monster;
+    [SerializeField] private LayerMask rollLayer;
     private Vector3 previousPos;
-    private LayerMask layerMask;
     private Vector3 moveDirection;
+    private PlayerOptions playerOptions;
+    private PlayerSprite playerSprite;
+    private Collider collider;
+    private Animator animator;
+    private PlayerStats playerStats;
+    private ShootDirectionSetter shootDirectionSetter;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        rigidbody = GetComponentInParent<Rigidbody>();
-        playerAction = GetComponentInChildren<PlayerAction>();
-        collider = GetComponentInParent<Collider>();
-        playerOptions = FindObjectOfType<PlayerOptions>();
-        characterBase = FindObjectOfType<CharacterBase>();
-        playersprite = GetComponent<PlayerSprite>();
+        collider = GetComponent<Collider>();
+        animator = GetComponentInChildren<Animator>();
+        playerStats = GetComponent<PlayerStats>();
+        rigidbody = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
+        playerOptions = GetComponent<PlayerOptions>();
+        playerSprite = GetComponentInChildren<PlayerSprite>();
+        shootDirectionSetter = GetComponent<ShootDirectionSetter>();
     }
 
     private void Start()
@@ -76,39 +74,60 @@ public class PlayerControl : MonoBehaviour
         attackTime = 10;
         //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         previousPos = transform.position;
-        layerMask = wall & monster;
     }
 
     private void Update()
     {
-        //不能用transform因為這個Script跟rigidbody的位置不一樣
-        ws = Input.GetAxisRaw("Vertical");//世界軸
-        ad = Input.GetAxisRaw("Horizontal");
-        if (isAttack || animator.GetBool("IsAttack") || animator.GetBool("Magic_Prepare"))
+        rollCD -= Time.deltaTime;
+        if (isInvincible)
         {
-            moveDirection.Set(0, 0, 0);
+            rollTime += Time.deltaTime;
         }
-        else if (!isAttack && !animator.GetBool("IsAttack"))
+        //無敵時間超過上限取消無敵狀態
+        if (rollTime > rollTimeLimit)
         {
-            moveDirection.Set(-ws, 0f, ad);
-        }
-        moveDirection.Normalize();
-        if (moveDirection != Vector3.zero)
-        {
-            rigidbody.position += moveDirection * (moveSpeed + characterBase.charaterStats[(int)CharacterStats.AGI]) * Time.deltaTime;
+            isInvincible = false;
+            rollTime = 0;
+            rigidbody.velocity = Vector3.zero;
+            collider.isTrigger = false;
+            rigidbody.useGravity = true;
+            isRoll = false;
         }
 
-        rollCD -= Time.deltaTime;
+        //不檢查的話 這邊會覆蓋掉mobile mobile會沒辦法播放移動動畫
+        if (GameStateManager.Inst.IsMobile)
+        {
+            return;
+        }
+
+        if (GameStateManager.Inst.CurrentState != GameState.Gaming)
+        {
+            return;
+        }
+        ws = Input.GetAxisRaw("Vertical");
+        ad = Input.GetAxisRaw("Horizontal");
+        SetMoveDirection(ws, ad);
+
         //攻速&普攻按鍵
         attackTime += Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && attackTime >= attackSpeed)
         {
             Attack(AttackType.NormalAttack);
+            return;
         }
         if (Input.GetMouseButtonDown(1) && attackTime >= attackSpikeSpeed)
         {
             Attack(AttackType.SpikeAttack);
+            return;
         }
+
+        //翻滾
+        if (Input.GetKeyDown(KeyCode.Space) /* && !animator.GetBool("IsAttack")*/)
+        {
+            Roll();
+            return;
+        }
+
         //開關玩家血條
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -172,26 +191,6 @@ public class PlayerControl : MonoBehaviour
             healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
         }
         #endregion
-        //翻滾
-        if (Input.GetKeyDown(KeyCode.Space) /* && !animator.GetBool("IsAttack")*/)
-        {
-            Roll();
-        }
-        if (isInvincible)
-        {
-            rollTime += Time.deltaTime;
-        }
-        //無敵時間超過上限取消無敵狀態
-        if (rollTime > rollTimeLimit)
-        {
-            isInvincible = false;
-            rollTime = 0;
-            rigidbody.velocity = Vector3.zero;
-            collider.isTrigger = false;
-            rigidbody.useGravity = true;
-            layerMask = wall & monster;
-            isRoll = false;
-        }
 
         if (Input.GetKeyDown(KeyCode.N))//傳送到指定地點 &場景重置
         {
@@ -205,13 +204,103 @@ public class PlayerControl : MonoBehaviour
         PlayerStandGround();
     }
 
+    public void SetMoveDirection(float vertical, float horizontal)
+    {
+        if (isAttack || animator.GetBool("IsAttack") || animator.GetBool("Magic_Prepare"))
+        {
+            moveDirection.Set(0, 0, 0);
+            return;
+        }
+
+        //避免先按住左 再按住右會播放移動動畫
+        if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) ||
+           (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
+        {
+            horizontal = 0f;
+        }
+        if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S)) ||
+            (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.DownArrow)))
+        {
+            vertical = 0f;
+        }
+
+        moveDirection.Set(-vertical, 0f, horizontal);
+        moveDirection.Normalize();
+
+        animator.SetFloat("Vertical", vertical);
+        animator.SetFloat("Horizontal", horizontal);
+
+        if (moveDirection != Vector3.zero)
+        {
+            //Debug.Log(vertical);
+            //Debug.Log(horizontal);
+            playerSprite.SpriteFlipByInputDirection(horizontal);
+            rigidbody.position += moveDirection * ((moveSpeed + playerStats.GetStatLevel(StatType.AGI)) * Time.deltaTime);
+        }
+    }
+
+    public void Attack(AttackType type)
+    {
+        //不要利用 EventSystem.current.IsPointerOverGameObject() 會因為點到血條沒辦法攻擊
+        if (UIManager.Inst.IsUIOpen("StatsWindow") ||
+            UIManager.Inst.IsUIOpen("SkillWindow"))
+        {
+            return;
+        }
+
+        //TODO: 這裡應該可以用PlayerState來判斷 currentPlayerState != PlayerState.Gaming return;
+        if (playerSprite.isMagicAttack || getHitEffect.playerHealth < 0 || isRoll)
+        {
+            Debug.Log("玩家在一個無法攻擊的狀態");
+            return;
+        }
+        //false在動畫Event呼叫
+        isAttack = true;
+        //讓人物轉向滑鼠點擊方向 為了不讓手機模式 改變方向
+        //TODOWarning: 等左邊搖桿可以改變ShootDirection方向在取消 判斷是不是手機模式看看
+        if (!GameStateManager.Inst.IsMobile)
+        {
+            playerSprite.SpriteFlipByMousePosition();
+        }
+        switch (type)
+        {
+            case AttackType.NormalAttack:
+                NormalAttack();
+                break;
+            case AttackType.SpikeAttack:
+                SpikeAttack();
+                break;
+        }
+        attackTime = 0;
+    }
+
+    private void NormalAttack()
+    {
+        animator.SetTrigger("Attack");
+    }
+
+    private void SpikeAttack()
+    {
+        animator.SetTrigger("Attack_Spike");
+        //TODOWarning: 等左邊搖桿可以改變ShootDirection方向在取消 判斷是不是手機模式看看
+        if (GameStateManager.Inst.IsMobile)
+        {
+            Vector3 direction = playerSprite.FlipX() ? Vector3.forward : Vector3.back;
+            Debug.Log(direction);
+            rigidbody.velocity = direction * spikeAttackDash;
+            return;
+        }
+        rigidbody.velocity = shootDirectionSetter.GetForward() * spikeAttackDash;
+    }
+
     private void CheckMoveThroughWall()
     {
         Vector3 raycastDir = rigidbody.position - previousPos;
         float distance = Vector3.Distance(previousPos, rigidbody.position);
         RaycastHit hit;
-        if (Physics.Raycast(previousPos, raycastDir, out hit, distance, layerMask))
+        if (Physics.Raycast(previousPos, raycastDir, out hit, distance, rollLayer))
         {
+            Debug.Log("CheckMoveThroughWall");
             //撞到牆velocity歸零
             rigidbody.velocity = Vector3.zero;
             //將玩家移動到被射線打到的點
@@ -230,6 +319,7 @@ public class PlayerControl : MonoBehaviour
         //沒有transform.down 負數的選項
         if (Physics.Raycast(rigidbody.position, -rigidbody.transform.up, out hit, distance, floor))
         {
+            //Debug.Log("PlayerStandGround");
             Vector3 hitLift = hit.point + rigidbody.transform.up * lift;
             Vector3 originPos = rigidbody.position;
             originPos.y = hitLift.y;
@@ -243,73 +333,29 @@ public class PlayerControl : MonoBehaviour
         Gizmos.DrawLine(rigidbody.position, rigidbody.transform.localPosition.With(y: rigidbody.transform.localPosition.y - 1));
     }
 
-    private void Attack(AttackType type)
-    {
-        if (GameStateManager.Inst.CurrentState != GameState.Gaming)
-        {
-            return;
-        }
-        //不要利用 EventSystem.current.IsPointerOverGameObject() 會因為點到血條沒辦法攻擊
-        if (UIManager.Inst.IsUIOpen("StatsWindow") ||
-            UIManager.Inst.IsUIOpen("SkillWindow"))
-        {
-            return;
-        }
-        //TODO: 這裡應該可以用PlayerState來判斷 currentPlayerState != PlayerState.Gaming return;
-        if (playersprite.isMagicAttack || getHitEffect.playerHealth < 0 || isRoll)
-        {
-            Debug.Log("玩家在一個無法攻擊的狀態");
-            return;
-        }
-        //false在動畫Event呼叫
-        isAttack = true;
-        //讓人物轉向
-        playersprite.PlayerSpriteFlip();
-        switch (type)
-        {
-            case AttackType.NormalAttack:
-                NormalAttack();
-                break;
-            case AttackType.SpikeAttack:
-                SpikeAttack();
-                break;
-        }
-        attackTime = 0;
-    }
-
-    private void NormalAttack()
-    {
-        playerAction.NormalAttack();
-    }
-
-    private void SpikeAttack()
-    {
-        rigidbody.velocity = faceDirection.forward * spikeAttackDash;
-        playerAction.SpikeAttack();
-    }
-
-    private void Roll()
+    public void Roll()
     {
         if (rollCD > 0 ||
             GameStateManager.Inst.CurrentState != GameState.Gaming ||
-            !stamina.IsEnough(rollCostStamina))
+            !stamina.IsEnough(rollCostStamina) ||
+             playerStats.hp <= 0)
         {
             return;
         }
-        layerMask = wall;
+
+        animator.SetTrigger("Roll");
+        animator.SetBool("IsAttack", false);
+        AudioManager.Inst.PlaySFX("Roll");
+        rollCD = rollRate;
         previousPos = rigidbody.position;
         isAttack = false;
         isRoll = true;
-        playersprite.isMagicAttack = false;
-        //歸零動量
-        rigidbody.velocity = Vector3.zero;
+        playerSprite.isMagicAttack = false;
         stamina.Cost(rollCostStamina);
-        playerAction.Roll();
         //開啟無敵狀態
         isInvincible = true;
-        rigidbody.velocity = faceDirection.forward * rollDistence;
+        rigidbody.velocity = shootDirectionSetter.GetForward() * rollDistence;
         //讓玩家可以穿過怪物
         //collider.isTrigger = true;
-        rollCD = rollRate;
     }
 }

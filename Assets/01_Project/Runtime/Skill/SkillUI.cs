@@ -11,6 +11,7 @@ public class SkillUI : MonoBehaviour
 
     public void Init(SkillSelector skillSelector)
     {
+        skillSelector.ChangeSelectSkill.RemoveAllListeners();
         skillSelector.ChangeSelectSkill.AddListener(ChangeSelectSkillFrame);
         for (int i = 0; i < skillSO.Length; i++)
         {

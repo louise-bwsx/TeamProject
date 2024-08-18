@@ -1,11 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class MobileUI : MonoBehaviour
 {
-    public void UIEnable(Transform typeUI)
+    [SerializeField] private Button escMenuBtn;
+    [SerializeField] private Button statsMenuBtn;
+    [SerializeField] private Button skillMenuBtn;
+
+    private void Start()
     {
-        typeUI.gameObject.SetActive(!typeUI.gameObject.activeSelf);
+        gameObject.SetActive(GameStateManager.Inst.IsMobile);
+        escMenuBtn.onClick.AddListener(UIManager.Inst.EscBtnOnClick);
+        statsMenuBtn.onClick.AddListener(() => UIManager.Inst.OpenMenu("StatsWindow"));
+        skillMenuBtn.onClick.AddListener(() => UIManager.Inst.OpenMenu("SkillWindow"));
+
     }
 }

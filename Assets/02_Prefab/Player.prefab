@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6561773929419096485}
   - component: {fileID: 64721261789034422}
   - component: {fileID: 5781274889587318368}
+  - component: {fileID: 22803839121703244}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -143,10 +144,8 @@ MonoBehaviour:
   maxHealth: 100
   playerHealth: 5
   healthbarongame: {fileID: 207457562656914458}
-  playerControl: {fileID: 4633030805326924251}
   RD: {fileID: 6014595923337663550}
   changeColor: {fileID: 301406846490287500}
-  playerRotation: {fileID: 8479856148016314929}
   spriteRenderer: {fileID: 6589082806882053767}
   animator: {fileID: 3379591463939361311}
   bounceForce: 5000
@@ -194,6 +193,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6589082806882053767}
   animator: {fileID: 3379591463939361311}
   invincibleTimer: 0
+  statsLevel: 
+  skillLevels: 
   OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -259,6 +260,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mousePosition: {x: 0, y: 0, z: 0}
   shootDirectionTrans: {fileID: 3718485332493406148}
+--- !u!114 &22803839121703244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301406846490287500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be39718858701f41b4717458a070c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIBarControl: {fileID: 0}
+  gameMenu: {fileID: 0}
+  healthbarongame: {fileID: 207457562656914458}
+  getHitEffect: {fileID: 6197753056349689909}
+  statsWindow: {fileID: 0}
+  stamina: {fileID: 124666687790467800}
+  moveSpeed: 5
+  isInvincible: 0
+  rollTimeLimit: 0.4
+  rollForce: 0
+  rollDistence: 25
+  rollRate: 1
+  isAttack: 0
+  attackRange: 0.4
+  attackTime: 0
+  attackSpeed: 0
+  attackSpikeSpeed: 0
+  attackDamage: 2
+  spikeAttackDash: 7
+  normalAttackDash: 3
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRoll: 0
+  <rigidbody>k__BackingField: {fileID: 6014595923337663550}
+  rollLayer:
+    serializedVersion: 2
+    m_Bits: 9
 --- !u!1 &1284486947095098531
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +479,6 @@ GameObject:
   - component: {fileID: 3379591463939361311}
   - component: {fileID: 2953369366757151352}
   - component: {fileID: 1587257105620065901}
-  - component: {fileID: 4633030805326924251}
   - component: {fileID: 6220305963875699264}
   - component: {fileID: 4444184487783763650}
   m_Layer: 11
@@ -551,16 +591,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3379591463939361311}
-  swordCube: {fileID: 1274731740723205147, guid: 4ad330f496f2b5341aa5ee519d6da287, type: 3}
-  swingAttackEffectLeft: {fileID: 2146589714767106736, guid: bd478f03d61db1f48852f33df11e584c, type: 3}
-  swingAttackEffectRight: {fileID: 6944432453040499547, guid: 2eec5cc8d8392d04bb272f01fb91de49, type: 3}
-  SpikeAttackEffectLeft: {fileID: 3908884330443153031, guid: 0823424513675964aa045be78e25a56f, type: 3}
-  SpikeAttackEffectRight: {fileID: 1760297604239239131, guid: faaa749b838d9b64aae382a8a4cea403, type: 3}
   shadowDestory: {fileID: 4871320640094872339}
   player: {fileID: 9140593496336091482}
   spawantransform: {fileID: 8032247989754630197}
-  SpikeAttackLeftPos: {fileID: 9190277649077748857}
-  SpikeAttackRightPos: {fileID: 4990266141528355607}
+  SpikeAttackLeftPos: {fileID: 4990266141528355607}
+  SpikeAttackRightPos: {fileID: 9190277649077748857}
   gameMenu: {fileID: 0}
   playerRotation: {fileID: 8479856148016314929}
 --- !u!114 &1587257105620065901
@@ -575,53 +610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2827774e95b0927429653079d30a632d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4633030805326924251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4807531278407900491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be39718858701f41b4717458a070c35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerOptions: {fileID: 6809943332016536690}
-  uIBarControl: {fileID: 0}
-  gameMenu: {fileID: 0}
-  healthbarongame: {fileID: 207457562656914458}
-  getHitEffect: {fileID: 6197753056349689909}
-  statsWindow: {fileID: 0}
-  faceDirection: {fileID: 8479856148016314929}
-  collider: {fileID: 1670679972810942515}
-  stamina: {fileID: 124666687790467800}
-  moveSpeed: 5
-  isInvincible: 0
-  rollTimeLimit: 0.4
-  rollForce: 0
-  rollDistence: 25
-  rollRate: 1
-  isAttack: 0
-  attackRange: 0.4
-  attackTime: 0
-  attackSpeed: 0
-  attackSpikeSpeed: 0
-  attackDamage: 2
-  spikeAttackDash: 7
-  normalAttackDash: 3
-  EnemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  animator: {fileID: 0}
-  isRoll: 0
-  <rigidbody>k__BackingField: {fileID: 6014595923337663550}
-  wall:
-    serializedVersion: 2
-    m_Bits: 0
-  monster:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &6220305963875699264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,8 +651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280f5ea3c12653144b3e5e68607b6718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceDirection: {fileID: 8479856148016314929}
-  playerControl: {fileID: 4633030805326924251}
   isMagicAttack: 0
   spriteRenderer: {fileID: 6589082806882053767}
 --- !u!1 &4871320640094872339
@@ -760,7 +746,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9190277649077748857}
   m_Layer: 11
-  m_Name: AttackFx_L
+  m_Name: SpikeFxR_Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4990266141528355607}
   m_Layer: 11
-  m_Name: AttackFx_R
+  m_Name: SpikeFxL_Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,8 +826,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8032247989754630197}
+  m_Children: []
   m_Father: {fileID: 9140593496336091482}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &6690632530332921751
@@ -1119,6 +1104,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7805923364305161823}
+  - {fileID: 8032247989754630197}
   m_Father: {fileID: 9140593496336091482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9192628195260814930
@@ -1134,7 +1120,7 @@ GameObject:
   - component: {fileID: 3563227690279675031}
   - component: {fileID: 3106893218060274455}
   m_Layer: 11
-  m_Name: SwordAttackCube
+  m_Name: SwordAttackCollider
   m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,12 +1134,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9192628195260814930}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.004000485, z: 1.12}
-  m_LocalScale: {x: 1.5, y: 1, z: 1.5}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1.5000001, y: 1, z: 1.5000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8479856148016314929}
+  m_Father: {fileID: 3718485332493406148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1794094484532875877
 MeshFilter:

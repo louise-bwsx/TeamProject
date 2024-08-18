@@ -76,7 +76,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            EscButton();
+            EscBtnOnClick();
         }
     }
     public bool IsUIOpen(string uiName)
@@ -89,7 +89,7 @@ public class UIManager : MonoSingleton<UIManager>
         return menuDict[uiName].activeSelf;
     }
 
-    private void EscButton()
+    public void EscBtnOnClick()
     {
         Debug.Log(GameStateManager.Inst.CurrentState);
         switch (GameStateManager.Inst.CurrentState)

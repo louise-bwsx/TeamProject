@@ -2,57 +2,35 @@
 
 public class PlayerSprite : MonoBehaviour
 {
-    public Transform faceDirection;
-    public PlayerControl playerControl;
     //TODOWarning: 利用IsMagicAttack去判斷能不能移動 會比用animator.GetBool來的準確 
     public bool isMagicAttack;
-
     [SerializeField] private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    private PlayerControl playerControl;
     private SkillShooter skillShooter;
-
+    private ShootDirectionSetter shootDirectionSetter;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        playerControl = GetComponentInParent<PlayerControl>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         skillShooter = GetComponentInParent<SkillShooter>();
+        shootDirectionSetter = GetComponentInParent<ShootDirectionSetter>();
     }
 
-    private void Update()
+    public void SpriteFlipByInputDirection(float horizontal)
     {
-        if (Time.timeScale == 0)
-        {
-            return;
-        }
-
-        Vector3 inputDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        //if (isMagicAttack)
-        //{
-        //    PlayerSpriteFlip();
-        //}
-        if (playerControl.isAttack == false &&
-            !animator.GetBool("IsAttack") &&
-            inputDir.x != 0)
-        {
-            float y = inputDir.x > 0 ? 90 : -90;
-            faceDirection.localEulerAngles = faceDirection.localEulerAngles.With(y: y);
-            spriteRenderer.flipX = inputDir.x > 0;
-        }
+        //flipX == true 時是面向右邊
+        spriteRenderer.flipX = horizontal > 0;
     }
 
-    public void PlayerSpriteFlip()
+    public void SpriteFlipByMousePosition()
     {
-        if (faceDirection.localEulerAngles.y < 180 && faceDirection.localEulerAngles.y > 0)
-        {
-            //Debug.Log("面向右邊");
-            faceDirection.localEulerAngles = faceDirection.localEulerAngles.With(y: 90);
-            spriteRenderer.flipX = true;
-        }
-        else if (faceDirection.localEulerAngles.y < 360 && faceDirection.localEulerAngles.y > 180)
-        {
-            faceDirection.localEulerAngles = faceDirection.localEulerAngles.With(y: -90);
-            spriteRenderer.flipX = false;
-        }
+        bool flipX = shootDirectionSetter.GetLocalEulerAnglesY() > 0 && shootDirectionSetter.GetLocalEulerAnglesY() < 180;
+        spriteRenderer.flipX = flipX;
+    }
+
+    public bool FlipX()
+    {
+        return spriteRenderer.flipX;
     }
 
     void IsAttackFalse()//動畫Event控制

@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.Events;
 
-public enum CharacterStats
+public enum StatType
 {
     STR,
     DEF,
@@ -22,15 +23,14 @@ public class PlayerStats : MonoBehaviour, ISave
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     public float invincibleTimer;
-    private CharacterBase characterBase;
 
     private PlayerControl playerControl;
     private Collider collider;
     private MobileRoll mobileRoll;
     private int statsLevelNeed = 100;
     private int skillLevelNeed = 100;
-    private int[] statsLevel;
-    private int[] skillLevels;
+    [SerializeField, ReadOnly] private int[] statsLevel;
+    [SerializeField, ReadOnly] private int[] skillLevels;
 
     public UnityEvent<float> OnHealthChange = new UnityEvent<float>();
     public UnityEvent<int> OnDustChange = new UnityEvent<int>();
@@ -38,8 +38,6 @@ public class PlayerStats : MonoBehaviour, ISave
     //TODOError: 存讀檔的資料 順序 還沒做好
     private void Awake()
     {
-        characterBase = FindObjectOfType<CharacterBase>();
-
         playerControl = GetComponentInChildren<PlayerControl>();
         collider = GetComponent<Collider>();
         mobileRoll = GetComponentInChildren<MobileRoll>();
@@ -57,13 +55,13 @@ public class PlayerStats : MonoBehaviour, ISave
     {
         if (invincibleTimer > 0)
         {
-            mobileRoll.isInvincible = true;
+            playerControl.isInvincible = true;
             invincibleTimer -= Time.deltaTime;
         }
-        else if (invincibleTimer < 0 && mobileRoll.isInvincible)
+        else if (invincibleTimer < 0 && playerControl.isInvincible)
         {
             invincibleTimer = 0;
-            mobileRoll.isInvincible = false;
+            playerControl.isInvincible = false;
             spriteRenderer.color = Color.white;
         }
         if (hp <= 0 && collider.enabled)
@@ -72,6 +70,11 @@ public class PlayerStats : MonoBehaviour, ISave
             animator.SetTrigger("Dead");
             collider.enabled = false;
         }
+    }
+
+    public int GetStatLevel(StatType type)
+    {
+        return statsLevel[(int)type];
     }
 
     public int GetStatLevel(int statIndex)
@@ -116,15 +119,15 @@ public class PlayerStats : MonoBehaviour, ISave
     private void OnTriggerEnter(Collider other)
     {
         //放在Stay會重複傷害因為大招不會因為玩家碰到而消失
-        if (hp > 0 && !mobileRoll.isInvincible)
+        if (hp > 0 && !playerControl.isInvincible)
         {
-            if (other.gameObject.CompareTag("BossUlt") && characterBase.charaterStats[(int)CharacterStats.DEF] - 20 < 0)
+            if (other.gameObject.CompareTag("BossUlt") && GetStatLevel(StatType.DEF) - 20 < 0)
             {
                 getHitEffect[0] = getHitEffect[1];
                 //絕對值(人物的防禦值-20)<0
-                hp -= Mathf.Abs(characterBase.charaterStats[(int)CharacterStats.DEF] - 20);
+                hp -= Mathf.Abs(GetStatLevel(StatType.DEF) - 20);
                 //玩家設定為無敵狀態
-                mobileRoll.isInvincible = true;
+                playerControl.isInvincible = true;
                 //怪打到玩家時把無敵時間輸入進去
                 invincibleTimer = invincibleLimit;
                 //生出被大招打中的特效
@@ -137,13 +140,13 @@ public class PlayerStats : MonoBehaviour, ISave
                 //玩家貼圖變紅
                 spriteRenderer.color = Color.red;
             }
-            else if (other.gameObject.CompareTag("MonsterAttack") && characterBase.charaterStats[(int)CharacterStats.DEF] - 10 < 0)
+            else if (other.gameObject.CompareTag("MonsterAttack") && GetStatLevel(StatType.DEF) - 10 < 0)
             {
                 Debug.Log("danger");
                 //絕對值(人物的防禦值-10)<0
-                hp -= Mathf.Abs(characterBase.charaterStats[(int)CharacterStats.DEF] - 10);
+                hp -= Mathf.Abs(GetStatLevel(StatType.DEF) - 10);
                 //玩家設定為無敵狀態
-                mobileRoll.isInvincible = true;
+                playerControl.isInvincible = true;
                 //怪打到玩家時把無敵時間輸入進去
                 invincibleTimer = invincibleLimit;
                 //將血量輸入到頭頂的UI
@@ -152,7 +155,7 @@ public class PlayerStats : MonoBehaviour, ISave
                 OnHealthChange?.Invoke(hp / maxHp);
                 //玩家貼圖變紅
                 spriteRenderer.color = Color.red;
-                Debug.Log(mobileRoll.isInvincible);
+                Debug.Log(playerControl.isInvincible);
             }
         }
     }

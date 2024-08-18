@@ -31,6 +31,13 @@ public class ShootDirectionSetter : MonoBehaviour
         {
             return;
         }
+
+        //當手機模式時 用左邊搖桿來改變shootDirection
+        if (GameStateManager.Inst.IsMobile)
+        {
+            return;
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, rayDistance, floor))
@@ -38,8 +45,22 @@ public class ShootDirectionSetter : MonoBehaviour
             mousePosition = hit.point;
             //取得方向 但不修改Y軸
             Vector3 direction = new Vector3(mousePosition.x, shootDirectionTrans.position.y, mousePosition.z) - shootDirectionTrans.position;
-            // Set the rotation of shootDirectionTrans to look at the mouse position, only modifying the X and Z axes
             shootDirectionTrans.rotation = Quaternion.LookRotation(direction);
         }
+    }
+
+    public Vector3 GetForward()
+    {
+        return shootDirectionTrans.forward;
+    }
+
+    public float GetLocalEulerAnglesY()
+    {
+        return shootDirectionTrans.localEulerAngles.y;
+    }
+
+    public void MobileShootDirectionChange(float targetYAngle)
+    {
+        shootDirectionTrans.rotation = Quaternion.Euler(0, targetYAngle, 0);
     }
 }

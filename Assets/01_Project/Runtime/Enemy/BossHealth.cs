@@ -104,7 +104,7 @@ public class BossHealth : MonsterHealth
                 getHitEffect[0] = getHitEffect[2];
                 audioSource.PlayOneShot(bombHitSFX);
                 hitByTransform = other.transform;
-                GetHit(60 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2);
+                //GetHit(60 + characterBase.charaterStats[(int)StatType.INT] + characterBase.charaterStats[(int)StatType.SPR] * 2);
             }
         }
         //Boss血量第三階段此時Boss開始會放大招
@@ -133,7 +133,7 @@ public class BossHealth : MonsterHealth
                 getHitEffect[0] = getHitEffect[2];
                 if (beAttackTime > attackTime)
                 {
-                    GetHit(5 + characterBase.charaterStats[(int)CharacterStats.INT] + characterBase.charaterStats[(int)CharacterStats.SPR] * 2 + skillBase.windSkillLevel * 20);
+                    //GetHit(5 + characterBase.charaterStats[(int)StatType.INT] + characterBase.charaterStats[(int)StatType.SPR] * 2 + skillBase.windSkillLevel * 20);
                     //怪物被受擊的間隔時間歸零
                     beAttackTime = 0;
                 }

@@ -21,7 +21,7 @@ public class ObjectPool : MonoSingleton<ObjectPool>
         Initialize();
     }
 
-    public GameObject SpawnFromPool(string objectName, Vector3 pos, Quaternion rotation, Transform parent = null, float duration = -1)
+    public GameObject SpawnFromPool(string objectName, Vector3 pos, Quaternion rotation, Transform parent = null, float duration = 0)
     {
         if (!FindObjectInPoolByName(objectName))
         {

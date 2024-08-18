@@ -17,6 +17,9 @@ public class SceneManager : MonoSingleton<SceneManager>
     private SkillWindow skillWindow;
     private MiniMap miniMap;
     private UIBarControl uiBarControl;
+    private MobileMove mobileMove;
+    private MobileAttack mobileAttack;
+    private MobileRoll mobileRoll;
 
     public string currentScene { get; private set; }
 
@@ -28,6 +31,9 @@ public class SceneManager : MonoSingleton<SceneManager>
         skillWindow = GetComponentInChildren<SkillWindow>(true);
         miniMap = GetComponentInChildren<MiniMap>(true);
         uiBarControl = GetComponentInChildren<UIBarControl>(true);
+        mobileMove = GetComponentInChildren<MobileMove>(true);
+        mobileAttack = GetComponentInChildren<MobileAttack>(true);
+        mobileRoll = GetComponentInChildren<MobileRoll>(true);
 
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
         //tutorial.onClick.AddListener(() => { LoadLevel("GameScene"); });
@@ -111,6 +117,9 @@ public class SceneManager : MonoSingleton<SceneManager>
                 skillWindow.Init();
                 miniMap.Init(PlayerManager.Inst.Player.transform);
                 uiBarControl.Init(PlayerManager.Inst.PlayerStamina);
+                mobileMove.Init(PlayerManager.Inst.PlayerControl, PlayerManager.Inst.ShootDirection);
+                mobileAttack.Init(PlayerManager.Inst.PlayerControl);
+                mobileRoll.Init(PlayerManager.Inst.PlayerControl);
                 UIManager.Inst.OpenMenu("IntroDialog");
                 break;
             default:

@@ -2,71 +2,73 @@
 
 public class RemoteSkillPosition : MonoBehaviour
 {
-    public float skillControlSpeed;
-    public Transform playerSprite;
-    public Transform mousePosition;
-    public RectTransform hadle;
-    public RectTransform outerCircle;
-    public MeshRenderer meshRenderer;
-    public Animator animator;
-    public bool isTouch;
-    public MobileSkillChoose mobileSkillChoose;
+    private FixedJoystick joystick;
+    private RectTransform handle;
+    //不要用handle的position取代 不想要因為按下去後 因為handle的移動 有誤差
+    private RectTransform joystickBorder;
+    [SerializeField] private MeshRenderer mousePosition;
+    [SerializeField] private Transform shootDirection;
+    [SerializeField] private float skillControlSpeed;
+    [SerializeField] private float maxDistence;
+    [SerializeField] private LayerMask floor;
+    private bool isClick;
+    private RaycastHit hit;
+    private Vector3 offset;
+    private Vector3 magnitude;
+    private float vertical;
+    private float horizontal;
 
-    private int floor;
-    private Vector3 originPosition;
-
-    private void Start()
+    private void Update()
     {
-        mobileSkillChoose = FindObjectOfType<MobileSkillChoose>();
-        floor = LayerMask.GetMask("Floor");
-    }
-    private void FixedUpdate()
-    {
-        //範圍鎖定失敗
-        if (isTouch /*&& Vector3.Distance(transform.position,playerSprite.position)< maxDistence*/)
+        if (!isClick || handle == null)
         {
-            animator.SetBool("IsCheck", !isTouch);
-            //meshRenderer.enabled = isTouch;
-            //用一個Vector3把搖桿距離中心點的位置給存起來
-            Vector3 offset = outerCircle.position - hadle.position;
-            //因為搖桿是Vector2所以要把它的Y給Z
-            offset.z = offset.y;
-            //算距離?
-            Vector3 direction = Vector3.ClampMagnitude(offset, 1f);
-            //技能施放位置移動
-            mousePosition.Translate(direction * -1f * skillControlSpeed * Time.deltaTime);
-            RaycastHit hit;
-            //技能施放位置朝地板打射線如果碰到地板
-            if (Physics.Raycast(mousePosition.position, -mousePosition.up, out hit, 10f, floor))
-            {
-                //先存起來等不小心跑進地板再拿出來用
-                originPosition = mousePosition.position;
-                //技能位置等於射線打到的點朝上0.1f
-                mousePosition.position = hit.point + mousePosition.up * 0.1f;
-            }
-            //如果潛入地下就回到還沒回到地下以前的點
-            else
-            {
-                mousePosition.position = originPosition;
-            }
+            return;
         }
+        ChangeShootDirection();
+        ChangeCastPosition();
     }
 
-    public void SetSkillPosition(bool isTouch)
+    public void SkillBtnOnClick(FixedJoystick joystick, RectTransform handle, RectTransform joystickBorder, bool isDirectionalTypeSkill)
     {
-        //if (mobileSkillChoose.skillList[0].CanShoot())
-        //{
-        //    meshRenderer.enabled = false;
-        //}
-        //else
-        //{
-        //    meshRenderer.enabled = true;
-        //}
-        //為了讓每次按下技能時確保從角色底下出現而不是上一個施放位置
-        if (isTouch)
+        mousePosition.transform.position = transform.position;
+        this.joystick = joystick;
+        this.handle = handle;
+        this.joystickBorder = joystickBorder;
+        mousePosition.enabled = !isDirectionalTypeSkill;
+        shootDirection.gameObject.SetActive(isDirectionalTypeSkill);
+        isClick = true;
+    }
+
+    public void SkillBtnOnRelease()
+    {
+        isClick = false;
+        mousePosition.enabled = false;
+        shootDirection.gameObject.SetActive(false);
+    }
+
+    private void ChangeShootDirection()
+    {
+        vertical = joystick.Vertical;
+        horizontal = joystick.Horizontal;
+        float targetYAngle = Mathf.Atan2(-vertical, horizontal) * Mathf.Rad2Deg;
+        shootDirection.transform.rotation = Quaternion.Euler(0, targetYAngle, 0);
+    }
+
+    private void ChangeCastPosition()
+    {
+        Vector3 offset = joystickBorder.position - handle.position;
+        offset.z = offset.y; // 因為搖桿是 Vector2，所以將 Y 軸轉換為 Z 軸
+        magnitude = Vector3.ClampMagnitude(offset, 1f);
+
+        Vector3 movement = magnitude * (-1f * skillControlSpeed * Time.deltaTime);
+
+        mousePosition.transform.Translate(movement);
+
+        //有了AI還是沒辦法 限制最大距離 都會卡住 或是超出去
+        // 如果射線打到地板，鎖定位置在地表上
+        if (Physics.Raycast(mousePosition.transform.position + Vector3.up * 5f, Vector3.down, out hit, 10f, floor))
         {
-            mousePosition.position = mousePosition.parent.position;
+            mousePosition.transform.position = hit.point + Vector3.up * 0.1f;
         }
-        this.isTouch = isTouch;
     }
 }

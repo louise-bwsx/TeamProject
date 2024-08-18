@@ -4,6 +4,7 @@ public class CloseDoor : MonoBehaviour
 {
     public GameObject[] doorClose;
     public GameObject invisibleWall;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -19,6 +20,7 @@ public class CloseDoor : MonoBehaviour
             AudioManager.Inst.PlayBGM("BossFight");
         }
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

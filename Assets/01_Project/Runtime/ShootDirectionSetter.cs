@@ -1,5 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ShootDirectionSetter : MonoBehaviour
@@ -8,8 +7,8 @@ public class ShootDirectionSetter : MonoBehaviour
     private PlayerStats playerStats;
     private RaycastHit hit;
     private float rayDistance = 500f;
-    [SerializeField, ReadOnly] private Vector3 mousePosition;
     [SerializeField] private Transform shootDirectionTrans;
+    [SerializeField] private Transform mouseTransform;
 
     private void Awake()
     {
@@ -27,6 +26,7 @@ public class ShootDirectionSetter : MonoBehaviour
         {
             return;
         }
+
         if (playerStats.hp <= 0)
         {
             return;
@@ -39,12 +39,11 @@ public class ShootDirectionSetter : MonoBehaviour
         }
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out hit, rayDistance, floor))
         {
-            mousePosition = hit.point;
+            mouseTransform.position = hit.point;
             //取得方向 但不修改Y軸
-            Vector3 direction = new Vector3(mousePosition.x, shootDirectionTrans.position.y, mousePosition.z) - shootDirectionTrans.position;
+            Vector3 direction = new Vector3(hit.point.x, shootDirectionTrans.position.y, hit.point.z) - shootDirectionTrans.position;
             shootDirectionTrans.rotation = Quaternion.LookRotation(direction);
         }
     }

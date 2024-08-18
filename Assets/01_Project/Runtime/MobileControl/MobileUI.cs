@@ -13,6 +13,5 @@ public class MobileUI : MonoBehaviour
         escMenuBtn.onClick.AddListener(UIManager.Inst.EscBtnOnClick);
         statsMenuBtn.onClick.AddListener(() => UIManager.Inst.OpenMenu("StatsWindow"));
         skillMenuBtn.onClick.AddListener(() => UIManager.Inst.OpenMenu("SkillWindow"));
-
     }
 }

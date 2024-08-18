@@ -4,11 +4,9 @@ public class PlayerAction : MonoBehaviour
 {
     public Animator animator;
     public GameObject shadowDestory;
-    public Transform player;
     public Transform spawantransform;
     public Transform SpikeAttackLeftPos;
     public Transform SpikeAttackRightPos;
-    public GameMenuController gameMenu;
     public Transform playerRotation;
 
     private SpriteRenderer spriteRenderer;
@@ -20,7 +18,6 @@ public class PlayerAction : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        gameMenu = FindObjectOfType<GameMenuController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerSprite = GetComponent<PlayerSprite>();
         playerControl = GetComponentInParent<PlayerControl>();
@@ -33,7 +30,7 @@ public class PlayerAction : MonoBehaviour
         ObjectPool.Inst.SpawnFromPool("SwordAttackCube", spawantransform.position, spawantransform.rotation, duration: 0.3f);
     }
 
-    public void NormalAttackEffect()
+    public void NormalAttackEffect()//動畫Event呼叫
     {
         AudioManager.Inst.PlaySFX("Swing");
         if (playerRotation.localEulerAngles.y > 0 && playerRotation.localEulerAngles.y < 180)
@@ -80,17 +77,17 @@ public class PlayerAction : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void StartMoving()
+    public void StartMoving()//動畫Event呼叫
     {
         playerControl.rigidbody.velocity = shootDirectionSetter.GetForward() * playerControl.normalAttackDash;
     }
 
-    public void RollStop()
+    public void RollStop()//動畫Event呼叫
     {
         playerControl.rigidbody.velocity = Vector3.zero;
     }
 
-    public void RollCancelAttack()
+    public void RollCancelAttack()//動畫Event呼叫
     {
         animator.SetBool("IsAttack", false);
         playerControl.isAttack = false;

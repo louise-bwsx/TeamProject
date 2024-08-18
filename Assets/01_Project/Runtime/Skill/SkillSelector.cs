@@ -47,22 +47,14 @@ public class SkillSelector : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(2))
         {
-            if (skillSOArray[CurrentIndex].CanShoot())
-            {
-                //正式版一定要這樣才能讀的到
-                //playerControl.isAttack = true;
-                animator.SetBool("Magic_Prepare", true);
-            }
+            SkillPrepare(CurrentIndex);
             return;
         }
+
         if (Input.GetMouseButtonUp(2))
         {
-            if (animator.GetBool("Magic_Prepare"))
-            {
-                animator.SetBool("Magic_Prepare", false);
-            }
+            SkillShoot();
         }
-
     }
 
     private void KeyboardTriggerSkill()
@@ -101,6 +93,27 @@ public class SkillSelector : MonoBehaviour
         {
             animator.SetTrigger("Magic");
         }
+    }
+
+    public void SkillPrepare(int index)
+    {
+        if (!skillSOArray[index].CanShoot())
+        {
+            return;
+        }
+        CurrentIndex = index;
+        //正式版一定要這樣才能讀的到
+        //playerControl.isAttack = true;
+        animator.SetBool("Magic_Prepare", true);
+    }
+
+    public void SkillShoot()
+    {
+        if (!animator.GetBool("Magic_Prepare"))
+        {
+            return;
+        }
+        animator.SetBool("Magic_Prepare", false);
     }
 
     private void ScrollSelect()

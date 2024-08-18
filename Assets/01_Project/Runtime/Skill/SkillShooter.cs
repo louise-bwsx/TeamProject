@@ -82,10 +82,7 @@ public class SkillShooter : MonoBehaviour
     private void CastPositionBasedSkill(SkillSO skillSO)
     {
         //Debug.Log("CastPositionBasedSkill");
-        float raylength = 500;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Vector3 spawanPos = remoteMesh.transform.position + remoteMesh.transform.up * 0.7f;
+        Vector3 spawanPos = remoteMesh.transform.position;
         GameObject skillObject = ObjectPool.Inst.SpawnFromPool(skillSO.prefabName,
                                                                spawanPos,
                                                                Quaternion.identity,
@@ -93,12 +90,6 @@ public class SkillShooter : MonoBehaviour
         if (skillObject == null)
         {
             return;
-        }
-        if (Physics.Raycast(ray, out hit, raylength, floor))
-        {
-            remoteMesh.enabled = true;
-            remoteMesh.transform.position = hit.point;
-            skillObject.transform.position = hit.point;
         }
         StartCoroutine(skillSO.StartCoolDown());
         stamina.Cost(skillSO.staminaCost);

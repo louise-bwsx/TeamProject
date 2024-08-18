@@ -118,7 +118,7 @@ public class SceneManager : MonoSingleton<SceneManager>
                 miniMap.Init(PlayerManager.Inst.Player.transform);
                 uiBarControl.Init(PlayerManager.Inst.PlayerStamina);
                 mobileMove.Init(PlayerManager.Inst.PlayerControl, PlayerManager.Inst.ShootDirection);
-                mobileAttack.Init(PlayerManager.Inst.PlayerControl);
+                mobileAttack.Init(PlayerManager.Inst.PlayerControl, PlayerManager.Inst.SkillSelector, PlayerManager.Inst.RemoteSkillPosition);
                 mobileRoll.Init(PlayerManager.Inst.PlayerControl);
                 UIManager.Inst.OpenMenu("IntroDialog");
                 break;

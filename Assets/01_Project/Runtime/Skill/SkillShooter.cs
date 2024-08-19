@@ -10,9 +10,9 @@ public enum SkillType
     Fire,
 
     FireTornado,
+    Bomb,
 
     Null,
-    Count
 }
 
 public class SkillShooter : MonoBehaviour
@@ -23,7 +23,6 @@ public class SkillShooter : MonoBehaviour
     //把remoteMesh能貼合著地板
     [SerializeField] private MeshRenderer remoteMesh;
 
-    private LayerMask floor;
     private PlayerStamina stamina;
     private SkillSelector skillSelector;
     public UnityEvent<int> CastSkill = new UnityEvent<int>();
@@ -32,7 +31,6 @@ public class SkillShooter : MonoBehaviour
     {
         skillSelector = GetComponent<SkillSelector>();
         stamina = GetComponent<PlayerStamina>();
-        floor = LayerMask.GetMask("Floor");
     }
 
     public void Cast()

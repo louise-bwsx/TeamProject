@@ -23,4 +23,9 @@ public class GameStateManager : MonoSingleton<GameStateManager>
     {
         CurrentState = changeState;
     }
+
+    public bool IsGaming()
+    {
+        return CurrentState == GameState.Gaming;
+    }
 }

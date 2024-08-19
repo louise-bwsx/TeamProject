@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 5477791637045825153}
   - component: {fileID: 616738700}
   - component: {fileID: 9150224076756799219}
-  - component: {fileID: 5349164275163258497}
+  - component: {fileID: -6699302815100990882}
   m_Layer: 9
   m_Name: MonsterLongRange
   m_TagString: Monster
@@ -321,7 +321,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5349164275163258497
+--- !u!114 &-6699302815100990882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,47 +330,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5477791637045825159}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39c05011c769d44c8028ab785e910e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 30b1bbc0fca710749b13a71497f9ee55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 0
-  maxHp: 15
-  numHeldItemMin: 1
-  numHeldItemMax: 3
-  beAttackTime: 0
-  attackTime: 0.3
-  recoverTime: 0.1
-  bounceForce: 3
-  healthBarOnGame: {fileID: 1359176314707734810}
+  <Hp>k__BackingField: 0
+  <MaxHp>k__BackingField: 15
+  invincibleTimer: 0
+  knockbackForce: 6
+  hitEffectsName:
+  - Hit_Swing_Fx
+  - Hit_Fire_Fx
+  - Hit_Wind_Fx
+  - Hit_Poison_Fx
+  - Hit_Water_Fx
   healthBar: {fileID: 1359176314882351749}
   itemRate: {fileID: 11400000, guid: 7fd4b91e5e7081c44bd581e411e300e6, type: 2}
-  animator: {fileID: 1946896890}
-  navMeshAgent: {fileID: 5477791637045825153}
-  getHitEffect:
-  - {fileID: 0}
-  - {fileID: 2024473775360881678, guid: 127db376c0b79e8499d62443253c1e45, type: 3}
-  - {fileID: 1127800687620224913, guid: e80a38c2360d8ff4985c13a37c771fb8, type: 3}
-  - {fileID: 5919181595379585890, guid: 8c3e7583233109e4ca6e2189c7097cdd, type: 3}
-  - {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076, type: 3}
-  - {fileID: 6297029440285001474, guid: 3516fbcf44498a34185e44fb015c28a7, type: 3}
-  characterBase: {fileID: 0}
-  skillBase: {fileID: 0}
-  enemyController: {fileID: 8095893402525829023}
-  rigidbody: {fileID: 0}
   faceDirection: {fileID: 7944422823135693920}
-  audioSource: {fileID: 0}
-  poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
-  fireHitSFX: {fileID: 8300000, guid: 019b46edb5c4eb6418ee02f1e0e67102, type: 3}
-  windHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
-  waterHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
-  tornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
-  bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
-  hitByTransform: {fileID: 0}
-  beAttackMin: 0
-  beAttackMax: 5
-  getHitBySkillType: 0
-  collider: {fileID: 0}
-  pushforce: 7
 --- !u!1 &7403635187053180876
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +585,7 @@ MonoBehaviour:
   arrow: {fileID: 1327289845270492346, guid: 760638155560e294e91404e711c05cff, type: 3}
   shootingposition: {fileID: 2639929077261022266}
   force: 1000
-  monsterHealth: {fileID: 5349164275163258497}
+  monsterHealth: {fileID: 0}
 --- !u!1 &7944422823135693923
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,10 +641,6 @@ PrefabInstance:
     - target: {fileID: 915445999526632448, guid: 186497be764480d428cfe10dc6548ed0, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 915445999526632448, guid: 186497be764480d428cfe10dc6548ed0, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 915445999526632448, guid: 186497be764480d428cfe10dc6548ed0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -747,26 +718,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 915445999526632449, guid: 186497be764480d428cfe10dc6548ed0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186497be764480d428cfe10dc6548ed0, type: 3}
---- !u!114 &1359176314707734810 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 915445999416037278, guid: 186497be764480d428cfe10dc6548ed0, type: 3}
-  m_PrefabInstance: {fileID: 2191162715785510532}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a6eff15ac436d49b69cd3466b17a19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1359176314882351748 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 915445999526632448, guid: 186497be764480d428cfe10dc6548ed0, type: 3}

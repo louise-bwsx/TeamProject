@@ -16,6 +16,10 @@ public class MobileMove : MonoBehaviour
 
     private void Update()
     {
+        if (!GameStateManager.Inst.IsGaming())
+        {
+            return;
+        }
         vertical = joystick.Vertical;
         horizontal = joystick.Horizontal;
         playerControl.SetMoveDirection(vertical, horizontal);

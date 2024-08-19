@@ -78,7 +78,7 @@ public class BossController : EnemyController
                     BossUltAttack();
                     return;
                 }
-                if (bossHealth.Hp <= bossHealth.maxHp * 0.3)
+                if (bossHealth.Hp <= bossHealth.MaxHp * 0.3)
                 {
                     switch (Random.Range(0, 2))
                     {
@@ -95,7 +95,7 @@ public class BossController : EnemyController
                             }
                     }
                 }
-                else if (bossHealth.Hp > bossHealth.maxHp * 0.3)
+                else if (bossHealth.Hp > bossHealth.MaxHp * 0.3)
                 {
                     animator.SetTrigger("HandAttack");
                     attackCD = 0;

@@ -427,44 +427,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c1ecef398f7fd43884f9ff7ebc31c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 0
-  maxHp: 700
-  numHeldItemMin: 1
-  numHeldItemMax: 3
-  beAttackTime: 0
-  attackTime: 0.3
-  recoverTime: 0.1
-  bounceForce: 0
-  healthBarOnGame: {fileID: 5685109039311091808}
+  <Hp>k__BackingField: 0
+  <MaxHp>k__BackingField: 700
+  invincibleTimer: 0
+  knockbackForce: 0
+  hitEffectsName:
+  - Hit_Swing_Fx
+  - Hit_Fire_Fx
+  - Hit_Wind_Fx
+  - Hit_Poison_Fx
+  - Hit_Water_Fx
   healthBar: {fileID: 5685109039211965439}
   itemRate: {fileID: 11400000, guid: 727aec49cb25f304fb3fa249d6120e7d, type: 2}
-  animator: {fileID: 6227207051608250892}
-  navMeshAgent: {fileID: 0}
-  getHitEffect:
-  - {fileID: 0}
-  - {fileID: 2024473775360881678, guid: 127db376c0b79e8499d62443253c1e45, type: 3}
-  - {fileID: 1127800687620224913, guid: e80a38c2360d8ff4985c13a37c771fb8, type: 3}
-  - {fileID: 5919181595379585890, guid: 8c3e7583233109e4ca6e2189c7097cdd, type: 3}
-  - {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076, type: 3}
-  - {fileID: 6297029440285001474, guid: 3516fbcf44498a34185e44fb015c28a7, type: 3}
-  characterBase: {fileID: 0}
-  skillBase: {fileID: 0}
-  enemyController: {fileID: 0}
-  rigidbody: {fileID: 0}
   faceDirection: {fileID: 0}
-  audioSource: {fileID: 0}
-  poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
-  fireHitSFX: {fileID: 8300000, guid: 5acd94974a5164d44aeb88cc1ed09c6a, type: 3}
-  windHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
-  waterHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
-  tornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
-  bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
-  hitByTransform: {fileID: 0}
-  beAttackMin: 0
-  beAttackMax: 5
-  getHitBySkillType: 0
-  collider: {fileID: 0}
-  pushforce: 0
   brokenPos: {fileID: 1842234555217130944}
   curseWheel: {fileID: 1842234555217130975}
   brokenWheel: {fileID: 6992360949995693572, guid: e854a57af02a6924482eb2b7e0b5b924, type: 3}
@@ -478,10 +453,6 @@ MonoBehaviour:
   bossThirdStateDialog: {fileID: 0}
   bossDieDialogComponent: {fileID: 0}
   invincibleGuard: {fileID: 0}
-  behindWheelBrokeSFX: {fileID: 8300000, guid: 0eb9a1088074ada47aa5b9fd5d0990e5, type: 3}
-  wheelBrokeSFX: {fileID: 8300000, guid: d8edb3b6a767dc54fa39d67d2eae05dc, type: 3}
-  afterBGM: {fileID: 8300000, guid: a026b54947d5ad84ca73b38ef680a72f, type: 3}
-  BGMSource: {fileID: 0}
   easyMode: 0
   bossState: 0000
 --- !u!208 &3478700591657850946
@@ -1775,14 +1746,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4388714863921737385, guid: 0dc1efd4f44e87248a815bfa9fe2caa6, type: 3}
   m_PrefabInstance: {fileID: 8215208274327192918}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5685109039311091808 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4388714864086924598, guid: 0dc1efd4f44e87248a815bfa9fe2caa6, type: 3}
-  m_PrefabInstance: {fileID: 8215208274327192918}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a6eff15ac436d49b69cd3466b17a19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

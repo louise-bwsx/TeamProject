@@ -1,248 +1,186 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class MonsterHealth : MonoBehaviour
 {
-    public float Hp = 0;
-    public float maxHp = 50;
-    public int numHeldItemMin = 1;//裝備生成最小數
-    public int numHeldItemMax = 3;//裝備生成最大數
-    public float beAttackTime;
-    public float attackTime = 0.5f;
-    public float recoverTime = 0.1f;
-    public int bounceForce;
+    [field: SerializeField, ReadOnly] public float Hp { get; protected set; }
+    [field: SerializeField] public float MaxHp { get; protected set; }
+    [SerializeField, ReadOnly] protected float invincibleTimer;
+    [SerializeField] protected int knockbackForce;
 
-    public HealthBarOnGame healthBarOnGame;
-    public GameObject healthBar;
-    public ItemSTO itemRate;
-    public Animator animator;
-    public NavMeshAgent navMeshAgent;
-    public GameObject[] getHitEffect;
-    //public CharacterBase characterBase;
-    //TODOError: 取得玩家skillLevel 根據SkillLevel決定受到傷害多少
-    public SkillBase skillBase;
-    public EnemyController enemyController;
-    public new Rigidbody rigidbody;
-    public Transform faceDirection;
+    [SerializeField] protected string[] hitEffectsName;
+    protected string hitEffectName;
+    public EnemyController EnemyController { get; protected set; }
+    private Rigidbody rigidbody;
+    private Collider collider;
+    protected PlayerStats playerStats;
+    protected HealthBarOnGame healthBarOnGame;
+    private NavMeshAgent agent;
+    protected Animator animator;
+    protected int poisonHit = 0;
+    private float poisonTimer;
+    private const float POISON_DURATION = 0.75f;
+    private Coroutine poisonCoroutine;
+    protected const float VELOCITY_RESET_TIME = .1f;
+    protected const int MAX_POISON_HIT = 20;
+    private const int MIN_ITEM_SPAWN = 1;
+    private const int MAX_ITEM_SPAWN = 3;
+    protected const float INVINCIBLE_DURATION = 0.5f;
+    [SerializeField] protected GameObject healthBar;
+    [SerializeField] private ItemSTO itemRate;
+    [SerializeField] private Transform faceDirection;
 
-    public AudioSource audioSource;//音效在子類別調整音量大小
-    public AudioClip poisonHitSFX;//毒受擊音效
-    public AudioClip fireHitSFX;//火受擊音效
-    public AudioClip windHitSFX;//風受擊音效
-    public AudioClip waterHitSFX;//水受擊音效
-    public AudioClip tornadoHitSFX;//龍捲風受擊音效
-    public AudioClip bombHitSFX;//爆炸受擊音效
-
-    public Transform hitByTransform;
-    public float beAttackMin = 0;//被打的次數
-    public float beAttackMax = 20;//被打的最大次數
-    public SkillType getHitBySkillType;
-    public new Collider collider;
-    public float pushforce;
-
-    public virtual void Start()
+    private void Awake()
     {
-        //characterBase = FindObjectOfType<CharacterBase>();
-        skillBase = FindObjectOfType<SkillBase>();
-
-        collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+        collider = GetComponent<Collider>();
+        playerStats = PlayerManager.Inst.Player;
         healthBarOnGame = GetComponentInChildren<HealthBarOnGame>();
-
-        Hp = maxHp;
-        healthBarOnGame.SetMaxHealth(maxHp);
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
+        EnemyController = GetComponentInChildren<EnemyController>();
     }
 
-    public virtual void Update()
+    protected virtual void Start()
     {
-        beAttackTime += Time.deltaTime;
-
-        if (hitByTransform == null)
-        {
-            getHitBySkillType = SkillType.Null;
-        }
-        //當受擊狀態結束後
-        if (beAttackTime > recoverTime && navMeshAgent != null)
-        {
-            //停止被打飛
-            rigidbody.velocity = Vector3.zero;
-            navMeshAgent.enabled = true;
-        }
-        if (beAttackMin > 0)
-        {
-            //GetHit(1 + characterBase.charaterStats[(int)StatType.INT] + skillBase.poisonSkillLevel * 20);
-        }
+        Hp = MaxHp;
+        healthBarOnGame.SetMaxHealth(MaxHp);
     }
-    public virtual void GetHit(float Damage)
+
+    protected virtual void GetHit(float Damage, SkillType type)
     {
+        if (Hp <= 0)
+        {
+            return;
+        }
+
+        //不要再這邊設定invincibleTimer 為了讓風 可以打快一點
+        if (invincibleTimer > 0)
+        {
+            Debug.Log($"{transform.name} 無敵中");
+            return;
+        }
+
+        switch (type)
+        {
+            case SkillType.Poison:
+                hitEffectName = hitEffectsName[3];
+                AudioManager.Inst.PlaySFX("PoisonHit");
+                break;
+            case SkillType.Water:
+                hitEffectName = hitEffectsName[4];
+                AudioManager.Inst.PlaySFX("WaterHit");
+                break;
+            case SkillType.Wind:
+                hitEffectName = hitEffectsName[2];
+                AudioManager.Inst.PlaySFX("WindHit");
+                break;
+            case SkillType.Fire:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("FireHit");
+                break;
+            case SkillType.FireTornado:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("FireTornadoHit");
+                break;
+            case SkillType.Bomb:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("BombHit");
+                break;
+            case SkillType.Null:
+                hitEffectName = hitEffectsName[0];
+                break;
+                //沒有Bomb但怕加了後出問題先不加
+        }
+
         //被攻擊後歸零下一次怪物攻擊時間
-        if (enemyController != null)
+        if (EnemyController != null)
         {
-            enemyController.attackCD = 0;
+            EnemyController.attackCD = 0;
         }
+
         //播放受擊動畫
         animator.SetTrigger("GetHit");
+        //為了讓怪物後退關掉
+        agent.enabled = false;
         //朝面對的反方向後退
-        if (faceDirection != null)
-        {
-            rigidbody.velocity = -faceDirection.forward * bounceForce;
-        }
-        //取消追蹤玩家凸顯後退效果應該沒用
-        if (navMeshAgent != null)
-        {
-            navMeshAgent.enabled = false;
-        }
-        //毒的受擊次數減少
-        if (beAttackMin > 0)
-        {
-            beAttackMin--;
-        }
-        //受擊音效
-        if (getHitBySkillType != SkillType.Count)
-        {
-            switch (getHitBySkillType)
-            {
-                case SkillType.Wind:
-                    {
-                        audioSource.PlayOneShot(windHitSFX);
-                        break;
-                    }
-                //暫時沒用
-                //case EnumAttack.poison:
-                //    {
-                //        audioSource.PlayOneShot(poisonHitSFX);
-                //        break;
-                //    }
-                case SkillType.FireTornado:
-                    {
-                        audioSource.PlayOneShot(tornadoHitSFX);
-                        break;
-                    }
-                default:
-                    {
-                        //如果被風、讀、火龍捲打到就跳過
-                        break;
-                    }
-            }
-        }
-        //誰被打到
-        // Debug.Log(transform.name);
-        //生成特效
-        GameObject FX = Instantiate(getHitEffect[0], transform.position + Vector3.up * 0.8f, transform.rotation);
-        //一秒後刪除特效
-        Destroy(FX, 1);
-        //怪物血量減少
+        rigidbody.velocity = -faceDirection.forward * knockbackForce;
+        ObjectPool.Inst.SpawnFromPool(hitEffectName, (transform.position + Vector3.up) * 0.8f, transform.rotation, duration: 1f);
         Hp -= Damage;
-        //實際血量顯示在UI
         healthBarOnGame.SetHealth(Hp);
-        //跟上面重複被擊退應該沒用
-        //rigidbody.velocity = -gameObject.transform.forward * pushforce;
-        //如果怪物死亡
+        StartCoroutine(InvincibleCoroutine());
+
         if (Hp <= 0)
         {
             MonsterDead();
-            //避免一直跳進來
-            beAttackMin = 0;
         }
     }
-    public virtual void OnTriggerEnter(Collider other)
-    {
-        //打出的傷害數值 失敗
-        //text = Instantiate(text, new Vector3(x, 0.7f, z), transform.rotation);
-        //為了讓MonsterDead只執行一次
-        if (other.CompareTag("Sword"))
-        {
-            getHitEffect[0] = getHitEffect[1];
-            //GetHit(15 + characterBase.charaterStats[(int)StatType.STR]);
-        }
-        if (other.CompareTag("WaterAttack"))
-        {
-            getHitEffect[0] = getHitEffect[5];
-            audioSource.PlayOneShot(waterHitSFX);
-            //GetHit(5 + characterBase.charaterStats[(int)StatType.INT] + skillBase.waterSkillLevel * 20);
-            //Debug.Log("角色數值: " + characterBase.charaterStats[(int)StatType.INT] + "技能傷害: " + skillBase.waterSkillLevel * 20);
-        }
 
-        if (other.CompareTag("FireAttack"))
-        {
-            getHitEffect[0] = getHitEffect[2];
-            audioSource.PlayOneShot(fireHitSFX);
-            //GetHit(20 + characterBase.charaterStats[(int)StatType.INT] + skillBase.fireSkillLevel * 20);
-        }
-
-        if (other.CompareTag("Bomb"))
-        {
-            getHitEffect[0] = getHitEffect[2];
-            audioSource.PlayOneShot(bombHitSFX);
-            hitByTransform = other.transform;
-            //GetHit(60 + characterBase.charaterStats[(int)StatType.INT] + characterBase.charaterStats[(int)StatType.SPR] * 2);
-        }
-    }
-    public virtual void OnTriggerStay(Collider other)
+    protected IEnumerator InvincibleCoroutine()
     {
-        if (Hp > 0)
+        while (true)
         {
-            if (other.CompareTag("Poison"))
+            yield return null;
+            if (!GameStateManager.Inst.IsGaming())
             {
-                getHitEffect[0] = getHitEffect[4];
-                beAttackMin = beAttackMax;//最大被打的次數
-                hitByTransform = other.transform;
-                if (beAttackTime > attackTime)
-                {
-                    //GetHit(1 + characterBase.charaterStats[(int)StatType.INT] + skillBase.poisonSkillLevel * 20);
-                    //怪物被受擊的間隔時間歸零
-                    beAttackTime = 0;
-                }
+                continue;
             }
-            if (other.CompareTag("WindAttack"))
+            invincibleTimer -= Time.deltaTime;
+
+            if (invincibleTimer <= 0)
             {
-                getHitEffect[0] = getHitEffect[3];
-                if (beAttackTime > attackTime)
+                //停止被打飛
+                rigidbody.velocity = Vector3.zero;
+                if (agent)
                 {
-                    //GetHit(2 + characterBase.charaterStats[(int)StatType.INT] + skillBase.windSkillLevel * 20);
-                    //怪物被受擊的間隔時間歸零
-                    beAttackTime = 0;
+                    agent.enabled = true;
                 }
-                getHitBySkillType = SkillType.Wind;
-            }
-            if (other.CompareTag("Firetornado"))
-            {
-                getHitEffect[0] = getHitEffect[2];
-                if (beAttackTime > attackTime)
-                {
-                    //GetHit(5 + characterBase.charaterStats[(int)StatType.INT] + characterBase.charaterStats[(int)StatType.SPR] * 2 + skillBase.windSkillLevel * 20);
-                    //怪物被受擊的間隔時間歸零
-                    beAttackTime = 0;
-                }
-                getHitBySkillType = SkillType.FireTornado;
+                yield break;
             }
         }
     }
 
-    public virtual void MonsterDead()
+    private IEnumerator PoisonCoroutine()
     {
-        if (navMeshAgent != null)
+        while (poisonHit > 0)
         {
-            navMeshAgent.enabled = false;
+            yield return null;
+            if (!GameStateManager.Inst.IsGaming())
+            {
+                continue;
+            }
+            poisonTimer -= Time.deltaTime;
+            if (poisonTimer <= 0)
+            {
+                GetHit(1 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Poison) * 20, SkillType.Poison);
+                poisonTimer = POISON_DURATION;
+                poisonHit--;
+                if (poisonHit <= 0)
+                {
+                    poisonCoroutine = null;
+                    break;
+                }
+            }
         }
-        if (animator != null && animator.GetBool("Dead") == false)
-        {
-            animator.SetBool("Dead", true);
-        }
+    }
+
+    protected virtual void MonsterDead()
+    {
+        //避免怪物死亡後還繼續追著玩家
+        EnemyController.enabled = false;
+        agent.enabled = false;
         collider.enabled = false;
+        animator.SetBool("Dead", true);
         healthBar.SetActive(false);
 
-        Vector3 itemLocation = this.transform.position;//獲得當前怪物的地點
-        int rewardItems = Random.Range(numHeldItemMin, numHeldItemMax);//隨機裝備產生值
+        int rewardItems = Random.Range(MIN_ITEM_SPAWN, MAX_ITEM_SPAWN);//隨機裝備產生值
         for (int i = 0; i < rewardItems; i++)
         {
             //Instantiate(gold, transform.position, transform.rotation);
-            Vector3 randomItemLocation = itemLocation;
-            randomItemLocation += new Vector3(Random.Range(-1, 1), 0.2f, Random.Range(-1, 1));//在死亡地點周圍隨機分布
+            Vector3 randomItemPosition = transform.position;
+            randomItemPosition += new Vector3(Random.Range(-1, 1), 0.2f, Random.Range(-1, 1));//在死亡地點周圍隨機分布
             float RateCnt_ = 0;//物品產生的最小值
             float ItemRandom_ = Random.Range(0, 100) / 100f;//隨機裝備機率值
             for (int j = 0; j < itemRate.ItemObjList.Length; j++)
@@ -250,10 +188,59 @@ public class MonsterHealth : MonoBehaviour
                 RateCnt_ += itemRate.ItemObjRateList[j];
                 if (ItemRandom_ < RateCnt_)
                 {
-                    Instantiate(itemRate.ItemObjList[j], randomItemLocation, itemRate.ItemObjList[j].transform.rotation);
+                    Instantiate(itemRate.ItemObjList[j], randomItemPosition, Quaternion.identity);
                     break;
                 }
             }
+        }
+    }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        //打出的傷害數值 失敗
+        //text = Instantiate(text, new Vector3(x, 0.7f, z), transform.rotation);
+        //為了讓MonsterDead只執行一次
+        if (other.CompareTag("Sword"))
+        {
+            GetHit(15 + playerStats.GetStatLevel(StatType.STR), SkillType.Null);
+        }
+        if (other.CompareTag("WaterAttack"))
+        {
+            GetHit(5 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Water) * 20, SkillType.Water);
+        }
+
+        if (other.CompareTag("FireAttack"))
+        {
+            GetHit(20 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Fire) * 20, SkillType.Fire);
+        }
+
+        if (other.CompareTag("Bomb"))
+        {
+            GetHit(60 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetStatLevel(StatType.SPR) * 2, SkillType.Bomb);
+        }
+    }
+
+    protected virtual void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Poison"))
+        {
+            poisonHit = MAX_POISON_HIT;
+            if (poisonCoroutine == null)
+            {
+                poisonCoroutine = StartCoroutine(PoisonCoroutine());
+                return;
+            }
+        }
+        if (other.CompareTag("WindAttack"))
+        {
+            GetHit(2 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Wind) * 20, SkillType.Wind);
+            invincibleTimer = 0.5f;
+        }
+        if (other.CompareTag("Firetornado"))
+        {
+            GetHit(5 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetStatLevel(StatType.SPR) * 2 + playerStats.GetSkillLevel(SkillType.Wind) * 20, SkillType.FireTornado);
+            //怪物被受擊的間隔時間歸零
+            invincibleTimer = 0.25f;
         }
     }
 }

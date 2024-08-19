@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 723921473835574759}
   - component: {fileID: 3925477346745795048}
   - component: {fileID: 7228563144804333587}
-  - component: {fileID: 8978430384124451583}
+  - component: {fileID: 3882019999295311879}
   m_Layer: 9
   m_Name: MonsterMelee
   m_TagString: Monster
@@ -207,7 +207,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8978430384124451583
+--- !u!114 &3882019999295311879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,47 +216,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 723921473835574753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222c4426afcc65247b2be8eee93c2437, type: 3}
+  m_Script: {fileID: 11500000, guid: 30b1bbc0fca710749b13a71497f9ee55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 0
-  maxHp: 30
-  numHeldItemMin: 1
-  numHeldItemMax: 3
-  beAttackTime: 0
-  attackTime: 0.3
-  recoverTime: 0.1
-  bounceForce: 0
-  healthBarOnGame: {fileID: 5561994501750623517}
+  <Hp>k__BackingField: 0
+  <MaxHp>k__BackingField: 30
+  invincibleTimer: 0
+  knockbackForce: 5
+  hitEffectsName:
+  - Hit_Swing_Fx
+  - Hit_Fire_Fx
+  - Hit_Wind_Fx
+  - Hit_Poison_Fx
+  - Hit_Water_Fx
   healthBar: {fileID: 5561994501849685634}
   itemRate: {fileID: 11400000, guid: 7fd4b91e5e7081c44bd581e411e300e6, type: 2}
-  animator: {fileID: 8325912654245321894}
-  navMeshAgent: {fileID: 723921473835574759}
-  getHitEffect:
-  - {fileID: 0}
-  - {fileID: 2024473775360881678, guid: 127db376c0b79e8499d62443253c1e45, type: 3}
-  - {fileID: 1127800687620224913, guid: e80a38c2360d8ff4985c13a37c771fb8, type: 3}
-  - {fileID: 5919181595379585890, guid: 8c3e7583233109e4ca6e2189c7097cdd, type: 3}
-  - {fileID: 7359204245788932658, guid: 7e51518bb93a59c42a7d89aae7e0e076, type: 3}
-  - {fileID: 6297029440285001474, guid: 3516fbcf44498a34185e44fb015c28a7, type: 3}
-  characterBase: {fileID: 0}
-  skillBase: {fileID: 0}
-  enemyController: {fileID: 3925477345567892591}
-  rigidbody: {fileID: 0}
   faceDirection: {fileID: 2904442090115409670}
-  audioSource: {fileID: 0}
-  poisonHitSFX: {fileID: 8300000, guid: ee477d8e9d7b4c94493dc13502dd9e8a, type: 3}
-  fireHitSFX: {fileID: 8300000, guid: 019b46edb5c4eb6418ee02f1e0e67102, type: 3}
-  windHitSFX: {fileID: 8300000, guid: b3dcb21a32da0fb4bbf95d0a1a56b443, type: 3}
-  waterHitSFX: {fileID: 8300000, guid: 37e3d97fc6197ba42ade8174fd3d4823, type: 3}
-  tornadoHitSFX: {fileID: 8300000, guid: c19d7f6baa09b8d468718b4ea3d35c64, type: 3}
-  bombHitSFX: {fileID: 8300000, guid: de7c69ec6e96340448749b2e7266808b, type: 3}
-  hitByTransform: {fileID: 0}
-  beAttackMin: 0
-  beAttackMax: 5
-  getHitBySkillType: 0
-  collider: {fileID: 0}
-  pushforce: 7.5
 --- !u!1 &2904442090115409669
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +417,7 @@ MonoBehaviour:
   attackRate: 4
   attackCube: {fileID: 4263896224901563790}
   monsterAttackRotation: {fileID: 2904442090115409670}
-  monsterHealth: {fileID: 8978430384124451583}
+  monsterHealth: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: 86aa610c36fdb654ba21d34f2ece5e65, type: 2}
   - {fileID: 2100000, guid: 8c0f1f7f70f6bd840b5ec3bb020a967d, type: 2}
@@ -839,17 +814,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 186497be764480d428cfe10dc6548ed0, type: 3}
---- !u!114 &5561994501750623517 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 915445999416037278, guid: 186497be764480d428cfe10dc6548ed0, type: 3}
-  m_PrefabInstance: {fileID: 4721036635552825987}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a6eff15ac436d49b69cd3466b17a19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5561994501849685634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 915445999526632449, guid: 186497be764480d428cfe10dc6548ed0, type: 3}

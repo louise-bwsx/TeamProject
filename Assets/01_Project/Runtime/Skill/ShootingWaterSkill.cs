@@ -22,7 +22,7 @@ public class ShootingWaterSkill : MonoBehaviour
 
     private void Update()
     {
-        if (GameStateManager.Inst.CurrentState == GameState.Pausing)
+        if (!GameStateManager.Inst.IsGaming())
         {
             return;
         }

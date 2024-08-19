@@ -24,9 +24,9 @@ public class PlayerStats : MonoBehaviour, ISave
     public Animator animator;
     public float invincibleTimer;
 
+    private GameObject hitEffect;
     private PlayerControl playerControl;
     private Collider collider;
-    private MobileRoll mobileRoll;
     private int statsLevelNeed = 100;
     private int skillLevelNeed = 100;
     [SerializeField, ReadOnly] private int[] statsLevel;
@@ -40,7 +40,6 @@ public class PlayerStats : MonoBehaviour, ISave
     {
         playerControl = GetComponentInChildren<PlayerControl>();
         collider = GetComponent<Collider>();
-        mobileRoll = GetComponentInChildren<MobileRoll>();
         Load();
     }
 
@@ -80,6 +79,11 @@ public class PlayerStats : MonoBehaviour, ISave
     public int GetStatLevel(int statIndex)
     {
         return statsLevel[statIndex];
+    }
+
+    public int GetSkillLevel(SkillType type)
+    {
+        return skillLevels[(int)type];
     }
 
     public int GetSkillLevel(int skillIndex)
@@ -123,7 +127,7 @@ public class PlayerStats : MonoBehaviour, ISave
         {
             if (other.gameObject.CompareTag("BossUlt") && GetStatLevel(StatType.DEF) - 20 < 0)
             {
-                getHitEffect[0] = getHitEffect[1];
+                hitEffect = getHitEffect[1];
                 //絕對值(人物的防禦值-20)<0
                 hp -= Mathf.Abs(GetStatLevel(StatType.DEF) - 20);
                 //玩家設定為無敵狀態

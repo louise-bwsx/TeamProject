@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBarOnGame : MonoBehaviour
@@ -12,6 +10,7 @@ public class HealthBarOnGame : MonoBehaviour
         slider.maxValue = maxhealth;
         slider.value = maxhealth;
     }
+
     public void SetHealth(float health)
     {
         slider.value = health;

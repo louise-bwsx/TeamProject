@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MonsterSpwan : MonoBehaviour
 {
@@ -14,8 +12,8 @@ public class MonsterSpwan : MonoBehaviour
         if (resettime >= spwantime)
         {
             //只有第二階段會生成
-            if (bossHealth.Hp <= bossHealth.maxHp * 0.7 && bossHealth.Hp > bossHealth.maxHp * 0.3)
-            { 
+            if (bossHealth.Hp <= bossHealth.MaxHp * 0.7 && bossHealth.Hp > bossHealth.MaxHp * 0.3)
+            {
                 Spwanmonster();
                 resettime = 0;
             }

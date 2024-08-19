@@ -10,7 +10,9 @@ public class MobileAttack : MonoBehaviour
     [SerializeField] private FixedJoystick[] joysticks;
     [SerializeField] private Image[] joysticksOutline;
     [SerializeField] private Image[] skillHandles;
+    [SerializeField] private Image[] skillCDImages;
     [SerializeField] private Image selectCircle;
+    [SerializeField] private SkillSO[] skillSO;
 
     public void Init(PlayerControl playerControl, SkillSelector skillSelector, RemoteSkillPosition remoteSkillPosition)
     {
@@ -24,6 +26,10 @@ public class MobileAttack : MonoBehaviour
         {
             int index = i;
             EventTrigger trigger = joysticksOutline[i].gameObject.AddComponent<EventTrigger>();
+
+            skillSO[i].CoolDownStart.AddListener(() => DisableHandle(index));
+            skillSO[i].CoolDownEnd.AddListener(() => EnableHandle(index));
+            skillSO[i].CoolDownChange.AddListener((cd, rate) => UICoolDown(index, cd, rate));
 
             // 設定 PointerDown 事件
             EventTrigger.Entry pointerDownEntry = new EventTrigger.Entry();
@@ -41,7 +47,11 @@ public class MobileAttack : MonoBehaviour
 
     private void SkillBtnOnClick(int index, SkillSelector skillSelector, RemoteSkillPosition remoteSkillPosition)
     {
-        //TODO 冷卻狀態不能按
+        if (!skillSelector.IsSkillCanShoot(index))
+        {
+            Debug.Log("冷卻中");
+            return;
+        }
         Debug.Log("SkillBtnOnClick");
         selectCircle.gameObject.SetActive(true);
         selectCircle.transform.SetParent(skillHandles[index].transform);
@@ -63,6 +73,21 @@ public class MobileAttack : MonoBehaviour
         joysticksOutline[index].color = Color.clear;
         skillSelector.SkillShoot();
         remoteSkillPosition.SkillBtnOnRelease();
-        //TODO: 顯示冷卻
+    }
+
+    private void UICoolDown(int currentIndex, float skillCD, float skillRate)
+    {
+        //Debug.Log(currentIndex);
+        skillCDImages[currentIndex].fillAmount = skillCD / skillRate;
+    }
+
+    private void EnableHandle(int index)
+    {
+        joysticksOutline[index].raycastTarget = true;
+    }
+
+    private void DisableHandle(int index)
+    {
+        joysticksOutline[index].raycastTarget = false;
     }
 }

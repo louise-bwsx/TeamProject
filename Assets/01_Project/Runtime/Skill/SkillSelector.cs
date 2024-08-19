@@ -38,6 +38,11 @@ public class SkillSelector : MonoBehaviour
             return;
         }
 
+        if (GameStateManager.Inst.IsMobile)
+        {
+            return;
+        }
+
         ScrollSelect();
         KeyboardTriggerSkill();
         MiddleMouseButtonTriggerSkill();
@@ -93,6 +98,11 @@ public class SkillSelector : MonoBehaviour
         {
             animator.SetTrigger("Magic");
         }
+    }
+
+    public bool IsSkillCanShoot(int index)
+    {
+        return skillSOArray[index].CanShoot();
     }
 
     public void SkillPrepare(int index)

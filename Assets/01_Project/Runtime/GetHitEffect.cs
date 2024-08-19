@@ -66,7 +66,7 @@ public class GetHitEffect : MonoBehaviour
             //當玩家非無敵狀態
             if (!playerControl.isInvincible)
             {
-                getHitEffect[0] = getHitEffect[1];
+                //hitEffect = getHitEffect[1];
                 Debug.Log("danger");
                 //絕對值(人物的防禦值-20)<0
                 //playerHealth -= Mathf.Abs(characterBase.charaterStats[(int)StatType.DEF] - 20);

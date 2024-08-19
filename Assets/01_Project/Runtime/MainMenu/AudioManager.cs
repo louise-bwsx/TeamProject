@@ -39,7 +39,7 @@ public class AudioManager : MonoSingleton<AudioManager>
 
     private void Update()
     {
-        if (GameStateManager.Inst.CurrentState == GameState.Gaming)
+        if (!GameStateManager.Inst.IsGaming())
         {
             return;
         }
@@ -49,6 +49,11 @@ public class AudioManager : MonoSingleton<AudioManager>
         {
             PlaySFX("ButtonClick");
         }
+    }
+
+    public void StopBGM()
+    {
+        sourceBGM.Stop();
     }
 
     public void PlayBGM(string clipName)

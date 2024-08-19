@@ -91,7 +91,6 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void EscBtnOnClick()
     {
-        Debug.Log(GameStateManager.Inst.CurrentState);
         switch (GameStateManager.Inst.CurrentState)
         {
             case GameState.Gaming:
@@ -218,9 +217,6 @@ public class UIManager : MonoSingleton<UIManager>
 
     private void TutorialBackgroundBtnOnClick()
     {
-        Debug.Log(isStarting);
-        Debug.Log(GameStateManager.Inst.CurrentState);
-
         if (isStarting)
         {
             isStarting = false;

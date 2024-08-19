@@ -100,7 +100,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        if (GameStateManager.Inst.CurrentState != GameState.Gaming)
+        if (!GameStateManager.Inst.IsGaming())
         {
             return;
         }
@@ -138,24 +138,21 @@ public class PlayerControl : MonoBehaviour
         {
             playerOptions.SetMonsterHealthActive();
         }
-        if (GameStateManager.Inst.CurrentState == GameState.Gaming)
+        if (Input.GetKeyDown(KeyCode.B))
         {
-            if (Input.GetKeyDown(KeyCode.B))
+            if (UIManager.Inst.IsUIOpen("StatsWindow"))
             {
-                if (UIManager.Inst.IsUIOpen("StatsWindow"))
-                {
-                    UIManager.Inst.CloseMenu("StatsWindow");
-                }
-                UIManager.Inst.OpenMenu("StatsWindow");
+                UIManager.Inst.CloseMenu("StatsWindow");
             }
-            if (Input.GetKeyDown(KeyCode.K))
+            UIManager.Inst.OpenMenu("StatsWindow");
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (UIManager.Inst.IsUIOpen("SkillWindow"))
             {
-                if (UIManager.Inst.IsUIOpen("SkillWindow"))
-                {
-                    UIManager.Inst.CloseMenu("SkillWindow");
-                }
-                UIManager.Inst.OpenMenu("SkillWindow");
+                UIManager.Inst.CloseMenu("SkillWindow");
             }
+            UIManager.Inst.OpenMenu("SkillWindow");
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -336,7 +333,7 @@ public class PlayerControl : MonoBehaviour
     public void Roll()
     {
         if (rollCD > 0 ||
-            GameStateManager.Inst.CurrentState != GameState.Gaming ||
+            !GameStateManager.Inst.IsGaming() ||
             !stamina.IsEnough(rollCostStamina) ||
              playerStats.hp <= 0)
         {

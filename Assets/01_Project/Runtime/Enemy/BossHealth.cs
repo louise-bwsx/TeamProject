@@ -1,149 +1,209 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
+public enum BossState
+{
+    /// <summary>
+    /// Hp &gt; MaxHp * 0.7
+    /// </summary>
+    Stage0,
+    /// <summary>
+    /// Hp &gt; MaxHp * 0.4
+    /// </summary>
+    Stage1,
+    /// <summary>
+    /// 小於不能用 所以這樣替代 上面是大於沒錯
+    /// Hp &lt;= MaxHp * 0.4
+    /// </summary>
+    Stage2
+}
+
+//TODO 實際打通一遍 看看怪物有沒有什麼奇怪的地方
 public class BossHealth : MonsterHealth
 {
-    public Transform brokenPos;
-    public GameObject curseWheel;
-    public GameObject brokenWheel;
-    public GameObject ManiMenu;
-    public float destroyTime = 2.5f;//環破碎所需要的時間
-    public float destroySoundTime = 1f; //Boss血量歸零後幾秒要播放環破碎音效
-    public float timer;
-    BossController bossController;
-    public GameObject BossInvincibleEffect;
-    public Transform BossInvinciblePos;
-    public GameObject bossSecondStateDialog;
-    public GameObject bossThirdStateDialog;
-    public GameObject bossDieDialogComponent;
-    public GameObject invincibleGuard;
-    public AudioClip behindWheelBrokeSFX;
-    public AudioClip wheelBrokeSFX;
-    public AudioClip afterBGM;
-    public AudioSource BGMSource;
-    public bool easyMode;
-    public bool[] bossState = new bool[2];
+    [SerializeField] private Transform brokenPos;
+    [SerializeField] private GameObject curseWheel;
+    [SerializeField] private GameObject brokenWheel;
+    [SerializeField] private GameObject BossInvincibleEffect;
+    [SerializeField] private Transform BossInvinciblePos;
+    [SerializeField] private GameObject bossSecondStateDialog;
+    [SerializeField] private GameObject bossThirdStateDialog;
+    [SerializeField] private GameObject bossDieDialogComponent;
+    [SerializeField] private GameObject invincibleGuard;
+    [SerializeField] private bool easyMode;
 
+    private BossController bossController;
+    //測試用只要打開就不受階段限制
+    private BossState state;
+    private const float WHEEL_DESTROY_TIME = 2.5f;//環破碎所需要的時間
+    private float destroyTimer;
+    private const float DESTROY_SOUND_TIME = 1.1f; //Boss血量歸零後幾秒要播放環破碎音效
+    private float destroySoundTimer;
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
-        bossController = FindObjectOfType<BossController>();
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+        bossController = GetComponentInChildren<BossController>();
     }
-    public override void Update()
+
+    private IEnumerator BossDieCoroutine()
     {
-        base.Update();
-        if (Hp <= 0 && destroyTime > -2)
+        AudioManager.Inst.StopBGM();
+        destroyTimer = WHEEL_DESTROY_TIME;
+        destroySoundTimer = DESTROY_SOUND_TIME;
+        while (true)
         {
-            BGMSource.Stop();
-            destroyTime -= Time.deltaTime;
-        }
-        if (destroyTime <= -2)//多給兩秒的休息時間
-        {
-            bossDieDialogComponent.SetActive(true);
-            AudioManager.Inst.PlayBGM("AfterBossFight");
-        }
-        if (Hp <= maxHp * 0.7 && !bossState[0])
-        {
-            animator.SetTrigger("Wheel_1_Broke");
-            audioSource.PlayOneShot(behindWheelBrokeSFX);
-            invincibleGuard = Instantiate(BossInvincibleEffect, BossInvinciblePos.position, BossInvinciblePos.rotation);
-            Time.timeScale = 0f;
-            bossSecondStateDialog.SetActive(true);
-            bossState[0] = true;
-        }
-        else if (Hp <= maxHp * 0.3 && !bossState[1])
-        {
-            animator.SetTrigger("Wheel_2_Broke");
-            audioSource.PlayOneShot(behindWheelBrokeSFX);
-            bossController.BossUltAttack();
-            Destroy(invincibleGuard);
-            //第三階段提示
-            bossThirdStateDialog.SetActive(true);
-            bossState[1] = true;
-        }
-        if (Hp <= 0 && timer < destroySoundTime)
-        {
-            timer += Time.deltaTime;
-            if (timer >= destroySoundTime)
+            yield return null;
+            if (!GameStateManager.Inst.IsGaming())
             {
-                audioSource.PlayOneShot(wheelBrokeSFX);
+                continue;
+            }
+            destroyTimer -= Time.deltaTime;
+            destroySoundTimer -= Time.deltaTime;
+            if (destroyTimer <= 0)
+            {
+                bossDieDialogComponent.SetActive(true);
+                AudioManager.Inst.PlayBGM("AfterBossFight");
+                break;
             }
         }
     }
 
-    public override void MonsterDead()
+    private IEnumerator DestroySoundCoroutine()
+    {
+        destroySoundTimer = DESTROY_SOUND_TIME;
+        while (true)
+        {
+            yield return null;
+            if (!GameStateManager.Inst.IsGaming())
+            {
+                continue;
+            }
+            destroySoundTimer -= Time.deltaTime;
+            if (destroySoundTimer <= 0)
+            {
+                AudioManager.Inst.PlaySFX("WheelBrake");
+                break;
+            }
+        }
+    }
+
+    protected override void GetHit(float Damage, SkillType type)
+    {
+        if (Hp <= 0)
+        {
+            return;
+        }
+
+        if (state == BossState.Stage1)
+        {
+            if (type != SkillType.FireTornado && type != SkillType.Bomb)
+            {
+                return;
+            }
+        }
+
+        //不要再這邊設定invincibleTimer 為了讓風 可以打快一點
+        if (invincibleTimer > 0)
+        {
+            Debug.Log($"{transform.name} 無敵中");
+            return;
+        }
+
+        switch (type)
+        {
+            case SkillType.Poison:
+                hitEffectName = hitEffectsName[3];
+                AudioManager.Inst.PlaySFX("PoisonHit");
+                break;
+            case SkillType.Water:
+                hitEffectName = hitEffectsName[4];
+                AudioManager.Inst.PlaySFX("WaterHit");
+                break;
+            case SkillType.Wind:
+                hitEffectName = hitEffectsName[2];
+                AudioManager.Inst.PlaySFX("WindHit");
+                break;
+            case SkillType.Fire:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("FireHit");
+                break;
+            case SkillType.FireTornado:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("FireTornadoHit");
+                break;
+            case SkillType.Bomb:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("BombHit");
+                break;
+            case SkillType.Null:
+                hitEffectName = hitEffectsName[0];
+                break;
+                //沒有Bomb但怕加了後出問題先不加
+        }
+        //被攻擊後歸零下一次怪物攻擊時間
+        if (EnemyController != null)
+        {
+            EnemyController.attackCD = 0;
+        }
+
+        //播放受擊動畫
+        animator.SetTrigger("GetHit");
+
+        //誰被打到
+        // Debug.Log(transform.name);
+        ObjectPool.Inst.SpawnFromPool(hitEffectName, (transform.position + Vector3.up) * 0.8f, transform.rotation, duration: 1f);
+        Hp -= Damage;
+        healthBarOnGame.SetHealth(Hp);
+        StartCoroutine(InvincibleCoroutine());
+
+        if (Hp > MaxHp * 0.7)
+        {
+            state = BossState.Stage0;
+        }
+        else if (Hp > MaxHp * 0.4 && state == BossState.Stage0)
+        {
+            ChangToState1();
+        }
+        else if (Hp <= MaxHp * 0.4 && state == BossState.Stage1)
+        {
+            ChangeToState2();
+        }
+
+        if (Hp <= 0)
+        {
+            MonsterDead();
+            StartCoroutine(BossDieCoroutine());
+            StartCoroutine(DestroySoundCoroutine());
+        }
+    }
+
+    protected override void MonsterDead()
     {
         curseWheel.SetActive(false);
+        healthBar.SetActive(false);
         GameObject FX = Instantiate(brokenWheel, brokenPos.position, brokenPos.rotation);
-        Destroy(FX, destroyTime);
-        //base.MonsterDead();
+        Destroy(FX, WHEEL_DESTROY_TIME);
     }
-    public override void OnTriggerEnter(Collider other)
-    {
-        //Boss血量第一階段扣血條件
-        if (Hp > maxHp * 0.7)
-        {
-            base.OnTriggerEnter(other);
-        }
-        //Boss血量第二階段
-        if (Hp <= maxHp * 0.7 && Hp > maxHp * 0.3)
-        {
-            if (easyMode)
-            {
-                //測試用只要打開就不受階段限制
-                base.OnTriggerStay(other);
-            }
-            //只有組合技才能造成傷害
-            if (other.CompareTag("Bomb"))
-            {
-                //Destroy(BossInvincibleEffect);
-                getHitEffect[0] = getHitEffect[2];
-                audioSource.PlayOneShot(bombHitSFX);
-                hitByTransform = other.transform;
-                //GetHit(60 + characterBase.charaterStats[(int)StatType.INT] + characterBase.charaterStats[(int)StatType.SPR] * 2);
-            }
-        }
-        //Boss血量第三階段此時Boss開始會放大招
-        else if (Hp <= maxHp * 0.3)
-        {
-            base.OnTriggerEnter(other);
-        }
-    }
-    public override void OnTriggerStay(Collider other)
-    {    //Boss血量第一階段扣血條件
-        if (Hp > maxHp * 0.7)
-        {
-            base.OnTriggerStay(other);
-        }
-        //Boss血量第二階段
-        else if (Hp <= maxHp * 0.7 && Hp > maxHp * 0.3)
-        {
-            if (easyMode)
-            {
-                //測試用只要打開就不受階段限制
-                base.OnTriggerStay(other);
-            }
-            if (other.CompareTag("Firetornado"))
-            {
 
-                getHitEffect[0] = getHitEffect[2];
-                if (beAttackTime > attackTime)
-                {
-                    //GetHit(5 + characterBase.charaterStats[(int)StatType.INT] + characterBase.charaterStats[(int)StatType.SPR] * 2 + skillBase.windSkillLevel * 20);
-                    //怪物被受擊的間隔時間歸零
-                    beAttackTime = 0;
-                }
-                getHitBySkillType = SkillType.FireTornado;
-            }
-        }
-        //Boss血量第三階段此時Boss開始會放大招
-        else if (Hp <= maxHp * 0.3)
-        {
-            base.OnTriggerStay(other);
-        }
+    private void ChangToState1()
+    {
+        animator.SetTrigger("Wheel_1_Broke");
+        AudioManager.Inst.PlaySFX("BehindWheelBrake");
+        invincibleGuard = Instantiate(BossInvincibleEffect, BossInvinciblePos.position, BossInvinciblePos.rotation);
+        Time.timeScale = 0f;
+        bossSecondStateDialog.SetActive(true);
+        state = BossState.Stage1;
+    }
+
+    private void ChangeToState2()
+    {
+        animator.SetTrigger("Wheel_2_Broke");
+        AudioManager.Inst.PlaySFX("BehindWheelBrake");
+        bossController.BossUltAttack();
+        Destroy(invincibleGuard);
+        //第三階段提示
+        bossThirdStateDialog.SetActive(true);
+        state = BossState.Stage2;
     }
 }

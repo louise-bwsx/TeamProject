@@ -7,8 +7,8 @@ public class SkillSelector : MonoBehaviour
 {
     private int previousIndex;
     private PlayerControl playerControl;
-    private GetHitEffect getHitEffect;
     private Animator animator;
+    private PlayerStats playerStats;
     [field: SerializeField, ReadOnly] public int CurrentIndex { get; private set; }
     public UnityEvent<int, int> ChangeSelectSkill = new UnityEvent<int, int>();
     [SerializeField] private SkillSO[] skillSOArray;
@@ -16,8 +16,8 @@ public class SkillSelector : MonoBehaviour
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        getHitEffect = GetComponentInChildren<GetHitEffect>();
         playerControl = GetComponentInChildren<PlayerControl>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void Start()
@@ -33,7 +33,7 @@ public class SkillSelector : MonoBehaviour
 
     private void Update()
     {
-        if (playerControl.isAttack || getHitEffect.playerHealth < 0)
+        if (playerControl.isAttack || playerStats.IsDead())
         {
             return;
         }

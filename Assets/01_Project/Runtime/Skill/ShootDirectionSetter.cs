@@ -27,7 +27,7 @@ public class ShootDirectionSetter : MonoBehaviour
             return;
         }
 
-        if (playerStats.hp <= 0)
+        if (playerStats.IsDead())
         {
             return;
         }
@@ -41,7 +41,8 @@ public class ShootDirectionSetter : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, rayDistance, floor))
         {
-            mouseTransform.position = hit.point;
+            //讓他比Tatami高 不要再Tatami設collider 會抖
+            mouseTransform.position = hit.point.With(y: hit.point.y + .2f);
             //取得方向 但不修改Y軸
             Vector3 direction = new Vector3(hit.point.x, shootDirectionTrans.position.y, hit.point.z) - shootDirectionTrans.position;
             shootDirectionTrans.rotation = Quaternion.LookRotation(direction);

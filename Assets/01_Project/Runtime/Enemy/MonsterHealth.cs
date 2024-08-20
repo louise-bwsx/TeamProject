@@ -36,7 +36,6 @@ public class MonsterHealth : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
-        playerStats = PlayerManager.Inst.Player;
         healthBarOnGame = GetComponentInChildren<HealthBarOnGame>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
@@ -45,6 +44,7 @@ public class MonsterHealth : MonoBehaviour
 
     protected virtual void Start()
     {
+        playerStats = PlayerManager.Inst.Player;
         Hp = MaxHp;
         healthBarOnGame.SetMaxHealth(MaxHp);
     }
@@ -56,44 +56,16 @@ public class MonsterHealth : MonoBehaviour
             return;
         }
 
+
         //不要再這邊設定invincibleTimer 為了讓風 可以打快一點
         if (invincibleTimer > 0)
         {
-            Debug.Log($"{transform.name} 無敵中");
+            //Debug.Log($"{transform.name} 無敵中");
             return;
         }
+        //Debug.Log($"Damage: {Damage}");
 
-        switch (type)
-        {
-            case SkillType.Poison:
-                hitEffectName = hitEffectsName[3];
-                AudioManager.Inst.PlaySFX("PoisonHit");
-                break;
-            case SkillType.Water:
-                hitEffectName = hitEffectsName[4];
-                AudioManager.Inst.PlaySFX("WaterHit");
-                break;
-            case SkillType.Wind:
-                hitEffectName = hitEffectsName[2];
-                AudioManager.Inst.PlaySFX("WindHit");
-                break;
-            case SkillType.Fire:
-                hitEffectName = hitEffectsName[1];
-                AudioManager.Inst.PlaySFX("FireHit");
-                break;
-            case SkillType.FireTornado:
-                hitEffectName = hitEffectsName[1];
-                AudioManager.Inst.PlaySFX("FireTornadoHit");
-                break;
-            case SkillType.Bomb:
-                hitEffectName = hitEffectsName[1];
-                AudioManager.Inst.PlaySFX("BombHit");
-                break;
-            case SkillType.Null:
-                hitEffectName = hitEffectsName[0];
-                break;
-                //沒有Bomb但怕加了後出問題先不加
-        }
+        SetHitEffect(type);
 
         //被攻擊後歸零下一次怪物攻擊時間
         if (EnemyController != null)
@@ -118,8 +90,44 @@ public class MonsterHealth : MonoBehaviour
         }
     }
 
+    protected void SetHitEffect(SkillType type)
+    {
+        switch (type)
+        {
+            case SkillType.Poison:
+                hitEffectName = hitEffectsName[3];
+                //太吵了 取消
+                //AudioManager.Inst.PlaySFX("PoisonHit");
+                break;
+            case SkillType.Water:
+                hitEffectName = hitEffectsName[4];
+                AudioManager.Inst.PlaySFX("WaterHit");
+                break;
+            case SkillType.Wind:
+                hitEffectName = hitEffectsName[2];
+                AudioManager.Inst.PlaySFX("WindHit");
+                break;
+            case SkillType.Fire:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("FireHit");
+                break;
+            case SkillType.FireTornado:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("FireTornadoHit");
+                break;
+            case SkillType.Bomb:
+                hitEffectName = hitEffectsName[1];
+                AudioManager.Inst.PlaySFX("BombHit");
+                break;
+            case SkillType.Null:
+                hitEffectName = hitEffectsName[0];
+                break;
+        }
+    }
+
     protected IEnumerator InvincibleCoroutine()
     {
+        //Debug.Log("InvincibleCoroutine");
         while (true)
         {
             yield return null;
@@ -128,7 +136,7 @@ public class MonsterHealth : MonoBehaviour
                 continue;
             }
             invincibleTimer -= Time.deltaTime;
-
+            //Debug.Log(invincibleTimer);
             if (invincibleTimer <= 0)
             {
                 //停止被打飛
@@ -233,14 +241,22 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("WindAttack"))
         {
-            GetHit(2 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Wind) * 20, SkillType.Wind);
-            invincibleTimer = 0.5f;
+            //如果沒有這層 會因為不斷設定0.25反而延長無敵時間
+            if (invincibleTimer <= 0)
+            {
+                GetHit(2 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Wind) * 20, SkillType.Wind);
+                invincibleTimer = 0.25f;
+            }
         }
         if (other.CompareTag("Firetornado"))
         {
-            GetHit(5 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetStatLevel(StatType.SPR) * 2 + playerStats.GetSkillLevel(SkillType.Wind) * 20, SkillType.FireTornado);
-            //怪物被受擊的間隔時間歸零
-            invincibleTimer = 0.25f;
+            //如果沒有這層 會因為不斷設定0.25反而延長無敵時間
+            if (invincibleTimer <= 0)
+            {
+                GetHit(5 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetStatLevel(StatType.SPR) * 2 + playerStats.GetSkillLevel(SkillType.Wind) * 20, SkillType.FireTornado);
+                //怪物被受擊的間隔時間歸零
+                invincibleTimer = 0.25f;
+            }
         }
     }
 }

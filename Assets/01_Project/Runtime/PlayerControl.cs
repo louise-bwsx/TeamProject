@@ -12,11 +12,6 @@ public enum AttackType
 
 public class PlayerControl : MonoBehaviour
 {
-    public UIBarControl uIBarControl;
-    public GameMenuController gameMenu;
-    public HealthBarOnGame healthbarongame;
-    public GetHitEffect getHitEffect;
-    public GameObject statsWindow;
     //有關耐力
     [SerializeField] private PlayerStamina stamina;
     //有關移動
@@ -28,21 +23,17 @@ public class PlayerControl : MonoBehaviour
     private float rollCostStamina = 10;
     float rollTime = 0f;//被存入的時間
     public float rollTimeLimit = 0.4f;//翻滾的無敵時間
-    public int rollForce;
     public int rollDistence;
     private float rollCD;
     [SerializeField] private float rollRate = 1f;
     //有關攻擊
     public bool isAttack = false;
-    public float attackRange = 0.4f;
     public float attackTime;
     public float attackSpeed;//同動畫時間
     public float attackSpikeSpeed;//突刺攻擊間隔
-    public int attackDamage = 2;
     public int spikeAttackDash = 7;
     public int normalAttackDash = 3;
     public LayerMask EnemyLayer;
-    Vector3 position;
     public bool isRoll;
 
     [field: SerializeField] public Rigidbody rigidbody { get; private set; }
@@ -72,7 +63,6 @@ public class PlayerControl : MonoBehaviour
     {
         //讓角色一開始可以攻擊
         attackTime = 10;
-        //Invoke("Roll", 5);開始遊戲後五秒施放翻滾
         previousPos = transform.position;
     }
 
@@ -162,32 +152,14 @@ public class PlayerControl : MonoBehaviour
             }
             UIManager.Inst.OpenMenu("MiniMap");
         }
-        //卸下所有裝備欄裡的裝備
-        //if (Input.GetKeyDown(KeyCode.U))
-        //{
-        //    equipmentManager.UnequipAll();
-        //}
-        #region 存檔功能
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Debug.Log("存檔中");
-            SaveSystem.SavePlayer(getHitEffect, transform);
+            Debug.Log("TODO存檔 還沒做");
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Debug.Log("回復存檔");
-            PlayerData data = SaveSystem.LoadPlayer();
-            getHitEffect.playerHealth = data.Playerhealth;
-            uIBarControl.SetHealth(data.Playerhealth / data.maxHealth);
-            Vector3 SavePosition;
-            SavePosition.x = data.position[0];
-            SavePosition.y = data.position[1];
-            SavePosition.z = data.position[2];
-            transform.position = SavePosition;
-            Debug.Log(SavePosition);
-            healthbarongame.SetHealth(data.Playerhealth);//人物身上的血條
+            Debug.Log("TODO讀檔 還沒做");
         }
-        #endregion
 
         if (Input.GetKeyDown(KeyCode.N))//傳送到指定地點 &場景重置
         {
@@ -246,7 +218,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         //TODO: 這裡應該可以用PlayerState來判斷 currentPlayerState != PlayerState.Gaming return;
-        if (playerSprite.isMagicAttack || getHitEffect.playerHealth < 0 || isRoll)
+        if (playerSprite.isMagicAttack || playerStats.IsDead() || isRoll)
         {
             Debug.Log("玩家在一個無法攻擊的狀態");
             return;
@@ -254,7 +226,6 @@ public class PlayerControl : MonoBehaviour
         //false在動畫Event呼叫
         isAttack = true;
         //讓人物轉向滑鼠點擊方向 為了不讓手機模式 改變方向
-        //TODOWarning: 等左邊搖桿可以改變ShootDirection方向在取消 判斷是不是手機模式看看
         if (!GameStateManager.Inst.IsMobile)
         {
             playerSprite.SpriteFlipByMousePosition();
@@ -279,7 +250,6 @@ public class PlayerControl : MonoBehaviour
     private void SpikeAttack()
     {
         animator.SetTrigger("Attack_Spike");
-        //TODOWarning: 等左邊搖桿可以改變ShootDirection方向在取消 判斷是不是手機模式看看
         if (GameStateManager.Inst.IsMobile)
         {
             Vector3 direction = playerSprite.FlipX() ? Vector3.forward : Vector3.back;
@@ -297,12 +267,11 @@ public class PlayerControl : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(previousPos, raycastDir, out hit, distance, rollLayer))
         {
-            Debug.Log("CheckMoveThroughWall");
+            //Debug.Log("穿牆");
             //撞到牆velocity歸零
             rigidbody.velocity = Vector3.zero;
             //將玩家移動到被射線打到的點
             rigidbody.position = hit.point;
-            Debug.Log("穿牆");
         }
         previousPos = rigidbody.position;
     }
@@ -324,18 +293,12 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawLine(rigidbody.position, rigidbody.transform.localPosition.With(y: rigidbody.transform.localPosition.y - 1));
-    }
-
     public void Roll()
     {
         if (rollCD > 0 ||
             !GameStateManager.Inst.IsGaming() ||
             !stamina.IsEnough(rollCostStamina) ||
-             playerStats.hp <= 0)
+            playerStats.IsDead())
         {
             return;
         }
@@ -354,5 +317,11 @@ public class PlayerControl : MonoBehaviour
         rigidbody.velocity = shootDirectionSetter.GetForward() * rollDistence;
         //讓玩家可以穿過怪物
         //collider.isTrigger = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawLine(rigidbody.position, rigidbody.transform.localPosition.With(y: rigidbody.transform.localPosition.y - 1));
     }
 }

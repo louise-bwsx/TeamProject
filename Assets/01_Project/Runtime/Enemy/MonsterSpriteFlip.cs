@@ -1,19 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MonsterSpriteFlip : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
-    public GameObject monsterParent;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject monsterParent;
 
-    void Start()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    void Update()
+
+    private void Update()
     {
-        if(monsterParent.transform.localEulerAngles.y>90 && monsterParent.transform.localEulerAngles.y<270)
+        if (monsterParent.transform.localEulerAngles.y > 90 && monsterParent.transform.localEulerAngles.y < 270)
         {
             //向左看
             spriteRenderer.flipX = false;
@@ -24,7 +23,8 @@ public class MonsterSpriteFlip : MonoBehaviour
             spriteRenderer.flipX = true;
         }
     }
-    void Dead()//動畫Event呼叫
+
+    private void Dead()//動畫Event呼叫
     {
         Destroy(monsterParent);
     }

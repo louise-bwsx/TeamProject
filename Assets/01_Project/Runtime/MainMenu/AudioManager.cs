@@ -59,6 +59,10 @@ public class AudioManager : MonoSingleton<AudioManager>
     public void PlayBGM(string clipName)
     {
         AudioClip findClip = FIndClip(clipName);
+        if (!findClip)
+        {
+            return;
+        }
         if (sourceBGM.clip == findClip)
         {
             Debug.Log("不再重複播放相同的BGM: " + clipName);
@@ -71,6 +75,10 @@ public class AudioManager : MonoSingleton<AudioManager>
     public void PlaySFX(string clipName)
     {
         AudioClip findClip = FIndClip(clipName);
+        if (!findClip)
+        {
+            return;
+        }
         sourceSFX.PlayOneShot(findClip);
     }
 

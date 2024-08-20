@@ -571,11 +571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5942,7 +5942,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -5968,7 +5968,7 @@ Transform:
   m_GameObject: {fileID: 275257028}
   serializedVersion: 2
   m_LocalRotation: {x: -0.22996178, y: 0.6311272, z: -0.20377614, w: -0.71222985}
-  m_LocalPosition: {x: 119.113434, y: 19.076725, z: 71.89678}
+  m_LocalPosition: {x: -7.5, y: -0.5, z: 0.639}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7256,11 +7256,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1359176315583876257, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1359176315583876257, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5477791637045825154, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7997,11 +7997,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1359176315583876257, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1359176315583876257, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5477791637045825154, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8116,11 +8116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8276,6 +8276,76 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 300e014b77d94954284b4599b66df6a5, type: 3}
   m_PrefabInstance: {fileID: 416530107201694557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &961538658
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 78197644085926404}
+    m_Modifications:
+    - target: {fileID: 723921473835574753, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_Name
+      value: MonsterMelee (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16370296
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+--- !u!4 &961538659 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 723921473835574756, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
+  m_PrefabInstance: {fileID: 961538658}
   m_PrefabAsset: {fileID: 0}
 --- !u!64 &966283680
 MeshCollider:
@@ -8549,11 +8619,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1359176315583876257, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1359176315583876257, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5477791637045825154, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8918,11 +8988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9243,13 +9313,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318023289}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.39017946, y: 0.00009715555, z: 0.00022873277, w: 0.9207388}
-  m_LocalPosition: {x: -97.1, y: 45.67, z: 93.24}
+  m_LocalRotation: {x: 0.28805354, y: 0.000071763985, z: 0.00023794171, w: 0.9576143}
+  m_LocalPosition: {x: -97.100845, y: 47.432728, z: 94.84478}
   m_LocalScale: {x: 42.84277, y: 1, z: 21.963802}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 44492333}
-  m_LocalEulerAnglesHint: {x: 45.931, y: 0.029, z: 0.041}
+  m_LocalEulerAnglesHint: {x: 33.483, y: 0.019, z: 0.034}
 --- !u!23 &1318023291
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10063,11 +10133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10209,11 +10279,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1359176315583876257, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1359176315583876257, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5477791637045825154, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10762,11 +10832,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10837,11 +10907,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5561994500336955558, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16152,6 +16222,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 813322327}
+  - {fileID: 961538659}
   - {fileID: 1954982404}
   - {fileID: 1157466599}
   - {fileID: 74930288}
@@ -16796,35 +16867,13 @@ GameObject:
   - component: {fileID: 416530105246980934}
   - component: {fileID: 416530105246980932}
   - component: {fileID: 416530105246980933}
-  - component: {fileID: 416530105246980936}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105246980936
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105246980935}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364823, y: 0.01986697, z: 0.044213478}
-  m_Center: {x: 1.3098761e-10, y: 0.0004433456, z: 0.0010526653}
 --- !u!1001 &416530105250147174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17052,35 +17101,13 @@ GameObject:
   - component: {fileID: 416530105256710454}
   - component: {fileID: 416530105256710452}
   - component: {fileID: 416530105256710453}
-  - component: {fileID: 416530105256710456}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105256710456
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105256710455}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000014, y: 0.02000001, z: 0.0009804576}
-  m_Center: {x: 0.00000011920929, y: 0, z: -0.000000014901161}
 --- !u!23 &416530105263821936
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19286,35 +19313,13 @@ GameObject:
   - component: {fileID: 416530105349500462}
   - component: {fileID: 416530105349500460}
   - component: {fileID: 416530105349500461}
-  - component: {fileID: 416530105349500464}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105349500464
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105349500463}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364817, y: 0.019866966, z: 0.044213273}
-  m_Center: {x: -2.5439532e-11, y: 0.00044331574, z: 0.0010526676}
 --- !u!1001 &416530105350574851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19931,35 +19936,13 @@ GameObject:
   - component: {fileID: 416530105379466167}
   - component: {fileID: 416530105379466165}
   - component: {fileID: 416530105379466166}
-  - component: {fileID: 416530105379466185}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105379466185
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105379466184}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000009, y: 0.020000007, z: 0.0009804512}
-  m_Center: {x: 0, y: 0, z: 0.000000014901161}
 --- !u!4 &416530105379577088
 Transform:
   m_ObjectHideFlags: 0
@@ -20496,35 +20479,13 @@ GameObject:
   - component: {fileID: 416530105396820278}
   - component: {fileID: 416530105396820276}
   - component: {fileID: 416530105396820277}
-  - component: {fileID: 416530105396820280}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105396820280
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105396820279}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.02, z: 0.0009804522}
-  m_Center: {x: 0, y: -0.000000029802322, z: 0.000000014901161}
 --- !u!1001 &416530105401086829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21059,8 +21020,7 @@ GameObject:
   - component: {fileID: 416530105431537728}
   - component: {fileID: 416530105431537742}
   - component: {fileID: 416530105431537743}
-  - component: {fileID: 416530105431537744}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21117,27 +21077,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &416530105431537744
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105431537729}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364825, y: 0.019866968, z: 0.04421346}
-  m_Center: {x: 1.8770336e-17, y: 0.0004433754, z: 0.0010521865}
 --- !u!23 &416530105439838560
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21206,8 +21145,7 @@ GameObject:
   - component: {fileID: 416530105439838561}
   - component: {fileID: 416530105439838575}
   - component: {fileID: 416530105439838560}
-  - component: {fileID: 416530105439838576}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21222,27 +21160,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416530105439838562}
   m_Mesh: {fileID: 5095427755525112190, guid: 0fc7d1bec9926604699df73ccbaf4265, type: 3}
---- !u!65 &416530105439838576
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105439838562}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000016, y: 0.020000005, z: 0.0009804574}
-  m_Center: {x: 0, y: 0.000000059604645, z: 0.000000014901161}
 --- !u!33 &416530105452442005
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21402,35 +21319,13 @@ GameObject:
   - component: {fileID: 416530105453023466}
   - component: {fileID: 416530105453023464}
   - component: {fileID: 416530105453023465}
-  - component: {fileID: 416530105453023468}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105453023468
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105453023467}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364825, y: 0.019866968, z: 0.04421346}
-  m_Center: {x: 1.8770336e-17, y: 0.0004433754, z: 0.0010521865}
 --- !u!33 &416530105453866219
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21674,35 +21569,13 @@ GameObject:
   - component: {fileID: 416530105467399979}
   - component: {fileID: 416530105467399977}
   - component: {fileID: 416530105467399978}
-  - component: {fileID: 416530105467399981}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105467399981
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105467399980}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.020000005, z: 0.00098045}
-  m_Center: {x: -0.000000059604645, y: 0.000000059604645, z: 0}
 --- !u!1 &416530105469816512
 GameObject:
   m_ObjectHideFlags: 0
@@ -22346,35 +22219,13 @@ GameObject:
   - component: {fileID: 416530105501676052}
   - component: {fileID: 416530105501676050}
   - component: {fileID: 416530105501676051}
-  - component: {fileID: 416530105501676054}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105501676054
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105501676053}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364827, y: 0.019866968, z: 0.04421346}
-  m_Center: {x: 1.8273945e-17, y: 0.0004433456, z: 0.0010521865}
 --- !u!212 &416530105502001193
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22485,8 +22336,7 @@ GameObject:
   - component: {fileID: 416530105510126864}
   - component: {fileID: 416530105510126878}
   - component: {fileID: 416530105510126879}
-  - component: {fileID: 416530105510126880}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22543,27 +22393,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &416530105510126880
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105510126865}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.020000007, z: 0.0009804496}
-  m_Center: {x: -0.000000059604645, y: 0.000000029802322, z: 0.000000014901161}
 --- !u!212 &416530105511780936
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25735,35 +25564,13 @@ GameObject:
   - component: {fileID: 416530105642191123}
   - component: {fileID: 416530105642191121}
   - component: {fileID: 416530105642191122}
-  - component: {fileID: 416530105642191125}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105642191125
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105642191124}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000016, y: 0.020000005, z: 0.0009804574}
-  m_Center: {x: 0.000000059604645, y: 0.000000059604645, z: 0.000000014901161}
 --- !u!1001 &416530105643642872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26107,35 +25914,13 @@ GameObject:
   - component: {fileID: 416530105649621170}
   - component: {fileID: 416530105649621168}
   - component: {fileID: 416530105649621169}
-  - component: {fileID: 416530105649621172}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105649621172
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105649621171}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364823, y: 0.01986697, z: 0.044213478}
-  m_Center: {x: 0.00000011934027, y: 0.0004433754, z: 0.0010526653}
 --- !u!33 &416530105661260164
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -26703,35 +26488,13 @@ GameObject:
   - component: {fileID: 416530105697162316}
   - component: {fileID: 416530105697162314}
   - component: {fileID: 416530105697162315}
-  - component: {fileID: 416530105697162318}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105697162318
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105697162317}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.020000009, z: 0.00098045}
-  m_Center: {x: -0.000000059604645, y: 0, z: 0.000000014901161}
 --- !u!1001 &416530105698222664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27005,35 +26768,13 @@ GameObject:
   - component: {fileID: 416530105705272839}
   - component: {fileID: 416530105705272837}
   - component: {fileID: 416530105705272838}
-  - component: {fileID: 416530105705272857}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105705272857
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105705272856}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.020000007, z: 0.00098045}
-  m_Center: {x: -0.000000059604645, y: -0.000000029802322, z: 0}
 --- !u!4 &416530105705981924
 Transform:
   m_ObjectHideFlags: 0
@@ -27237,35 +26978,13 @@ GameObject:
   - component: {fileID: 416530105712771236}
   - component: {fileID: 416530105712771234}
   - component: {fileID: 416530105712771235}
-  - component: {fileID: 416530105712771238}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105712771238
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105712771237}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000005, y: 0.020000005, z: 0.0009804496}
-  m_Center: {x: -0.00000011920929, y: -0.000000059604645, z: -0.000000029802322}
 --- !u!212 &416530105715397802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27426,35 +27145,13 @@ GameObject:
   - component: {fileID: 416530105716112151}
   - component: {fileID: 416530105716112149}
   - component: {fileID: 416530105716112150}
-  - component: {fileID: 416530105716112169}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105716112169
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105716112168}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364827, y: 0.019866968, z: 0.04421346}
-  m_Center: {x: 1.8273945e-17, y: 0.0004433754, z: 0.0010521865}
 --- !u!33 &416530105719364378
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27531,35 +27228,13 @@ GameObject:
   - component: {fileID: 416530105719364380}
   - component: {fileID: 416530105719364378}
   - component: {fileID: 416530105719364379}
-  - component: {fileID: 416530105719364382}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105719364382
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105719364381}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364817, y: 0.019866964, z: 0.0442133}
-  m_Center: {x: -8.1395144e-16, y: 0.0004432859, z: 0.0010531466}
 --- !u!1001 &416530105723902130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28766,35 +28441,13 @@ GameObject:
   - component: {fileID: 416530105753017405}
   - component: {fileID: 416530105753017403}
   - component: {fileID: 416530105753017404}
-  - component: {fileID: 416530105753017407}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105753017407
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105753017406}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000016, y: 0.02000001, z: 0.0009804576}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &416530105756705734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29213,35 +28866,13 @@ GameObject:
   - component: {fileID: 416530105763771224}
   - component: {fileID: 416530105763771206}
   - component: {fileID: 416530105763771207}
-  - component: {fileID: 416530105763771226}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105763771226
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105763771225}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000014, y: 0.02000001, z: 0.0009804576}
-  m_Center: {x: 0.000000059604645, y: -0.000000029802322, z: -0.000000014901161}
 --- !u!33 &416530105765725400
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -29658,35 +29289,13 @@ GameObject:
   - component: {fileID: 416530105778743626}
   - component: {fileID: 416530105778743624}
   - component: {fileID: 416530105778743625}
-  - component: {fileID: 416530105778743628}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105778743628
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105778743627}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364827, y: 0.019866968, z: 0.04421346}
-  m_Center: {x: 1.8273945e-17, y: 0.0004433754, z: 0.0010521865}
 --- !u!1001 &416530105779315432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29840,35 +29449,13 @@ GameObject:
   - component: {fileID: 416530105785936439}
   - component: {fileID: 416530105785936437}
   - component: {fileID: 416530105785936438}
-  - component: {fileID: 416530105785936457}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105785936457
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105785936456}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364823, y: 0.01986697, z: 0.044213478}
-  m_Center: {x: 0.00000017894492, y: 0.0004433456, z: 0.0010526653}
 --- !u!1001 &416530105789669954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30469,35 +30056,13 @@ GameObject:
   - component: {fileID: 416530105808950978}
   - component: {fileID: 416530105808950976}
   - component: {fileID: 416530105808950977}
-  - component: {fileID: 416530105808950980}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105808950980
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105808950979}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.020000007, z: 0.00098045}
-  m_Center: {x: 0, y: 0.000000029802322, z: 0}
 --- !u!33 &416530105810443282
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32005,35 +31570,13 @@ GameObject:
   - component: {fileID: 416530105852690325}
   - component: {fileID: 416530105852690323}
   - component: {fileID: 416530105852690324}
-  - component: {fileID: 416530105852690327}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105852690327
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105852690326}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213235}
-  m_Center: {x: -0.000000059604645, y: 0.00044337535, z: 0.0010526684}
 --- !u!1001 &416530105854354848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34531,8 +34074,7 @@ GameObject:
   - component: {fileID: 416530105957149537}
   - component: {fileID: 416530105957149551}
   - component: {fileID: 416530105957149536}
-  - component: {fileID: 416530105957149552}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34547,27 +34089,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416530105957149538}
   m_Mesh: {fileID: 5095427755525112190, guid: 0fc7d1bec9926604699df73ccbaf4265, type: 3}
---- !u!65 &416530105957149552
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105957149538}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000014, y: 0.02000001, z: 0.0009804576}
-  m_Center: {x: 0, y: -0.000000029802322, z: 0}
 --- !u!33 &416530105957236562
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -34727,35 +34248,13 @@ GameObject:
   - component: {fileID: 416530105958249789}
   - component: {fileID: 416530105958249787}
   - component: {fileID: 416530105958249788}
-  - component: {fileID: 416530105958249791}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530105958249791
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105958249790}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364817, y: 0.019866966, z: 0.044213273}
-  m_Center: {x: -0.00000005963008, y: 0.00044331574, z: 0.0010526676}
 --- !u!33 &416530105958546391
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -35051,8 +34550,7 @@ GameObject:
   - component: {fileID: 416530105975784672}
   - component: {fileID: 416530105975784686}
   - component: {fileID: 416530105975784687}
-  - component: {fileID: 416530105975784688}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35109,27 +34607,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &416530105975784688
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530105975784673}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000014, y: 0.02000001, z: 0.0009804576}
-  m_Center: {x: 0.000000059604645, y: -0.000000059604645, z: 0}
 --- !u!212 &416530105989967699
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36433,8 +35910,7 @@ GameObject:
   - component: {fileID: 416530106031861249}
   - component: {fileID: 416530106031861263}
   - component: {fileID: 416530106031861248}
-  - component: {fileID: 416530106031861264}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36449,27 +35925,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416530106031861250}
   m_Mesh: {fileID: 5095427755525112190, guid: 0fc7d1bec9926604699df73ccbaf4265, type: 3}
---- !u!65 &416530106031861264
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106031861250}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000018, y: 0.020000005, z: 0.0009804574}
-  m_Center: {x: -0.000000059604645, y: 0.000000059604645, z: 0}
 --- !u!1 &416530106033970608
 GameObject:
   m_ObjectHideFlags: 0
@@ -36981,35 +36436,13 @@ GameObject:
   - component: {fileID: 416530106049695993}
   - component: {fileID: 416530106049695975}
   - component: {fileID: 416530106049695992}
-  - component: {fileID: 416530106049695995}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106049695995
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106049695994}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866964, z: 0.044213235}
-  m_Center: {x: -0.000000059604645, y: 0.00044337532, z: 0.0010521916}
 --- !u!1001 &416530106053549091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39103,35 +38536,13 @@ GameObject:
   - component: {fileID: 416530106130670697}
   - component: {fileID: 416530106130670679}
   - component: {fileID: 416530106130670696}
-  - component: {fileID: 416530106130670699}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106130670699
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106130670698}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364827, y: 0.019866968, z: 0.04421346}
-  m_Center: {x: 1.8273945e-17, y: 0.0004433456, z: 0.0010521865}
 --- !u!33 &416530106130775146
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -39372,35 +38783,13 @@ GameObject:
   - component: {fileID: 416530106146666455}
   - component: {fileID: 416530106146666453}
   - component: {fileID: 416530106146666454}
-  - component: {fileID: 416530106146666473}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106146666473
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106146666472}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000016, y: 0.02000001, z: 0.0009804576}
-  m_Center: {x: 0.000000059604645, y: 0.000000059604645, z: -0.000000014901161}
 --- !u!1001 &416530106150001979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41271,35 +40660,13 @@ GameObject:
   - component: {fileID: 416530106233913227}
   - component: {fileID: 416530106233913225}
   - component: {fileID: 416530106233913226}
-  - component: {fileID: 416530106233913229}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106233913229
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106233913228}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000018, y: 0.020000005, z: 0.0009804574}
-  m_Center: {x: -0.000000059604645, y: 0.000000059604645, z: 0.000000014901161}
 --- !u!1001 &416530106235891709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43734,35 +43101,13 @@ GameObject:
   - component: {fileID: 416530106309221404}
   - component: {fileID: 416530106309221402}
   - component: {fileID: 416530106309221403}
-  - component: {fileID: 416530106309221406}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106309221406
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106309221405}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000018, y: 0.020000005, z: 0.0009804574}
-  m_Center: {x: 0, y: 0.000000059604645, z: 0.000000014901161}
 --- !u!33 &416530106312366291
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -44942,35 +44287,13 @@ GameObject:
   - component: {fileID: 416530106349235570}
   - component: {fileID: 416530106349235568}
   - component: {fileID: 416530106349235569}
-  - component: {fileID: 416530106349235572}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106349235572
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106349235571}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000018, y: 0.020000005, z: 0.0009804574}
-  m_Center: {x: -0.000000059604645, y: 0.000000059604645, z: 0}
 --- !u!33 &416530106354272198
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -45824,35 +45147,13 @@ GameObject:
   - component: {fileID: 416530106389528391}
   - component: {fileID: 416530106389528389}
   - component: {fileID: 416530106389528390}
-  - component: {fileID: 416530106389528409}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106389528409
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106389528408}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364821, y: 0.01986697, z: 0.044213478}
-  m_Center: {x: -0.00000011931483, y: 0.000443286, z: 0.0010531421}
 --- !u!1001 &416530106393258074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51776,35 +51077,13 @@ GameObject:
   - component: {fileID: 416530106436157906}
   - component: {fileID: 416530106436157904}
   - component: {fileID: 416530106436157905}
-  - component: {fileID: 416530106436157908}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106436157908
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106436157907}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213224}
-  m_Center: {x: -2.0520435e-16, y: 0.00044331574, z: 0.0010526681}
 --- !u!212 &416530106436673235
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52046,35 +51325,13 @@ GameObject:
   - component: {fileID: 416530106443416260}
   - component: {fileID: 416530106443416258}
   - component: {fileID: 416530106443416259}
-  - component: {fileID: 416530106443416262}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106443416262
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106443416261}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000018, y: 0.020000005, z: 0.0009804574}
-  m_Center: {x: 0, y: 0.000000029802322, z: 0}
 --- !u!33 &416530106444808138
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -52234,35 +51491,13 @@ GameObject:
   - component: {fileID: 416530106447237718}
   - component: {fileID: 416530106447237716}
   - component: {fileID: 416530106447237717}
-  - component: {fileID: 416530106447237720}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106447237720
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106447237719}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364827, y: 0.019866968, z: 0.04421346}
-  m_Center: {x: 0.000000059604645, y: 0.0004433754, z: 0.0010521865}
 --- !u!1001 &416530106448001846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52768,35 +52003,13 @@ GameObject:
   - component: {fileID: 416530106467175818}
   - component: {fileID: 416530106467175816}
   - component: {fileID: 416530106467175817}
-  - component: {fileID: 416530106467175820}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106467175820
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106467175819}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.020000009, z: 0.00098045}
-  m_Center: {x: 0, y: -0.000000029802322, z: 0.000000014901161}
 --- !u!1001 &416530106469071606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53037,35 +52250,13 @@ GameObject:
   - component: {fileID: 416530106475252681}
   - component: {fileID: 416530106475252663}
   - component: {fileID: 416530106475252680}
-  - component: {fileID: 416530106475252683}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106475252683
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106475252682}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213224}
-  m_Center: {x: -2.0520435e-16, y: 0.00044328594, z: 0.0010526681}
 --- !u!23 &416530106475267008
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -54288,35 +53479,13 @@ GameObject:
   - component: {fileID: 416530106522264357}
   - component: {fileID: 416530106522264355}
   - component: {fileID: 416530106522264356}
-  - component: {fileID: 416530106522264359}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106522264359
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106522264358}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000005, y: 0.020000005, z: 0.0009804496}
-  m_Center: {x: -0.00000011920929, y: -0.000000059604645, z: -0.000000014901161}
 --- !u!33 &416530106524326818
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -54393,35 +53562,13 @@ GameObject:
   - component: {fileID: 416530106524326820}
   - component: {fileID: 416530106524326818}
   - component: {fileID: 416530106524326819}
-  - component: {fileID: 416530106524326822}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106524326822
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106524326821}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.020000007, z: 0.0009804496}
-  m_Center: {x: -0.000000059604645, y: -0.000000029802322, z: 0.000000014901161}
 --- !u!1001 &416530106527956605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54901,35 +54048,13 @@ GameObject:
   - component: {fileID: 416530106540506822}
   - component: {fileID: 416530106540506820}
   - component: {fileID: 416530106540506821}
-  - component: {fileID: 416530106540506824}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106540506824
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106540506823}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213228}
-  m_Center: {x: -8.2062373e-16, y: 0.00044331574, z: 0.0010521914}
 --- !u!33 &416530106547845123
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55006,35 +54131,13 @@ GameObject:
   - component: {fileID: 416530106547845125}
   - component: {fileID: 416530106547845123}
   - component: {fileID: 416530106547845124}
-  - component: {fileID: 416530106547845127}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106547845127
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106547845126}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213235}
-  m_Center: {x: 0.000000059604645, y: 0.00044337535, z: 0.0010526684}
 --- !u!4 &416530106560974918
 Transform:
   m_ObjectHideFlags: 0
@@ -55663,35 +54766,13 @@ GameObject:
   - component: {fileID: 416530106601572693}
   - component: {fileID: 416530106601572691}
   - component: {fileID: 416530106601572692}
-  - component: {fileID: 416530106601572695}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106601572695
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106601572694}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000009, y: 0.020000007, z: 0.0009804512}
-  m_Center: {x: -0.000000059604645, y: 0, z: 0.000000014901161}
 --- !u!212 &416530106604992045
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56194,8 +55275,7 @@ GameObject:
   - component: {fileID: 416530106622074121}
   - component: {fileID: 416530106622074359}
   - component: {fileID: 416530106622074120}
-  - component: {fileID: 416530106622074360}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56210,27 +55290,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416530106622074122}
   m_Mesh: {fileID: 4235536460936077809, guid: 0fc7d1bec9926604699df73ccbaf4265, type: 3}
---- !u!65 &416530106622074360
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106622074122}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364823, y: 0.01986697, z: 0.044213478}
-  m_Center: {x: 0.00000005973563, y: 0.0004434052, z: 0.0010526653}
 --- !u!4 &416530106624515430
 Transform:
   m_ObjectHideFlags: 0
@@ -58625,35 +57684,13 @@ GameObject:
   - component: {fileID: 416530106728775052}
   - component: {fileID: 416530106728775050}
   - component: {fileID: 416530106728775051}
-  - component: {fileID: 416530106728775054}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106728775054
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106728775053}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000005, y: 0.020000005, z: 0.0009804496}
-  m_Center: {x: 0, y: -0.00000008940697, z: -0.000000014901161}
 --- !u!1001 &416530106728998999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59157,35 +58194,13 @@ GameObject:
   - component: {fileID: 416530106738719547}
   - component: {fileID: 416530106738719545}
   - component: {fileID: 416530106738719546}
-  - component: {fileID: 416530106738719549}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106738719549
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106738719548}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213228}
-  m_Center: {x: -8.2062373e-16, y: 0.00044334555, z: 0.0010521914}
 --- !u!1001 &416530106743135153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59551,8 +58566,7 @@ GameObject:
   - component: {fileID: 416530106752574641}
   - component: {fileID: 416530106752574655}
   - component: {fileID: 416530106752574640}
-  - component: {fileID: 416530106752574656}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59567,27 +58581,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416530106752574642}
   m_Mesh: {fileID: 5095427755525112190, guid: 0fc7d1bec9926604699df73ccbaf4265, type: 3}
---- !u!65 &416530106752574656
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106752574642}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000005, y: 0.020000005, z: 0.0009804496}
-  m_Center: {x: -0.00000011920929, y: -0.00000008940697, z: -0.000000014901161}
 --- !u!33 &416530106759666248
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -60699,35 +59692,13 @@ GameObject:
   - component: {fileID: 416530106828587709}
   - component: {fileID: 416530106828587707}
   - component: {fileID: 416530106828587708}
-  - component: {fileID: 416530106828587711}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106828587711
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106828587710}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364821, y: 0.01986697, z: 0.044213478}
-  m_Center: {x: -0.00000005971019, y: 0.0004433456, z: 0.0010531421}
 --- !u!212 &416530106829555536
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -61471,35 +60442,13 @@ GameObject:
   - component: {fileID: 416530106865102430}
   - component: {fileID: 416530106865102428}
   - component: {fileID: 416530106865102429}
-  - component: {fileID: 416530106865102432}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106865102432
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106865102431}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000016, y: 0.02000001, z: 0.0009804576}
-  m_Center: {x: 0.00000017881393, y: 0.000000029802322, z: -0.000000014901161}
 --- !u!33 &416530106870958642
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -62501,35 +61450,13 @@ GameObject:
   - component: {fileID: 416530106897787523}
   - component: {fileID: 416530106897787521}
   - component: {fileID: 416530106897787522}
-  - component: {fileID: 416530106897787525}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106897787525
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106897787524}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213235}
-  m_Center: {x: 1.801925e-17, y: 0.00044337535, z: 0.0010526684}
 --- !u!4 &416530106901114711
 Transform:
   m_ObjectHideFlags: 0
@@ -63872,35 +62799,13 @@ GameObject:
   - component: {fileID: 416530106959375914}
   - component: {fileID: 416530106959375912}
   - component: {fileID: 416530106959375913}
-  - component: {fileID: 416530106959375916}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106959375916
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106959375915}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000018, y: 0.020000005, z: 0.0009804574}
-  m_Center: {x: -0.000000059604645, y: 0.000000029802322, z: 0}
 --- !u!33 &416530106965458897
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64082,35 +62987,13 @@ GameObject:
   - component: {fileID: 416530106974856056}
   - component: {fileID: 416530106974856038}
   - component: {fileID: 416530106974856039}
-  - component: {fileID: 416530106974856058}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106974856058
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106974856057}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.020000005, z: 0.00098045}
-  m_Center: {x: 0, y: 0.000000059604645, z: 0}
 --- !u!4 &416530106976447824
 Transform:
   m_ObjectHideFlags: 0
@@ -64271,35 +63154,13 @@ GameObject:
   - component: {fileID: 416530106989170148}
   - component: {fileID: 416530106989170146}
   - component: {fileID: 416530106989170147}
-  - component: {fileID: 416530106989170150}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530106989170150
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530106989170149}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000007, y: 0.02, z: 0.0009804522}
-  m_Center: {x: 0.00000011920929, y: -0.000000029802322, z: 0.000000014901161}
 --- !u!212 &416530106995607435
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -64708,35 +63569,13 @@ GameObject:
   - component: {fileID: 416530107018003667}
   - component: {fileID: 416530107018003665}
   - component: {fileID: 416530107018003666}
-  - component: {fileID: 416530107018003669}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107018003669
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107018003668}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213235}
-  m_Center: {x: 1.801925e-17, y: 0.00044337535, z: 0.0010526684}
 --- !u!33 &416530107021837769
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -64813,35 +63652,13 @@ GameObject:
   - component: {fileID: 416530107021837771}
   - component: {fileID: 416530107021837769}
   - component: {fileID: 416530107021837770}
-  - component: {fileID: 416530107021837773}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107021837773
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107021837772}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213228}
-  m_Center: {x: -0.000000059604645, y: 0.00044334555, z: 0.0010521914}
 --- !u!33 &416530107022342677
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -65670,35 +64487,13 @@ GameObject:
   - component: {fileID: 416530107050594238}
   - component: {fileID: 416530107050594236}
   - component: {fileID: 416530107050594237}
-  - component: {fileID: 416530107050594240}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107050594240
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107050594239}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364821, y: 0.01986697, z: 0.044213478}
-  m_Center: {x: -0.00000005971019, y: 0.0004433158, z: 0.0010526653}
 --- !u!1001 &416530107054247261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66104,35 +64899,13 @@ GameObject:
   - component: {fileID: 416530107061286361}
   - component: {fileID: 416530107061286343}
   - component: {fileID: 416530107061286360}
-  - component: {fileID: 416530107061286363}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107061286363
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107061286362}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866966, z: 0.044213228}
-  m_Center: {x: -8.2062373e-16, y: 0.00044331574, z: 0.0010521914}
 --- !u!33 &416530107061526362
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -67849,35 +66622,13 @@ GameObject:
   - component: {fileID: 416530107102932987}
   - component: {fileID: 416530107102932985}
   - component: {fileID: 416530107102932986}
-  - component: {fileID: 416530107102932989}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107102932989
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107102932988}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020000016, y: 0.02000001, z: 0.0009804576}
-  m_Center: {x: 0.00000011920929, y: 0.000000029802322, z: 0}
 --- !u!33 &416530107105242267
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -70576,35 +69327,13 @@ GameObject:
   - component: {fileID: 416530107262508374}
   - component: {fileID: 416530107262508372}
   - component: {fileID: 416530107262508373}
-  - component: {fileID: 416530107262508376}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107262508376
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107262508375}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364817, y: 0.019866964, z: 0.0442133}
-  m_Center: {x: -8.1395144e-16, y: 0.0004432859, z: 0.0010531466}
 --- !u!33 &416530107262931970
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -71976,35 +70705,13 @@ GameObject:
   - component: {fileID: 416530107315296716}
   - component: {fileID: 416530107315296714}
   - component: {fileID: 416530107315296715}
-  - component: {fileID: 416530107315296718}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107315296718
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107315296717}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364815, y: 0.019866964, z: 0.044213235}
-  m_Center: {x: 0.000000059604645, y: 0.00044337532, z: 0.0010521916}
 --- !u!33 &416530107315795116
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72081,35 +70788,13 @@ GameObject:
   - component: {fileID: 416530107315795118}
   - component: {fileID: 416530107315795116}
   - component: {fileID: 416530107315795117}
-  - component: {fileID: 416530107315795120}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107315795120
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107315795119}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364821, y: 0.01986697, z: 0.044213478}
-  m_Center: {x: -0.00000005971019, y: 0.000443286, z: 0.0010526653}
 --- !u!1001 &416530107317467298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73157,35 +71842,13 @@ GameObject:
   - component: {fileID: 416530107345399779}
   - component: {fileID: 416530107345399777}
   - component: {fileID: 416530107345399778}
-  - component: {fileID: 416530107345399781}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: tatami02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &416530107345399781
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416530107345399780}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.020364827, y: 0.019866968, z: 0.04421346}
-  m_Center: {x: 0.000000059604645, y: 0.0004433754, z: 0.0010521865}
 --- !u!4 &416530107349192400
 Transform:
   m_ObjectHideFlags: 0
@@ -74436,21 +73099,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &3987163997510066463 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5270994280747929256, guid: 8984ecaa080673d41b0936b8adfdca5c, type: 3}
-  m_PrefabInstance: {fileID: 439921166}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3987163997669197189 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 235250630784301941, guid: 8984ecaa080673d41b0936b8adfdca5c, type: 3}
-  m_PrefabInstance: {fileID: 439921166}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3987163997687651729 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1897015449883208397, guid: 8984ecaa080673d41b0936b8adfdca5c, type: 3}
-  m_PrefabInstance: {fileID: 439921166}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3987867255248128158
 Transform:
   m_ObjectHideFlags: 0
@@ -74622,7 +73270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &4328425781743468333
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -75563,18 +74211,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 3835812322728355129, guid: 2d1ba14e9129e0d49bd8a804d55217a6, type: 3}
-      propertyPath: bossThirdStateDialog
-      value: 
-      objectReference: {fileID: 3987163997687651729}
-    - target: {fileID: 3835812322728355129, guid: 2d1ba14e9129e0d49bd8a804d55217a6, type: 3}
-      propertyPath: bossSecondStateDialog
-      value: 
-      objectReference: {fileID: 3987163997669197189}
-    - target: {fileID: 3835812322728355129, guid: 2d1ba14e9129e0d49bd8a804d55217a6, type: 3}
-      propertyPath: bossDieDialogComponent
-      value: 
-      objectReference: {fileID: 3987163997510066463}
     - target: {fileID: 5685109037905528283, guid: 2d1ba14e9129e0d49bd8a804d55217a6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -4,7 +4,7 @@ public enum GameState
     MainMenu,
     Gaming,
     Pausing,
-    Dialog,
+    Dialogue,
     Loading,
     PlayerDead
 }

@@ -197,37 +197,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1908698487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1908698488}
-  m_Layer: 9
-  m_Name: InvinsiblePosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1908698488
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908698487}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24, y: -0.21, z: -1.47}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3835812322728355123}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3835812322728355126
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,10 +233,10 @@ Transform:
   m_Children:
   - {fileID: 8736574829065142067}
   - {fileID: 497988190}
-  - {fileID: 512456869271907339}
+  - {fileID: 6227207051608250893}
   - {fileID: 6745377422131281350}
   - {fileID: 5685109039211965438}
-  - {fileID: 1908698488}
+  - {fileID: 1663829074178961673}
   - {fileID: 1511958577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -443,18 +412,9 @@ MonoBehaviour:
   brokenPos: {fileID: 1842234555217130944}
   curseWheel: {fileID: 1842234555217130975}
   brokenWheel: {fileID: 6992360949995693572, guid: e854a57af02a6924482eb2b7e0b5b924, type: 3}
-  ManiMenu: {fileID: 0}
-  destroyTime: 2.5
-  destroySoundTime: 1.1
-  timer: 0
   BossInvincibleEffect: {fileID: 713062533747916334, guid: f4271b3ed97230148beb22755ee83404, type: 3}
-  BossInvinciblePos: {fileID: 1908698488}
-  bossSecondStateDialog: {fileID: 0}
-  bossThirdStateDialog: {fileID: 0}
-  bossDieDialogComponent: {fileID: 0}
-  invincibleGuard: {fileID: 0}
+  invincibleGuard: {fileID: 1663829074178961678}
   easyMode: 0
-  bossState: 0000
 --- !u!208 &3478700591657850946
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1205,9 +1165,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6227207051608250894}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.4999999, y: 2.8, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 1.8520002, z: -1.4099962}
+  m_LocalScale: {x: 0.37600008, y: 0.37600002, z: 0.37600008}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6227207050128286983}
@@ -1217,7 +1177,7 @@ Transform:
   - {fileID: 6227207051394149363}
   - {fileID: 6227207050446555502}
   - {fileID: 6227207051154593166}
-  m_Father: {fileID: 512456869271907339}
+  m_Father: {fileID: 3835812322728355123}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!212 &6227207051608250891
 SpriteRenderer:
@@ -1314,8 +1274,8 @@ MonoBehaviour:
   bossUltTransform: {fileID: 462101550}
   bossFxBossSlashPos: {fileID: 735206578837097778, guid: 6008834438a920841a78c9936118105d, type: 3}
   bossUltAim: {fileID: 6593811671206240348, guid: 2ed52b16dcc29a44fbb4d626fe372f82, type: 3}
-  bossHealth: {fileID: 0}
-  arrow: {fileID: 6515706004448927526, guid: 13c6d7c90cf3f5d47bdc263edbcd2212, type: 3}
+  bossHealth: {fileID: 3835812322728355129}
+  fireBall: {fileID: 1761442504407495808, guid: 13c6d7c90cf3f5d47bdc263edbcd2212, type: 3}
   swordPos: {fileID: 497988190}
   BossSwordEffect: {fileID: 5764641681023146465, guid: c6ee8622e8d60244bb7b5b5eba104812, type: 3}
   force: 500
@@ -1325,10 +1285,6 @@ MonoBehaviour:
   isBossUlt: 0
   lookDirection: {x: 0, y: 0, z: 0}
   FX: {fileID: 0}
-  bossSwordSFX: {fileID: 8300000, guid: b129df224d9d222448c470db285032f7, type: 3}
-  meleeAttackSFX: {fileID: 8300000, guid: e530a25ad28ecf640a35a74816dc858e, type: 3}
-  longRangeAttackSFX: {fileID: 8300000, guid: d6e6fea7057060046a1324ef5b1b69f3, type: 3}
-  bossSkillSFX: {fileID: 8300000, guid: 9c781ff404e76cd40a09cfd97e5ec229, type: 3}
 --- !u!114 &1036538080430768565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,38 +1360,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6745377422131281350}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8249886889054182444
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 512456869271907339}
-  m_Layer: 9
-  m_Name: BossEmpty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &512456869271907339
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8249886889054182444}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.77999973, z: 0}
-  m_LocalScale: {x: 0.93999976, y: 0.94, z: 0.93999976}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6227207051608250893}
-  m_Father: {fileID: 3835812322728355123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736574829065142064
 GameObject:
@@ -1544,6 +1468,73 @@ CapsuleCollider:
   m_Height: 1.1
   m_Direction: 2
   m_Center: {x: -0.3, y: 0, z: -0.00000008940697}
+--- !u!1001 &2229938374176165664
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3835812322728355123}
+    m_Modifications:
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713062533747916334, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+      propertyPath: m_Name
+      value: Fx_Boss_Invincible
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+--- !u!4 &1663829074178961673 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 713062533747916329, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+  m_PrefabInstance: {fileID: 2229938374176165664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1663829074178961678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 713062533747916334, guid: f4271b3ed97230148beb22755ee83404, type: 3}
+  m_PrefabInstance: {fileID: 2229938374176165664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3633024980917822973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1555,22 +1546,6 @@ PrefabInstance:
     - target: {fileID: 3169397697762332706, guid: 7d2ff3081ab37ca4ab7e66621a0e24ca, type: 3}
       propertyPath: m_Name
       value: Fx_Wheel_Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3169397697762332733, guid: 7d2ff3081ab37ca4ab7e66621a0e24ca, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3169397697762332733, guid: 7d2ff3081ab37ca4ab7e66621a0e24ca, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.6595736
-      objectReference: {fileID: 0}
-    - target: {fileID: 3169397697762332733, guid: 7d2ff3081ab37ca4ab7e66621a0e24ca, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.6595745
-      objectReference: {fileID: 0}
-    - target: {fileID: 3169397697762332733, guid: 7d2ff3081ab37ca4ab7e66621a0e24ca, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.6595736
       objectReference: {fileID: 0}
     - target: {fileID: 3169397697762332733, guid: 7d2ff3081ab37ca4ab7e66621a0e24ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1642,10 +1617,6 @@ PrefabInstance:
     - target: {fileID: 4388714863921737384, guid: 0dc1efd4f44e87248a815bfa9fe2caa6, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4388714863921737384, guid: 0dc1efd4f44e87248a815bfa9fe2caa6, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4388714863921737384, guid: 0dc1efd4f44e87248a815bfa9fe2caa6, type: 3}
       propertyPath: m_AnchorMax.x

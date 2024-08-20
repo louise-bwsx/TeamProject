@@ -32,7 +32,7 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         {
             return false;
         }
-        return Player.hp <= 0;
+        return Player.IsDead();
     }
 
     public bool IsAttacking()

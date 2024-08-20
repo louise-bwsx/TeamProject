@@ -79,6 +79,7 @@ public class UIManager : MonoSingleton<UIManager>
             EscBtnOnClick();
         }
     }
+
     public bool IsUIOpen(string uiName)
     {
         if (!menuDict.ContainsKey(uiName))
@@ -123,7 +124,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         CloseMenu("GameMenu");
         GameStateManager.Inst.ChangState(GameState.Gaming);
-        if (PlayerManager.Inst.Player.hp > 0)
+        if (!PlayerManager.Inst.IsDead())
         {
             Time.timeScale = 1f;
         }

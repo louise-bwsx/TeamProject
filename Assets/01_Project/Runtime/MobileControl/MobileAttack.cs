@@ -16,6 +16,7 @@ public class MobileAttack : MonoBehaviour
 
     public void Init(PlayerControl playerControl, SkillSelector skillSelector, RemoteSkillPosition remoteSkillPosition)
     {
+        Debug.Log("Init");
         swingBtn.onClick.RemoveAllListeners();
         swingBtn.onClick.AddListener(() => playerControl.Attack(AttackType.NormalAttack));
         spikeBtn.onClick.RemoveAllListeners();

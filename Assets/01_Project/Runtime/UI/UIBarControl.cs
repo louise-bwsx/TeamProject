@@ -6,9 +6,10 @@ public class UIBarControl : MonoBehaviour
     [SerializeField] private Image healthFill;
     [SerializeField] private Image staminaFill;
 
-    public void Init(PlayerStamina playerStamina)
+    public void Init(PlayerStamina playerStamina, PlayerStats playerStats)
     {
         playerStamina.OnStaminaChange.AddListener(SetStamina);
+        playerStats.OnHealthChange.AddListener(SetHealth);
     }
 
     public void OpenUI()
@@ -33,12 +34,12 @@ public class UIBarControl : MonoBehaviour
         staminaFill.fillAmount = 1;
     }
 
-    public void SetHealth(float healthPercent)
+    private void SetHealth(float healthPercent)
     {
         healthFill.fillAmount = healthPercent;
     }
 
-    public void SetStamina(float staminaPercent)
+    private void SetStamina(float staminaPercent)
     {
         staminaFill.fillAmount = staminaPercent;
     }

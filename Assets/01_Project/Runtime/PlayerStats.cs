@@ -14,17 +14,15 @@ public enum StatType
 
 public class PlayerStats : MonoBehaviour, ISave
 {
-    public float hp;
-    public float maxHp;
-    public float invincibleLimit;
-    public int dust = 100;
-    public HealthBarOnGame healthbarongame;
-    public GameObject[] getHitEffect;
-    public SpriteRenderer spriteRenderer;
-    public Animator animator;
-    public float invincibleTimer;
-
-    private GameObject hitEffect;
+    [SerializeField, ReadOnly] private float hp;
+    [SerializeField] private float maxHp;
+    [SerializeField, ReadOnly] private float invincibleTimer;
+    [SerializeField] private float invincibleDuration = 1f;
+    [SerializeField, ReadOnly] private int dust = 100;
+    [SerializeField] private HealthBarOnGame healthbarongame;
+    [SerializeField] private GameObject bossUltHit;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private Animator animator;
     private PlayerControl playerControl;
     private Collider collider;
     private int statsLevelNeed = 100;
@@ -32,12 +30,13 @@ public class PlayerStats : MonoBehaviour, ISave
     [SerializeField, ReadOnly] private int[] statsLevel;
     [SerializeField, ReadOnly] private int[] skillLevels;
 
-    public UnityEvent<float> OnHealthChange = new UnityEvent<float>();
-    public UnityEvent<int> OnDustChange = new UnityEvent<int>();
+    [HideInInspector] public UnityEvent<float> OnHealthChange = new UnityEvent<float>();
+    [HideInInspector] public UnityEvent<int> OnDustChange = new UnityEvent<int>();
 
     //TODOError: 存讀檔的資料 順序 還沒做好
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         playerControl = GetComponentInChildren<PlayerControl>();
         collider = GetComponent<Collider>();
         Load();
@@ -46,6 +45,7 @@ public class PlayerStats : MonoBehaviour, ISave
     private void Start()
     {
         hp = maxHp;
+        healthbarongame.SetMaxHealth(maxHp);//人物身上的血條
         OnHealthChange?.Invoke(1);
         OnDustChange?.Invoke(dust);
     }
@@ -63,12 +63,20 @@ public class PlayerStats : MonoBehaviour, ISave
             playerControl.isInvincible = false;
             spriteRenderer.color = Color.white;
         }
-        if (hp <= 0 && collider.enabled)
+
+        if (hp <= 0)
         {
             playerControl.isAttack = false;
             animator.SetTrigger("Dead");
             collider.enabled = false;
+            AudioManager.Inst.PlayBGM("Dead");
+            GameStateManager.Inst.ChangState(GameState.PlayerDead);
         }
+    }
+
+    public bool IsDead()
+    {
+        return hp <= 0;
     }
 
     public int GetStatLevel(StatType type)
@@ -123,44 +131,42 @@ public class PlayerStats : MonoBehaviour, ISave
     private void OnTriggerEnter(Collider other)
     {
         //放在Stay會重複傷害因為大招不會因為玩家碰到而消失
-        if (hp > 0 && !playerControl.isInvincible)
+        if (IsDead())
         {
-            if (other.gameObject.CompareTag("BossUlt") && GetStatLevel(StatType.DEF) - 20 < 0)
-            {
-                hitEffect = getHitEffect[1];
-                //絕對值(人物的防禦值-20)<0
-                hp -= Mathf.Abs(GetStatLevel(StatType.DEF) - 20);
-                //玩家設定為無敵狀態
-                playerControl.isInvincible = true;
-                //怪打到玩家時把無敵時間輸入進去
-                invincibleTimer = invincibleLimit;
-                //生出被大招打中的特效
-                GameObject bossUltHitFX = Instantiate(getHitEffect[1], transform.position, transform.rotation);
-                Destroy(bossUltHitFX, 1f);
-                //將血量輸入到頭頂的UI
-                healthbarongame.SetHealth(hp);
-                //將血量輸入到畫面上的UI
-                OnHealthChange?.Invoke(hp / maxHp);
-                //玩家貼圖變紅
-                spriteRenderer.color = Color.red;
-            }
-            else if (other.gameObject.CompareTag("MonsterAttack") && GetStatLevel(StatType.DEF) - 10 < 0)
-            {
-                Debug.Log("danger");
-                //絕對值(人物的防禦值-10)<0
-                hp -= Mathf.Abs(GetStatLevel(StatType.DEF) - 10);
-                //玩家設定為無敵狀態
-                playerControl.isInvincible = true;
-                //怪打到玩家時把無敵時間輸入進去
-                invincibleTimer = invincibleLimit;
-                //將血量輸入到頭頂的UI
-                healthbarongame.SetHealth(hp);
-                //將血量輸入到畫面上的UI
-                OnHealthChange?.Invoke(hp / maxHp);
-                //玩家貼圖變紅
-                spriteRenderer.color = Color.red;
-                Debug.Log(playerControl.isInvincible);
-            }
+            return;
+        }
+        if (playerControl.isInvincible)
+        {
+            return;
+        }
+        if (other.gameObject.CompareTag("BossUlt") && GetStatLevel(StatType.DEF) - 20 < 0)
+        {
+            //絕對值(人物的防禦值-20)<0
+            hp -= Mathf.Abs(GetStatLevel(StatType.DEF) - 20);
+            playerControl.isInvincible = true;
+            invincibleTimer = invincibleDuration;
+            //生出被大招打中的特效
+            GameObject bossUltHitFX = Instantiate(bossUltHit, transform.position, transform.rotation);
+            Destroy(bossUltHitFX, 1f);
+            //將血量輸入到頭頂的UI
+            healthbarongame.SetHealth(hp);
+            //將血量輸入到畫面上的UI
+            OnHealthChange?.Invoke(hp / maxHp);
+            spriteRenderer.color = Color.red;
+        }
+        else if (other.gameObject.CompareTag("MonsterAttack") && GetStatLevel(StatType.DEF) - 10 < 0)
+        {
+            Debug.Log("GetHit");
+            //絕對值(人物的防禦值-10)<0
+            hp -= Mathf.Abs(GetStatLevel(StatType.DEF) - 10);
+            playerControl.isInvincible = true;
+            invincibleTimer = invincibleDuration;
+            //將血量輸入到頭頂的UI
+            healthbarongame.SetHealth(hp);
+            //將血量輸入到畫面上的UI
+            OnHealthChange?.Invoke(hp / maxHp);
+            spriteRenderer.color = Color.red;
+            Debug.Log($"IsInvincible: {playerControl.isInvincible}");
         }
     }
 

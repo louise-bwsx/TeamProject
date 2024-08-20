@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1670679972810942515}
   - component: {fileID: 8805143277215330420}
   - component: {fileID: 6809943332016536690}
-  - component: {fileID: 6197753056349689909}
   - component: {fileID: 124666687790467800}
   - component: {fileID: 7632948484989583884}
   - component: {fileID: 6561773929419096485}
@@ -129,32 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerhealthbar: {fileID: 0}
   monsterhealthbar: []
---- !u!114 &6197753056349689909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301406846490287500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 055eb37ac6b97434eac6f8681951713a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  getHitInvincibleTime: 0
-  maxHealth: 100
-  playerHealth: 5
-  healthbarongame: {fileID: 207457562656914458}
-  RD: {fileID: 6014595923337663550}
-  changeColor: {fileID: 301406846490287500}
-  spriteRenderer: {fileID: 6589082806882053767}
-  animator: {fileID: 3379591463939361311}
-  bounceForce: 5000
-  getHit: 0
-  attackBuff: 0
-  getHitEffect:
-  - {fileID: 0}
-  - {fileID: 70265069246844157, guid: 1ced3f31025edaa428e22d1a65f121f4, type: 3}
 --- !u!114 &124666687790467800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,15 +158,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   maxHp: 200
-  invincibleLimit: 1
+  invincibleTimer: 0
+  invincibleDuration: 1
   dust: 10000
   healthbarongame: {fileID: 207457562656914458}
-  getHitEffect:
-  - {fileID: 0}
-  - {fileID: 70265069246844157, guid: 1ced3f31025edaa428e22d1a65f121f4, type: 3}
+  bossUltHit: {fileID: 70265069246844157, guid: 1ced3f31025edaa428e22d1a65f121f4, type: 3}
   spriteRenderer: {fileID: 6589082806882053767}
-  animator: {fileID: 3379591463939361311}
-  invincibleTimer: 0
   statsLevel: 
   skillLevels: 
   OnHealthChange:
@@ -259,7 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9473da9e8546f4595a8bb31a24f6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePosition: {x: 0, y: 0, z: 0}
   shootDirectionTrans: {fileID: 3718485332493406148}
   mouseTransform: {fileID: 6902779220169048236}
 --- !u!114 &22803839121703244
@@ -275,9 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uIBarControl: {fileID: 0}
-  gameMenu: {fileID: 0}
   healthbarongame: {fileID: 207457562656914458}
-  getHitEffect: {fileID: 6197753056349689909}
   statsWindow: {fileID: 0}
   stamina: {fileID: 124666687790467800}
   moveSpeed: 5
@@ -612,11 +579,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3379591463939361311}
-  shadowDestory: {fileID: 4871320640094872339}
-  spawantransform: {fileID: 8032247989754630197}
+  shadow: {fileID: 4871320640094872339}
   SpikeAttackLeftPos: {fileID: 4990266141528355607}
   SpikeAttackRightPos: {fileID: 9190277649077748857}
-  playerRotation: {fileID: 8479856148016314929}
+  attackRange: {fileID: 3106893218060274455}
 --- !u!114 &1587257105620065901
 MonoBehaviour:
   m_ObjectHideFlags: 0

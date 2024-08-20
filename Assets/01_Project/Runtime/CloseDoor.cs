@@ -18,6 +18,7 @@ public class CloseDoor : MonoBehaviour
         {
             invisibleWall.SetActive(true);
             AudioManager.Inst.PlayBGM("BossFight");
+            gameObject.SetActive(false);
         }
     }
 

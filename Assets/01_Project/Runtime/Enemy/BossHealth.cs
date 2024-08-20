@@ -18,17 +18,12 @@ public enum BossState
     Stage2
 }
 
-//TODO 實際打通一遍 看看怪物有沒有什麼奇怪的地方
 public class BossHealth : MonsterHealth
 {
     [SerializeField] private Transform brokenPos;
     [SerializeField] private GameObject curseWheel;
     [SerializeField] private GameObject brokenWheel;
     [SerializeField] private GameObject BossInvincibleEffect;
-    [SerializeField] private Transform BossInvinciblePos;
-    [SerializeField] private GameObject bossSecondStateDialog;
-    [SerializeField] private GameObject bossThirdStateDialog;
-    [SerializeField] private GameObject bossDieDialogComponent;
     [SerializeField] private GameObject invincibleGuard;
     [SerializeField] private bool easyMode;
 
@@ -62,7 +57,7 @@ public class BossHealth : MonsterHealth
             destroySoundTimer -= Time.deltaTime;
             if (destroyTimer <= 0)
             {
-                bossDieDialogComponent.SetActive(true);
+                DialogueManager.Inst.ShowDialogue("BossDieDialogue");
                 AudioManager.Inst.PlayBGM("AfterBossFight");
                 break;
             }
@@ -95,57 +90,27 @@ public class BossHealth : MonsterHealth
             return;
         }
 
+        //TODOError: 第二階段不會扣寫
         if (state == BossState.Stage1)
         {
             if (type != SkillType.FireTornado && type != SkillType.Bomb)
             {
                 return;
             }
+            Debug.Log("二階段被打");
         }
 
         //不要再這邊設定invincibleTimer 為了讓風 可以打快一點
         if (invincibleTimer > 0)
         {
-            Debug.Log($"{transform.name} 無敵中");
+            //Debug.Log($"{transform.name} 無敵中");
             return;
         }
+        Debug.Log($"Damage: {Damage}");
 
-        switch (type)
-        {
-            case SkillType.Poison:
-                hitEffectName = hitEffectsName[3];
-                AudioManager.Inst.PlaySFX("PoisonHit");
-                break;
-            case SkillType.Water:
-                hitEffectName = hitEffectsName[4];
-                AudioManager.Inst.PlaySFX("WaterHit");
-                break;
-            case SkillType.Wind:
-                hitEffectName = hitEffectsName[2];
-                AudioManager.Inst.PlaySFX("WindHit");
-                break;
-            case SkillType.Fire:
-                hitEffectName = hitEffectsName[1];
-                AudioManager.Inst.PlaySFX("FireHit");
-                break;
-            case SkillType.FireTornado:
-                hitEffectName = hitEffectsName[1];
-                AudioManager.Inst.PlaySFX("FireTornadoHit");
-                break;
-            case SkillType.Bomb:
-                hitEffectName = hitEffectsName[1];
-                AudioManager.Inst.PlaySFX("BombHit");
-                break;
-            case SkillType.Null:
-                hitEffectName = hitEffectsName[0];
-                break;
-                //沒有Bomb但怕加了後出問題先不加
-        }
-        //被攻擊後歸零下一次怪物攻擊時間
-        if (EnemyController != null)
-        {
-            EnemyController.attackCD = 0;
-        }
+        SetHitEffect(type);
+
+        //Boss不應該被玩家攻擊後重置攻擊CD
 
         //播放受擊動畫
         animator.SetTrigger("GetHit");
@@ -190,9 +155,9 @@ public class BossHealth : MonsterHealth
     {
         animator.SetTrigger("Wheel_1_Broke");
         AudioManager.Inst.PlaySFX("BehindWheelBrake");
-        invincibleGuard = Instantiate(BossInvincibleEffect, BossInvinciblePos.position, BossInvinciblePos.rotation);
+        invincibleGuard.SetActive(true);
         Time.timeScale = 0f;
-        bossSecondStateDialog.SetActive(true);
+        DialogueManager.Inst.ShowDialogue("BossSecondStateDialogue");
         state = BossState.Stage1;
     }
 
@@ -201,9 +166,8 @@ public class BossHealth : MonsterHealth
         animator.SetTrigger("Wheel_2_Broke");
         AudioManager.Inst.PlaySFX("BehindWheelBrake");
         bossController.BossUltAttack();
-        Destroy(invincibleGuard);
-        //第三階段提示
-        bossThirdStateDialog.SetActive(true);
+        invincibleGuard.SetActive(false);
+        DialogueManager.Inst.ShowDialogue("BossThirdStateDialogue");
         state = BossState.Stage2;
     }
 }

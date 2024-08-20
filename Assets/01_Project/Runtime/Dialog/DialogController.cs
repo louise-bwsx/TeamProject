@@ -1,70 +1,60 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour
 {
-    [SerializeField] private List<string> dialog;
-    [SerializeField] private TMP_Text dialogText;
-    [SerializeField] private GameObject dialogObject;
-    [SerializeField] private Button nextDialogBtn;
-    [SerializeField] private string afterFinishThisDialogPlayBGMName;
-    [SerializeField] private GameMenuController gameMenu;
+    [SerializeField] private List<string> lines;
+    [SerializeField] private TMP_Text dialogueText;
+    private Button nextLineBtn;
     [Header("BossDieDialog專用")]
     [SerializeField] private Image avatarImage;
-    private int dialogState;
+    private int dialogueIndex;
+    [HideInInspector] public UnityEvent OnDialogueFinish = new UnityEvent();
 
-    private void OnEnable()
+    private void Awake()
     {
-        //GameStateManager.Inst.ChangState(GameState.Dialog);
-        //Time.timeScale = 0;
-        //dialogText.text = dialog[0];
-
-
-        //測試用打開 跳過開頭劇情
-        dialogState = 0;
-        Time.timeScale = 1;
-        GameStateManager.Inst.ChangState(GameState.Gaming);
-        //TODOError 暫時註解掉會造成遞迴
-        //AfterIntroDialog();
-        dialogObject.SetActive(false);
+        nextLineBtn = GetComponentInChildren<Button>();
     }
 
     private void Start()
     {
-        nextDialogBtn.onClick.AddListener(DialogChange);
+        nextLineBtn.onClick.AddListener(NextLine);
     }
 
-    private void DialogChange()
+    public void StartDialogue()
     {
-        dialogState++;
-        if (dialogState >= dialog.Count)
+        dialogueIndex = 0;
+        dialogueText.text = lines[0];
+    }
+
+    private void NextLine()
+    {
+        dialogueIndex++;
+        if (dialogueIndex >= lines.Count)
         {
-            if (afterFinishThisDialogPlayBGMName != "")
-            {
-                AudioManager.Inst.PlayBGM(afterFinishThisDialogPlayBGMName);
-            }
-            dialogState = 0;
+            OnDialogueFinish.Invoke();
+            dialogueIndex = 0;
             Time.timeScale = 1;
+            gameObject.SetActive(false);
             GameStateManager.Inst.ChangState(GameState.Gaming);
-            AfterIntroDialog();
-            dialogObject.SetActive(false);
             return;
         }
         ChangeAvatar();
-        dialogText.text = dialog[dialogState];
+        dialogueText.text = lines[dialogueIndex];
     }
 
     //BossDieDialog專用
     private void ChangeAvatar()
     {
         //每一個Dialog一個GameObject 用name來判斷 自己要做哪個動作
-        if (gameObject.name != "BossDialog")
+        if (gameObject.name != "BossDieDialog")
         {
             return;
         }
-        if (dialogState == 3 || dialogState == 6 || dialogState == 7)
+        if (dialogueIndex == 3 || dialogueIndex == 6 || dialogueIndex == 7)
         {
             avatarImage.enabled = true;
         }
@@ -74,25 +64,14 @@ public class DialogController : MonoBehaviour
         }
     }
 
-    //IntroDialog專用
-    private void AfterIntroDialog()
-    {
-        //每一個Dialog一個GameObject 用name來判斷 自己要做哪個動作
-        if (gameObject.name != "IntroDialog")
-        {
-            return;
-        }
-        UIManager.Inst.OpenMenu("GodTalkDialog");
-    }
-
-    //GameSceneIntro:
+    //IntroDialogue:
     //"此人類的貪嗔癡等，負面能量在世間中形成一股渾沌"
     //"此種渾沌會令其所接觸的人事物及具侵略性"
     //"而在神社中長期接觸百姓的神明首先被影響"
     //"失去山野中各路神明的調和使得災害與飢荒越演越烈"
     //"於是與山林息息相關的稻荷大神派出使者祓除渾沌"
 
-    //AfterGameSceneIntro:
+    //GodTalkDialogue:
     //"稻荷神：快到了，就在裡面。"
     //"稻荷神：等等就像這樣。嘿呀，直接打爆他。"
     //"稻荷神：我會幫你壓制他的力量。"
@@ -103,17 +82,17 @@ public class DialogController : MonoBehaviour
     //"稻荷神：敢頂嘴。"
     //"稻荷神：回來給你好看。"
 
-    //BossSecondState:
+    //BossSecondStateDialogue:
     //"稻荷神：他現在擁有特殊結界。"
     //"稻荷神：使用組合技吧。"
     //"稻荷神：往毒裡丟入火或是往風裡丟入火試試看。"
 
-    //BossThirdStateDialog
+    //BossThirdStateDialogue
     //"稻荷神：小心點別被他的雷刑擊中了。"
     //"稻荷神：她為了使出此技能已經不能用無敵護罩了。"
     //"稻荷神：直接將他擊敗吧。"
 
-    //BossDieDialog
+    //BossDieDialogue
     //"天王：啊!"
     //"天王：(看了看自己)"
     //"天王：謝謝你的幫忙。"

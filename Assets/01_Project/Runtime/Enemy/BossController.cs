@@ -7,33 +7,29 @@ public class BossController : EnemyController
     public Transform bossUltTransform;
     public Transform bossFxBossSlashPos;
     public GameObject bossUltAim;
-    public BossHealth bossHealth;
-    public GameObject arrow;
+    [SerializeField] private BossHealth bossHealth;
+    [SerializeField] private Rigidbody fireBall;
     public Transform swordPos;
     public GameObject BossSwordEffect;
     public float force = 1500;
 
-    public GameObject bossUltArea;
+    [SerializeField] private GameObject bossUltArea;
     public GameObject bossFxBossSlash;
     public int bossUltTimes;
     public bool isBossUlt;
     public Vector3 lookDirection;
     public GameObject FX;
-    AudioSource audioSource;
-    public AudioClip bossSwordSFX;
-    public AudioClip meleeAttackSFX;
-    public AudioClip longRangeAttackSFX;
-    public AudioClip bossSkillSFX;
 
-    void Start()
+    private void Awake()
     {
         bossHealth = GetComponentInParent<BossHealth>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    private void Start()
+    {
+        //玩家生成沒有Awake快
         target = PlayerManager.Inst.Player.transform;
-        if (audioSource == null)
-        {
-            audioSource = GetComponentInParent<AudioSource>();
-        }
     }
 
     void Update()
@@ -109,7 +105,7 @@ public class BossController : EnemyController
         //刪除劍光
         Destroy(FX);
         //近戰音效
-        audioSource.PlayOneShot(meleeAttackSFX);
+        AudioManager.Inst.PlaySFX("MeleeAttack");
         //生成劍氣
         GameObject swordAttackFX = Instantiate(bossFxBossSlash, transform.position, transform.rotation);
         Destroy(swordAttackFX, 0.5f);
@@ -119,10 +115,10 @@ public class BossController : EnemyController
 
     void BossLongRangeAttack()//由AnimatorEvent呼叫
     {
-        audioSource.PlayOneShot(longRangeAttackSFX);
-        GameObject shootingArrow = Instantiate(arrow, shootingtransform.position, shootingtransform.rotation);
-        shootingArrow.GetComponent<Rigidbody>().AddForce(shootingtransform.forward * force);
-        Destroy(shootingArrow, 2f);
+        AudioManager.Inst.PlaySFX("RangeAttack");
+        Rigidbody projectile = Instantiate(fireBall, shootingtransform.position, shootingtransform.rotation);
+        projectile.AddForce(shootingtransform.forward * force);
+        Destroy(projectile, 2f);
     }
 
     public void BossUltAttack()
@@ -133,7 +129,7 @@ public class BossController : EnemyController
         Vector3 bossUltPosition = bossUltTransform.position;
         bossUltPosition.y = 15.7f;
         Instantiate(bossUltArea, bossUltPosition, shootingtransform.rotation);
-        audioSource.PlayOneShot(bossSkillSFX);
+        AudioManager.Inst.PlaySFX("BossUlt");
 
         //每0.5秒鎖定玩家位置
         attackCD = 1.5f;
@@ -150,7 +146,7 @@ public class BossController : EnemyController
     {
         meshRenderer.enabled = true;
         //拔劍音效
-        audioSource.PlayOneShot(bossSwordSFX);
+        AudioManager.Inst.PlaySFX("SwordDraw");
         //生成劍光
         FX = Instantiate(BossSwordEffect, swordPos.position, swordPos.rotation);
         //近戰下一階段動畫條件確認

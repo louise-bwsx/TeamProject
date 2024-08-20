@@ -10,8 +10,8 @@ public class SceneManager : MonoSingleton<SceneManager>
     [SerializeField] private Button loadGame1;
     [SerializeField] private Button loadGame2;
     [SerializeField] private Button loadGame3;
+    [SerializeField] private SkillSO[] skills;
 
-    private GameMenuController gameMenu;
     private SkillUI skillUI;
     private StatsWindow statsWindow;
     private SkillWindow skillWindow;
@@ -25,7 +25,6 @@ public class SceneManager : MonoSingleton<SceneManager>
 
     protected override void OnAwake()
     {
-        gameMenu = GetComponentInChildren<GameMenuController>(true);
         skillUI = GetComponentInChildren<SkillUI>(true);
         statsWindow = GetComponentInChildren<StatsWindow>(true);
         skillWindow = GetComponentInChildren<SkillWindow>(true);
@@ -40,6 +39,16 @@ public class SceneManager : MonoSingleton<SceneManager>
         loadGame1.onClick.AddListener(() => { LoadLevel("GameScene"); });
         loadGame2.onClick.AddListener(() => { LoadLevel("GameScene"); });
         loadGame3.onClick.AddListener(() => { LoadLevel("GameScene"); });
+
+        Debug.Log("SceneManagerOnAwake");
+
+        //TODOError加了還是沒用 還是會讓冷卻時間壞掉不會減少
+        for (int i = 0; i < skills.Length; i++)
+        {
+            skills[i].CoolDownChange.RemoveAllListeners();
+            skills[i].CoolDownStart.RemoveAllListeners();
+            skills[i].CoolDownEnd.RemoveAllListeners();
+        }
     }
 
     private void OnDisable()
@@ -116,13 +125,13 @@ public class SceneManager : MonoSingleton<SceneManager>
                 statsWindow.Init();
                 skillWindow.Init();
                 miniMap.Init(PlayerManager.Inst.Player.transform);
-                uiBarControl.Init(PlayerManager.Inst.PlayerStamina);
+                uiBarControl.Init(PlayerManager.Inst.PlayerStamina, PlayerManager.Inst.Player);
                 mobileMove.Init(PlayerManager.Inst.PlayerControl, PlayerManager.Inst.ShootDirection);
                 mobileAttack.Init(PlayerManager.Inst.PlayerControl,
                     PlayerManager.Inst.SkillSelector,
                     PlayerManager.Inst.RemoteSkillPosition);
                 mobileRoll.Init(PlayerManager.Inst.PlayerControl);
-                UIManager.Inst.OpenMenu("IntroDialog");
+                //DialogueManager.Inst.ShowDialogue("IntroDialogue");
                 break;
             default:
                 break;

@@ -14,7 +14,7 @@ public class MobileAttack : MonoBehaviour
     [SerializeField] private Image selectCircle;
     [SerializeField] private SkillSO[] skillSO;
 
-    public void Init(PlayerControl playerControl, SkillSelector skillSelector, RemoteSkillPosition remoteSkillPosition)
+    public void Init(PlayerControl playerControl, SkillSelector skillSelector, RemoteSkillPosition remoteSkillPosition, SkillShooter skillShooter)
     {
         Debug.Log("Init");
         swingBtn.onClick.RemoveAllListeners();
@@ -28,9 +28,9 @@ public class MobileAttack : MonoBehaviour
             int index = i;
             EventTrigger trigger = joysticksOutline[i].gameObject.AddComponent<EventTrigger>();
 
-            skillSO[i].CoolDownStart.AddListener(() => DisableHandle(index));
-            skillSO[i].CoolDownEnd.AddListener(() => EnableHandle(index));
-            skillSO[i].CoolDownChange.AddListener((cd, rate) => UICoolDown(index, cd, rate));
+            skillShooter.CooldownStart.AddListener(DisableHandle);
+            skillShooter.CooldownEnd.AddListener(EnableHandle);
+            skillShooter.Cooldowning.AddListener(UICoolDown);
 
             // 設定 PointerDown 事件
             EventTrigger.Entry pointerDownEntry = new EventTrigger.Entry();

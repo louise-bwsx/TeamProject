@@ -9,15 +9,12 @@ public class SkillUI : MonoBehaviour
     [SerializeField] private Sprite selectedFrame;
     [SerializeField] private Sprite defaultFrame;
 
-    public void Init(SkillSelector skillSelector)
+    public void Init(SkillSelector skillSelector, SkillShooter skillShooter)
     {
-        skillSelector.ChangeSelectSkill.RemoveAllListeners();
         skillSelector.ChangeSelectSkill.AddListener(ChangeSelectSkillFrame);
         for (int i = 0; i < skillSO.Length; i++)
         {
-            int index = i;
-            skillSO[i].CoolDownChange.RemoveAllListeners();
-            skillSO[i].CoolDownChange.AddListener((cd, rate) => UICoolDown(index, cd, rate));
+            skillShooter.Cooldowning.AddListener(UICoolDown);
         }
     }
 

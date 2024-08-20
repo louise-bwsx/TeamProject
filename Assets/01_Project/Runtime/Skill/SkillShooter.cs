@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,18 +20,26 @@ public class SkillShooter : MonoBehaviour
 {
     [SerializeField] private SkillSO[] skills;
     [SerializeField] private Transform shootDirection;
-
-    //把remoteMesh能貼合著地板
     [SerializeField] private MeshRenderer remoteMesh;
-
     private PlayerStamina stamina;
     private SkillSelector skillSelector;
-    public UnityEvent<int> CastSkill = new UnityEvent<int>();
+    public UnityEvent<int> CooldownStart = new UnityEvent<int>();
+    public UnityEvent<int, float, float> Cooldowning = new UnityEvent<int, float, float>();
+    public UnityEvent<int> CooldownEnd = new UnityEvent<int>();
 
     private void Awake()
     {
         skillSelector = GetComponent<SkillSelector>();
         stamina = GetComponent<PlayerStamina>();
+        Init();
+    }
+
+    private void Init()
+    {
+        for (int i = 0; i < skills.Length - 1; i++)
+        {
+            skills[i].skillCD = 0;
+        }
     }
 
     public void Cast()
@@ -42,13 +51,11 @@ public class SkillShooter : MonoBehaviour
             case (int)SkillType.Wind:
             case (int)SkillType.Earth:
                 CastPositionBasedSkill(skills[skillSelector.CurrentIndex]);
-                CastSkill?.Invoke(skillSelector.CurrentIndex);
                 break;
             //水火
             case (int)SkillType.Water:
             case (int)SkillType.Fire:
                 CastDirectionBasedSkill(skills[skillSelector.CurrentIndex]);
-                CastSkill?.Invoke(skillSelector.CurrentIndex);
                 break;
             default:
                 break;
@@ -73,7 +80,7 @@ public class SkillShooter : MonoBehaviour
         {
             rigidbody.velocity = rigidbody.transform.forward * skillSO.skillForce;
         }
-        StartCoroutine(skillSO.StartCoolDown());
+        StartCoroutine(StartCoolDown(skillSO, skillSelector.CurrentIndex));
         stamina.Cost(skillSO.staminaCost);
     }
 
@@ -89,7 +96,30 @@ public class SkillShooter : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(skillSO.StartCoolDown());
+        StartCoroutine(StartCoolDown(skillSO, skillSelector.CurrentIndex));
         stamina.Cost(skillSO.staminaCost);
+    }
+
+    public IEnumerator StartCoolDown(SkillSO skillSO, int index)
+    {
+        Debug.Log("StartCoolDown");
+        CooldownStart.Invoke(index);
+        skillSO.skillCD = skillSO.skillRate;
+        while (true)
+        {
+            //不要將 yield return null 移到判斷pause底下 會無限迴圈
+            yield return null;
+            if (!GameStateManager.Inst.IsGaming())
+            {
+                continue;
+            }
+            skillSO.skillCD -= Time.deltaTime;
+            Cooldowning?.Invoke(index, skillSO.skillCD, skillSO.skillRate);
+            if (skillSO.skillCD <= 0)
+            {
+                CooldownEnd.Invoke(index);
+                break;
+            }
+        }
     }
 }

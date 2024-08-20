@@ -41,14 +41,6 @@ public class SceneManager : MonoSingleton<SceneManager>
         loadGame3.onClick.AddListener(() => { LoadLevel("GameScene"); });
 
         Debug.Log("SceneManagerOnAwake");
-
-        //TODOError加了還是沒用 還是會讓冷卻時間壞掉不會減少
-        for (int i = 0; i < skills.Length; i++)
-        {
-            skills[i].CoolDownChange.RemoveAllListeners();
-            skills[i].CoolDownStart.RemoveAllListeners();
-            skills[i].CoolDownEnd.RemoveAllListeners();
-        }
     }
 
     private void OnDisable()
@@ -121,7 +113,7 @@ public class SceneManager : MonoSingleton<SceneManager>
                 UIManager.Inst.CloseMenu("Loading");
                 AudioManager.Inst.PlayBGM("GameSceneIntro");
                 PlayerManager.Inst.SpawnPlayer();
-                skillUI.Init(PlayerManager.Inst.SkillSelector);
+                skillUI.Init(PlayerManager.Inst.SkillSelector, PlayerManager.Inst.SkillShooter);
                 statsWindow.Init();
                 skillWindow.Init();
                 miniMap.Init(PlayerManager.Inst.Player.transform);
@@ -129,7 +121,8 @@ public class SceneManager : MonoSingleton<SceneManager>
                 mobileMove.Init(PlayerManager.Inst.PlayerControl, PlayerManager.Inst.ShootDirection);
                 mobileAttack.Init(PlayerManager.Inst.PlayerControl,
                     PlayerManager.Inst.SkillSelector,
-                    PlayerManager.Inst.RemoteSkillPosition);
+                    PlayerManager.Inst.RemoteSkillPosition,
+                    PlayerManager.Inst.SkillShooter);
                 mobileRoll.Init(PlayerManager.Inst.PlayerControl);
                 //DialogueManager.Inst.ShowDialogue("IntroDialogue");
                 break;

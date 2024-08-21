@@ -156,6 +156,7 @@ public class BossHealth : MonsterHealth
         animator.SetTrigger("Wheel_1_Broke");
         AudioManager.Inst.PlaySFX("BehindWheelBrake");
         invincibleGuard.SetActive(true);
+
         Time.timeScale = 0f;
         DialogueManager.Inst.ShowDialogue("BossSecondStateDialogue");
         state = BossState.Stage1;

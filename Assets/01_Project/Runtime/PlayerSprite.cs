@@ -2,12 +2,12 @@
 
 public class PlayerSprite : MonoBehaviour
 {
-    //TODOWarning: 利用IsMagicAttack去判斷能不能移動 會比用animator.GetBool來的準確 
     public bool isMagicAttack;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private PlayerControl playerControl;
     private SkillShooter skillShooter;
     private ShootDirectionSetter shootDirectionSetter;
+
     private void Awake()
     {
         playerControl = GetComponentInParent<PlayerControl>();

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class SaveManager : MonoSingleton<SaveManager>
@@ -11,26 +11,28 @@ public class SaveManager : MonoSingleton<SaveManager>
     private SettingsSaveData currentSettingsSave;
     private static string path = Application.dataPath + "/Playerdata/";
     private static string filename = "Save.json";
-    private LoadSpace[] loadSpaces;
-    private SaveSpace[] saveSpaces;
-    private List<TextAsset> saveFiles = new List<TextAsset>();
+    [SerializeField, ReadOnly] private LoadSpace[] loadSpaces;
+    [SerializeField, ReadOnly] private SaveSpace[] saveSpaces;
+    [SerializeField, ReadOnly] private List<FileInfo> saveFiles = new List<FileInfo>();
+    private int saveIndex = 1;
 
     public List<ISave> ISaves { get; private set; } = new List<ISave>();//interface沒辦法SerializeField
 
     protected override void OnAwake()
     {
         Debug.Log("SaveManager.OnAwake()");
-        loadSpaces = GetComponentsInChildren<LoadSpace>();
-        saveSpaces = GetComponentsInChildren<SaveSpace>();
+        loadSpaces = GetComponentsInChildren<LoadSpace>(true);
+        saveSpaces = GetComponentsInChildren<SaveSpace>(true);
         RefreshUI();
     }
 
     public void RefreshUI()
     {
         GetAllSaveFile();
+        //Debug.Log(saveFiles.Count);
         for (int i = 0; i < loadSpaces.Length; i++)
         {
-            if (i > saveFiles.Count - 1)
+            if (saveFiles.Count == 0 || i > saveFiles.Count - 1)
             {
                 loadSpaces[i].Init(null);
                 saveSpaces[i].Init(null);
@@ -53,7 +55,7 @@ public class SaveManager : MonoSingleton<SaveManager>
         File.WriteAllText(path + "Settings" + filename, jsonString);
     }
 
-    public void Save()
+    public FileInfo Save()
     {
         if (currentGameSave == null)
         {
@@ -67,47 +69,32 @@ public class SaveManager : MonoSingleton<SaveManager>
 
         currentGameSave.time = DateTime.Now.ToString(); ;
         string jsonString = JsonUtility.ToJson(currentGameSave);
-        Debug.Log($"jsonString: {jsonString}");
-        Debug.Log($"currentGameSave: {currentGameSave}");
+        //Debug.Log($"jsonString: {jsonString}");
+        //Debug.Log($"currentGameSave: {currentGameSave}");
 
-        if (!File.Exists(path))
+        if (!Directory.Exists(path))
         {
             Directory.CreateDirectory(path);
         }
-        File.WriteAllText(path + filename, jsonString);
+
+        // 生成初始的完整文件路径
+        string fullPath = Path.Combine(path, saveIndex + filename);
+
+        // 如果文件名已存在，递增 saveIndex，直到找到一个不重复的文件名
+        while (File.Exists(fullPath))
+        {
+            saveIndex++;
+            fullPath = Path.Combine(path, saveIndex + filename);
+        }
+
+        // 保存文件
+        File.WriteAllText(fullPath, jsonString);
         Debug.Log("存檔成功");
+
+        return new FileInfo(fullPath);
     }
 
-    //public static void SavePlayer(GetHitEffect playerhealth, Transform playerPosition)
-    //{
-    //    BinaryFormatter formatter = new BinaryFormatter();
-    //    string path = Application.persistentDataPath + "/Unity_Project_Save.lui";
-    //    FileStream stream = new FileStream(path, FileMode.Create);
-
-    //    PlayerData data = new PlayerData(playerhealth, playerPosition);
-    //    formatter.Serialize(stream, data);
-    //    stream.Close();
-    //}
-    //public static PlayerData LoadPlayer()
-    //{
-    //    string path = Application.persistentDataPath + "/Unity_Project_Save.lui";
-    //    if (File.Exists(path))
-    //    {
-    //        BinaryFormatter formatter = new BinaryFormatter();
-    //        FileStream stream = new FileStream(path, FileMode.Open);
-
-    //        PlayerData data = formatter.Deserialize(stream) as PlayerData;
-    //        stream.Close();
-    //        return data;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError(path + "此路徑中找不到任何存檔");
-    //        return null;
-    //    }
-    //}
-
-    public void Load(TextAsset saveFile)
+    public void Load(FileInfo saveFile)
     {
         if (!File.Exists(path + filename))
         {
@@ -115,11 +102,8 @@ public class SaveManager : MonoSingleton<SaveManager>
             return;
         }
 
-        Debug.Log($"saveFile.text: {saveFile.text}");
-        Debug.Log($"currentGameSave: {currentGameSave}");
-
-        currentGameSave = JsonUtility.FromJson<GameSaveData>(saveFile.text);
-        //TODO: 這邊要帶著currentGameSave重新LoadGameScene
+        string jsonData = File.ReadAllText(saveFile.FullName);
+        currentGameSave = JsonUtility.FromJson<GameSaveData>(jsonData);
         Debug.Log("讀檔成功");
     }
 
@@ -135,7 +119,8 @@ public class SaveManager : MonoSingleton<SaveManager>
             else
             {
                 //已經有根據最後修改時間排列
-                currentGameSave = JsonUtility.FromJson<GameSaveData>(saveFiles[0].text);
+                string jsonData = File.ReadAllText(saveFiles[0].FullName);
+                currentGameSave = JsonUtility.FromJson<GameSaveData>(jsonData);
             }
         }
         return currentGameSave;
@@ -150,8 +135,15 @@ public class SaveManager : MonoSingleton<SaveManager>
         return currentSettingsSave;
     }
 
+    public string GetSaveFilePath()
+    {
+        return path;
+    }
+
     private void GetAllSaveFile()
     {
+        //為了不每次GetAll時越來越多
+        saveFiles.Clear();
         FileInfo[] files = new FileInfo[0];
         if (!File.Exists(path))
         {
@@ -172,9 +164,7 @@ public class SaveManager : MonoSingleton<SaveManager>
 
         foreach (var file in files)
         {
-            string fileContent = File.ReadAllText(file.FullName);
-            TextAsset textAsset = new TextAsset(fileContent);
-            saveFiles.Add(textAsset);
+            saveFiles.Add(file);
         }
     }
 

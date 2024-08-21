@@ -33,7 +33,7 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] private Button credit;
     [SerializeField] private Button quitGame;
     [SerializeField] private Button backToMainMenuBtn;
-
+    [SerializeField] private Button diePanelBackgrounBtn;
     [SerializeField] private Button tutorialBackgrounBtn;
     [SerializeField] private Image loadImage;
     [SerializeField] private Image tutorialImage;
@@ -41,6 +41,7 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] private Sprite pcTutorial;
     [SerializeField] private Sprite mobileTutorial;
     [SerializeField] private Sprite mainMenuSettingsSprite;
+    [SerializeField] private GameObject skillbar;
     private bool isStarting;
     private bool isInitialized;
     [SerializeField, ReadOnly] private List<string> openMenuNames = new List<string>();
@@ -56,6 +57,7 @@ public class UIManager : MonoSingleton<UIManager>
         gameMenuSettingsBtn.onClick.AddListener(() => { OpenMenu("Settings"); });
         mainMenuTutorialBtn.onClick.AddListener(() => { OpenMenu("Tutorial"); });
         gameMenuTutorialBtn.onClick.AddListener(() => { OpenMenu("Tutorial"); });
+        diePanelBackgrounBtn.onClick.AddListener(() => { SceneManager.Inst.LoadLevel("MenuScene"); });
         tutorialBackgrounBtn.onClick.AddListener(TutorialBackgroundBtnOnClick);
         credit.onClick.AddListener(() => { OpenMenu("Credit"); });
         backToMainMenuBtn.onClick.AddListener(BackToMainMenu);
@@ -65,11 +67,14 @@ public class UIManager : MonoSingleton<UIManager>
         {
             OpenMenu("Welcome");
         }
+
         ChangeTutorialSprite();
         foreach (var btn in closeBtns)
         {
             btn.onClick.AddListener(CloseBtnOnClick);
         }
+
+        skillbar.SetActive(!GameStateManager.Inst.IsMobile);
     }
 
     private void Update()
@@ -102,6 +107,7 @@ public class UIManager : MonoSingleton<UIManager>
                 }
                 OpenMenu("GameMenu");
                 GameStateManager.Inst.ChangState(GameState.Pausing);
+
                 Time.timeScale = 0f;
                 return;
             case GameState.Pausing:

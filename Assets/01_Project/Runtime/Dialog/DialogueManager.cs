@@ -22,6 +22,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         GameStateManager.Inst.ChangState(GameState.Dialogue);
         dialogue.gameObject.SetActive(true);
         dialogue.StartDialogue();
+
         Time.timeScale = 0;
     }
 

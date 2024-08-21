@@ -84,16 +84,30 @@ public class PlayerControl : MonoBehaviour
             isRoll = false;
         }
 
+        if (!GameStateManager.Inst.IsGaming())
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            //避免在死掉時按儲存
+            if (GameStateManager.Inst.IsGaming())
+            {
+                SaveManager.Inst.Save();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SceneManager.Inst.LoadLevel("GameScene");
+        }
+
         //不檢查的話 這邊會覆蓋掉mobile mobile會沒辦法播放移動動畫
         if (GameStateManager.Inst.IsMobile)
         {
             return;
         }
 
-        if (!GameStateManager.Inst.IsGaming())
-        {
-            return;
-        }
         ws = Input.GetAxisRaw("Vertical");
         ad = Input.GetAxisRaw("Horizontal");
         SetMoveDirection(ws, ad);
@@ -152,19 +166,6 @@ public class PlayerControl : MonoBehaviour
             }
             UIManager.Inst.OpenMenu("MiniMap");
         }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("TODO存檔 還沒做");
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log("TODO讀檔 還沒做");
-        }
-
-        if (Input.GetKeyDown(KeyCode.N))//傳送到指定地點 &場景重置
-        {
-            SceneManager.Inst.LoadLevel("GameScene");
-        }
     }
 
     private void LateUpdate()
@@ -217,7 +218,6 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        //TODO: 這裡應該可以用PlayerState來判斷 currentPlayerState != PlayerState.Gaming return;
         if (playerSprite.isMagicAttack || playerStats.IsDead() || isRoll)
         {
             Debug.Log("玩家在一個無法攻擊的狀態");

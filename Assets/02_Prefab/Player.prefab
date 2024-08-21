@@ -214,7 +214,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 341cb42fb4d96cb4bbc3ba0787512e59, type: 2}
   shootDirection: {fileID: 3718485332493406148}
   remoteMesh: {fileID: 5658509149491078091}
-  CastSkill:
+  CooldownStart:
+    m_PersistentCalls:
+      m_Calls: []
+  Cooldowning:
+    m_PersistentCalls:
+      m_Calls: []
+  CooldownEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5781274889587318368
@@ -243,22 +249,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be39718858701f41b4717458a070c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIBarControl: {fileID: 0}
-  healthbarongame: {fileID: 207457562656914458}
-  statsWindow: {fileID: 0}
   stamina: {fileID: 124666687790467800}
   moveSpeed: 5
   isInvincible: 0
   rollTimeLimit: 0.4
-  rollForce: 0
   rollDistence: 25
   rollRate: 1
   isAttack: 0
-  attackRange: 0.4
   attackTime: 0
   attackSpeed: 0
   attackSpikeSpeed: 0
-  attackDamage: 2
   spikeAttackDash: 7
   normalAttackDash: 3
   EnemyLayer:
@@ -305,7 +305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7805923364305161823
 Transform:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6902779220169048236
 Transform:
   m_ObjectHideFlags: 0
@@ -578,7 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b1b368dbd2eda4394d50a184c3e8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 3379591463939361311}
   shadow: {fileID: 4871320640094872339}
   SpikeAttackLeftPos: {fileID: 4990266141528355607}
   SpikeAttackRightPos: {fileID: 9190277649077748857}
@@ -1094,7 +1093,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8032247989754630197
 Transform:
   m_ObjectHideFlags: 0

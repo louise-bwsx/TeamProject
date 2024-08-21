@@ -14,9 +14,18 @@ public class PlayerManager : MonoSingleton<PlayerManager>
 
     public void SpawnPlayer()
     {
-        //Player = Instantiate(playerPrefab, new Vector3(112.5f, 10.7f, 49.5f), Quaternion.Euler(0, -90, 0));
-        //測試用位置比較清楚
-        Player = Instantiate(playerPrefab, new Vector3(107.5178f, 14.23846f, 72.25961f), Quaternion.Euler(0, -90, 0));
+        GameSaveData gameSave = SaveManager.Inst.GetGameSave();
+        Player = Instantiate(playerPrefab);
+        Player.transform.rotation = Quaternion.Euler(0, -90, 0);
+        if (gameSave.GetPosition() == Vector3.zero)
+        {
+            Player.transform.position = new Vector3(107.5178f, 14.23846f, 72.25961f);
+            Player.transform.position = new Vector3(112.5f, 10.7f, 49.5f);
+        }
+        else
+        {
+            Player.transform.position = gameSave.GetPosition();
+        }
         Player.name = Player.name.Replace("(Clone)", "");
         PlayerControl = Player.GetComponent<PlayerControl>();
         SkillSelector = Player.GetComponent<SkillSelector>();

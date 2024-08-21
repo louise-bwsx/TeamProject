@@ -2,12 +2,11 @@
 
 public class PlayerAction : MonoBehaviour
 {
-    public Animator animator;
-
     [SerializeField] private GameObject shadow;
     [SerializeField] private Transform SpikeAttackLeftPos;
     [SerializeField] private Transform SpikeAttackRightPos;
     [SerializeField] private Collider attackRange;
+    private Animator animator;
     private PlayerControl playerControl;
     private PlayerSprite playerSprite;
     private ShootDirectionSetter shootDirectionSetter;
@@ -61,6 +60,7 @@ public class PlayerAction : MonoBehaviour
         shadow.SetActive(false);
         AudioManager.Inst.PlayBGM("Dead");
         UIManager.Inst.OpenMenu("DiePanel");
+
         Time.timeScale = 0;
     }
 

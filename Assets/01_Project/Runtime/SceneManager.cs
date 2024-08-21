@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,6 @@ public class SceneManager : MonoSingleton<SceneManager>
     private float currentProgress = 0;// 當前進度
     [SerializeField] private Image loadingFill;
     [SerializeField] private Button tutorial;
-    [SerializeField] private Button loadGame1;
-    [SerializeField] private Button loadGame2;
-    [SerializeField] private Button loadGame3;
     [SerializeField] private SkillSO[] skills;
 
     private SkillUI skillUI;
@@ -20,8 +18,8 @@ public class SceneManager : MonoSingleton<SceneManager>
     private MobileMove mobileMove;
     private MobileAttack mobileAttack;
     private MobileRoll mobileRoll;
+    private string currentScene;
 
-    public string currentScene { get; private set; }
 
     protected override void OnAwake()
     {
@@ -35,10 +33,6 @@ public class SceneManager : MonoSingleton<SceneManager>
         mobileRoll = GetComponentInChildren<MobileRoll>(true);
 
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoad;
-        //tutorial.onClick.AddListener(() => { LoadLevel("GameScene"); });
-        loadGame1.onClick.AddListener(() => { LoadLevel("GameScene"); });
-        loadGame2.onClick.AddListener(() => { LoadLevel("GameScene"); });
-        loadGame3.onClick.AddListener(() => { LoadLevel("GameScene"); });
 
         Debug.Log("SceneManagerOnAwake");
     }
@@ -48,7 +42,11 @@ public class SceneManager : MonoSingleton<SceneManager>
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoad;
     }
 
-    public bool IsGameScene() => currentScene == "GameScene";
+    public bool IsGameScene()
+    {
+        return currentScene == "GameScene";
+    }
+
 
     //public為了給TutorialEvnetTrigger用
     public void LoadLevel(string sceneName)
@@ -64,31 +62,34 @@ public class SceneManager : MonoSingleton<SceneManager>
         //設定讀取完後不能自動跳場景
         async.allowSceneActivation = false;
         loadingFill.fillAmount = 0;
+        LoadAsync();
     }
 
-    private void Update()
+    private async void LoadAsync()
     {
-        if (async == null)
-        {
-            currentProgress = 0;
-            return;
-        }
-        // 進度條需要到達的進度值  
-        float targetProgress;
-        // async.progress 你正在讀取的場景的進度值 0到0.9
-        // 因為最大值只到0.9所以要手動++ 不然進度條會有縫隙很醜
-        targetProgress = async.progress < 0.9f ? async.progress * 100 : 100;
-        if (currentProgress < targetProgress)
-        {
-            currentProgress++;
-        }
-        loadingFill.fillAmount = currentProgress / 100f;
+        currentProgress = 0;
 
-        if (currentProgress >= 100)
+        while (true)
         {
-            // 設定為true的時候，如果場景數據加載完畢，就可以自動跳轉場景  
-            async.allowSceneActivation = true;
-            async = null;
+            await Task.Yield();
+            // 進度條需要到達的進度值  
+            float targetProgress;
+            // async.progress 你正在讀取的場景的進度值 0到0.9
+            // 因為最大值只到0.9所以要手動++ 不然進度條會有縫隙很醜
+            targetProgress = async.progress < 0.9f ? async.progress * 100 : 100;
+            if (currentProgress < targetProgress)
+            {
+                currentProgress++;
+            }
+            loadingFill.fillAmount = currentProgress / 100f;
+
+            if (currentProgress >= 100)
+            {
+                // 設定為true的時候，如果場景數據加載完畢，就可以自動跳轉場景  
+                async.allowSceneActivation = true;
+                async = null;
+                return;
+            }
         }
     }
 
@@ -109,6 +110,8 @@ public class SceneManager : MonoSingleton<SceneManager>
                 UIManager.Inst.OpenMenu("Welcome");
                 break;
             case "GameScene":
+                //這是為了避免過了開頭劇情後 按ESC存檔 後OpenGameMenu沒調回來
+                Time.timeScale = 1f;
                 GameStateManager.Inst.ChangState(GameState.Gaming);
                 UIManager.Inst.CloseMenu("Loading");
                 AudioManager.Inst.PlayBGM("GameSceneIntro");
@@ -124,7 +127,9 @@ public class SceneManager : MonoSingleton<SceneManager>
                     PlayerManager.Inst.RemoteSkillPosition,
                     PlayerManager.Inst.SkillShooter);
                 mobileRoll.Init(PlayerManager.Inst.PlayerControl);
-                //DialogueManager.Inst.ShowDialogue("IntroDialogue");
+                //測試用暫時關掉
+                DialogueManager.Inst.ShowDialogue("IntroDialogue");
+                //TODO 把是否看過dialogue存檔
                 break;
             default:
                 break;

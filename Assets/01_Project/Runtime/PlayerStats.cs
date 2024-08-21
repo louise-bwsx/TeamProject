@@ -33,12 +33,13 @@ public class PlayerStats : MonoBehaviour, ISave
     [HideInInspector] public UnityEvent<float> OnHealthChange = new UnityEvent<float>();
     [HideInInspector] public UnityEvent<int> OnDustChange = new UnityEvent<int>();
 
-    //TODOError: 存讀檔的資料 順序 還沒做好
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         playerControl = GetComponentInChildren<PlayerControl>();
         collider = GetComponent<Collider>();
+        SaveManager.Inst.ISaves.Add(this);
+        //為了讓StatsWindow讀到所以放Awake
         Load();
     }
 
@@ -62,15 +63,6 @@ public class PlayerStats : MonoBehaviour, ISave
             invincibleTimer = 0;
             playerControl.isInvincible = false;
             spriteRenderer.color = Color.white;
-        }
-
-        if (hp <= 0)
-        {
-            playerControl.isAttack = false;
-            animator.SetTrigger("Dead");
-            collider.enabled = false;
-            AudioManager.Inst.PlayBGM("Dead");
-            GameStateManager.Inst.ChangState(GameState.PlayerDead);
         }
     }
 
@@ -168,6 +160,17 @@ public class PlayerStats : MonoBehaviour, ISave
             spriteRenderer.color = Color.red;
             Debug.Log($"IsInvincible: {playerControl.isInvincible}");
         }
+
+        // 暫時先這樣
+        if (hp <= 0)
+        {
+            playerControl.isAttack = false;
+            animator.SetTrigger("Dead");
+            collider.enabled = false;
+            AudioManager.Inst.PlayBGM("Dead");
+            GameStateManager.Inst.ChangState(GameState.PlayerDead);
+            return;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -202,23 +205,24 @@ public class PlayerStats : MonoBehaviour, ISave
 
     public void Save(GameSaveData gameSave)
     {
+        gameSave.dust = dust;
+        gameSave.skillLevels = skillLevels;
+        gameSave.statsLevel = statsLevel;
+        gameSave.playerHp = hp;
+        gameSave.playerMaxHp = maxHp;
+        gameSave.SaveTransform(transform);
     }
 
     public void Load()
     {
+        Debug.Log("Load");
         GameSaveData gameSave = SaveManager.Inst.GetGameSave();
+        transform.name = transform.name.Split('(')[0];
         dust = gameSave.dust;
         skillLevels = gameSave.skillLevels;
-        statsLevel = gameSave.charaterStats;
+        statsLevel = gameSave.statsLevel;
         hp = gameSave.playerHp;
         maxHp = gameSave.playerMaxHp;
-        if (!gameSave.transformSaves.ContainsKey(transform.name))
-        {
-            TransformSave transformSave = new TransformSave(transform);
-            gameSave.transformSaves.Add(transform.name, transformSave);
-            return;
-        }
-        transform.position = gameSave.transformSaves[transform.name].position;
-        transform.rotation = gameSave.transformSaves[transform.name].rotation;
+        //位置在playerManager那邊設定
     }
 }

@@ -1,33 +1,33 @@
+ï»¿using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LoadSpace : MonoBehaviour
 {
-    //TODOError: ÁÙ¨S½T»{³oÃä¦³¨S¦³¥¿±`Åª¨ú
     [SerializeField] private TMP_Text timeLabel;
-    private Button loadBtn;
-    private TextAsset saveFile;
-
-    private void Awake()
-    {
-        loadBtn = GetComponent<Button>();
-    }
+    [SerializeField] private Button loadBtn;
+    [SerializeField] private Button deleteBtn;
+    private FileInfo saveFile;
 
     private void Start()
     {
         loadBtn.onClick.AddListener(Load);
+        deleteBtn.onClick.AddListener(Delete);
     }
 
-    public void Init(TextAsset saveFile)
+    public void Init(FileInfo saveFile)
     {
         this.saveFile = saveFile;
+        loadBtn.interactable = saveFile != null;
+        deleteBtn.interactable = saveFile != null;
         if (saveFile == null)
         {
             timeLabel.text = "";
             return;
         }
-        GameSaveData gameSave = JsonUtility.FromJson<GameSaveData>(saveFile.text);
+        string jsonData = File.ReadAllText(saveFile.FullName);
+        GameSaveData gameSave = JsonUtility.FromJson<GameSaveData>(jsonData);
         timeLabel.text = gameSave.time;
     }
 
@@ -35,9 +35,31 @@ public class LoadSpace : MonoBehaviour
     {
         if (saveFile == null)
         {
-            Debug.Log("¨S¦³¦sÀÉ");
+            Debug.Log("æ²’æœ‰å­˜æª”");
             return;
         }
         SaveManager.Inst.Load(saveFile);
+        SceneManager.Inst.LoadLevel("GameScene");
+    }
+
+    private void Delete()
+    {
+        if (saveFile == null)
+        {
+            Debug.LogWarning("ç„¡æ³•åˆªé™¤ï¼Œå› ç‚º saveFile ç‚ºç©º");
+            return;
+        }
+        Debug.Log(saveFile.FullName);
+        string filePath = Path.Combine(saveFile.FullName);
+        if (!File.Exists(filePath))
+        {
+            Debug.LogWarning($"æª”æ¡ˆ {filePath} ä¸å­˜åœ¨ï¼Œç„¡æ³•åˆªé™¤");
+            return;
+        }
+        File.Delete(filePath);
+        saveFile = null;
+        Init(null);
+        Debug.Log($"æª”æ¡ˆ {filePath} å·²åˆªé™¤");
+        SaveManager.Inst.RefreshUI();
     }
 }

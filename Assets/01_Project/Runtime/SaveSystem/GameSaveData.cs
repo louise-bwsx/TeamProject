@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -18,6 +19,9 @@ public class GameSaveData
     public float playerStamina = 0;
     public float playerMaxStamina = 100;
 
+    public float bossHp;
+    public List<string> watchedDialogue = new List<string>();
+
     //沒有EasySave 沒辦法存vector3 struct class
     public float posX;
     public float posY;
@@ -26,6 +30,7 @@ public class GameSaveData
 
     public GameSaveData()
     {
+        Debug.Log("Create New Save File");
     }
 
     public void SaveTransform(Transform transform)

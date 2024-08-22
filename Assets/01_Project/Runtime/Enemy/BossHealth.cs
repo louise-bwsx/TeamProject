@@ -6,19 +6,19 @@ public enum BossState
     /// <summary>
     /// Hp &gt; MaxHp * 0.7
     /// </summary>
-    Stage0,
+    Stage1,
     /// <summary>
     /// Hp &gt; MaxHp * 0.4
     /// </summary>
-    Stage1,
+    Stage2,
     /// <summary>
     /// 小於不能用 所以這樣替代 上面是大於沒錯
     /// Hp &lt;= MaxHp * 0.4
     /// </summary>
-    Stage2
+    Stage3
 }
 
-public class BossHealth : MonsterHealth
+public class BossHealth : MonsterHealth, ISave
 {
     [SerializeField] private Transform brokenPos;
     [SerializeField] private GameObject curseWheel;
@@ -37,8 +37,16 @@ public class BossHealth : MonsterHealth
 
     protected override void Start()
     {
+        SaveManager.Inst.ISaves.Add(this);
+        Load();
         base.Start();
         bossController = GetComponentInChildren<BossController>();
+        Hp = 1;
+    }
+
+    public BossState GetState()
+    {
+        return state;
     }
 
     private IEnumerator BossDieCoroutine()
@@ -90,8 +98,7 @@ public class BossHealth : MonsterHealth
             return;
         }
 
-        //TODOError: 第二階段不會扣寫
-        if (state == BossState.Stage1)
+        if (state == BossState.Stage2)
         {
             if (type != SkillType.FireTornado && type != SkillType.Bomb)
             {
@@ -122,24 +129,24 @@ public class BossHealth : MonsterHealth
         healthBarOnGame.SetHealth(Hp);
         StartCoroutine(InvincibleCoroutine());
 
-        if (Hp > MaxHp * 0.7)
-        {
-            state = BossState.Stage0;
-        }
-        else if (Hp > MaxHp * 0.4 && state == BossState.Stage0)
-        {
-            ChangToState1();
-        }
-        else if (Hp <= MaxHp * 0.4 && state == BossState.Stage1)
-        {
-            ChangeToState2();
-        }
-
         if (Hp <= 0)
         {
             MonsterDead();
             StartCoroutine(BossDieCoroutine());
             StartCoroutine(DestroySoundCoroutine());
+        }
+
+        if (Hp > MaxHp * 0.7)
+        {
+            state = BossState.Stage1;
+        }
+        else if (Hp > MaxHp * 0.4 && state == BossState.Stage1)
+        {
+            ChangToState2();
+        }
+        else if (Hp <= MaxHp * 0.4 && state == BossState.Stage2)
+        {
+            ChangeToState3();
         }
     }
 
@@ -151,24 +158,33 @@ public class BossHealth : MonsterHealth
         Destroy(FX, WHEEL_DESTROY_TIME);
     }
 
-    private void ChangToState1()
+    private void ChangToState2()
     {
         animator.SetTrigger("Wheel_1_Broke");
         AudioManager.Inst.PlaySFX("BehindWheelBrake");
         invincibleGuard.SetActive(true);
-
-        Time.timeScale = 0f;
         DialogueManager.Inst.ShowDialogue("BossSecondStateDialogue");
-        state = BossState.Stage1;
+        state = BossState.Stage2;
     }
 
-    private void ChangeToState2()
+    private void ChangeToState3()
     {
         animator.SetTrigger("Wheel_2_Broke");
         AudioManager.Inst.PlaySFX("BehindWheelBrake");
         bossController.BossUltAttack();
         invincibleGuard.SetActive(false);
         DialogueManager.Inst.ShowDialogue("BossThirdStateDialogue");
-        state = BossState.Stage2;
+        state = BossState.Stage3;
+    }
+
+    public void Save(GameSaveData gameSave)
+    {
+        gameSave.bossHp = Hp;
+    }
+
+    public void Load()
+    {
+        GameSaveData gameSave = SaveManager.Inst.GetGameSave();
+        Hp = gameSave.bossHp;
     }
 }

@@ -215,7 +215,7 @@ public class PlayerStats : MonoBehaviour, ISave
 
     public void Load()
     {
-        Debug.Log("Load");
+        //Debug.Log("PlayerStatsLoad");
         GameSaveData gameSave = SaveManager.Inst.GetGameSave();
         transform.name = transform.name.Split('(')[0];
         dust = gameSave.dust;

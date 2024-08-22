@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
 public enum AttackType
 {
@@ -26,6 +27,7 @@ public class PlayerControl : MonoBehaviour
     public int rollDistence;
     private float rollCD;
     [SerializeField] private float rollRate = 1f;
+    private Vector3 rollDirection = Vector3.right;
     //有關攻擊
     public bool isAttack = false;
     public float attackTime;
@@ -38,7 +40,7 @@ public class PlayerControl : MonoBehaviour
 
     [field: SerializeField] public Rigidbody rigidbody { get; private set; }
     [SerializeField] private LayerMask rollLayer;
-    private Vector3 previousPos;
+    [SerializeField, ReadOnly] private Vector3 previousPos;
     private Vector3 moveDirection;
     private PlayerOptions playerOptions;
     private PlayerSprite playerSprite;
@@ -80,7 +82,6 @@ public class PlayerControl : MonoBehaviour
             rollTime = 0;
             rigidbody.velocity = Vector3.zero;
             collider.isTrigger = false;
-            rigidbody.useGravity = true;
             isRoll = false;
         }
 
@@ -196,7 +197,10 @@ public class PlayerControl : MonoBehaviour
 
         moveDirection.Set(-vertical, 0f, horizontal);
         moveDirection.Normalize();
-
+        if (moveDirection != Vector3.zero)
+        {
+            rollDirection = moveDirection;
+        }
         animator.SetFloat("Vertical", vertical);
         animator.SetFloat("Horizontal", horizontal);
 
@@ -278,14 +282,15 @@ public class PlayerControl : MonoBehaviour
 
     private void PlayerStandGround()
     {
+        //不要讓 rigidbody.useGravity = true; 會讓玩家變成不斷墜落的狀態 因為collider懸空 為了走樓梯不卡住
         LayerMask floor = LayerMask.GetMask("Floor");
         float distance = 5;
-        float lift = 0.5f;
+        float lift = 0.4f;
         RaycastHit hit;
         //沒有transform.down 負數的選項
         if (Physics.Raycast(rigidbody.position, -rigidbody.transform.up, out hit, distance, floor))
         {
-            //Debug.Log("PlayerStandGround");
+            Debug.Log("PlayerStandGround");
             Vector3 hitLift = hit.point + rigidbody.transform.up * lift;
             Vector3 originPos = rigidbody.position;
             originPos.y = hitLift.y;
@@ -314,9 +319,7 @@ public class PlayerControl : MonoBehaviour
         stamina.Cost(rollCostStamina);
         //開啟無敵狀態
         isInvincible = true;
-        rigidbody.velocity = shootDirectionSetter.GetForward() * rollDistence;
-        //讓玩家可以穿過怪物
-        //collider.isTrigger = true;
+        rigidbody.velocity = rollDirection * rollDistence;
     }
 
     private void OnDrawGizmosSelected()

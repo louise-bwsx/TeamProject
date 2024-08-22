@@ -20,7 +20,8 @@ public class SkillShooter : MonoBehaviour
 {
     [SerializeField] private SkillSO[] skills;
     [SerializeField] private Transform shootDirection;
-    [SerializeField] private MeshRenderer remoteMesh;
+    [SerializeField] private Transform directionMesh;
+    [SerializeField] private Transform remoteMesh;
     private PlayerStamina stamina;
     private SkillSelector skillSelector;
     public UnityEvent<int> CooldownStart = new UnityEvent<int>();
@@ -60,6 +61,8 @@ public class SkillShooter : MonoBehaviour
             default:
                 break;
         }
+        directionMesh.gameObject.SetActive(false);
+        remoteMesh.gameObject.SetActive(false);
     }
 
     private void CastDirectionBasedSkill(SkillSO skillSO)
@@ -87,7 +90,7 @@ public class SkillShooter : MonoBehaviour
     private void CastPositionBasedSkill(SkillSO skillSO)
     {
         //Debug.Log("CastPositionBasedSkill");
-        Vector3 spawanPos = remoteMesh.transform.position;
+        Vector3 spawanPos = remoteMesh.position;
         GameObject skillObject = ObjectPool.Inst.SpawnFromPool(skillSO.prefabName,
                                                                spawanPos,
                                                                Quaternion.identity,
@@ -102,7 +105,7 @@ public class SkillShooter : MonoBehaviour
 
     public IEnumerator StartCoolDown(SkillSO skillSO, int index)
     {
-        Debug.Log("StartCoolDown");
+        Debug.Log($"{skillSO.name} StartCoolDown");
         CooldownStart.Invoke(index);
         skillSO.skillCD = skillSO.skillRate;
         while (true)
@@ -120,6 +123,23 @@ public class SkillShooter : MonoBehaviour
                 CooldownEnd.Invoke(index);
                 break;
             }
+        }
+    }
+
+    public void ShowAimMesh(int index)
+    {
+        switch (index)
+        {
+            case 0:
+            case 2:
+            case 3:
+                remoteMesh.gameObject.SetActive(true);
+                break;
+            case 1:
+            case 4:
+                directionMesh.gameObject.SetActive(true);
+                break;
+
         }
     }
 }

@@ -12,12 +12,14 @@ public class SkillSelector : MonoBehaviour
     [field: SerializeField, ReadOnly] public int CurrentIndex { get; private set; }
     public UnityEvent<int, int> ChangeSelectSkill = new UnityEvent<int, int>();
     [SerializeField] private SkillSO[] skillSOArray;
+    private SkillShooter skillShooter;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         playerControl = GetComponentInChildren<PlayerControl>();
         playerStats = GetComponent<PlayerStats>();
+        skillShooter = GetComponent<SkillShooter>();
     }
 
     private void Start()
@@ -112,6 +114,8 @@ public class SkillSelector : MonoBehaviour
             return;
         }
         CurrentIndex = index;
+        skillShooter.ShowAimMesh(CurrentIndex);
+
         //正式版一定要這樣才能讀的到
         //playerControl.isAttack = true;
         animator.SetBool("Magic_Prepare", true);

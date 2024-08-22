@@ -353,7 +353,7 @@ MonoBehaviour:
   - "\u7A3B\u8377\u795E\uFF1A\u4F7F\u7528\u7D44\u5408\u6280\u5427\u3002"
   - "\u7A3B\u8377\u795E\uFF1A\u5F80\u6BD2\u88E1\u4E1F\u5165\u706B\u6216\u662F\u5F80\u98A8\u88E1\u4E1F\u5165\u706B\u8A66\u8A66\u770B\u3002"
   dialogueText: {fileID: 7623233457180400740}
-  avatarImage: {fileID: 0}
+  godImage: {fileID: 0}
   OnDialogueFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -1657,7 +1657,7 @@ MonoBehaviour:
   - "\u7A3B\u8377\u795E\uFF1A\u6562\u9802\u5634\u3002"
   - "\u7A3B\u8377\u795E\uFF1A\u56DE\u4F86\u7D66\u4F60\u597D\u770B\u3002"
   dialogueText: {fileID: 413656642502349489}
-  avatarImage: {fileID: 0}
+  godImage: {fileID: 0}
   OnDialogueFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -2879,7 +2879,7 @@ MonoBehaviour:
   - "\u7A3B\u8377\u795E\uFF1A\u5979\u70BA\u4E86\u4F7F\u51FA\u6B64\u6280\u80FD\u5DF2\u7D93\u4E0D\u80FD\u7528\u7121\u6575\u8B77\u7F69\u4E86\u3002"
   - "\u7A3B\u8377\u795E\uFF1A\u76F4\u63A5\u5C07\u4ED6\u64CA\u6557\u5427\u3002"
   dialogueText: {fileID: 5152800126946602571}
-  avatarImage: {fileID: 0}
+  godImage: {fileID: 0}
   OnDialogueFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eec23ba8455f5e409d156571a0ea2fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4595,7 +4595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eec23ba8455f5e409d156571a0ea2fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5065,7 +5065,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eec23ba8455f5e409d156571a0ea2fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7338,31 +7338,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7090301624879390865}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5484134140656324604}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5484134141009623637}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5213909982018138815
 GameObject:
   m_ObjectHideFlags: 0
@@ -7499,7 +7475,7 @@ MonoBehaviour:
   - "\u7A3B\u8377\u795E\uFF1A\u7D66\u6211\u56DE\u4F86!"
   - "\u904A\u6232\u7D50\u675F"
   dialogueText: {fileID: 7726568107007823758}
-  avatarImage: {fileID: 4533869901656513404}
+  godImage: {fileID: 4533869901656513404}
   OnDialogueFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -8363,8 +8339,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5484134140959239299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 17.5}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8646,7 +8622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eec23ba8455f5e409d156571a0ea2fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9484,7 +9460,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadSpaces: []
   saveSpaces: []
-  saveFiles: []
 --- !u!114 &5484134139565430558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9539,6 +9514,7 @@ MonoBehaviour:
   mainMenuTutorialBtn: {fileID: 5484134139970454257}
   gameMenuTutorialBtn: {fileID: 208789915053244219}
   credit: {fileID: 5484134139164532696}
+  creditBackgroundBtn: {fileID: 136360299677421882}
   quitGame: {fileID: 5484134141272315505}
   backToMainMenuBtn: {fileID: 4331954637366460549}
   diePanelBackgrounBtn: {fileID: 6618891580802343876}
@@ -9739,7 +9715,7 @@ RectTransform:
   m_Father: {fileID: 5484134140073792703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11913,7 +11889,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eec23ba8455f5e409d156571a0ea2fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12370,7 +12346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eec23ba8455f5e409d156571a0ea2fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12781,7 +12757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eec23ba8455f5e409d156571a0ea2fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13393,7 +13369,7 @@ RectTransform:
   m_Father: {fileID: 5484134139804786629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14147,7 +14123,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eec23ba8455f5e409d156571a0ea2fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b17183eda7ad1a41becd82d6c3088b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14189,8 +14165,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5484134139315528847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 17.5}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14532,7 +14508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15380,7 +15356,7 @@ MonoBehaviour:
   - "\u5931\u53BB\u5C71\u91CE\u4E2D\u5404\u8DEF\u795E\u660E\u7684\u8ABF\u548C\u4F7F\u5F97\u707D\u5BB3\u8207\u98E2\u8352\u8D8A\u6F14\u8D8A\u70C8"
   - "\u65BC\u662F\u8207\u5C71\u6797\u606F\u606F\u76F8\u95DC\u7684\u7A3B\u8377\u5927\u795E\u6D3E\u51FA\u4F7F\u8005\u7953\u9664\u6E3E\u6C8C"
   dialogueText: {fileID: 4236855044579273916}
-  avatarImage: {fileID: 0}
+  godImage: {fileID: 0}
   OnDialogueFinish:
     m_PersistentCalls:
       m_Calls: []

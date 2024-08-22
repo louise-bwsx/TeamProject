@@ -45,7 +45,6 @@ public class SaveManager : MonoSingleton<SaveManager>
 
     public void SaveUserSettings()
     {
-        Debug.Log("儲存使用者設定 目前只有音樂音效");
         //BGM及音效
         if (currentSettingsSave == null)
         {
@@ -112,6 +111,7 @@ public class SaveManager : MonoSingleton<SaveManager>
         //第一次進入 或是 快速進入
         if (currentGameSave == null)
         {
+            GetAllSaveFile();
             if (saveFiles.Count < 1)
             {
                 currentGameSave = new GameSaveData();

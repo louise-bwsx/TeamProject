@@ -24,9 +24,6 @@ public class AudioManager : MonoSingleton<AudioManager>
         {
             char[] splitChar = new char[] { '(', ')' };
             string[] clipName = clip.name.Split(splitChar);
-            //clipName[0] = 
-            //clipName[1] = AfterBossFight
-            //clipName[2] = 井の中の蛙
             clipsDict.Add(clipName[1], clip);
         }
     }
@@ -94,7 +91,7 @@ public class AudioManager : MonoSingleton<AudioManager>
 
     private void SetBGMVolume(float volume)
     {
-        Debug.Log(volume);
+        //Debug.Log(volume);
         SettingsSaveData settingsSave = SaveManager.Inst.GetSettinsSave();
         settingsSave.BGMVol = volume;
         audioMixer.SetFloat(MUSICVOLUME, Mathf.Log10(volume) * MULITIPLIER);

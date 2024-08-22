@@ -6,7 +6,8 @@ public enum GameState
     Pausing,
     Dialogue,
     Loading,
-    PlayerDead
+    PlayerDead,
+    GameEnd
 }
 
 public class GameStateManager : MonoSingleton<GameStateManager>
@@ -16,7 +17,9 @@ public class GameStateManager : MonoSingleton<GameStateManager>
 
     protected override void OnAwake()
     {
-        IsMobile = true;
+        //在Editor中會是false
+        IsMobile = Application.isMobilePlatform;
+        //IsMobile = true;
     }
 
     public void ChangState(GameState changeState)

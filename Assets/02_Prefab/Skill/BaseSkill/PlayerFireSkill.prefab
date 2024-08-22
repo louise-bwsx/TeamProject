@@ -55,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9999992, y: 2.234514, z: 1}
-  m_Center: {x: 0, y: -0.61725676, z: 0}
+  m_Size: {x: 0.5, y: 1, z: 3.5}
+  m_Center: {x: 0, y: 0.05, z: -1.25}
 --- !u!54 &4644124924792791240
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -205,13 +205,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2148854360233518268}
     m_Modifications:
+    - target: {fileID: 1611643871813324248, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611643871955758114, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611643872331356498, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1611643873311476648, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
       propertyPath: m_LengthScale
       value: -1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1611643873311476648, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611643873492784081, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1611643873783108858, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
       propertyPath: m_Name
       value: NewFx_FireBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611643873783108861, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1611643873783108863, guid: 97b8be49055877d4d91b41c9dfeb082b, type: 3}
       propertyPath: m_RootOrder

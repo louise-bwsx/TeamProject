@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SaveSpace : MonoBehaviour
 {
-    //TODOError: 這邊沒有 覆蓋 刪除 檔案會越來越多
     [SerializeField] private TMP_Text timeLabel;
     [SerializeField] private Button saveBtn;
     [SerializeField] private Button deleteBtn;

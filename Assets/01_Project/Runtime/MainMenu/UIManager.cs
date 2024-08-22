@@ -31,6 +31,7 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] private Button mainMenuTutorialBtn;
     [SerializeField] private Button gameMenuTutorialBtn;
     [SerializeField] private Button credit;
+    [SerializeField] private Button creditBackgroundBtn;
     [SerializeField] private Button quitGame;
     [SerializeField] private Button backToMainMenuBtn;
     [SerializeField] private Button diePanelBackgrounBtn;
@@ -60,6 +61,7 @@ public class UIManager : MonoSingleton<UIManager>
         diePanelBackgrounBtn.onClick.AddListener(() => { SceneManager.Inst.LoadLevel("MenuScene"); });
         tutorialBackgrounBtn.onClick.AddListener(TutorialBackgroundBtnOnClick);
         credit.onClick.AddListener(() => { OpenMenu("Credit"); });
+        creditBackgroundBtn.onClick.AddListener(CreditBackgrounOnClick);
         backToMainMenuBtn.onClick.AddListener(BackToMainMenu);
         quitGame.onClick.AddListener(QuitGame);
 
@@ -177,6 +179,16 @@ public class UIManager : MonoSingleton<UIManager>
         }
         settingsImage.sprite = mainMenuSettingsSprite;
         settingsImage.color = Color.white;
+    }
+
+    private void CreditBackgrounOnClick()
+    {
+        if (GameStateManager.Inst.CurrentState == GameState.GameEnd)
+        {
+            SceneManager.Inst.LoadLevel("MenuScene");
+            return;
+        }
+        OpenMenu("MainMenu");
     }
 
     public void CloseMenu(string menuName)

@@ -10,7 +10,7 @@ public class DialogController : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     private Button nextLineBtn;
     [Header("BossDieDialog專用")]
-    [SerializeField] private Image avatarImage;
+    [SerializeField] private Image godImage;
     private int dialogueIndex;
     [HideInInspector] public UnityEvent OnDialogueFinish = new UnityEvent();
 
@@ -28,6 +28,7 @@ public class DialogController : MonoBehaviour
     {
         dialogueIndex = 0;
         dialogueText.text = lines[0];
+        ChangeAvatar();
     }
 
     private void NextLine()
@@ -35,11 +36,12 @@ public class DialogController : MonoBehaviour
         dialogueIndex++;
         if (dialogueIndex >= lines.Count)
         {
-            OnDialogueFinish.Invoke();
+            DialogueManager.Inst.SetDialogueFinish(gameObject.name);
             dialogueIndex = 0;
             Time.timeScale = 1;
             gameObject.SetActive(false);
             GameStateManager.Inst.ChangState(GameState.Gaming);
+            OnDialogueFinish.Invoke();
             return;
         }
         ChangeAvatar();
@@ -50,17 +52,17 @@ public class DialogController : MonoBehaviour
     private void ChangeAvatar()
     {
         //每一個Dialog一個GameObject 用name來判斷 自己要做哪個動作
-        if (gameObject.name != "BossDieDialog")
+        if (gameObject.name != "BossDieDialogue")
         {
             return;
         }
         if (dialogueIndex == 3 || dialogueIndex == 6 || dialogueIndex == 7)
         {
-            avatarImage.enabled = true;
+            godImage.enabled = true;
         }
         else
         {
-            avatarImage.enabled = false;
+            godImage.enabled = false;
         }
     }
 

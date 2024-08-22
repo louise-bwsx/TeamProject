@@ -129,7 +129,6 @@ public class SceneManager : MonoSingleton<SceneManager>
                 mobileRoll.Init(PlayerManager.Inst.PlayerControl);
                 //測試用暫時關掉
                 DialogueManager.Inst.ShowDialogue("IntroDialogue");
-                //TODO 把是否看過dialogue存檔
                 break;
             default:
                 break;

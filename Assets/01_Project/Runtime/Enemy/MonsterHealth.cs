@@ -214,12 +214,12 @@ public class MonsterHealth : MonoBehaviour
         }
         if (other.CompareTag("WaterAttack"))
         {
-            GetHit(5 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Water) * 20, SkillType.Water);
+            GetHit(10 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Water) * 10, SkillType.Water);
         }
 
         if (other.CompareTag("FireAttack"))
         {
-            GetHit(20 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Fire) * 20, SkillType.Fire);
+            GetHit(20 + playerStats.GetStatLevel(StatType.INT) + playerStats.GetSkillLevel(SkillType.Fire) * 10, SkillType.Fire);
         }
 
         if (other.CompareTag("Bomb"))

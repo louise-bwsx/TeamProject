@@ -8431,7 +8431,6 @@ GameObject:
   - component: {fileID: 966283682}
   - component: {fileID: 966283681}
   - component: {fileID: 966283680}
-  - component: {fileID: 966283688}
   m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
@@ -8454,21 +8453,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1479350566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &966283688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966283686}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea93a2c4954fb147b5ec37ea0b934d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monster: []
-  spwantime: 2
-  bossHealth: {fileID: 0}
 --- !u!1 &967882722
 GameObject:
   m_ObjectHideFlags: 0
@@ -73452,8 +73436,8 @@ MonoBehaviour:
   monster:
   - {fileID: 723921473835574753, guid: 408f2ca2371132142b997c8bb0ab7c40, type: 3}
   - {fileID: 5477791637045825159, guid: e2d7a399edb08dc498bc328af15ccfb3, type: 3}
-  spwantime: 5
   bossHealth: {fileID: 5477791637203891592}
+  timer: 0
 --- !u!4 &5477791637203891586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3835812322728355123, guid: 2d1ba14e9129e0d49bd8a804d55217a6, type: 3}
